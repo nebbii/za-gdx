@@ -1,0 +1,1423 @@
+* To dos
+** TODO Map screen
+** Map
+*** DONE Load collision objects
+*** TODO Overworld
+**** TODO Overlays
+**** TODO Collision
+**** TODO Load actors upon entering tile
+*** TODO Shrine of Earth
+**** TODO Overlays
+**** TODO Collision
+**** TODO Load actors upon entering tile
+*** TODO Shrine of Illusion
+**** TODO Overlays
+**** TODO Collision
+**** TODO Load actors upon entering tile
+*** TODO Shrine of Air
+**** TODO Overlays
+**** TODO Collision
+**** TODO Load actors upon entering tile
+*** TODO Shrine of Destiny
+**** TODO Overlays
+**** TODO Collision
+**** TODO Load actors upon entering tile
+*** TODO Shrine of Water
+**** TODO Overlays
+**** TODO Collision
+**** TODO Load actors upon entering tile
+*** TODO Shrine of Strength
+**** TODO Overlays
+**** TODO Collision
+**** TODO Load actors upon entering tile
+*** TODO Shrine of Fire
+**** TODO Overlays
+**** TODO Collision
+**** TODO Load actors upon entering tile
+*** TODO Ganon's Gauntlet
+**** TODO Overlays
+**** TODO Collision
+**** TODO Load actors upon entering tile
+** Zelda
+*** DONE Fix bounding box
+*** DONE Map scroll animation
+- togglable in later settings screen?
+*** TODO Hitbox based map scrolling
+- Currently on position, but the old game seemed to do it based on collision
+*** DONE Map collision
+*** DONE Treasure
+- Treasure and weapons share one slot, same class?
+**** Bell and Bouquet
+
+    Location: Shrine of Strength entrance store
+    Price: 10 Rupees (Bell), 20 Rupees (Bouquet)
+
+These two items have no use whatsoever. If they do have one, it's so obscure and unimportant that they're basically useless.
+**** Black Orb
+
+    Location: Shrine of Illusion
+
+This item is obtained after Zelda clears the geometric tile Patra room in the Shrine of Illusion, and can be placed in a receptacle in the colorful room to the east to open up a barred passageway.
+**** Bone
+
+    Location: Great Wimbich general store
+    Price: 20 Rupees
+
+When given to the shopkeeper's dog outside the general store, the Short Axe spell will appear near the bored man.
+**** Candle
+
+    Location: Forest of Ogham store, Great Wimbich town square store, Great Wimbich blacksmith, Seacoast Plain store
+    Price: 100 Rupees
+    Manual Description: "Use candles to lighten dark rooms. Each candle may be used only once."
+
+Candles will lighten any dark room when used, and are a single-use item. Many stores around Tolemac sell a Candle, and will restock them once Zelda uses hers. There are only two dark rooms in the entire game, so they aren't particularly useful. I'll list them if you're curious:
+
+    The last part of the cave maze in the Shrine of Earth
+    The Stalfos maze in the Shrine of Illusion
+
+**** Celestial Sign
+
+    Location: Every Shrine
+
+The Celestial Signs can be found at the very end of their respective Shrines. All seven are required to fight Gannon and beat the game. Whenever Zelda picks up one, she gains an extra heart container, as well as an increase in her defense and Wand strength.
+**** Coal and Diamond
+
+    Location: Plain of Hobel quarry (coal), Great Wimbich blacksmith (diamond)
+
+This chunk of coal is given to Zelda by the Quarry Owner for free. It can be turned into a Diamond (also for free) by giving it to the Wimbich Smithy. Picking up the Diamond will completely fill Zelda's wallet with Rupees. It's best to do this after buying everything in the game so you can use it all for spellcasting.
+
+The Diamond is also required to activate an easter egg in the Forest of Canvula. I won't spoil the result.
+**** Compass
+
+    Location: Every Shrine
+    Manual Description: "When the shrines were first constructed, Gannon gave each shrine keeper a compass to the shrine he or she was to guard. These compasses have the power of teleportation, which is handy when you want to get to a shrine quickly."
+
+Obtaining a Shrine's Compass will mark the location of the Celestial Sign room on the Shrine map. In addition, using a Compass in the overworld will warp Zelda to the outside entrance of the respective Shrine. This is very handy if you need to get somewhere that's halfway across Tolemac.
+
+Here are the locations of every Compass:
+
+    Shrine of Earth: Appears after defeating every Keese in the room south of the crossroads area.
+    Shrine of Illusion: Appears after defeating the Wizzrobes in the tent room north of the vanishing bridge. Only the pair in the western half need to be killed to make the Compass appear.
+    Shrine of Air: Appears after defeating every Patra in the room east of the first Vapora fight.
+    Shrine of Destiny: Appears after defeating every Gibdo in the first Jack room.
+    Shrine of Water: Found in the room after the North Kelpie fight. Watch out for the spike traps in the wall.
+    Shrine of Strength: Given to Zelda by the Water Bearer south of the Shrine's entrance.
+    Shrine of Fire: Appears after defeating the second and last Blacksmith in the Shrine.
+
+**** Crystal Heart
+
+    Location: Various places across Tolemac
+    Manual Description: "A legend tells of four red crystal hearts hidden somewhere in the land of Tolemac. Each time Zelda finds and grabs one, her Life Meter increases by one heart."
+
+These odd gems will add an extra heart to Zelda's life meter, much like what happens after she obtains a Celestial Sign. Four Crystal Hearts can be found in various places across Tolemac:
+
+    In a cave east of the White Steed Lodge, within the Forest of Torian. Its entrance is surrounded by stones and is near the river. The Crystal Heart is hidden in a tree trunk maze inside the cave.
+    On Mystery Island, accessible through a two Rupee boat tour offered by Faust the Boatman in the Barachno Marsh. Water spouts block the way to the Heart, which disappear upon collecting the Calm spell.
+    In a cave north of South Port. It is located on the opposite side of a ravine, and requires Zelda to make a bridge appear by using a spread-fire spell to hit a crystal switch near the heart.
+    Southeast of the Shrine of Fire entrance, on the opposite side of the river/lake near the Canvula village. It's hidden behind a tree.
+
+**** DONE Empty Pitcher and Full Pitcher
+
+    Location: Plain of Andor (empty pitcher), Andor River source (full pitcher)
+
+Glebb will give Zelda an empty pitcher and ask her to fill it up at the river nearby. Using the pitcher at the river's source (the area with the stone Gannon head) will fill it up with water. After obtaining the full pitcher, Glebb will hand Zelda the Vial of Wind.
+**** Fairy
+
+    Location: Forest of Torian, South Gubasha Desert, Plain of Hobel
+
+Technically, the fairies in this game aren't items, but... I have nowhere else to put them, so here we are. There are three fairies in this game, all of which live in pools hidden throughout Tolemac. Once Zelda touches a Fairy Fountain, all of her hearts will be restored.
+
+Here are the locations of the three fairies:
+
+    In the Forest of Torian, two screens north of the White Steed Lodge.
+    In the South Gubasha Desert, two/three screens north of the town center.
+    Near the Shrine of Strength's entrance, in a little alcove to the southeast.
+
+**** Flute
+
+    Location: Great Wimbich
+
+Talking to Yvonne the musician will have her give Zelda the Flute. It can be used to defeat a snake southwest of Great Wimbich, which drops the Pyros spell upon death.
+**** Golden Boots
+
+    Location: Barachno Marsh
+
+The Golden Boots can be obtained outside of Sirram Bew's house. They seem to have no use whatsoever.
+**** Harp
+
+    Location: Andor/Seacoast cave passage
+    Manual Description: "The magical harp is known also to have the power of teleportation. It is rumored that, in shrines, it can be used to go back to the beginning of a shrine."
+
+This musical instrument can be found in the cave connecting the Plain of Andor and the Seacoast Plain. Playing it in a Shrine will warp Zelda to its first room, allowing for a quick escape.
+**** Keys
+
+    Location: Shrine of Illusion
+    Manual Description: "Use keys to open locked doors. To enter an open door, just walk up to it and go into the next room. Some doors lead nowhere; they are there to deceive you. When you have a key, you pass through and one key is subtracted from your inventory. Once a door is unlocked, it remains open for the rest of the game."
+
+Don't let the description and 'double-digit' menu counter fool you: there are only two locked doors in the entire game, and both of them are in the Shrine of Illusion. Here are the find/unlock locations of each:
+
+    The first key is in the red curtain room with the three doors, and appears after killing the lone Vire. It unlocks the door in the Pasquinade taunt room.
+    The second key is in the first Molluska room, and appears after killing said enemies. It unlocks a door in the same room.
+
+**** Knife
+
+    Location: Shrine of Illusion
+
+The Knife appears after defeating both Goriyas in the tent dead-end room. It is used to cut open a exit hole in the wall in the very same room. It will need to be used every time Zelda enters the dead-end room, as the hole she creates will seal up after leaving.
+**** Ladder
+
+    Location: Forest of Ogham
+
+This ladder can be found leaning on a tree two screens south of the Ogham merchant. It is used to bridge a chasm in the Shrine of Earth.
+**** Life Heart
+
+    Location: Everywhere
+
+Dropped by regular enemies, along with Rupees. They heal one of Zelda's hearts, as you'd expect.
+**** Life Potion
+
+    Location: Great Wimbich town square store, Plain of Donora store, Seacoast Plain store, Forest of Canvula store
+    Price: 200 Rupees
+    Manual Description: "This potion restores Zelda to full life."
+
+This potion restores all of Zelda's hearts. It's as simple as that. The Life Potion can be used even if Zelda is at full health, so be wary of that.
+
+Stores will restock their Life Potions upon the item's use, much like the Candle.
+**** Magic Shield
+
+    Location: Forest of Ogham store
+    Price: 500 Rupees
+    Manual Description: "This shield has magical abilities to protect Zelda from enemy weapon attacks. Because it uses magic, Zelda must concentrate to make it work."
+
+This shield blocks all non-boss projectiles from every side if Zelda stands still. The shield does not have to be equipped to do this. You're rather unlikely to notice this, however, as you're probably moving around a bunch when fighting a group of projectile enemies.
+**** Plank
+
+    Location: Shrine of Water
+
+The Plank can be found in the screen after the second wall spike room, and is used to bridge a gap in the broken bridge nearby.
+**** Raft
+
+    Location: Wimbich Pond
+    Manual Description: "Ride a raft across water. If a raft is available, it appears in the location where it can be used, or it can be selected from the inventory screen. Walk onto the raft and it starts to move. You can walk around on the raft, but you can't get off until it stops at its destination."
+
+You can find the Raft laying on the edge of the pond near Great Wimbich, directly to the south of the town center. It is needed to cross the Whirlpool in the Shrine of Water. (The raft in South Port that takes you to Sea Island will appear even if you do not have the item.)
+**** Red Boots
+
+    Location: Shrine of Earth
+
+These snazzy boots can be found near the end of the cave maze in the Shrine of Earth. Once obtained, Zelda can cross the Andor River, and thus access the rest of Tolemac. The boots do not have to be equipped to do this.
+**** Red Ribbon
+
+    Location: Shrine of Strength entrance store
+    Price: 50 Rupees
+
+Unlike the Bell and Bouquet, the Red Ribbon actually has a use in the Shrine. Once it's bought, the Red Knight miniboss will appear in the Jousting Field, as the ribbon was stolen from him many ages ago.
+**** Rug
+
+    Location: Shrine of Air
+
+This blue rug is dropped by the second Vapora in the Shrine. When equipped, the Rug makes Zelda slide around less on slippery surfaces. However, she can't attack with her wand while doing so, making the Rug a bit of a hassle to use.
+**** Rupees
+
+    Location: Everywhere
+    Manual Description: "Collect rupees by defeating monsters. When you have at least one rupee, it appears in your inventory. If you wish to buy an item, stand close to it so the price flashes. Select the rupee from your inventory screen. If you have enough rupees to purchase the item, click Button One and it appears in your inventory. The cost in rupees will be subtracted from your total. Also, some creatures may demand that you give them money to pass through a gate or take a boat ride."
+
+Rupees act a bit differently than what you'd expect from a regular Zelda game. For starters, there are only two types in the entire game; blue Rupees (5) and yellow Rupees (10). Rupees can be used to buy items, but only when Zelda has selected them in her inventory like an item. They are also required to power spells. Zelda can hold up to 999 Rupees.
+
+Apart from defeating enemies, Zelda can acquire a lot of Rupees on four separate occasions:
+
+    Defeating Llort in the Shrine of Earth (250 Rupees)
+    Talking to Lonlyn in Verna (25 Rupees)
+    Hitting the bears in the Shrine of Strength archery minigame (25, 50, and 100 Rupees in that order)
+    Picking up the Diamond (999 Rupees)
+
+The archery minigame can be reset by exiting and entering the Shrine, allowing for infinite Rupees.
+**** Ticket
+
+    Location: Shrine of Strength ticket booths
+    Price: 20 Rupees each
+
+These tickets allow Zelda to enter the Shrine of Strength's fields and challenge Ursore's three Knights. They can be bought from the vendors stationed at the fields' entrances. There are two to collect:
+
+    The "ADMIT" ticket lets Zelda enter the Jousting Field and fight the Red Knight.
+    The patterned ticket allows Zelda to visit the Field of the Broadsword and attack the Blue and Green Knights.
+
+**** Underworld Map
+
+    Location: Every Shrine
+
+Works just like any Zelda game - they allow you to see the full layout of a Shrine. Here are the locations of every Underworld Map:
+
+    Shrine of Earth: Appears after defeating all of the Tektites in the crossroads area.
+    Shrine of Illusion: Appears after defeating the lone Vire in the mirror and red curtains room.
+    Shrine of Air: Appears after defeating every Tornado in the entrance area.
+    Shrine of Destiny: Surprise! This map can't be found inside the Shrine itself. Instead, it's in the Barachno Marsh, given to Zelda by Yelena, Link's former guide.
+    Shrine of Water: Appears after defeating the Zols in the second spike wall area.
+    Shrine of Strength: Appears after pushing the left block to the right in the block puzzle east of the entrance area.
+    Shrine of Fire: Appears after defeating the Crockarocks in the area after the second Blacksmith screen.
+
+**** Vial of Wind
+
+    Location: Plain of Andor
+    Manual Description: "Creates wind to move the rafts when there is no breeze."
+
+Zelda can get this vial after handing Glebb the filled pitcher. It can be used with the South Port raft to access Sea Island and the Shrine of Water.
+**** Zola Repellent
+
+    Location: Barachno Marsh store
+    Price: 100 Rupees
+    Manual Description: "This scares away Swamp Zolas."
+*** DONE Weapons
+- All moves seem to make the wand motion
+**** DONE Wand
+    Location: Eastern Vision Henge stone
+    Cast Cost: Free
+    Speed: Medium-Fast
+    Path Type: In front of Zelda
+    Manual Description: "This is Zelda's main weapon. Use it like a sword to defeat enemies and to activate all other weapons. Its power is directly tied to Zelda's strength, which increases throughout the game."
+
+The main weapon that Zelda uses on her quest. Has a rather short range, but can be improved upon by casting spells at the cost of Rupees. Its attacking power increases the more Celestial Signs you have. It will be automatically selected when you use a single-use Treasure like the Candle.
+**** TODO Boomerang
+
+    Location: Plain of Andor alcove
+    Cast Cost: 1 Rupee
+    Projectiles Spawned: 1
+    Speed: Medium
+    Path Type: Straight
+    Manual Description: "This is a good weapon when you need to hit something from a distance."
+
+The alcove in the western part of the Plain of Andor has a Goriya that drops this upon death. It's a somewhat slow, average projectile spell. Despite its name and appearance, it doesn't return to Zelda once thrown.
+**** TODO Bow and Arrow
+
+    Location: Shrine of Air
+    Cast Cost: 1 Rupee
+    Projectiles Spawned: 1
+    Speed: Very Fast
+    Path Type: Straight
+    Manual Description: "This spell shoots arrows at opponents or objects. Known for its speed and precision, it is a good weapon to use for hitting creatures and moving targets that are out of reach."
+
+The Bow spell will appear after clearing the Loccasin room in the Shrine of Air. It's better than the Boomerang in every way, especially speed. The spell is required to lower a mandatory bridge in the Shrine of Air, as well as play an optional archery minigame in the Shrine of Strength.
+**** TODO Broadsword
+
+    Location: Forest of Torian ruins
+    Cast Cost: 2 Rupees
+    Projectiles Spawned: 1
+    Speed: Medium
+    Path Type: Straight
+    Manual Description: "This spell shoots flying swords at enemies. It is fairly strong and can be used against certain knights who fight with broadswords."
+
+Talking to Sir Basil near the Forest of Torian's ruined castle will have him give you the Broadsword spell. It's a bit slow, but rather effective against the Blue/Green Knights in the Shrine of Strength.
+**** TODO Calm
+
+    Location: Mobilin's Head Inn
+    Price: 100 Rupees
+    Cast Cost: 1 Rupee
+    Projectiles Spawned: 3
+    Speed: Fast
+    Path Type: Narrow Spread
+    Manual Description: "This spell has the power to calm the elements."
+
+The Calm spell works best against elemental enemies such as the Shrine of Air's tornados. The spell is also required to access Mystery Island and its Crystal Heart, as there are water spouts that block the way unless you have the spell in your inventory.
+**** TODO Dagger
+
+    Location: Mobilin's Head Inn
+    Cast Cost: 2 Rupees
+    Projectiles Spawned: 1
+    Speed: Very Fast
+    Path Type: Straight
+    Manual Description: "This is a moderately weak spell, but it moves quickly through the air. The dagger was once used exclusively by the "Great Magic Users" who now call the power of sound waves as a means of destruction."
+
+Krebb, the dismissive man in the Mobilin's Head Inn, will give Zelda this spell after she interacts with him twice in a row. It may look like a weak spell, but is actually very fast and the only one that can damage and kill Wizzrobes.
+**** TODO Feather
+
+    Location: White Steed Lodge
+    Cast Cost: 2 Rupees
+    Projectiles Spawned: 3
+    Speed: Fast
+    Path Type: Wide Spread
+    Manual Description: "Aviana, the keeper of the Shrine of Air, lost one of her feathers while flying across Tolemac. Her feather can be used as a weapon, but Aviana fears that her own power could be turned against her."
+
+The odd guy outside the White Steed Lodge, Waldensop, will give this spell to Zelda after she enters and leaves the lodge. It is the only spell that can damage and kill Aviana.
+**** TODO Firestorm
+
+    Location: Mobilin's Head Inn
+    Price: 5 Rupees
+    Cast Cost: 1 Rupee
+    Projectiles Spawned: 4
+    Speed: Fast
+    Path Type: Cardinal directions
+    Manual Description: "This spell uses the power of fire to attack enemies coming from many directions at once."
+
+If you're generous enough to give the Beggar outside the inn five Rupees, she'll reward you in kind with the Firestorm spell. It's weak, sure, but it's cheap and good for making some breathing room if you're surrounded by foes.
+**** TODO Gold Necklace
+
+    Location: Shrine of Strength
+    Cast Cost: 2 Rupees
+    Projectiles Spawned: 3
+    Speed: Fast
+    Path Type: Wide Spread
+    Manual Description: "Once owned by a knight, the necklace is used to call upon the powers of accuracy and fire. The necklace was stolen one day by a child who thought it could be sold for food and water."
+
+If you help the Thirsty Child in the Shrine of Strength by drawing water from the well he's next to, he'll give you the Gold Necklace spell as thanks. The Gold Necklace is the only spell that can damage and kill Maxus, the knight in the Shrine of Fire.
+**** TODO Hammer
+
+    Location: Shrine of Fire
+    Cast Cost: 2 Rupees
+    Projectiles Spawned: 1
+    Speed: Slow
+    Path Type: Straight
+    Manual Description: "This weapon is capable of smashing enemies with flying hammers."
+
+This spell will appear after Warbane finishes his first taunt in the Shrine of Fire. It's one of the best spells in the game in terms of its damage/cost ratio (if not THE best), and also does more damage against tougher enemies than the Roar Stick. Unfortunately, it's both slow and obtained near the end of the game, limiting its use.
+**** TODO Jade Amulet
+
+    Location: Great Wimbich spell store
+    Price: 100 Rupees
+    Cast Cost: 24 Rupees
+    Projectiles Spawned: 3
+    Speed: Very Fast
+    Path Type: Narrow Spread
+    Manual Description: "This is one of the most powerful weapons."
+
+This spell costs quite a bit to use and isn't recommended for regular fights at all, but makes up for it by being very powerful. Its projectiles do not disappear upon contact with an enemy which, when combined with its knockback effect, makes it utterly devastating against a group of foes. It's best used against groups of tanky enemies like Gibdos and Iron Knuckles.
+**** TODO Jade Ring
+
+    Location: Shrine of Earth
+    Cast Cost: 3 Rupees
+    Projectiles Spawned: 1
+    Speed: Medium-Slow
+    Path Type: Straight
+    Manual Description: "This rather weak weapon is known to work against those who protect the greedy."
+
+This spell appears after Zelda interacts with the Talking Chest in the Shrine of Earth. It is the only spell that can damage and kill the Sardaks in the Shrine. Do not use this spell on Llort himself, though, as it deals little to no damage.
+**** TODO Joust
+
+    Location: Forest of Canvula village
+    Cast Cost: 3 Rupees
+    Projectiles Spawned: 1
+    Speed: Medium
+    Path Type: Straight
+    Manual Description: "This weapon, similar to the broadsword, throws lances at enemies."
+
+This spell is given to Zelda by the friendly Goblin in the Canvula village as a token of welcome. It does around the same damage as your Wand at that point, and is the only spell that can (effectively) damage and kill the Red Knight in the Shrine of Strength.
+**** TODO Noise
+
+    Location: Verna
+    Cast Cost: 1 Rupee
+    Projectiles Spawned: 1
+    Speed: Fast-Very Fast
+    Path Type: Straight
+    Manual Description: "This spell, similar to the weapon used by the "Great Magic Users", calls upon the power of sound. While rather weak, it is effective against creatures that are sensitive to sound."
+
+Talking to Gwynla in Verna, the village near the Shrine of Destiny, will have her give Zelda this spell. It is, rather fittingly, effective at damaging and killing a Pols Voice.
+**** TODO Pyros
+
+    Location: Wimbich Pond
+    Cast Cost: 4 Rupees
+    Projectiles Spawned: 4
+    Speed: Immobile
+    Path Type: Half-circle in front of Zelda
+    Manual Description: "This spell, once owned by a great keeper of reptiles, creates a wall of fire to protect you from attacks."
+
+Using the Flute on the snake near the Great Wimbich pond will cause it to burst into flame and drop the Pyros spell. The flame wall that appears last for around three seconds, protects Zelda from the front and sides, and doesn't spawn a flame if there's terrain in the way, so keep that in mind.
+**** TODO Rings of Fire
+
+    Location: Great Wimbich spell store
+    Price: 150 Rupees
+    Cast Cost: 3 Rupees
+    Projectiles Spawned: 3
+    Speed: Fast-Very Fast
+    Path Type: Straight
+    Manual Description: "Using flame power, this spell is good for multiple hits of fire against the enemy."
+
+This spell is well-rounded and very useful in the first two thirds of the game. Its three projectiles are as damaging as your early/mid-game Wand, which travel quickly and excel in knocking back enemies, no matter if they're alone or in a group. It loses its effectiveness against late-game enemies, though, starting with the Shrine of Water.
+**** TODO Roar Stick
+
+    Location: Shrine of Strength
+    Cast Cost: 3 Rupees
+    Projectiles Spawned: 1
+    Speed: Medium-Slow
+    Path Type: Straight
+    Manual Description: "This weapon works well against the larger creatures."
+
+Appears after hitting the top-right crystal switch in the screen before the Jousting Field ticket booth. This spinning club has the largest hitbox of any single projectile spell, making it a good choice if you're not very accurate. It does extra damage against enemies that have a lot of health, such as Iron Knuckles.
+
+As its name and manual description suggests, the Roar Stick is a good spell to use in the Ursore fight.
+**** TODO Short Axe
+
+    Location: Great Wimbich Main Street
+    Cast Cost: 2 Rupees
+    Projectiles Spawned: 1
+    Speed: Slow
+    Path Type: Straight
+    Manual Description: "This axe was owned by a woodsman. It was carried by the woodsman's canine friend who got lost in the woods one day."
+
+The dog outside the Great Wimbich general store will give this axe to Zelda after she gives him the Bone from the store. In a nutshell, it's a weaker version of the Hammer spell.
+**** TODO Turquoise Ring
+
+    Location: Great Wimbich spell store
+    Price: 20 Rupees
+    Cast Cost: 26 Rupees
+    Projectiles Spawned: 3
+    Speed: Very Fast
+    Path Type: Narrow Spread
+    Manual Description: "A powerful, all-purpose weapon."
+
+This spell is quite similar to the Jade Amulet in terms of raw damage output, but has a cheaper price at the cost of having a slightly higher cast cost. It is also required to (effectively) damage and kill the Kelpies in the Shrine of Water. Fortunately for your wallet, the East Kelpie can be skipped.
+** HUD
+*** DONE Draw rupee count
+*** DONE Draw hearts on screen
+*** TODO Draw rupee count in stylized font
+*** TODO Draw hearts on screen in images
+- "The code is pretty simple. For every 10 HP, one half heart is filled in. Then if there are 0 filled in hearts, one half heart is filled in." -[[https://discord.com/channels/256554729109192705/347450574167605249/1083454275201544293][Phlosion]]
+- "1-19 is 1/2 heart, 20-29 is 1, 30-39 is 1.5, 40-49 is 2, etc"
+** Enemies
+- From [[https://discord.com/channels/256554729109192705/347450574167605249/1084520393982890064][Phlosion]]:
+  "Some of the metadata for these sprites is absurd. This is the metadata for the upwards sprite of a wizrobe.
+    The green cross is the origin of the sprite (0, 0). It's where the wizrobe's position is tracked.
+    The black box is its bounding box. If zelda's attacks enter that box, they will damage the wizrobe.
+    The green points are its terrain collision detection. Movement that puts either of those points within a wall is cancelled.
+    The red points are used for heightmap detection. Not really relevant for wizrobes, they're never on screen with height maps.
+    The blue points are the damage points. If one of those points touches zelda, she takes damage."
+- Enemies seem to start in looking around phase, then aggro when in range of Zelda, and after getting hurt they cycle back around to looking
+- Make noise upon aggro'd
+- When in doubt, take the technical export as fact
+- Some export-name mappings are uncertain; those are marked as possible matches
+
+*** Alligaroo
+    Location: Barachno Marsh, North Seacoast Plain
+    Health: 6 (0 CS), 5 (1-2 CS), 4 (3-4 CS), 3 (5-6 CS)
+    Behavior Type: Aggressive
+    Damage: 1
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: Large
+    Technical Export (enemy.alligatorMan):
+        [health=60, damage=45, defense=10] on cells r20
+        [health=60, damage=57, defense=20] on cells s16, t16, u14, v15, v18, w15
+
+Alligator-esque humanoids that populate the Barachno Marsh. The last part of their name indicates a connection to the Jackaroo, a similarly-scaled enemy only seen in the Shrine of Illusion.
+
+*** Blacksmith
+    Location: Shrine of Fire
+    Health: 3
+    Behavior Type: Aggressive
+    Damage: 2 (melee/projectile)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees, Shrine of Fire compass (one screen only)
+    Knockback Distance: Large
+    Technical Export (possible match: enemy.axeMan):
+        [health=12, damage=67, defense=36]
+
+A pair of Blacksmiths are encountered in the opening areas of the Shrine of Fire, hammering away at their anvils. Upon seeing Zelda, they become angered at her intrusion and attack the Princess with their finely-crafted weapons. Defeating the second one will net you the Shrine's compass.
+
+*** Bolla
+    Location: Shrine of Fire
+    Health: 3
+    Behavior Type: Aggressive
+    Damage: 2 (melee/projectile)
+    Weakness(es): All
+    Drops: Nothing, 5 Rupees
+    Knockback Distance: Large
+    Technical Export (enemy.bolla):
+        [health=30, damage=81, defense=30]
+
+These monkey-like crawlers are only encountered in a single Shrine of Fire room, right before the metal chamber guarded by Maxus. They fling fireballs at Zelda, and have to be defeated to enter the Shrine's final areas.
+
+*** Bounder
+    Location: Plain of Donora, Forest of Canvula
+    Health: 3 (0-4 CS), 2 (5-6 CS)
+    Behavior Type: Aggressive/Stationary
+    Damage:
+        Melee: 1 (0-3 CS), 0.5 (4-6 CS)
+        Projectile: 1 (0-5 CS), 0.5 (6 CS)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: Large
+    Technical Export (possible match: enemy.purpleFish):
+        [health=60, damage=62, defense=35]
+
+Purple-colored fish that swim around specific streams in Skotness River, with a select few flopping around on the nearby land. They can spit surprisingly powerful globs of water at passersby.
+
+*** Cactorok
+    Location: South Gubasha Desert
+    Health: 3 (0-4 CS), 2 (5-6 CS)
+    Behavior Type: Stationary
+    Damage:
+        Melee: 1.5 (0-1 CS), 1 (2-6 CS)
+        Projectile: 1.5 (0 CS), 1 (1-5 CS), 0.5 (6 CS)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: None
+    Technical Export (enemy.cactus):
+        [health=60, damage=57, defense=10]
+
+These living cacti populate the South Gubasha Desert, and spit up rocks at anyone who dares to walk near them. They act more like classic Zelda Octoroks than the Octoroks seen in this game. Strange, huh?
+
+*** Crockarock
+    Location: Shrine of Fire
+    Health: 3
+    Behavior Type: Aggressive
+    Damage: 2 (melee), less than 0.5 (projectile)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees, Shrine of Fire map (one screen only)
+    Knockback Distance: Large
+    Technical Export (enemy.crockarock):
+        [health=12, damage=72, defense=38] on cells a7, a8, c8, d7
+        [health=60, damage=72, defense=38] on cells c7
+
+Two clusters of Crockarocks are found in the Shrine of Fire, right after the Blacksmiths. They deal pathetic projectile damage, but make up for it in their melee attacks. Defeating the first group will net you the Shrine's map, while the second group's defeat opens the way forward.
+
+*** Crystal Shard and Fireball
+    Location: Shrine of Air (Shard), Shrine of Fire (Fireball)
+    Health: Immortal
+    Behavior Type: Projectile
+    Damage:
+        Crystal Shard: 1 (2-4 CS), 0.5 (5-6 CS)
+        Fireball: 2
+    Weakness(es): None
+    Drops: Nothing
+    Knockback Distance: N/A
+
+Two hazards with very similar functionalities. They'll spawn non-stop at the sides of the room, then start to fly towards Zelda. Standing still with the Magic Shield in your inventory will protect you from them.
+
+*** Deeler
+    Location: Forest of Ogham, Forest of Torian, Forest of Canvula
+    Health: 2
+    Behavior Type: Aggressive
+    Damage: 0.5 (0-2 CS), Negligible (3-6 CS)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: Large
+    Technical Export (enemy.deeler):
+        [health=60, damage=57, defense=20] on cells b8, e9, h10, i10
+        [health=60, damage=40, defense=0] on cells f7, g29, g30, g31, h10, j10, m10, m13, n13, o12
+
+Big ol' spiders that love to crawl around in Tolemac's forests. They have a bigger brother called the Squibber.
+
+*** Dolomite
+    Location: Forest of Torian, North Gubasha Desert, Great Dry Canyon, South Seacoast Plain
+    Health: 6 (0 CS), 5 (1-2 CS), 4 (3-4 CS), 3 (5-6 CS)
+    Behavior Type: Stationary
+    Damage:
+        Melee: 1
+        Projectile: 1 (0-3 CS), 0.5 (4-6 CS)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: None
+
+Camouflaged into Tolemac's riverbeds, rocky alcoves, and beaches, these unflinching stone men only move to throw rocks at nearby innocents. It's a good thing they can only throw their pebbles in one direction!
+
+*** Dragonfly
+    Location: Shrine of Air, Gannon's Gauntlet
+    Health: 3 (2-4 CS), 2 (5-6 CS)
+    Behavior Type: Aggressive
+    Damage: 1 (2-3 CS), 0.5 (4-6 CS)
+    Weakness(es): All
+    Drops:
+        Shrine of Air: Nothing, Life Heart, 5 Rupees, 10 Rupees
+        Gannon's Gauntlet: Life Heart (guaranteed)
+    Knockback Distance: Large
+    Technical Export (enemy.dragonfly):
+        [health=1, damage=0, defense=0] on cells gl4
+        [health=60, damage=50, defense=10] on cells s312, s313, s317
+
+Annoying little insects that populate two rooms in the Shrine of Air, the second of which blocks off progress until they're defeated. They make a return in Gannon's Gauntlet, where 10 spawn after Malmord is struck by Zelda. All of them drop a guaranteed Life Heart upon dying - a much appreciated rest stop. One more Dragonfly spawns after the ten are defeated, which takes Zelda to the next boss fight upon its death.
+
+*** Firefly
+    Location: Shrine of Fire
+    Health: 2
+    Behavior Type: Aggressive
+    Damage: 0.5 (melee)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: Large
+
+Two groups of these buzzy bastards can be found in the Shrine of Fire. You'll need to defeat the second group to proceed further into the Shrine.
+
+*** Giant Squid
+    Location: North Seacoast Plain, Shrine of Water
+    Health: Immortal (0-2 CS), 6 (3 CS), 3 (4 CS), 2 (5-6 CS)
+    Behavior Type: Aggressive
+    Damage: 2.5 (0-2 CS), 2 (3-6 CS)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: Large
+    Technical Export (enemy.giantSquid):
+        [health=12, damage=81, defense=34] on cells s20, s517, s523
+        [health=60, damage=50, defense=15] on cells s515
+
+This giant cephalopod can be found near the Beachcomber's shop in the North Seacoast Plain. Initially a very imposing enemy, your Celestial Sign boosts will turn this sea beast into an absolute joke. Two more are found in the Shrine of Water's last third, though they're even less of a threat there.
+
+*** Gibdo
+    Location: Shrine of Destiny
+    Health: 10 (3 CS), 8 (4 CS), 6 (5 CS), 5 (6 CS)
+    Behavior Type: Aggressive
+    Damage: 2 (3-4 CS), 1.5 (5-6 CS)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees, Shrine of Destiny compass (one screen only)
+    Knockback Distance: Large
+    Technical Export (enemy.gibdo):
+        [health=60, damage=73, defense=30]
+
+Everyone's favorite Zelda mummy enemy makes its appearance in the Shrine of Destiny - fitting, considering its status as a burial place. It's a very strong enemy, both physically and in terms of attack power. Your best bet to destroy these ghouls is either the Rings of Fire or the Jade Amulet. A couple groups in the Shrine's middle third need to be defeated to open the way forward.
+
+FUN FACT: The Gibdo was played by the game's lead programmer, Randy Casey, who was wrapped in toilet paper to complete the mummy look.
+
+*** Goriya
+    Location: Plain of Andor, Shrine of Illusion, North Gubasha Desert, Great Dry Canyon
+    Health: 3 (0-4 CS), 2 (5-6 CS)
+    Behavior Type: Aggressive
+    Damage:
+        Melee: 1 (0-1 CS), 0.5 (2-4 CS), Negligible (5-6 CS)
+        Projectile: 0.5 (0-3 CS), Negligible (4-6 CS)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees, Boomerang (one screen only)
+    Knockback Distance: Large
+    Technical Export (enemy.goriya):
+        [health=60, damage=45, defense=10, weakness=None, bonusDamage=5]
+
+Boomerang-throwing beasts that love dry, arid places. An alcove in the Plain of Andor contains a lone Goriya that, when killed, drops its Boomerang for Zelda to pick up and use.
+
+*** Gull
+    Location: Shrine of Destiny, Shrine of Fire
+    Health: 2 (SoD), 1 (SoF)
+    Behavior Type: Aggressive
+    Damage: 0.5 (3-5 CS), Negligible (6 CS)
+    Weakness(es): All
+    Drops: Nothing (barring one exception in the Shrine of Fire)
+    Knockback Distance: Large
+
+These little birds guard two rooms in both the Shrines of Destiny and Fire. They don't guard anything important or block the way. Just ignore them, honestly.
+
+*** Invisible Man
+    Location: Forest of Torian
+    Health: 3 (0-2 CS), 2 (3-6 CS)
+    Behavior Type: Aggressive
+    Damage: 1 (0-1 CS), 0.5 (2-4 CS), Negligible (5-6 CS)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: Large
+
+These paranormal people surround the Shrine of Illusion's circus tent, and will periodically vanish for a split-second. However, their invisibility doesn't make them immune to Zelda's Wand or its spells.
+
+*** Iron Knuckle
+    Location: Shrine of Strength
+    Health: 8 (5 CS), 6 (6 CS)
+    Behavior Type: Aggressive
+    Damage: 1
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: Large
+    Technical Export (enemy.ironKnuckle):
+        [health=60, damage=58, defense=32] on cells s613, s615, s617, s625
+        [health=60, damage=75, defense=32] on cells s626
+
+Heavily-armored soldiers that guard the hallways of the Shrine of Strength. The Iron Knuckles' high health makes spells like the Jade Amulet or Roar Stick very effective against them.
+
+*** Jack
+    Location: Shrine of Destiny
+    Health: Immortal
+    Behavior Type: Bouncer
+    Damage: 0.5
+    Weakness(es): None
+    Drops: N/A
+    Knockback Distance: N/A
+    Technical Export (enemy.jack):
+        [health=99, damage=48, defense=99]
+
+Everyone's least-favorite hazard can be found in the Shrine of Destiny! In one room, every Gibdo killed will result in a Jack spawning, and two can spawn in the room right before Malmord.
+
+*** Jackaroo
+    Location: Shrine of Illusion
+    Health: 3 (1-2 CS), 2 (3-6 CS)
+    Behavior Type: Aggressive
+    Damage: 1 (1-3 CS), 0.5 (4-6 CS)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: Large
+    Technical Export (enemy.jackaroo):
+        [health=60, damage=51, defense=5]
+
+These purple raptors can be found at the Shrine of Illusion's first proper room, as well as the very last one before Pasquinade's arena. The last part of their name indicates a connection to the Alligaroo, a similarly-scaled enemy exclusive to Tolemac's swamplands.
+
+*** Kannis
+    Location: Shrine of Fire
+    Health: 4
+    Behavior Type: Aggressive
+    Damage: 3
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: None
+    Technical Export (enemy.kannis):
+        [health=8, damage=96, defense=40]
+
+Three big dog-like bears that are encountered near the end of the Shrine of Fire. They do massive damage, can't be knocked back, and have a good amount of health too. You'll need to defeat the last of them to vanquish the flames blocking the way forward.
+
+*** Keese
+    Location: Shrine of Earth, Shrine of Air
+    Health: 3 (0-4 CS), 2 (5-6 CS)
+    Behavior Type: Fixed (Shrine of Earth), Aggressive (Shrine of Air)
+    Damage: 1 (0-1 CS), 0.5 (2-4 CS), Negligible (5-6 CS)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees, Shrine of Earth compass (one screen only)
+    Knockback Distance: Large
+    Technical Export (enemy.keese):
+        [health=60, damage=45, defense=10]
+
+These violet bats love to hang around in the dark depths of the Shrine of Earth, though they're not above hanging out with the other flying creatures in the Shrine of Air. They'll usually follow a fixed path around a room, and have a short invincibility period after being hit. One of the Keese groups in the Shrine of Earth drops the dungeon's compass upon defeat.
+
+*** Leever
+    Location: Forest of Ogham, Meadow of Skotness, Forest of Canvula
+    Health: 2
+    Behavior Type: Aggressive
+    Damage: 0.5 (0-2 CS), Negligible (3-6 CS)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: Large
+    Technical Export (enemy.leever):
+        [health=60, damage=40, defense=0]
+
+Little orange slug-like things that are out and about in Tolemac's fields; a fact most unsurprising to its locals, who have to deal with them on a yearly basis. Fortunately, they're only as dangerous as a Tumblebot.
+
+*** Loccasin
+    Location: Shrine of Air
+    Health: 5 (2 CS), 4 (3-4 CS), 3 (5-6 CS)
+    Behavior Type: Aggressive
+    Damage: 1
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees, Bow and Arrow
+    Knockback Distance: Large
+    Technical Export (enemy.loccasin):
+        [health=60, damage=57, defense=20] on cells s304
+        [health=20, damage=48, defense=30] on cells s709, s711
+
+These humongous flies can only be encountered in the Shrine of Air, in a small room housing their nest. Defeating all of them will make the Bow and Arrow spell appear, which is required to complete the Shrine.
+
+*** Lowder
+    Location: South Gubasha Desert, North Gubasha Desert, Great Dry Canyon, East Forest
+    Health: 3 (0-4 CS), 2 (5-6 CS)
+    Behavior Type: Aggressive
+    Damage: 1.5 (0-1 CS), 1 (2-6 CS)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: Large
+    Technical Export (enemy.lowder):
+        [health=60, damage=57, defense=10]
+
+Large isopods that emit an annoying, dolphin-like sound upon seeing Zelda. It's best to kill them quickly. They love dry areas much like Goriyas, though a couple can be encountered in the reaches of the East Forest.
+
+*** Mardleg
+    Location: Great Dry Canyon, North Seacoast Plain, East Forest
+    Health: 6 (0 CS), 5 (1-2 CS), 4 (3-4 CS), 3 (5-6 CS)
+    Behavior Type: Aggressive
+    Damage: 2 (0-1 CS), 1.5 (2-6 CS)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: Large
+    Technical Export (possible match: enemy.lanmola):
+        [health=60, damage=68, defense=20]
+
+Located throughout Tolemac's canyons are these purple centipede-like monsters. They're quite dangerous, and it'd be in your best interest to defeat them from a distance.
+
+*** Mobilin
+    Location: Forest of Ogham, Forest of Findo, Forest of Torian, Ubato Hills
+    Health: 4 (0-2 CS), 3 (3-6 CS)
+    Behavior Type: Aggressive
+    Damage: 1 (0-2 CS), 0.5 (3-6 CS)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: Large
+    Technical Export (enemy.moblin):
+        [health=60, damage=50, defense=15]
+
+One of Gannon's strongest and most infamous minions, though their stupidity is so horrendous that certain Tolemac residents crack jokes about it. You'll find these bulldog men in the land's forests, as well as near the Shrine of Destiny.
+
+*** Moby
+    Location: Forest of Ogham, Meadow of Skotness, Ubato Hills
+    Health: 2
+    Behavior Type: Aggressive
+    Damage: 0.5 (0-4 CS), Negligible (5-6 CS)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: Large
+    Technical Export (enemy.moby):
+        [health=60, damage=45, defense=0]
+
+A small red bird species located throughout Tolemac, often near Mobilin clusters. Compared to, say, Romravens and Sea Eagles, these birds are nothing.
+
+*** Molluska
+    Location: Forest of Torian, Shrine of Illusion, East Forest
+    Health: 4 (0-2 CS), 3 (3-6 CS)
+    Behavior Type: Aggressive
+    Damage:
+        Melee: 1 (0-2 CS), 0.5 (3-6 CS)
+        Projectile: 1 (0-3 CS), 0.5 (4-6 CS)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees, Key (one screen only)
+    Knockback Distance: Small
+    Technical Export (possible match: enemy.mimicMole):
+        [health=60, damage=45, defense=5]
+
+These... things are endemic to Tolemac's forests, as well as the Shrine of Illusion located inside one. They're annoying, spam projectiles, and are tough to kill at first. Using the Rings of Fire against them is advised. You'll get a key from destroying the first group of them inside the Shrine of Illusion.
+
+*** Mongchip
+    Location: East Forest
+    Health: Immortal (0-3 CS), 6 (4 CS), 3 (5 CS), 2 (6 CS)
+    Behavior Type: Aggressive
+    Damage: 2 (0-1 CS), 1.5 (2-6 CS)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: Large
+
+Mace-wielding gnomes that have occupied the East Forest. Incredibly dangerous at the start of the game, and will basically block off the Shrine of Strength until you get enough Celestial Signs to reduce their infinite health.
+
+*** Octorok
+    Location: Forest of Torian, Barachno Marsh, Shrine of Water
+    Health: 9 (0 CS), 7 (1 CS), 6 (2 CS), 5 (3 CS), 4 (4-6 CS)
+    Behavior Type: Aggressive
+    Damage: 1.5 (0-3 CS), 1 (4-6 CS)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: Large
+    Technical Export (enemy.octorok):
+        [health=60, damage=61, defense=23]
+
+Humongous octopi that can be found nestled near bodies of water. Unlike their main series (and Animation Magic) brethren, these Octoroks don't spit rocks at Zelda, though their high health and damage output make up for this deficiency.
+
+*** Patra
+    Location: Shrine of Illusion, Shrine of Air
+    Health: 2 (1-2 CS), 1 (3-6 CS)
+    Behavior Type: Aggressive
+    Damage: 0.5 (1 CS), Negligible (2-6 CS)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees, Black Orb (one screen only), Shrine of Air compass (one screen only)
+    Knockback Distance: Large
+    Technical Export (enemy.patra):
+        [health=30, damage=37, defense=5]
+
+The weakest enemy in Zelda's Adventure, by far. Already starting out with low health and damage output, the second and third Celestial Signs will decimate whatever threat they had in the Shrine of Illusion. Speaking of, there's rooms full of them in the Shrine, one of which spawns the Black Orb upon their death. A similar room in the Shrine of Air (after the first Vapora) drops the dungeon's Compass.
+
+*** Peahat
+    Location: Plain of Andor, Meadow of Skotness, Forest of Torian, Forest of Canvula
+    Health: 3 (0-4 CS), 2 (5-6 CS)
+    Behavior Type: Aggressive
+    Damage:
+        Melee: 0.5 (0-3 CS), Negligible (4-6 CS)
+        Projectile: 1 (0-1 CS), 0.5 (2-5 CS), Negligible (6 CS)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: Small
+    Technical Export (enemy.peahat):
+        [health=60, damage=44, defense=10]
+
+A shuffling flower monster that'll prove to be the most dangerous overworld enemy, at least in the early game. Until you've got a few Celestial Signs and/or acquired a good, cheap spell, you should just ignore these guys. Or try to, as they're a common sight in western Tolemac.
+
+*** Pickpocket
+    Location: South Port inn (left), Shrine of Strength (right)
+    Health: Immortal
+    Behavior Type: Stationary (left), Fixed (right)
+    Damage: 25 Rupees
+    Weakness(es): None
+    Drops: N/A
+    Knockback Distance: N/A
+    Technical Export (possible match: enemy.guard):
+        [health=0, damage=0, defense=0]
+
+While Tolemac has an allegedly dangerous and criminal-filled Thieves' Den, it's actually a somewhat friendly place. That's because the real thieves lurk elsewhere in the land. A denizen of South Port's inn loves to pick pockets, as well as some red-clad individuals seen throughout the Shrine of Strength. Both types steal 25 Rupees from Zelda upon touching her, and they'll do it multiple times if you let them. So... don't let them.
+
+*** Puffer
+    Location: Shrine of Air
+    Health: 3 (2-4 CS), 2 (5-6 CS)
+    Behavior Type: Aggressive
+    Damage: 1
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: Large
+    Technical Export (possible match: enemy.bagoBago):
+        [health=12, damage=50, defense=10] on cells c8
+        [health=60, damage=40, defense=0] on cells p13
+
+A most peculiar enemy, these baboon-like heads patrol a section of hallway in the Shrine of Air. There's really not much to say about them.
+
+*** Romraven
+    Location: South Gubasha Desert, North Gubasha Desert
+    Health: 6 (0 CS), 5 (1-2 CS), 4 (3-4 CS), 3 (5-6 CS)
+    Behavior Type: Aggressive
+    Damage: 1 (0-3 CS), 0.5 (4-6 CS)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: Large
+    Technical Export (enemy.romraven):
+        [health=30, damage=50, defense=15] on cells s418
+        [health=0, damage=40, defense=34] on cells s421
+        [health=30, damage=45, defense=0] on cells s710, s715
+    Technical Export (possible related export name: enemy.purpleBird):
+        [health=60, damage=52, defense=20]
+
+Purple birds that sail the winds blowing through the Gubasha Desert. Their large size gives them a larger health pool than many other flying enemies. A similar bird can be found at Tolemac's southeastern reaches...
+
+*** Sea Eagle
+    Location: South Seacoast Plain, South Port
+    Health: Immortal (0 CS), 30 (1 CS), 15 (2 CS), 10 (3 CS), 8 (4 CS), 6 (5 CS), 5 (6 CS)
+    Behavior Type: Aggressive
+    Damage: 1.5 (0-4 CS), 1 (5-6 CS)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: Large
+    Technical Export (possible match: enemy.greenBird):
+        [health=60, damage=62, defense=30]
+
+A very dangerous creature indeed, the Sea Eagle is the Romraven's scarier big brother. Starting out with infinite health and a strong attack, they slowly get weaker as Zelda obtains more Celestial Signs. Even with six out of seven Signs, though, they're nothing to sneeze at.
+
+*** Skora
+    Location: Forest of Canvula
+    Health: Immortal (0-4 CS), 7 (5 CS), 3 (6 CS)
+    Behavior Type: Aggressive
+    Damage: 2 (0-3 CS), 1.5 (4-6 CS) (melee/projectile)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: Large
+
+These scorpion-like enemies guard the Shrine of Fire, and are very tricky to take out. For most of the game, they'll have infinite health and strong attacks to back it up. Only after the Shrine of Water do you have a chance at defeating them, though it's still not great.
+
+*** Snapping Turtle
+    Location: Shrine of Water
+    Health: 20 (4 CS), 12 (5 CS), 9 (6 CS)
+    Behavior Type: Aggressive
+    Damage: 1.5 (4 CS), 1 (5-6 CS)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: Large
+    Technical Export (enemy.turtle):
+        [health=60, damage=62, defense=35]
+
+Located in the Shrine of Water's Whirlpool are giant snapping turtles. Their health pool is absolutely gargantuan, exceeding every other enemy and most of the game's bosses! Fortunately, their huge size makes them easy to knock back from your Raft. Plus, they'll get much weaker after obtaining some more Celestial Signs.
+
+*** Spike Block
+    Location: Shrine of Destiny, Shrine of Strength
+    Health: Immortal
+    Behavior Type: Fixed
+    Damage: 1
+    Weakness(es): None
+    Drops: N/A
+    Knockback Distance: N/A
+    Technical Export (enemy.spikedBlock):
+        [health=99, damage=58, defense=99]
+
+These spike blocks are used as traps and moving hazards in a couple of Tolemac's Shrines. Often you'll find a switch that, upon being hit, makes said blocks vanish or appear.
+
+*** Spike Trap
+    Location: Shrine of Water
+    Health: Immortal
+    Behavior Type: Fixed
+    Damage: 1
+    Weakness(es): None
+    Drops: N/A
+    Knockback Distance: N/A
+    Technical Export (possible matches):
+        enemy.floorSpikes:
+            [health=99, damage=58, defense=99] on cells l8, s5, s219, s420, s607, s608, s612, s614, s622, s626
+            [health=999, damage=40, defense=999] on cells q15
+        enemy.floorSpikes.blue:
+            [health=0, damage=58, defense=0] on cells s316
+            [health=0, damage=0, defense=0] on cells s318, s508, s513
+        enemy.floorSpikes.white:
+            [health=99, damage=58, defense=99]
+        enemy.wallSpike:
+            [health=99, damage=60, defense=99]
+
+Exclusive to the Shrine of Water are spikes that periodically come out of the walls, skewering Zelda if she's in their proximity. I suggest waiting for any spikes to appear, then timing Zelda's movements to avoid them entirely. Of course, this can be hard if certain enemies are in the way.
+
+*** Squibber
+    Location: Forest of Canvula
+    Health: 6 (0 CS), 5 (1-2 CS), 4 (3-4 CS), 3 (5-6 CS)
+    Behavior Type: Aggressive
+    Damage: 1.5 (0-1 CS), 1 (2-6 CS)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: Large
+
+The Deeler's bigger, much nastier brother. More damaging and tougher than their smaller sibling, it's a good thing that Squibbers are only located in the Forest of Canvula.
+
+*** Squid
+    Location: Shrine of Water
+    Health: 3
+    Behavior Type: Aggressive
+    Damage: 0.5
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: Large
+
+It's a smaller version of the Giant Squid encountered sporadically across Tolemac. They're only encountered in a single winding passage in the Shrine of Water.
+
+*** Stalfos
+    Location: Shrine of Illusion
+    Health: 4 (1-2 CS), 3 (3-6 CS)
+    Behavior Type: Aggressive
+    Damage: 1 (1-3 CS), 0.5 (4-6 CS)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: Large
+    Technical Export (enemy.stalfos):
+        [health=60, damage=51, defense=15]
+
+Everyone's favorite bony boys can be found in the Shrine of Illusion, where they guard three chambers in total. In the first and last of these chambers, you'll have to defeat all the Stalfos to progress further into the Shrine.
+
+*** Stingray
+    Location: Shrine of Water
+    Health: 20 (4 CS), 12 (5 CS), 9 (6 CS)
+    Behavior Type: Aggressive
+    Damage: 1
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: Small
+    Technical Export (possible match: enemy.purpleFish):
+        [health=60, damage=62, defense=35]
+
+Don't be fooled by their small size - these rays are just as tough as the Snapping Turtles encountered earlier in the Shrine of Strength! To make a bad situation even worse, they can't be knocked back as far as their colleague. The only good thing about them is that they only appear on a single screen.
+
+*** Tektite
+    Location:
+        Red: Ogham ambush cave, Shrine of Earth
+        Blue: Meadow of Skotness, South Gubasha Desert, Ubato Hills
+    Health:
+        Red: 2
+        Blue: 3 (0-2 CS), 2 (3-6 CS)
+    Behavior Type: Aggressive
+    Damage:
+        Red: 0.5 (0-2 CS), Negligible (3-6 CS)
+        Blue: 1 (0-2 CS), 0.5 (3-6 CS)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees, Shrine of Earth map (one screen only)
+    Knockback Distance: Large
+    Technical Export (enemy.tektite):
+        [health=60, damage=51, defense=5] on cells j16, k15, k16, l16, m14, m15, r5, r8, v10, v12, v9, x9
+        [health=60, damage=40, defense=0] on cells q10, s101a, s103, s104, s116
+
+Little spiders that love to crawl around in Tolemac's caverns, with the season bringing them (and Leevers) out onto the land's fields. You'll encounter two variants; a red Tektite only seen near and inside the Shrine of Earth, and a tougher blue Tektite encountered in the main overworld. Killing every blue Tektite at a crossroads in the Shrine of Earth will gift you the dungeon's Compass.
+
+*** Tornado
+    Location: Shrine of Air
+    Health: 4
+    Behavior Type: Aggressive
+    Damage: 1 (2-4 CS), 0.5 (5-6 CS)
+    Weakness(es): Calm
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees, Shrine of Air map (one screen only)
+    Knockback Distance: Large
+    Technical Export (enemy.tornado):
+        [health=280, damage=52, defense=32, weakness=Calm, bonusDamage=72]
+
+These living whirlwinds protect the Shrine of Air's opening rooms, and can only be dispersed with four blasts from the Calm spell. Fortunately, there are only two groups of them, and destroying the first nets you the Shrine of Air's map.
+
+*** Tumblebot
+    Location: Plain of Andor, Plain of Donora
+    Health: 2
+    Behavior Type: Aggressive
+    Damage: 0.5 (0 CS), Negligible (3 CS)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: Large
+    Technical Export (enemy.tumbleWeed):
+        [health=60, damage=40, defense=0]
+
+Living blue boulders that roll around in Tolemac's two plains. They're very weak even at the start of the game, and their rather large clusters can result in easy Rupee and heart farming.
+
+*** Vire
+    Location: Shrine of Illusion
+    Health: 4 (1-2 CS), 3 (3-6 CS)
+    Behavior Type: Aggressive
+    Damage: 1 (1-3 CS), 0.5 (4-6 CS)
+    Weakness(es): All
+    Drops: Key (southern), Shrine of Illusion map (northern), nothing (after their items are collected)
+    Knockback Distance: Large
+    Technical Export (enemy.vire):
+        [health=60, damage=51, defense=15]
+
+These burly bats guard two rooms in the southwestern corner of the Shrine of Illusion. Interestingly, both of them drop a unique item; the Vire in the southern room has a Key, while the one in the northern room drops the Shrine's map. Once their items are collected, they don't drop anything, not even the usual Rupee/heart.
+
+*** Volta
+    Location: Shrine of Air
+    Health: 3 (2-4 CS), 2 (5-6 CS)
+    Behavior Type: Aggressive
+    Damage: 1 (2-4 CS), 0.5 (5-6 CS)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: Large
+    Technical Export (enemy.volta):
+        [health=60, damage=52, defense=10]
+
+Some of Aviana's "feathered friends" which help guard the Shrine of Air. They're actually quite featherless in spite of the Shrine Queen's description. Apart from this small discrepancy, they're your usual mid-tier Shrine enemy.
+
+*** Wallmaster
+    Location: Shrine of Illusion
+    Health: Immortal
+    Behavior Type: Fixed
+    Damage: Sending Zelda back to the Shrine's first room
+    Weakness(es): None
+    Drops: N/A
+    Knockback Distance: N/A
+    Technical Export (enemy.wallmaster):
+        [health=0, damage=0, defense=0]
+
+Large blue hands that try to grab Zelda; if successful, they send her to the first room of a Shrine. Luckily for you, they're quite slow, stay in one area and never chase the Princess. and only appear in a single room in the Shrine of Illusion.
+
+*** Water Spout
+    Location: Lake Boruna
+    Health: Immortal
+    Behavior Type: Fixed
+    Damage: Blocking Faust the Boatman's canoe
+    Weakness(es): Calm
+    Drops: N/A
+    Knockback Distance: N/A
+
+These large water spouts form on the surface of Lake Boruna, located in the Forest of Albon and home to Mystery Island. If Zelda doesn't have the Calm spell, they'll block Faust the Boatman's canoe from arriving at Mystery Island, sending it back to the dock near his hut. After the spell is obtained, the spouts automatically disappear.
+
+*** Wizzrobe
+    Location: Shrine of Illusion, Shrine of Destiny
+    Health: 4
+    Behavior Type: Aggressive
+    Damage:
+        Melee: 1 (1 CS), 0.5 (2-4 CS), Negligible (5-6 CS)
+        Projectile: 1 (1-3 CS), 0.5 (4-6 CS)
+    Weakness(es): Dagger
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees, Shrine of Illusion compass (one screen only)
+    Knockback Distance: Large
+    Technical Export (enemy.wizzrobe):
+        [health=280, damage=45, defense=35, weakness=Dagger, bonusDamage=70]
+
+Also known as "Great Magic Users", these robed runemakers guard places dedicated to abstract concepts, such as fate and illusions. Once using daggers as their means of attack, Wizzrobes have now switched to a spell similar to your Noise one. Perhaps you can use the former spell to vanquish them? The first group of Wizzrobes in the Shrine of Illusion drop the dungeon's Compass upon death.
+
+*** Zol
+    Location: Shrine of Water
+    Health: 8 (4 CS), 6 (5 CS), 5 (6 CS)
+    Behavior Type: Aggressive
+    Damage: 1 (4 CS), 0.5 (5-6 CS)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees, Shrine of Water map (one screen only)
+    Knockback Distance: Large
+    Technical Export (enemy.zol):
+        [health=60, damage=54, defense=30]
+
+A big red blob that can be see in the first half of the Shrine of Water. They don't split into smaller blobs upon their defeat... probably a good thing. Destroying the first group of Zols makes the Shrine's map appear.
+
+*** Zola (River)
+    Location: Forest of Torian
+    Health: 6 (0 CS), 5 (1-2 CS), 4 (3-4 CS), 3 (5-6 CS)
+    Behavior Type: Stationary
+    Damage:
+        Melee: 1 (0-3 CS), 0.5 (4-6 CS)
+        Projectile: 1 (0-5 CS), 0.5 (6 CS)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: None
+
+A green-tinted Zola that resides in Skotness River and spits spiked balls at Zelda. Unlike their main series counterparts, these Zola (and their cousins) prefer to always stay above water.
+
+*** Zola (Sea)
+    Location: North Seacoast Plain, South Seacoast Plain
+    Health: Immortal (0 CS), 30 (1 CS), 15 (2 CS), 10 (3 CS), 8 (4 CS), 6 (5 CS), 5 (6 CS)
+    Behavior Type: Stationary
+    Damage:
+        Melee: 1.5 (0-4 CS), 1 (5-6 CS)
+        Projectile: 1.5 (0-3 CS), 1 (4-6 CS)
+    Weakness(es): All
+    Drops: Nothing
+    Knockback Distance: None
+    Technical Export (possible match: enemy.seaMonster):
+        [health=60, damage=58, defense=30]
+
+A blue-tined Zola that lives in the ocean next to the Seacoast Plain. They're much tougher than their two cousins, having the same HP issue as the Sea Eagle and dealing an extra half-heart of damage. Best to dodge their projectiles and ignore them.
+
+*** Zola (Swamp)
+    Location: Barachno Marsh, Swamp of Vendoss
+    Health: 6 (0 CS), 5 (1-2 CS), 4 (3-4 CS), 3 (5-6 CS)
+    Behavior Type: Stationary
+    Damage:
+        Melee: 1 (0-1 CS), 0.5 (2-6 CS)
+        Projectile: 1 (0-5 CS), 0.5 (6 CS)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: None
+    Technical Export:
+        enemy.swampZola.green:
+            [health=60, damage=50, defense=20]
+        enemy.swampZola.blue:
+            [health=60, damage=62, defense=30]
+
+These Zola are very similar to their river-dwelling counterparts, apart from two small things. First, they're only found in the Forest of Albon, stuck in its murky swamp waters. Secondly, you can buy repellant spray from the nearby Barachno Marsh to make them disappear for good.
+*** bosses & etc mappings
+    enemy.lanmola:
+        [health=60, damage=68, defense=20]
+
+    enemy.bagoBago:
+        [health=12, damage=50, defense=10] on cells c8
+        [health=60, damage=40, defense=0] on cells p13
+
+    enemy.llort:
+        [health=60, damage=60, defense=24] on cells gl1, s118
+        [health=60, damage=50, defense=24] on cells s121
+
+    enemy.ganonFairy:
+        [health=0, damage=0, defense=0] on cells gl1, gl2, gl3, gl5, gl8
+        [health=50, damage=0, defense=0] on cells gl7
+
+    enemy.rope:
+        [health=5, damage=57, defense=500]
+
+    enemy.guard:
+        [health=0, damage=0, defense=0]
+
+    enemy.blob:
+        [health=0, damage=0, defense=0]
+
+    enemy.pasquinade:
+        [health=60, damage=55, defense=24] on cells gl2
+        [health=0, damage=0, defense=0] on cells s217
+        [health=70, damage=55, defense=24] on cells s224
+
+    enemy.aviana:
+        [health=60, damage=60, defense=24, weakness=Feather, bonusDamage=0] on cells gl3
+        [health=770, damage=60, defense=24, weakness=Feather, bonusDamage=0] on cells s321
+
+    enemy.malmord:
+        [health=1, damage=80, defense=0] on cells gl4
+        [health=90, damage=60, defense=24] on cells s422
+
+    enemy.agwanda:
+        [health=50, damage=86, defense=30] on cells gl5
+        [health=0, damage=0, defense=0] on cells s516
+        [health=110, damage=86, defense=28] on cells s525
+
+    enemy.warbane:
+        [health=50, damage=86, defense=34] on cells gl7
+        [health=0, damage=0, defense=0] on cells s712, s721
+        [health=50, damage=76, defense=38] on cells s723
+
+    enemy.ganon:
+        [health=60, damage=82, defense=40]
+
+    enemy.sardak.red:
+        [health=280, damage=50, defense=30, weakness=JadeRing, bonusDamage=70]
+    enemy.sardak.blue:
+        [health=80, damage=50, defense=30, weakness=JadeRing, bonusDamage=70]
+    enemy.sardak.yellow:
+        [health=280, damage=50, defense=30, weakness=JadeRing, bonusDamage=70]
+
+    enemy.polsVoice:
+        [health=280, damage=51, defense=31, weakness=Noise, bonusDamage=70]
+
+    enemy.vapora:
+        [health=60, damage=57, defense=25]
+
+    enemy.tumbleSkull:
+        [health=60, damage=57, defense=10]
+
+    enemy.kelpi:
+        [health=280, damage=69, defense=34, weakness=TurquoiseRing, bonusDamage=70]
+
+    enemy.knight.red:
+        [health=280, damage=73, defense=35, weakness=Joust, bonusDamage=70]
+    enemy.knight.blue:
+        [health=280, damage=73, defense=35, weakness=Broadsword, bonusDamage=70]
+    enemy.knight.green:
+        [health=280, damage=73, defense=35, weakness=Broadsword, bonusDamage=70]
+
+    enemy.ursore:
+        [health=130, damage=80, defense=34]
+
+    enemy.spearThrower:
+        [health=30, damage=81, defense=30]
+
+    enemy.lavaLizard:
+        [health=18, damage=81, defense=36]
+
+    enemy.archer:
+        [health=280, damage=72, defense=40, weakness=GoldNecklace, bonusDamage=70]
+** NPCs
+- NPCs disappear after finishing their side quest duties
+- Touching their rectangles makes them talk
+  - NPC talk doesn't interrupt others, talk "hitboxes" don't seem to activate until the current person is done talking
+- Buying items: stand on them, equip rubies and press button 1
+*** TODO Alice
+*** TODO Angry Goblin
+*** TODO Archery Trainer
+*** TODO Beachcomber
+*** TODO Bitterbeck
+*** TODO Blacksmith (Great Wimbich)
+*** TODO Bored Guy
+*** TODO Bored Guy's Dog
+*** TODO Broadsword Field Stallkeeper
+*** TODO Enid
+*** TODO Eric and Ian
+*** TODO Ethera
+*** TODO Fairy
+*** TODO Farmer
+*** TODO Father of Eric and Ian
+*** TODO Faust
+*** TODO Food Dude
+*** TODO Friendly Goblin
+*** TODO General Shopkeeper (Great Wimbich)
+*** TODO Ghini
+*** TODO Ghost Farmer
+*** TODO Glebb
+*** TODO Gwynla
+*** TODO Hooded Woman
+*** TODO Jester
+*** TODO Jousting Field Custodian
+*** TODO Jousting Field Stallkeeper
+*** TODO Krebb
+*** TODO Kron the Pegleg
+*** TODO Lonlyn
+*** TODO Lothar
+*** TODO Lounger
+*** TODO Madame Kriggle
+*** TODO Merribal
+*** TODO Mobilin's Head Inn Beggar (Exterior)
+*** TODO Mobilin's Head Inn Blue Lady (Interior)
+*** TODO Mobilin's Head Inn Exhausted Traveler (Interior)
+*** TODO Myntoll
+*** TODO Nimonee
+*** TODO Ogham Merchant
+*** TODO Old Sailor
+*** TODO Old Sailor's Wife
+*** TODO Pick-Pocket
+*** TODO Quarry Owner
+*** TODO Rebel Soldier 1
+*** TODO Rebel Soldier 2
+*** TODO Ryco
+*** TODO Sailor 1
+*** TODO Sailor 2
+*** TODO Sailor 3
+*** TODO Shurmak
+*** TODO Sir Basil
+*** TODO Sirram Bew
+*** TODO Squire Grip animation
+*** TODO Swamp Rat
+*** TODO Talking Toadstool
+*** TODO Thabul
+*** TODO Thief Sailor
+*** TODO Thirsty Child
+*** TODO Toatobar
+*** TODO Toobar
+*** TODO Town Square Shopkeeper (Great Wimbich)
+*** TODO Transport Condor
+*** TODO Trinket Seller
+*** TODO Waldensop
+*** TODO Water Bearer
+*** TODO Whitesteed Lodge Horse
+*** TODO Whitesteed Lodge Patron 1
+*** TODO Whitesteed Lodge Patron 2
+*** TODO Whitesteed Lodge Patron 3
+*** TODO Whitesteed Lodgekeeper
+*** TODO Yalzan
+*** TODO Yelena
+*** TODO Yvonne
+** Pickups
+- Items flicker and disappear after 5(?) seconds
+*** DONE Rubies
+- "There are only two types in the entire game; blue Rupees (5) and yellow Rupees (10)."
+*** DONE Hearts
+- "Dropped by regular enemies, along with Rupees. They heal one of Zelda's hearts, as you'd expect."
+** Sound
+- ([[https://youtu.be/IqFZ1iVmhIo?t=1052][Youtube)]] Music seems to stop in stores when people are talking, but not on the overworld?
