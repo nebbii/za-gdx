@@ -1,7 +1,13 @@
 # ZaGdx
 
-A [libGDX](https://libgdx.com/) project generated with [gdx-liftoff](https://github.com/libgdx/gdx-liftoff).
+A port of ZA for the CD-i written in Java with [libGDX](https://libgdx.com/). Assets need to be ripped from a backup of the game, script for this is still under construction.
 
+## Credits
+nebbii - Porting
+[Phlosioneer](https://github.com/Phlosioneer) - [Game asset extracting script
+](https://github.com/Phlosioneer/ZeldasAdventureExtractor)
+
+## LibGDX
 This project was generated with a template including simple application launchers and a main class extending `Game` that sets the first screen.
 
 ## Platforms
