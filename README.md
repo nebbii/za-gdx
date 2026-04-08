@@ -1,8 +1,9 @@
 # ZaGdx
 
-A port of ZA for the CD-i written in Java with [libGDX](https://libgdx.com/). Assets need to be ripped from a backup of the game, script for this is still under construction.
+A port of ZA (originally for the CD-i) written in Java with [libGDX](https://libgdx.com/). 
+Assets need to be ripped from a backup of the game, script for this is still under construction.
 
 ## Credits
 - nebbii - Porting
-- [Phlosioneer](https://github.com/Phlosioneer) - [Game asset extracting script
+- Phlosioneer - [Game asset extracting script
 ](https://github.com/Phlosioneer/ZeldasAdventureExtractor)
