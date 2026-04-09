@@ -1,8 +1,6 @@
 package com.nebbii.zagdx;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 
 public class Npc extends Rectangle implements Actor {
@@ -14,7 +12,6 @@ public class Npc extends Rectangle implements Actor {
     public enum NpcState {
         TALKY,
         TALKING,
-        TALKED,
         DONE
     }
 

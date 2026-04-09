@@ -163,7 +163,9 @@ public class MapManager {
 
         addActor(zelda);
 
-        addActor(new NpcGlebb());
+        NpcGlebb npcGlebb = new NpcGlebb();
+        npcGlebb.setPosition(3716, 2050);
+        addActor(npcGlebb);
 
         PickupPitcherEmpty pitcherEmpty = new PickupPitcherEmpty();
         pitcherEmpty.setPosition(3672, 2055);

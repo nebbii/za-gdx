@@ -1,10 +1,7 @@
 package com.nebbii.zagdx;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.nebbii.zagdx.animation.NpcGlebbAnimation;
 
 public class NpcGlebb extends Npc {
@@ -16,10 +13,6 @@ public class NpcGlebb extends Npc {
         this.animation = new NpcGlebbAnimation(this);
 
         this.npcState = NpcState.TALKY;
-        setX(3716f);
-        setY(2050f);
-
-        // her bottle spawns at x 3672 y 2055
     }
 
     @Override
@@ -30,8 +23,6 @@ public class NpcGlebb extends Npc {
         case TALKY:
             break;
         case TALKING:
-            break;
-        case TALKED:
             break;
         case DONE:
             break;
