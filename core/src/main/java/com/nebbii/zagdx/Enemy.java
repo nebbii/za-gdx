@@ -24,7 +24,11 @@ public class Enemy extends Rectangle implements Actor {
         setType(actorType);
         this.solid = solid;
 
-        this.alertBox = new Rectangle(0, 0, 32, 32);
+        setEnemyState(EnemyState.SEARCHING);
+
+        this.alertBox = new Rectangle();
+        this.alertBox.setWidth(100);
+        this.alertBox.setHeight(100);
     }
 
     public void logic() {
@@ -50,6 +54,9 @@ public class Enemy extends Rectangle implements Actor {
     }
 
     public Rectangle getAlertBox() {
+        alertBox.setX(getCenterPointX()-alertBox.getWidth()/2);
+        alertBox.setY(getCenterPointY()-alertBox.getHeight()/2);
+
         return alertBox;
     }
 
@@ -91,6 +98,14 @@ public class Enemy extends Rectangle implements Actor {
 
     public void setType(ActorType type) {
         this.type = type;
+    }
+
+    public EnemyState getEnemyState() {
+        return enemyState;
+    }
+
+    public void setEnemyState(EnemyState enemyState) {
+        this.enemyState = enemyState;
     }
 
     public boolean isSolid() {

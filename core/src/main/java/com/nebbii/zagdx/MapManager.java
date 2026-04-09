@@ -93,6 +93,12 @@ public class MapManager {
             shapes.setColor(Color.BLUE);
             Rectangle hitbox = actor.getHitbox();
             shapes.rect(hitbox.x, hitbox.y, hitbox.width, hitbox.height);
+
+            if (actor instanceof Enemy) {
+                shapes.setColor(Color.PURPLE);
+                Rectangle alertBox = ((Enemy) actor).getAlertBox();
+                shapes.rect(alertBox.x, alertBox.y, alertBox.width, alertBox.height);
+            }
         }
 
         shapes.end();
@@ -152,6 +158,7 @@ public class MapManager {
         actors.removeIf(actor -> actor.getState() == State.DEAD);
     }
 
+    // TODO: make this a yaml file?
     public void loadOverworld() {
         overlay.loadOverworld(loader, "Overlay");
         collision.loadOverworld(loader, "Collision");
@@ -162,6 +169,11 @@ public class MapManager {
         zelda.setPosition(2465.32f, 2249.46f);
 
         addActor(zelda);
+
+        // Enemy enemy = new Enemy(actorType, solid)
+        EnemyTumblebot tumblebot = new EnemyTumblebot();
+        tumblebot.setPosition(2969, 2305);
+        addActor(tumblebot);
 
         NpcGlebb npcGlebb = new NpcGlebb();
         npcGlebb.setPosition(3716, 2050);

@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.nebbii.zagdx.animation.NpcGlebbAnimation;
 
 public class NpcGlebb extends Npc {
-    private Texture spritesheet;
     public NpcGlebbAnimation animation;
 
     public NpcGlebb() {
