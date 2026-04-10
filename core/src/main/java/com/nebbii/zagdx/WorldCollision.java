@@ -35,6 +35,7 @@ public class WorldCollision {
     public void logic() {
         collideActorsWithCollision();
         collideZeldaWithPickups();
+        collideEnemiesWithWorldBorders();
     }
 
     private void collideZeldaWithPickups() {
@@ -48,7 +49,6 @@ public class WorldCollision {
                 pickup.onPickup(game);
             }
         }
-
     }
 
     private void collideActorsWithCollision() {
@@ -68,6 +68,51 @@ public class WorldCollision {
                 }
 
                 resolveRectangleVsPolygon(actorRect, polygon);
+            }
+        }
+    }
+
+    private void collideEnemiesWithWorldBorders() {
+        Rectangle[] borders = game.getWorld().getWorldBorders();
+
+        Rectangle leftBorder = borders[0];
+        Rectangle rightBorder = borders[1];
+        Rectangle bottomBorder = borders[2];
+        Rectangle topBorder = borders[3];
+
+        float minX = leftBorder.x + leftBorder.width;
+        float maxX = rightBorder.x;
+        float minY = bottomBorder.y + bottomBorder.height;
+        float maxY = topBorder.y;
+
+        for (Actor actor : actors) {
+            if (!(actor instanceof Enemy)) continue;
+            if (!actor.isActive()) continue;
+
+            Enemy enemy = (Enemy) actor;
+            Rectangle box = enemy.getCollisionBox();
+
+            boolean bounced = false;
+
+            if (box.x < minX) {
+                box.x = minX;
+                bounced = true;
+            } else if (box.x + box.width > maxX) {
+                box.x = maxX - box.width;
+                bounced = true;
+            }
+
+            if (box.y < minY) {
+                box.y = minY;
+                bounced = true;
+            } else if (box.y + box.height > maxY) {
+                box.y = maxY - box.height;
+                bounced = true;
+            }
+
+            if (bounced) {
+                Gdx.app.log("WorldCollision", "Enemy bounced on world border");
+                enemy.setDirection(enemy.getRandomDirection());
             }
         }
     }

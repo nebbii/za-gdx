@@ -64,7 +64,7 @@ public class Enemy extends Rectangle implements Actor {
         */
     }
 
-    private Direction getRandomDirection() {
+    public Direction getRandomDirection() {
         return Direction.values()[MathUtils.random(Direction.values().length - 1)];
     }
 

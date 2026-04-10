@@ -40,10 +40,10 @@ public class EnemyTumblebot extends Enemy {
     private void moveSearch(float deltaTime) {
         switch(getDirection()) {
             case LEFT:
-                setX(getX() + searchSpeed * deltaTime);
+                setX(getX() - searchSpeed * deltaTime);
                 break;
             case DOWN:
-                setY(getY() + searchSpeed * deltaTime);
+                setY(getY() - searchSpeed * deltaTime);
                 break;
             case UP:
                 setY(getY() + searchSpeed * deltaTime);

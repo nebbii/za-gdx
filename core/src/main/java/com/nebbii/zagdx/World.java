@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.objects.PolygonMapObject;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
@@ -34,6 +35,7 @@ public class World {
     private ShapeRenderer shapes;
 
     private WorldCollision worldCollision;
+    private Rectangle[] worldBorders;
 
     private MenuPause menuPause;
 
@@ -52,6 +54,13 @@ public class World {
 
         worldCamera = new WorldCamera(camera, map);
         worldCollision = new WorldCollision(map, gameManager);
+
+        worldBorders = new Rectangle[4];
+        for (int i = 0; i < worldBorders.length; i++) {
+            worldBorders[i] = new Rectangle();
+        }
+        updateWorldBorders();
+
         font = new BitmapFont();
 
         menuPause = new MenuPause(gameManager);
@@ -73,6 +82,7 @@ public class World {
             map.logic();
             gameManager.logic();
             worldCamera.logic();
+            updateWorldBorders();
             worldCollision.logic();
             menuPause.logic();
             break;
@@ -169,7 +179,7 @@ public class World {
         debugLines.add("cellRow: " + worldCamera.getTargetCellRow());
         debugLines.add("Equip: " + map.getZelda().getCurrentItem().toString());
         //debugLines.add("State: " + map.getZelda().getState());
-        //debugLines.add("GameState: " + gameManager.getGameState());
+        debugLines.add("GameState: " + gameManager.getGameState());
 
         batch.setProjectionMatrix(interfaceCamera.combined);
         batch.begin();
@@ -177,6 +187,53 @@ public class World {
             font.draw(batch, debugLines.get(i), 20f, 20f + line * 20f);
         }
         batch.end();
+    }
+
+    private void updateWorldBorders() {
+        int cellColumn = worldCamera.getTargetCellColumn();
+        int cellRow = worldCamera.getTargetCellRow();
+
+        float screenX = cellColumn * WORLD_WIDTH;
+        float screenY = cellRow * WORLD_HEIGHT;
+
+        float thickness = 1f;
+
+        Rectangle left = worldBorders[0];
+        Rectangle right = worldBorders[1];
+        Rectangle bottom = worldBorders[2];
+        Rectangle top = worldBorders[3];
+
+        left.set(
+            screenX - thickness,
+            screenY,
+            thickness,
+            WORLD_HEIGHT
+        );
+
+        right.set(
+            screenX + WORLD_WIDTH,
+            screenY,
+            thickness,
+            WORLD_HEIGHT
+        );
+
+        bottom.set(
+            screenX,
+            screenY - thickness,
+            WORLD_WIDTH,
+            thickness
+        );
+
+        top.set(
+            screenX,
+            screenY + WORLD_HEIGHT,
+            WORLD_WIDTH,
+            thickness
+        );
+    }
+
+    public Rectangle[] getWorldBorders() {
+        return worldBorders;
     }
 
     public WorldCamera getWorldCamera() {
