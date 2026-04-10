@@ -84,20 +84,10 @@ public class Zelda extends Rectangle implements Actor {
         if (inputY > 0) setAnimState(AnimState.MOVEUP);
         if (inputX > 0) setAnimState(AnimState.MOVERIGHT);
 
-        Vector2 dir = new Vector2(inputX, inputY);
-        float dt = Gdx.graphics.getDeltaTime();
+        float deltaTime = Gdx.graphics.getDeltaTime();
 
-        if (normalizeDiagonals) {
-            if (dir.len2() > 0) {
-                dir.nor(); // prevents diagonal speed boost
-            }
-
-            setX(getX() + dir.x * speed * dt);
-            setY(getY() + dir.y * speed * dt);
-        } else {
-            setX(getX() + inputX * dt);
-            setY(getY() + inputY * dt);
-        }
+        setX(getX() + inputX * deltaTime);
+        setY(getY() + inputY * deltaTime);
     }
 
     public void action() {
