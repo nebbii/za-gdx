@@ -6,11 +6,22 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 
 public class Enemy extends Rectangle implements Actor {
-    private boolean solid;
+    protected boolean solid;
+    protected float searchSpeed = 80f;
+    protected float fightingSpeed = 140f;
     protected State state;
-    protected EnemyState enemyState;
     protected ActorType type;
+
     protected Rectangle alertBox;
+    protected Direction direction;
+    protected EnemyState enemyState;
+
+    public enum Direction {
+        LEFT,
+        DOWN,
+        UP,
+        RIGHT
+    }
 
     public enum EnemyState {
         SEARCHING,
@@ -24,6 +35,7 @@ public class Enemy extends Rectangle implements Actor {
         setType(actorType);
         this.solid = solid;
 
+        this.direction = getRandomDirection();
         setEnemyState(EnemyState.SEARCHING);
 
         this.alertBox = new Rectangle();
@@ -32,8 +44,9 @@ public class Enemy extends Rectangle implements Actor {
     }
 
     public void logic() {
-        if (getState() != State.ACTIVE) return;
         /*
+        if (getState() != State.ACTIVE) return;
+
         switch(enemyState) {
             case FIGHTING:
                 break;
@@ -46,7 +59,21 @@ public class Enemy extends Rectangle implements Actor {
     }
 
     public void draw(SpriteBatch batch) {
+        /*
         if (getState() != State.ACTIVE) return;
+        */
+    }
+
+    private Direction getRandomDirection() {
+        return Direction.values()[MathUtils.random(Direction.values().length - 1)];
+    }
+
+    public Direction getDirection() {
+        return direction;
+    }
+
+    public void setDirection(Direction direction) {
+        this.direction = direction;
     }
 
     public Rectangle getHitbox() {
