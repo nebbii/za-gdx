@@ -12,7 +12,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ShortArray;
 
 /*
- * @nebbii: incomprehendable class for handling all collision in the world, knows all actors and map objects
+ * Handling all collision in the world, knows all actors and map objects
  */
 public class WorldCollision {
     private static final int MAX_PUSH_ITERATIONS = 8; // how many polygon nudges per frame
