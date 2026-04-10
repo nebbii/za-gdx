@@ -24,8 +24,9 @@ public class Npc extends Rectangle implements Actor {
     }
 
     public void logic() {
-        if (getState() != State.ACTIVE) return;
         /*
+        if (getState() != State.ACTIVE) return;
+
         switch(npcState) {
         case TALKY:
             break;

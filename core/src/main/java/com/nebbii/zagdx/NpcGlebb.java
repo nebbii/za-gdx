@@ -16,23 +16,23 @@ public class NpcGlebb extends Npc {
 
     @Override
     public void logic() {
-        super.logic();
+        if (getState() != State.ACTIVE) return;
 
         switch(npcState) {
-        case TALKY:
-            break;
-        case TALKING:
-            break;
-        case DONE:
-            break;
-        default:
-            break;
+            case TALKY:
+                break;
+            case TALKING:
+                break;
+            case DONE:
+                break;
+            default:
+                break;
         }
     }
 
     @Override
     public void draw(SpriteBatch batch) {
-        super.draw(batch);
+        if (getState() != State.ACTIVE) return;
 
         batch.draw(animation.playCurrentAnimation(), animation.getX(), animation.getY());
     }
