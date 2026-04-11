@@ -1,6 +1,8 @@
 package com.nebbii.zagdx;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 
 public final class WorldShaders {
@@ -27,6 +29,18 @@ public final class WorldShaders {
         if (enemyHitFlashShader == null) init();
 
         return enemyHitFlashShader;
+    }
+
+    public static void beginHitFlashShader(SpriteBatch batch, Color color) {
+        ShaderProgram shader = getEnemyHitFlashShader();
+
+        batch.setShader(shader);
+        shader.setUniformf("u_flashColor", color.r, color.g, color.b, color.a);
+        shader.setUniformf("u_mix", 0.85f);
+    }
+
+    public static void endHitFlashShader(SpriteBatch batch) {
+        batch.setShader(null);
     }
 
     public static void dispose() {

@@ -1,6 +1,7 @@
 package com.nebbii.zagdx;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
@@ -9,6 +10,7 @@ public class Enemy extends Rectangle implements Actor {
     protected boolean solid;
     protected float searchSpeed = 80f;
     protected float fightingSpeed = 140f;
+    protected float hurtDuration = 0;
     protected State state;
     protected ActorType type;
 
@@ -44,9 +46,13 @@ public class Enemy extends Rectangle implements Actor {
     }
 
     public void logic() {
-        /*
         if (getState() != State.ACTIVE) return;
 
+        float deltaTime = Gdx.graphics.getDeltaTime();
+
+        hurtDuration = Math.max(0f, hurtDuration - deltaTime);
+
+        /*
         switch(enemyState) {
             case FIGHTING:
                 break;
@@ -62,6 +68,25 @@ public class Enemy extends Rectangle implements Actor {
         /*
         if (getState() != State.ACTIVE) return;
         */
+    }
+
+    public void drawFlashOverlay(SpriteBatch batch) {
+        Color currentColor;
+        float t = hurtDuration % 0.12f;
+
+        if (t < 0.04f) {
+            currentColor = Color.YELLOW;
+        } else if (t < 0.08f) {
+            currentColor = Color.GRAY;
+        } else {
+            currentColor = Color.RED;
+        }
+
+        WorldShaders.beginHitFlashShader(batch, currentColor);
+    }
+
+    public void endDrawFlashOverlay(SpriteBatch batch) {
+        WorldShaders.endHitFlashShader(batch);
     }
 
     public Direction getRandomDirection() {

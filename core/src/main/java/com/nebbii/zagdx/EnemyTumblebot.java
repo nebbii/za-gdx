@@ -1,6 +1,7 @@
 package com.nebbii.zagdx;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.nebbii.zagdx.animation.EnemyTumblebotAnimation;
 
@@ -18,13 +19,12 @@ public class EnemyTumblebot extends Enemy {
 
     @Override
     public void logic() {
+        super.logic();
         if (getState() != State.ACTIVE) return;
-
-        float deltaTime = Gdx.graphics.getDeltaTime();
 
         switch(enemyState) {
             case SEARCHING:
-                moveSearch(deltaTime);
+                moveSearch();
                 break;
             case FIGHTING:
                 break;
@@ -37,10 +37,14 @@ public class EnemyTumblebot extends Enemy {
     public void draw(SpriteBatch batch) {
         if (getState() != State.ACTIVE) return;
 
+        if (hurtDuration > 0) drawFlashOverlay(batch);
         batch.draw(animation.playCurrentAnimation(), animation.getX(), animation.getY());
+        if (hurtDuration > 0) endDrawFlashOverlay(batch);
     }
 
-    private void moveSearch(float deltaTime) {
+    private void moveSearch() {
+        float deltaTime = Gdx.graphics.getDeltaTime();
+
         switch(getDirection()) {
             case LEFT:
                 setX(getX() - searchSpeed * deltaTime);
