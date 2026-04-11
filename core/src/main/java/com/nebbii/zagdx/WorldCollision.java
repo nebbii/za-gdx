@@ -111,7 +111,6 @@ public class WorldCollision {
             }
 
             if (bounced) {
-                Gdx.app.log("WorldCollision", "Enemy bounced on world border");
                 enemy.setDirection(enemy.getRandomDirection());
             }
         }

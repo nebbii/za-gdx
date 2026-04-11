@@ -2,13 +2,16 @@ package com.nebbii.zagdx;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.nebbii.zagdx.animation.EnemyTumblebotAnimation;
 
 public class EnemyTumblebot extends Enemy {
-    //public EnemyTumblebot animation;
+    public EnemyTumblebotAnimation animation;
 
     public EnemyTumblebot() {
         super(ActorType.FRIENDLY, false);
-        //this.animation = new EnemyTumblebot(this);
+        setHeight(26);
+
+        this.animation = new EnemyTumblebotAnimation(this);
 
         this.enemyState = EnemyState.SEARCHING;
     }
@@ -34,7 +37,7 @@ public class EnemyTumblebot extends Enemy {
     public void draw(SpriteBatch batch) {
         if (getState() != State.ACTIVE) return;
 
-        //batch.draw(animation.playCurrentAnimation(), animation.getX(), animation.getY());
+        batch.draw(animation.playCurrentAnimation(), animation.getX(), animation.getY());
     }
 
     private void moveSearch(float deltaTime) {

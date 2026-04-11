@@ -22,7 +22,15 @@ public class ImageLoader {
         ATTACKLEFT
     }
 
+    public enum EnemyTumblebotAnimationGroup {
+        ROLLUP,
+        ROLLRIGHT,
+        ROLLDOWN,
+        ROLLLEFT
+    }
+
     private EnumMap<ZeldaAnimationGroup, Texture[]> zelda;
+    private EnumMap<EnemyTumblebotAnimationGroup, Texture[]> enemyTumblebot;
 
     /* Treasures */
     private Texture bone;
@@ -58,6 +66,16 @@ public class ImageLoader {
         zelda.put(ZeldaAnimationGroup.ATTACKLEFT,
             loadTextureArray("export/common/zelda/sprites/group7", 3));
 
+        enemyTumblebot = new EnumMap<>(EnemyTumblebotAnimationGroup.class);
+        enemyTumblebot.put(EnemyTumblebotAnimationGroup.ROLLUP,
+            loadTextureArray("export/overworld/h21/sprites/desc0/group0", 8));
+        enemyTumblebot.put(EnemyTumblebotAnimationGroup.ROLLRIGHT,
+            loadTextureArray("export/overworld/h21/sprites/desc0/group1", 8));
+        enemyTumblebot.put(EnemyTumblebotAnimationGroup.ROLLDOWN,
+            loadTextureArray("export/overworld/h21/sprites/desc0/group2", 8));
+        enemyTumblebot.put(EnemyTumblebotAnimationGroup.ROLLLEFT,
+            loadTextureArray("export/overworld/h21/sprites/desc0/group3", 8));
+
         npcGlebb = loadTextureArray("export/overworld/j24/sprites/desc0/group0", 5);
 
         /* Items */
@@ -80,6 +98,16 @@ public class ImageLoader {
 
         /* Actors */
         for (Texture[] textures : zelda.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyTumblebot.values()) {
             if (textures == null) continue;
 
             for (Texture texture : textures) {
@@ -210,6 +238,10 @@ public class ImageLoader {
 
     public Texture[] getZeldaAnimation(ZeldaAnimationGroup anim) {
         return zelda.get(anim);
+    }
+
+    public Texture[] getEnemyTumblebotAnimation(EnemyTumblebotAnimationGroup anim) {
+        return enemyTumblebot.get(anim);
     }
 
     public Texture getNone() {

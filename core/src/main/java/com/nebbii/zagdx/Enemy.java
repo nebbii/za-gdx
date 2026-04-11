@@ -39,8 +39,8 @@ public class Enemy extends Rectangle implements Actor {
         setEnemyState(EnemyState.SEARCHING);
 
         this.alertBox = new Rectangle();
-        this.alertBox.setWidth(100);
-        this.alertBox.setHeight(100);
+        this.alertBox.setWidth(150);
+        this.alertBox.setHeight(150);
     }
 
     public void logic() {
