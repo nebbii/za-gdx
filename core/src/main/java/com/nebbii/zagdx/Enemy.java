@@ -70,6 +70,12 @@ public class Enemy extends Rectangle implements Actor {
         */
     }
 
+    public void onHit(float hitstun) {
+        if (hurtDuration > 0) return;
+        Gdx.app.log("Enemy", "Hit!");
+        hurtDuration += hitstun;
+    }
+
     public void drawFlashOverlay(SpriteBatch batch) {
         Color currentColor;
         float t = hurtDuration % 0.12f;

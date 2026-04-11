@@ -35,6 +35,7 @@ public class WorldCollision {
     public void logic() {
         collideActorsWithCollision();
         collideZeldaWithPickups();
+        collideProjectilesWithEnemies();
         collideEnemiesWithWorldBorders();
     }
 
@@ -47,6 +48,22 @@ public class WorldCollision {
 
             if (pickup.getHitbox().overlaps(map.getZelda().getHitbox())) {
                 pickup.onPickup(game);
+            }
+        }
+    }
+
+    private void collideProjectilesWithEnemies() {
+        for (Actor enemy : actors) {
+            if (!enemy.isActive()) continue;
+            if (!(enemy instanceof Enemy)) continue;
+
+            for (Actor projectile : actors) {
+                if (!projectile.isActive()) continue;
+                if (projectile.getType() != ActorType.PROJECTILE) continue;
+
+                if (enemy.getHitbox().overlaps(projectile.getHitbox())) {
+                    ((Enemy) enemy).onHit(0.3f);
+                }
             }
         }
     }
