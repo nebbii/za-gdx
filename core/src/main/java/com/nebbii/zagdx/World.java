@@ -68,6 +68,7 @@ public class World {
         interfaceCamera = new OrthographicCamera();
         interfaceViewport = new FitViewport(WORLD_WIDTH, WORLD_HEIGHT, interfaceCamera);
 
+        WorldShaders.init();
         this.batch = batch;
     }
 
