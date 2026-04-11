@@ -62,7 +62,7 @@ public class WorldCollision {
             for (PolygonMapObject polygonObject : polygonObjects) {
                 Polygon polygon = polygonObject.getPolygon();
 
-                // Cheap broad-phase bounds check
+                // Cheap overlap check
                 if (!actorRect.overlaps(polygon.getBoundingRectangle())) {
                     continue;
                 }

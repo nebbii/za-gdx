@@ -40,16 +40,16 @@ public class MapRenderer {
         case MAIN:
         case COLLISION:
         case OVERLAP:
-            renderer.render(new int[]{1});
+            renderer.render(new int[]{0});
             break;
         case COLLISIONOVERLAP:
-            renderer.render(new int[]{1});
+            renderer.render(new int[]{0});
             drawGrid();
             break;
         case PAINT:
         case OVERLAPPAINT:
         case ALL:
-            renderer.render(new int[]{1, 2});
+            renderer.render(new int[]{0, 1});
             break;
         default:
             break;
