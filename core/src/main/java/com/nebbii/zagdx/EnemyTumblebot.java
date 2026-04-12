@@ -9,7 +9,7 @@ public class EnemyTumblebot extends Enemy {
     public EnemyTumblebotAnimation animation;
 
     public EnemyTumblebot() {
-        super(ActorType.FRIENDLY, false);
+        super(ActorType.FRIENDLY, true);
         setHeight(26);
 
         this.animation = new EnemyTumblebotAnimation(this);
