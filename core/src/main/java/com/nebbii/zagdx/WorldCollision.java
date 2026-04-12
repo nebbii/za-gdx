@@ -85,6 +85,10 @@ public class WorldCollision {
                 }
 
                 resolveRectangleVsPolygon(actorRect, polygon);
+                if (actor instanceof Enemy) {
+                    Enemy enemy = (Enemy) actor;
+                    enemy.setDirection(enemy.getRandomDirection());
+                }
             }
         }
     }
