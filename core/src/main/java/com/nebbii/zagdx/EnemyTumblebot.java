@@ -24,9 +24,11 @@ public class EnemyTumblebot extends Enemy {
 
         switch(enemyState) {
             case SEARCHING:
-                moveSearch();
+                checkAndSetRandomDirection();
+                move();
                 break;
             case FIGHTING:
+                move();
                 break;
             default:
                 break;
@@ -38,11 +40,13 @@ public class EnemyTumblebot extends Enemy {
         if (getState() != State.ACTIVE) return;
 
         if (hurtDuration > 0) drawFlashOverlay(batch);
+
         batch.draw(animation.playCurrentAnimation(), animation.getX(), animation.getY());
+
         if (hurtDuration > 0) endDrawFlashOverlay(batch);
     }
 
-    private void moveSearch() {
+    private void move() {
         float deltaTime = Gdx.graphics.getDeltaTime();
 
         switch(getDirection()) {

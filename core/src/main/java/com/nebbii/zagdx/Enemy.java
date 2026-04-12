@@ -10,7 +10,8 @@ public class Enemy extends Rectangle implements Actor {
     protected boolean solid;
     protected float searchSpeed = 80f;
     protected float fightingSpeed = 140f;
-    protected float hurtDuration = 0;
+    protected float hurtDuration = 0f;
+    protected float searchDuration = 0f;
     protected State state;
     protected ActorType type;
 
@@ -38,6 +39,7 @@ public class Enemy extends Rectangle implements Actor {
         this.solid = solid;
 
         this.direction = getRandomDirection();
+        resetDirectionTimer();
         setEnemyState(EnemyState.SEARCHING);
 
         this.alertBox = new Rectangle();
@@ -72,7 +74,6 @@ public class Enemy extends Rectangle implements Actor {
 
     public void onHit(float hitstun) {
         if (hurtDuration > 0) return;
-        Gdx.app.log("Enemy", "Hit!");
         hurtDuration += hitstun;
     }
 
@@ -93,6 +94,19 @@ public class Enemy extends Rectangle implements Actor {
 
     public void endDrawFlashOverlay(SpriteBatch batch) {
         WorldShaders.endHitFlashShader(batch);
+    }
+
+    private void resetDirectionTimer() {
+        searchDuration = MathUtils.random(0.5f, 2.0f);
+    }
+
+    public void checkAndSetRandomDirection() {
+        searchDuration -= Gdx.graphics.getDeltaTime();;
+
+        if (searchDuration <= 0f) {
+            setDirection(getRandomDirection());
+            resetDirectionTimer();
+        }
     }
 
     public Direction getRandomDirection() {
