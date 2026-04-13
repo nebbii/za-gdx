@@ -16,8 +16,6 @@ public class NpcGlebb extends Npc {
 
     @Override
     public void logic() {
-        if (getState() != State.ACTIVE) return;
-
         switch(npcState) {
             case TALKY:
                 break;

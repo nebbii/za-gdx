@@ -119,18 +119,18 @@ public class WorldCollision {
             boolean bounced = false;
 
             if (leftBorder.overlaps(enemyCollision)) {
-                enemy.setX(leftBorder.x + leftBorder.width);
+                enemy.setX(leftBorder.x + leftBorder.width + 1f);
                 bounced = true;
             } else if (rightBorder.overlaps(enemyCollision)) {
-                enemy.setX(rightBorder.x - enemyCollision.width);
+                enemy.setX(rightBorder.x - enemyCollision.width - 1f);
                 bounced = true;
             }
 
             if (bottomBorder.overlaps(enemyCollision)) {
-                enemy.setY(bottomBorder.y + bottomBorder.height);
+                enemy.setY(bottomBorder.y + bottomBorder.height + 1f);
                 bounced = true;
             } else if (topBorder.overlaps(enemyCollision)) {
-                enemy.setY(topBorder.y - enemyCollision.height);
+                enemy.setY(topBorder.y - enemyCollision.height - 1f);
                 bounced = true;
             }
 

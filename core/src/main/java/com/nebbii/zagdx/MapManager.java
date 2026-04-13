@@ -179,10 +179,11 @@ public class MapManager {
 
         addActor(zelda);
 
-        // Enemy enemy = new Enemy(actorType, solid)
-        EnemyTumblebot tumblebot = new EnemyTumblebot();
-        tumblebot.setPosition(2969, 2305);
-        addActor(tumblebot);
+        addActor(new EnemyTumblebot(3305, 2049));
+        addActor(new EnemyTumblebot(3326, 2013));
+        addActor(new EnemyTumblebot(3315, 1991));
+        addActor(new EnemyTumblebot(3181, 1977));
+        addActor(new EnemyTumblebot(3169, 2042));
 
         NpcGlebb npcGlebb = new NpcGlebb();
         npcGlebb.setPosition(3716, 2050);
