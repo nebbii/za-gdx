@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ShortArray;
+import com.nebbii.zagdx.GameManager.GameState;
 
 /*
  * Handling all collision in the world, knows all actors and map objects
@@ -36,7 +37,9 @@ public class WorldCollision {
         collideActorsWithCollision();
         collideZeldaWithPickups();
         collideProjectilesWithEnemies();
-        collideEnemiesWithWorldBorders();
+        if (game.getGameState() == GameState.PLAY) {
+            collideEnemiesWithWorldBorders();
+        }
     }
 
     private void collideZeldaWithPickups() {
@@ -101,33 +104,29 @@ public class WorldCollision {
         Rectangle bottomBorder = borders[2];
         Rectangle topBorder = borders[3];
 
-        float minX = leftBorder.x + leftBorder.width;
-        float maxX = rightBorder.x;
-        float minY = bottomBorder.y + bottomBorder.height;
-        float maxY = topBorder.y;
-
         for (Actor actor : actors) {
             if (!(actor instanceof Enemy)) continue;
             if (!actor.isActive()) continue;
 
             Enemy enemy = (Enemy) actor;
-            Rectangle box = enemy.getCollisionBox();
+
+            Rectangle enemyCollision = (Enemy) actor.getCollisionBox();
 
             boolean bounced = false;
 
-            if (box.x < minX) {
-                box.x = minX;
+            if (leftBorder.overlaps(enemyCollision)) {
+                enemy.setX(leftBorder.x + leftBorder.width);
                 bounced = true;
-            } else if (box.x + box.width > maxX) {
-                box.x = maxX - box.width;
+            } else if (rightBorder.overlaps(enemyCollision)) {
+                enemy.setX(rightBorder.x - enemyCollision.width);
                 bounced = true;
             }
 
-            if (box.y < minY) {
-                box.y = minY;
+            if (bottomBorder.overlaps(enemyCollision)) {
+                enemy.setY(bottomBorder.y + bottomBorder.height);
                 bounced = true;
-            } else if (box.y + box.height > maxY) {
-                box.y = maxY - box.height;
+            } else if (topBorder.overlaps(enemyCollision)) {
+                enemy.setY(topBorder.y - enemyCollision.height);
                 bounced = true;
             }
 

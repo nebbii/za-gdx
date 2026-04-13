@@ -60,6 +60,7 @@ public class MapManager {
         case COLLISION:
             collision.drawBoundingBoxes(shapes, camera, Color.RED);
             this.drawActorBoundingBoxes(shapes, camera, Color.WHITE);
+            world.drawWorldBorders(shapes, camera, Color.BLACK);
             break;
         case OVERLAP:
             overlay.drawBoundingBoxes(shapes, camera, Color.GREEN);
@@ -68,12 +69,14 @@ public class MapManager {
             overlay.drawBoundingBoxes(shapes, camera, Color.GREEN);
             collision.drawBoundingBoxes(shapes, camera, Color.RED);
             this.drawActorBoundingBoxes(shapes, camera, Color.WHITE);
+            world.drawWorldBorders(shapes, camera, Color.BLACK);
         case OVERLAPPAINT:
             overlay.drawBoundingBoxes(shapes, camera, Color.GREEN);
             break;
         case ALL:
             overlay.drawBoundingBoxes(shapes, camera, Color.GREEN);
             collision.drawBoundingBoxes(shapes, camera, Color.RED);
+            world.drawWorldBorders(shapes, camera, Color.BLACK);
             this.drawActorBoundingBoxes(shapes, camera, Color.WHITE);
             break;
         default:
@@ -123,7 +126,10 @@ public class MapManager {
     }
 
     public void freezeAllActors() {
+        Gdx.app.log("MapManager", "Freezing actors");
         for (Actor actor : actors) {
+            if (actor.getState() == State.IDLE) continue;
+            Gdx.app.log("MapManager", "enemy: " + actor.getClass() + "set to idle");
             actor.setState(State.IDLE);
         }
     }
@@ -137,9 +143,12 @@ public class MapManager {
     }
 
     public void unfreezeVisibleActors() {
+        Gdx.app.log("MapManager", "Unfreezing actors");
+
         for (Actor actor : actors) {
             if (!isActorVisible(actor)) continue;
 
+            Gdx.app.log("MapManager", "enemy: " + actor.getClass() + "set to active");
             actor.setState(State.ACTIVE);
         }
     }

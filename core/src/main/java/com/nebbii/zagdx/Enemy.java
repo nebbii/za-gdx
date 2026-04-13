@@ -97,7 +97,7 @@ public class Enemy extends Rectangle implements Actor {
     }
 
     private void resetDirectionTimer() {
-        searchDuration = MathUtils.random(0.5f, 2.0f);
+        searchDuration = MathUtils.random(0.5f, 4.0f);
     }
 
     public void checkAndSetRandomDirection() {

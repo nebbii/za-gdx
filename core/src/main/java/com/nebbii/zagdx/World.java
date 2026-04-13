@@ -3,6 +3,7 @@ package com.nebbii.zagdx;
 import java.util.List;
 import java.util.ArrayList;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -190,6 +191,19 @@ public class World {
         batch.end();
     }
 
+    public void drawWorldBorders(ShapeRenderer shapes, OrthographicCamera camera, Color color) {
+        shapes.setProjectionMatrix(camera.combined);
+        shapes.begin(ShapeRenderer.ShapeType.Line);
+
+        for (Rectangle border : getWorldBorders()) {
+            shapes.setColor(color);
+
+            shapes.rect(border.x, border.y, border.width, border.height);
+        }
+
+        shapes.end();
+    }
+
     private void updateWorldBorders() {
         int cellColumn = worldCamera.getTargetCellColumn();
         int cellRow = worldCamera.getTargetCellRow();
@@ -197,39 +211,37 @@ public class World {
         float screenX = cellColumn * WORLD_WIDTH;
         float screenY = cellRow * WORLD_HEIGHT;
 
-        float thickness = 1f;
-
         Rectangle left = worldBorders[0];
         Rectangle right = worldBorders[1];
         Rectangle bottom = worldBorders[2];
         Rectangle top = worldBorders[3];
 
         left.set(
-            screenX - thickness,
+            screenX - 1f,
             screenY,
-            thickness,
+            1f,
             WORLD_HEIGHT
         );
 
         right.set(
             screenX + WORLD_WIDTH,
             screenY,
-            thickness,
+            1f,
             WORLD_HEIGHT
         );
 
         bottom.set(
             screenX,
-            screenY - thickness,
+            screenY - 1f,
             WORLD_WIDTH,
-            thickness
+            1f
         );
 
         top.set(
             screenX,
             screenY + WORLD_HEIGHT,
             WORLD_WIDTH,
-            thickness
+            1f
         );
     }
 

@@ -35,6 +35,7 @@ public class GameManager {
         switch(gameState) {
         case PLAY:
             if (world.getWorldCamera().isTransitioning()) {
+                world.getMapManager().freezeAllActors();
                 setGameState(GameState.MOVE);
             }
             break;
@@ -46,8 +47,6 @@ public class GameManager {
             world.getMapManager().freezeAllActors();
             break;
         case MOVE:
-            world.getMapManager().freezeAllActors();
-
             if (!world.getWorldCamera().isTransitioning()) {
                 unpauseGame();
             }
