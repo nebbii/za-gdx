@@ -121,6 +121,7 @@ public class MenuPause {
                 opacity = 0f;
 
                 setMenuState(MenuState.INACTIVE);
+                gameManager.getWorld().getMapManager().unfreezeVisibleActors();
                 gameManager.unpauseGame();
             }
             break;

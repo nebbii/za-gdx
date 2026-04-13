@@ -41,10 +41,8 @@ public class GameManager {
             break;
         case PAUSE_ITEMS:
         case PAUSE_MAP:
-            world.getMapManager().freezeAllActors();
             break;
         case FADE:
-            world.getMapManager().freezeAllActors();
             break;
         case MOVE:
             if (!world.getWorldCamera().isTransitioning()) {
@@ -107,6 +105,7 @@ public class GameManager {
 
     public void togglePause() {
         if (world.getMenuPause().getMenuState() == MenuState.INACTIVE) {
+            world.getMapManager().freezeAllActors();
             world.getMenuPause().setMenuState(MenuState.FADING_IN);
         }
         else if (world.getMenuPause().getMenuState() == MenuState.ACTIVE) {
