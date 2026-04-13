@@ -12,6 +12,8 @@ public class Enemy extends Rectangle implements Actor {
     protected float fightingSpeed = 140f;
     protected float hurtDuration = 0f;
     protected float searchDuration = 0f;
+    protected float health = 0f;
+
     protected State state;
     protected ActorType type;
 
@@ -54,6 +56,8 @@ public class Enemy extends Rectangle implements Actor {
 
         hurtDuration = Math.max(0f, hurtDuration - deltaTime);
 
+        if (health <= 0) onDeath();
+
         /*
         switch(enemyState) {
             case FIGHTING:
@@ -72,9 +76,15 @@ public class Enemy extends Rectangle implements Actor {
         */
     }
 
-    public void onHit(float hitstun) {
+    public void onHit(float damage, float hitstun) {
         if (hurtDuration > 0) return;
         hurtDuration += hitstun;
+        health -= damage;
+    }
+
+    public void onDeath() {
+        // TODO: death animation
+        setState(State.DEAD);
     }
 
     public void drawFlashOverlay(SpriteBatch batch) {
@@ -182,5 +192,13 @@ public class Enemy extends Rectangle implements Actor {
 
     public boolean isSolid() {
         return solid;
+    }
+
+    public float getHealth() {
+        return health;
+    }
+
+    public void setHealth(float health) {
+        this.health = health;
     }
 }

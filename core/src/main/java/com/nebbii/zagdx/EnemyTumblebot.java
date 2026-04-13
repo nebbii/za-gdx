@@ -1,7 +1,6 @@
 package com.nebbii.zagdx;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.nebbii.zagdx.animation.EnemyTumblebotAnimation;
 
@@ -11,6 +10,7 @@ public class EnemyTumblebot extends Enemy {
     public EnemyTumblebot() {
         super(ActorType.FRIENDLY, true);
         setHeight(26);
+        setHealth(60);
 
         this.animation = new EnemyTumblebotAnimation(this);
 

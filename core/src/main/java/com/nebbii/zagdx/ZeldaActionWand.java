@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Rectangle;
 public class ZeldaActionWand extends ZeldaAction {
 	public ZeldaActionWand(Zelda zelda, float x, float y) {
 		super(zelda, x, y);
+        damage = 20f; // TODO: scale with amount of shrines cleared/celestial stones obtained
         switch(zelda.getAnimState()) {
         case ATTACKLEFT:
             setWidth(48);

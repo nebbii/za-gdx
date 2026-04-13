@@ -277,6 +277,9 @@ Zelda can get this vial after handing Glebb the filled pitcher. It can be used w
     Manual Description: "This is Zelda's main weapon. Use it like a sword to defeat enemies and to activate all other weapons. Its power is directly tied to Zelda's strength, which increases throughout the game."
 
 The main weapon that Zelda uses on her quest. Has a rather short range, but can be improved upon by casting spells at the cost of Rupees. Its attacking power increases the more Celestial Signs you have. It will be automatically selected when you use a single-use Treasure like the Candle.
+- From Phlosion:
+  "base damage increases by 2 per shrine. Defense also increases by 2 per shrine. She also gets one full heart, equal to 20 health.
+  She starts with 30 wand damage, 30 defense, and 60 health (or three full hearts)."
 **** TODO Boomerang
 
     Location: Plain of Andor alcove

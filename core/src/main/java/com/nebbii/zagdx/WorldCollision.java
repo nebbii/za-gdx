@@ -56,16 +56,20 @@ public class WorldCollision {
     }
 
     private void collideProjectilesWithEnemies() {
-        for (Actor enemy : actors) {
-            if (!enemy.isActive()) continue;
-            if (!(enemy instanceof Enemy)) continue;
+        for (Actor overlapper : actors) {
+            if (!overlapper.isActive()) continue;
+            if (!(overlapper instanceof Enemy)) continue;
 
-            for (Actor projectile : actors) {
-                if (!projectile.isActive()) continue;
-                if (projectile.getType() != ActorType.PROJECTILE) continue;
+            Enemy enemy = (Enemy) overlapper;
+
+            for (Actor overlapee : actors) {
+                if (!overlapee.isActive()) continue;
+                if (!(overlapee instanceof ZeldaAction)) continue;
+
+                ZeldaAction projectile = (ZeldaAction) overlapee;
 
                 if (enemy.getHitbox().overlaps(projectile.getHitbox())) {
-                    ((Enemy) enemy).onHit(0.3f);
+                    enemy.onHit(projectile.getDamage(), 0.3f);
                 }
             }
         }
