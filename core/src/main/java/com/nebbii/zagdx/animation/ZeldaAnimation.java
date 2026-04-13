@@ -268,11 +268,11 @@ public class ZeldaAnimation extends GameAnimation {
 
         // frame #, x offset, y offset
         int[][] frameData = {
-            {0, 0, 0},
-            {1, 0, 0},
-            {2, 0, 0},
-            {1, 0, 0},
-            {0, 0, 0}
+            {0, 0, 3},
+            {1, 0, 3},
+            {2, 0, 3},
+            {1, 0, 3},
+            {0, 0, 3}
         };
 
         TextureRegion[] frames = new TextureRegion[frameData.length];
@@ -295,11 +295,11 @@ public class ZeldaAnimation extends GameAnimation {
 
         // frame #, x offset, y offset
         int[][] frameData = {
-            {0, 0, 0},
+            {0, 0, 3},
             {1, 0, -7},
-            {2, 0, -12}, // needs to be centered better
+            {2, 0, -14}, // needs to be centered better
             {1, 0, -7},
-            {0, 0, 0}
+            {0, 0, 3}
         };
 
         TextureRegion[] frames = new TextureRegion[frameData.length];
@@ -349,11 +349,11 @@ public class ZeldaAnimation extends GameAnimation {
 
         // frame #, x offset, y offset
         int[][] frameData = {
-            {0, 0, 0},
-            {1, 0, 0},
-            {2, 0, 0},
-            {1, 0, 0},
-            {0, 0, 0}
+            {0, 0, 4},
+            {1, 0, 4},
+            {2, 0, 4},
+            {1, 0, 4},
+            {0, 0, 4}
         };
 
         TextureRegion[] frames = new TextureRegion[frameData.length];
