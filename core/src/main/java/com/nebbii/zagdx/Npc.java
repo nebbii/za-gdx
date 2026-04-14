@@ -41,7 +41,6 @@ public class Npc extends Rectangle implements Actor {
     }
 
     public void draw(SpriteBatch batch) {
-        if (getState() != State.ACTIVE) return;
     }
 
     public Rectangle getHitbox() {

@@ -19,10 +19,7 @@ public class PickupPitcherFull extends Pickup {
     }
 
     public void draw(SpriteBatch batch) {
-        super.logic();
-
-        if(isPending()) drawBounceAnim(batch);
-        if(isActive())  batch.draw(getImage(), getX(), getY(), getWidth(), getHeight());
+        super.draw(batch);
     }
 
     public void onPickup(GameManager game) {

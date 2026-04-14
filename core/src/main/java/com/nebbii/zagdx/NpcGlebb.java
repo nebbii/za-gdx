@@ -30,8 +30,6 @@ public class NpcGlebb extends Npc {
 
     @Override
     public void draw(SpriteBatch batch) {
-        if (getState() != State.ACTIVE) return;
-
         batch.draw(animation.playCurrentAnimation(), animation.getX(), animation.getY());
     }
 }

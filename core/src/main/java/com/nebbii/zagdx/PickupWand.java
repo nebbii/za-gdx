@@ -19,7 +19,7 @@ public class PickupWand extends Pickup {
     }
 
     public void draw(SpriteBatch batch) {
-        batch.draw(getImage(), getX(), getY(), getWidth(), getHeight());
+        super.draw(batch);
     }
 
     public void onPickup(GameManager game) {

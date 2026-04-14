@@ -25,7 +25,12 @@ public class Pickup extends Rectangle implements Actor {
 
     @Override
     public void draw(SpriteBatch batch) {
-        if (isIdle()) return;
+        if(isPending()) {
+            drawBounceAnim(batch);
+        }
+        else {
+            batch.draw(getImage(), getX(), getY(), getWidth(), getHeight());
+        }
     }
 
     /*

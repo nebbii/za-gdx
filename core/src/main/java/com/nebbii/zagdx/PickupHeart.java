@@ -1,7 +1,5 @@
 package com.nebbii.zagdx;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class PickupHeart extends Pickup {
@@ -19,7 +17,7 @@ public class PickupHeart extends Pickup {
     }
 
     public void draw(SpriteBatch batch) {
-        batch.draw(getImage(), getX(), getY(), getWidth(), getHeight());
+        super.draw(batch);
     }
 
     public void onPickup(GameManager game) {
