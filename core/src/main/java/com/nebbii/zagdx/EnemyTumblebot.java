@@ -25,11 +25,13 @@ public class EnemyTumblebot extends Enemy {
 
         switch(enemyState) {
             case SEARCHING:
-                checkAndSetRandomDirection();
+                setSearchSpeed(80f);
+                refreshDirection();
                 move();
                 break;
             case FIGHTING:
-                changeDirectionTowardsTarget();
+                setSearchSpeed(110f);
+                refreshDirection();
                 move();
                 break;
             default:

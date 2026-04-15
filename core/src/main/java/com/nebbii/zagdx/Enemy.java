@@ -8,13 +8,14 @@ import com.badlogic.gdx.math.Rectangle;
 
 public class Enemy extends Rectangle implements Actor {
     protected boolean solid;
-    protected float searchSpeed = 80f;
+    protected float searchSpeed;
     protected float fightingSpeed = 140f;
-    protected float hurtDuration = 0f;
-    protected float searchDuration = 0f;
-    protected float health = 0f;
-    protected float targetX = 0f;
-    protected float targetY = 0f;
+    protected float hurtDuration;
+    protected float searchDuration;
+    protected float searchDurationCap;
+    protected float health;
+    protected float targetX;
+    protected float targetY;
 
     protected State state;
     protected ActorType type;
@@ -60,16 +61,16 @@ public class Enemy extends Rectangle implements Actor {
 
         if (health <= 0) onDeath();
 
-        /*
         switch(enemyState) {
-            case FIGHTING:
-                break;
             case SEARCHING:
+                searchDurationCap = 4.0f;
+                break;
+            case FIGHTING:
+                searchDurationCap = 0.5f;
                 break;
             default:
                 break;
         }
-        */
     }
 
     public void draw(SpriteBatch batch) {
@@ -130,14 +131,23 @@ public class Enemy extends Rectangle implements Actor {
     }
 
     private void resetDirectionTimer() {
-        searchDuration = MathUtils.random(0.5f, 4.0f);
+        searchDuration = MathUtils.random(0.5f, searchDurationCap);
     }
 
-    public void checkAndSetRandomDirection() {
+    public void refreshDirection() {
         searchDuration -= Gdx.graphics.getDeltaTime();;
 
         if (searchDuration <= 0f) {
-            setDirection(getRandomDirection());
+            switch(enemyState) {
+            case SEARCHING:
+                setDirection(getRandomDirection());
+                break;
+            case FIGHTING:
+                changeDirectionTowardsTarget();
+                break;
+            default:
+            }
+
             resetDirectionTimer();
         }
     }
@@ -261,5 +271,13 @@ public class Enemy extends Rectangle implements Actor {
 
     public void setTargetY(float targetY) {
         this.targetY = targetY;
+    }
+
+    public float getSearchSpeed() {
+        return searchSpeed;
+    }
+
+    public void setSearchSpeed(float searchSpeed) {
+        this.searchSpeed = searchSpeed;
     }
 }
