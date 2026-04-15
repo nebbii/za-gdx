@@ -37,6 +37,8 @@ public class WorldCollision {
         collideActorsWithCollision();
         collideZeldaWithPickups();
         collideProjectilesWithEnemies();
+        checkOverlapAlertBoxes();
+
         if (game.getGameState() == GameState.PLAY) {
             collideEnemiesWithWorldBorders();
         }
@@ -136,6 +138,21 @@ public class WorldCollision {
 
             if (bounced) {
                 enemy.setDirection(enemy.getRandomDirection());
+            }
+        }
+    }
+
+    private void checkOverlapAlertBoxes() {
+        for (Actor actor : actors) {
+            if (!actor.isActive()) continue;
+            if (!(actor instanceof Enemy)) continue;
+
+            Enemy enemy = (Enemy) actor;
+            Zelda zelda = map.getZelda();
+
+            if (enemy.getAlertBox().overlaps(zelda.getHitbox())) {
+                enemy.setTargetX(zelda.getCenterPointX());
+                enemy.setTargetY(zelda.getCenterPointY());
             }
         }
     }

@@ -29,6 +29,7 @@ public class EnemyTumblebot extends Enemy {
                 move();
                 break;
             case FIGHTING:
+                changeDirectionTowardsTarget();
                 move();
                 break;
             default:
@@ -43,26 +44,5 @@ public class EnemyTumblebot extends Enemy {
         batch.draw(animation.playCurrentAnimation(), animation.getX(), animation.getY());
 
         if (hurtDuration > 0) endDrawFlashOverlay(batch);
-    }
-
-    private void move() {
-        float deltaTime = Gdx.graphics.getDeltaTime();
-
-        switch(getDirection()) {
-            case LEFT:
-                setX(getX() - searchSpeed * deltaTime);
-                break;
-            case DOWN:
-                setY(getY() - searchSpeed * deltaTime);
-                break;
-            case UP:
-                setY(getY() + searchSpeed * deltaTime);
-                break;
-            case RIGHT:
-                setX(getX() + searchSpeed * deltaTime);
-                break;
-            default:
-                throw new IllegalStateException("EnemyTumblebot->moveSearch(): Unhandled movement state" + getDirection());
-        }
     }
 }

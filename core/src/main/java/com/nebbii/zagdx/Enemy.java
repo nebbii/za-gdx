@@ -13,6 +13,8 @@ public class Enemy extends Rectangle implements Actor {
     protected float hurtDuration = 0f;
     protected float searchDuration = 0f;
     protected float health = 0f;
+    protected float targetX = 0f;
+    protected float targetY = 0f;
 
     protected State state;
     protected ActorType type;
@@ -76,6 +78,27 @@ public class Enemy extends Rectangle implements Actor {
         */
     }
 
+    protected void move() {
+        float deltaTime = Gdx.graphics.getDeltaTime();
+
+        switch(getDirection()) {
+            case LEFT:
+                setX(getX() - searchSpeed * deltaTime);
+                break;
+            case DOWN:
+                setY(getY() - searchSpeed * deltaTime);
+                break;
+            case UP:
+                setY(getY() + searchSpeed * deltaTime);
+                break;
+            case RIGHT:
+                setX(getX() + searchSpeed * deltaTime);
+                break;
+            default:
+                throw new IllegalStateException(this.getClass() + "->moveSearch(): Unhandled movement state" + getDirection());
+        }
+    }
+
     public void onHit(float damage, float hitstun) {
         if (hurtDuration > 0) return;
         hurtDuration += hitstun;
@@ -116,6 +139,28 @@ public class Enemy extends Rectangle implements Actor {
         if (searchDuration <= 0f) {
             setDirection(getRandomDirection());
             resetDirectionTimer();
+        }
+    }
+
+    public void changeDirectionTowardsTarget() {
+        float relativeX = targetX - this.x;
+        float relativeY = targetY - this.y;
+
+        if (Math.abs(relativeX) > Math.abs(relativeY)) {
+            if (relativeX < 0) {
+                setDirection(Direction.LEFT);
+            }
+            else if (relativeX > 0) {
+                setDirection(Direction.RIGHT);
+            }
+        }
+        else {
+            if (relativeY < 0) {
+                setDirection(Direction.DOWN);
+            }
+            else if (relativeY > 0) {
+                setDirection(Direction.UP);
+            }
         }
     }
 
@@ -200,5 +245,21 @@ public class Enemy extends Rectangle implements Actor {
 
     public void setHealth(float health) {
         this.health = health;
+    }
+
+    public float getTargetX() {
+        return targetX;
+    }
+
+    public void setTargetX(float targetX) {
+        this.targetX = targetX;
+    }
+
+    public float getTargetY() {
+        return targetY;
+    }
+
+    public void setTargetY(float targetY) {
+        this.targetY = targetY;
     }
 }
