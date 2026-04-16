@@ -12,6 +12,7 @@ public class ZeldaAction extends Rectangle implements Actor {
     protected float stateTime;
     protected float duration;
     protected State state;
+    protected Direction direction;
 
     private ActorType type;
 
@@ -62,7 +63,11 @@ public class ZeldaAction extends Rectangle implements Actor {
     }
 
     public Direction getDirection() {
-        return Direction.DOWN;
+        return this.direction;
+    }
+
+    public void setDirection(Direction direction) {
+        this.direction = direction;
     }
 
     public boolean isActive() {

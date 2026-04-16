@@ -21,21 +21,15 @@ public class EnemyTumblebot extends Enemy {
     @Override
     public void logic() {
         super.logic();
-        if (getState() != State.ACTIVE) return;
 
         switch(enemyState) {
             case SEARCHING:
                 setSearchSpeed(80f);
-                refreshDirection();
-                move();
                 break;
             case FIGHTING:
                 setSearchSpeed(110f);
-                refreshDirection();
-                move();
                 break;
             default:
-                break;
         }
     }
 

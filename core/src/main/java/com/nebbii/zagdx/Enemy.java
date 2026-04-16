@@ -19,6 +19,7 @@ public class Enemy extends Rectangle implements Actor {
     protected float targetY;
 
     protected float hurtDuration;
+    protected Direction hurtDirection;
 
     protected State state;
     protected ActorType type;
@@ -57,17 +58,23 @@ public class Enemy extends Rectangle implements Actor {
         hurtDuration = Math.max(0f, hurtDuration - deltaTime);
 
         if (hurtDuration > 0) {
+            movePushback();
         }
-
-        switch(enemyState) {
-            case SEARCHING:
-                searchDurationCap = 4.0f;
-                break;
-            case FIGHTING:
-                searchDurationCap = 0.5f;
-                break;
-            default:
-                break;
+        else {
+            switch(enemyState) {
+                case SEARCHING:
+                    searchDurationCap = 4.0f;
+                    refreshDirection();
+                    move();
+                    break;
+                case FIGHTING:
+                    searchDurationCap = 0.5f;
+                    refreshDirection();
+                    move();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
@@ -96,7 +103,28 @@ public class Enemy extends Rectangle implements Actor {
                 setX(getX() + searchSpeed * deltaTime);
                 break;
             default:
-                throw new IllegalStateException(this.getClass() + "->moveSearch(): Unhandled movement state" + getDirection());
+                throw new IllegalStateException(this.getClass() + "->move(): Unhandled movement state" + getDirection());
+        }
+    }
+
+    protected void movePushback() {
+        float deltaTime = Gdx.graphics.getDeltaTime();
+
+        switch(getHurtDirection()) {
+            case LEFT:
+                setX(getX() - 350f * deltaTime);
+                break;
+            case DOWN:
+                setY(getY() - 350f * deltaTime);
+                break;
+            case UP:
+                setY(getY() + 350f * deltaTime);
+                break;
+            case RIGHT:
+                setX(getX() + 350f * deltaTime);
+                break;
+            default:
+                throw new IllegalStateException(this.getClass() + "->movePushback(): Unhandled movement state" + getDirection());
         }
     }
 
@@ -180,6 +208,14 @@ public class Enemy extends Rectangle implements Actor {
 
     public Direction getDirection() {
         return direction;
+    }
+
+    public Direction getHurtDirection() {
+        return hurtDirection;
+    }
+
+    public void setHurtDirection(Direction hurtDirection) {
+        this.hurtDirection = hurtDirection;
     }
 
     public void setDirection(Direction direction) {

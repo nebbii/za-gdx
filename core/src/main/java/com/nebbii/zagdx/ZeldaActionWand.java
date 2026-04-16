@@ -14,24 +14,28 @@ public class ZeldaActionWand extends ZeldaAction {
             setHeight(48);
             setX(zelda.getCenterPointX() - zelda.getWidth() / 2 - this.getWidth());
             setY(zelda.getY());
+            setDirection(Direction.LEFT);
             break;
         case ATTACKDOWN:
             setWidth(64);
             setHeight(44);
             setX(zelda.getCenterPointX() - this.getWidth() / 2);
             setY(zelda.getY() - this.getHeight() / 2);
+            setDirection(Direction.DOWN);
             break;
         case ATTACKUP:
             setWidth(64);
             setHeight(44);
             setX(zelda.getCenterPointX() - this.getWidth() / 2);
             setY(zelda.getCenterPointY() + zelda.getHeight() / 2);
+            setDirection(Direction.UP);
             break;
         case ATTACKRIGHT:
             setWidth(48);
             setHeight(48);
             setX(zelda.getCenterPointX() + zelda.getWidth() / 2);
             setY(zelda.getY());
+            setDirection(Direction.RIGHT);
             break;
         default:
             throw new IllegalStateException("ZeldaActionWand(): Unhandled zelda animation state: " + zelda.getAnimState());

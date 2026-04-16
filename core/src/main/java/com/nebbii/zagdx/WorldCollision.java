@@ -72,7 +72,8 @@ public class WorldCollision {
                 ZeldaAction projectile = (ZeldaAction) overlapee;
 
                 if (enemy.getHitbox().overlaps(projectile.getHitbox())) {
-                    enemy.onHit(projectile.getDamage(), 0.3f);
+                    enemy.setHurtDirection(projectile.getDirection());
+                    enemy.onHit(projectile.getDamage(), 0.2f);
                 }
             }
         }

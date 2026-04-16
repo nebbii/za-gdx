@@ -17,6 +17,8 @@ public class Zelda extends Rectangle implements Actor {
 
     private State state;
     private AnimState animState;
+    private float hurtDuration;
+    private Direction hurtDirection;
 
     private ActorType type;
 
@@ -194,6 +196,14 @@ public class Zelda extends Rectangle implements Actor {
             default:
                 throw new IllegalStateException("Zelda->getDirection(): Unhandled animation state: " + getAnimState());
         }
+    }
+
+    public Direction getHurtDirection() {
+        return hurtDirection;
+    }
+
+    public void setHurtDirection(Direction hurtDirection) {
+        this.hurtDirection = hurtDirection;
     }
 
     public Rectangle getHitbox() {
