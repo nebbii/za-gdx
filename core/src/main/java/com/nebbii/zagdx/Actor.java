@@ -16,6 +16,8 @@ public interface Actor {
     State getState();
     void setState(State state);
 
+    Direction getDirection();
+
     boolean isActive();
     boolean isDead();
 

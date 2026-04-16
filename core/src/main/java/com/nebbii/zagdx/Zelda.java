@@ -173,6 +173,29 @@ public class Zelda extends Rectangle implements Actor {
         }
     }
 
+    public Direction getDirection() {
+        switch(getAnimState()) {
+            case STOPLEFT:
+            case MOVELEFT:
+            case ATTACKLEFT:
+                return Direction.LEFT;
+            case STOPDOWN:
+            case MOVEDOWN:
+            case ATTACKDOWN:
+                return Direction.DOWN;
+            case STOPUP:
+            case MOVEUP:
+            case ATTACKUP:
+                return Direction.UP;
+            case STOPRIGHT:
+            case MOVERIGHT:
+            case ATTACKRIGHT:
+                return Direction.RIGHT;
+            default:
+                throw new IllegalStateException("Zelda->getDirection(): Unhandled animation state: " + getAnimState());
+        }
+    }
+
     public Rectangle getHitbox() {
         hitbox.setX(this.x+hitboxOffsetX);
         hitbox.setY(this.y+hitboxOffsetY);

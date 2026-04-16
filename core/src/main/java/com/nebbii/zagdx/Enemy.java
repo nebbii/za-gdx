@@ -8,14 +8,17 @@ import com.badlogic.gdx.math.Rectangle;
 
 public class Enemy extends Rectangle implements Actor {
     protected boolean solid;
+
+    protected float health;
+
     protected float searchSpeed;
-    protected float fightingSpeed = 140f;
-    protected float hurtDuration;
+    protected float fightingSpeed;
     protected float searchDuration;
     protected float searchDurationCap;
-    protected float health;
     protected float targetX;
     protected float targetY;
+
+    protected float hurtDuration;
 
     protected State state;
     protected ActorType type;
@@ -23,13 +26,6 @@ public class Enemy extends Rectangle implements Actor {
     protected Rectangle alertBox;
     protected Direction direction;
     protected EnemyState enemyState;
-
-    public enum Direction {
-        LEFT,
-        DOWN,
-        UP,
-        RIGHT
-    }
 
     public enum EnemyState {
         SEARCHING,
@@ -54,12 +50,14 @@ public class Enemy extends Rectangle implements Actor {
 
     public void logic() {
         if (getState() != State.ACTIVE) return;
+        if (health <= 0) onDeath();
 
         float deltaTime = Gdx.graphics.getDeltaTime();
 
         hurtDuration = Math.max(0f, hurtDuration - deltaTime);
 
-        if (health <= 0) onDeath();
+        if (hurtDuration > 0) {
+        }
 
         switch(enemyState) {
             case SEARCHING:
@@ -75,7 +73,9 @@ public class Enemy extends Rectangle implements Actor {
 
     public void draw(SpriteBatch batch) {
         /*
-        if (getState() != State.ACTIVE) return;
+        if (hurtDuration > 0) drawFlashOverlay(batch);
+        batch.draw(animation.playCurrentAnimation(), animation.getX(), animation.getY());
+        if (hurtDuration > 0) endDrawFlashOverlay(batch);
         */
     }
 

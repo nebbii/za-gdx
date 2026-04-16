@@ -61,6 +61,10 @@ public class ZeldaAction extends Rectangle implements Actor {
         this.state = state;
     }
 
+    public Direction getDirection() {
+        return Direction.DOWN;
+    }
+
     public boolean isActive() {
         return getState() == State.ACTIVE;
     }
