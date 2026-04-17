@@ -36,24 +36,35 @@ public class WorldCollision {
 
     public void logic() {
         collideActorsWithCollision();
+        collideZeldaWithEnemies();
         collideZeldaWithPickups();
         collideProjectilesWithEnemies();
         checkOverlapAlertBoxes();
 
+        // @nebbii: not sure if this is needed anymore?
         if (game.getGameState() == GameState.PLAY) {
             collideEnemiesWithWorldBorders();
         }
     }
 
     private void collideZeldaWithPickups() {
-        for (Actor actor : actors) {
-            if (!(actor instanceof Pickup)) continue;
-            if (!actor.isActive()) continue;
-
-            Pickup pickup = (Pickup) actor;
+        for (Actor pickup : actors) {
+            if (!(pickup instanceof Pickup) || !pickup.isActive()) continue;
 
             if (pickup.getHitbox().overlaps(map.getZelda().getHitbox())) {
-                pickup.onPickup(game);
+                ((Pickup) pickup).onPickup(game);
+            }
+        }
+    }
+
+    private void collideZeldaWithEnemies() {
+        for (Actor actor : actors) {
+            if (!(actor instanceof Enemy) || !actor.isActive()) continue;
+
+            Enemy enemy = (Enemy) actor;
+
+            if (enemy.getHitbox().overlaps(map.getZelda().getHitbox())) {
+                map.getZelda().onHit(enemy.getHitDamage());
             }
         }
     }

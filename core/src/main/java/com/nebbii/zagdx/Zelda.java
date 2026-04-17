@@ -55,6 +55,10 @@ public class Zelda extends Rectangle implements Actor {
 
     @Override
     public void logic() {
+        float deltaTime = Gdx.graphics.getDeltaTime();
+
+        hurtDuration = Math.max(0f, hurtDuration - deltaTime);
+
         if (isAttacking() && animation.isAnimationFinished()) {
             finishAction();
         }
@@ -71,7 +75,16 @@ public class Zelda extends Rectangle implements Actor {
 
     @Override
     public void draw(SpriteBatch batch) {
-        batch.draw(animation.playCurrentAnimation(), animation.getX(), animation.getY());
+        if (hurtDuration > 0) {
+            float t = hurtDuration % 0.08f;
+
+            if (t < 0.04f) {
+                batch.draw(animation.playCurrentAnimation(), animation.getX(), animation.getY());
+            }
+        }
+        else {
+            batch.draw(animation.playCurrentAnimation(), animation.getX(), animation.getY());
+        }
     }
 
     public void move(float inputX, float inputY) {
@@ -173,6 +186,13 @@ public class Zelda extends Rectangle implements Actor {
         default:
             throw new IllegalStateException("Zelda->finishAction(): Unhandled animation state: " + getAnimState());
         }
+    }
+
+    public void onHit(float damage) {
+        if (hurtDuration > 0) return;
+
+        hurtDuration += 1; // seems to always be the same?
+        health -= damage; // TODO: apply damage formula here
     }
 
     public Direction getDirection() {

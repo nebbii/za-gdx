@@ -1121,8 +1121,8 @@ These living whirlwinds protect the Shrine of Air's opening rooms, and can only 
     Weakness(es): All
     Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
     Knockback Distance: Large
-    Technical Export (enemy.tumbleWeed):
-        [health=60, damage=40, defense=0]
+    Technical Export (enemy.tumbleSkull):
+        [health=60, damage=57, defense=10]
 
 Living blue boulders that roll around in Tolemac's two plains. They're very weak even at the start of the game, and their rather large clusters can result in easy Rupee and heart farming.
 
