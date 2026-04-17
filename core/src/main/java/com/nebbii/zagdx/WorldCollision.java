@@ -155,10 +155,18 @@ public class WorldCollision {
             if (enemy.getAlertBox().overlaps(zelda.getHitbox())) {
                 enemy.setTargetX(zelda.getCenterPointX());
                 enemy.setTargetY(zelda.getCenterPointY());
-                enemy.setEnemyState(EnemyState.FIGHTING);
+
+                if (enemy.getEnemyState() == EnemyState.SEARCHING) {
+                    enemy.setEnemyState(EnemyState.FIGHTING);
+                    enemy.changeDirectionTowardsTarget();
+                    Gdx.app.log("WorldCollision", actor.getClass() + " is aggro'd!");
+                }
             }
             else {
-                enemy.setEnemyState(EnemyState.SEARCHING);
+                if (enemy.getEnemyState() == EnemyState.FIGHTING) {
+                    enemy.setEnemyState(EnemyState.SEARCHING);
+                    Gdx.app.log("WorldCollision", actor.getClass() + " went back to searching...");
+                }
             }
         }
     }
