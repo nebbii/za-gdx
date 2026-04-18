@@ -1,0 +1,78 @@
+[
+  {
+    "type": "ZeldaSpawn",
+    "x": 2465.32,
+    "y": 2249.46
+  },
+  {
+    "type": "EnemyTumblebot",
+    "x": 3305,
+    "y": 2049
+  },
+  {
+    "type": "EnemyTumblebot",
+    "x": 3326,
+    "y": 2013
+  },
+  {
+    "type": "EnemyTumblebot"
+    "x": 3305,
+    "y": 2049
+  },
+  {
+    "type": "EnemyTumblebot"
+    "x": 3326,
+    "y": 2013
+  },
+  {
+    "type": "EnemyTumblebot"
+    "x": 3315,
+    "y": 1991
+  },
+  {
+    "type": "EnemyTumblebot"
+    "x": 3181,
+    "y": 1977
+  },
+  {
+    "type": "EnemyTumblebot"
+    "x": 3169,
+    "y": 2042
+  },
+  {
+    "type": "NpcGlebb",
+    "x": 3716,
+    "y": 2050
+  },
+  {
+    "type": "PickupPitcherEmpty",
+    "x": 3672,
+    "y": 2055
+  },
+  {
+    "type": "SpawnerPitcherFull",
+    "x": 1627,
+    "y": 2938
+  },
+  {
+    "type": "SpawnerVialOfWind",
+    "x": 3672,
+    "y": 2075
+  },
+  {
+    "type": "PickupRuby",
+    "x": 2665.32,
+    "y": 2249.46,
+    "rubyType": "BLUE"
+  },
+  {
+    "type": "PickupHeart",
+    "x": 2265.32,
+    "y": 2249.46
+  },
+  {
+    "type": "PickupWand",
+    "x": 2755,
+    "y": 2280
+  }
+]

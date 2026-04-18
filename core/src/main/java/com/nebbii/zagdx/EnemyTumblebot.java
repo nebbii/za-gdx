@@ -7,11 +7,10 @@ import com.nebbii.zagdx.animation.EnemyTumblebotAnimation;
 public class EnemyTumblebot extends Enemy {
     public EnemyTumblebotAnimation animation;
 
-    public EnemyTumblebot(float x, float y) {
+    public EnemyTumblebot() {
         super(ActorType.FRIENDLY, true);
         setHeight(26);
         setHealth(60);
-        setPosition(x, y);
         setHitDamage(20);
 
         this.animation = new EnemyTumblebotAnimation(this);

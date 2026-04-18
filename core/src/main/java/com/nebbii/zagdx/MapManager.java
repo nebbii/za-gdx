@@ -167,7 +167,6 @@ public class MapManager {
         actors.removeIf(actor -> actor.getState() == State.DEAD);
     }
 
-    // TODO: make this a yaml file?
     public void loadOverworld() {
         overlay.loadOverworld(loader, "Overlay");
         collision.loadOverworld(loader, "Collision");
@@ -175,46 +174,44 @@ public class MapManager {
 
         actors = new ArrayList<>();
 
-        zelda.setPosition(2465.32f, 2249.46f);
+        ActorJsonEntry[] entries = MapJsonLoader.load("gamedata/overworld.json");
 
-        addActor(zelda);
+        for (ActorJsonEntry entry : entries) {
+            if ("ZeldaSpawn".equals(entry.type)) {
+                zelda.setPosition(entry.x, entry.y);
+                addActor(zelda);
+            }
+            else {
+                addActor(createActorFromJsonEntry(entry));
+            }
+        }
+    }
 
-        addActor(new EnemyTumblebot(3305, 2049));
-        addActor(new EnemyTumblebot(3326, 2013));
-        addActor(new EnemyTumblebot(3315, 1991));
-        addActor(new EnemyTumblebot(3181, 1977));
-        addActor(new EnemyTumblebot(3169, 2042));
+    // initialize actors based on class names from json files, exceptions handled by the switch
+    public Actor createActorFromJsonEntry(ActorJsonEntry entry) {
+        try {
+            switch (entry.type) {
+            case "PickupRuby":
+                PickupRuby.RubyType rubyType = PickupRuby.RubyType.valueOf(entry.rubyType);
+                PickupRuby ruby = new PickupRuby(rubyType);
+                ruby.setPosition(entry.x, entry.y);
+                return ruby;
+            default:
+                Class<?> newClass = Class.forName("com.nebbii.zagdx." + entry.type);
+                Object object = newClass.getDeclaredConstructor().newInstance();
 
-        NpcGlebb npcGlebb = new NpcGlebb();
-        npcGlebb.setPosition(3716, 2050);
-        addActor(npcGlebb);
+                if (!(object instanceof Actor)) {
+                    throw new IllegalArgumentException(entry.type + " is not a known actor");
+                }
 
-        PickupPitcherEmpty pitcherEmpty = new PickupPitcherEmpty();
-        pitcherEmpty.setPosition(3672, 2055);
-        addActor(pitcherEmpty);
-
-        SpawnerPitcherFull spawnerPitcherFull = new SpawnerPitcherFull();
-        spawnerPitcherFull.setPosition(1627, 2938);
-        addActor(spawnerPitcherFull);
-
-        SpawnerVialOfWind spawnerVialOfWind = new SpawnerVialOfWind();
-        spawnerVialOfWind.setPosition(3672, 2075);
-        addActor(spawnerVialOfWind);
-
-        PickupRuby testRuby = new PickupRuby(PickupRuby.RubyType.BLUE);
-        testRuby.setX(zelda.x + 200);
-        testRuby.setY(zelda.y);
-        addActor(testRuby);
-
-        PickupHeart testHeart = new PickupHeart();
-        testHeart.setX(zelda.x - 200);
-        testHeart.setY(zelda.y);
-        addActor(testHeart);
-
-        PickupWand testWand = new PickupWand();
-        testWand.setX(2755f);
-        testWand.setY(2280f);
-        addActor(testWand);
+                Actor actor = (Actor) object;
+                actor.getCollisionBox().setPosition(entry.x, entry.y);
+                return actor;
+            }
+        }
+        catch (Exception e) {
+            throw new RuntimeException("Failed to load actor: " + entry.type, e);
+        }
     }
 
     public Zelda getZelda() {
