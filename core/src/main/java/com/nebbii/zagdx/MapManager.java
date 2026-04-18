@@ -187,7 +187,7 @@ public class MapManager {
         }
     }
 
-    // initialize actors based on class names from json files, exceptions handled by the switch
+    // initialize actors based on class names from json files, unique parameters through switch
     public Actor createActorFromJsonEntry(ActorJsonEntry entry) {
         try {
             switch (entry.type) {

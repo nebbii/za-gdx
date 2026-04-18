@@ -8,7 +8,7 @@ public interface Actor {
 
     void draw(SpriteBatch batch);
 
-    Rectangle getCollisionBox();
+    Rectangle getCollisionBox(); // main rectangle, use instead of getRectangle()
     Rectangle getHitbox();
     float getCenterPointX();
     float getCenterPointY();
