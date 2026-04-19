@@ -173,6 +173,7 @@ public class MapManager {
     public void handleDeadActor(Actor actor, Iterator<Actor> iterator) {
         switch (actor.getClass().getSimpleName()) {
         case "EnemyTumblebot":
+            dropRandomPickup(actor.getCenterPointX(), actor.getCenterPointY());
             iterator.remove();
             break;
         case "EnemyBoss":
@@ -183,6 +184,12 @@ public class MapManager {
             iterator.remove();
             break;
         }
+    }
+
+    public void dropRandomPickup(float x, float y) {
+        PickupHeart heart = new PickupHeart();
+        heart.setPosition(x, y);
+        // push this to a temporary cache, add after the iterator addActor(heart);
     }
 
     public void loadOverworld() {
