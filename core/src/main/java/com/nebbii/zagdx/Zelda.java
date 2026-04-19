@@ -92,14 +92,14 @@ public class Zelda extends Rectangle implements Actor {
         if (!isMoving() && !isStopped()) return;
         if (inputX == 0 && inputY == 0) return;
 
+        float deltaTime = Gdx.graphics.getDeltaTime();
+
         setMovedLastFrame(true);
 
         if (inputX < 0) setAnimState(AnimState.MOVELEFT);
         if (inputY < 0) setAnimState(AnimState.MOVEDOWN);
         if (inputY > 0) setAnimState(AnimState.MOVEUP);
         if (inputX > 0) setAnimState(AnimState.MOVERIGHT);
-
-        float deltaTime = Gdx.graphics.getDeltaTime();
 
         setX(getX() + inputX * deltaTime);
         setY(getY() + inputY * deltaTime);

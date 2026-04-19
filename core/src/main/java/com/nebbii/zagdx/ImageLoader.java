@@ -9,6 +9,7 @@ public class ImageLoader {
     private Texture[] npcGlebb;
 
     private Texture rubyBlue;
+    private Texture rubyYellow;
     private Texture heart;
 
     public enum ZeldaAnimationGroup {
@@ -80,6 +81,7 @@ public class ImageLoader {
 
         /* Items */
         rubyBlue = new Texture("export/common/hudSprites/3.png");
+        rubyYellow = new Texture("export/common/hudSprites/4.png");
         heart = new Texture("export/common/hudSprites/5.png");
 
         /* Treasures */
@@ -123,6 +125,7 @@ public class ImageLoader {
 
         /* Items */
         rubyBlue.dispose();
+        rubyYellow.dispose();
         heart.dispose();
 
         /* Treasures */
@@ -254,6 +257,10 @@ public class ImageLoader {
 
     public Texture getRubyBlue() {
         return rubyBlue;
+    }
+
+    public Texture getRubyYellow() {
+        return rubyYellow;
     }
 
     public Texture getHeart() {

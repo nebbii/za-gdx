@@ -23,7 +23,7 @@ public class PickupRuby extends Pickup {
             setImage(World.images.getRubyBlue());
             break;
         case YELLOW:
-            setImage(World.images.getRubyBlue());
+            setImage(World.images.getRubyYellow());
             break;
         default:
             throw new IllegalStateException("PickupRuby: Unhandled ruby type: " + getRubyType());

@@ -1,6 +1,7 @@
 package com.nebbii.zagdx;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -39,11 +40,17 @@ public class MapManager {
     }
 
     public void logic() {
-        for (Actor actor : actors) {
+        Iterator<Actor> iterator = actors.iterator();
+
+        while (iterator.hasNext()) {
+            Actor actor = iterator.next();
             actor.logic();
+
+            if (actor.getState() == State.DEAD) {
+                handleDeadActor(actor, iterator);
+            }
         }
 
-        removeDeadActors();
     }
 
     public void drawActors(SpriteBatch batch) {
@@ -129,7 +136,7 @@ public class MapManager {
         Gdx.app.log("MapManager", "Freezing actors");
         for (Actor actor : actors) {
             if (actor.getState() == State.IDLE) continue;
-            Gdx.app.log("MapManager", "enemy: " + actor.getClass() + "set to idle");
+            Gdx.app.log("MapManager", "Actor: " + actor.getClass() + " set to idle");
             actor.setState(State.IDLE);
         }
     }
@@ -148,7 +155,7 @@ public class MapManager {
         for (Actor actor : actors) {
             if (!isActorVisible(actor)) continue;
 
-            Gdx.app.log("MapManager", "enemy: " + actor.getClass() + "set to active");
+            Gdx.app.log("MapManager", "Actor: " + actor.getClass() + " set to active");
             actor.setState(State.ACTIVE);
         }
     }
@@ -163,8 +170,19 @@ public class MapManager {
 
     }
 
-    public void removeDeadActors() {
-        actors.removeIf(actor -> actor.getState() == State.DEAD);
+    public void handleDeadActor(Actor actor, Iterator<Actor> iterator) {
+        switch (actor.getClass().getSimpleName()) {
+        case "EnemyTumblebot":
+            iterator.remove();
+            break;
+        case "EnemyBoss":
+            iterator.remove();
+            break;
+        default:
+            Gdx.app.log("MapManager", "Handle dead actor: " + actor.getClass().toGenericString());
+            iterator.remove();
+            break;
+        }
     }
 
     public void loadOverworld() {

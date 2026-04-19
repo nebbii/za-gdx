@@ -3,7 +3,7 @@
 ** Map
 *** DONE Load collision objects
 *** TODO Overworld
-**** TODO Overlays
+**** DONE Overlays
 **** TODO Collision
 **** TODO Load actors upon entering tile
 *** TODO Shrine of Earth
@@ -42,7 +42,7 @@
 *** DONE Fix bounding box
 *** DONE Map scroll animation
 - togglable in later settings screen?
-*** TODO Hitbox based map scrolling
+*** DONE Hitbox based map scrolling
 - Currently on position, but the old game seemed to do it based on collision
 *** DONE Map collision
 *** DONE Treasure
@@ -1343,79 +1343,301 @@ These Zola are very similar to their river-dwelling counterparts, apart from two
   - NPC talk doesn't interrupt others, talk "hitboxes" don't seem to activate until the current person is done talking
 - Buying items: stand on them, equip rubies and press button 1
 *** TODO Alice
+**** Logic
+**** Animation
+**** Sound
 *** TODO Angry Goblin
+**** Logic
+**** Animation
+**** Sound
 *** TODO Archery Trainer
+**** Logic
+**** Animation
+**** Sound
 *** TODO Beachcomber
+**** Logic
+**** Animation
+**** Sound
 *** TODO Bitterbeck
+**** Logic
+**** Animation
+**** Sound
 *** TODO Blacksmith (Great Wimbich)
+**** Logic
+**** Animation
+**** Sound
 *** TODO Bored Guy
+**** Logic
+**** Animation
+**** Sound
 *** TODO Bored Guy's Dog
+**** Logic
+**** Animation
+**** Sound
 *** TODO Broadsword Field Stallkeeper
+**** Logic
+**** Animation
+**** Sound
 *** TODO Enid
+**** Logic
+**** Animation
+**** Sound
 *** TODO Eric and Ian
+**** Logic
+**** Animation
+**** Sound
 *** TODO Ethera
+**** Logic
+**** Animation
+**** Sound
 *** TODO Fairy
+**** Logic
+**** Animation
+**** Sound
 *** TODO Farmer
+**** Logic
+**** Animation
+**** Sound
 *** TODO Father of Eric and Ian
+**** Logic
+**** Animation
+**** Sound
 *** TODO Faust
+**** Logic
+**** Animation
+**** Sound
 *** TODO Food Dude
+**** Logic
+**** Animation
+**** Sound
 *** TODO Friendly Goblin
+**** Logic
+**** Animation
+**** Sound
 *** TODO General Shopkeeper (Great Wimbich)
+**** Logic
+**** Animation
+**** Sound
 *** TODO Ghini
+**** Logic
+**** Animation
+**** Sound
 *** TODO Ghost Farmer
+**** Logic
+**** Animation
+**** Sound
 *** TODO Glebb
+**** Logic
+**** Animation
+**** Sound
 *** TODO Gwynla
+**** Logic
+**** Animation
+**** Sound
 *** TODO Hooded Woman
+**** Logic
+**** Animation
+**** Sound
 *** TODO Jester
+**** Logic
+**** Animation
+**** Sound
 *** TODO Jousting Field Custodian
+**** Logic
+**** Animation
+**** Sound
 *** TODO Jousting Field Stallkeeper
+**** Logic
+**** Animation
+**** Sound
 *** TODO Krebb
+**** Logic
+**** Animation
+**** Sound
 *** TODO Kron the Pegleg
+**** Logic
+**** Animation
+**** Sound
 *** TODO Lonlyn
+**** Logic
+**** Animation
+**** Sound
 *** TODO Lothar
+**** Logic
+**** Animation
+**** Sound
 *** TODO Lounger
+**** Logic
+**** Animation
+**** Sound
 *** TODO Madame Kriggle
+**** Logic
+**** Animation
+**** Sound
 *** TODO Merribal
+**** Logic
+**** Animation
+**** Sound
 *** TODO Mobilin's Head Inn Beggar (Exterior)
+**** Logic
+**** Animation
+**** Sound
 *** TODO Mobilin's Head Inn Blue Lady (Interior)
+**** Logic
+**** Animation
+**** Sound
 *** TODO Mobilin's Head Inn Exhausted Traveler (Interior)
+**** Logic
+**** Animation
+**** Sound
 *** TODO Myntoll
+**** Logic
+**** Animation
+**** Sound
 *** TODO Nimonee
+**** Logic
+**** Animation
+**** Sound
 *** TODO Ogham Merchant
+**** Logic
+**** Animation
+**** Sound
 *** TODO Old Sailor
+**** Logic
+**** Animation
+**** Sound
 *** TODO Old Sailor's Wife
+**** Logic
+**** Animation
+**** Sound
 *** TODO Pick-Pocket
+**** Logic
+**** Animation
+**** Sound
 *** TODO Quarry Owner
+**** Logic
+**** Animation
+**** Sound
 *** TODO Rebel Soldier 1
+**** Logic
+**** Animation
+**** Sound
 *** TODO Rebel Soldier 2
+**** Logic
+**** Animation
+**** Sound
 *** TODO Ryco
+**** Logic
+**** Animation
+**** Sound
 *** TODO Sailor 1
+**** Logic
+**** Animation
+**** Sound
 *** TODO Sailor 2
+**** Logic
+**** Animation
+**** Sound
 *** TODO Sailor 3
+**** Logic
+**** Animation
+**** Sound
 *** TODO Shurmak
+**** Logic
+**** Animation
+**** Sound
 *** TODO Sir Basil
+**** Logic
+**** Animation
+**** Sound
 *** TODO Sirram Bew
+**** Logic
+**** Animation
+**** Sound
 *** TODO Squire Grip animation
+**** Logic
+**** Animation
+**** Sound
 *** TODO Swamp Rat
+**** Logic
+**** Animation
+**** Sound
 *** TODO Talking Toadstool
+**** Logic
+**** Animation
+**** Sound
 *** TODO Thabul
+**** Logic
+**** Animation
+**** Sound
 *** TODO Thief Sailor
+**** Logic
+**** Animation
+**** Sound
 *** TODO Thirsty Child
+**** Logic
+**** Animation
+**** Sound
 *** TODO Toatobar
+**** Logic
+**** Animation
+**** Sound
 *** TODO Toobar
+**** Logic
+**** Animation
+**** Sound
 *** TODO Town Square Shopkeeper (Great Wimbich)
+**** Logic
+**** Animation
+**** Sound
 *** TODO Transport Condor
+**** Logic
+**** Animation
+**** Sound
 *** TODO Trinket Seller
+**** Logic
+**** Animation
+**** Sound
 *** TODO Waldensop
+**** Logic
+**** Animation
+**** Sound
 *** TODO Water Bearer
+**** Logic
+**** Animation
+**** Sound
 *** TODO Whitesteed Lodge Horse
+**** Logic
+**** Animation
+**** Sound
 *** TODO Whitesteed Lodge Patron 1
+**** Logic
+**** Animation
+**** Sound
 *** TODO Whitesteed Lodge Patron 2
+**** Logic
+**** Animation
+**** Sound
 *** TODO Whitesteed Lodge Patron 3
+**** Logic
+**** Animation
+**** Sound
 *** TODO Whitesteed Lodgekeeper
+**** Logic
+**** Animation
+**** Sound
 *** TODO Yalzan
+**** Logic
+**** Animation
+**** Sound
 *** TODO Yelena
+**** Logic
+**** Animation
+**** Sound
 *** TODO Yvonne
+**** Logic
+**** Animation
+**** Sound
 ** Pickups
 - Items flicker and disappear after 5(?) seconds
 *** DONE Rubies
