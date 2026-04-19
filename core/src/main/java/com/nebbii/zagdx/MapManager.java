@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 
 public class MapManager {
@@ -19,6 +20,7 @@ public class MapManager {
     public MapRendererMask mask;
 
     public ArrayList<Actor> actors;
+    public ArrayList<Actor> newActors;
 
     private Zelda zelda;
 
@@ -36,6 +38,8 @@ public class MapManager {
         mask = new MapRendererMask();
 
         actors = new ArrayList<>();
+        newActors = new ArrayList<>();
+
         zelda = new Zelda(world, this);
     }
 
@@ -51,6 +55,10 @@ public class MapManager {
             }
         }
 
+        if (!newActors.isEmpty()) {
+            actors.addAll(newActors);
+            newActors.clear();
+        }
     }
 
     public void drawActors(SpriteBatch batch) {
@@ -171,6 +179,8 @@ public class MapManager {
     }
 
     public void handleDeadActor(Actor actor, Iterator<Actor> iterator) {
+        Gdx.app.log("MapManager", "Handle dead actor: " + actor.getClass());
+
         switch (actor.getClass().getSimpleName()) {
         case "EnemyTumblebot":
             dropRandomPickup(actor.getCenterPointX(), actor.getCenterPointY());
@@ -180,16 +190,34 @@ public class MapManager {
             iterator.remove();
             break;
         default:
-            Gdx.app.log("MapManager", "Handle dead actor: " + actor.getClass().toGenericString());
             iterator.remove();
             break;
         }
     }
 
     public void dropRandomPickup(float x, float y) {
-        PickupHeart heart = new PickupHeart();
-        heart.setPosition(x, y);
-        // push this to a temporary cache, add after the iterator addActor(heart);
+        int roll = MathUtils.random(0, 2);
+
+        Actor pickup;
+
+        Gdx.app.log("MapManager", "dropRandomPickup: rolled " + roll);
+        switch (roll) {
+        case 0:
+            pickup = new PickupHeart();
+            break;
+        case 1:
+            pickup = new PickupRuby(RubyType.BLUE);
+            break;
+        case 2:
+            pickup = new PickupRuby(RubyType.YELLOW);
+            break;
+        default:
+            throw new RuntimeException("Failed to choose random pickup actor (" + roll + ")");
+        }
+
+        pickup.getCollisionBox().setPosition(x, y);
+        pickup.setState(State.ACTIVE);
+        newActors.add(pickup);
     }
 
     public void loadOverworld() {
@@ -217,7 +245,7 @@ public class MapManager {
         try {
             switch (entry.type) {
             case "PickupRuby":
-                PickupRuby.RubyType rubyType = PickupRuby.RubyType.valueOf(entry.rubyType);
+                RubyType rubyType = RubyType.valueOf(entry.rubyType);
                 PickupRuby ruby = new PickupRuby(rubyType);
                 ruby.setPosition(entry.x, entry.y);
                 return ruby;

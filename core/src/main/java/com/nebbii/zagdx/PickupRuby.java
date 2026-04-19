@@ -2,14 +2,10 @@ package com.nebbii.zagdx;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.MathUtils;
 
 // "There are only two types in the entire game; blue Rupees (5) and yellow Rupees (10)."
 public class PickupRuby extends Pickup {
-    public enum RubyType {
-        BLUE,
-        YELLOW
-    }
-
     private RubyType rubyType;
     private Texture image;
 
