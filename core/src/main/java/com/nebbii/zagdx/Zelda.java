@@ -59,6 +59,11 @@ public class Zelda extends Rectangle implements Actor {
 
         hurtDuration = Math.max(0f, hurtDuration - deltaTime);
 
+        if (health <= 0) {
+            setAnimState(AnimState.GAMEOVER);
+            onDeath();
+        }
+
         if (isAttacking() && animation.isAnimationFinished()) {
             finishAction();
         }
@@ -75,7 +80,7 @@ public class Zelda extends Rectangle implements Actor {
 
     @Override
     public void draw(SpriteBatch batch) {
-        if (hurtDuration > 0) {
+        if (hurtDuration > 0 && getAnimState() != AnimState.GAMEOVER) {
             float t = hurtDuration % 0.08f;
 
             if (t < 0.04f) {
@@ -193,6 +198,10 @@ public class Zelda extends Rectangle implements Actor {
 
         hurtDuration += 1; // seems to always be the same?
         health -= damage; // TODO: apply damage formula here
+    }
+
+    public void onDeath() {
+        // play timer, respawn at pedestal for now (later becomes outside the current dungeon)
     }
 
     public Direction getDirection() {

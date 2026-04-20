@@ -60,12 +60,6 @@
     "y": 2075
   },
   {
-    "type": "PickupRuby",
-    "x": 2665.32,
-    "y": 2249.46,
-    "rubyType": "BLUE"
-  },
-  {
     "type": "PickupHeart",
     "x": 2265.32,
     "y": 2249.46

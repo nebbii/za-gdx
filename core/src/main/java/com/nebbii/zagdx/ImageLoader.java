@@ -20,7 +20,8 @@ public class ImageLoader {
         ATTACKUP,
         ATTACKRIGHT,
         ATTACKDOWN,
-        ATTACKLEFT
+        ATTACKLEFT,
+        GAMEOVER
     }
 
     public enum EnemyTumblebotAnimationGroup {
@@ -66,6 +67,13 @@ public class ImageLoader {
             loadTextureArray("export/common/zelda/sprites/group6", 3));
         zelda.put(ZeldaAnimationGroup.ATTACKLEFT,
             loadTextureArray("export/common/zelda/sprites/group7", 3));
+
+        Texture[] zeldaGameover = new Texture[4];
+        zeldaGameover[0] = new Texture("export/common/zelda/sprites/group0/sprite0.png");
+        zeldaGameover[1] = new Texture("export/common/zelda/sprites/group1/sprite0.png");
+        zeldaGameover[2] = new Texture("export/common/zelda/sprites/group2/sprite0.png");
+        zeldaGameover[3] = new Texture("export/common/zelda/sprites/group3/sprite0.png");
+        zelda.put(ZeldaAnimationGroup.GAMEOVER, zeldaGameover);
 
         enemyTumblebot = new EnumMap<>(EnemyTumblebotAnimationGroup.class);
         enemyTumblebot.put(EnemyTumblebotAnimationGroup.ROLLUP,

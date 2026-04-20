@@ -13,5 +13,7 @@ public enum AnimState {
     ATTACKLEFT,
     ATTACKDOWN,
     ATTACKUP,
-    ATTACKRIGHT
+    ATTACKRIGHT,
+
+    GAMEOVER
 }

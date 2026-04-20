@@ -20,6 +20,8 @@ public class ZeldaAnimation extends GameAnimation {
     private Animation<TextureRegion> attackUp;
     private Animation<TextureRegion> attackRight;
 
+    private Animation<TextureRegion> gameover;
+
     private int[] walkLeftOffsetX;
     private int[] walkLeftOffsetY;
     private int[] walkDownOffsetX;
@@ -37,6 +39,9 @@ public class ZeldaAnimation extends GameAnimation {
     private int[] attackUpOffsetY;
     private int[] attackRightOffsetX;
     private int[] attackRightOffsetY;
+
+    private int[] gameoverOffsetX;
+    private int[] gameoverOffsetY;
 
     public ZeldaAnimation(Zelda zelda) {
         super("walkDown");
@@ -56,6 +61,8 @@ public class ZeldaAnimation extends GameAnimation {
         walkDown = initWalkDown();
         walkUp = initWalkUp();
         walkRight = initWalkRight();
+
+        gameover = initGameover();
     }
 
     public TextureRegion playCurrentAnimation() {
@@ -136,6 +143,13 @@ public class ZeldaAnimation extends GameAnimation {
                 animation = walkRight;
                 offsetsX = walkRightOffsetX;
                 offsetsY = walkRightOffsetY;
+                break;
+
+            case GAMEOVER:
+                play();
+                animation = gameover;
+                offsetsX = gameoverOffsetX;
+                offsetsY = gameoverOffsetY;
                 break;
 
             default:
@@ -367,6 +381,31 @@ public class ZeldaAnimation extends GameAnimation {
         }
 
         Animation<TextureRegion> anim = new Animation<TextureRegion>(0.050f, frames);
+        anim.setPlayMode(Animation.PlayMode.LOOP);
+        return anim;
+    }
+
+    public Animation<TextureRegion> initGameover() {
+        Texture[] textures = World.images.getZeldaAnimation(ZeldaAnimationGroup.GAMEOVER);
+
+        int[][] frameData = {
+            {0, 0, 4},
+            {1, 0, 4},
+            {2, 0, 4},
+            {3, 0, 4}
+        };
+
+        TextureRegion[] frames = new TextureRegion[frameData.length];
+        gameoverOffsetX = new int[frameData.length];
+        gameoverOffsetY = new int[frameData.length];
+
+        for (int i = 0; i < frameData.length; i++) {
+            frames[i] = new TextureRegion(textures[frameData[i][0]]);
+            gameoverOffsetX[i] = frameData[i][1];
+            gameoverOffsetY[i] = frameData[i][2];
+        }
+
+        Animation<TextureRegion> anim = new Animation<TextureRegion>(0.175f, frames);
         anim.setPlayMode(Animation.PlayMode.LOOP);
         return anim;
     }
