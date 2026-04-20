@@ -92,6 +92,7 @@ public class Zelda extends Rectangle implements Actor {
         }
     }
 
+    // TODO: Ice physics walking for certain rooms
     public void move(float inputX, float inputY) {
         if (!isActive()) return;
         if (!isMoving() && !isStopped()) return;
@@ -198,6 +199,7 @@ public class Zelda extends Rectangle implements Actor {
 
         hurtDuration += 1; // seems to always be the same?
         health -= damage; // TODO: apply damage formula here
+        // TODO: Zelda is supposed to get pushed by damage, check notes for more info
     }
 
     public void onDeath() {

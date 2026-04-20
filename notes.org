@@ -45,6 +45,16 @@
 *** DONE Hitbox based map scrolling
 - Currently on position, but the old game seemed to do it based on collision
 *** DONE Map collision
+*** TODO Damage knockback
+[[https://discord.com/channels/256554729109192705/347450574167605249/1495569505529630883][Phlosion]]: "When a player attacks the enemy, and it hits:
+1. Grab the damage value from the weapon info
+2. If the monster has damage resistance, subtract it from the damage value (or set the damage dealt to 0 if it would go negative)
+3. If the monster is weak to the weapon, add the bonus damage
+4. Subtract the final amount from their health
+
+Monsters get 5 i-frames, while bosses get 10 i-frames.
+
+Knockback happens in 5-pixel chunks applied once every three frames. The number of knockback chunks depends on the weapon stats, which are embedded in a bespoke weapon scripting language that I don't think I managed to automate decoding.
 *** DONE Treasure
 - Treasure and weapons share one slot, same class?
 **** Bell and Bouquet
