@@ -216,7 +216,6 @@ public class MapManager {
         }
 
         pickup.getCollisionBox().setPosition(x, y);
-        pickup.setState(State.ACTIVE);
         newActors.add(pickup);
     }
 

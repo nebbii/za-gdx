@@ -8,8 +8,8 @@ public class PickupHeart extends Pickup {
 
         setImage(World.images.getHeart());
 
-        setWidth(6);
-        setHeight(8);
+        setWidth(11);
+        setHeight(11);
     }
 
     public void logic() {

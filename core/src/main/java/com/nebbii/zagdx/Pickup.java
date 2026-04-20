@@ -15,12 +15,15 @@ public class Pickup extends Rectangle implements Actor {
 
     public Pickup() {
         setType(ActorType.PICKUP);
+        setState(State.PENDING);
         this.duration = 0;
     }
 
     @Override
     public void logic() {
         this.duration += Gdx.graphics.getDeltaTime();
+
+        if (isPending() && duration >= 1f) setState(State.ACTIVE);
     }
 
     @Override
@@ -37,11 +40,9 @@ public class Pickup extends Rectangle implements Actor {
      * simple bounce curve using duration
      */
     public void drawBounceAnim(SpriteBatch batch) {
-        if (duration >= 1f) setState(State.ACTIVE);
-
         float decay = (float) Math.exp(-4 * duration);
-        float bounce = Math.abs((float) Math.sin(4f * Math.PI * duration)) * decay;
-        float offsetY = bounce * 12f;
+        float bounce = (float) Math.pow(Math.abs(Math.sin(8f * Math.PI * duration)), 1.5f) * decay;
+        float offsetY = bounce * 10f;
 
         batch.draw(getImage(), getX(), getY() + offsetY, getWidth(), getHeight());
     }
