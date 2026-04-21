@@ -15,6 +15,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.nebbii.zagdx.GameManager.FadeState;
 
 public class World {
     static final int WORLD_WIDTH = 384;
@@ -182,6 +183,8 @@ public class World {
     private void drawFadeOverlay() {
         Gdx.gl.glEnable(GL20.GL_BLEND);
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+
+        //float opacity = gameManager.getFadeState() == FadeState.FADE_IN ? 0 : 1;
 
         shapes.setProjectionMatrix(interfaceCamera.combined);
         shapes.begin(ShapeRenderer.ShapeType.Filled);

@@ -20,12 +20,17 @@ public class GameManager {
         PAUSE_ITEMS,
         PAUSE_MAP,
         MOVE,
-        FADE_IN,
         FADE_GAMEOVER,
         FADE_WARP
     }
 
+    public enum FadeState {
+        FADE_IN,
+        FADE_OUT
+    }
+
     private GameState gameState;
+    private FadeState fadeState;
 
     public GameManager(World world) {
         this.world = world;
@@ -33,6 +38,7 @@ public class GameManager {
         this.weapons = new ArrayList<Weapon>();
 
         gameState = GameState.PLAY;
+        fadeState = FadeState.FADE_OUT;
 
         rubies = 0;
     }
@@ -148,6 +154,14 @@ public class GameManager {
         this.gameState = gameState;
     }
 
+    public FadeState getFadeState() {
+        return fadeState;
+    }
+
+    public void setFadeState(FadeState fadeState) {
+        this.fadeState = fadeState;
+    }
+
     public void togglePause() {
         if (world.getMenuPause().getMenuState() == MenuState.INACTIVE) {
             world.getMapManager().freezeAllActors();
@@ -165,7 +179,6 @@ public class GameManager {
     public ArrayList<Treasure> getTreasures() {
         return treasures;
     }
-
 
     public float getFade() {
         return fade;
