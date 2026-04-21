@@ -21,7 +21,7 @@ public class GameManager {
 
     private GameState gameState;
 
-	public GameManager(World world) {
+    public GameManager(World world) {
         this.world = world;
         this.treasures = new ArrayList<Treasure>();
         this.weapons = new ArrayList<Weapon>();
@@ -96,12 +96,12 @@ public class GameManager {
     }
 
     public GameState getGameState() {
-		return gameState;
-	}
+        return gameState;
+    }
 
-	public void setGameState(GameState gameState) {
-		this.gameState = gameState;
-	}
+    public void setGameState(GameState gameState) {
+        this.gameState = gameState;
+    }
 
     public void togglePause() {
         if (world.getMenuPause().getMenuState() == MenuState.INACTIVE) {

@@ -102,7 +102,7 @@ public class World {
         case PAUSE_ITEMS:
             drawGame();
             drawItemScreen();
-            drawHud(batch, font);
+            drawHud(batch, shapes, font);
             drawDebugText(batch, font);
             break;
         default:
@@ -154,7 +154,7 @@ public class World {
     }
 
     // TODO: turn into cute hud sprites
-    private void drawHud(SpriteBatch batch, BitmapFont font) {
+    private void drawHud(SpriteBatch batch, ShapeRenderer shapes, BitmapFont font) {
         batch.setProjectionMatrix(interfaceCamera.combined);
         batch.begin();
         font.draw(batch,
