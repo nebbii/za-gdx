@@ -54,7 +54,7 @@ public class GameManager {
             break;
         case FADE_GAMEOVER:
             if (handleFade()) {
-                respawnZelda();
+                respawn();
                 setGameState(GameState.PLAY);
             }
             break;
@@ -94,12 +94,14 @@ public class GameManager {
         return false;
     }
 
-    public void respawnZelda() {
+    public void respawn() {
         Zelda zelda = world.getMapManager().getZelda();
 
         zelda.setHealth(zelda.getMaxHealth());
         zelda.setState(State.ACTIVE);
         zelda.setAnimState(AnimState.STOPDOWN);
+        zelda.setPosition(zelda.getSpawnX(), zelda.getSpawnY());
+        world.getWorldCamera().resetPosition();
     }
 
     public World getWorld() {

@@ -35,6 +35,9 @@ public class Zelda extends Rectangle implements Actor {
     private float hitboxOffsetX = -8;
     private float hitboxOffsetY = 0;
 
+    private float spawnX = 0;
+    private float spawnY = 0;
+
     public Zelda(World world, MapManager map) {
         setWidth(6);
         setHeight(6);
@@ -235,12 +238,44 @@ public class Zelda extends Rectangle implements Actor {
         }
     }
 
+    // update spawn point if it's unset
+    public Rectangle setPosition(float x, float y) {
+        super.setPosition(x, y);
+
+        if(spawnX == 0 && spawnY == 0) {
+            updateSpawn(x, y);
+        }
+
+        return this.getCollisionBox();
+    }
+
+    public void updateSpawn(float x, float y) {
+        setSpawnX(x);
+        setSpawnY(y);
+    }
+
     public Direction getHurtDirection() {
         return hurtDirection;
     }
 
     public void setHurtDirection(Direction hurtDirection) {
         this.hurtDirection = hurtDirection;
+    }
+
+    public float getSpawnX() {
+        return spawnX;
+    }
+
+    public float getSpawnY() {
+        return spawnY;
+    }
+
+    public void setSpawnX(float spawnX) {
+        this.spawnX = spawnX;
+    }
+
+    public void setSpawnY(float spawnY) {
+        this.spawnY = spawnY;
     }
 
     public Rectangle getHitbox() {
