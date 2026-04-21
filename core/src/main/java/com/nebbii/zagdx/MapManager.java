@@ -1,6 +1,7 @@
 package com.nebbii.zagdx;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Iterator;
 
 import com.badlogic.gdx.Gdx;
@@ -62,6 +63,8 @@ public class MapManager {
     }
 
     public void drawActors(SpriteBatch batch) {
+        actors.sort(Comparator.comparingInt(Actor::getDrawOrder));
+
         for (Actor actor : actors) {
             actor.draw(batch);
         }

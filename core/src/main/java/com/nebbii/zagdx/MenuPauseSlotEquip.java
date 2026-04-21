@@ -21,9 +21,9 @@ public class MenuPauseSlotEquip extends Rectangle implements MenuPauseButton {
 	@Override
     public void onTouch() {
         switch(slotType) {
-			case MAINHAND:
-			default:
-                gameManager.getZelda().setCurrentItem(Treasure.NONE);
+        case MAINHAND:
+        default:
+            gameManager.getZelda().setCurrentItem(Treasure.NONE);
         }
     }
 
@@ -37,9 +37,9 @@ public class MenuPauseSlotEquip extends Rectangle implements MenuPauseButton {
 
     public Item getHeldItem() {
         switch(slotType) {
-			case MAINHAND:
-			default:
-                return gameManager.getZelda().getCurrentItem();
+        case MAINHAND:
+        default:
+            return gameManager.getZelda().getCurrentItem();
         }
     }
 }

@@ -24,6 +24,7 @@ public class Enemy extends Rectangle implements Actor {
 
     protected State state;
     protected ActorType type;
+    protected int drawOrder;
 
     protected Rectangle alertBox;
     protected Direction direction;
@@ -39,6 +40,7 @@ public class Enemy extends Rectangle implements Actor {
         setHeight(32);
         setState(State.IDLE);
         setType(actorType);
+        this.drawOrder = 0;
         this.solid = solid;
 
         this.direction = getRandomDirection();
@@ -85,6 +87,11 @@ public class Enemy extends Rectangle implements Actor {
         batch.draw(animation.playCurrentAnimation(), animation.getX(), animation.getY());
         if (hurtDuration > 0) endDrawFlashOverlay(batch);
         */
+    }
+
+    @Override
+    public int getDrawOrder() {
+        return drawOrder;
     }
 
     protected void move() {

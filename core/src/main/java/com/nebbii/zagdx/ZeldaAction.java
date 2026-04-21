@@ -15,11 +15,13 @@ public class ZeldaAction extends Rectangle implements Actor {
     protected Direction direction;
 
     private ActorType type;
+    private int drawOrder;
 
     public ZeldaAction(Zelda zelda, float x, float y) {
         this.zelda = zelda;
         setState(State.ACTIVE);
         setType(ActorType.PROJECTILE);
+        this.drawOrder = 3;
         stateTime = 0f;
         duration = 0.5f;
     }
@@ -33,6 +35,11 @@ public class ZeldaAction extends Rectangle implements Actor {
 
     @Override
     public void draw(SpriteBatch batch) {
+    }
+
+    @Override
+    public int getDrawOrder() {
+        return drawOrder;
     }
 
     public Rectangle getHitbox() {

@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Rectangle;
 public class Spawner extends Rectangle implements Actor {
     private State state;
     private ActorType type;
+    private int drawOrder;
     private boolean solid = false;
 
     public Spawner() {
@@ -14,6 +15,7 @@ public class Spawner extends Rectangle implements Actor {
         setHeight(1);
         setState(State.IDLE);
         setType(ActorType.SPAWNER);
+        this.drawOrder = 0;
     }
 
     @Override
@@ -22,6 +24,11 @@ public class Spawner extends Rectangle implements Actor {
 
     @Override
     public void draw(SpriteBatch batch) {}
+
+    @Override
+    public int getDrawOrder() {
+        return drawOrder;
+    }
 
     public Rectangle getHitbox() {
         return this;

@@ -7,6 +7,7 @@ public interface Actor {
     void logic();
 
     void draw(SpriteBatch batch);
+    int getDrawOrder();
 
     Rectangle getCollisionBox(); // main rectangle, use instead of getRectangle()
     Rectangle getHitbox();

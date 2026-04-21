@@ -8,6 +8,7 @@ public class Npc extends Rectangle implements Actor {
     protected State state;
     protected NpcState npcState;
     protected ActorType type;
+    protected int drawOrder;
 
     public enum NpcState {
         TALKY,
@@ -20,6 +21,7 @@ public class Npc extends Rectangle implements Actor {
         setHeight(32);
         setState(State.IDLE);
         setType(actorType);
+        this.drawOrder = 2;
         this.solid = solid;
     }
 
@@ -41,6 +43,11 @@ public class Npc extends Rectangle implements Actor {
     }
 
     public void draw(SpriteBatch batch) {
+    }
+
+    @Override
+    public int getDrawOrder() {
+        return drawOrder;
     }
 
     public Rectangle getHitbox() {

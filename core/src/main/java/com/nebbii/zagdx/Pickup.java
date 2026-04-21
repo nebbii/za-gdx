@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Rectangle;
 public class Pickup extends Rectangle implements Actor {
     private State state;
     private ActorType type;
+    private int drawOrder;
     private boolean solid;
     private Texture image;
 
@@ -16,6 +17,7 @@ public class Pickup extends Rectangle implements Actor {
     public Pickup() {
         setType(ActorType.PICKUP);
         setState(State.PENDING);
+        this.drawOrder = 1;
         this.duration = 0;
     }
 
@@ -34,6 +36,11 @@ public class Pickup extends Rectangle implements Actor {
         else {
             batch.draw(getImage(), getX(), getY(), getWidth(), getHeight());
         }
+    }
+
+    @Override
+    public int getDrawOrder() {
+        return drawOrder;
     }
 
     /*

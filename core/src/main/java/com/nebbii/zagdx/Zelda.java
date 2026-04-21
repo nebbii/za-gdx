@@ -21,6 +21,7 @@ public class Zelda extends Rectangle implements Actor {
     private Direction hurtDirection;
 
     private ActorType type;
+    private int drawOrder;
 
     private boolean normalizeDiagonals = false;
 
@@ -43,6 +44,7 @@ public class Zelda extends Rectangle implements Actor {
         setHealth(60);
         setMaxHealth(60);
         setCurrentItem(Treasure.NONE);
+        this.drawOrder = 3;
 
         animation = new ZeldaAnimation(this);
         hitbox = new Rectangle();
@@ -90,6 +92,11 @@ public class Zelda extends Rectangle implements Actor {
         else {
             batch.draw(animation.playCurrentAnimation(), animation.getX(), animation.getY());
         }
+    }
+
+    @Override
+    public int getDrawOrder() {
+        return drawOrder;
     }
 
     // TODO: Ice physics walking for certain rooms
