@@ -12,8 +12,8 @@ public class GameManager {
     private ArrayList<Treasure> treasures;
     private ArrayList<Weapon> weapons;
 
-    private float gameoverFade;
-    private float gameoverFadeCap;
+    private float fade;
+    private float fadeCap;
 
     public enum GameState {
         PLAY,
@@ -53,7 +53,8 @@ public class GameManager {
         case PAUSE_MAP:
             break;
         case FADE_GAMEOVER:
-            if (handleFadeGameover()) {
+            if (handleFade()) {
+                respawnZelda();
                 setGameState(GameState.PLAY);
             }
             break;
@@ -77,20 +78,28 @@ public class GameManager {
 
     public void initializeFadeGameover() {
         world.getMapManager().freezeAllActors();
-        setGameoverFade(0);
-        setGameoverFadeCap(5);
+        setFade(0);
+        setFadeCap(5);
         setGameState(GameState.FADE_GAMEOVER);
         world.getMapManager().getZelda().onDeath();
     }
 
-    public boolean handleFadeGameover() {
-        if (gameoverFade >= gameoverFadeCap) {
+    public boolean handleFade() {
+        if (fade >= fadeCap) {
             return true;
         }
 
-        gameoverFade += Gdx.graphics.getDeltaTime();
+        fade += Gdx.graphics.getDeltaTime();
 
         return false;
+    }
+
+    public void respawnZelda() {
+        Zelda zelda = world.getMapManager().getZelda();
+
+        zelda.setHealth(zelda.getMaxHealth());
+        zelda.setState(State.ACTIVE);
+        zelda.setAnimState(AnimState.STOPDOWN);
     }
 
     public World getWorld() {
@@ -156,19 +165,19 @@ public class GameManager {
     }
 
 
-    public float getGameoverFade() {
-        return gameoverFade;
+    public float getFade() {
+        return fade;
     }
 
-    public void setGameoverFade(float gameoverFade) {
-        this.gameoverFade = gameoverFade;
+    public void setFade(float fade) {
+        this.fade = fade;
     }
 
-    public float getGameoverFadeCap() {
-        return gameoverFadeCap;
+    public float getFadeCap() {
+        return fadeCap;
     }
 
-    public void setGameoverFadeCap(float gameoverFadeCap) {
-        this.gameoverFadeCap = gameoverFadeCap;
+    public void setFadeCap(float fadeCap) {
+        this.fadeCap = fadeCap;
     }
 }
