@@ -185,7 +185,7 @@ public class World {
 
         shapes.setProjectionMatrix(interfaceCamera.combined);
         shapes.begin(ShapeRenderer.ShapeType.Filled);
-        shapes.setColor(0f, 0f, 0f, 0.1f);
+        shapes.setColor(0f, 0f, 0f, gameManager.getGameoverFade() / gameManager.getGameoverFadeCap());
         shapes.rect(0f, 0f, WORLD_WIDTH, WORLD_HEIGHT);
         shapes.end();
     }
