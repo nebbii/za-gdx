@@ -78,7 +78,7 @@ public class MapManager {
         case COLLISION:
             collision.drawBoundingBoxes(shapes, camera, Color.RED);
             this.drawActorBoundingBoxes(shapes, camera, Color.WHITE);
-            world.drawWorldBorders(shapes, camera, Color.BLACK);
+            world.drawWorldBorders(Color.BLACK);
             break;
         case OVERLAP:
             overlay.drawBoundingBoxes(shapes, camera, Color.GREEN);
@@ -87,14 +87,14 @@ public class MapManager {
             overlay.drawBoundingBoxes(shapes, camera, Color.GREEN);
             collision.drawBoundingBoxes(shapes, camera, Color.RED);
             this.drawActorBoundingBoxes(shapes, camera, Color.WHITE);
-            world.drawWorldBorders(shapes, camera, Color.BLACK);
+            world.drawWorldBorders(Color.BLACK);
         case OVERLAPPAINT:
             overlay.drawBoundingBoxes(shapes, camera, Color.GREEN);
             break;
         case ALL:
             overlay.drawBoundingBoxes(shapes, camera, Color.GREEN);
             collision.drawBoundingBoxes(shapes, camera, Color.RED);
-            world.drawWorldBorders(shapes, camera, Color.BLACK);
+            world.drawWorldBorders(Color.BLACK);
             this.drawActorBoundingBoxes(shapes, camera, Color.WHITE);
             break;
         default:

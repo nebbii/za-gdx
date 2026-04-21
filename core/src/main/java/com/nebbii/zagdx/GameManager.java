@@ -16,7 +16,8 @@ public class GameManager {
         PAUSE_ITEMS,
         PAUSE_MAP,
         MOVE,
-        FADE,
+        FADE_GAMEOVER,
+        FADE_WARP,
     }
 
     private GameState gameState;
@@ -38,11 +39,19 @@ public class GameManager {
                 world.getMapManager().freezeAllActors();
                 setGameState(GameState.MOVE);
             }
+            if (world.getMapManager().getZelda().getHealth() <= 0) {
+                world.getMapManager().freezeAllActors();
+                setGameState(GameState.FADE_GAMEOVER);
+            }
             break;
         case PAUSE_ITEMS:
         case PAUSE_MAP:
             break;
-        case FADE:
+        case FADE_GAMEOVER:
+            world.getMapManager().getZelda().onDeath();
+            break;
+        case FADE_WARP:
+            world.getMapManager().freezeAllActors();
             break;
         case MOVE:
             if (!world.getWorldCamera().isTransitioning()) {

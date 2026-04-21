@@ -8,7 +8,7 @@ public class EnemyTumblebot extends Enemy {
     public EnemyTumblebotAnimation animation;
 
     public EnemyTumblebot() {
-        super(ActorType.FRIENDLY, true);
+        super(ActorType.ENEMY, true);
         setHeight(26);
         setHealth(60);
         setHitDamage(20);
@@ -24,10 +24,10 @@ public class EnemyTumblebot extends Enemy {
 
         switch(enemyState) {
             case SEARCHING:
-                setSearchSpeed(80f);
+                setSpeed(80f);
                 break;
             case FIGHTING:
-                setSearchSpeed(110f);
+                setSpeed(110f);
                 break;
             default:
         }

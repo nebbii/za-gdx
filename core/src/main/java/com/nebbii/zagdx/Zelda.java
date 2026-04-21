@@ -62,7 +62,6 @@ public class Zelda extends Rectangle implements Actor {
         hurtDuration = Math.max(0f, hurtDuration - deltaTime);
 
         if (health <= 0) {
-            setAnimState(AnimState.GAMEOVER);
             onDeath();
         }
 
@@ -210,7 +209,7 @@ public class Zelda extends Rectangle implements Actor {
     }
 
     public void onDeath() {
-        // play timer, respawn at pedestal for now (later becomes outside the current dungeon)
+        setAnimState(AnimState.GAMEOVER);
     }
 
     public Direction getDirection() {

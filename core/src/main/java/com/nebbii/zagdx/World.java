@@ -3,7 +3,9 @@ package com.nebbii.zagdx;
 import java.util.List;
 import java.util.ArrayList;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -77,7 +79,8 @@ public class World {
         switch(gameManager.getGameState()) {
         case PLAY:
         case MOVE:
-        case FADE:
+        case FADE_GAMEOVER:
+        case FADE_WARP:
         case PAUSE_MAP:
         case PAUSE_ITEMS:
             input.logic();
@@ -97,13 +100,20 @@ public class World {
         switch(gameManager.getGameState()) {
         case PLAY:
         case MOVE:
-        case FADE:
         case PAUSE_MAP:
         case PAUSE_ITEMS:
             drawGame();
             drawItemScreen();
-            drawHud(batch, shapes, font);
-            drawDebugText(batch, font);
+            drawHud();
+            drawDebugText();
+            break;
+        case FADE_GAMEOVER:
+        case FADE_WARP:
+            drawGame();
+            drawItemScreen();
+            drawHud();
+            drawDebugText();
+            drawFadeOverlay();
             break;
         default:
             throw new IllegalStateException("World->draw(): Unhandled game state: " + gameManager.getGameState());
@@ -154,7 +164,7 @@ public class World {
     }
 
     // TODO: turn into cute hud sprites
-    private void drawHud(SpriteBatch batch, ShapeRenderer shapes, BitmapFont font) {
+    private void drawHud() {
         batch.setProjectionMatrix(interfaceCamera.combined);
         batch.begin();
         font.draw(batch,
@@ -169,8 +179,19 @@ public class World {
         batch.end();
     }
 
+    private void drawFadeOverlay() {
+        Gdx.gl.glEnable(GL20.GL_BLEND);
+        Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+
+        shapes.setProjectionMatrix(interfaceCamera.combined);
+        shapes.begin(ShapeRenderer.ShapeType.Filled);
+        shapes.setColor(0f, 0f, 0f, 0.1f);
+        shapes.rect(0f, 0f, WORLD_WIDTH, WORLD_HEIGHT);
+        shapes.end();
+    }
+
     // taken from my previous game
-    private void drawDebugText(SpriteBatch batch, BitmapFont font) {
+    private void drawDebugText() {
         List<String> debugLines = new ArrayList<>();
 
         debugLines.add("X: " + map.getZelda().getX());
@@ -191,7 +212,7 @@ public class World {
         batch.end();
     }
 
-    public void drawWorldBorders(ShapeRenderer shapes, OrthographicCamera camera, Color color) {
+    public void drawWorldBorders(Color color) {
         shapes.setProjectionMatrix(camera.combined);
         shapes.begin(ShapeRenderer.ShapeType.Line);
 

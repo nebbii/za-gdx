@@ -11,8 +11,7 @@ public class Enemy extends Rectangle implements Actor {
 
     protected float health;
 
-    protected float searchSpeed;
-    protected float fightingSpeed;
+    protected float speed;
     protected float searchDuration;
     protected float searchDurationCap;
     protected float targetX;
@@ -99,16 +98,16 @@ public class Enemy extends Rectangle implements Actor {
 
         switch(getDirection()) {
             case LEFT:
-                setX(getX() - searchSpeed * deltaTime);
+                setX(getX() - speed * deltaTime);
                 break;
             case DOWN:
-                setY(getY() - searchSpeed * deltaTime);
+                setY(getY() - speed * deltaTime);
                 break;
             case UP:
-                setY(getY() + searchSpeed * deltaTime);
+                setY(getY() + speed * deltaTime);
                 break;
             case RIGHT:
-                setX(getX() + searchSpeed * deltaTime);
+                setX(getX() + speed * deltaTime);
                 break;
             default:
                 throw new IllegalStateException(this.getClass() + "->move(): Unhandled movement state" + getDirection());
@@ -325,11 +324,11 @@ public class Enemy extends Rectangle implements Actor {
         this.targetY = targetY;
     }
 
-    public float getSearchSpeed() {
-        return searchSpeed;
+    public float getSpeed() {
+        return speed;
     }
 
-    public void setSearchSpeed(float searchSpeed) {
-        this.searchSpeed = searchSpeed;
+    public void setSpeed(float speed) {
+        this.speed = speed;
     }
 }
