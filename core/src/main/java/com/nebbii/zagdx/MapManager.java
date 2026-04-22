@@ -222,6 +222,7 @@ public class MapManager {
         newActors.add(pickup);
     }
 
+
     public void loadOverworld() {
         overlay.loadOverworld(loader, "Overlay");
         collision.loadOverworld(loader, "Collision");
@@ -229,14 +230,15 @@ public class MapManager {
 
         actors = new ArrayList<>();
 
-        ActorJsonEntry[] entries = MapJsonLoader.load("gamedata/overworld.json");
+        MapData data = MapJsonLoader.load("gamedata/overworld.json", MapData.class);
 
-        for (ActorJsonEntry entry : entries) {
-            if ("ZeldaSpawn".equals(entry.type)) {
-                zelda.setPosition(entry.x, entry.y);
-                addActor(zelda);
-            }
-            else {
+        if (data.defaultSpawn != null) {
+              zelda.setPosition(data.defaultSpawn.x, data.defaultSpawn.y);
+              addActor(zelda);
+        }
+
+        if (data.actors != null) {
+            for (ActorJsonEntry entry : data.actors) {
                 addActor(createActorFromJsonEntry(entry));
             }
         }

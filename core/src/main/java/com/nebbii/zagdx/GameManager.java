@@ -74,7 +74,12 @@ public class GameManager {
             }
             break;
         case FADE_WARP:
-            world.getMapManager().freezeAllActors();
+            if (handleFade()) {
+                respawn();
+                initializeFadeIn();
+                setFadeToggle(FadeToggle.IN);
+                setGameState(GameState.FADE_IN);
+            }
             break;
         case MOVE:
             if (!world.getWorldCamera().isTransitioning()) {
