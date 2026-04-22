@@ -15,7 +15,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.nebbii.zagdx.GameManager.FadeState;
+import com.nebbii.zagdx.GameManager.FadeToggle;
 
 public class World {
     static final int WORLD_WIDTH = 384;
@@ -82,6 +82,7 @@ public class World {
         case MOVE:
         case FADE_GAMEOVER:
         case FADE_WARP:
+        case FADE_IN:
         case PAUSE_MAP:
         case PAUSE_ITEMS:
             input.logic();
@@ -110,6 +111,7 @@ public class World {
             break;
         case FADE_GAMEOVER:
         case FADE_WARP:
+        case FADE_IN:
             drawGame();
             drawItemScreen();
             drawHud();
@@ -184,11 +186,18 @@ public class World {
         Gdx.gl.glEnable(GL20.GL_BLEND);
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 
-        //float opacity = gameManager.getFadeState() == FadeState.FADE_IN ? 0 : 1;
+        float opacity;
+
+        if (gameManager.getFadeToggle() == FadeToggle.IN) {
+            opacity = 1 - (gameManager.getFade() / gameManager.getFadeCap());
+        }
+        else {
+            opacity = gameManager.getFade() / gameManager.getFadeCap();
+        }
 
         shapes.setProjectionMatrix(interfaceCamera.combined);
         shapes.begin(ShapeRenderer.ShapeType.Filled);
-        shapes.setColor(0f, 0f, 0f, gameManager.getFade() / gameManager.getFadeCap());
+        shapes.setColor(0f, 0f, 0f, opacity);
         shapes.rect(0f, 0f, WORLD_WIDTH, WORLD_HEIGHT);
         shapes.end();
     }

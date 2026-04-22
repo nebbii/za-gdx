@@ -20,17 +20,18 @@ public class GameManager {
         PAUSE_ITEMS,
         PAUSE_MAP,
         MOVE,
+        FADE_IN,
         FADE_GAMEOVER,
         FADE_WARP
     }
 
-    public enum FadeState {
-        FADE_IN,
-        FADE_OUT
+    public enum FadeToggle {
+        IN,
+        OUT
     }
 
     private GameState gameState;
-    private FadeState fadeState;
+    private FadeToggle fadeToggle;
 
     public GameManager(World world) {
         this.world = world;
@@ -38,7 +39,7 @@ public class GameManager {
         this.weapons = new ArrayList<Weapon>();
 
         gameState = GameState.PLAY;
-        fadeState = FadeState.FADE_OUT;
+        fadeToggle = FadeToggle.OUT;
 
         rubies = 0;
     }
@@ -52,16 +53,24 @@ public class GameManager {
             }
 
             if (world.getMapManager().getZelda().getHealth() <= 0) {
+                setFadeToggle(FadeToggle.OUT);
                 initializeFadeGameover();
             }
             break;
         case PAUSE_ITEMS:
         case PAUSE_MAP:
             break;
+        case FADE_IN:
+            if (handleFade()) {
+                unpauseGame();
+            }
+            break;
         case FADE_GAMEOVER:
             if (handleFade()) {
                 respawn();
-                setGameState(GameState.PLAY);
+                initializeFadeIn();
+                setFadeToggle(FadeToggle.IN);
+                setGameState(GameState.FADE_IN);
             }
             break;
         case FADE_WARP:
@@ -84,10 +93,15 @@ public class GameManager {
 
     public void initializeFadeGameover() {
         world.getMapManager().freezeAllActors();
-        setFade(0);
-        setFadeCap(5);
+        setFade(0f);
+        setFadeCap(5f);
         setGameState(GameState.FADE_GAMEOVER);
         world.getMapManager().getZelda().onDeath();
+    }
+
+    public void initializeFadeIn() {
+        setFade(0f);
+        setFadeCap(0.5f);
     }
 
     public boolean handleFade() {
@@ -104,7 +118,6 @@ public class GameManager {
         Zelda zelda = world.getMapManager().getZelda();
 
         zelda.setHealth(zelda.getMaxHealth());
-        zelda.setState(State.ACTIVE);
         zelda.setAnimState(AnimState.STOPDOWN);
         zelda.setPosition(zelda.getSpawnX(), zelda.getSpawnY());
         world.getWorldCamera().resetPosition();
@@ -154,12 +167,12 @@ public class GameManager {
         this.gameState = gameState;
     }
 
-    public FadeState getFadeState() {
-        return fadeState;
+    public FadeToggle getFadeToggle() {
+        return fadeToggle;
     }
 
-    public void setFadeState(FadeState fadeState) {
-        this.fadeState = fadeState;
+    public void setFadeToggle(FadeToggle fadeToggle) {
+        this.fadeToggle = fadeToggle;
     }
 
     public void togglePause() {
