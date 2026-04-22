@@ -228,9 +228,10 @@ public class MapManager {
         collision.loadOverworld(loader, "Collision");
         renderer.loadOverworld(loader);
 
-        actors = new ArrayList<>();
 
         MapData data = MapJsonLoader.load("gamedata/overworld.json", MapData.class);
+
+        actors.clear();
 
         if (data.defaultSpawn != null) {
               zelda.setPosition(data.defaultSpawn.x, data.defaultSpawn.y);

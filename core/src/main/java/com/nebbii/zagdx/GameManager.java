@@ -122,6 +122,8 @@ public class GameManager {
     public void respawn() {
         Zelda zelda = world.getMapManager().getZelda();
 
+        world.getMapManager().loadOverworld();
+
         zelda.setHealth(zelda.getMaxHealth());
         zelda.setAnimState(AnimState.STOPDOWN);
         zelda.setPosition(zelda.getSpawnX(), zelda.getSpawnY());
