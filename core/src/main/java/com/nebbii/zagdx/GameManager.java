@@ -53,7 +53,7 @@ public class GameManager {
             }
 
             if (world.getMapManager().getZelda().getHealth() <= 0) {
-                setFadeToggle(FadeToggle.OUT);
+                Gdx.app.log("GameManager", "Zelda has died! Initiate game over sequence");
                 initializeFadeGameover();
             }
             break;
@@ -75,6 +75,7 @@ public class GameManager {
             break;
         case FADE_WARP:
             if (handleFade()) {
+                Gdx.app.log("GameManager", "Fade out done, respawn at spawn point");
                 respawn();
                 initializeFadeIn();
                 setFadeToggle(FadeToggle.IN);
@@ -98,6 +99,7 @@ public class GameManager {
 
     public void initializeFadeGameover() {
         world.getMapManager().freezeAllActors();
+        setFadeToggle(FadeToggle.OUT);
         setFade(0f);
         setFadeCap(5f);
         setGameState(GameState.FADE_GAMEOVER);
