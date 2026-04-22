@@ -23,8 +23,6 @@ public class Zelda extends Rectangle implements Actor {
     private ActorType type;
     private int drawOrder;
 
-    private boolean normalizeDiagonals = false;
-
     private float speed = 120f;
     private int health;
     private int maxHealth;

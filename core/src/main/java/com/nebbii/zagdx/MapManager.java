@@ -228,7 +228,6 @@ public class MapManager {
         collision.loadOverworld(loader, "Collision");
         renderer.loadOverworld(loader);
 
-
         MapData data = MapJsonLoader.load("gamedata/overworld.json", MapData.class);
 
         actors.clear();
