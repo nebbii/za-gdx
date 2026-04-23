@@ -88,6 +88,9 @@ public class Zelda extends Rectangle implements Actor {
             if (t < 0.04f) {
                 batch.draw(animation.playCurrentAnimation(), animation.getX(), animation.getY());
             }
+            else {
+                animation.playCurrentAnimation();
+            }
         }
         else {
             batch.draw(animation.playCurrentAnimation(), animation.getX(), animation.getY());
