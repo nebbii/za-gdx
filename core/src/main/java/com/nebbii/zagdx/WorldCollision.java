@@ -136,7 +136,7 @@ public class WorldCollision {
     private void collideZeldaWithSpecial(PolygonMapObject polygonObject, Zelda zelda) {
         switch(polygonObject.getName()) {
         case "andor":
-            if(!game.getTreasures().contains(Treasure.VIAL_OF_WIND)) {
+            if(!game.getTreasures().contains(Treasure.RED_BOOTS)) {
                 resolveRectangleVsPolygon(zelda, polygonObject.getPolygon());
             }
             break;
