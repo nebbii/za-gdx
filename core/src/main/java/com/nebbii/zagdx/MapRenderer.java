@@ -86,8 +86,18 @@ public class MapRenderer {
         batch.end();
     }
 
+    public void loadTiledRenderer(MapLoader mapLoader, String mapName) {
+        switch(mapName) {
+        case "overworld":
+            renderer = new OrthogonalTiledMapRenderer(mapLoader.getMapOverworld(), 1f, batch);
+            break;
+        case "shrine_of_earth":
+            renderer = new OrthogonalTiledMapRenderer(mapLoader.getMapShrineOfEarth(), 1f, batch);
+            break;
+        }
+    }
+
     public void loadOverworld(MapLoader mapLoader) {
-        renderer = new OrthogonalTiledMapRenderer(mapLoader.getMapOverworld(), 1f, batch);
     }
 
     public void loadShrineOfEarth(MapLoader mapLoader) {

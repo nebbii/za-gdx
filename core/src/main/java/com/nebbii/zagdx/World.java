@@ -34,7 +34,7 @@ public class World {
 
     private SpriteBatch batch;
 
-    private MapManager map;
+    private MapManager mapManager;
 
     private ShapeRenderer shapes;
 
@@ -49,15 +49,15 @@ public class World {
         camera = (OrthographicCamera) worldViewport.getCamera();
         input = new GameInput(this);
 
-        map = new MapManager(this, batch, camera);
+        mapManager = new MapManager(this, batch, camera);
         gameManager = new GameManager(this);
+        worldCamera = new WorldCamera(camera, mapManager);
 
-        map.loadOverworld();
+        mapManager.loadMapByName("overworld");
 
         shapes = new ShapeRenderer();
 
-        worldCamera = new WorldCamera(camera, map);
-        worldCollision = new WorldCollision(map, gameManager);
+        worldCollision = new WorldCollision(mapManager, gameManager);
 
         worldBorders = new Rectangle[4];
         for (int i = 0; i < worldBorders.length; i++) {
@@ -87,7 +87,7 @@ public class World {
         case PAUSE_MAP:
         case PAUSE_ITEMS:
             input.logic();
-            map.logic();
+            mapManager.logic();
             gameManager.logic();
             worldCamera.logic();
             updateWorldBorders();
@@ -129,24 +129,24 @@ public class World {
      * the debug stuff
      */
     public void drawGame() {
-        map.renderer.draw();
-        map.mask.beginMask(camera);
+        mapManager.renderer.draw();
+        mapManager.mask.beginMask(camera);
 
-        for (PolygonMapObject object : map.overlay.getPolygonObjects()) {
-            map.mask.maskPolygon(object.getPolygon());
+        for (PolygonMapObject object : mapManager.overlay.getPolygonObjects()) {
+            mapManager.mask.maskPolygon(object.getPolygon());
         }
 
-        map.mask.endMask();
+        mapManager.mask.endMask();
 
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
-        map.drawActors(batch);
+        mapManager.drawActors(batch);
         batch.end();
 
-        map.mask.disable();
+        mapManager.mask.disable();
 
         // debug
-        map.drawBoundingBoxes(shapes, camera);
+        mapManager.drawBoundingBoxes(shapes, camera);
     }
 
     public void drawItemScreen() {
@@ -206,14 +206,14 @@ public class World {
     private void drawDebugText() {
         List<String> debugLines = new ArrayList<>();
 
-        debugLines.add("X: " + map.getZelda().getX());
-        debugLines.add("Y: " + map.getZelda().getY());
-        //debugLines.add("rX: " + getRelativePositionX(map.getZelda().getX()));
-        //debugLines.add("rY: " + getRelativePositionY(map.getZelda().getY()));
+        debugLines.add("X: " + mapManager.getZelda().getX());
+        debugLines.add("Y: " + mapManager.getZelda().getY());
+        //debugLines.add("rX: " + getRelativePositionX(mapManager.getZelda().getX()));
+        //debugLines.add("rY: " + getRelativePositionY(mapManager.getZelda().getY()));
         debugLines.add("cellColumn: " + worldCamera.getTargetCellColumn());
         debugLines.add("cellRow: " + worldCamera.getTargetCellRow());
-        debugLines.add("Equip: " + map.getZelda().getCurrentItem().toString());
-        //debugLines.add("State: " + map.getZelda().getState());
+        debugLines.add("Equip: " + mapManager.getZelda().getCurrentItem().toString());
+        //debugLines.add("State: " + mapManager.getZelda().getState());
         debugLines.add("GameState: " + gameManager.getGameState());
 
         batch.setProjectionMatrix(interfaceCamera.combined);
@@ -303,7 +303,7 @@ public class World {
     }
 
     public MapManager getMapManager() {
-        return map;
+        return mapManager;
     }
 
     public GameManager getGameManager() {
@@ -350,7 +350,7 @@ public class World {
 
     public void dispose() {
         batch.dispose();
-        map.dispose();
+        mapManager.dispose();
         images.dispose();
     }
 }

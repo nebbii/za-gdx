@@ -17,14 +17,21 @@ public class MapLayerObjects {
     public MapLayerObjects() {
     }
 
-    public void loadOverworld(MapLoader mapLoader, String layerName) {
-        MapLayer layer = mapLoader.getMapOverworld().getLayers().get(layerName);
-        objects = layer.getObjects();
-    }
+    public void loadObjectsFromLayer(MapLoader mapLoader, String mapName, String layerName) {
+        MapLayer layer;
 
-    public void loadShrineOfEarth(MapLoader mapLoader, String layerName) {
-        MapLayer layer = mapLoader.getMapShrineOfEarth().getLayers().get(layerName);
-        objects = layer.getObjects();
+        switch(mapName) {
+        case "overworld":
+            layer = mapLoader.getMapOverworld().getLayers().get(layerName);
+            objects = layer.getObjects();
+            break;
+        case "shrine_of_earth":
+            layer = mapLoader.getMapOverworld().getLayers().get(layerName);
+            objects = layer.getObjects();
+            break;
+        default:
+            // TODO: throw exception
+        }
     }
 
     public void drawBoundingBoxes(ShapeRenderer shapes, OrthographicCamera camera, Color color) {

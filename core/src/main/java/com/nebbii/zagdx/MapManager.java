@@ -224,14 +224,13 @@ public class MapManager {
         newActors.add(pickup);
     }
 
+    public void loadMapByName(String mapName) {
+        overlay.loadObjectsFromLayer(loader, mapName, "Overlay");
+        collision.loadObjectsFromLayer(loader, mapName, "Collision");
+        special.loadObjectsFromLayer(loader, mapName, "Special");
+        renderer.loadTiledRenderer(loader, mapName);
 
-    public void loadOverworld() {
-        overlay.loadOverworld(loader, "Overlay");
-        collision.loadOverworld(loader, "Collision");
-        special.loadOverworld(loader, "Special");
-        renderer.loadOverworld(loader);
-
-        MapData data = MapJsonLoader.load("gamedata/overworld.json", MapData.class);
+        MapData data = MapJsonLoader.load("gamedata/" + mapName + ".json", MapData.class);
 
         actors.clear();
 
@@ -241,24 +240,16 @@ public class MapManager {
         for (ActorJsonEntry entry : data.actors) {
             addActor(createActorFromJsonEntry(entry));
         }
+
+        world.getWorldCamera().resetPosition();
+    }
+
+    public void loadOverworld() {
+        loadMapByName("overworld");
     }
 
     public void loadShrineOfEarth() {
-        overlay.loadShrineOfEarth(loader, "Overlay");
-        collision.loadShrineOfEarth(loader, "Collision");
-        special.loadShrineOfEarth(loader, "Special");
-        renderer.loadShrineOfEarth(loader);
-
-        MapData data = MapJsonLoader.load("gamedata/shrine_of_earth.json", MapData.class);
-
-        actors.clear();
-
-        zelda.setPosition(data.defaultSpawn.x, data.defaultSpawn.y);
-        addActor(zelda);
-
-        for (ActorJsonEntry entry : data.actors) {
-            addActor(createActorFromJsonEntry(entry));
-        }
+        loadMapByName("shrine_of_earth");
     }
 
     // initialize actors based on class names from json files, unique parameters through switch
