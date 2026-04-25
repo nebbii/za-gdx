@@ -6,8 +6,7 @@ Assets need to be ripped from a backup of the game, script for this is still und
 ## Running the game
 First you'll need to run the bin/cue rip script to get the assets for the game. 
 Obtain a rip of the game and run the following commands:
-- `git submodule init`
-- `git submodule update`
+- `git submodule init && git submodule update`
 - `python build.py Zelda's\ Adventure.bin assets/export`
 ### Building an executable
 1. `./gradlew lwjgl3:build`
