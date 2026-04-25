@@ -235,15 +235,29 @@ public class MapManager {
 
         actors.clear();
 
-        if (data.defaultSpawn != null) {
-              zelda.setPosition(data.defaultSpawn.x, data.defaultSpawn.y);
-              addActor(zelda);
-        }
+        zelda.setPosition(data.defaultSpawn.x, data.defaultSpawn.y);
+        addActor(zelda);
 
-        if (data.actors != null) {
-            for (ActorJsonEntry entry : data.actors) {
-                addActor(createActorFromJsonEntry(entry));
-            }
+        for (ActorJsonEntry entry : data.actors) {
+            addActor(createActorFromJsonEntry(entry));
+        }
+    }
+
+    public void loadShrineOfEarth() {
+        overlay.loadShrineOfEarth(loader, "Overlay");
+        collision.loadShrineOfEarth(loader, "Collision");
+        special.loadShrineOfEarth(loader, "Special");
+        renderer.loadShrineOfEarth(loader);
+
+        MapData data = MapJsonLoader.load("gamedata/shrine_of_earth.json", MapData.class);
+
+        actors.clear();
+
+        zelda.setPosition(data.defaultSpawn.x, data.defaultSpawn.y);
+        addActor(zelda);
+
+        for (ActorJsonEntry entry : data.actors) {
+            addActor(createActorFromJsonEntry(entry));
         }
     }
 

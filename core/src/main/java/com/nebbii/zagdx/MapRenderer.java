@@ -90,6 +90,10 @@ public class MapRenderer {
         renderer = new OrthogonalTiledMapRenderer(mapLoader.getMapOverworld(), 1f, batch);
     }
 
+    public void loadShrineOfEarth(MapLoader mapLoader) {
+        renderer = new OrthogonalTiledMapRenderer(mapLoader.getMapShrineOfEarth(), 1f, batch);
+    }
+
     public int getMapWidthInCells() {
         return renderer.getMap().getProperties().get("width", Integer.class);
     }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="left-up" width="7" height="10" tilewidth="384" tileheight="240" infinite="0" nextlayerid="7" nextobjectid="2185">
+ <tileset firstgid="1" source="export_underworld_backgrounds.tsx"/>
+ <tileset firstgid="185" source="export_underworld_metadata.tsx"/>
+ <layer id="5" name="Background" width="7" height="10">
+  <data encoding="csv">
+0,0,0,0,0,0,35,
+0,0,0,0,0,0,34,
+0,0,0,0,31,32,33,
+0,0,0,29,30,0,0,
+0,0,0,28,0,0,0,
+0,0,0,27,0,26,0,
+14,15,16,17,23,24,25,
+0,0,0,18,0,0,0,
+0,0,0,19,20,0,0,
+0,0,0,0,21,22,0
+</data>
+ </layer>
+ <layer id="4" name="Metadata" width="7" height="10" opacity="0.75">
+  <data encoding="csv">
+0,0,0,0,0,0,219,
+0,0,0,0,0,0,218,
+0,0,0,0,215,216,217,
+0,0,0,213,214,0,0,
+0,0,0,212,0,0,0,
+0,0,0,211,0,210,0,
+198,199,200,201,207,208,209,
+0,0,0,202,0,0,0,
+0,0,0,203,204,0,0,
+0,0,0,0,205,206,0
+</data>
+ </layer>
+ <objectgroup id="2" name="Collision"/>
+ <objectgroup id="6" name="Special"/>
+ <objectgroup id="3" name="Overlay"/>
+</map>

@@ -22,6 +22,11 @@ public class MapLayerObjects {
         objects = layer.getObjects();
     }
 
+    public void loadShrineOfEarth(MapLoader mapLoader, String layerName) {
+        MapLayer layer = mapLoader.getMapShrineOfEarth().getLayers().get(layerName);
+        objects = layer.getObjects();
+    }
+
     public void drawBoundingBoxes(ShapeRenderer shapes, OrthographicCamera camera, Color color) {
         shapes.setProjectionMatrix(camera.combined);
         shapes.begin(ShapeRenderer.ShapeType.Line);
