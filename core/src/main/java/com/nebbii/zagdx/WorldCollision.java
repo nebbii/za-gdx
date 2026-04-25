@@ -23,6 +23,7 @@ public class WorldCollision {
     private GameManager game;
 
     private MapLayerObjects collision;
+    private MapLayerObjects special;
     public ArrayList<Actor> actors;
 
     private final EarClippingTriangulator triangulator = new EarClippingTriangulator();
@@ -31,6 +32,7 @@ public class WorldCollision {
         this.map = map;
         this.game = game;
         this.collision = map.collision;
+        this.special = map.special;
         this.actors = map.actors;
     }
 
@@ -87,27 +89,59 @@ public class WorldCollision {
     }
 
     private void collideActorsWithCollision() {
-        List<PolygonMapObject> polygonObjects = this.collision.getPolygonObjects();
+        List<PolygonMapObject> collisionObjects = this.collision.getPolygonObjects();
+        List<PolygonMapObject> specialObjects = this.special.getPolygonObjects();
 
         for (Actor actor : actors) {
             if (!actor.isSolid()) continue;
 
-            Rectangle actorRect = actor.getCollisionBox();
+            Rectangle actorRectangle = actor.getCollisionBox();
 
-            for (PolygonMapObject polygonObject : polygonObjects) {
-                Polygon polygon = polygonObject.getPolygon();
+            for (PolygonMapObject collisionObject : collisionObjects) {
+                Polygon polygon = collisionObject.getPolygon();
 
-                // Cheap overlap check
-                if (!actorRect.overlaps(polygon.getBoundingRectangle())) {
+                // cheap overlap check
+                if (!actorRectangle.overlaps(polygon.getBoundingRectangle())) {
                     continue;
                 }
 
-                resolveRectangleVsPolygon(actorRect, polygon);
+                resolveRectangleVsPolygon(actorRectangle, polygon);
                 if (actor instanceof Enemy) {
                     Enemy enemy = (Enemy) actor;
                     enemy.setDirection(enemy.getRandomDirection());
                 }
             }
+
+            for (PolygonMapObject specialObject : specialObjects) {
+                Polygon polygon = specialObject.getPolygon();
+
+                // cheap overlap check
+                if (!actorRectangle.overlaps(polygon.getBoundingRectangle())) {
+                    continue;
+                }
+
+                if (actor instanceof Enemy) {
+                    Enemy enemy = (Enemy) actor;
+
+                    resolveRectangleVsPolygon(actorRectangle, polygon);
+                    enemy.setDirection(enemy.getRandomDirection());
+                }
+                else if (actor instanceof Zelda) {
+                    collideZeldaWithSpecial(specialObject, (Zelda) actor);
+                }
+            }
+        }
+    }
+
+    private void collideZeldaWithSpecial(PolygonMapObject polygonObject, Zelda zelda) {
+        switch(polygonObject.getName()) {
+        case "andor":
+            if(!game.getTreasures().contains(Treasure.VIAL_OF_WIND)) {
+                resolveRectangleVsPolygon(zelda, polygonObject.getPolygon());
+            }
+            break;
+        default:
+            resolveRectangleVsPolygon(zelda, polygonObject.getPolygon());
         }
     }
 
