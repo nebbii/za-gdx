@@ -33,8 +33,8 @@ public class Zelda extends Rectangle implements Actor {
     private float hitboxOffsetX = -8;
     private float hitboxOffsetY = 0;
 
-    private float spawnX = 0;
-    private float spawnY = 0;
+    private float spawnX = -1;
+    private float spawnY = -1;
 
     public Zelda(World world, MapManager map) {
         setWidth(6);
@@ -213,6 +213,8 @@ public class Zelda extends Rectangle implements Actor {
     }
 
     public void onDeath() {
+        setHealth(getMaxHealth());
+        setAnimState(AnimState.STOPDOWN);
         setAnimState(AnimState.GAMEOVER);
     }
 
@@ -237,17 +239,6 @@ public class Zelda extends Rectangle implements Actor {
             default:
                 throw new IllegalStateException("Zelda->getDirection(): Unhandled animation state: " + getAnimState());
         }
-    }
-
-    // update spawn point if it's unset
-    public Rectangle setPosition(float x, float y) {
-        super.setPosition(x, y);
-
-        if(spawnX == 0 && spawnY == 0) {
-            updateSpawn(x, y);
-        }
-
-        return this.getCollisionBox();
     }
 
     public void updateSpawn(float x, float y) {

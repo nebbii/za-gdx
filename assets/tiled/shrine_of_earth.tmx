@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="left-up" width="7" height="10" tilewidth="384" tileheight="240" infinite="0" nextlayerid="7" nextobjectid="2185">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="left-up" width="7" height="10" tilewidth="384" tileheight="240" infinite="0" nextlayerid="7" nextobjectid="2186">
  <tileset firstgid="1" source="export_underworld_backgrounds.tsx"/>
  <tileset firstgid="185" source="export_underworld_metadata.tsx"/>
  <layer id="5" name="Background" width="7" height="10">
@@ -31,6 +31,10 @@
 </data>
  </layer>
  <objectgroup id="2" name="Collision"/>
- <objectgroup id="6" name="Special"/>
+ <objectgroup id="6" name="Special">
+  <object id="2185" name="exit_earth" x="75.0909" y="1520">
+   <polygon points="0,0 4.36364,-0.181818 6.90909,-2 10,-2 15.8182,-5.27273 18,-5.27273 21.0909,-8 23.6364,-8.90909 36.1818,-8.36364 39.4545,-10.7273 39.6364,-16.1818 34.3636,-20 20,-19.8182 11.4545,-14.9091 8.18182,-14.5455 3.81818,-11.8182 -0.363636,-11.8182 -2.72727,-8.18182 -2.72727,-3.27273"/>
+  </object>
+ </objectgroup>
  <objectgroup id="3" name="Overlay"/>
 </map>

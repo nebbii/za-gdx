@@ -71,7 +71,7 @@ public class GameManager {
             break;
         case FADE_GAMEOVER:
             if (handleFade()) {
-                respawn();
+                respawnZelda();
                 initializeFadeIn();
                 setFadeToggle(FadeToggle.IN);
                 setGameState(GameState.FADE_IN);
@@ -80,6 +80,7 @@ public class GameManager {
         case FADE_WARP:
             if (handleFade()) {
                 world.getMapManager().loadMapByName(nextMap);
+                respawnZelda();
                 initializeFadeIn();
                 setFadeToggle(FadeToggle.IN);
                 setGameState(GameState.FADE_IN);
@@ -132,13 +133,9 @@ public class GameManager {
         return false;
     }
 
-    public void respawn() {
+    public void respawnZelda() {
         Zelda zelda = world.getMapManager().getZelda();
 
-        world.getMapManager().loadOverworld();
-
-        zelda.setHealth(zelda.getMaxHealth());
-        zelda.setAnimState(AnimState.STOPDOWN);
         zelda.setPosition(zelda.getSpawnX(), zelda.getSpawnY());
         world.getWorldCamera().resetPosition();
     }

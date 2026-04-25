@@ -236,7 +236,11 @@ public class MapManager {
 
         actors.clear();
 
-        zelda.setPosition(data.defaultSpawn.x, data.defaultSpawn.y);
+        if (zelda.getSpawnX() == -1 && zelda.getSpawnY() == -1) {
+            zelda.updateSpawn(data.defaultSpawn.x, data.defaultSpawn.y);
+        }
+
+        zelda.setPosition(zelda.getSpawnX(), zelda.getSpawnY());
         addActor(zelda);
 
         for (ActorJsonEntry entry : data.actors) {

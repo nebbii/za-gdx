@@ -142,6 +142,12 @@ public class WorldCollision {
             break;
         case "entrance_earth":
             game.setNextMap("shrine_of_earth");
+            zelda.updateSpawn(136.32f, 790.60f);
+            game.initializeFadeWarp();
+            break;
+        case "exit_earth":
+            game.setNextMap("overworld");
+            zelda.updateSpawn(2548.19f, 149.02f);
             game.initializeFadeWarp();
             break;
         default:
