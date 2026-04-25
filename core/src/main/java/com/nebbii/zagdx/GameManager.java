@@ -15,6 +15,8 @@ public class GameManager {
     private float fade;
     private float fadeCap;
 
+    private String nextMap;
+
     public enum GameState {
         PLAY,
         PAUSE_ITEMS,
@@ -38,8 +40,10 @@ public class GameManager {
         this.treasures = new ArrayList<Treasure>();
         this.weapons = new ArrayList<Weapon>();
 
-        gameState = GameState.PLAY;
-        fadeToggle = FadeToggle.OUT;
+        nextMap = "overworld";
+
+        gameState = GameState.FADE_WARP;
+        fadeToggle = FadeToggle.IN;
 
         rubies = 0;
     }
@@ -75,8 +79,7 @@ public class GameManager {
             break;
         case FADE_WARP:
             if (handleFade()) {
-                Gdx.app.log("GameManager", "Fade out done, respawn at spawn point");
-                respawn();
+                world.getMapManager().loadMapByName(nextMap);
                 initializeFadeIn();
                 setFadeToggle(FadeToggle.IN);
                 setGameState(GameState.FADE_IN);
@@ -104,6 +107,14 @@ public class GameManager {
         setFadeCap(5f);
         setGameState(GameState.FADE_GAMEOVER);
         world.getMapManager().getZelda().onDeath();
+    }
+
+    public void initializeFadeWarp() {
+        world.getMapManager().freezeAllActors();
+        setFadeToggle(FadeToggle.OUT);
+        setFade(0f);
+        setFadeCap(1f);
+        setGameState(GameState.FADE_WARP);
     }
 
     public void initializeFadeIn() {
@@ -216,5 +227,13 @@ public class GameManager {
 
     public void setFadeCap(float fadeCap) {
         this.fadeCap = fadeCap;
+    }
+
+    public String getNextMap() {
+        return nextMap;
+    }
+
+    public void setNextMap(String nextMap) {
+        this.nextMap = nextMap;
     }
 }

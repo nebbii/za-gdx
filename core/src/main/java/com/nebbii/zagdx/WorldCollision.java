@@ -140,6 +140,10 @@ public class WorldCollision {
                 resolveRectangleVsPolygon(zelda, polygonObject.getPolygon());
             }
             break;
+        case "entrance_earth":
+            game.setNextMap("shrine_of_earth");
+            game.initializeFadeWarp();
+            break;
         default:
             resolveRectangleVsPolygon(zelda, polygonObject.getPolygon());
         }

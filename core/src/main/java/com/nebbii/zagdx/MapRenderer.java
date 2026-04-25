@@ -31,6 +31,8 @@ public class MapRenderer {
         this.shapes = new ShapeRenderer();
 
         this.font = new BitmapFont();
+
+        renderer = new OrthogonalTiledMapRenderer(null, 1f, batch);
     }
 
     public void draw() {
@@ -89,19 +91,12 @@ public class MapRenderer {
     public void loadTiledRenderer(MapLoader mapLoader, String mapName) {
         switch(mapName) {
         case "overworld":
-            renderer = new OrthogonalTiledMapRenderer(mapLoader.getMapOverworld(), 1f, batch);
+            renderer.setMap(mapLoader.getMapOverworld());
             break;
         case "shrine_of_earth":
-            renderer = new OrthogonalTiledMapRenderer(mapLoader.getMapShrineOfEarth(), 1f, batch);
+            renderer.setMap(mapLoader.getMapShrineOfEarth());
             break;
         }
-    }
-
-    public void loadOverworld(MapLoader mapLoader) {
-    }
-
-    public void loadShrineOfEarth(MapLoader mapLoader) {
-        renderer = new OrthogonalTiledMapRenderer(mapLoader.getMapShrineOfEarth(), 1f, batch);
     }
 
     public int getMapWidthInCells() {

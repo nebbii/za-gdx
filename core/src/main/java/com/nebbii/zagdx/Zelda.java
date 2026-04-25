@@ -39,7 +39,7 @@ public class Zelda extends Rectangle implements Actor {
     public Zelda(World world, MapManager map) {
         setWidth(6);
         setHeight(6);
-        setState(State.ACTIVE);
+        setState(State.IDLE);
         setAnimState(AnimState.STOPDOWN);
         setType(ActorType.PLAYER);
         setHealth(60);

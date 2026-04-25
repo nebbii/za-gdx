@@ -33,11 +33,11 @@ public class MapManager {
 
         this.world = world;
 
+        renderer = new MapRenderer(this, batch, camera);
         loader = new MapLoader();
         overlay = new MapLayerObjects();
         collision = new MapLayerObjects();
         special = new MapLayerObjects();
-        renderer = new MapRenderer(this, batch, camera);
         mask = new MapRendererMask();
 
         actors = new ArrayList<>();
@@ -225,6 +225,8 @@ public class MapManager {
     }
 
     public void loadMapByName(String mapName) {
+        Gdx.app.log("MapManager", "loading map: " + mapName);
+
         overlay.loadObjectsFromLayer(loader, mapName, "Overlay");
         collision.loadObjectsFromLayer(loader, mapName, "Collision");
         special.loadObjectsFromLayer(loader, mapName, "Special");

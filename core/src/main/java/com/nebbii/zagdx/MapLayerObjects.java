@@ -26,7 +26,7 @@ public class MapLayerObjects {
             objects = layer.getObjects();
             break;
         case "shrine_of_earth":
-            layer = mapLoader.getMapOverworld().getLayers().get(layerName);
+            layer = mapLoader.getMapShrineOfEarth().getLayers().get(layerName);
             objects = layer.getObjects();
             break;
         default:

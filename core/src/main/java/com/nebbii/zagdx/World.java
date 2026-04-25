@@ -50,10 +50,8 @@ public class World {
         input = new GameInput(this);
 
         mapManager = new MapManager(this, batch, camera);
-        gameManager = new GameManager(this);
         worldCamera = new WorldCamera(camera, mapManager);
-
-        mapManager.loadMapByName("overworld");
+        gameManager = new GameManager(this);
 
         shapes = new ShapeRenderer();
 
@@ -63,7 +61,6 @@ public class World {
         for (int i = 0; i < worldBorders.length; i++) {
             worldBorders[i] = new Rectangle();
         }
-        updateWorldBorders();
 
         font = new BitmapFont();
 
@@ -74,6 +71,9 @@ public class World {
 
         WorldShaders.init();
         this.batch = batch;
+
+        mapManager.loadMapByName("overworld");
+        updateWorldBorders();
     }
 
     public void logic() {
