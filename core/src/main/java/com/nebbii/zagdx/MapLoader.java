@@ -7,7 +7,7 @@ public class MapLoader {
     private TiledMap mapOverworld;
 
     public MapLoader() {
-        mapOverworld = new TmxMapLoader().load("tiled/overworld_edge_detection_overlap_2.tmx");
+        mapOverworld = new TmxMapLoader().load("tiled/overworld.tmx");
     }
 
     public TiledMap getMapOverworld() {
