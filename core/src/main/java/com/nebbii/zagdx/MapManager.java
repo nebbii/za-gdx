@@ -17,6 +17,7 @@ public class MapManager {
     public MapLoader loader;
     public MapLayerObjects overlay;
     public MapLayerObjects collision;
+    public MapLayerObjects special;
     public MapRenderer renderer;
     public MapRendererMask mask;
 
@@ -35,6 +36,7 @@ public class MapManager {
         loader = new MapLoader();
         overlay = new MapLayerObjects();
         collision = new MapLayerObjects();
+        special = new MapLayerObjects();
         renderer = new MapRenderer(this, batch, camera);
         mask = new MapRendererMask();
 
@@ -226,6 +228,7 @@ public class MapManager {
     public void loadOverworld() {
         overlay.loadOverworld(loader, "Overlay");
         collision.loadOverworld(loader, "Collision");
+        special.loadOverworld(loader, "Special");
         renderer.loadOverworld(loader);
 
         MapData data = MapJsonLoader.load("gamedata/overworld.json", MapData.class);
