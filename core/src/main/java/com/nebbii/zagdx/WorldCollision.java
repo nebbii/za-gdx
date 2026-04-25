@@ -40,11 +40,7 @@ public class WorldCollision {
         collideZeldaWithPickups();
         collideProjectilesWithEnemies();
         checkOverlapAlertBoxes();
-
-        // @nebbii: not sure if this is needed anymore?
-        if (game.getGameState() == GameState.PLAY) {
-            collideEnemiesWithWorldBorders();
-        }
+        collideEnemiesWithWorldBorders();
     }
 
     private void collideZeldaWithPickups() {

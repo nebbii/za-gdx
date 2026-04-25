@@ -79,6 +79,7 @@ public class World {
     public void logic() {
         switch(gameManager.getGameState()) {
         case PLAY:
+            worldCollision.logic();
         case MOVE:
         case FADE_GAMEOVER:
         case FADE_WARP:
@@ -90,7 +91,6 @@ public class World {
             gameManager.logic();
             worldCamera.logic();
             updateWorldBorders();
-            worldCollision.logic();
             menuPause.logic();
             break;
         default:
