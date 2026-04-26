@@ -2,7 +2,7 @@
 <map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="left-up" width="7" height="10" tilewidth="384" tileheight="240" infinite="0" nextlayerid="7" nextobjectid="2235">
  <tileset firstgid="1" source="export_underworld_backgrounds.tsx"/>
  <tileset firstgid="185" source="export_underworld_metadata.tsx"/>
- <layer id="5" name="Background" width="7" height="10" visible="0">
+ <layer id="5" name="Background" width="7" height="10">
   <data encoding="csv">
 0,0,0,0,0,0,35,
 0,0,0,0,0,0,34,
