@@ -11,13 +11,12 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ShortArray;
 import com.nebbii.zagdx.Enemy.EnemyState;
-import com.nebbii.zagdx.GameManager.GameState;
 
 /*
  * Handling all collision in the world, knows all actors and map objects
  */
 public class WorldCollision {
-    private static final int MAX_PUSH_ITERATIONS = 8; // how many polygon nudges per frame
+    private static final int MAX_PUSH_ITERATIONS = 8; // how many polygon nudges per tick
 
     private MapManager map;
     private GameManager game;
@@ -69,8 +68,7 @@ public class WorldCollision {
 
     private void collideProjectilesWithEnemies() {
         for (Actor overlapper : actors) {
-            if (!overlapper.isActive()) continue;
-            if (!(overlapper instanceof Enemy)) continue;
+            if (!(overlapper instanceof Enemy) || !overlapper.isActive()) continue;
 
             Enemy enemy = (Enemy) overlapper;
 
@@ -93,7 +91,7 @@ public class WorldCollision {
         List<PolygonMapObject> specialObjects = this.special.getPolygonObjects();
 
         for (Actor actor : actors) {
-            if (!actor.isSolid()) continue;
+            if (!actor.isSolid() || !actor.isActive()) continue;
 
             Rectangle actorRectangle = actor.getCollisionBox();
 
@@ -163,8 +161,7 @@ public class WorldCollision {
         Rectangle topBorder = borders[3];
 
         for (Actor actor : actors) {
-            if (!(actor instanceof Enemy)) continue;
-            if (!actor.isActive()) continue;
+            if (!actor.isActive() || !(actor instanceof Enemy)) continue;
 
             Enemy enemy = (Enemy) actor;
 
@@ -196,8 +193,7 @@ public class WorldCollision {
 
     private void checkOverlapAlertBoxes() {
         for (Actor actor : actors) {
-            if (!actor.isActive()) continue;
-            if (!(actor instanceof Enemy)) continue;
+            if (!actor.isActive() || !(actor instanceof Enemy)) continue;
 
             Enemy enemy = (Enemy) actor;
             Zelda zelda = map.getZelda();
