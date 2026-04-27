@@ -137,7 +137,13 @@ public class GameManager {
 
         if (hasDied) {
             zelda.revive();
-            setCurrentMap("overworld");
+            switch(currentMap) {
+            case "shrine_of_earth":
+                world.getMapManager().updateSpawnLocation("exit_earth");
+                break;
+            default:
+                world.getMapManager().updateSpawnLocation("overworld_pedestal");
+            }
         }
         world.getMapManager().loadMapByName(currentMap);
 
