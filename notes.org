@@ -3,41 +3,41 @@
 ** Map
 *** DONE Load collision objects
 *** TODO Overworld
-**** DONE Overlays
-**** TODO Collision
-**** TODO Load actors upon entering tile
-*** TODO Shrine of Earth
 **** TODO Overlays
 **** TODO Collision
-**** TODO Load actors upon entering tile
+**** TODO Actor placement
+*** TODO Shrine of Earth
+**** DONE Overlays
+**** DONE Collision
+**** TODO Actor placement
 *** TODO Shrine of Illusion
 **** TODO Overlays
 **** TODO Collision
-**** TODO Load actors upon entering tile
+**** TODO Actor placement
 *** TODO Shrine of Air
 **** TODO Overlays
 **** TODO Collision
-**** TODO Load actors upon entering tile
+**** TODO Actor placement
 *** TODO Shrine of Destiny
 **** TODO Overlays
 **** TODO Collision
-**** TODO Load actors upon entering tile
+**** TODO Actor placement
 *** TODO Shrine of Water
 **** TODO Overlays
 **** TODO Collision
-**** TODO Load actors upon entering tile
+**** TODO Actor placement
 *** TODO Shrine of Strength
 **** TODO Overlays
 **** TODO Collision
-**** TODO Load actors upon entering tile
+**** TODO Actor placement
 *** TODO Shrine of Fire
 **** TODO Overlays
 **** TODO Collision
-**** TODO Load actors upon entering tile
+**** TODO Actor placement
 *** TODO Ganon's Gauntlet
 **** TODO Overlays
 **** TODO Collision
-**** TODO Load actors upon entering tile
+**** TODO Actor placement
 ** Zelda
 *** DONE Fix bounding box
 *** DONE Map scroll animation
@@ -833,7 +833,7 @@ Large isopods that emit an annoying, dolphin-like sound upon seeing Zelda. It's 
 
 Located throughout Tolemac's canyons are these purple centipede-like monsters. They're quite dangerous, and it'd be in your best interest to defeat them from a distance.
 
-*** Mobilin
+*** Moblin
     Location: Forest of Ogham, Forest of Findo, Forest of Torian, Ubato Hills
     Health: 4 (0-2 CS), 3 (3-6 CS)
     Behavior Type: Aggressive
