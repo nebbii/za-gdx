@@ -105,8 +105,9 @@ public class WorldCollision {
                     continue;
                 }
 
-                resolveRectangleVsPolygon(actorRectangle, polygon);
-                if (actor instanceof Enemy) {
+                boolean moved = resolveRectangleVsPolygon(actorRectangle, polygon);
+
+                if (moved && actor instanceof Enemy) {
                     Enemy enemy = (Enemy) actor;
                     enemy.setDirection(enemy.getRandomDirection());
                 }
@@ -225,10 +226,11 @@ public class WorldCollision {
      * Concave polygons are triangulated into convex pieces, then all overlapping
      * triangles are resolved in repeated passes.
      */
-    private void resolveRectangleVsPolygon(Rectangle movingRectangle, Polygon solidPolygon) {
+    private boolean resolveRectangleVsPolygon(Rectangle movingRectangle, Polygon solidPolygon) {
         float[] polyVertices = solidPolygon.getTransformedVertices();
+        boolean movedAtAll = false;
 
-        if (polyVertices.length < 6) return;
+        if (polyVertices.length < 6) return false;
 
         // Triangle case: already convex
         if (polyVertices.length == 6) {
@@ -241,13 +243,13 @@ public class WorldCollision {
                 movingRectangle.y += push.y;
             }
 
-            return;
+            return false;
         }
 
         ShortArray triangleIndices = triangulator.computeTriangles(polyVertices);
 
         for (int pass = 0; pass < MAX_PUSH_ITERATIONS; pass++) {
-            boolean moved = false;
+            boolean movedThisPass = false;
 
             for (int i = 0; i < triangleIndices.size; i += 3) {
                 int i0 = triangleIndices.get(i) * 2;
@@ -265,12 +267,14 @@ public class WorldCollision {
                 if (push.len2() > 0.0001f) {
                     movingRectangle.x += push.x;
                     movingRectangle.y += push.y;
-                    moved = true;
+                    movedThisPass = movedAtAll = true;
                 }
             }
 
-            if (!moved) break;
+            if (!movedThisPass) break;
         }
+
+        return movedAtAll;
     }
 
     /**
