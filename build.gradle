@@ -56,7 +56,7 @@ configure(subprojects) {
 
 subprojects {
   version = "$projectVersion"
-  ext.appName = 'ZeldaAdventureGdx'
+  ext.appName = 'Zagdx'
   repositories {
     mavenCentral()
     // You may want to remove the following line if you have errors downloading dependencies.
@@ -66,4 +66,22 @@ subprojects {
   }
 }
 
-eclipse.project.name = 'ZeldaAdventureGdx' + '-parent'
+eclipse.project.name = 'Zagdx' + '-parent'
+
+def pythonCmd = System.properties['os.name'].toLowerCase().contains('windows') ? 'py' : 'python3'
+
+tasks.register("buildAssets", Exec) {
+    workingDir rootProject.projectDir
+    commandLine pythonCmd, "scripts/build_assets.py"
+
+    onlyIf {
+        !file("assets/export").exists()
+    }
+}
+
+// Ensure assets are built before running the desktop app
+gradle.projectsEvaluated {
+    project(":lwjgl3").tasks.named("run").configure {
+        dependsOn(rootProject.tasks.named("buildAssets"))
+    }
+}
