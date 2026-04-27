@@ -156,6 +156,10 @@ Thumbs.db
 /assets/assets.txt
 /assets/data_export
 /assets/export
+*.bin
+*.cue
+*.chd
+*.dat
 
 ## Special cases:
 
