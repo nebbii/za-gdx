@@ -15,7 +15,7 @@ public class GameManager {
     private float fade;
     private float fadeCap;
 
-    private String nextMap;
+    private String currentMap;
 
     public enum GameState {
         PLAY,
@@ -40,7 +40,7 @@ public class GameManager {
         this.treasures = new ArrayList<Treasure>();
         this.weapons = new ArrayList<Weapon>();
 
-        nextMap = "overworld";
+        currentMap = "overworld";
 
         gameState = GameState.FADE_WARP;
         fadeToggle = FadeToggle.IN;
@@ -71,7 +71,8 @@ public class GameManager {
             break;
         case FADE_GAMEOVER:
             if (handleFade()) {
-                respawnZelda();
+                respawnZelda(true);
+                world.getMapManager().getZelda().revive();
                 initializeFadeIn();
                 setFadeToggle(FadeToggle.IN);
                 setGameState(GameState.FADE_IN);
@@ -79,8 +80,7 @@ public class GameManager {
             break;
         case FADE_WARP:
             if (handleFade()) {
-                world.getMapManager().loadMapByName(nextMap);
-                respawnZelda();
+                respawnZelda(false);
                 initializeFadeIn();
                 setFadeToggle(FadeToggle.IN);
                 setGameState(GameState.FADE_IN);
@@ -133,8 +133,14 @@ public class GameManager {
         return false;
     }
 
-    public void respawnZelda() {
+    public void respawnZelda(boolean hasDied) {
         Zelda zelda = world.getMapManager().getZelda();
+
+        if (hasDied) {
+            zelda.revive();
+            setCurrentMap("overworld");
+        }
+        world.getMapManager().loadMapByName(currentMap);
 
         zelda.setPosition(zelda.getSpawnX(), zelda.getSpawnY());
         world.getWorldCamera().resetPosition();
@@ -226,11 +232,11 @@ public class GameManager {
         this.fadeCap = fadeCap;
     }
 
-    public String getNextMap() {
-        return nextMap;
+    public String getCurrentMap() {
+        return currentMap;
     }
 
-    public void setNextMap(String nextMap) {
-        this.nextMap = nextMap;
+    public void setCurrentMap(String currentMap) {
+        this.currentMap = currentMap;
     }
 }

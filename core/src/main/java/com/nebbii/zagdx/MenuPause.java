@@ -206,11 +206,11 @@ public class MenuPause {
     }
 
     public void increaseOpacity() {
-        opacity += 1f * Gdx.graphics.getDeltaTime();
+        opacity += 1.3f * Gdx.graphics.getDeltaTime();
     }
 
     public void decreaseOpacity() {
-        opacity -= 1f * Gdx.graphics.getDeltaTime();
+        opacity -= 1.3f * Gdx.graphics.getDeltaTime();
     }
 
     public MenuState getMenuState() {

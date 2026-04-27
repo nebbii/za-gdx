@@ -213,9 +213,12 @@ public class Zelda extends Rectangle implements Actor {
     }
 
     public void onDeath() {
+        setAnimState(AnimState.GAMEOVER);
+    }
+
+    public void revive() {
         setHealth(getMaxHealth());
         setAnimState(AnimState.STOPDOWN);
-        setAnimState(AnimState.GAMEOVER);
     }
 
     public Direction getDirection() {
