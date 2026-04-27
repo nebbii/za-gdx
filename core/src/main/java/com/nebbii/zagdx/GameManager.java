@@ -72,7 +72,6 @@ public class GameManager {
         case FADE_GAMEOVER:
             if (handleFade()) {
                 respawnZelda(true);
-                world.getMapManager().getZelda().revive();
                 initializeFadeIn();
                 setFadeToggle(FadeToggle.IN);
                 setGameState(GameState.FADE_IN);
