@@ -12,20 +12,31 @@ def run(cmd, cwd=None):
     subprocess.run(cmd, cwd=cwd, check=True)
 
 
-def find_single_cue(project_root: Path) -> Path:
+def find_single_source(project_root: Path) -> Path:
     cues = sorted(project_root.glob("*.cue"))
+    chds = sorted(project_root.glob("*.chd"))
 
-    if not cues:
-        raise FileNotFoundError(
-            "No .cue file found in the project root. Please source a copy of the game and place it in this folder."
-        )
+    if cues:
+        if len(cues) > 1:
+            raise RuntimeError(
+                "Multiple .cue files found. Please only include one in this folder."
+            )
 
-    if len(cues) > 1:
-        raise RuntimeError(
-            "Multiple .cue files found. Please only include one in this folder."
-        )
+        return cues[0]
 
-    return cues[0]
+    if chds:
+        if len(chds) > 1:
+            raise RuntimeError(
+                "Multiple .chd files found. Please only include one in this folder."
+            )
+
+        return chds[0]
+
+    raise FileNotFoundError(
+        "No .cue or .chd file found in the project root. "
+        "Please source a copy of the game and place it in this folder."
+    )
+
 
 def require_python_module(module_name: str):
     try:
@@ -37,9 +48,10 @@ def require_python_module(module_name: str):
             f"  {sys.executable} -m pip install {module_name}"
         )
 
+
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("cue", nargs="?", help="Path to input .cue file")
+    parser.add_argument("source", nargs="?", help="Path to input .cue or .chd file")
     parser.add_argument(
         "--extractor",
         default="ZA_AssetExtraction",
@@ -67,40 +79,72 @@ def main():
             "Run: git submodule update --init --recursive --remote"
         )
 
-    if not (extractor_dir / "chd_to_dat.py").exists():
-        raise FileNotFoundError(f"Missing {extractor_dir / 'chd_to_dat.py'}")
+    chd_to_dat_script = extractor_dir / "chd_to_dat.py"
+    asset_extraction_script = extractor_dir / "ZAassetExtraction.py"
 
-    if not (extractor_dir / "ZAassetExtraction.py").exists():
-        raise FileNotFoundError(f"Missing {extractor_dir / 'ZAassetExtraction.py'}")
+    if not chd_to_dat_script.exists():
+        raise FileNotFoundError(f"Missing {chd_to_dat_script}")
 
-    cue_path = Path(args.cue).resolve() if args.cue else find_single_cue(project_root).resolve()
+    if not asset_extraction_script.exists():
+        raise FileNotFoundError(f"Missing {asset_extraction_script}")
 
-    if not cue_path.exists():
-        raise FileNotFoundError(f"CUE file does not exist: {cue_path}")
+    source_path = (
+        Path(args.source).resolve()
+        if args.source
+        else find_single_source(project_root).resolve()
+    )
 
-    bin_files = list(cue_path.parent.glob("*.bin"))
-    if not bin_files:
-        raise FileNotFoundError(
-            f"No .bin file found next to {cue_path.name}. "
-            "The .bin must be in the same folder as the .cue."
-        )
+    if not source_path.exists():
+        raise FileNotFoundError(f"Source file does not exist: {source_path}")
 
-    chd_path = cue_path.with_suffix(".chd")
-    dat_path = cue_path.with_suffix(".dat")
+    source_suffix = source_path.suffix.lower()
 
-    chdman = shutil.which("chdman") or shutil.which("chdman.exe")
-
-    if not chdman:
+    if source_suffix not in [".cue", ".chd"]:
         raise RuntimeError(
-            "chdman was not found in PATH. Install MAME/mame-tools and add chdman to PATH."
+            f"Unsupported source file type: {source_path.suffix}. "
+            "Please provide a .cue or .chd file."
         )
+
+    chd_path = source_path.with_suffix(".chd")
+    dat_path = source_path.with_suffix(".dat")
+
+    if source_suffix == ".cue":
+        bin_files = list(source_path.parent.glob("*.bin"))
+
+        if not bin_files:
+            existing_chd = source_path.with_suffix(".chd")
+
+            if existing_chd.exists():
+                print(
+                    f"[assets] No .bin found, but {existing_chd.name} exists; "
+                    "using CHD instead."
+                )
+                chd_path = existing_chd
+            else:
+                raise FileNotFoundError(
+                    f"No .bin file found next to {source_path.name}, "
+                    f"and no existing {existing_chd.name} was found."
+                )
+    else:
+        chd_path = source_path
 
     if not chd_path.exists():
+        if source_suffix != ".cue":
+            raise FileNotFoundError(f"CHD file does not exist: {chd_path}")
+
+        chdman = shutil.which("chdman") or shutil.which("chdman.exe")
+
+        if not chdman:
+            raise RuntimeError(
+                "chdman was not found in PATH. "
+                "Install MAME/mame-tools and add chdman to PATH."
+            )
+
         run([
             chdman,
             "createcd",
             "-i",
-            str(cue_path),
+            str(source_path),
             "-o",
             str(chd_path),
         ])
@@ -110,7 +154,7 @@ def main():
     if not dat_path.exists():
         run([
             sys.executable,
-            str(extractor_dir / "chd_to_dat.py"),
+            str(chd_to_dat_script),
             str(chd_path),
         ], cwd=extractor_dir)
     else:
@@ -127,7 +171,7 @@ def main():
 
     run([
         sys.executable,
-        str(extractor_dir / "ZAassetExtraction.py"),
+        str(asset_extraction_script),
         str(dat_path),
         str(output_dir),
     ], cwd=extractor_dir)
