@@ -141,13 +141,11 @@ public class WorldCollision {
             }
             break;
         case "entrance_earth":
-            game.setCurrentMap("shrine_of_earth");
-            zelda.updateSpawn(136.32f, 790.60f);
+            map.updateSpawnLocation("entrance_earth");
             game.initializeFadeWarp();
             break;
         case "exit_earth":
-            game.setCurrentMap("overworld");
-            zelda.updateSpawn(2548.19f, 149.02f);
+            map.updateSpawnLocation("exit_earth");
             game.initializeFadeWarp();
             break;
         default:

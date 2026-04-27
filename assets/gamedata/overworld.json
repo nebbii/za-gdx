@@ -1,8 +1,4 @@
 {
-  "defaultSpawn": {
-    "x": 2487.18,
-    "y": 2262.32
-  },
   "actors": [
     {
       "type": "EnemyTumblebot",

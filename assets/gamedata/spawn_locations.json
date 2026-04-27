@@ -1,0 +1,19 @@
+{
+  "spawns": {
+    "overworld_pedestal": {
+      "targetMap": "overworld",
+      "x": 2487.18,
+      "y": 2262.32
+    },
+    "entrance_earth": {
+      "targetMap": "shrine_of_earth",
+      "x": 136.32,
+      "y": 790.60
+    },
+    "exit_earth": {
+      "targetMap": "overworld",
+      "x": 2548.19,
+      "y": 149.02
+    }
+  }
+}

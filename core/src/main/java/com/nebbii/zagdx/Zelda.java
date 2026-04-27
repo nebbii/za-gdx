@@ -244,11 +244,6 @@ public class Zelda extends Rectangle implements Actor {
         }
     }
 
-    public void updateSpawn(float x, float y) {
-        setSpawnX(x);
-        setSpawnY(y);
-    }
-
     public Direction getHurtDirection() {
         return hurtDirection;
     }

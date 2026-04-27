@@ -44,6 +44,10 @@ public class MapManager {
         newActors = new ArrayList<>();
 
         zelda = new Zelda(world, this);
+
+        if (zelda.getSpawnX() == -1 && zelda.getSpawnY() == -1) {
+            updateSpawnLocation("overworld_pedestal");
+        }
     }
 
     public void logic() {
@@ -232,13 +236,9 @@ public class MapManager {
         special.loadObjectsFromLayer(loader, mapName, "Special");
         renderer.loadTiledRenderer(loader, mapName);
 
-        MapData data = MapJsonLoader.load("gamedata/" + mapName + ".json", MapData.class);
+        MapData data = JsonLoader.load("gamedata/" + mapName + ".json", MapData.class);
 
         actors.clear();
-
-        if (zelda.getSpawnX() == -1 && zelda.getSpawnY() == -1) {
-            zelda.updateSpawn(data.defaultSpawn.x, data.defaultSpawn.y);
-        }
 
         zelda.setPosition(zelda.getSpawnX(), zelda.getSpawnY());
         addActor(zelda);
@@ -250,12 +250,18 @@ public class MapManager {
         world.getWorldCamera().resetPosition();
     }
 
-    public void loadOverworld() {
-        loadMapByName("overworld");
-    }
+    public void updateSpawnLocation(String spawnLocation) {
+        SpawnData data = JsonLoader.load("gamedata/spawn_locations.json", SpawnData.class);
 
-    public void loadShrineOfEarth() {
-        loadMapByName("shrine_of_earth");
+        SpawnJsonEntry spawn = data.get(spawnLocation);
+
+        if (spawn == null) {
+            throw new RuntimeException("Requested spawn doesn't exist in the JSON: " + spawnLocation);
+        }
+
+        world.getGameManager().setCurrentMap(spawn.targetMap);
+        zelda.setSpawnX(spawn.x);
+        zelda.setSpawnY(spawn.y);
     }
 
     // initialize actors based on class names from json files, unique parameters through switch

@@ -49,9 +49,9 @@ public class World {
         camera = (OrthographicCamera) worldViewport.getCamera();
         input = new GameInput(this);
 
+        gameManager = new GameManager(this);
         mapManager = new MapManager(this, batch, camera);
         worldCamera = new WorldCamera(camera, mapManager);
-        gameManager = new GameManager(this);
 
         shapes = new ShapeRenderer();
 
