@@ -47,7 +47,7 @@ public class ImageLoader {
 
     public ImageLoader() {
         none = new Texture("invisible.png");
-        itemScreen = new Texture("pause-screen.png"); // TODO: swap with real asset
+        itemScreen = new Texture("dummy-pause-screen.png"); // TODO: swap with real asset
 
         /* Actors */
         zelda = new EnumMap<>(ZeldaAnimationGroup.class);
