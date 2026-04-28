@@ -6,8 +6,9 @@ A port of ZA (originally for the CD-i) written in Java with [libGDX](https://lib
 ### Requirements
 - Java JDK 17 or 21 (for libgdx)
 - git (for loading the submodule)
-- python3
+- python3, with the following dependencies:
   - tqdm
+  - pillow
 - chdman (if using bin/cue)
 
 ### Providing an asset source
@@ -26,11 +27,11 @@ Execute `./gradlew lwjgl3:run` in the project folder. On initial setup this will
 2. The executable can be found under lwjgl3/build/libs
 
 ### Controls
-Arrows - Move
-Ctrl - Action
-P - Open inventory
-Mouse - Interact with inventory
-Space - Toggle debug data visibility
+- Arrows - Move
+- Ctrl - Action
+- P - Open inventory
+- Mouse - Interact with inventory
+- Space - Toggle debug data visibility
 
 ## Credits
 - nebbii - Coding, mapping
