@@ -50,6 +50,7 @@ public class ImageLoader {
 
     /* Weapons */
     private Texture wand;
+    private Texture boomerang;
 
     private Texture itemScreen;
 
@@ -118,6 +119,7 @@ public class ImageLoader {
 
         /* Weapons */
         wand = new Texture("export/overworld/h23/sprites/desc0/group0/sprite0.png");
+        boomerang = new Texture("export/overworld/d24/sprites/desc2/group0/sprite0.png");
     }
 
     public void dispose() {
@@ -172,6 +174,7 @@ public class ImageLoader {
 
         /* Weapons */
         wand.dispose();
+        boomerang.dispose();
     }
 
     public Texture getImageByItem(Item item) {
@@ -239,6 +242,7 @@ public class ImageLoader {
             case WAND:
                 return getWand();
             case BOOMERANG:
+                return getBoomerang();
             case BOW_AND_ARROW:
             case BROADSWORD:
             case CALM:
@@ -309,6 +313,10 @@ public class ImageLoader {
 
     public Texture getWand() {
         return wand;
+    }
+
+    public Texture getBoomerang() {
+        return boomerang;
     }
 
     public Texture getBone() {
