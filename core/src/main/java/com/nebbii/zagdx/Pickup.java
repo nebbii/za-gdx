@@ -14,6 +14,11 @@ public class Pickup extends Rectangle implements Actor {
 
     private float duration;
 
+    protected float baseOffsetX; // actor wide
+    protected float baseOffsetY;
+    protected float offsetX; // animation specific
+    protected float offsetY;
+
     public Pickup() {
         setType(ActorType.PICKUP);
         setState(State.PENDING);
@@ -34,7 +39,7 @@ public class Pickup extends Rectangle implements Actor {
             drawBounceAnim(batch);
         }
         else {
-            batch.draw(getImage(), getX(), getY(), getWidth(), getHeight());
+            batch.draw(getImage(), getX() + offsetX + baseOffsetX, getY() + offsetY + baseOffsetY, getWidth(), getHeight());
         }
     }
 

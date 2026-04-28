@@ -12,6 +12,9 @@ public class PickupPitcherEmpty extends Pickup {
 
         setImage(World.images.getPitcherEmpty());
 
+        baseOffsetX = -2;
+        baseOffsetY = 2;
+
         setWidth(24);
         setHeight(29);
     }

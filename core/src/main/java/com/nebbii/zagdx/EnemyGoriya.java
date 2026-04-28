@@ -10,7 +10,7 @@ public class EnemyGoriya extends Enemy {
     // TODO: Set actual original game accurate values
     public EnemyGoriya() {
         super(ActorType.ENEMY, true);
-        setWidth(55);
+        setWidth(48);
         setHeight(42);
         setHealth(60);
         setHitDamage(20);

@@ -115,8 +115,8 @@ public class World {
             drawGame();
             drawItemScreen();
             drawHud();
-            drawDebugText();
             drawFadeOverlay();
+            drawDebugText();
             break;
         default:
             throw new IllegalStateException("World->draw(): Unhandled game state: " + gameManager.getGameState());
@@ -210,9 +210,9 @@ public class World {
         debugLines.add("Y: " + mapManager.getZelda().getY());
         //debugLines.add("rX: " + getRelativePositionX(mapManager.getZelda().getX()));
         //debugLines.add("rY: " + getRelativePositionY(mapManager.getZelda().getY()));
-        debugLines.add("cellColumn: " + worldCamera.getTargetCellColumn());
-        debugLines.add("cellRow: " + worldCamera.getTargetCellRow());
-        debugLines.add("Equip: " + mapManager.getZelda().getCurrentItem().toString());
+        //debugLines.add("cellColumn: " + worldCamera.getTargetCellColumn());
+        //debugLines.add("cellRow: " + worldCamera.getTargetCellRow());
+        //debugLines.add("Equip: " + mapManager.getZelda().getCurrentItem().toString());
         //debugLines.add("State: " + mapManager.getZelda().getState());
         debugLines.add("GameState: " + gameManager.getGameState());
 

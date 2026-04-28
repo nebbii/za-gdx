@@ -19,6 +19,9 @@ public class NpcGlebbAnimation extends GameAnimation {
         textures = World.images.getNpcGlebb();
         this.npc = npc;
 
+        baseOffsetX = 0;
+        baseOffsetY = 15;
+
         animation = initIdleAnim();
     }
 

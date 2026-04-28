@@ -11,6 +11,9 @@ public class PickupVialOfWind extends Pickup {
         super();
         setImage(World.images.getVialOfWind());
 
+        baseOffsetX = -2;
+        baseOffsetY = 0;
+
         setWidth(24);
         setHeight(29);
         setState(State.PENDING);

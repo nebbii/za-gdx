@@ -87,6 +87,10 @@
       "y": 2042
     },
     {
+      "__comment": "j24",
+      "type": null
+    },
+    {
       "type": "NpcGlebb",
       "x": 3716,
       "y": 2050
@@ -97,19 +101,19 @@
       "y": 2055
     },
     {
-      "type": "SpawnerPitcherFull",
-      "x": 1627,
-      "y": 2938
-    },
-    {
       "type": "SpawnerVialOfWind",
       "x": 3672,
       "y": 2075
     },
     {
+      "type": "SpawnerPitcherFull",
+      "x": 1627,
+      "y": 2938
+    },
+    {
       "type": "PickupWand",
-      "x": 2755,
-      "y": 2280
+      "x": 2754,
+      "y": 2283
     }
   ]
 }
