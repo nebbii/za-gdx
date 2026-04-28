@@ -27,11 +27,11 @@ Execute `./gradlew lwjgl3:run` in the project folder. On initial setup this will
 2. The executable can be found under lwjgl3/build/libs
 
 ### Controls
-Arrows - Move
-Ctrl - Action
-P - Open inventory
-Mouse - Interact with inventory
-Space - Toggle debug data visibility
+- Arrows - Move
+- Ctrl - Action
+- P - Open inventory
+- Mouse - Interact with inventory
+- Space - Toggle debug data visibility
 
 ## Credits
 - nebbii - Coding, mapping
