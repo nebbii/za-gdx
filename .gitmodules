@@ -1,3 +1,3 @@
 [submodule "ZA_AssetExtraction"]
-	path = ZA_AssetExtraction
+	path = scripts/extractor
 	url = git@github.com:potatonyan/ZA_AssetExtraction.git

@@ -54,7 +54,7 @@ def main():
     parser.add_argument("source", nargs="?", help="Path to input .cue or .chd file")
     parser.add_argument(
         "--extractor",
-        default="ZA_AssetExtraction",
+        default="scripts/extractor",
         help="Path to ZA_AssetExtraction submodule",
     )
     parser.add_argument(
@@ -76,7 +76,7 @@ def main():
     if not extractor_dir.exists():
         raise FileNotFoundError(
             f"Extractor submodule not found: {extractor_dir}\n"
-            "Run: git submodule update --init --recursive --remote"
+            "Run: git submodule update --init --recursive"
         )
 
     chd_to_dat_script = extractor_dir / "chd_to_dat.py"
