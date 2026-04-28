@@ -191,11 +191,9 @@ public class MapManager {
         Gdx.app.log("MapManager", "Handle dead actor: " + actor.getClass());
 
         switch (actor.getClass().getSimpleName()) {
+        case "EnemyGoriya":
         case "EnemyTumblebot":
             dropRandomPickup(actor.getCenterPointX(), actor.getCenterPointY());
-            iterator.remove();
-            break;
-        case "EnemyBoss":
             iterator.remove();
             break;
         default:
