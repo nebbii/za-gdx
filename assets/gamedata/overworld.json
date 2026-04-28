@@ -1,6 +1,34 @@
 {
   "actors": [
     {
+      "__comment": "d23",
+      "type": null
+    },
+    {
+      "__comment": "SpawnerBoomerang at X: 1224 Y: 1988",
+      "type": null
+    },
+    {
+      "type": "EnemyGoriya",
+      "__comment": "Defeating this guy spawns the boomerang",
+      "x": 1370,
+      "y": 2025
+    },
+    {
+      "__comment": "e23",
+      "type": null
+    },
+    {
+      "type": "EnemyGoriya",
+      "x": 1706,
+      "y": 2046
+    },
+    {
+      "type": "EnemyGoriya",
+      "x": 1680,
+      "y": 2035
+    },
+    {
       "__comment": "i23",
       "type": null
     },
