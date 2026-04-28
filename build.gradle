@@ -70,7 +70,14 @@ eclipse.project.name = 'Zagdx' + '-parent'
 
 def pythonCmd = System.properties['os.name'].toLowerCase().contains('windows') ? 'py' : 'python3'
 
+tasks.register("initSubmodules", Exec) {
+    workingDir rootProject.projectDir
+    commandLine "git", "submodule", "update", "--init", "--recursive"
+}
+
 tasks.register("buildAssets", Exec) {
+    dependsOn "initSubmodules"
+
     workingDir rootProject.projectDir
     commandLine pythonCmd, "scripts/build_assets.py"
 
