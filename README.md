@@ -6,8 +6,9 @@ A port of ZA (originally for the CD-i) written in Java with [libGDX](https://lib
 ### Requirements
 - Java JDK 17 or 21 (for libgdx)
 - git (for loading the submodule)
-- python3
+- python3, with the following dependencies:
   - tqdm
+  - pillow
 - chdman (if using bin/cue)
 
 ### Providing an asset source
