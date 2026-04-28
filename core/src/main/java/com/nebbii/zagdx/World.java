@@ -210,8 +210,7 @@ public class World {
         debugLines.add("Y: " + mapManager.getZelda().getY());
         //debugLines.add("rX: " + getRelativePositionX(mapManager.getZelda().getX()));
         //debugLines.add("rY: " + getRelativePositionY(mapManager.getZelda().getY()));
-        //debugLines.add("cellColumn: " + worldCamera.getTargetCellColumn());
-        //debugLines.add("cellRow: " + worldCamera.getTargetCellRow());
+        debugLines.add("Cell: " + rowAndColumnToRealCell(worldCamera.getTargetCellColumn(), worldCamera.getTargetCellRow()));
         //debugLines.add("Equip: " + mapManager.getZelda().getCurrentItem().toString());
         //debugLines.add("State: " + mapManager.getZelda().getState());
         debugLines.add("GameState: " + gameManager.getGameState());
@@ -276,6 +275,24 @@ public class World {
             WORLD_WIDTH,
             1f
         );
+    }
+    public String indexToLetters(int index) {
+        StringBuilder result = new StringBuilder();
+
+        index++; // start counting from 1
+
+        while (index > 0) {
+            index--;
+            int remainder = index % 26;
+            result.append((char) ('A' + remainder));
+            index /= 26;
+        }
+
+        return result.reverse().toString();
+    }
+
+    public String rowAndColumnToRealCell(int x, int y) {
+        return indexToLetters(x) + (y+1);
     }
 
     public Rectangle[] getWorldBorders() {
