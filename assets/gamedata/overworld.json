@@ -1,6 +1,29 @@
 {
   "actors": [
     {
+      "__comment": "i23",
+      "type": null
+    },
+    {
+      "type": "EnemyGoriya",
+      "x": 3239,
+      "y": 2283
+    },
+    {
+      "type": "EnemyGoriya",
+      "x": 3195,
+      "y": 2220
+    },
+    {
+      "type": "EnemyGoriya",
+      "x": 3296,
+      "y": 2234
+    },
+    {
+      "__comment": "i24",
+      "type": null
+    },
+    {
       "type": "EnemyTumblebot",
       "x": 3305,
       "y": 2049

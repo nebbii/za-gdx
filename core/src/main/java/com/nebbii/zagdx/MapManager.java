@@ -244,6 +244,7 @@ public class MapManager {
         addActor(zelda);
 
         for (ActorJsonEntry entry : data.actors) {
+            if (entry.type == null) continue;
             addActor(createActorFromJsonEntry(entry));
         }
 

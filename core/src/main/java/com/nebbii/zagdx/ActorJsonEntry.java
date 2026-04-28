@@ -7,4 +7,5 @@ public class ActorJsonEntry {
 
     // extra fields
     public String rubyType;
+    public String __comment;
 }
