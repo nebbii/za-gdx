@@ -2,19 +2,20 @@ package com.nebbii.zagdx;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.nebbii.zagdx.animation.EnemyTumblebotAnimation;
+import com.nebbii.zagdx.animation.EnemyGoriyaAnimation;
 
-public class EnemyTumblebot extends Enemy {
-    public EnemyTumblebotAnimation animation;
+public class EnemyGoriya extends Enemy {
+    public EnemyGoriyaAnimation animation;
 
     // TODO: Set actual original game accurate values
-    public EnemyTumblebot() {
+    public EnemyGoriya() {
         super(ActorType.ENEMY, true);
-        setHeight(26);
+        setWidth(55);
+        setHeight(42);
         setHealth(60);
         setHitDamage(20);
 
-        this.animation = new EnemyTumblebotAnimation(this);
+        this.animation = new EnemyGoriyaAnimation(this);
 
         this.enemyState = EnemyState.SEARCHING;
     }

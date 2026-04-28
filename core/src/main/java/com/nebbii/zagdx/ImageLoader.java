@@ -24,6 +24,13 @@ public class ImageLoader {
         GAMEOVER
     }
 
+    public enum EnemyGoriyaAnimationGroup {
+        WALKUP,
+        WALKRIGHT,
+        WALKDOWN,
+        WALKLEFT
+    }
+
     public enum EnemyTumblebotAnimationGroup {
         ROLLUP,
         ROLLRIGHT,
@@ -32,6 +39,7 @@ public class ImageLoader {
     }
 
     private EnumMap<ZeldaAnimationGroup, Texture[]> zelda;
+    private EnumMap<EnemyGoriyaAnimationGroup, Texture[]> enemyGoriya;
     private EnumMap<EnemyTumblebotAnimationGroup, Texture[]> enemyTumblebot;
 
     /* Treasures */
@@ -75,6 +83,16 @@ public class ImageLoader {
         zeldaGameover[3] = new Texture("export/common/zelda/sprites/group3/sprite0.png");
         zelda.put(ZeldaAnimationGroup.GAMEOVER, zeldaGameover);
 
+        enemyGoriya = new EnumMap<>(EnemyGoriyaAnimationGroup.class);
+        enemyGoriya.put(EnemyGoriyaAnimationGroup.WALKUP,
+            loadTextureArray("export/overworld/d24/sprites/desc0/group0", 5));
+        enemyGoriya.put(EnemyGoriyaAnimationGroup.WALKRIGHT,
+            loadTextureArray("export/overworld/d24/sprites/desc0/group1", 5));
+        enemyGoriya.put(EnemyGoriyaAnimationGroup.WALKDOWN,
+            loadTextureArray("export/overworld/d24/sprites/desc0/group2", 5));
+        enemyGoriya.put(EnemyGoriyaAnimationGroup.WALKLEFT,
+            loadTextureArray("export/overworld/d24/sprites/desc0/group3", 5));
+
         enemyTumblebot = new EnumMap<>(EnemyTumblebotAnimationGroup.class);
         enemyTumblebot.put(EnemyTumblebotAnimationGroup.ROLLUP,
             loadTextureArray("export/overworld/h21/sprites/desc0/group0", 8));
@@ -108,6 +126,16 @@ public class ImageLoader {
 
         /* Actors */
         for (Texture[] textures : zelda.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyGoriya.values()) {
             if (textures == null) continue;
 
             for (Texture texture : textures) {
@@ -249,6 +277,10 @@ public class ImageLoader {
 
     public Texture[] getZeldaAnimation(ZeldaAnimationGroup anim) {
         return zelda.get(anim);
+    }
+
+    public Texture[] getEnemyGoriyaAnimation(EnemyGoriyaAnimationGroup anim) {
+        return enemyGoriya.get(anim);
     }
 
     public Texture[] getEnemyTumblebotAnimation(EnemyTumblebotAnimationGroup anim) {
