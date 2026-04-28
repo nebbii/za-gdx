@@ -1,18 +1,30 @@
 # ZaGdx
 
 A port of ZA (originally for the CD-i) written in Java with [libGDX](https://libgdx.com/). 
-Assets need to be ripped from a backup of the game, script for this is still under construction.
 
-## Running the game
-First you'll need to run the bin/cue rip script to get the assets for the game. 
-Obtain a rip of the game and run the following commands:
-- `git submodule init && git submodule update`
-- `python build.py Zelda's\ Adventure.bin assets/export`
+## Setup
+### Requirements
+- Java JDK 17 or 21 (for libgdx)
+- git (for loading the submodule)
+- python3
+  - tqdm
+- chdman (if using bin/cue)
+
+### Providing an asset source
+You'll need to acquire a bin/cue or .CHD of the original game and place it in the project directory.
+```
+4e9a8db4358c4a6d6e1f3bea18caa881  za.bin
+7ae5883df11136e6ed7b24549585f4bc  za.cue
+597176968e14d0025e58b644d841606a  za.chd
+```
+
+### Running the game
+Execute `./gradlew lwjgl3:run` in the project folder. On initial setup this will create an assets export from your disc image.
+
 ### Building an executable
 1. `./gradlew lwjgl3:build`
 2. The executable can be found under lwjgl3/build/libs
-### Debugging the game
- `./gradlew lwjgl3:run`
+
 ## Credits
 - nebbii - Coding, mapping
 - Phlosioneer - [Game asset extracting script](https://github.com/Phlosioneer/ZeldasAdventureExtractor)
