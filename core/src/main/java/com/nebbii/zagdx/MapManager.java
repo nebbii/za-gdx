@@ -177,6 +177,27 @@ public class MapManager {
         }
     }
 
+    public ArrayList<Actor> getActiveActors() {
+        ArrayList<Actor> activeActors = new ArrayList<>();
+
+        for (Actor actor : actors) {
+            if (actor.getState() == State.ACTIVE) {
+                activeActors.add(actor);
+            }
+        }
+
+        return activeActors;
+    }
+
+    public boolean activeActorsContain(Class<? extends Actor> type) {
+        for (Actor actor : getActiveActors()) {
+            if (type.isInstance(actor)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public boolean isActorVisible(Actor actor) {
         boolean currentColumn =
             World.convertWorldXToCellColumn(actor.getCenterPointX()) == World.convertWorldXToCellColumn(world.getWorldCamera().getTargetX());

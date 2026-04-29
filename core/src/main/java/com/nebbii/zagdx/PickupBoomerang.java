@@ -15,8 +15,8 @@ public class PickupBoomerang extends Pickup {
         baseOffsetX = -2;
         baseOffsetY = 2;
 
-        setWidth(24);
-        setHeight(29);
+        setWidth(23);
+        setHeight(31);
     }
 
     public void logic() {
