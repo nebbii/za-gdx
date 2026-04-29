@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Rectangle;
 
 public class Enemy extends Rectangle implements Actor {
     protected boolean solid;
+    protected MapManager map;
 
     protected float health;
 
@@ -330,5 +331,13 @@ public class Enemy extends Rectangle implements Actor {
 
     public void setSpeed(float speed) {
         this.speed = speed;
+    }
+
+    public MapManager getMap() {
+        return map;
+    }
+
+    public void setMap(MapManager map) {
+        this.map = map;
     }
 }

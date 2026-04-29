@@ -5,8 +5,9 @@
       "type": null
     },
     {
-      "__comment": "SpawnerBoomerang at X: 1224 Y: 1988",
-      "type": null
+      "type": "SpawnerBoomerang",
+      "x": 1224,
+      "y": 1988
     },
     {
       "type": "EnemyGoriya",

@@ -26,4 +26,7 @@ public interface Actor {
     void setType(ActorType type);
 
     boolean isSolid();
+
+    MapManager getMap();
+    void setMap(MapManager map);
 }

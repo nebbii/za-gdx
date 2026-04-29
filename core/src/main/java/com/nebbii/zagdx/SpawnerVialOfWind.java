@@ -14,7 +14,7 @@ public class SpawnerVialOfWind extends Spawner {
         super.logic();
     }
 
-    public void activate(MapManager map, GameManager game) {
+    public void activate(GameManager game) {
         if (!isActive()) return;
 
         PickupVialOfWind vialOfWind = new PickupVialOfWind();

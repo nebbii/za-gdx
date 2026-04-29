@@ -9,6 +9,7 @@ public class Spawner extends Rectangle implements Actor {
     private ActorType type;
     private int drawOrder;
     private boolean solid = false;
+    protected MapManager map;
 
     public Spawner() {
         setWidth(1);
@@ -83,5 +84,13 @@ public class Spawner extends Rectangle implements Actor {
     @Override
     public boolean isSolid() {
         return solid;
+    }
+
+    public MapManager getMap() {
+        return map;
+    }
+
+    public void setMap(MapManager map) {
+        this.map = map;
     }
 }

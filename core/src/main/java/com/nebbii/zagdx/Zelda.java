@@ -135,7 +135,7 @@ public class Zelda extends Rectangle implements Actor {
                 if (spawnerPitcherFull == null) return;
                 if (!spawnerPitcherFull.isActive()) return;
 
-                spawnerPitcherFull.activate(map, world.getGameManager());
+                spawnerPitcherFull.activate(world.getGameManager());
                 setCurrentItem(Treasure.NONE);
                 break;
             case PITCHER_FULL:
@@ -144,7 +144,7 @@ public class Zelda extends Rectangle implements Actor {
                 if (spawnerVialOfWind == null) return;
                 if (!spawnerVialOfWind.isActive()) return;
 
-                spawnerVialOfWind.activate(map, world.getGameManager());
+                spawnerVialOfWind.activate(world.getGameManager());
                 setCurrentItem(Treasure.NONE);
                 break;
             default:
@@ -375,6 +375,14 @@ public class Zelda extends Rectangle implements Actor {
 
     public void setMaxHealth(int maxHealth) {
         this.maxHealth = maxHealth;
+    }
+
+    public MapManager getMap() {
+        return map;
+    }
+
+    public void setMap(MapManager map) {
+        this.map = map;
     }
 
     public boolean inVisibleCell() {

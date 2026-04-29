@@ -5,6 +5,7 @@ import com.badlogic.gdx.math.Rectangle;
 
 public class Npc extends Rectangle implements Actor {
     private boolean solid;
+    protected MapManager map;
     protected State state;
     protected NpcState npcState;
     protected ActorType type;
@@ -100,5 +101,13 @@ public class Npc extends Rectangle implements Actor {
 
     public boolean isSolid() {
         return solid;
+    }
+
+    public MapManager getMap() {
+        return map;
+    }
+
+    public void setMap(MapManager map) {
+        this.map = map;
     }
 }

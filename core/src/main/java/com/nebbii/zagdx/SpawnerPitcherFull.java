@@ -14,7 +14,7 @@ public class SpawnerPitcherFull extends Spawner {
         super.logic();
     }
 
-    public void activate(MapManager map, GameManager game) {
+    public void activate(GameManager game) {
         if (!isActive()) return;
 
         PickupPitcherFull pitcher = new PickupPitcherFull();

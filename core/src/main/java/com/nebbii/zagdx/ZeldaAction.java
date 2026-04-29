@@ -8,6 +8,7 @@ public class ZeldaAction extends Rectangle implements Actor {
     protected final boolean solid = false;
 
     protected Zelda zelda;
+    protected MapManager map;
     protected float damage = 0f;
     protected float stateTime;
     protected float duration;
@@ -103,5 +104,13 @@ public class ZeldaAction extends Rectangle implements Actor {
 
     public void setDamage(float damage) {
         this.damage = damage;
+    }
+
+    public MapManager getMap() {
+        return map;
+    }
+
+    public void setMap(MapManager map) {
+        this.map = map;
     }
 }

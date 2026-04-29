@@ -132,11 +132,17 @@ public class MapManager {
     }
 
     public void addActor(Actor actor) {
+        actor.setMap(this);
         actors.add(actor);
 
         if (actor instanceof Zelda) {
             setZelda((Zelda) actor);
         }
+    }
+
+    public void addNewActor(Actor actor) {
+        actor.setMap(this);
+        newActors.add(actor);
     }
 
     public Actor findActorByType(Class<? extends Actor> type) {
@@ -224,7 +230,7 @@ public class MapManager {
     }
 
     public void dropRandomPickup(float x, float y) {
-        int roll = MathUtils.random(0, 2);
+        int roll = MathUtils.random(0, 3);
 
         Actor pickup;
 
@@ -239,10 +245,13 @@ public class MapManager {
         case 2:
             pickup = new PickupRuby(RubyType.YELLOW);
             break;
+        case 3:
+            return;
         default:
             throw new RuntimeException("Failed to choose random pickup actor (" + roll + ")");
         }
 
+        pickup.setMap(this);
         pickup.getCollisionBox().setPosition(x, y);
         newActors.add(pickup);
     }

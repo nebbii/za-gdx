@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Rectangle;
 public class Pickup extends Rectangle implements Actor {
     private State state;
     private ActorType type;
+    private MapManager map;
     private int drawOrder;
     private boolean solid;
     private Texture image;
@@ -130,5 +131,13 @@ public class Pickup extends Rectangle implements Actor {
 
     public void setImage(Texture image) {
         this.image = image;
+    }
+
+    public MapManager getMap() {
+        return map;
+    }
+
+    public void setMap(MapManager map) {
+        this.map = map;
     }
 }
