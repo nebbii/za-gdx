@@ -102,7 +102,7 @@ public class EnemyGoriyaAnimation extends GameAnimation {
             walkUpOffsetY[i] = frameData[i][2];
         }
 
-        Animation<TextureRegion> anim = new Animation<>(0.25f, frames);
+        Animation<TextureRegion> anim = new Animation<>(getAnimationSpeed(), frames);
         anim.setPlayMode(Animation.PlayMode.LOOP);
         return anim;
     }
@@ -128,7 +128,7 @@ public class EnemyGoriyaAnimation extends GameAnimation {
             walkRightOffsetY[i] = frameData[i][2];
         }
 
-        Animation<TextureRegion> anim = new Animation<>(0.25f, frames);
+        Animation<TextureRegion> anim = new Animation<>(getAnimationSpeed(), frames);
         anim.setPlayMode(Animation.PlayMode.LOOP);
         return anim;
     }
@@ -154,7 +154,7 @@ public class EnemyGoriyaAnimation extends GameAnimation {
             walkDownOffsetY[i] = frameData[i][2];
         }
 
-        Animation<TextureRegion> anim = new Animation<>(0.25f, frames);
+        Animation<TextureRegion> anim = new Animation<>(getAnimationSpeed(), frames);
         anim.setPlayMode(Animation.PlayMode.LOOP);
         return anim;
     }
@@ -180,9 +180,19 @@ public class EnemyGoriyaAnimation extends GameAnimation {
             walkLeftOffsetY[i] = frameData[i][2];
         }
 
-        Animation<TextureRegion> anim = new Animation<>(0.25f, frames);
+        Animation<TextureRegion> anim = new Animation<>(getAnimationSpeed(), frames);
         anim.setPlayMode(Animation.PlayMode.LOOP);
         return anim;
+    }
+
+    private float getAnimationSpeed() {
+        switch(enemy.getEnemyState()) {
+            case FIGHTING:
+                return 0.12f;
+            case SEARCHING:
+            default:
+                return 0.25f;
+        }
     }
 
     public float getX() {
