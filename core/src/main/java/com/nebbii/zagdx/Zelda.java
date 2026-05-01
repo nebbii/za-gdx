@@ -155,6 +155,9 @@ public class Zelda extends Rectangle implements Actor {
 
         if (getCurrentItem() instanceof Weapon) {
             switch ((Weapon) getCurrentItem()) {
+            case BOOMERANG:
+                map.addActor(new ZeldaActionBoomerang(this, getX(), getY()));
+                break;
             case WAND:
                 break;
             default:

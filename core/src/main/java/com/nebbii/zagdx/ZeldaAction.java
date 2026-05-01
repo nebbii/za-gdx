@@ -23,15 +23,11 @@ public class ZeldaAction extends Rectangle implements Actor {
         setState(State.ACTIVE);
         setType(ActorType.PROJECTILE);
         this.drawOrder = 3;
-        stateTime = 0f;
-        duration = 0.5f;
     }
 
     @Override
     public void logic() {
         if (isDead()) return;
-        if (stateTime >= duration) setState(State.DEAD);
-        stateTime += Gdx.graphics.getDeltaTime();
     }
 
     @Override

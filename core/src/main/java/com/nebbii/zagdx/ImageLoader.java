@@ -6,11 +6,6 @@ import com.badlogic.gdx.graphics.Texture;
 
 public class ImageLoader {
     private Texture none;
-    private Texture[] npcGlebb;
-
-    private Texture rubyBlue;
-    private Texture rubyYellow;
-    private Texture heart;
 
     public enum ZeldaAnimationGroup {
         WALKUP,
@@ -24,6 +19,7 @@ public class ImageLoader {
         GAMEOVER
     }
 
+    /* Enemies */
     public enum EnemyGoriyaAnimationGroup {
         WALKUP,
         WALKRIGHT,
@@ -42,6 +38,9 @@ public class ImageLoader {
     private EnumMap<EnemyGoriyaAnimationGroup, Texture[]> enemyGoriya;
     private EnumMap<EnemyTumblebotAnimationGroup, Texture[]> enemyTumblebot;
 
+    /* NPCs */
+    private Texture[] npcGlebb;
+
     /* Treasures */
     private Texture bone;
     private Texture pitcherEmpty;
@@ -51,6 +50,14 @@ public class ImageLoader {
     /* Weapons */
     private Texture wand;
     private Texture boomerang;
+
+    /* Pickups */
+    private Texture rubyBlue;
+    private Texture rubyYellow;
+    private Texture heart;
+
+    /* Projectiles */
+    private Texture[] projectileBoomerang;
 
     private Texture itemScreen;
 
@@ -120,6 +127,9 @@ public class ImageLoader {
         /* Weapons */
         wand = new Texture("export/overworld/h23/sprites/desc0/group0/sprite0.png");
         boomerang = new Texture("export/overworld/d24/sprites/desc2/group0/sprite0.png");
+
+        /* Projectiles */
+        projectileBoomerang = loadTextureArray("export/overworld/d24/sprites/desc1/group0", 4);
     }
 
     public void dispose() {
@@ -337,5 +347,9 @@ public class ImageLoader {
 
     public Texture getItemScreen() {
       return itemScreen;
+    }
+
+    public Texture[] getProjectileBoomerang() {
+        return projectileBoomerang;
     }
 }
