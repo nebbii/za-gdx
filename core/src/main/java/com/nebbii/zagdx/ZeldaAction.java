@@ -18,8 +18,8 @@ public class ZeldaAction extends Rectangle implements Actor {
     private ActorType type;
     private int drawOrder;
 
-    public ZeldaAction(Zelda zelda, float x, float y) {
-        this.zelda = zelda;
+    public ZeldaAction(Actor actor, float x, float y) {
+        this.zelda = (Zelda) actor;
         setState(State.ACTIVE);
         setType(ActorType.PROJECTILE);
         this.drawOrder = 3;
