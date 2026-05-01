@@ -159,7 +159,7 @@ public class Zelda extends Rectangle implements Actor {
                 if (world.getGameManager().getRubies() > 0
                     && map.findActorByType(ZeldaActionBoomerang.class) == null) {
                     world.getGameManager().decreaseRubies(1);
-                    map.addActor(new ZeldaActionBoomerang(this, getX(), getY()));
+                    map.addNewActor(new ZeldaActionBoomerang(this, getX(), getY()));
                 }
                 break;
             case WAND:
@@ -189,7 +189,7 @@ public class Zelda extends Rectangle implements Actor {
             throw new IllegalStateException("Zelda->action(): Unhandled animation state: " + getAnimState());
         }
 
-        map.addActor(new ZeldaActionWand(this, getX(), getY()));
+        map.addNewActor(new ZeldaActionWand(this, getX(), getY()));
     }
 
     public void finishAction() {

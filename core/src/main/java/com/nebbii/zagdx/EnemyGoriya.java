@@ -2,10 +2,12 @@ package com.nebbii.zagdx;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.MathUtils;
 import com.nebbii.zagdx.animation.EnemyGoriyaAnimation;
 
 public class EnemyGoriya extends Enemy {
     public EnemyGoriyaAnimation animation;
+    public float timer;
 
     // TODO: Set actual original game accurate values
     public EnemyGoriya() {
@@ -14,6 +16,7 @@ public class EnemyGoriya extends Enemy {
         setHeight(42);
         setHealth(60);
         setHitDamage(20);
+        timer = MathUtils.random(0f, 2f);
 
         this.animation = new EnemyGoriyaAnimation(this);
 
@@ -23,6 +26,7 @@ public class EnemyGoriya extends Enemy {
     @Override
     public void logic() {
         super.logic();
+        if (!isActive()) return;
 
         switch(enemyState) {
             case SEARCHING:
@@ -32,6 +36,13 @@ public class EnemyGoriya extends Enemy {
                 setSpeed(110f);
                 break;
             default:
+        }
+
+        timer += Gdx.graphics.getDeltaTime();
+
+        if (timer > 3) {
+            map.addNewActor(new EnemyActionBoomerang(this, getX(), getY()));
+            timer = 0;
         }
     }
 
