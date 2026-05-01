@@ -75,6 +75,8 @@ public class EnemyTumblebotAnimation extends GameAnimation {
         float wrappedTime = stateTime % animation.getAnimationDuration();
         int frameIndex = animation.getKeyFrameIndex(wrappedTime);
 
+        animation.setFrameDuration(getAnimationSpeed());
+
         offsetX = offsetsX[frameIndex];
         offsetY = offsetsY[frameIndex];
 
@@ -195,6 +197,16 @@ public class EnemyTumblebotAnimation extends GameAnimation {
         Animation<TextureRegion> anim = new Animation<>(0.10f, frames);
         anim.setPlayMode(Animation.PlayMode.LOOP);
         return anim;
+    }
+
+    private float getAnimationSpeed() {
+        switch(enemy.getEnemyState()) {
+            case FIGHTING:
+                return 0.05f;
+            case SEARCHING:
+            default:
+                return 0.10f;
+        }
     }
 
     public float getX() {

@@ -75,6 +75,8 @@ public class EnemyGoriyaAnimation extends GameAnimation {
         float wrappedTime = stateTime % animation.getAnimationDuration();
         int frameIndex = animation.getKeyFrameIndex(wrappedTime);
 
+        animation.setFrameDuration(getAnimationSpeed());
+
         offsetX = offsetsX[frameIndex];
         offsetY = offsetsY[frameIndex];
 
@@ -102,7 +104,7 @@ public class EnemyGoriyaAnimation extends GameAnimation {
             walkUpOffsetY[i] = frameData[i][2];
         }
 
-        Animation<TextureRegion> anim = new Animation<>(getAnimationSpeed(), frames);
+        Animation<TextureRegion> anim = new Animation<>(0.25f, frames);
         anim.setPlayMode(Animation.PlayMode.LOOP);
         return anim;
     }
@@ -128,7 +130,7 @@ public class EnemyGoriyaAnimation extends GameAnimation {
             walkRightOffsetY[i] = frameData[i][2];
         }
 
-        Animation<TextureRegion> anim = new Animation<>(getAnimationSpeed(), frames);
+        Animation<TextureRegion> anim = new Animation<>(0.25f, frames);
         anim.setPlayMode(Animation.PlayMode.LOOP);
         return anim;
     }
@@ -154,7 +156,7 @@ public class EnemyGoriyaAnimation extends GameAnimation {
             walkDownOffsetY[i] = frameData[i][2];
         }
 
-        Animation<TextureRegion> anim = new Animation<>(getAnimationSpeed(), frames);
+        Animation<TextureRegion> anim = new Animation<>(0.25f, frames);
         anim.setPlayMode(Animation.PlayMode.LOOP);
         return anim;
     }
@@ -180,7 +182,7 @@ public class EnemyGoriyaAnimation extends GameAnimation {
             walkLeftOffsetY[i] = frameData[i][2];
         }
 
-        Animation<TextureRegion> anim = new Animation<>(getAnimationSpeed(), frames);
+        Animation<TextureRegion> anim = new Animation<>(0.25f, frames);
         anim.setPlayMode(Animation.PlayMode.LOOP);
         return anim;
     }
