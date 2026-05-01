@@ -167,6 +167,10 @@ public class GameManager {
         setRubies(getRubies() + count);
     }
 
+    public void decreaseRubies(int count) {
+        setRubies(getRubies() - count);
+    }
+
     public void addTreasure(Treasure treasure) {
         treasures.add(treasure);
     }
