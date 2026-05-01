@@ -15,6 +15,8 @@ public class ZeldaActionBoomerang extends ZeldaAction {
 
     int[] defaultOffset;
 
+    private Rectangle hitbox;
+
     public ZeldaActionBoomerang(Actor actor, float x, float y) {
         super(actor, x, y);
         duration = 1.2f;
@@ -23,8 +25,12 @@ public class ZeldaActionBoomerang extends ZeldaAction {
 
         this.animation = new ActionBoomerangAnimation();
 
-        setWidth(31);
-        setHeight(31);
+        setWidth(10);
+        setHeight(10);
+
+        hitbox = new Rectangle();
+        hitbox.setWidth(28);
+        hitbox.setHeight(31);
 
         switch(actor.getDirection()) {
         case LEFT:
@@ -52,6 +58,7 @@ public class ZeldaActionBoomerang extends ZeldaAction {
 
     public void logic() {
         super.logic();
+        if (!isActive()) return;
 
         float deltaTime = Gdx.graphics.getDeltaTime();
 
@@ -79,5 +86,16 @@ public class ZeldaActionBoomerang extends ZeldaAction {
     @Override
     public void draw(SpriteBatch batch) {
         batch.draw(animation.playCurrentAnimation(), this.getX() + animation.getX(), this.getY() + animation.getY());
+    }
+
+    public Rectangle getHitbox() {
+        hitbox.setX(this.x + getCollisionBox().getWidth() / 2 - hitbox.getWidth() / 2 );
+        hitbox.setY(this.y + getCollisionBox().getHeight() / 2 - hitbox.getHeight() / 2);
+
+        return hitbox;
+    }
+
+    public Rectangle getCollisionBox() {
+        return this;
     }
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.objects.PolygonMapObject;
 import com.badlogic.gdx.math.EarClippingTriangulator;
+import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
@@ -40,6 +41,7 @@ public class WorldCollision {
         collideZeldaWithEnemies();
         collideZeldaWithPickups();
         collideProjectilesWithEnemies();
+        collideProjectilesWithCollision();
         checkOverlapAlertBoxes();
         collideEnemiesWithWorldBorders();
     }
@@ -81,6 +83,44 @@ public class WorldCollision {
                 if (enemy.getHitbox().overlaps(projectile.getHitbox())) {
                     enemy.setHurtDirection(projectile.getDirection());
                     enemy.onHit(projectile.getDamage(), 0.2f);
+                }
+            }
+        }
+    }
+
+    private void collideProjectilesWithCollision() {
+        List<PolygonMapObject> collisionObjects = this.collision.getPolygonObjects();
+        List<PolygonMapObject> specialObjects = this.special.getPolygonObjects();
+
+        for (Actor actor : actors) {
+            if (!actor.isActive()) continue;
+            if (actor.getType() != ActorType.PROJECTILE) continue;
+
+            Gdx.app.log(getClass().getSimpleName(), "projectile is active");
+
+            Rectangle actorRectangle = actor.getCollisionBox();
+            Polygon rectangleToPolygon = new Polygon(new float[] {
+                0, 0,
+                actorRectangle.width, 0,
+                actorRectangle.width, actorRectangle.height,
+                0, actorRectangle.height
+            });
+
+            rectangleToPolygon.setPosition(actorRectangle.getX(), actorRectangle.getY());
+
+            for (PolygonMapObject collisionObject : collisionObjects) {
+                Polygon mapPolygon = collisionObject.getPolygon();
+
+                if (Intersector.overlapConvexPolygons(rectangleToPolygon, mapPolygon)) {
+                    actor.setState(State.DEAD);
+                }
+            }
+
+            for (PolygonMapObject specialObject : specialObjects) {
+                Polygon mapPolygon = specialObject.getPolygon();
+
+                if (Intersector.overlapConvexPolygons(rectangleToPolygon, mapPolygon)) {
+                    actor.setState(State.DEAD);
                 }
             }
         }

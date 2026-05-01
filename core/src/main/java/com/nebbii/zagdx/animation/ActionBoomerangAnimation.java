@@ -14,8 +14,8 @@ public class ActionBoomerangAnimation extends GameAnimation {
     public ActionBoomerangAnimation() {
         super("default");
 
-        baseOffsetX = 0;
-        baseOffsetY = 0;
+        baseOffsetX = -10;
+        baseOffsetY = -5;
         offsetX = 0;
         offsetY = 0;
 
