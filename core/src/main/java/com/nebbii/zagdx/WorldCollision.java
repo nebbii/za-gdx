@@ -38,11 +38,11 @@ public class WorldCollision {
     }
 
     public void logic() {
+        collideProjectilesWithEnemies();
+        collideProjectilesWithCollision();
         collideActorsWithCollision();
         collideZeldaWithEnemies();
         collideZeldaWithPickups();
-        collideProjectilesWithEnemies();
-        collideProjectilesWithCollision();
         checkOverlapAlertBoxes();
         collideEnemiesWithWorldBorders();
     }
@@ -94,7 +94,7 @@ public class WorldCollision {
         List<PolygonMapObject> specialObjects = this.special.getPolygonObjects();
 
         for (Actor actor : actors) {
-            if (!actor.isActive()) continue;
+            if (!actor.isSolid() || !actor.isActive()) continue;
             if (actor.getType() != ActorType.PROJECTILE) continue;
 
             Rectangle actorRectangle = actor.getCollisionBox();

@@ -23,6 +23,8 @@ public class ZeldaActionBoomerang extends ZeldaAction {
         damage = 20f; // TODO: scale with amount of shrines cleared/celestial stones obtained
         speed = 150f;
 
+        solid = true;
+
         this.animation = new ActionBoomerangAnimation();
 
         setWidth(10);
@@ -35,7 +37,7 @@ public class ZeldaActionBoomerang extends ZeldaAction {
         switch(actor.getDirection()) {
         case LEFT:
             setX(actor.getCenterPointX() - actor.getHitbox().getWidth() / 2 - this.getWidth());
-            setY(actor.getHitbox().getY());
+            setY(actor.getCenterPointY());
             break;
         case DOWN:
             setX(actor.getCenterPointX() - this.getWidth() / 2);
@@ -43,11 +45,11 @@ public class ZeldaActionBoomerang extends ZeldaAction {
             break;
         case UP:
             setX(actor.getCenterPointX() - this.getWidth() / 2);
-            setY(actor.getCenterPointY() + actor.getHitbox().getHeight() / 2);
+            setY(actor.getCenterPointY() + actor.getHitbox().getHeight());
             break;
         case RIGHT:
-            setX(actor.getCenterPointX() + actor.getHitbox().getWidth() / 2);
-            setY(actor.getHitbox().getY());
+            setX(actor.getCenterPointX() + actor.getHitbox().getWidth());
+            setY(actor.getCenterPointY());
             break;
         default:
             break;

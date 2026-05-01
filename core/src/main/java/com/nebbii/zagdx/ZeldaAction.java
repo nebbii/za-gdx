@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
 public class ZeldaAction extends Rectangle implements Actor {
-    protected final boolean solid = false;
+    protected boolean solid = false;
 
     protected Zelda zelda;
     protected MapManager map;
