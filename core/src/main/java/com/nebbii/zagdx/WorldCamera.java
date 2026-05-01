@@ -45,12 +45,13 @@ public class WorldCamera {
 
         Vector2 direction = target.sub(current);
 
-        if (direction.len() > 1f) {
-            direction.nor().scl(speed * Gdx.graphics.getDeltaTime());
-            camera.position.add(direction.x, direction.y, 0);
-        } else {
+        if (direction.len() <= (speed * Gdx.graphics.getDeltaTime())) {
             camera.position.set(targetX, targetY, 0);
+            return;
         }
+
+        direction.setLength(speed * Gdx.graphics.getDeltaTime());
+        camera.position.add(direction.x, direction.y, 0);
     }
 
     public void updateTargetToZeldaCell() {
@@ -63,8 +64,8 @@ public class WorldCamera {
     }
 
     public boolean isTransitioning() {
-        return getTargetX() != camera.position.x
-            || getTargetY() != camera.position.y;
+        return Math.abs(getTargetX() - camera.position.x) > 1f
+            || Math.abs(getTargetY() - camera.position.y) > 1f;
     }
 
     public OrthographicCamera getCamera() {
