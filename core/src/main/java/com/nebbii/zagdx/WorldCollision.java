@@ -77,6 +77,7 @@ public class WorldCollision {
             EnemyAction projectile = (EnemyAction) actor;
 
             if (projectile.getHitbox().overlaps(map.getZelda().getHitbox())) {
+                projectile.onHit();
                 map.getZelda().onHit(projectile.getDamage());
             }
         }
@@ -96,6 +97,7 @@ public class WorldCollision {
 
                 if (enemy.getHitbox().overlaps(projectile.getHitbox())) {
                     enemy.setHurtDirection(projectile.getDirection());
+                    projectile.onHit();
                     enemy.onHit(projectile.getDamage(), 0.2f);
                 }
             }

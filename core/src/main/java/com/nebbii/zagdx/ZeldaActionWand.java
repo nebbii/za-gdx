@@ -51,4 +51,7 @@ public class ZeldaActionWand extends ZeldaAction {
         if (stateTime >= duration) setState(State.DEAD);
         stateTime += Gdx.graphics.getDeltaTime();
     }
+
+    public void onHit() {
+    }
 }

@@ -34,6 +34,10 @@ public class ZeldaAction extends Rectangle implements Actor {
     public void draw(SpriteBatch batch) {
     }
 
+    public void onHit() {
+        setState(State.DEAD);
+    }
+
     @Override
     public int getDrawOrder() {
         return drawOrder;
