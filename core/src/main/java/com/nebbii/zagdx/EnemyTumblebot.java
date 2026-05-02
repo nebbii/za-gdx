@@ -16,7 +16,7 @@ public class EnemyTumblebot extends Enemy {
 
         this.animation = new EnemyTumblebotAnimation(this);
 
-        this.enemyState = EnemyState.SEARCHING;
+        this.enemyState = EnemyState.SEARCH;
     }
 
     @Override
@@ -24,10 +24,10 @@ public class EnemyTumblebot extends Enemy {
         super.logic();
 
         switch(enemyState) {
-            case SEARCHING:
+            case SEARCH:
                 setSpeed(80f);
                 break;
-            case FIGHTING:
+            case FIGHT:
                 setSpeed(110f);
                 break;
             default:

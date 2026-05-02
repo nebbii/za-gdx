@@ -201,9 +201,9 @@ public class EnemyTumblebotAnimation extends GameAnimation {
 
     private float getAnimationSpeed() {
         switch(enemy.getEnemyState()) {
-            case FIGHTING:
+            case FIGHT:
                 return 0.05f;
-            case SEARCHING:
+            case SEARCH:
             default:
                 return 0.10f;
         }

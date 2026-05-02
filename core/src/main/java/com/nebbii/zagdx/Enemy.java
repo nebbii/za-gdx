@@ -31,8 +31,8 @@ public class Enemy extends Rectangle implements Actor {
     protected EnemyState enemyState;
 
     public enum EnemyState {
-        SEARCHING,
-        FIGHTING
+        SEARCH,
+        FIGHT
     }
 
     public Enemy(ActorType actorType, boolean solid) {
@@ -45,7 +45,7 @@ public class Enemy extends Rectangle implements Actor {
 
         this.direction = getRandomDirection();
         resetDirectionTimer();
-        setEnemyState(EnemyState.SEARCHING);
+        setEnemyState(EnemyState.SEARCH);
 
         this.alertBox = new Rectangle();
         this.alertBox.setWidth(200);
@@ -56,21 +56,19 @@ public class Enemy extends Rectangle implements Actor {
         if (getState() != State.ACTIVE) return;
         if (health <= 0) onDeath();
 
-        float deltaTime = Gdx.graphics.getDeltaTime();
-
-        hurtDuration = Math.max(0f, hurtDuration - deltaTime);
+        hurtDuration = Math.max(0f, hurtDuration - Gdx.graphics.getDeltaTime());
 
         if (hurtDuration > 0) {
             movePushback();
         }
         else {
             switch(enemyState) {
-                case SEARCHING:
+                case SEARCH:
                     searchDurationCap = 4.0f;
                     refreshDirection();
                     move();
                     break;
-                case FIGHTING:
+                case FIGHT:
                     searchDurationCap = 0.5f;
                     refreshDirection();
                     move();
@@ -175,10 +173,10 @@ public class Enemy extends Rectangle implements Actor {
 
         if (searchDuration <= 0f) {
             switch(enemyState) {
-            case SEARCHING:
+            case SEARCH:
                 setDirection(getRandomDirection());
                 break;
-            case FIGHTING:
+            case FIGHT:
                 changeDirectionTowardsTarget();
                 break;
             default:

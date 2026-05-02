@@ -20,7 +20,7 @@ public class EnemyGoriya extends Enemy {
 
         this.animation = new EnemyGoriyaAnimation(this);
 
-        this.enemyState = EnemyState.SEARCHING;
+        this.enemyState = EnemyState.SEARCH;
     }
 
     @Override
@@ -29,10 +29,10 @@ public class EnemyGoriya extends Enemy {
         if (!isActive()) return;
 
         switch(enemyState) {
-            case SEARCHING:
+            case SEARCH:
                 setSpeed(80f);
                 break;
-            case FIGHTING:
+            case FIGHT:
                 setSpeed(110f);
                 break;
             default:

@@ -189,9 +189,9 @@ public class EnemyGoriyaAnimation extends GameAnimation {
 
     private float getAnimationSpeed() {
         switch(enemy.getEnemyState()) {
-            case FIGHTING:
+            case FIGHT:
                 return 0.12f;
-            case SEARCHING:
+            case SEARCH:
             default:
                 return 0.25f;
         }

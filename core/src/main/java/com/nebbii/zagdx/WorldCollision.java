@@ -69,6 +69,18 @@ public class WorldCollision {
         }
     }
 
+    private void collideZeldaWithEnemyProjectiles() {
+        for (Actor actor : actors) {
+            if (!(actor instanceof EnemyAction) || !actor.isActive()) continue;
+
+            EnemyAction projectile = (EnemyAction) actor;
+
+            if (projectile.getHitbox().overlaps(map.getZelda().getHitbox())) {
+                map.getZelda().onHit(projectile.getDamage());
+            }
+        }
+    }
+
     private void collideProjectilesWithEnemies() {
         for (Actor overlapper : actors) {
             if (!(overlapper instanceof Enemy) || !overlapper.isActive()) continue;
@@ -233,15 +245,15 @@ public class WorldCollision {
                 enemy.setTargetX(zelda.getCenterPointX());
                 enemy.setTargetY(zelda.getCenterPointY());
 
-                if (enemy.getEnemyState() == EnemyState.SEARCHING) {
-                    enemy.setEnemyState(EnemyState.FIGHTING);
+                if (enemy.getEnemyState() == EnemyState.SEARCH) {
+                    enemy.setEnemyState(EnemyState.FIGHT);
                     enemy.changeDirectionTowardsTarget();
                     Gdx.app.log("WorldCollision", actor.getClass() + " is aggro'd!");
                 }
             }
             else {
-                if (enemy.getEnemyState() == EnemyState.FIGHTING) {
-                    enemy.setEnemyState(EnemyState.SEARCHING);
+                if (enemy.getEnemyState() == EnemyState.FIGHT) {
+                    enemy.setEnemyState(EnemyState.SEARCH);
                     Gdx.app.log("WorldCollision", actor.getClass() + " went back to searching...");
                 }
             }
