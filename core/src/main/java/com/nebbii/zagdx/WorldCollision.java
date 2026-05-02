@@ -42,6 +42,7 @@ public class WorldCollision {
         collideProjectilesWithCollision();
         collideActorsWithCollision();
         collideZeldaWithEnemies();
+        collideZeldaWithEnemyProjectiles();
         collideZeldaWithPickups();
         checkOverlapAlertBoxes();
         collideEnemiesWithWorldBorders();
