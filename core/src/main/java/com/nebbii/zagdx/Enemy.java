@@ -32,7 +32,8 @@ public class Enemy extends Rectangle implements Actor {
 
     public enum EnemyState {
         SEARCH,
-        FIGHT
+        FIGHT,
+        STOP
     }
 
     public Enemy(ActorType actorType, boolean solid) {
@@ -63,18 +64,19 @@ public class Enemy extends Rectangle implements Actor {
         }
         else {
             switch(enemyState) {
-                case SEARCH:
-                    searchDurationCap = 4.0f;
-                    refreshDirection();
-                    move();
-                    break;
-                case FIGHT:
-                    searchDurationCap = 0.5f;
-                    refreshDirection();
-                    move();
-                    break;
-                default:
-                    break;
+            case SEARCH:
+                searchDurationCap = 4.0f;
+                refreshDirection();
+                move();
+                break;
+            case FIGHT:
+                searchDurationCap = 0.5f;
+                refreshDirection();
+                move();
+                break;
+            case STOP:
+            default:
+                break;
             }
         }
     }

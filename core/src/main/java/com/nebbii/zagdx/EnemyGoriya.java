@@ -29,21 +29,29 @@ public class EnemyGoriya extends Enemy {
         if (!isActive()) return;
 
         switch(enemyState) {
-            case SEARCH:
-                setSpeed(80f);
-                break;
-            case FIGHT:
-                setSpeed(110f);
-                break;
+        case SEARCH:
+            setSpeed(80f);
+            if (timer > 3) {
+                map.addNewActor(new EnemyActionBoomerang(this, getX(), getY()));
+                setEnemyState(EnemyState.STOP);
+            }
+            break;
+        case FIGHT:
+            setSpeed(110f);
+            if (timer > 3) {
+                map.addNewActor(new EnemyActionBoomerang(this, getX(), getY()));
+                setEnemyState(EnemyState.STOP);
+            }
+            break;
+        case STOP:
+            if (timer > 4) {
+                setEnemyState(EnemyState.SEARCH);
+                timer = 0;
+            }
             default:
         }
 
         timer += Gdx.graphics.getDeltaTime();
-
-        if (timer > 3) {
-            map.addNewActor(new EnemyActionBoomerang(this, getX(), getY()));
-            timer = 0;
-        }
     }
 
     @Override
