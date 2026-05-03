@@ -4,12 +4,12 @@ A port of ZA (originally for the CD-i) written in Java with [libGDX](https://lib
 
 ## Setup
 ### Requirements
-- Java JDK 17 or 21 (for libgdx)
-- git (for loading the submodule)
-- python3, with the following dependencies:
+- [Java JDK 17 or 21](https://adoptium.net/) (for libgdx)
+- [git](https://git-scm.com/) (for loading the submodule)
+- [python3](https://www.python.org/), with the following dependencies:
   - tqdm
   - pillow
-- chdman (if using bin/cue)
+- [chdman](https://docs.mamedev.org/tools/chdman.html) (if using bin/cue)
 
 ### Providing an asset source
 You'll need to acquire a bin/cue or .CHD of the original game and place it in the project directory.
