@@ -211,12 +211,12 @@ public class Zelda extends Rectangle implements Actor {
         }
     }
 
-    public void onHit(float damage) {
+    public void onHit(int damage, float knockback) {
+        if (!isActive()) return;
         if (hurtDuration > 0) return;
 
-        hurtDuration += 1; // seems to always be the same?
-        health -= damage; // TODO: apply damage formula here
-        // TODO: Zelda is supposed to get pushed by damage, check notes for more info
+        decreaseHealth(damage);
+        increaseHurtDuration(1);
     }
 
     public void onDeath() {
@@ -372,8 +372,16 @@ public class Zelda extends Rectangle implements Actor {
         this.health = health;
     }
 
-    public void increaseHealth(int count) {
-        setHealth(Math.min(getHealth() + count, getMaxHealth()));
+    public void increaseHealth(int amount) {
+        setHealth(Math.min(getHealth() + amount, getMaxHealth()));
+    }
+
+    public void decreaseHealth(int amount) {
+        setHealth(Math.min(getHealth() - amount, getMaxHealth()));
+    }
+
+    public void increaseHurtDuration(float amount) {
+        this.hurtDuration += amount;
     }
 
     public int getMaxHealth() {

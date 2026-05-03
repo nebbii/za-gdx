@@ -59,26 +59,35 @@ public class WorldCollision {
     }
 
     private void collideZeldaWithEnemies() {
+        Zelda zelda = map.getZelda();
+
         for (Actor actor : actors) {
             if (!(actor instanceof Enemy) || !actor.isActive()) continue;
 
             Enemy enemy = (Enemy) actor;
 
-            if (enemy.getHitbox().overlaps(map.getZelda().getHitbox())) {
-                map.getZelda().onHit(enemy.getHitDamage());
+            if (enemy.getHitbox().overlaps(zelda.getHitbox())) {
+                int damage = game.calculateEnemyDamage(enemy);
+                float knockback = game.calculateKnockback();
+                zelda.onHit(damage, knockback);
             }
         }
     }
 
     private void collideZeldaWithEnemyProjectiles() {
+        Zelda zelda = map.getZelda();
+
         for (Actor actor : actors) {
             if (!(actor instanceof EnemyAction) || !actor.isActive()) continue;
 
             EnemyAction projectile = (EnemyAction) actor;
 
-            if (projectile.getHitbox().overlaps(map.getZelda().getHitbox())) {
+            if (projectile.getHitbox().overlaps(zelda.getHitbox())) {
+                int damage = game.calculateProjectileDamage(projectile);
+                float knockback = game.calculateKnockback();
+
+                zelda.onHit(damage, knockback);
                 projectile.onHit();
-                map.getZelda().onHit(projectile.getDamage());
             }
         }
     }
@@ -96,9 +105,13 @@ public class WorldCollision {
                 ZeldaAction projectile = (ZeldaAction) overlapee;
 
                 if (enemy.getHitbox().overlaps(projectile.getHitbox())) {
+                    int damage = game.calculateProjectileDamage(projectile);
+                    float knockback = game.calculateKnockback();
+
                     enemy.setHurtDirection(projectile.getDirection());
+                    enemy.onHit(damage, knockback);
+
                     projectile.onHit();
-                    enemy.onHit(projectile.getDamage(), 0.2f);
                 }
             }
         }

@@ -151,6 +151,19 @@ public class GameManager {
         world.getWorldCamera().resetPosition();
     }
 
+    public int calculateProjectileDamage(Projectile projectile) {
+        return 20;
+    }
+
+    public int calculateEnemyDamage(Enemy enemy) {
+
+        return 20;
+    }
+
+    public float calculateKnockback() {
+        return 0.2f;
+    }
+
     public World getWorld() {
         return world;
     }

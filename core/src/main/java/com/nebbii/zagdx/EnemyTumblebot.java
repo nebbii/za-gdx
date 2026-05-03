@@ -36,10 +36,10 @@ public class EnemyTumblebot extends Enemy {
 
     @Override
     public void draw(SpriteBatch batch) {
-        if (hurtDuration > 0) drawFlashOverlay(batch);
+        if (knockback > 0) drawFlashOverlay(batch);
 
         batch.draw(animation.playCurrentAnimation(), animation.getX(), animation.getY());
 
-        if (hurtDuration > 0) endDrawFlashOverlay(batch);
+        if (knockback > 0) endDrawFlashOverlay(batch);
     }
 }

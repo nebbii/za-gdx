@@ -18,7 +18,7 @@ public class Enemy extends Rectangle implements Actor {
     protected float targetX;
     protected float targetY;
 
-    protected float hurtDuration;
+    protected float knockback;
     protected Direction hurtDirection;
     protected float hitDamage;
 
@@ -57,9 +57,9 @@ public class Enemy extends Rectangle implements Actor {
         if (getState() != State.ACTIVE) return;
         if (health <= 0) onDeath();
 
-        hurtDuration = Math.max(0f, hurtDuration - Gdx.graphics.getDeltaTime());
+        knockback = Math.max(0f, knockback - Gdx.graphics.getDeltaTime());
 
-        if (hurtDuration > 0) {
+        if (knockback > 0) {
             movePushback();
         }
         else {
@@ -83,9 +83,9 @@ public class Enemy extends Rectangle implements Actor {
 
     public void draw(SpriteBatch batch) {
         /*
-        if (hurtDuration > 0) drawFlashOverlay(batch);
+        if (knockback > 0) drawFlashOverlay(batch);
         batch.draw(animation.playCurrentAnimation(), animation.getX(), animation.getY());
-        if (hurtDuration > 0) endDrawFlashOverlay(batch);
+        if (knockback > 0) endDrawFlashOverlay(batch);
         */
     }
 
@@ -136,20 +136,19 @@ public class Enemy extends Rectangle implements Actor {
         }
     }
 
-    public void onHit(float damage, float hitstun) {
-        if (hurtDuration > 0) return;
-        hurtDuration += hitstun;
-        health -= damage;
+    public void onHit(int damage, float knockback) {
+        if (this.knockback > 0) return;
+        decreaseHealth(damage);
+        increaseKnockback(knockback);
     }
 
     public void onDeath() {
-        // TODO: death animation
         setState(State.DEAD);
     }
 
     public void drawFlashOverlay(SpriteBatch batch) {
         Color currentColor;
-        float t = hurtDuration % 0.12f;
+        float t = knockback % 0.12f;
 
         if (t < 0.04f) {
             currentColor = Color.YELLOW;
@@ -299,6 +298,18 @@ public class Enemy extends Rectangle implements Actor {
 
     public boolean isSolid() {
         return solid;
+    }
+
+    public void increaseHealth(int amount) {
+        setHealth(getHealth() + amount);
+    }
+
+    public void decreaseHealth(int amount) {
+        setHealth(getHealth() - amount);
+    }
+
+    public void increaseKnockback(float amount) {
+        this.knockback += amount;
     }
 
     public float getHealth() {
