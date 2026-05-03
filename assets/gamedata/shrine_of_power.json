@@ -1,0 +1,95 @@
+{
+  "actors": [
+    {
+      "__comment": "s6",
+      "type": null
+    },
+    {
+      "__comment": "s6-1: Stallholder 1 speaks with Zelda if touched. He sells a red ribbon for 50 rupees, which is needed later to join the joust, and two other ornaments for 20 and 10 rupees."
+    },
+    {
+      "__comment": "s6-2: If Zelda pushes the block on the left to the right, a map of the tomb appears."
+    },
+    {
+      "__comment": "s6-3: A Carny Barker and a water carrier speak with Zelda if touched. If Zelda keeps touching the water carrier, he eventually gives her the compass for the sixth tomb. The pickpocket steals 25 rupees from Zelda if she touches him or if he touches her. After a while, the pickpocket leaves the location on his own."
+    },
+    {
+      "__comment": "s6-4: A pickpocket stands against a stall and walks back and forth. He also steals 25 rupees from Zelda if they touch each other."
+    },
+    {
+      "__comment": "s6-5: A thirsty child next to a well asks Zelda for help. If Zelda helps the child, the child gives her a golden necklace."
+    },
+    {
+      "__comment": "s6-6: A trainer stands by a counter where three bear heads move from north to south as targets. Zelda can shoot them if she has the bow and arrow. For every successful shot, she receives rupees."
+    },
+    {
+      "__comment": "s6-7: A blue globe lies at the end of a short corridor. Zelda must hit it from a distance with a projectile weapon. If Zelda does not hit the globe, she cannot pass through the eastern door in the next location."
+    },
+    {
+      "__comment": "s6-8: Two blue globes lie in the southwest and northeast corners of this location. Hitting the southwest globe makes spikes appear in the northern passage. Hit the northeast globe and a thunderstick weapon appears."
+    },
+    {
+      "__comment": "s6-9: Stallholder 2 sells Zelda a ticket for the joust for 20 rupees. Buying this ticket also immediately removes the spikes at the eastern passage."
+    },
+    {
+      "__comment": "s6-10: Nothing."
+    },
+    {
+      "__comment": "s6-11: A Carny Barker urges Zelda to fight the Red Knight."
+    },
+    {
+      "__comment": "s6-12: If Zelda has the red ribbon, the Red Knight appears to fight her. Zelda must use the jousting stick found in the seventh region. If she kills the Red Knight, the spikes at the eastern passage disappear."
+    },
+    {
+      "__comment": "s6-13: Two Iron Knuckles."
+    },
+    {
+      "__comment": "s6-14: Spikes block the northern passage. In the northeast corner there is a blue globe. If Zelda hits the globe with her magic wand, the spikes at the passage disappear. However, spikes then appear around the globe. Zelda must hit the globe from a distance with a projectile weapon."
+    },
+    {
+      "__comment": "s6-15: Two Iron Knuckles."
+    },
+    {
+      "__comment": "s6-16: Zelda must make her way through the blocks by pushing the lowest one right, the next one left, and the one after that right. She can then use the exit to the north."
+    },
+    {
+      "__comment": "s6-17: Three Iron Knuckles."
+    },
+    {
+      "__comment": "s6-18: Stallholder 3 sells Zelda a ticket for the Field of Swords for 20 rupees. Buying the ticket removes the spikes in the northern passage."
+    },
+    {
+      "__comment": "s6-19: The pickpocket in the northwest corner walks away after a while. If Zelda and the pickpocket touch each other, he steals 25 rupees from her."
+    },
+    {
+      "__comment": "s6-20: Zelda must use her broadsword against the Green Knight."
+    },
+    {
+      "__comment": "s6-21: Nothing."
+    },
+    {
+      "__comment": "s6-22: If Zelda has not killed all three knights, spikes block the northern passage."
+    },
+    {
+      "__comment": "s6-23: Nothing."
+    },
+    {
+      "__comment": "s6-24: Nothing."
+    },
+    {
+      "__comment": "s6-25: Two Iron Knuckles."
+    },
+    {
+      "__comment": "s6-26: Killing the two Iron Knuckles removes the spikes at the western passage."
+    },
+    {
+      "__comment": "s6-27: Nothing."
+    },
+    {
+      "__comment": "s6-28: Zelda is trapped in Ursala's lair. Killing this tomb keeper opens the doors to the west and east."
+    },
+    {
+      "__comment": "s6-29: Zelda can now take the sixth Celestial Sign."
+    }
+  ]
+}

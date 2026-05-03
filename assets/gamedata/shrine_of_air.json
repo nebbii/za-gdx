@@ -1,0 +1,74 @@
+{
+  "actors": [
+    {
+      "__comment": "s3",
+      "type": null
+    },
+    {
+      "__comment": "s3-1: The condor drops Zelda at the entrance of the Shrine of Air."
+    },
+    {
+      "__comment": "s3-2: The three blue Tornadoes can only be destroyed with the Calm spell."
+    },
+    {
+      "__comment": "s3-3: Four blue Tornadoes."
+    },
+    {
+      "__comment": "s3-4: If Zelda kills the three Loccasins, they drop a magical brown jar."
+    },
+    {
+      "__comment": "s3-5: Crystal shards fly from the wall toward Zelda."
+    },
+    {
+      "__comment": "s3-6: Same as S3-5."
+    },
+    {
+      "__comment": "s3-7: One Vapora chops at Zelda."
+    },
+    {
+      "__comment": "s3-8: Three Patras drop the compass for the third tomb when they die."
+    },
+    {
+      "__comment": "s3-9: Four Patras."
+    },
+    {
+      "__comment": "s3-10: Three Puffers."
+    },
+    {
+      "__comment": "s3-11: Three Puffers."
+    },
+    {
+      "__comment": "s3-12: Five Dragonflies."
+    },
+    {
+      "__comment": "s3-13: Two blocks bar access to the west. Zelda must defeat all four Dragonflies to remove the blocks."
+    },
+    {
+      "__comment": "s3-14: Two blue light beams block the northern exits. Zelda must kill the Vapora to remove the beams. When the Vapora dies, it drops a magical cloth, which removes the slipperiness of the floor in Avianna's Lair."
+    },
+    {
+      "__comment": "s3-15: Three Bats."
+    },
+    {
+      "__comment": "s3-16: Zelda must push the lower block south to remove the spikes blocking access to the north. If she pushes the upper block west, three Voltas appear and attack her."
+    },
+    {
+      "__comment": "s3-17: Three Dragonflies."
+    },
+    {
+      "__comment": "s3-18: Zelda must kill all three Voltas to remove the spikes blocking the western exit."
+    },
+    {
+      "__comment": "s3-19: A gaping hole lies in the ground between Zelda and the west exit. Crystal shards come from the northern wall, and an animal skull floats from north to south on the other side of the gap. If Zelda shoots the skull with an arrow, a crystal bridge appears, letting her cross the gap."
+    },
+    {
+      "__comment": "s3-20: Nothing."
+    },
+    {
+      "__comment": "s3-21: Zelda must fight Avianna, the keeper of this tomb, using the feather weapon. The doors open once Avianna is dead. If Avianna kills Zelda, she returns to location S3-20."
+    },
+    {
+      "__comment": "s3-22: Zelda can now take the third Celestial Sign."
+    }
+  ]
+}

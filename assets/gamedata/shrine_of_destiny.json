@@ -1,0 +1,71 @@
+{
+  "actors": [
+    {
+      "__comment": "s4",
+      "type": null
+    },
+    {
+      "__comment": "s4-1: Doors lead northwest and northeast."
+    },
+    {
+      "__comment": "s4-2: Three Pols Voices."
+    },
+    {
+      "__comment": "s4-3: Four spiked blocks move from north to south. If Zelda shoots the blue globe in the southwest corner and it turns red, the blocks disappear."
+    },
+    {
+      "__comment": "s4-4: Two Pols Voices."
+    },
+    {
+      "__comment": "s4-5: Nothing."
+    },
+    {
+      "__comment": "s4-6: If Zelda kills the two Gibdos, they drop the compass for the fourth tomb. One Jack rotates diagonally. Spikes block the western exit, and these disappear once Zelda kills the Gibdos."
+    },
+    {
+      "__comment": "s4-7: If Zelda kills the three Gibdos, they all turn into dangerous Jacks. If Zelda leaves this location and returns, the Jacks disappear. Spikes block the western exit, and these disappear when Zelda defeats the Gibdos."
+    },
+    {
+      "__comment": "s4-8: Two spiked blocks move from north to south, and another moves from east to west."
+    },
+    {
+      "__comment": "s4-9: Nothing."
+    },
+    {
+      "__comment": "s4-11: Two Gibdos."
+    },
+    {
+      "__comment": "s4-12: Three Gibdos."
+    },
+    {
+      "__comment": "s4-14: Three spiked blocks move from north to south."
+    },
+    {
+      "__comment": "s4-15: Two Gibdos."
+    },
+    {
+      "__comment": "s4-16: Zelda must carefully walk along a narrow, slippery path over a chasm. If she falls, she returns to the first location in this tomb. Two Wizzrobes fire sound waves. They can only be killed with the dagger weapon."
+    },
+    {
+      "__comment": "s4-17: Zelda walks along a narrow, slippery path over a chasm. She returns to S4-1 if she falls off. Three Wizzrobes fire sound waves."
+    },
+    {
+      "__comment": "s4-18: Narrow path over a chasm. Four Romravens fly around. The two paths leading south are dead ends."
+    },
+    {
+      "__comment": "s4-19: Two Wizzrobes fire at Zelda from the narrow path over the chasm. One blocks the eastern exit. The other is on the lower path."
+    },
+    {
+      "__comment": "s4-20: Zelda must hit the first and third globes and turn them red. This removes the spikes at the eastern door."
+    },
+    {
+      "__comment": "s4-21: Four Romravens. Zelda must turn the blue globe red to remove the spike in the eastern door."
+    },
+    {
+      "__comment": "s4-22: Keeper Malmord appears and disappears again as Zelda fights her. Once she is defeated, the doors to the northwest and northeast open. If Malmord kills Zelda, she returns to S4-21."
+    },
+    {
+      "__comment": "s4-23: Zelda can now take the fourth Celestial Sign."
+    }
+  ]
+}

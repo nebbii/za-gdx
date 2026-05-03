@@ -1,0 +1,77 @@
+{
+  "actors": [
+    {
+      "__comment": "s7",
+      "type": null
+    },
+    {
+      "__comment": "s7-1: Nothing."
+    },
+    {
+      "__comment": "s7-2: Nothing."
+    },
+    {
+      "__comment": "s7-3: A Blacksmith throws spears."
+    },
+    {
+      "__comment": "s7-4: If Zelda kills the spear-throwing Blacksmith, he drops the compass for the seventh tomb."
+    },
+    {
+      "__comment": "s7-5: Four Crockarocks shoot stones at Zelda. The door in the northwest corner is fake. If Zelda kills the four Crockarocks, they drop the map for the seventh tomb."
+    },
+    {
+      "__comment": "s7-6: Zelda must dodge the fireballs that come out of the lava."
+    },
+    {
+      "__comment": "s7-8: Nothing."
+    },
+    {
+      "__comment": "s7-9: Four Fireflies. The hole in the eastern wall is the only exit."
+    },
+    {
+      "__comment": "s7-10: One Romraven."
+    },
+    {
+      "__comment": "s7-11: Killing the three Fireflies removes the flames in the southern passage."
+    },
+    {
+      "__comment": "s7-12: Warbane briefly appears, speaks, and disappears again. He leaves behind a hammer weapon."
+    },
+    {
+      "__comment": "s7-13: Nothing."
+    },
+    {
+      "__comment": "s7-14: Nothing."
+    },
+    {
+      "__comment": "s7-15: Four Romravens."
+    },
+    {
+      "__comment": "s7-16: One Kannis."
+    },
+    {
+      "__comment": "s7-17: One Kannis."
+    },
+    {
+      "__comment": "s7-18: Killing the single Kannis removes the flames in the northern passage."
+    },
+    {
+      "__comment": "s7-19: Nothing."
+    },
+    {
+      "__comment": "s7-20: Two Bollas roll fireballs toward Zelda. Killing them removes the flames in the northwest passage."
+    },
+    {
+      "__comment": "s7-21: Warbane briefly shows himself again, speaks with Zelda, and disappears. Zelda cannot move and therefore cannot fight him."
+    },
+    {
+      "__comment": "s7-22: Maxus fires flaming arrows at Zelda and must be destroyed using the golden necklace from S6-5. Spikes rise from the floor and at the western passage. The spikes in the passage disappear when Maxus is killed."
+    },
+    {
+      "__comment": "s7-23: Zelda is trapped in Warbane's lair. Once this tomb keeper is killed, the doors open."
+    },
+    {
+      "__comment": "s7-24: Zelda can now take the final Celestial Sign."
+    }
+  ]
+}

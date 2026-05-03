@@ -1,6 +1,10 @@
 {
   "actors": [
     {
+      "__comment": "s1",
+      "type": null
+    },
+    {
       "__comment": "s1-1: Zelda can use the opening in the northwest corner of the wall to enter."
     },
     {
