@@ -112,9 +112,175 @@
       "y": 2938
     },
     {
+      "__comment": "h23",
+      "type": null
+    },
+    {
       "type": "PickupWand",
       "x": 2754,
       "y": 2283
+    },
+    {
+      "__comment": "e21",
+      "type": null
+    },
+    {
+      "type": "EnemyGoriya",
+      "x": 1694,
+      "y": 2762
+    },
+    {
+      "type": "EnemyGoriya",
+      "x": 1649,
+      "y": 2714
+    },
+    {
+      "__comment": "f21",
+      "type": null
+    },
+    {
+      "type": "EnemyTumblebot",
+      "x": 2009,
+      "y": 2764
+    },
+    {
+      "type": "EnemyTumblebot",
+      "x": 2086,
+      "y": 2789
+    },
+    {
+      "type": "EnemyTumblebot",
+      "x": 2086,
+      "y": 2769
+    },
+    {
+      "type": "EnemyTumblebot",
+      "x": 2097,
+      "y": 2713
+    },
+    {
+      "type": "EnemyTumblebot",
+      "x": 2161,
+      "y": 2772
+    },
+    {
+      "__comment": "d23",
+      "type": null
+    },
+    {
+      "type": "EnemyGoriya",
+      "x": 1652,
+      "y": 2500
+    },
+    {
+      "type": "EnemyGoriya",
+      "x": 1674,
+      "y": 2518
+    },
+    {
+      "type": "EnemyGoriya",
+      "x": 1776,
+      "y": 2521
+    },
+    {
+      "type": "EnemyGoriya",
+      "x": 1744,
+      "y": 2503
+    },
+    {
+      "__comment": "e23, these are supposed to be peahats",
+      "type": null
+    },
+    {
+      "type": "EnemyGoriya",
+      "x": 1669,
+      "y": 2222
+    },
+    {
+      "type": "EnemyGoriya",
+      "x": 1698,
+      "y": 2276
+    },
+    {
+      "type": "EnemyGoriya",
+      "x": 1769,
+      "y": 2251
+    },
+    {
+      "__comment": "f25",
+      "type": null
+    },
+    {
+      "type": "EnemyTumblebot",
+      "x": 1998,
+      "y": 1862
+    },
+    {
+      "type": "EnemyTumblebot",
+      "x": 2043,
+      "y": 1805
+    },
+    {
+      "type": "EnemyTumblebot",
+      "x": 2122,
+      "y": 1773
+    },
+    {
+      "__comment": "g25",
+      "type": null
+    },
+    {
+      "type": "EnemyTumblebot",
+      "x": 2419,
+      "y": 1772
+    },
+    {
+      "type": "EnemyTumblebot",
+      "x": 2554,
+      "y": 1840
+    },
+    {
+      "type": "EnemyTumblebot",
+      "x": 2550,
+      "y": 1759
+    },
+    {
+      "__comment": "h25",
+      "type": null
+    },
+    {
+      "type": "EnemyTumblebot",
+      "x": 2737,
+      "y": 1808
+    },
+    {
+      "type": "EnemyTumblebot",
+      "x": 2867,
+      "y": 1726
+    },
+    {
+      "type": "EnemyTumblebot",
+      "x": 2937,
+      "y": 1783
+    },
+    {
+      "__comment": "i25",
+      "type": null
+    },
+    {
+      "type": "EnemyTumblebot",
+      "x": 3165,
+      "y": 1806
+    },
+    {
+      "type": "EnemyTumblebot",
+      "x": 3259,
+      "y": 1737
+    },
+    {
+      "type": "EnemyTumblebot",
+      "x": 3316,
+      "y": 1156
     }
   ]
 }
