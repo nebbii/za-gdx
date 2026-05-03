@@ -183,6 +183,14 @@ public class MapManager {
         }
     }
 
+    public void deleteAllProjectiles() {
+        for (Actor actor : actors) {
+            if (!(actor instanceof Projectile)) continue;
+
+            actor.setState(State.DEAD);
+        }
+    }
+
     public ArrayList<Actor> getActiveActors() {
         ArrayList<Actor> activeActors = new ArrayList<>();
 

@@ -53,6 +53,7 @@ public class GameManager {
         case PLAY:
             if (world.getWorldCamera().isTransitioning()) {
                 world.getMapManager().freezeAllActors();
+                world.getMapManager().deleteAllProjectiles();
                 setGameState(GameState.MOVE);
             }
 
