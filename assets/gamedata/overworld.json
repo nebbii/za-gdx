@@ -268,6 +268,21 @@
         "__comment": "g26: Three Mobies.",
         "type": null
       },
+        {
+          "type": "EnemyMoby",
+          "x": 2413,
+          "y": 1525
+        },
+        {
+          "type": "EnemyMoby",
+          "x": 2421,
+          "y": 1494
+        },
+        {
+          "type": "EnemyMoby",
+          "x": 2555,
+          "y": 1554
+        },
       {
         "__comment": "g27: Two Molblins."
       },

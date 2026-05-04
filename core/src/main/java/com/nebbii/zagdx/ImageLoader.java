@@ -34,9 +34,17 @@ public class ImageLoader {
         ROLLLEFT
     }
 
+    public enum EnemyMobyAnimationGroup {
+        FLYUP,
+        FLYRIGHT,
+        FLYDOWN,
+        FLYLEFT
+    }
+
     private EnumMap<ZeldaAnimationGroup, Texture[]> zelda;
     private EnumMap<EnemyGoriyaAnimationGroup, Texture[]> enemyGoriya;
     private EnumMap<EnemyTumblebotAnimationGroup, Texture[]> enemyTumblebot;
+    private EnumMap<EnemyMobyAnimationGroup, Texture[]> enemyMoby;
 
     /* NPCs */
     private Texture[] npcGlebb;
@@ -111,6 +119,16 @@ public class ImageLoader {
         enemyTumblebot.put(EnemyTumblebotAnimationGroup.ROLLLEFT,
             loadTextureArray("export/overworld/h21/sprites/desc0/group3", 8));
 
+        enemyMoby = new EnumMap<>(EnemyMobyAnimationGroup.class);
+        enemyMoby.put(EnemyMobyAnimationGroup.FLYUP,
+            loadTextureArray("export/overworld/g26/sprites/desc0/group0", 5));
+        enemyMoby.put(EnemyMobyAnimationGroup.FLYRIGHT,
+            loadTextureArray("export/overworld/g26/sprites/desc0/group1", 5));
+        enemyMoby.put(EnemyMobyAnimationGroup.FLYDOWN,
+            loadTextureArray("export/overworld/g26/sprites/desc0/group2", 5));
+        enemyMoby.put(EnemyMobyAnimationGroup.FLYLEFT,
+            loadTextureArray("export/overworld/g26/sprites/desc0/group3", 5));
+
         npcGlebb = loadTextureArray("export/overworld/j24/sprites/desc0/group0", 5);
 
         /* Items */
@@ -158,6 +176,16 @@ public class ImageLoader {
         }
 
         for (Texture[] textures : enemyTumblebot.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyMoby.values()) {
             if (textures == null) continue;
 
             for (Texture texture : textures) {
@@ -299,6 +327,10 @@ public class ImageLoader {
 
     public Texture[] getEnemyTumblebotAnimation(EnemyTumblebotAnimationGroup anim) {
         return enemyTumblebot.get(anim);
+    }
+
+    public Texture[] getEnemyMobyAnimation(EnemyMobyAnimationGroup anim) {
+        return enemyMoby.get(anim);
     }
 
     public Texture getNone() {
