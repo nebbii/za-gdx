@@ -157,7 +157,6 @@ public class GameManager {
     }
 
     public int calculateEnemyDamage(Enemy enemy) {
-
         return 20;
     }
 
@@ -229,6 +228,10 @@ public class GameManager {
         else if (world.getMenuPause().getMenuState() == MenuState.ACTIVE) {
             world.getMenuPause().setMenuState(MenuState.FADING_OUT);
         }
+    }
+
+    public boolean hasItem(Item item) {
+        return weapons.contains(item) || treasures.contains(item);
     }
 
     public ArrayList<Weapon> getWeapons() {

@@ -136,7 +136,7 @@ public class Zelda extends Rectangle implements Actor {
                 if (!spawnerPitcherFull.isActive()) return;
 
                 spawnerPitcherFull.activate(world.getGameManager());
-                setCurrentItem(Treasure.NONE);
+                equipItem(Weapon.WAND);
                 break;
             case PITCHER_FULL:
                 SpawnerVialOfWind spawnerVialOfWind = (SpawnerVialOfWind) map.findActorByType(SpawnerVialOfWind.class);
@@ -145,7 +145,7 @@ public class Zelda extends Rectangle implements Actor {
                 if (!spawnerVialOfWind.isActive()) return;
 
                 spawnerVialOfWind.activate(world.getGameManager());
-                setCurrentItem(Treasure.NONE);
+                equipItem(Weapon.WAND);
                 break;
             default:
             }
@@ -292,6 +292,15 @@ public class Zelda extends Rectangle implements Actor {
 
     public float getCenterPointY() {
         return getY() + getHeight() / 2;
+    }
+
+    public void equipItem(Item item) {
+        if (world.getGameManager().hasItem(item)) {
+            setCurrentItem(item);
+        }
+        else {
+            setCurrentItem(Treasure.NONE);
+        }
     }
 
     public Item getCurrentItem() {
