@@ -222,12 +222,39 @@
       {
         "__comment": "f26: A forest merchant sells Zelda a candle for 100 rupees and a magic shield for 500 rupees."
       },
+        {
+          "__comment": "merchant at X: 2086 Y: 1533ish"
+        },
+        {
+          "__comment": "candle at X: 2108 Y: 1493"
+        },
+        {
+          "__comment": "shield at X:2040 Y:1493"
+        },
       {
         "__comment": "f27: Three Molblins."
       },
+        {
+          "type": "EnemyMoblin",
+          "x": 2053,
+          "y": 1336
+        },
+        {
+          "type": "EnemyMoblin",
+          "x": 2037,
+          "y": 1274
+        },
+        {
+          "type": "EnemyMoblin",
+          "x": 2171,
+          "y": 1283
+        },
       {
         "__comment": "f28: Zelda finds a ladder under the middle tree."
       },
+        {
+          "__comment": "ladder at X: 2118 Y: 1056"
+        },
 
     {
       "__comment": "g",
@@ -286,18 +313,83 @@
       {
         "__comment": "g27: Two Molblins."
       },
+        {
+          "type": "EnemyMoblin",
+          "x": 2915,
+          "y": 1595
+        },
+        {
+          "type": "EnemyMoblin",
+          "x": 2525,
+          "y": 1282
+        },
       {
         "__comment": "g28: Two Molblins."
       },
+        {
+          "type": "EnemyMoblin",
+          "x": 2424,
+          "y": 1066
+        },
+        {
+          "type": "EnemyMoblin",
+          "x": 2546,
+          "y": 1037
+        },
       {
-        "__comment": "g29: Two Molblins."
+        "__comment": "g29: Two Molblins. (wrong, game has deelers)"
       },
+        {
+          "type": "EnemyMoblin",
+          "x": 2465,
+          "y": 812
+        },
+        {
+          "type": "EnemyMoblin",
+          "x": 2538,
+          "y": 851
+        },
       {
         "__comment": "g30: Three Deelers."
       },
+        {
+          "type": "EnemyMoblin",
+          "x": 2469,
+          "y": 600
+        },
+        {
+          "type": "EnemyMoblin",
+          "x": 2469,
+          "y": 594
+        },
+        {
+          "type": "EnemyMoblin",
+          "x": 2541,
+          "y": 557
+        },
       {
         "__comment": "g31: Four Deelers."
       },
+        {
+          "type": "EnemyMoblin",
+          "x": 2407,
+          "y": 337
+        },
+        {
+          "type": "EnemyMoblin",
+          "x": 2448,
+          "y": 319
+        },
+        {
+          "type": "EnemyMoblin",
+          "x": 2479,
+          "y": 348
+        },
+        {
+          "type": "EnemyMoblin",
+          "x": 2598,
+          "y": 323
+        },
       {
         "__comment": "g32: The upper cave is the entrance to the first tomb, the Shrine of Rock. Zelda can enter both caves."
       },
@@ -349,6 +441,21 @@
       {
         "__comment": "h26: Three Molblins."
       },
+        {
+          "type": "EnemyMoblin",
+          "x": 2808,
+          "y": 1547
+        },
+        {
+          "type": "EnemyMoblin",
+          "x": 2915,
+          "y": 1595
+        },
+        {
+          "type": "EnemyMoblin",
+          "x": 2899,
+          "y": 1485
+        },
       {
         "__comment": "h27: Three Leevers."
       },
