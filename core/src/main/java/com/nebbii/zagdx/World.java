@@ -72,7 +72,6 @@ public class World {
         WorldShaders.init();
         this.batch = batch;
 
-        mapManager.loadMapByName("overworld");
         updateWorldBorders();
     }
 

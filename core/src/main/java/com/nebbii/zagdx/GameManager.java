@@ -134,6 +134,8 @@ public class GameManager {
     }
 
     public void respawnZelda(boolean hasDied) {
+        Gdx.app.log(getClass().getSimpleName(), "Respawning zelda...");
+
         Zelda zelda = world.getMapManager().getZelda();
 
         if (hasDied) {
