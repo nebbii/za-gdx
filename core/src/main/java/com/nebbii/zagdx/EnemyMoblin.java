@@ -9,7 +9,8 @@ public class EnemyMoblin extends Enemy {
     // TODO: Set actual original game accurate values
     public EnemyMoblin() {
         super(ActorType.ENEMY, true);
-        setHeight(26);
+        setWidth(40);
+        setHeight(40);
         setHealth(60);
         setHitDamage(20);
 

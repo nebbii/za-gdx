@@ -28,7 +28,7 @@ public class EnemyMoblinAnimation extends GameAnimation {
         super("walkDown");
         this.enemy = enemy;
 
-        baseOffsetX = 0;
+        baseOffsetX = -5;
         baseOffsetY = 10;
         offsetX = 0;
         offsetY = 0;
@@ -91,7 +91,10 @@ public class EnemyMoblinAnimation extends GameAnimation {
             {1, 0, 0},
             {2, 0, 0},
             {3, 0, 0},
-            {4, 0, 0}
+            {4, 0, 0},
+            {3, 0, 0},
+            {2, 0, 0},
+            {1, 0, 0}
         };
 
         TextureRegion[] frames = new TextureRegion[frameData.length];
@@ -117,7 +120,10 @@ public class EnemyMoblinAnimation extends GameAnimation {
             {1, 0, 0},
             {2, 0, 0},
             {3, 0, 0},
-            {4, 0, 0}
+            {4, 0, 0},
+            {3, 0, 0},
+            {2, 0, 0},
+            {1, 0, 0}
         };
 
         TextureRegion[] frames = new TextureRegion[frameData.length];
@@ -143,7 +149,10 @@ public class EnemyMoblinAnimation extends GameAnimation {
             {1, 0, 0},
             {2, 0, 0},
             {3, 0, 0},
-            {4, 0, 0}
+            {4, 0, 0},
+            {3, 0, 0},
+            {2, 0, 0},
+            {1, 0, 0}
         };
 
         TextureRegion[] frames = new TextureRegion[frameData.length];
@@ -169,7 +178,9 @@ public class EnemyMoblinAnimation extends GameAnimation {
             {1, 0, 0},
             {2, 0, 0},
             {3, 0, 0},
-            {4, 0, 0}
+            {4, 0, 0},
+            {3, 0, 0},
+            {2, 0, 0}
         };
 
         TextureRegion[] frames = new TextureRegion[frameData.length];
@@ -190,10 +201,10 @@ public class EnemyMoblinAnimation extends GameAnimation {
     private float getAnimationSpeed() {
         switch(enemy.getEnemyState()) {
             case FIGHT:
-                return 0.05f;
+                return 0.15f;
             case SEARCH:
             default:
-                return 0.10f;
+                return 0.25f;
         }
     }
 

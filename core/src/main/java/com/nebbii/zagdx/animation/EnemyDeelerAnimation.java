@@ -72,10 +72,10 @@ public class EnemyDeelerAnimation extends GameAnimation {
     private float getAnimationSpeed() {
         switch(enemy.getEnemyState()) {
             case FIGHT:
-                return 0.05f;
+                return 0.20f;
             case SEARCH:
             default:
-                return 0.10f;
+                return 0.30f;
         }
     }
 
