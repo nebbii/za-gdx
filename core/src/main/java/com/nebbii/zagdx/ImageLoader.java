@@ -48,11 +48,16 @@ public class ImageLoader {
         WALKLEFT
     }
 
+    public enum EnemyDeelerAnimationGroup {
+        WALK
+    }
+
     private EnumMap<ZeldaAnimationGroup, Texture[]> zelda;
     private EnumMap<EnemyGoriyaAnimationGroup, Texture[]> enemyGoriya;
     private EnumMap<EnemyTumblebotAnimationGroup, Texture[]> enemyTumblebot;
     private EnumMap<EnemyMobyAnimationGroup, Texture[]> enemyMoby;
     private EnumMap<EnemyMoblinAnimationGroup, Texture[]> enemyMoblin;
+    private EnumMap<EnemyDeelerAnimationGroup, Texture[]> enemyDeeler;
 
     /* NPCs */
     private Texture[] npcGlebb;
@@ -147,6 +152,10 @@ public class ImageLoader {
         enemyMoblin.put(EnemyMoblinAnimationGroup.WALKLEFT,
             loadTextureArray("export/overworld/g27/sprites/desc0/group3", 5));
 
+        enemyDeeler = new EnumMap<>(EnemyDeelerAnimationGroup.class);
+        enemyDeeler.put(EnemyDeelerAnimationGroup.WALK,
+            loadTextureArray("export/overworld/g29/sprites/desc0/group0", 3));
+
         npcGlebb = loadTextureArray("export/overworld/j24/sprites/desc0/group0", 5);
 
         /* Items */
@@ -214,6 +223,16 @@ public class ImageLoader {
         }
 
         for (Texture[] textures : enemyMoblin.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyDeeler.values()) {
             if (textures == null) continue;
 
             for (Texture texture : textures) {
@@ -363,6 +382,10 @@ public class ImageLoader {
 
     public Texture[] getEnemyMoblinAnimation(EnemyMoblinAnimationGroup anim) {
         return enemyMoblin.get(anim);
+    }
+
+    public Texture[] getEnemyDeelerAnimation(EnemyDeelerAnimationGroup anim) {
+        return enemyDeeler.get(anim);
     }
 
     public Texture getNone() {
