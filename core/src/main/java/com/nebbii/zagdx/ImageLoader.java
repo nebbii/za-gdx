@@ -41,10 +41,18 @@ public class ImageLoader {
         FLYLEFT
     }
 
+    public enum EnemyMoblinAnimationGroup {
+        WALKUP,
+        WALKRIGHT,
+        WALKDOWN,
+        WALKLEFT
+    }
+
     private EnumMap<ZeldaAnimationGroup, Texture[]> zelda;
     private EnumMap<EnemyGoriyaAnimationGroup, Texture[]> enemyGoriya;
     private EnumMap<EnemyTumblebotAnimationGroup, Texture[]> enemyTumblebot;
     private EnumMap<EnemyMobyAnimationGroup, Texture[]> enemyMoby;
+    private EnumMap<EnemyMoblinAnimationGroup, Texture[]> enemyMoblin;
 
     /* NPCs */
     private Texture[] npcGlebb;
@@ -129,6 +137,16 @@ public class ImageLoader {
         enemyMoby.put(EnemyMobyAnimationGroup.FLYLEFT,
             loadTextureArray("export/overworld/g26/sprites/desc0/group3", 5));
 
+        enemyMoblin = new EnumMap<>(EnemyMoblinAnimationGroup.class);
+        enemyMoblin.put(EnemyMoblinAnimationGroup.WALKUP,
+            loadTextureArray("export/overworld/g27/sprites/desc0/group0", 5));
+        enemyMoblin.put(EnemyMoblinAnimationGroup.WALKRIGHT,
+            loadTextureArray("export/overworld/g27/sprites/desc0/group1", 5));
+        enemyMoblin.put(EnemyMoblinAnimationGroup.WALKDOWN,
+            loadTextureArray("export/overworld/g27/sprites/desc0/group2", 5));
+        enemyMoblin.put(EnemyMoblinAnimationGroup.WALKLEFT,
+            loadTextureArray("export/overworld/g27/sprites/desc0/group3", 5));
+
         npcGlebb = loadTextureArray("export/overworld/j24/sprites/desc0/group0", 5);
 
         /* Items */
@@ -186,6 +204,16 @@ public class ImageLoader {
         }
 
         for (Texture[] textures : enemyMoby.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyMoblin.values()) {
             if (textures == null) continue;
 
             for (Texture texture : textures) {
@@ -331,6 +359,10 @@ public class ImageLoader {
 
     public Texture[] getEnemyMobyAnimation(EnemyMobyAnimationGroup anim) {
         return enemyMoby.get(anim);
+    }
+
+    public Texture[] getEnemyMoblinAnimation(EnemyMoblinAnimationGroup anim) {
+        return enemyMoblin.get(anim);
     }
 
     public Texture getNone() {
