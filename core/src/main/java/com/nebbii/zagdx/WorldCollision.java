@@ -264,13 +264,13 @@ public class WorldCollision {
                 if (enemy.getEnemyState() == EnemyState.SEARCH) {
                     enemy.setEnemyState(EnemyState.FIGHT);
                     enemy.changeDirectionTowardsTarget();
-                    Gdx.app.log("WorldCollision", actor.getClass() + " is aggro'd!");
+                    Gdx.app.log(getClass().getSimpleName(), actor.getClass() + " is aggro'd!");
                 }
             }
             else {
                 if (enemy.getEnemyState() == EnemyState.FIGHT) {
                     enemy.setEnemyState(EnemyState.SEARCH);
-                    Gdx.app.log("WorldCollision", actor.getClass() + " went back to searching...");
+                    Gdx.app.log(getClass().getSimpleName(), actor.getClass() + " went back to searching...");
                 }
             }
         }

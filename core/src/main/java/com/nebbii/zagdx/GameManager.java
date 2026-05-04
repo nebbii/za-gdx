@@ -58,7 +58,7 @@ public class GameManager {
             }
 
             if (world.getMapManager().getZelda().getHealth() <= 0) {
-                Gdx.app.log("GameManager", "Zelda has died! Initiate game over sequence");
+                Gdx.app.log(getClass().getSimpleName(), "Zelda has died! Initiate game over sequence");
                 initializeFadeGameover();
             }
             break;

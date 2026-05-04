@@ -19,7 +19,7 @@ public class SpawnerPitcherFull extends Spawner {
 
         PickupPitcherFull pitcher = new PickupPitcherFull();
         pitcher.setPosition(this.getX(), this.getY());
-        Gdx.app.log("SpawnerPitcherFull", "item placed");
+        Gdx.app.log(getClass().getSimpleName(), "item placed");
 
         map.addActor(pitcher);
         game.removeTreasure(Treasure.PITCHER_EMPTY);

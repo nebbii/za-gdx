@@ -55,7 +55,6 @@ public class Spawner extends Rectangle implements Actor {
 
     @Override
     public void setState(State state) {
-        //Gdx.app.log("Spawner", "Updating state: " + state);
         this.state = state;
     }
 

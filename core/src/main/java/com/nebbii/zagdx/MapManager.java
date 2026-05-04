@@ -156,10 +156,10 @@ public class MapManager {
     }
 
     public void freezeAllActors() {
-        Gdx.app.log("MapManager", "Freezing actors");
+        Gdx.app.log(getClass().getSimpleName(), "Freezing actors");
         for (Actor actor : actors) {
             if (actor.getState() == State.IDLE) continue;
-            Gdx.app.log("MapManager", "Actor: " + actor.getClass() + " set to idle");
+            Gdx.app.log(getClass().getSimpleName(), "Actor: " + actor.getClass() + " set to idle");
             actor.setState(State.IDLE);
         }
     }
@@ -173,12 +173,12 @@ public class MapManager {
     }
 
     public void unfreezeVisibleActors() {
-        Gdx.app.log("MapManager", "Unfreezing actors");
+        Gdx.app.log(getClass().getSimpleName(), "Unfreezing actors");
 
         for (Actor actor : actors) {
             if (!isActorVisible(actor)) continue;
 
-            Gdx.app.log("MapManager", "Actor: " + actor.getClass() + " set to active");
+            Gdx.app.log(getClass().getSimpleName(), "Actor: " + actor.getClass() + " set to active");
             actor.setState(State.ACTIVE);
         }
     }
@@ -223,7 +223,7 @@ public class MapManager {
     }
 
     public void handleDeadActor(Actor actor, Iterator<Actor> iterator) {
-        Gdx.app.log("MapManager", "Handle dead actor: " + actor.getClass());
+        Gdx.app.log(getClass().getSimpleName(), "Handle dead actor: " + actor.getClass());
 
         switch (actor.getClass().getSimpleName()) {
         case "EnemyGoriya":
@@ -242,7 +242,7 @@ public class MapManager {
 
         Actor pickup;
 
-        Gdx.app.log("MapManager", "dropRandomPickup: rolled " + roll);
+        Gdx.app.log(getClass().getSimpleName(), "dropRandomPickup: rolled " + roll);
         switch (roll) {
         case 0:
             pickup = new PickupHeart();
@@ -265,7 +265,7 @@ public class MapManager {
     }
 
     public void loadMapByName(String mapName) {
-        Gdx.app.log("MapManager", "loading map: " + mapName);
+        Gdx.app.log(getClass().getSimpleName(), "loading map: " + mapName);
 
         overlay.loadObjectsFromLayer(loader, mapName, "Overlay");
         collision.loadObjectsFromLayer(loader, mapName, "Collision");

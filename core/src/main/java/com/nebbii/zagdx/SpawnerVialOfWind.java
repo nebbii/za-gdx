@@ -20,7 +20,7 @@ public class SpawnerVialOfWind extends Spawner {
         PickupVialOfWind vialOfWind = new PickupVialOfWind();
         vialOfWind.setPosition(this.getX(), this.getY());
 
-        Gdx.app.log("SpawnerVialOfWind", "item placed");
+        Gdx.app.log(getClass().getSimpleName(), "item placed");
 
         map.addActor(vialOfWind);
         game.removeTreasure(Treasure.PITCHER_FULL);
