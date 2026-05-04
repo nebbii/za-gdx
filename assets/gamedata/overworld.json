@@ -340,12 +340,12 @@
         "__comment": "g29: Two Molblins. (wrong, game has deelers)"
       },
         {
-          "type": "EnemyMoblin",
+          "type": "EnemyDeeler",
           "x": 2465,
           "y": 812
         },
         {
-          "type": "EnemyMoblin",
+          "type": "EnemyDeeler",
           "x": 2538,
           "y": 851
         },
@@ -353,17 +353,17 @@
         "__comment": "g30: Three Deelers."
       },
         {
-          "type": "EnemyMoblin",
+          "type": "EnemyDeeler",
           "x": 2469,
           "y": 600
         },
         {
-          "type": "EnemyMoblin",
+          "type": "EnemyDeeler",
           "x": 2469,
           "y": 594
         },
         {
-          "type": "EnemyMoblin",
+          "type": "EnemyDeeler",
           "x": 2541,
           "y": 557
         },
@@ -371,22 +371,22 @@
         "__comment": "g31: Four Deelers."
       },
         {
-          "type": "EnemyMoblin",
+          "type": "EnemyDeeler",
           "x": 2407,
           "y": 337
         },
         {
-          "type": "EnemyMoblin",
+          "type": "EnemyDeeler",
           "x": 2448,
           "y": 319
         },
         {
-          "type": "EnemyMoblin",
+          "type": "EnemyDeeler",
           "x": 2479,
           "y": 348
         },
         {
-          "type": "EnemyMoblin",
+          "type": "EnemyDeeler",
           "x": 2598,
           "y": 323
         },
