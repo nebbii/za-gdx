@@ -7,6 +7,7 @@ import com.nebbii.zagdx.EnemyMoblin;
 import com.nebbii.zagdx.ImageLoader.EnemyMoblinAnimationGroup;
 import com.nebbii.zagdx.World;
 
+// TODO: align animation frames
 public class EnemyMoblinAnimation extends GameAnimation {
     private final EnemyMoblin enemy;
 

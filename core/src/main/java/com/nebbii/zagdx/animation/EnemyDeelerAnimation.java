@@ -7,6 +7,7 @@ import com.nebbii.zagdx.EnemyDeeler;
 import com.nebbii.zagdx.ImageLoader.EnemyDeelerAnimationGroup;
 import com.nebbii.zagdx.World;
 
+// TODO: align animation frames
 public class EnemyDeelerAnimation extends GameAnimation {
     private final EnemyDeeler enemy;
 

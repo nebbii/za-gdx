@@ -7,6 +7,7 @@ import com.nebbii.zagdx.EnemyMoby;
 import com.nebbii.zagdx.ImageLoader.EnemyMobyAnimationGroup;
 import com.nebbii.zagdx.World;
 
+// TODO: align animation frames
 public class EnemyMobyAnimation extends GameAnimation {
     private final EnemyMoby enemy;
 
