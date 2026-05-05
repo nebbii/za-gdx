@@ -260,6 +260,10 @@ public class Enemy extends Rectangle implements Actor {
         return getY() + getHeight() / 2;
     }
 
+    public String[] getWeaknesses() {
+        return new String[] {};
+    }
+
     public State getState() {
         return this.state;
     }

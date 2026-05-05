@@ -158,11 +158,15 @@ public class GameManager {
         return 20;
     }
 
-    public int calculateEnemyDamage(Enemy enemy) {
+    public int calculateDamage(Actor attacker, Actor defender) {
+        // grab the damage value from the weapon
+        // subtract defense mincapped on 0
+        // on weakness, add bonus damage
+        // return damage amount
         return 20;
     }
 
-    public float calculateKnockback() {
+    public float calculateZeldaKnockback() {
         return 0.2f;
     }
 

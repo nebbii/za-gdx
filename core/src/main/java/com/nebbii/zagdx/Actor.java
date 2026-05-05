@@ -14,6 +14,8 @@ public interface Actor {
     float getCenterPointX();
     float getCenterPointY();
 
+    String[] getWeaknesses();
+
     State getState();
     void setState(State state);
 

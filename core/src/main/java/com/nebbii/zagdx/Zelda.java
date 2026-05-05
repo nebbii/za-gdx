@@ -294,6 +294,10 @@ public class Zelda extends Rectangle implements Actor {
         return getY() + getHeight() / 2;
     }
 
+    public String[] getWeaknesses() {
+        return new String[] {};
+    }
+
     public void equipItem(Item item) {
         if (world.getGameManager().hasItem(item)) {
             setCurrentItem(item);

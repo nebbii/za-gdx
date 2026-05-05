@@ -58,6 +58,10 @@ public class Projectile extends Rectangle implements Actor {
         return getY() + getHeight() / 2;
     }
 
+    public String[] getWeaknesses() {
+        return new String[] {};
+    }
+
     @Override
     public State getState() {
         return state;

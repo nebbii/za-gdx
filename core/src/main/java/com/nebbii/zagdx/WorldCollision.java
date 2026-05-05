@@ -67,8 +67,8 @@ public class WorldCollision {
             Enemy enemy = (Enemy) actor;
 
             if (enemy.getHitbox().overlaps(zelda.getHitbox())) {
-                int damage = game.calculateEnemyDamage(enemy);
-                float knockback = game.calculateKnockback();
+                int damage = game.calculateDamage(enemy, zelda);
+                float knockback = game.calculateZeldaKnockback();
                 zelda.onHit(damage, knockback);
             }
         }
@@ -83,8 +83,8 @@ public class WorldCollision {
             EnemyAction projectile = (EnemyAction) actor;
 
             if (projectile.getHitbox().overlaps(zelda.getHitbox())) {
-                int damage = game.calculateProjectileDamage(projectile);
-                float knockback = game.calculateKnockback();
+                int damage = game.calculateDamage(projectile, zelda);
+                float knockback = game.calculateZeldaKnockback();
 
                 zelda.onHit(damage, knockback);
                 projectile.onHit();
@@ -106,7 +106,7 @@ public class WorldCollision {
 
                 if (enemy.getHitbox().overlaps(projectile.getHitbox())) {
                     int damage = game.calculateProjectileDamage(projectile);
-                    float knockback = game.calculateKnockback();
+                    float knockback = game.calculateZeldaKnockback();
 
                     enemy.setHurtDirection(projectile.getDirection());
                     enemy.onHit(damage, knockback);
