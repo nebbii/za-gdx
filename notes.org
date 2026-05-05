@@ -1,4 +1,120 @@
-* To dos
+* Ordered to do
+** Core systems
+- [X] Enemy AI
+- [ ] Damage formula
+- [ ] Wand scaling
+- [ ] Zelda<->enemy collision damage
+- [ ] Projectile damage
+- [ ] Weakness blue effect
+** Region 1
+*** NPCs
+- [X] Glebb
+- [ ] Ogham Merchant
+- [ ] Enid
+- [ ] Beggar
+- [ ] Lothar
+- [ ] Blue Lady
+- [ ] Exhausted Traveler
+- [ ] Krebb
+*** Enemies:
+- [X] Goriya
+- [ ] Peahats
+- [X] Tumblebots
+- [X] Moblins
+- [X] Mobies
+- [X] Deelers
+- [ ] Leevers
+*** Items:
+- [X] Wand
+- [X] Boomerang
+- [X] Empty Pitcher
+- [X] Full Pitcher
+- [X] Vial of Wind
+- [ ] Candle
+- [ ] Magic Shield
+- [ ] Ladder
+- [ ] Firestorm
+- [ ] Calm
+- [ ] Dagger
+*** Places
+- [ ] Moblin's head inn
+** Shrine of Earth
+*** Enemies
+- [ ] Tektite
+- [ ] Keese
+- [ ] Sardak
+- [ ] Llort
+*** Items
+- [ ] Jade Ring
+- [ ] Red Boots
+- [ ] Underworld map
+- [ ] Compass
+- [ ] Celestial Sign
+** Region 2
+*** NPCs
+- [ ] Talking toadstool
+- [ ] Alice
+- [ ] Farmer
+- [ ] Eric & Ian
+- [ ] Twins' Father
+- [ ] Yvonne
+- [ ] Ghost Farmer 1 & 2?
+*** Places
+- [ ] Moblin's head inn
+*** Enemies
+- [ ] Octorok
+- [ ] Invisible Man
+- [ ] Zola
+- [ ] Dolomite
+- [ ] Molluska
+- [ ] Snake
+*** Items
+- [ ] Harp
+- [ ] Flute
+- [ ] Raft
+- [ ] Pyros spell
+** Shrine of Illusion
+*** Enemies
+*** Items
+** Region 3
+*** NPCs
+*** Enemies
+*** Items
+** Shrine of Air
+*** Enemies
+*** Items
+** Region 4
+*** NPCs
+*** Enemies
+*** Items
+** Shrine of Destiny
+*** Enemies
+*** Items
+** Region 5
+*** NPCs
+*** Enemies
+*** Items
+** Shrine of Water
+*** Enemies
+*** Items
+** Region 6
+*** NPCs
+*** Enemies
+*** Items
+** Shrine of Strength
+*** Enemies
+*** Items
+** Region 7
+*** NPCs
+*** Enemies
+*** Items
+** Shrine of Fire
+*** Enemies
+*** Items
+** Ganon's Gauntlet
+*** Enemies
+*** Items
+* Info dump
 ** TODO Map screen
 ** Map
 *** DONE Load collision objects
@@ -1656,3 +1772,4 @@ These Zola are very similar to their river-dwelling counterparts, apart from two
 - "Dropped by regular enemies, along with Rupees. They heal one of Zelda's hearts, as you'd expect."
 ** Sound
 - ([[https://youtu.be/IqFZ1iVmhIo?t=1052][Youtube)]] Music seems to stop in stores when people are talking, but not on the overworld?
+*
