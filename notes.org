@@ -116,7 +116,7 @@
 *** Enemies
 *** Items
 * Info dump
-** TODO Map screen
+** Map screen
 ** Map
 *** DONE Load collision objects
 *** TODO Overworld
@@ -407,7 +407,7 @@ The main weapon that Zelda uses on her quest. Has a rather short range, but can 
 - From Phlosion:
   "base damage increases by 2 per shrine. Defense also increases by 2 per shrine. She also gets one full heart, equal to 20 health.
   She starts with 30 wand damage, 30 defense, and 60 health (or three full hearts)."
-**** TODO Boomerang
+**** Boomerang
 
     Location: Plain of Andor alcove
     Cast Cost: 1 Rupee
@@ -417,7 +417,7 @@ The main weapon that Zelda uses on her quest. Has a rather short range, but can 
     Manual Description: "This is a good weapon when you need to hit something from a distance."
 
 The alcove in the western part of the Plain of Andor has a Goriya that drops this upon death. It's a somewhat slow, average projectile spell. Despite its name and appearance, it doesn't return to Zelda once thrown.
-**** TODO Bow and Arrow
+**** Bow and Arrow
 
     Location: Shrine of Air
     Cast Cost: 1 Rupee
@@ -427,7 +427,7 @@ The alcove in the western part of the Plain of Andor has a Goriya that drops thi
     Manual Description: "This spell shoots arrows at opponents or objects. Known for its speed and precision, it is a good weapon to use for hitting creatures and moving targets that are out of reach."
 
 The Bow spell will appear after clearing the Loccasin room in the Shrine of Air. It's better than the Boomerang in every way, especially speed. The spell is required to lower a mandatory bridge in the Shrine of Air, as well as play an optional archery minigame in the Shrine of Strength.
-**** TODO Broadsword
+**** Broadsword
 
     Location: Forest of Torian ruins
     Cast Cost: 2 Rupees
@@ -437,7 +437,7 @@ The Bow spell will appear after clearing the Loccasin room in the Shrine of Air.
     Manual Description: "This spell shoots flying swords at enemies. It is fairly strong and can be used against certain knights who fight with broadswords."
 
 Talking to Sir Basil near the Forest of Torian's ruined castle will have him give you the Broadsword spell. It's a bit slow, but rather effective against the Blue/Green Knights in the Shrine of Strength.
-**** TODO Calm
+**** Calm
 
     Location: Mobilin's Head Inn
     Price: 100 Rupees
@@ -448,7 +448,7 @@ Talking to Sir Basil near the Forest of Torian's ruined castle will have him giv
     Manual Description: "This spell has the power to calm the elements."
 
 The Calm spell works best against elemental enemies such as the Shrine of Air's tornados. The spell is also required to access Mystery Island and its Crystal Heart, as there are water spouts that block the way unless you have the spell in your inventory.
-**** TODO Dagger
+**** Dagger
 
     Location: Mobilin's Head Inn
     Cast Cost: 2 Rupees
@@ -458,7 +458,7 @@ The Calm spell works best against elemental enemies such as the Shrine of Air's 
     Manual Description: "This is a moderately weak spell, but it moves quickly through the air. The dagger was once used exclusively by the "Great Magic Users" who now call the power of sound waves as a means of destruction."
 
 Krebb, the dismissive man in the Mobilin's Head Inn, will give Zelda this spell after she interacts with him twice in a row. It may look like a weak spell, but is actually very fast and the only one that can damage and kill Wizzrobes.
-**** TODO Feather
+**** Feather
 
     Location: White Steed Lodge
     Cast Cost: 2 Rupees
@@ -468,7 +468,7 @@ Krebb, the dismissive man in the Mobilin's Head Inn, will give Zelda this spell 
     Manual Description: "Aviana, the keeper of the Shrine of Air, lost one of her feathers while flying across Tolemac. Her feather can be used as a weapon, but Aviana fears that her own power could be turned against her."
 
 The odd guy outside the White Steed Lodge, Waldensop, will give this spell to Zelda after she enters and leaves the lodge. It is the only spell that can damage and kill Aviana.
-**** TODO Firestorm
+**** Firestorm
 
     Location: Mobilin's Head Inn
     Price: 5 Rupees
@@ -479,7 +479,7 @@ The odd guy outside the White Steed Lodge, Waldensop, will give this spell to Ze
     Manual Description: "This spell uses the power of fire to attack enemies coming from many directions at once."
 
 If you're generous enough to give the Beggar outside the inn five Rupees, she'll reward you in kind with the Firestorm spell. It's weak, sure, but it's cheap and good for making some breathing room if you're surrounded by foes.
-**** TODO Gold Necklace
+**** Gold Necklace
 
     Location: Shrine of Strength
     Cast Cost: 2 Rupees
@@ -489,7 +489,7 @@ If you're generous enough to give the Beggar outside the inn five Rupees, she'll
     Manual Description: "Once owned by a knight, the necklace is used to call upon the powers of accuracy and fire. The necklace was stolen one day by a child who thought it could be sold for food and water."
 
 If you help the Thirsty Child in the Shrine of Strength by drawing water from the well he's next to, he'll give you the Gold Necklace spell as thanks. The Gold Necklace is the only spell that can damage and kill Maxus, the knight in the Shrine of Fire.
-**** TODO Hammer
+**** Hammer
 
     Location: Shrine of Fire
     Cast Cost: 2 Rupees
@@ -499,7 +499,7 @@ If you help the Thirsty Child in the Shrine of Strength by drawing water from th
     Manual Description: "This weapon is capable of smashing enemies with flying hammers."
 
 This spell will appear after Warbane finishes his first taunt in the Shrine of Fire. It's one of the best spells in the game in terms of its damage/cost ratio (if not THE best), and also does more damage against tougher enemies than the Roar Stick. Unfortunately, it's both slow and obtained near the end of the game, limiting its use.
-**** TODO Jade Amulet
+**** Jade Amulet
 
     Location: Great Wimbich spell store
     Price: 100 Rupees
@@ -510,7 +510,7 @@ This spell will appear after Warbane finishes his first taunt in the Shrine of F
     Manual Description: "This is one of the most powerful weapons."
 
 This spell costs quite a bit to use and isn't recommended for regular fights at all, but makes up for it by being very powerful. Its projectiles do not disappear upon contact with an enemy which, when combined with its knockback effect, makes it utterly devastating against a group of foes. It's best used against groups of tanky enemies like Gibdos and Iron Knuckles.
-**** TODO Jade Ring
+**** Jade Ring
 
     Location: Shrine of Earth
     Cast Cost: 3 Rupees
@@ -520,7 +520,7 @@ This spell costs quite a bit to use and isn't recommended for regular fights at 
     Manual Description: "This rather weak weapon is known to work against those who protect the greedy."
 
 This spell appears after Zelda interacts with the Talking Chest in the Shrine of Earth. It is the only spell that can damage and kill the Sardaks in the Shrine. Do not use this spell on Llort himself, though, as it deals little to no damage.
-**** TODO Joust
+**** Joust
 
     Location: Forest of Canvula village
     Cast Cost: 3 Rupees
@@ -530,7 +530,7 @@ This spell appears after Zelda interacts with the Talking Chest in the Shrine of
     Manual Description: "This weapon, similar to the broadsword, throws lances at enemies."
 
 This spell is given to Zelda by the friendly Goblin in the Canvula village as a token of welcome. It does around the same damage as your Wand at that point, and is the only spell that can (effectively) damage and kill the Red Knight in the Shrine of Strength.
-**** TODO Noise
+**** Noise
 
     Location: Verna
     Cast Cost: 1 Rupee
@@ -540,7 +540,7 @@ This spell is given to Zelda by the friendly Goblin in the Canvula village as a 
     Manual Description: "This spell, similar to the weapon used by the "Great Magic Users", calls upon the power of sound. While rather weak, it is effective against creatures that are sensitive to sound."
 
 Talking to Gwynla in Verna, the village near the Shrine of Destiny, will have her give Zelda this spell. It is, rather fittingly, effective at damaging and killing a Pols Voice.
-**** TODO Pyros
+**** Pyros
 
     Location: Wimbich Pond
     Cast Cost: 4 Rupees
@@ -550,7 +550,7 @@ Talking to Gwynla in Verna, the village near the Shrine of Destiny, will have he
     Manual Description: "This spell, once owned by a great keeper of reptiles, creates a wall of fire to protect you from attacks."
 
 Using the Flute on the snake near the Great Wimbich pond will cause it to burst into flame and drop the Pyros spell. The flame wall that appears last for around three seconds, protects Zelda from the front and sides, and doesn't spawn a flame if there's terrain in the way, so keep that in mind.
-**** TODO Rings of Fire
+**** Rings of Fire
 
     Location: Great Wimbich spell store
     Price: 150 Rupees
@@ -561,7 +561,7 @@ Using the Flute on the snake near the Great Wimbich pond will cause it to burst 
     Manual Description: "Using flame power, this spell is good for multiple hits of fire against the enemy."
 
 This spell is well-rounded and very useful in the first two thirds of the game. Its three projectiles are as damaging as your early/mid-game Wand, which travel quickly and excel in knocking back enemies, no matter if they're alone or in a group. It loses its effectiveness against late-game enemies, though, starting with the Shrine of Water.
-**** TODO Roar Stick
+**** Roar Stick
 
     Location: Shrine of Strength
     Cast Cost: 3 Rupees
@@ -573,7 +573,7 @@ This spell is well-rounded and very useful in the first two thirds of the game. 
 Appears after hitting the top-right crystal switch in the screen before the Jousting Field ticket booth. This spinning club has the largest hitbox of any single projectile spell, making it a good choice if you're not very accurate. It does extra damage against enemies that have a lot of health, such as Iron Knuckles.
 
 As its name and manual description suggests, the Roar Stick is a good spell to use in the Ursore fight.
-**** TODO Short Axe
+**** Short Axe
 
     Location: Great Wimbich Main Street
     Cast Cost: 2 Rupees
@@ -583,7 +583,7 @@ As its name and manual description suggests, the Roar Stick is a good spell to u
     Manual Description: "This axe was owned by a woodsman. It was carried by the woodsman's canine friend who got lost in the woods one day."
 
 The dog outside the Great Wimbich general store will give this axe to Zelda after she gives him the Bone from the store. In a nutshell, it's a weaker version of the Hammer spell.
-**** TODO Turquoise Ring
+**** Turquoise Ring
 
     Location: Great Wimbich spell store
     Price: 20 Rupees
@@ -597,8 +597,8 @@ This spell is quite similar to the Jade Amulet in terms of raw damage output, bu
 ** HUD
 *** DONE Draw rupee count
 *** DONE Draw hearts on screen
-*** TODO Draw rupee count in stylized font
-*** TODO Draw hearts on screen in images
+*** Draw rupee count in stylized font
+*** Draw hearts on screen in images
 - "The code is pretty simple. For every 10 HP, one half heart is filled in. Then if there are 0 filled in hearts, one half heart is filled in." -[[https://discord.com/channels/256554729109192705/347450574167605249/1083454275201544293][Phlosion]]
 - "1-19 is 1/2 heart, 20-29 is 1, 30-39 is 1.5, 40-49 is 2, etc"
 ** Enemies
@@ -1635,299 +1635,299 @@ Fortunately, your full arsenal and collection of Celestial Signs will allow you 
 - Touching their rectangles makes them talk
   - NPC talk doesn't interrupt others, talk "hitboxes" don't seem to activate until the current person is done talking
 - Buying items: stand on them, equip rubies and press button 1
-*** TODO Alice
+*** Alice
 **** Logic
 **** Animation
 **** Sound
-*** TODO Angry Goblin
+*** Angry Goblin
 **** Logic
 **** Animation
 **** Sound
-*** TODO Archery Trainer
+*** Archery Trainer
 **** Logic
 **** Animation
 **** Sound
-*** TODO Beachcomber
+*** Beachcomber
 **** Logic
 **** Animation
 **** Sound
-*** TODO Bitterbeck
+*** Bitterbeck
 **** Logic
 **** Animation
 **** Sound
-*** TODO Blacksmith (Great Wimbich)
+*** Blacksmith (Great Wimbich)
 **** Logic
 **** Animation
 **** Sound
-*** TODO Bored Guy
+*** Bored Guy
 **** Logic
 **** Animation
 **** Sound
-*** TODO Bored Guy's Dog
+*** Bored Guy's Dog
 **** Logic
 **** Animation
 **** Sound
-*** TODO Broadsword Field Stallkeeper
+*** Broadsword Field Stallkeeper
 **** Logic
 **** Animation
 **** Sound
-*** TODO Enid
+*** Enid
 **** Logic
 **** Animation
 **** Sound
-*** TODO Eric and Ian
+*** Eric and Ian
 **** Logic
 **** Animation
 **** Sound
-*** TODO Ethera
+*** Ethera
 **** Logic
 **** Animation
 **** Sound
-*** TODO Fairy
+*** Fairy
 **** Logic
 **** Animation
 **** Sound
-*** TODO Farmer
+*** Farmer
 **** Logic
 **** Animation
 **** Sound
-*** TODO Father of Eric and Ian
+*** Father of Eric and Ian
 **** Logic
 **** Animation
 **** Sound
-*** TODO Faust
+*** Faust
 **** Logic
 **** Animation
 **** Sound
-*** TODO Food Dude
+*** Food Dude
 **** Logic
 **** Animation
 **** Sound
-*** TODO Friendly Goblin
+*** Friendly Goblin
 **** Logic
 **** Animation
 **** Sound
-*** TODO General Shopkeeper (Great Wimbich)
+*** General Shopkeeper (Great Wimbich)
 **** Logic
 **** Animation
 **** Sound
-*** TODO Ghini
+*** Ghini
 **** Logic
 **** Animation
 **** Sound
-*** TODO Ghost Farmer
+*** Ghost Farmer
 **** Logic
 **** Animation
 **** Sound
-*** TODO Glebb
+*** Glebb
 **** Logic
 **** Animation
 **** Sound
-*** TODO Gwynla
+*** Gwynla
 **** Logic
 **** Animation
 **** Sound
-*** TODO Hooded Woman
+*** Hooded Woman
 **** Logic
 **** Animation
 **** Sound
-*** TODO Jester
+*** Jester
 **** Logic
 **** Animation
 **** Sound
-*** TODO Jousting Field Custodian
+*** Jousting Field Custodian
 **** Logic
 **** Animation
 **** Sound
-*** TODO Jousting Field Stallkeeper
+*** Jousting Field Stallkeeper
 **** Logic
 **** Animation
 **** Sound
-*** TODO Krebb
+*** Krebb
 **** Logic
 **** Animation
 **** Sound
-*** TODO Kron the Pegleg
+*** Kron the Pegleg
 **** Logic
 **** Animation
 **** Sound
-*** TODO Lonlyn
+*** Lonlyn
 **** Logic
 **** Animation
 **** Sound
-*** TODO Lothar
+*** Lothar
 **** Logic
 **** Animation
 **** Sound
-*** TODO Lounger
+*** Lounger
 **** Logic
 **** Animation
 **** Sound
-*** TODO Madame Kriggle
+*** Madame Kriggle
 **** Logic
 **** Animation
 **** Sound
-*** TODO Merribal
+*** Merribal
 **** Logic
 **** Animation
 **** Sound
-*** TODO Mobilin's Head Inn Beggar (Exterior)
+*** Mobilin's Head Inn Beggar (Exterior)
 **** Logic
 **** Animation
 **** Sound
-*** TODO Mobilin's Head Inn Blue Lady (Interior)
+*** Mobilin's Head Inn Blue Lady (Interior)
 **** Logic
 **** Animation
 **** Sound
-*** TODO Mobilin's Head Inn Exhausted Traveler (Interior)
+*** Mobilin's Head Inn Exhausted Traveler (Interior)
 **** Logic
 **** Animation
 **** Sound
-*** TODO Myntoll
+*** Myntoll
 **** Logic
 **** Animation
 **** Sound
-*** TODO Nimonee
+*** Nimonee
 **** Logic
 **** Animation
 **** Sound
-*** TODO Ogham Merchant
+*** Ogham Merchant
 **** Logic
 **** Animation
 **** Sound
-*** TODO Old Sailor
+*** Old Sailor
 **** Logic
 **** Animation
 **** Sound
-*** TODO Old Sailor's Wife
+*** Old Sailor's Wife
 **** Logic
 **** Animation
 **** Sound
-*** TODO Pick-Pocket
+*** Pick-Pocket
 **** Logic
 **** Animation
 **** Sound
-*** TODO Quarry Owner
+*** Quarry Owner
 **** Logic
 **** Animation
 **** Sound
-*** TODO Rebel Soldier 1
+*** Rebel Soldier 1
 **** Logic
 **** Animation
 **** Sound
-*** TODO Rebel Soldier 2
+*** Rebel Soldier 2
 **** Logic
 **** Animation
 **** Sound
-*** TODO Ryco
+*** Ryco
 **** Logic
 **** Animation
 **** Sound
-*** TODO Sailor 1
+*** Sailor 1
 **** Logic
 **** Animation
 **** Sound
-*** TODO Sailor 2
+*** Sailor 2
 **** Logic
 **** Animation
 **** Sound
-*** TODO Sailor 3
+*** Sailor 3
 **** Logic
 **** Animation
 **** Sound
-*** TODO Shurmak
+*** Shurmak
 **** Logic
 **** Animation
 **** Sound
-*** TODO Sir Basil
+*** Sir Basil
 **** Logic
 **** Animation
 **** Sound
-*** TODO Sirram Bew
+*** Sirram Bew
 **** Logic
 **** Animation
 **** Sound
-*** TODO Squire Grip animation
+*** Squire Grip animation
 **** Logic
 **** Animation
 **** Sound
-*** TODO Swamp Rat
+*** Swamp Rat
 **** Logic
 **** Animation
 **** Sound
-*** TODO Talking Toadstool
+*** Talking Toadstool
 **** Logic
 **** Animation
 **** Sound
-*** TODO Thabul
+*** Thabul
 **** Logic
 **** Animation
 **** Sound
-*** TODO Thief Sailor
+*** Thief Sailor
 **** Logic
 **** Animation
 **** Sound
-*** TODO Thirsty Child
+*** Thirsty Child
 **** Logic
 **** Animation
 **** Sound
-*** TODO Toatobar
+*** Toatobar
 **** Logic
 **** Animation
 **** Sound
-*** TODO Toobar
+*** Toobar
 **** Logic
 **** Animation
 **** Sound
-*** TODO Town Square Shopkeeper (Great Wimbich)
+*** Town Square Shopkeeper (Great Wimbich)
 **** Logic
 **** Animation
 **** Sound
-*** TODO Transport Condor
+*** Transport Condor
 **** Logic
 **** Animation
 **** Sound
-*** TODO Trinket Seller
+*** Trinket Seller
 **** Logic
 **** Animation
 **** Sound
-*** TODO Waldensop
+*** Waldensop
 **** Logic
 **** Animation
 **** Sound
-*** TODO Water Bearer
+*** Water Bearer
 **** Logic
 **** Animation
 **** Sound
-*** TODO Whitesteed Lodge Horse
+*** Whitesteed Lodge Horse
 **** Logic
 **** Animation
 **** Sound
-*** TODO Whitesteed Lodge Patron 1
+*** Whitesteed Lodge Patron 1
 **** Logic
 **** Animation
 **** Sound
-*** TODO Whitesteed Lodge Patron 2
+*** Whitesteed Lodge Patron 2
 **** Logic
 **** Animation
 **** Sound
-*** TODO Whitesteed Lodge Patron 3
+*** Whitesteed Lodge Patron 3
 **** Logic
 **** Animation
 **** Sound
-*** TODO Whitesteed Lodgekeeper
+*** Whitesteed Lodgekeeper
 **** Logic
 **** Animation
 **** Sound
-*** TODO Yalzan
+*** Yalzan
 **** Logic
 **** Animation
 **** Sound
-*** TODO Yelena
+*** Yelena
 **** Logic
 **** Animation
 **** Sound
-*** TODO Yvonne
+*** Yvonne
 **** Logic
 **** Animation
 **** Sound
