@@ -73,6 +73,7 @@
 - [ ] Flute
 - [ ] Raft
 - [ ] Pyros spell
+- [ ] Crystal heart
 ** Shrine of Illusion
 *** Enemies
 *** Items
@@ -1375,94 +1376,260 @@ A blue-tined Zola that lives in the ocean next to the Seacoast Plain. They're mu
             [health=60, damage=62, defense=30]
 
 These Zola are very similar to their river-dwelling counterparts, apart from two small things. First, they're only found in the Forest of Albon, stuck in its murky swamp waters. Secondly, you can buy repellant spray from the nearby Barachno Marsh to make them disappear for good.
-*** bosses & etc mappings
-    enemy.lanmola:
-        [health=60, damage=68, defense=20]
+** Bosses and Mini-Bosses
+This section covers the Shrine Keepers and mini-bosses encountered in Tolemac's underground. Unlike regular enemies, they usually have to be defeated to progress through a Shrine, and won't respawn after dying.
 
-    enemy.bagoBago:
-        [health=12, damage=50, defense=10] on cells c8
-        [health=60, damage=40, defense=0] on cells p13
+All enemies in this section are ordered by when you encounter them in-game.
+*** Red, Blue, and Yellow Sardaks
+    Location: Shrine of Earth
+    Health: 4 (red/yellow), 2 (blue)
+    Behavior Type: Aggressive
+    Damage: 0.5 (red, yellow projectile), 1 (blue, yellow melee)
+    Weakness(es): Jade Ring
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: Large
+    Technical Export:
+        enemy.sardak.red:
+            [health=280, damage=50, defense=30, weakness=JadeRing, bonusDamage=70]
+        enemy.sardak.blue:
+            [health=80, damage=50, defense=30, weakness=JadeRing, bonusDamage=70]
+        enemy.sardak.yellow:
+            [health=280, damage=50, defense=30, weakness=JadeRing, bonusDamage=70]
 
-    enemy.llort:
+These incredibly goofy sheep-like men guard the Shrine of Earth and its master, Llort. The red and blue Sardaks only do melee attacks, while the yellow Sardak can throw a slow-moving spear. All three of them are weak to the Jade Ring's projectile, and must be defeated to complete the Shrine. Upon dying, each Sardak will warn Llort that you're coming.
+
+*** Llort
+    Location: Shrine of Earth
+    Health: 10
+    Behavior Type: Fixed
+    Damage: 1 (melee), 0.5 (projectile)
+    Weakness(es): All
+    Drops: 250 Rupees
+    Knockback Distance: None
+    Technical Export (enemy.llort):
         [health=60, damage=60, defense=24] on cells gl1, s118
         [health=60, damage=50, defense=24] on cells s121
 
-    enemy.ganonFairy:
-        [health=0, damage=0, defense=0] on cells gl1, gl2, gl3, gl5, gl8
-        [health=50, damage=0, defense=0] on cells gl7
+An incredibly greedy troll who rules over the Shrine of Earth. He possesses a huge hoard of gemstones, which he fiercely defends from anyone brave enough to try and steal some. Over the course of the dungeon, Zelda steals a Jade Ring from Llort and, upon defeating him, acquires 250 more Rupees.
 
-    enemy.rope:
+*** Snake
+    Location: Wimbich Pond
+    Health: One flute song
+    Behavior Type: Fixed
+    Damage: 1.5 (0-1 CS), 1 (2-6 CS)
+    Weakness(es): Flute
+    Drops: Pyros
+    Knockback Distance: None
+    Technical Export (enemy.rope):
         [health=5, damage=57, defense=500]
 
-    enemy.guard:
-        [health=0, damage=0, defense=0]
+This slithering snake can be found near the shores of Wimbich Pond, west of where you get the Raft. Its one weakness is a song from a flute, which is given to Zelda by a citizen of Great Wimbich named Yvonne. When Zelda plays the flute, the snake bursts into flames, which can damage the Princess, and drops the Pyros spell.
 
-    enemy.blob:
-        [health=0, damage=0, defense=0]
+*** Pols Voice
+    Location: Shrine of Illusion, Shrine of Destiny
+    Health: 4
+    Behavior Type: Aggressive
+    Damage: 1 (1-3 CS), 0.5 (4-6 CS)
+    Weakness(es): Noise
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: Large
+    Technical Export (enemy.polsVoice):
+        [health=280, damage=51, defense=31, weakness=Noise, bonusDamage=70]
 
-    enemy.pasquinade:
+One of these ugly faces can be found blocking the way in the Shrine of Illusion. You'll need the Noise spell from Verna to deal with these things, a nice nod to the original Legend of Zelda. Or hit it many times with your Wand, but we won't go into too much detail here. Later, two groups of Pols Voices can be found in the Shrine of Destiny, though they won't block the way.
+
+*** Pasquinade
+    Location: Shrine of Illusion
+    Health: 9
+    Behavior Type: Fixed
+    Damage: 1 (melee), 0.5 (projectile)
+    Weakness(es): All
+    Drops: Nothing
+    Knockback Distance: None
+    Technical Export (enemy.pasquinade):
         [health=60, damage=55, defense=24] on cells gl2
         [health=0, damage=0, defense=0] on cells s217
         [health=70, damage=55, defense=24] on cells s224
 
-    enemy.aviana:
+Ringleading the Shrine of Illusion is Pasquinade, a wolfman jester who never takes things seriously. You'll encounter his apparition right before the first locked door, then in-person at the end of the Shrine. His attacks include cartwheels, spins, and bouncy ball summoning, though they're rather easily telegraphed. No Rupee bonus for perforating this Pagliacci, sadly.
+
+*** Vapora
+    Location: Shrine of Air
+    Health: 7
+    Behavior Type: Aggressive (first), Fixed (second)
+    Damage: 1 (melee/projectile)
+    Weakness(es): All
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees (first), Rug (second)
+    Knockback Distance: Large
+    Technical Export (enemy.vapora):
+        [health=60, damage=57, defense=25]
+
+A pair of sentient clouded faces that serve the Shrine of Air's queen, Aviana. The first Vapora will chase Zelda around her chamber, while the second follows a fixed pattern and drops the Rug upon her death.
+
+*** Aviana
+    Location: Shrine of Air
+    Health: 11
+    Behavior Type: Fixed
+    Damage: 1 (melee/projectile)
+    Weakness(es): Feather
+    Drops: Nothing
+    Knockback Distance: None
+    Technical Export (enemy.aviana):
         [health=60, damage=60, defense=24, weakness=Feather, bonusDamage=0] on cells gl3
         [health=770, damage=60, defense=24, weakness=Feather, bonusDamage=0] on cells s321
 
-    enemy.malmord:
+The third Shrine Queen, Aviana guards the Shrine of Air and regularly flies over Tolemac. During one of these flights, she lost one of her feathers somewhere over the Forest of Torian. She fears that its magic powers can be used to slay her... and she's correct. Aviana's large size makes it easy to hit her with your wand instead of the Feather spell, so try to distance yourself before casting.
+
+*** Malmord
+    Location: Shrine of Destiny
+    Health: 8
+    Behavior Type: Fixed
+    Damage: 1
+    Weakness(es): All
+    Drops: Nothing
+    Knockback Distance: None
+    Technical Export (enemy.malmord):
         [health=1, damage=80, defense=0] on cells gl4
         [health=90, damage=60, defense=24] on cells s422
 
-    enemy.agwanda:
+The "Overlord of Destiny" herself, Malmord rules over the Shrine of Destiny and fate in general. She'll periodically taunt Zelda as the Princess makes her way deeper into the Shrine. Once encountered, Malmord will run across her arena in a fixed pattern, and can temporarily turn into a shadow which can't be damaged by any of Zelda's spells or Wand.
+
+*** Sea Monster
+    Location: Near Sea Island
+    Health: 8 (4 CS), 6 (5 CS), 5 (6 CS)
+    Behavior Type: Fixed
+    Damage: 1
+    Weakness(es): All
+    Drops: Nothing
+    Knockback Distance: None
+    Technical Export: No dedicated export mapping identified.
+    Note: The export name enemy.seaMonster is currently listed elsewhere as a possible match for Zola (Sea), so it has not been reused here without confirmation.
+
+In the waters between South Port and Sea Island lurks the ferocious Sea Monster. Thought by many sailors to be a simple myth, Zelda encounters this depth dweller on her voyage to Sea Island. Luckily for her, the Sea Monster isn't as tough as it looks. Eight swipes with the Wand will dispatch this creature, with the number decreasing as more Celestial Signs are obtained.
+
+*** North, South, and East Kelpies
+    Location: Shrine of Water
+    Health: 6
+    Behavior Type: Aggressive
+    Damage: 1.5
+    Weakness(es): Turquoise Ring
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: Large
+    Technical Export (enemy.kelpi):
+        [health=280, damage=69, defense=34, weakness=TurquoiseRing, bonusDamage=70]
+
+These green guardians defend various checkpoints along the rivers that flow through the Shrine of Water. They are only weak to the Turquoise Ring, a costly spell that destroys them in six projectiles. Fortunately for your Rupee wallet, the third Kelpie is optional, and you can hit them many times with the wand to skip having to obtain the spell.
+
+*** Agwanda
+    Location: Shrine of Water
+    Health: 11
+    Behavior Type: Fixed
+    Damage: 2 (melee), 1.5 (projectile)
+    Weakness(es): All
+    Drops: Nothing
+    Knockback Distance: None
+    Technical Export (enemy.agwanda):
         [health=50, damage=86, defense=30] on cells gl5
         [health=0, damage=0, defense=0] on cells s516
         [health=110, damage=86, defense=28] on cells s525
 
-    enemy.warbane:
+A sentient blob of water that claims to control the "waters of life and renewal". She'll constantly taunt Zelda throughout her Shrine, even making an appearance through an apparition in the Whirlpool area. Her attacks consist of a powerful crush and a ring of seven bubbles, shot in every direction except south. Luckily, there's a spot in her arena's northwest corner that's protected against all of her attacks.
+
+*** Red, Blue, and Green Knights
+    Location: Shrine of Strength
+    Health: 4
+    Behavior Type: Aggressive
+    Damage: 1.5
+    Weakness(es): Joust (Red), Broadsword (Blue/Green)
+    Drops: Nothing
+    Knockback Distance: Large (Red), Small (Blue/Green)
+    Technical Export:
+        enemy.knight.red:
+            [health=280, damage=73, defense=35, weakness=Joust, bonusDamage=70]
+        enemy.knight.blue:
+            [health=280, damage=73, defense=35, weakness=Broadsword, bonusDamage=70]
+        enemy.knight.green:
+            [health=280, damage=73, defense=35, weakness=Broadsword, bonusDamage=70]
+
+Ursore's strongest warriors are a trio of mounted knights taking up residence in the Shrine of Strength's fields. The Red Knight had a Red Ribbon stolen from him ages ago, and has been trying to find it ever since. His brothers, the Blue and Green Knights, are quite sexist and bloodthirsty, respectively. All three Knights can be defeated in four hits with a specific spell: the Joust for Red, and the Broadsword for Blue and Green.
+
+*** Ursore
+    Location: Shrine of Strength
+    Health: 22
+    Behavior Type: Fixed
+    Damage: 2
+    Weakness(es): All
+    Drops: Nothing
+    Knockback Distance: None
+    Technical Export (enemy.ursore):
+        [health=130, damage=80, defense=34]
+
+Ruling over the Shrine of Strength is Ursore, a large bear that happens to be the castle's best warrior... until you came along, of course. He boasts one of the largest health pools of any enemy, and can back it up with some strong attacks, too. Ursore will comment on your progress through his Shrine, noting the defeat of all three of his Knights.
+
+*** Maxus
+    Location: Shrine of Fire
+    Health: 4
+    Behavior Type: Aggressive
+    Damage: 1.5 (melee), 2 (projectile)
+    Weakness(es): Gold Necklace
+    Drops: Nothing, Life Heart, 5 Rupees, 10 Rupees
+    Knockback Distance: Large
+    Technical Export (possible match: enemy.archer):
+        [health=280, damage=72, defense=40, weakness=GoldNecklace, bonusDamage=70]
+
+A silver-armored knight that defends his master, Warbane, with flaming arrows shot from his trusty bow. He once owned a beautiful gold necklace, though it was recently stolen by a thirsty child so he could buy food and water. Much like Aviana, this necklace is a spell that can be used to vanquish this metallic warrior.
+
+*** Warbane
+    Location: Shrine of Fire
+    Health: 13
+    Behavior Type: Fixed
+    Damage: 1.5
+    Weakness(es): All
+    Drops: Nothing
+    Knockback Distance: None
+    Technical Export (enemy.warbane):
         [health=50, damage=86, defense=34] on cells gl7
         [health=0, damage=0, defense=0] on cells s712, s721
         [health=50, damage=76, defense=38] on cells s723
 
-    enemy.ganon:
+The final Shrine King you'll meet in Zelda's Adventure. Warbane was once a peaceful dragon, even helping a couple in Great Wimbich run a locksmith forge. When Gannon invaded Tolemac, Warbane joined him, created the Shrine of Fire, and shut the forge down. He's not as strong as Ursore, but makes up for it with a faster movement pattern. You can also entirely skip his boss fight. No, really.
+
+*** Boss Rematches
+    Location: Gannon's Gauntlet
+    Health: 1 (Aviana, Malmord), 3 (Llort, Pasquinade), 4 (Agwanda), 5 (Warbane)
+    Behavior Type: Fixed
+    Damage:
+        Llort: 1 (melee), 2 (projectile)
+        Pasquinade: 0.5 (melee), 2 (projectile)
+        Aviana: 1 (melee), 2 (projectile)
+        Malmord: 2
+        Agwanda: 2 (melee), 2.5 (projectile)
+        Warbane: 2.5 (melee/projectile)
+    Weakness(es): All (everyone but Aviana), Feather (Aviana)
+    Drops: Nothing (everyone but Malmord), 10 Dragonflies with guaranteed hearts (Malmord)
+    Knockback Distance: None
+
+Before facing Gannon, you must rematch and defeat every boss apart from Ursore. They have brand new patterns and deal more damage, but the bosses' reduced HP make their rematches easy as pie. Once a boss is defeated, a claw-like thing will appear where they once stood and circle around the arena, before Zelda is teleported to the next fight. This is Gannon!
+
+Of note is that Malmord will make ten Dragonflies appear after being struck once. These insects are guaranteed to drop a Life Heart upon dying.
+
+*** Gannon
+    Location: Gannon's Gauntlet
+    Health: 15
+    Behavior Type: Fixed
+    Damage: 2 (melee), 3 (projectile)
+    Weakness(es): All
+    Drops: The game's ending
+    Knockback Distance: None
+    Technical Export (enemy.ganon):
         [health=60, damage=82, defense=40]
+    enemy.ganonFairy:
+        [health=0, damage=0, defense=0] on cells gl1, gl2, gl3, gl5, gl8
+        [health=50, damage=0, defense=0] on cells gl7
 
-    enemy.sardak.red:
-        [health=280, damage=50, defense=30, weakness=JadeRing, bonusDamage=70]
-    enemy.sardak.blue:
-        [health=80, damage=50, defense=30, weakness=JadeRing, bonusDamage=70]
-    enemy.sardak.yellow:
-        [health=280, damage=50, defense=30, weakness=JadeRing, bonusDamage=70]
+The Lord of Darkness himself. Gannon has taken over the peaceful land of Tolemac, seizing its Celestial Signs and capturing Link in the process. He also doesn't like the Forest of Albon, for whatever reason.
 
-    enemy.polsVoice:
-        [health=280, damage=51, defense=31, weakness=Noise, bonusDamage=70]
-
-    enemy.vapora:
-        [health=60, damage=57, defense=25]
-
-    enemy.tumbleSkull:
-        [health=60, damage=57, defense=10]
-
-    enemy.kelpi:
-        [health=280, damage=69, defense=34, weakness=TurquoiseRing, bonusDamage=70]
-
-    enemy.knight.red:
-        [health=280, damage=73, defense=35, weakness=Joust, bonusDamage=70]
-    enemy.knight.blue:
-        [health=280, damage=73, defense=35, weakness=Broadsword, bonusDamage=70]
-    enemy.knight.green:
-        [health=280, damage=73, defense=35, weakness=Broadsword, bonusDamage=70]
-
-    enemy.ursore:
-        [health=130, damage=80, defense=34]
-
-    enemy.spearThrower:
-        [health=30, damage=81, defense=30]
-
-    enemy.lavaLizard:
-        [health=18, damage=81, defense=36]
-
-    enemy.archer:
-        [health=280, damage=72, defense=40, weakness=GoldNecklace, bonusDamage=70]
+Fortunately, your full arsenal and collection of Celestial Signs will allow you to vanquish this evil pig man. Gannon will teleport around his demesne and cast down a wall of lightning, though this can be avoided by standing next to or behind him. Only after he fully materializes can you damage him. If you're having trouble beating Gannon, consider using the Hammer spell.
 ** NPCs
 - NPCs disappear after finishing their side quest duties
 - Touching their rectangles makes them talk
