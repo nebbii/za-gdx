@@ -69,8 +69,16 @@ public class Projectile extends Rectangle implements Actor {
         return damage;
     }
 
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
     public int getBonusDamage() {
         return bonusDamage;
+    }
+
+    public void setBonusDamage(int bonusDamage) {
+        this.bonusDamage = bonusDamage;
     }
 
     public int getDefense() {

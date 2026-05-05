@@ -12,7 +12,6 @@ public class EnemyMoblin extends Enemy {
         setWidth(40);
         setHeight(40);
         setHealth(60);
-        setHitDamage(20);
 
         this.animation = new EnemyMoblinAnimation(this);
 

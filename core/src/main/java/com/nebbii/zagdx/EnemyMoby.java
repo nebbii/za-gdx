@@ -11,7 +11,6 @@ public class EnemyMoby extends Enemy {
         super(ActorType.ENEMY, true);
         setHeight(26);
         setHealth(60);
-        setHitDamage(20);
 
         this.animation = new EnemyMobyAnimation(this);
 

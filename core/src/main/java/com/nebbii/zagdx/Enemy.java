@@ -23,7 +23,6 @@ public class Enemy extends Rectangle implements Actor {
 
     protected float knockback;
     protected Direction hurtDirection;
-    protected float hitDamage;
 
     protected State state;
     protected ActorType type;
@@ -227,14 +226,6 @@ public class Enemy extends Rectangle implements Actor {
         return hurtDirection;
     }
 
-    public float getHitDamage() {
-        return hitDamage;
-    }
-
-    public void setHitDamage(float hitDamage) {
-        this.hitDamage = hitDamage;
-    }
-
     public void setHurtDirection(Direction hurtDirection) {
         this.hurtDirection = hurtDirection;
     }
@@ -274,8 +265,16 @@ public class Enemy extends Rectangle implements Actor {
         return damage;
     }
 
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
     public int getBonusDamage() {
         return bonusDamage;
+    }
+
+    public void setBonusDamage(int bonusDamage) {
+        this.bonusDamage = bonusDamage;
     }
 
     public State getState() {

@@ -1,6 +1,7 @@
 package com.nebbii.zagdx;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import com.badlogic.gdx.Gdx;
 import com.nebbii.zagdx.MenuPause.MenuState;
@@ -160,10 +161,22 @@ public class GameManager {
 
     public int calculateDamage(Actor attacker, Actor defender) {
         // grab the damage value from the weapon
-        // subtract defense mincapped on 0
+        int damage = attacker.getDamage();
+
+        // subtract defense capped on 0
+        damage = Math.max(0, damage - defender.getDefense());
+
+        String attackerType = attacker.getClass().getSimpleName();
+
         // on weakness, add bonus damage
+        for (String weakness : defender.getWeaknesses()) {
+            if (weakness.equals(attackerType)) {
+                damage += defender.getBonusDamage();
+                break;
+            }
+        }
         // return damage amount
-        return 20;
+        return damage;
     }
 
     public float calculateZeldaKnockback() {

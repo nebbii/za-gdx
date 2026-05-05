@@ -20,7 +20,6 @@ public class EnemyActionBoomerang extends EnemyAction {
     public EnemyActionBoomerang(Actor actor, float x, float y) {
         super(actor, x, y);
         duration = 1.2f;
-        damage = 20;
         speed = 150f;
 
         solid = true;
@@ -29,6 +28,7 @@ public class EnemyActionBoomerang extends EnemyAction {
 
         setWidth(10);
         setHeight(10);
+        setDamage(40);
 
         hitbox = new Rectangle();
         hitbox.setWidth(28);

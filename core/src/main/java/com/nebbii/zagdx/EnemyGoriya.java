@@ -15,7 +15,9 @@ public class EnemyGoriya extends Enemy {
         setWidth(48);
         setHeight(42);
         setHealth(60);
-        setHitDamage(20);
+        setDamage(45);
+        setBonusDamage(5);
+        setDefense(10);
         timer = MathUtils.random(0f, 2f);
 
         this.animation = new EnemyGoriyaAnimation(this);

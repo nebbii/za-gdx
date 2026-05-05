@@ -12,7 +12,8 @@ public class EnemyTumblebot extends Enemy {
         super(ActorType.ENEMY, true);
         setHeight(26);
         setHealth(60);
-        setHitDamage(20);
+        setDamage(57);
+        setDefense(10);
 
         this.animation = new EnemyTumblebotAnimation(this);
 
