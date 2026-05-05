@@ -17,6 +17,7 @@ public interface Actor {
     String[] getWeaknesses();
     int getDamage();
     int getBonusDamage();
+    int getDefense();
 
     State getState();
     void setState(State state);

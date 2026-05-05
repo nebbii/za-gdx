@@ -19,16 +19,12 @@ public class Pickup extends Rectangle implements Actor {
     protected float baseOffsetY;
     protected float offsetX; // animation specific
     protected float offsetY;
-    protected int damage;
-    protected int bonusDamage;
 
     public Pickup() {
         setType(ActorType.PICKUP);
         setState(State.PENDING);
         this.drawOrder = 1;
         this.duration = 0;
-        this.damage = 0;
-        this.bonusDamage = 0;
     }
 
     @Override
@@ -89,11 +85,15 @@ public class Pickup extends Rectangle implements Actor {
     }
 
     public int getDamage() {
-        return damage;
+        return 0;
     }
 
     public int getBonusDamage() {
-        return bonusDamage;
+        return 0;
+    }
+
+    public int getDefense() {
+        return 0;
     }
 
     @Override

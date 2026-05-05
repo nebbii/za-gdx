@@ -10,7 +10,10 @@ public class Enemy extends Rectangle implements Actor {
     protected boolean solid;
     protected MapManager map;
 
-    protected float health;
+    protected int health;
+    protected int defense;
+    protected int damage;
+    protected int bonusDamage;
 
     protected float speed;
     protected float searchDuration;
@@ -21,8 +24,6 @@ public class Enemy extends Rectangle implements Actor {
     protected float knockback;
     protected Direction hurtDirection;
     protected float hitDamage;
-    protected int damage;
-    protected int bonusDamage;
 
     protected State state;
     protected ActorType type;
@@ -46,6 +47,7 @@ public class Enemy extends Rectangle implements Actor {
         this.drawOrder = 0;
         this.solid = solid;
         this.damage = 0;
+        this.defense = 0;
         this.bonusDamage = 0;
 
         this.direction = getRandomDirection();
@@ -328,12 +330,20 @@ public class Enemy extends Rectangle implements Actor {
         this.knockback += amount;
     }
 
-    public float getHealth() {
+    public int getHealth() {
         return health;
     }
 
-    public void setHealth(float health) {
+    public void setHealth(int health) {
         this.health = health;
+    }
+
+    public int getDefense() {
+        return defense;
+    }
+
+    public void setDefense(int defense) {
+        this.defense = defense;
     }
 
     public float getTargetX() {

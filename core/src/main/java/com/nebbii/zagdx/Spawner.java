@@ -10,8 +10,6 @@ public class Spawner extends Rectangle implements Actor {
     private int drawOrder;
     private boolean solid = false;
     protected MapManager map;
-    protected int damage;
-    protected int bonusDamage;
 
     public Spawner() {
         setWidth(1);
@@ -19,8 +17,6 @@ public class Spawner extends Rectangle implements Actor {
         setState(State.IDLE);
         setType(ActorType.SPAWNER);
         this.drawOrder = 0;
-        this.damage = 0;
-        this.bonusDamage = 0;
     }
 
     @Override
@@ -57,11 +53,15 @@ public class Spawner extends Rectangle implements Actor {
     }
 
     public int getDamage() {
-        return damage;
+        return 0;
     }
 
     public int getBonusDamage() {
-        return bonusDamage;
+        return 0;
+    }
+
+    public int getDefense() {
+        return 0;
     }
 
     @Override

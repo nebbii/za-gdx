@@ -27,7 +27,6 @@ public class Zelda extends Rectangle implements Actor {
     private int damage;
     private int bonusDamage;
     private int health;
-    private int maxHealth;
 
     private Item currentItem;
 
@@ -45,7 +44,6 @@ public class Zelda extends Rectangle implements Actor {
         setAnimState(AnimState.STOPDOWN);
         setType(ActorType.PLAYER);
         setHealth(60);
-        setMaxHealth(60);
         setCurrentItem(Treasure.NONE);
         this.drawOrder = 3;
 
@@ -310,6 +308,20 @@ public class Zelda extends Rectangle implements Actor {
         return bonusDamage;
     }
 
+    public int getDefense() {
+        int defense = 30;
+
+        if (world.getGameManager().hasItem(Treasure.CELESTIAL_SIGN_1)) defense += 2;
+        if (world.getGameManager().hasItem(Treasure.CELESTIAL_SIGN_2)) defense += 2;
+        if (world.getGameManager().hasItem(Treasure.CELESTIAL_SIGN_3)) defense += 2;
+        if (world.getGameManager().hasItem(Treasure.CELESTIAL_SIGN_4)) defense += 2;
+        if (world.getGameManager().hasItem(Treasure.CELESTIAL_SIGN_5)) defense += 2;
+        if (world.getGameManager().hasItem(Treasure.CELESTIAL_SIGN_6)) defense += 2;
+        if (world.getGameManager().hasItem(Treasure.CELESTIAL_SIGN_7)) defense += 2;
+
+        return defense;
+    }
+
     public void equipItem(Item item) {
         if (world.getGameManager().hasItem(item)) {
             setCurrentItem(item);
@@ -410,11 +422,17 @@ public class Zelda extends Rectangle implements Actor {
     }
 
     public int getMaxHealth() {
-        return maxHealth;
-    }
+        int maxHealth = 60;
 
-    public void setMaxHealth(int maxHealth) {
-        this.maxHealth = maxHealth;
+        if (world.getGameManager().hasItem(Treasure.CELESTIAL_SIGN_1)) maxHealth += 20;
+        if (world.getGameManager().hasItem(Treasure.CELESTIAL_SIGN_2)) maxHealth += 20;
+        if (world.getGameManager().hasItem(Treasure.CELESTIAL_SIGN_3)) maxHealth += 20;
+        if (world.getGameManager().hasItem(Treasure.CELESTIAL_SIGN_4)) maxHealth += 20;
+        if (world.getGameManager().hasItem(Treasure.CELESTIAL_SIGN_5)) maxHealth += 20;
+        if (world.getGameManager().hasItem(Treasure.CELESTIAL_SIGN_6)) maxHealth += 20;
+        if (world.getGameManager().hasItem(Treasure.CELESTIAL_SIGN_7)) maxHealth += 20;
+
+        return maxHealth;
     }
 
     public MapManager getMap() {

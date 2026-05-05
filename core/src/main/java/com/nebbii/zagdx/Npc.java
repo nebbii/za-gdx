@@ -10,8 +10,6 @@ public class Npc extends Rectangle implements Actor {
     protected NpcState npcState;
     protected ActorType type;
     protected int drawOrder;
-    protected int damage;
-    protected int bonusDamage;
 
     public enum NpcState {
         TALKY,
@@ -26,8 +24,6 @@ public class Npc extends Rectangle implements Actor {
         setType(actorType);
         this.drawOrder = 2;
         this.solid = solid;
-        this.damage = 0;
-        this.bonusDamage = 0;
     }
 
     public void logic() {
@@ -76,11 +72,15 @@ public class Npc extends Rectangle implements Actor {
     }
 
     public int getDamage() {
-        return damage;
+        return 0;
     }
 
     public int getBonusDamage() {
-        return bonusDamage;
+        return 0;
+    }
+
+    public int getDefense() {
+        return 0;
     }
 
     public State getState() {

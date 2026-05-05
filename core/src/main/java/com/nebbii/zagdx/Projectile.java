@@ -73,6 +73,10 @@ public class Projectile extends Rectangle implements Actor {
         return bonusDamage;
     }
 
+    public int getDefense() {
+        return 0;
+    }
+
     @Override
     public State getState() {
         return state;
