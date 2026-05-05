@@ -21,6 +21,8 @@ public class Enemy extends Rectangle implements Actor {
     protected float knockback;
     protected Direction hurtDirection;
     protected float hitDamage;
+    protected int damage;
+    protected int bonusDamage;
 
     protected State state;
     protected ActorType type;
@@ -43,6 +45,8 @@ public class Enemy extends Rectangle implements Actor {
         setType(actorType);
         this.drawOrder = 0;
         this.solid = solid;
+        this.damage = 0;
+        this.bonusDamage = 0;
 
         this.direction = getRandomDirection();
         resetDirectionTimer();
@@ -262,6 +266,14 @@ public class Enemy extends Rectangle implements Actor {
 
     public String[] getWeaknesses() {
         return new String[] {};
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public int getBonusDamage() {
+        return bonusDamage;
     }
 
     public State getState() {

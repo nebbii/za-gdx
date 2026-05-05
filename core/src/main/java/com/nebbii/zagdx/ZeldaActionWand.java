@@ -5,9 +5,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
 public class ZeldaActionWand extends ZeldaAction {
-	public ZeldaActionWand(Zelda zelda, float x, float y) {
-		super(zelda, x, y);
-        damage = 20f; // TODO: scale with amount of shrines cleared/celestial stones obtained
+    public ZeldaActionWand(Zelda zelda, float x, float y) {
+        super(zelda, x, y);
+        damage = 20;
         switch(zelda.getDirection()) {
         case LEFT:
             setWidth(48);
@@ -43,9 +43,9 @@ public class ZeldaActionWand extends ZeldaAction {
 
         stateTime = 0f;
         duration = 0.10f;
-	}
+    }
 
-	public void logic() {
+    public void logic() {
         super.logic();
 
         if (stateTime >= duration) setState(State.DEAD);

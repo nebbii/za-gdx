@@ -20,7 +20,7 @@ public class ZeldaActionBoomerang extends ZeldaAction {
     public ZeldaActionBoomerang(Actor actor, float x, float y) {
         super(actor, x, y);
         duration = 1.2f;
-        damage = 20f; // TODO: scale with amount of shrines cleared/celestial stones obtained
+        damage = 20;
         speed = 150f;
 
         solid = true;

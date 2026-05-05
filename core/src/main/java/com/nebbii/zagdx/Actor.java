@@ -15,6 +15,8 @@ public interface Actor {
     float getCenterPointY();
 
     String[] getWeaknesses();
+    int getDamage();
+    int getBonusDamage();
 
     State getState();
     void setState(State state);

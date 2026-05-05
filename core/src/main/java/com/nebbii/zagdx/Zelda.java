@@ -24,6 +24,8 @@ public class Zelda extends Rectangle implements Actor {
     private int drawOrder;
 
     private float speed = 120f;
+    private int damage;
+    private int bonusDamage;
     private int health;
     private int maxHealth;
 
@@ -52,6 +54,8 @@ public class Zelda extends Rectangle implements Actor {
         hitbox.setWidth(24);
         hitbox.setHeight(36);
 
+        this.damage = 0;
+        this.bonusDamage = 0;
         this.world = world;
         this.map = map;
     }
@@ -296,6 +300,14 @@ public class Zelda extends Rectangle implements Actor {
 
     public String[] getWeaknesses() {
         return new String[] {};
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public int getBonusDamage() {
+        return bonusDamage;
     }
 
     public void equipItem(Item item) {

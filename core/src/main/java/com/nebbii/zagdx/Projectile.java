@@ -8,7 +8,8 @@ public class Projectile extends Rectangle implements Actor {
     protected boolean solid = false;
 
     protected MapManager map;
-    protected float damage = 0f;
+    protected int damage;
+    protected int bonusDamage;
     protected float stateTime;
     protected float duration;
     protected State state;
@@ -21,6 +22,8 @@ public class Projectile extends Rectangle implements Actor {
         setState(State.ACTIVE);
         setType(ActorType.PROJECTILE);
         this.drawOrder = 3;
+        this.damage = 0;
+        this.bonusDamage = 0;
     }
 
     @Override
@@ -62,6 +65,14 @@ public class Projectile extends Rectangle implements Actor {
         return new String[] {};
     }
 
+    public int getDamage() {
+        return damage;
+    }
+
+    public int getBonusDamage() {
+        return bonusDamage;
+    }
+
     @Override
     public State getState() {
         return state;
@@ -98,14 +109,6 @@ public class Projectile extends Rectangle implements Actor {
 
     public void setType(ActorType type) {
         this.type = type;
-    }
-
-    public float getDamage() {
-        return damage;
-    }
-
-    public void setDamage(float damage) {
-        this.damage = damage;
     }
 
     public MapManager getMap() {
