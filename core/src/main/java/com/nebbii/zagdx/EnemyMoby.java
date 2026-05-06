@@ -3,14 +3,20 @@ package com.nebbii.zagdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.nebbii.zagdx.animation.EnemyMobyAnimation;
 
+// TODO: Set actual original game accurate values
 public class EnemyMoby extends Enemy {
     public EnemyMobyAnimation animation;
 
-    // TODO: Set actual original game accurate values
+    /*
+      enemy.moby has different stats on different cells:
+        [damage=45, health=0, loot=Random] on cells g26, j25, j26, l18, m17, n16, q9, r6, s8
+        [damage=45, health=(Not Spawned, or Projectile), loot=Random] on cells s7
+    */
     public EnemyMoby() {
         super(ActorType.ENEMY, true);
         setHeight(26);
-        setHealth(60);
+        setDamage(45);
+        setHealth(1);
 
         this.animation = new EnemyMobyAnimation(this);
 
