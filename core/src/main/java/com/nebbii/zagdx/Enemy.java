@@ -156,12 +156,23 @@ public class Enemy extends Rectangle implements Actor {
         Color currentColor;
         float t = knockback % 0.12f;
 
-        if (t < 0.04f) {
-            currentColor = Color.YELLOW;
-        } else if (t < 0.08f) {
-            currentColor = Color.GRAY;
-        } else {
-            currentColor = Color.RED;
+        if (weakness) {
+            if (t < 0.04f) {
+                currentColor = Color.YELLOW;
+            } else if (t < 0.08f) {
+                currentColor = Color.GRAY;
+            } else {
+                currentColor = Color.RED;
+            }
+        }
+        else {
+            if (t < 0.04f) {
+                currentColor = Color.BLUE;
+            } else if (t < 0.08f) {
+                currentColor = Color.WHITE;
+            } else {
+                currentColor = Color.BLUE;
+            }
         }
 
         WorldShaders.beginHitFlashShader(batch, currentColor);
