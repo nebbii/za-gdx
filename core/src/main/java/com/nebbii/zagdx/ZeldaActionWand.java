@@ -7,7 +7,8 @@ import com.badlogic.gdx.math.Rectangle;
 public class ZeldaActionWand extends ZeldaAction {
     public ZeldaActionWand(Zelda zelda, float x, float y) {
         super(zelda, x, y);
-        damage = 20;
+        setDamage(zelda.getDamage());
+
         switch(zelda.getDirection()) {
         case LEFT:
             setWidth(48);

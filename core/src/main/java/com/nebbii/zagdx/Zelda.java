@@ -300,7 +300,18 @@ public class Zelda extends Rectangle implements Actor {
         return new String[] {};
     }
 
+    // Using this to store scaling wand damage, as zelda has no contact damage
     public int getDamage() {
+        damage = 30;
+
+        if (world.getGameManager().hasItem(Treasure.CELESTIAL_SIGN_1)) damage += 2;
+        if (world.getGameManager().hasItem(Treasure.CELESTIAL_SIGN_2)) damage += 2;
+        if (world.getGameManager().hasItem(Treasure.CELESTIAL_SIGN_3)) damage += 2;
+        if (world.getGameManager().hasItem(Treasure.CELESTIAL_SIGN_4)) damage += 2;
+        if (world.getGameManager().hasItem(Treasure.CELESTIAL_SIGN_5)) damage += 2;
+        if (world.getGameManager().hasItem(Treasure.CELESTIAL_SIGN_6)) damage += 2;
+        if (world.getGameManager().hasItem(Treasure.CELESTIAL_SIGN_7)) damage += 2;
+
         return damage;
     }
 

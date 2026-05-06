@@ -20,7 +20,6 @@ public class ZeldaActionBoomerang extends ZeldaAction {
     public ZeldaActionBoomerang(Actor actor, float x, float y) {
         super(actor, x, y);
         duration = 1.2f;
-        damage = 20;
         speed = 150f;
 
         solid = true;
@@ -29,7 +28,7 @@ public class ZeldaActionBoomerang extends ZeldaAction {
 
         setWidth(10);
         setHeight(10);
-        setDamage(40);
+        setDamage(45);
 
         hitbox = new Rectangle();
         hitbox.setWidth(28);
