@@ -11,7 +11,7 @@ public class EnemyMoblin extends Enemy {
         super(ActorType.ENEMY, true);
         setWidth(40);
         setHeight(40);
-        setHealth(15);
+        setHealth(60);
         setDamage(50);
         setDefense(15);
 

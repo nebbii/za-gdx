@@ -60,7 +60,7 @@ public class Enemy extends Rectangle implements Actor {
 
     public void logic() {
         if (getState() != State.ACTIVE) return;
-        if (health <= 0) onDeath();
+        if (health < 0) onDeath();
 
         knockback = Math.max(0f, knockback - Gdx.graphics.getDeltaTime());
 
@@ -322,6 +322,8 @@ public class Enemy extends Rectangle implements Actor {
     }
 
     public void decreaseHealth(int amount) {
+        Gdx.app.log(this.getClass().getSimpleName(), "decreasing health (" + getHealth() + ") by " + amount);
+
         setHealth(getHealth() - amount);
     }
 
