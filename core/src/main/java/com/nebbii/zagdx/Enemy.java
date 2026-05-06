@@ -23,6 +23,7 @@ public class Enemy extends Rectangle implements Actor {
 
     protected float knockback;
     protected Direction hurtDirection;
+    protected boolean hurtWeakness = true;
 
     protected State state;
     protected ActorType type;
@@ -60,7 +61,7 @@ public class Enemy extends Rectangle implements Actor {
 
     public void logic() {
         if (getState() != State.ACTIVE) return;
-        if (health < 0) onDeath();
+        if (health <= 0) onDeath();
 
         knockback = Math.max(0f, knockback - Gdx.graphics.getDeltaTime());
 
@@ -88,7 +89,7 @@ public class Enemy extends Rectangle implements Actor {
 
     public void draw(SpriteBatch batch) {
         /*
-        if (knockback > 0) drawFlashOverlay(batch);
+        if (knockback > 0) drawFlashOverlay(batch, hurtWeakness);
         batch.draw(animation.playCurrentAnimation(), animation.getX(), animation.getY());
         if (knockback > 0) endDrawFlashOverlay(batch);
         */
@@ -151,7 +152,7 @@ public class Enemy extends Rectangle implements Actor {
         setState(State.DEAD);
     }
 
-    public void drawFlashOverlay(SpriteBatch batch) {
+    public void drawFlashOverlay(SpriteBatch batch, boolean weakness) {
         Color currentColor;
         float t = knockback % 0.12f;
 

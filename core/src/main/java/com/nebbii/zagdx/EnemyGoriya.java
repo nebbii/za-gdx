@@ -58,7 +58,7 @@ public class EnemyGoriya extends Enemy {
 
     @Override
     public void draw(SpriteBatch batch) {
-        if (knockback > 0) drawFlashOverlay(batch);
+        if (knockback > 0) drawFlashOverlay(batch, hurtWeakness);
 
         batch.draw(animation.playCurrentAnimation(), animation.getX(), animation.getY());
 

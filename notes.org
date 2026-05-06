@@ -1,10 +1,10 @@
 * Ordered to do
 ** Core systems
 - [X] Enemy AI
-- [ ] Damage formula
-- [ ] Wand scaling
-- [ ] Zelda<->enemy collision damage
-- [ ] Projectile damage
+- [X] Damage formula
+- [X] Wand scaling
+- [X] Zelda<->enemy collision damage
+- [X] Projectile damage
 - [ ] Weakness blue effect
 ** Region 1
 *** NPCs

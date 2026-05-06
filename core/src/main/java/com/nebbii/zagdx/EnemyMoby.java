@@ -16,7 +16,7 @@ public class EnemyMoby extends Enemy {
         super(ActorType.ENEMY, true);
         setHeight(26);
         setDamage(45);
-        setHealth(1);
+        setHealth(60);
 
         this.animation = new EnemyMobyAnimation(this);
 
@@ -40,7 +40,7 @@ public class EnemyMoby extends Enemy {
 
     @Override
     public void draw(SpriteBatch batch) {
-        if (knockback > 0) drawFlashOverlay(batch);
+        if (knockback > 0) drawFlashOverlay(batch, hurtWeakness);
 
         batch.draw(animation.playCurrentAnimation(), animation.getX(), animation.getY());
 
