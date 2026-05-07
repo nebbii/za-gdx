@@ -62,8 +62,6 @@ public class MainMenuScreen implements Screen {
 
         menuButtons = new ArrayList<>();
 
-        // menuSaveBox = new MenuSaveBox(core, 76 115 234 80)
-
         menuButtonPlay = new MenuButtonPlay(core, 46, 71, 92, 29);
         menuButtons.add(menuButtonPlay);
         menuButtonCreateSave = new MenuButtonCreateSave(core, 46, 37, 92, 29);
@@ -74,6 +72,8 @@ public class MainMenuScreen implements Screen {
         menuButtons.add(menuButtonExit);
         menuButtonHowToPlay = new MenuButtonHowToPlay(core, 251, 37, 92, 29);
         menuButtons.add(menuButtonHowToPlay);
+
+        // menuSaveBox = new MenuSaveBox(core, 76, 115, 234, 80)
 
         background = new Texture(Gdx.files.internal("dummy-main-menu.png"));
     }
@@ -109,6 +109,7 @@ public class MainMenuScreen implements Screen {
         shapes.setProjectionMatrix(camera.combined);
         shapes.begin(ShapeRenderer.ShapeType.Line);
 
+        // TODO: replace with button images once the export has it
         for (MenuButton button : menuButtons) {
             Rectangle rectangle = button.getCollisionBox();
             shapes.setColor(Color.RED);
