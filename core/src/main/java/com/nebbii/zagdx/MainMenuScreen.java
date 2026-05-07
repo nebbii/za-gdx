@@ -7,6 +7,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -30,13 +31,17 @@ public class MainMenuScreen implements Screen {
     private final Vector2 touchPos = new Vector2();
 
     private Texture background;
+    public float fadeOpacity;
 
     final Game core;
 
     ArrayList<MenuButton> menuButtons;
 
+    MenuButtonPlay menuButtonPlay;
+    MenuButtonExit menuButtonExit;
     MenuButtonCreateSave menuButtonCreateSave;
-
+    MenuButtonDeleteSave menuButtonDeleteSave;
+    MenuButtonHowToPlay menuButtonHowToPlay;
 
     public MainMenuScreen(Game core) {
         this.core = core;
@@ -53,10 +58,22 @@ public class MainMenuScreen implements Screen {
         camera.position.set(WORLD_WIDTH / 2f, WORLD_HEIGHT / 2f, 0f);
         camera.update();
 
+        fadeOpacity = 0f;
+
         menuButtons = new ArrayList<>();
 
+        // menuSaveBox = new MenuSaveBox(core, 76 115 234 80)
+
+        menuButtonPlay = new MenuButtonPlay(core, 46, 71, 92, 29);
+        menuButtons.add(menuButtonPlay);
         menuButtonCreateSave = new MenuButtonCreateSave(core, 46, 37, 92, 29);
         menuButtons.add(menuButtonCreateSave);
+        menuButtonDeleteSave = new MenuButtonDeleteSave(core, 147, 37, 92, 29);
+        menuButtons.add(menuButtonDeleteSave);
+        menuButtonExit = new MenuButtonExit(core, 290, 71, 55, 39);
+        menuButtons.add(menuButtonExit);
+        menuButtonHowToPlay = new MenuButtonHowToPlay(core, 251, 37, 92, 29);
+        menuButtons.add(menuButtonHowToPlay);
 
         background = new Texture(Gdx.files.internal("dummy-main-menu.png"));
     }
@@ -68,10 +85,6 @@ public class MainMenuScreen implements Screen {
     }
 
     public void logic() {
-        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
-            Gdx.app.exit();
-        }
-
         if (Gdx.input.isTouched()) {
             touchPos.set(Gdx.input.getX(), Gdx.input.getY());
             viewport.unproject(touchPos);
@@ -86,7 +99,6 @@ public class MainMenuScreen implements Screen {
 
     public void draw(){
         ScreenUtils.clear(0f, 0f, 0f, 1f);
-
         camera.update();
 
         batch.setProjectionMatrix(camera.combined);
@@ -103,13 +115,20 @@ public class MainMenuScreen implements Screen {
 
             shapes.rect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
         }
+        shapes.end();
 
+        Gdx.gl.glEnable(GL20.GL_BLEND);
+        Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+
+        shapes.begin(ShapeRenderer.ShapeType.Filled);
+        shapes.setColor(0f, 0f, 0f, fadeOpacity);
+        shapes.rect(0f, 0f, WORLD_WIDTH, WORLD_HEIGHT);
         shapes.end();
     }
 
     @Override
     public void resize(int width, int height) {
-        viewport.update(width, height);
+        viewport.update(width, height, true);
     }
 
     @Override
