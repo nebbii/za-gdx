@@ -253,9 +253,10 @@
         "__comment": "f28: Zelda finds a ladder under the middle tree."
       },
         {
-          "__comment": "ladder at X: 2118 Y: 1056"
+          "type": "PickupLadder",
+          "x": 2118,
+          "y": 1056
         },
-
     {
       "__comment": "g",
       "type": null

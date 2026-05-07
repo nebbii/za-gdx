@@ -64,6 +64,7 @@ public class ImageLoader {
 
     /* Treasures */
     private Texture bone;
+    private Texture ladder;
     private Texture pitcherEmpty;
     private Texture pitcherFull;
     private Texture vialOfWind;
@@ -165,6 +166,7 @@ public class ImageLoader {
 
         /* Treasures */
         bone = new Texture("export/overworld/k13a/sprites/desc2/group0/sprite0.png");
+        ladder = new Texture("export/overworld/f28/sprites/desc0/group0/sprite0.png");
         pitcherEmpty = new Texture("export/overworld/j24/sprites/desc1/group0/sprite0.png");
         pitcherFull = new Texture("export/overworld/e20/sprites/desc0/group0/sprite0.png");
         vialOfWind = new Texture("export/overworld/j24/sprites/desc2/group0/sprite0.png");
@@ -253,6 +255,7 @@ public class ImageLoader {
 
         /* Treasures */
         bone.dispose();
+        ladder.dispose();
         pitcherEmpty.dispose();
         pitcherFull.dispose();
         vialOfWind.dispose();
@@ -293,6 +296,7 @@ public class ImageLoader {
             case KEYS:
             case KNIFE:
             case LADDER:
+                return getLadder();
             case LIFE_HEART:
             case LIFE_POTION:
             case MAGIC_SHIELD:
@@ -418,6 +422,10 @@ public class ImageLoader {
 
     public Texture getBone() {
         return bone;
+    }
+
+    public Texture getLadder() {
+        return ladder;
     }
 
     public Texture getPitcherEmpty() {

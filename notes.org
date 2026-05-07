@@ -5,7 +5,7 @@
 - [X] Wand scaling
 - [X] Zelda<->enemy collision damage
 - [X] Projectile damage
-- [ ] Weakness blue effect
+- [X] Weakness blue effect
 ** Region 1
 *** NPCs
 - [X] Glebb
