@@ -2,7 +2,7 @@ package com.nebbii.zagdx;
 
 import com.badlogic.gdx.math.Rectangle;
 
-public class MenuPauseSlotTreasures extends Rectangle implements MenuPauseButton {
+public class MenuPauseSlotTreasures extends Rectangle implements MenuButton {
     private GameManager gameManager;
     private Treasure heldItem;
 

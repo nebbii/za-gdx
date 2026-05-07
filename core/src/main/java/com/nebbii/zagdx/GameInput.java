@@ -65,12 +65,12 @@ public class GameInput {
             Vector3 lastTouch = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
             world.getInterfaceViewport().unproject(lastTouch);
 
-            ArrayList<MenuPauseButton> allSlots = new ArrayList<>();
+            ArrayList<MenuButton> allSlots = new ArrayList<>();
             allSlots.addAll(world.getMenuPause().getTreasureTray());
             allSlots.addAll(world.getMenuPause().getWeaponTray());
             allSlots.addAll(world.getMenuPause().getEquipTray());
 
-            for (MenuPauseButton slot : allSlots) {
+            for (MenuButton slot : allSlots) {
                 if (slot.contains(lastTouch.x, lastTouch.y)) {
                     slot.onTouch();
                 }
