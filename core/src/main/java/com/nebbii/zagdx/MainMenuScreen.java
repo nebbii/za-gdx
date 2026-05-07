@@ -55,7 +55,7 @@ public class MainMenuScreen implements Screen {
 
         menuButtons = new ArrayList<>();
 
-        menuButtonCreateSave = new MenuButtonCreateSave(core, 100, 50, 120, 50);
+        menuButtonCreateSave = new MenuButtonCreateSave(core, 46, 37, 92, 29);
         menuButtons.add(menuButtonCreateSave);
 
         background = new Texture(Gdx.files.internal("dummy-main-menu.png"));
