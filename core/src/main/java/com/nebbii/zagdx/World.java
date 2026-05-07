@@ -203,7 +203,7 @@ public class World {
 
     // taken from my previous game
     private void drawDebugText() {
-        List<String> debugLines = new ArrayList<>();
+        ArrayList<String> debugLines = new ArrayList<>();
 
         debugLines.add("X: " + mapManager.getZelda().getX());
         debugLines.add("Y: " + mapManager.getZelda().getY());
