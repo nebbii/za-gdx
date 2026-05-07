@@ -1,5 +1,6 @@
 package com.nebbii.zagdx;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
@@ -10,7 +11,11 @@ public class GameScreen implements Screen {
     private SpriteBatch batch;
     private World world;
 
-    private WorldCamera worldCamera;
+    final Game core;
+
+    public GameScreen(Game core) {
+        this.core = core;
+    }
 
     public void show() {
         batch = new SpriteBatch();
@@ -20,7 +25,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        ScreenUtils.clear(0.15f, 0.15f, 0.2f, 1f);
+        ScreenUtils.clear(0f, 0f, 0f, 1f);
 
         // for transparency
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
