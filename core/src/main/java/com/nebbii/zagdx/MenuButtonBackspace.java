@@ -4,12 +4,12 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
 
-public class MenuButtonEnterName implements MenuButton {
-    private final Game core;
+public class MenuButtonBackspace implements MenuButton {
+    private final NameEntryScreen nameEntry;
     private final Rectangle collisionBox;
 
-    public MenuButtonEnterName(Game core, float x, float y, float width, float height) {
-        this.core = core;
+    public MenuButtonBackspace(NameEntryScreen nameEntry, float x, float y, float width, float height) {
+        this.nameEntry = nameEntry;
         this.collisionBox = new Rectangle(x, y, width, height);
     }
 
@@ -20,6 +20,7 @@ public class MenuButtonEnterName implements MenuButton {
 
     @Override
     public void onTouch() {
-        Gdx.app.log(getClass().getSimpleName(), "enter button touched");
+        Gdx.app.log(getClass().getSimpleName(), "Backspace button touched");
+        nameEntry.backspaceLastLetter();
     }
 }

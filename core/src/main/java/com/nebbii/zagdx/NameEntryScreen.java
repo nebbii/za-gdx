@@ -3,7 +3,8 @@ package com.nebbii.zagdx;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class NameEntryScreen extends MenuScreen {
     private static final float LETTER_GRID_X = 64f;
@@ -17,21 +18,48 @@ public class NameEntryScreen extends MenuScreen {
     private static final float LETTER_CELL_WIDTH = LETTER_GRID_WIDTH / LETTER_GRID_COLUMNS;
     private static final float LETTER_CELL_HEIGHT = LETTER_GRID_HEIGHT / LETTER_GRID_ROWS;
 
-    private MenuButtonEnterName menuButtonEnterName;
+    private MenuButtonBackspace menuButtonBackspace;
+
+    private SpriteBatch batch;
+
+    private BitmapFont font;
+    public String nameString;
 
     public NameEntryScreen(Game core) {
         super(core);
+
+        batch = new SpriteBatch();
+        font = new BitmapFont();
     }
 
     public void show() {
         super.show();
 
+        nameString = "";
+
         setupLetterButtons();
 
-        menuButtonEnterName = new MenuButtonEnterName(core, 291, 37, 26, 24);
-        menuButtons.add(menuButtonEnterName);
+        menuButtonBackspace = new MenuButtonBackspace(this, 291, 37, 26, 24);
+        menuButtons.add(menuButtonBackspace);
 
         background = new Texture(Gdx.files.internal("dummy-entry-menu.png"));
+
+        batch.setProjectionMatrix(camera.combined);
+        batch.begin();
+        font.draw(batch, nameString, 20f, 120f);
+        batch.end();
+    }
+
+    public void addLetterToName(char letter) {
+        nameString = nameString+letter;
+        Gdx.app.log(getClass().getSimpleName(), "current string: " + nameString);
+    }
+
+    public void backspaceLastLetter() {
+        if (nameString.length() <= 0) return;
+
+        nameString = nameString.substring(0, nameString.length() - 1);
+        Gdx.app.log(getClass().getSimpleName(), "current string: " + nameString);
     }
 
     private void setupLetterButtons() {
@@ -46,7 +74,7 @@ public class NameEntryScreen extends MenuScreen {
             float x = LETTER_GRID_X + column * LETTER_CELL_WIDTH;
             float y = LETTER_GRID_Y + (LETTER_GRID_ROWS - 1 - visualRow) * LETTER_CELL_HEIGHT;
 
-            menuButtons.add(new MenuButtonLetter(letter, x, y, LETTER_CELL_WIDTH, LETTER_CELL_HEIGHT));
+            menuButtons.add(new MenuButtonLetter(this, letter, x, y, LETTER_CELL_WIDTH, LETTER_CELL_HEIGHT));
         }
     }
 }
