@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class NameEntryScreen extends MenuScreen {
@@ -23,7 +24,9 @@ public class NameEntryScreen extends MenuScreen {
     private SpriteBatch batch;
 
     private BitmapFont font;
+    private GlyphLayout drawLayout;
     public String nameString;
+    private float nameWidth;
 
     public NameEntryScreen(Game core) {
         super(core);
@@ -43,23 +46,35 @@ public class NameEntryScreen extends MenuScreen {
         menuButtons.add(menuButtonBackspace);
 
         background = new Texture(Gdx.files.internal("dummy-entry-menu.png"));
+    }
+
+    public void logic() {
+        super.logic();
+
+        if (drawLayout != null) {
+            nameWidth = drawLayout.width;
+        }
+    }
+
+    public void draw() {
+        super.draw();
 
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
-        font.draw(batch, nameString, 20f, 120f);
+        drawLayout = font.draw(batch, nameString, 90, 145f);
         batch.end();
     }
 
     public void addLetterToName(char letter) {
+        if (nameWidth > 200) return; // cdi devs rule
+
         nameString = nameString+letter;
-        Gdx.app.log(getClass().getSimpleName(), "current string: " + nameString);
     }
 
     public void backspaceLastLetter() {
         if (nameString.length() <= 0) return;
 
         nameString = nameString.substring(0, nameString.length() - 1);
-        Gdx.app.log(getClass().getSimpleName(), "current string: " + nameString);
     }
 
     private void setupLetterButtons() {
