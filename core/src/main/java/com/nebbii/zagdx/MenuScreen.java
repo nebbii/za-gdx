@@ -64,7 +64,7 @@ public class MenuScreen implements Screen {
     }
 
     public void logic() {
-        if (Gdx.input.isTouched()) {
+        if (Gdx.input.justTouched()) {
             touchPos.set(Gdx.input.getX(), Gdx.input.getY());
             viewport.unproject(touchPos);
 
