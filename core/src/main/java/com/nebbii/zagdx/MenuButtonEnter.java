@@ -5,11 +5,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
 
 public class MenuButtonEnter implements MenuButton {
-    private final Game core;
+    private final NameEntryScreen nameEntry;
     private final Rectangle collisionBox;
 
-    public MenuButtonEnter(Game core, float x, float y, float width, float height) {
-        this.core = core;
+    public MenuButtonEnter(NameEntryScreen nameEntry, float x, float y, float width, float height) {
+        this.nameEntry = nameEntry;
         this.collisionBox = new Rectangle(x, y, width, height);
     }
 
@@ -20,6 +20,7 @@ public class MenuButtonEnter implements MenuButton {
 
     @Override
     public void onTouch() {
-        Gdx.app.log(getClass().getSimpleName(), "enter button touched");
+        nameEntry.createNewSave();
+        nameEntry.core.setScreen(new MainMenuScreen(nameEntry.core));
     }
 }

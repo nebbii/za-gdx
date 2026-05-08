@@ -20,6 +20,7 @@ public class NameEntryScreen extends MenuScreen {
     private static final float LETTER_CELL_HEIGHT = LETTER_GRID_HEIGHT / LETTER_GRID_ROWS;
 
     private MenuButtonBackspace menuButtonBackspace;
+    private MenuButtonEnter menuButtonEnter;
 
     private SpriteBatch batch;
 
@@ -28,8 +29,12 @@ public class NameEntryScreen extends MenuScreen {
     public String nameString;
     private float nameWidth;
 
+    private SaveManager saveManager;
+
     public NameEntryScreen(Game core) {
         super(core);
+
+        saveManager = new SaveManager();
 
         batch = new SpriteBatch();
         font = new BitmapFont();
@@ -44,6 +49,10 @@ public class NameEntryScreen extends MenuScreen {
 
         menuButtonBackspace = new MenuButtonBackspace(this, 291, 37, 26, 24);
         menuButtons.add(menuButtonBackspace);
+
+        // 290 160 51 31
+        menuButtonEnter = new MenuButtonEnter(this, 290, 160, 51, 31);
+        menuButtons.add(menuButtonEnter);
 
         background = new Texture(Gdx.files.internal("dummy-entry-menu.png"));
     }
@@ -91,5 +100,9 @@ public class NameEntryScreen extends MenuScreen {
 
             menuButtons.add(new MenuButtonLetter(this, letter, x, y, LETTER_CELL_WIDTH, LETTER_CELL_HEIGHT));
         }
+    }
+
+    public void createNewSave() {
+        saveManager.createSave(nameString);
     }
 }
