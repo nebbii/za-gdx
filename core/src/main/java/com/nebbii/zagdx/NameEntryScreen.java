@@ -1,5 +1,6 @@
 package com.nebbii.zagdx;
 
+import java.awt.Menu;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Game;
@@ -18,21 +19,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 // TODO: Eventually swap out the dummy assets with real ones once the exporter supports it
-public class NameEntryScreen implements Screen {
-    static final int WORLD_WIDTH = 384;
-    static final int WORLD_HEIGHT = 240;
-
-    private SpriteBatch batch;
-    private ShapeRenderer shapes;
-
-    private OrthographicCamera camera;
-    private Viewport viewport;
-    private final Vector2 touchPos = new Vector2();
-
-    private Texture background;
-
-    final Game core;
-
+public class NameEntryScreen extends MenuScreen {
     private ArrayList<LetterButton> letterButtons;
 
     private Rectangle enterButton;
@@ -49,7 +36,7 @@ public class NameEntryScreen implements Screen {
     private static final float LETTER_CELL_HEIGHT = LETTER_GRID_HEIGHT / LETTER_GRID_ROWS;
 
     public NameEntryScreen(Game core) {
-        this.core = core;
+        super(core);
     }
 
     public void show() {
@@ -72,30 +59,13 @@ public class NameEntryScreen implements Screen {
         enterButton = new Rectangle(291f, 37f, 26f, 26f);
     }
 
-    private void setupLetterButtons() {
-        String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-        for (int i = 0; i < letters.length(); i++) {
-            char letter = letters.charAt(i);
-
-            int visualRow = i / LETTER_GRID_COLUMNS;
-            int column = i % LETTER_GRID_COLUMNS;
-
-            float x = LETTER_GRID_X + column * LETTER_CELL_WIDTH;
-            float y = LETTER_GRID_Y + (LETTER_GRID_ROWS - 1 - visualRow) * LETTER_CELL_HEIGHT;
-
-            Rectangle rectangle = new Rectangle(x, y, LETTER_CELL_WIDTH, LETTER_CELL_HEIGHT);
-            letterButtons.add(new LetterButton(letter, rectangle));
-        }
-    }
-
     @Override
     public void render(float delta) {
         logic();
         draw();
     }
 
-    private void logic() {
+    public void logic() {
         if (Gdx.input.justTouched()) {
             touchPos.set(Gdx.input.getX(), Gdx.input.getY());
             viewport.unproject(touchPos);
@@ -113,15 +83,7 @@ public class NameEntryScreen implements Screen {
         }
     }
 
-    private void onLetterTouched(char letter) {
-        Gdx.app.log(getClass().getSimpleName(), "current letter is: " + letter);
-    }
-
-    private void onEnterTouched() {
-        Gdx.app.log(getClass().getSimpleName(), "enter button touched");
-    }
-
-    private void draw() {
+    public void draw() {
         ScreenUtils.clear(0f, 0f, 0f, 1f);
 
         camera.update();
@@ -144,6 +106,31 @@ public class NameEntryScreen implements Screen {
         shapes.rect(enterButton.x, enterButton.y, enterButton.width, enterButton.height);
 
         shapes.end();
+    }
+
+    private void onLetterTouched(char letter) {
+        Gdx.app.log(getClass().getSimpleName(), "current letter is: " + letter);
+    }
+
+    private void onEnterTouched() {
+        Gdx.app.log(getClass().getSimpleName(), "enter button touched");
+    }
+
+    private void setupLetterButtons() {
+        String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        for (int i = 0; i < letters.length(); i++) {
+            char letter = letters.charAt(i);
+
+            int visualRow = i / LETTER_GRID_COLUMNS;
+            int column = i % LETTER_GRID_COLUMNS;
+
+            float x = LETTER_GRID_X + column * LETTER_CELL_WIDTH;
+            float y = LETTER_GRID_Y + (LETTER_GRID_ROWS - 1 - visualRow) * LETTER_CELL_HEIGHT;
+
+            Rectangle rectangle = new Rectangle(x, y, LETTER_CELL_WIDTH, LETTER_CELL_HEIGHT);
+            letterButtons.add(new LetterButton(letter, rectangle));
+        }
     }
 
     @Override

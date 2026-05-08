@@ -19,24 +19,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 // TODO: Eventually swap out the dummy assets with real ones once the exporter supports it
-public class MainMenuScreen implements Screen {
-    static final int WORLD_WIDTH = 384;
-    static final int WORLD_HEIGHT = 240;
-
-    private SpriteBatch batch;
-    private ShapeRenderer shapes;
-
-    private OrthographicCamera camera;
-    private Viewport viewport;
-    private final Vector2 touchPos = new Vector2();
-
-    private Texture background;
-    public float fadeOpacity;
-
-    final Game core;
-
-    ArrayList<MenuButton> menuButtons;
-
+public class MainMenuScreen extends MenuScreen {
     MenuButtonPlay menuButtonPlay;
     MenuButtonExit menuButtonExit;
     MenuButtonCreateSave menuButtonCreateSave;
@@ -44,23 +27,11 @@ public class MainMenuScreen implements Screen {
     MenuButtonHowToPlay menuButtonHowToPlay;
 
     public MainMenuScreen(Game core) {
-        this.core = core;
+        super(core);
     }
 
     public void show() {
-        batch = new SpriteBatch();
-        shapes = new ShapeRenderer();
-
-        camera = new OrthographicCamera();
-        viewport = new FitViewport(WORLD_WIDTH, WORLD_HEIGHT, camera);
-        viewport.apply(true);
-
-        camera.position.set(WORLD_WIDTH / 2f, WORLD_HEIGHT / 2f, 0f);
-        camera.update();
-
-        fadeOpacity = 0f;
-
-        menuButtons = new ArrayList<>();
+        super.show();
 
         menuButtonPlay = new MenuButtonPlay(core, 46, 71, 92, 29);
         menuButtons.add(menuButtonPlay);
@@ -85,46 +56,11 @@ public class MainMenuScreen implements Screen {
     }
 
     public void logic() {
-        if (Gdx.input.isTouched()) {
-            touchPos.set(Gdx.input.getX(), Gdx.input.getY());
-            viewport.unproject(touchPos);
-
-            for (MenuButton button : menuButtons) {
-                if (button.contains(touchPos.x, touchPos.y)) {
-                    button.onTouch();
-                }
-            }
-        }
+        super.logic();
     }
 
     public void draw(){
-        ScreenUtils.clear(0f, 0f, 0f, 1f);
-        camera.update();
-
-        batch.setProjectionMatrix(camera.combined);
-        batch.begin();
-        batch.draw(background, 0, 0, WORLD_WIDTH, WORLD_HEIGHT);
-        batch.end();
-
-        shapes.setProjectionMatrix(camera.combined);
-        shapes.begin(ShapeRenderer.ShapeType.Line);
-
-        // TODO: replace with button images once the export has it
-        for (MenuButton button : menuButtons) {
-            Rectangle rectangle = button.getCollisionBox();
-            shapes.setColor(Color.RED);
-
-            shapes.rect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
-        }
-        shapes.end();
-
-        Gdx.gl.glEnable(GL20.GL_BLEND);
-        Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
-
-        shapes.begin(ShapeRenderer.ShapeType.Filled);
-        shapes.setColor(0f, 0f, 0f, fadeOpacity);
-        shapes.rect(0f, 0f, WORLD_WIDTH, WORLD_HEIGHT);
-        shapes.end();
+        super.draw();
     }
 
     @Override
