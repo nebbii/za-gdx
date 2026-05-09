@@ -33,16 +33,22 @@
       "__comment": "c"
     },
     {
-      "__comment": "c7: One Skora spits fireballs."
+      "location": "c7",
+      "__comment": "c7: One Skora spits fireballs.",
+      "actors": []
     },
     {
-      "__comment": "c8: Two Skoras and one Bounder spit at Zelda."
+      "location": "c8",
+      "__comment": "c8: Two Skoras and one Bounder spit at Zelda.",
+      "actors": []
     },
     {
       "__comment": "d"
     },
     {
-      "__comment": "d7: Three Skoras spit fireballs at Zelda."
+      "location": "d7",
+      "__comment": "d7: Three Skoras spit fireballs at Zelda.",
+      "actors": []
     },
     {
       "location": "d8",
