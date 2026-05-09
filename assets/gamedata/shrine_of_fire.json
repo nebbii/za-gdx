@@ -1,77 +1,119 @@
 {
-  "actors": [
+  "locations": [
     {
-      "__comment": "s7",
-      "type": null
+      "location": "s7-1",
+      "__comment": "s7-1: Nothing.",
+      "actors": []
     },
     {
-      "__comment": "s7-1: Nothing."
+      "location": "s7-2",
+      "__comment": "s7-2: Nothing.",
+      "actors": []
     },
     {
-      "__comment": "s7-2: Nothing."
+      "location": "s7-3",
+      "__comment": "s7-3: A Blacksmith throws spears.",
+      "actors": []
     },
     {
-      "__comment": "s7-3: A Blacksmith throws spears."
+      "location": "s7-4",
+      "__comment": "s7-4: If Zelda kills the spear-throwing Blacksmith, he drops the compass for the seventh tomb.",
+      "actors": []
     },
     {
-      "__comment": "s7-4: If Zelda kills the spear-throwing Blacksmith, he drops the compass for the seventh tomb."
+      "location": "s7-5",
+      "__comment": "s7-5: Four Crockarocks shoot stones at Zelda. The door in the northwest corner is fake. If Zelda kills the four Crockarocks, they drop the map for the seventh tomb.",
+      "actors": []
     },
     {
-      "__comment": "s7-5: Four Crockarocks shoot stones at Zelda. The door in the northwest corner is fake. If Zelda kills the four Crockarocks, they drop the map for the seventh tomb."
+      "location": "s7-6",
+      "__comment": "s7-6: Zelda must dodge the fireballs that come out of the lava.",
+      "actors": []
     },
     {
-      "__comment": "s7-6: Zelda must dodge the fireballs that come out of the lava."
+      "location": "s7-8",
+      "__comment": "s7-8: Nothing.",
+      "actors": []
     },
     {
-      "__comment": "s7-8: Nothing."
+      "location": "s7-9",
+      "__comment": "s7-9: Four Fireflies. The hole in the eastern wall is the only exit.",
+      "actors": []
     },
     {
-      "__comment": "s7-9: Four Fireflies. The hole in the eastern wall is the only exit."
+      "location": "s7-10",
+      "__comment": "s7-10: One Romraven.",
+      "actors": []
     },
     {
-      "__comment": "s7-10: One Romraven."
+      "location": "s7-11",
+      "__comment": "s7-11: Killing the three Fireflies removes the flames in the southern passage.",
+      "actors": []
     },
     {
-      "__comment": "s7-11: Killing the three Fireflies removes the flames in the southern passage."
+      "location": "s7-12",
+      "__comment": "s7-12: Warbane briefly appears, speaks, and disappears again. He leaves behind a hammer weapon.",
+      "actors": []
     },
     {
-      "__comment": "s7-12: Warbane briefly appears, speaks, and disappears again. He leaves behind a hammer weapon."
+      "location": "s7-13",
+      "__comment": "s7-13: Nothing.",
+      "actors": []
     },
     {
-      "__comment": "s7-13: Nothing."
+      "location": "s7-14",
+      "__comment": "s7-14: Nothing.",
+      "actors": []
     },
     {
-      "__comment": "s7-14: Nothing."
+      "location": "s7-15",
+      "__comment": "s7-15: Four Romravens.",
+      "actors": []
     },
     {
-      "__comment": "s7-15: Four Romravens."
+      "location": "s7-16",
+      "__comment": "s7-16: One Kannis.",
+      "actors": []
     },
     {
-      "__comment": "s7-16: One Kannis."
+      "location": "s7-17",
+      "__comment": "s7-17: One Kannis.",
+      "actors": []
     },
     {
-      "__comment": "s7-17: One Kannis."
+      "location": "s7-18",
+      "__comment": "s7-18: Killing the single Kannis removes the flames in the northern passage.",
+      "actors": []
     },
     {
-      "__comment": "s7-18: Killing the single Kannis removes the flames in the northern passage."
+      "location": "s7-19",
+      "__comment": "s7-19: Nothing.",
+      "actors": []
     },
     {
-      "__comment": "s7-19: Nothing."
+      "location": "s7-20",
+      "__comment": "s7-20: Two Bollas roll fireballs toward Zelda. Killing them removes the flames in the northwest passage.",
+      "actors": []
     },
     {
-      "__comment": "s7-20: Two Bollas roll fireballs toward Zelda. Killing them removes the flames in the northwest passage."
+      "location": "s7-21",
+      "__comment": "s7-21: Warbane briefly shows himself again, speaks with Zelda, and disappears. Zelda cannot move and therefore cannot fight him.",
+      "actors": []
     },
     {
-      "__comment": "s7-21: Warbane briefly shows himself again, speaks with Zelda, and disappears. Zelda cannot move and therefore cannot fight him."
+      "location": "s7-22",
+      "__comment": "s7-22: Maxus fires flaming arrows at Zelda and must be destroyed using the golden necklace from S6-5. Spikes rise from the floor and at the western passage. The spikes in the passage disappear when Maxus is killed.",
+      "actors": []
     },
     {
-      "__comment": "s7-22: Maxus fires flaming arrows at Zelda and must be destroyed using the golden necklace from S6-5. Spikes rise from the floor and at the western passage. The spikes in the passage disappear when Maxus is killed."
+      "location": "s7-23",
+      "__comment": "s7-23: Zelda is trapped in Warbane's lair. Once this tomb keeper is killed, the doors open.",
+      "actors": []
     },
     {
-      "__comment": "s7-23: Zelda is trapped in Warbane's lair. Once this tomb keeper is killed, the doors open."
-    },
-    {
-      "__comment": "s7-24: Zelda can now take the final Celestial Sign."
+      "location": "s7-24",
+      "__comment": "s7-24: Zelda can now take the final Celestial Sign.",
+      "actors": []
     }
   ]
 }

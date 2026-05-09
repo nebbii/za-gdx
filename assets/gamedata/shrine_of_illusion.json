@@ -1,83 +1,129 @@
 {
-  "actors": [
+  "locations": [
     {
-      "__comment": "s2",
-      "type": null
+      "location": "s2-1",
+      "__comment": "s2-1: If Zelda stands in front of the mirror in the center of the circle, a trapdoor opens to the next location.",
+      "actors": []
     },
     {
-      "__comment": "s2-1: If Zelda stands in front of the mirror in the center of the circle, a trapdoor opens to the next location."
+      "location": "s2-2",
+      "__comment": "s2-2: Zelda lands between three Jackaroos via a slide. She can leave this location through the hole in the northwest side of the tent.",
+      "actors": []
     },
     {
-      "__comment": "s2-2: Zelda lands between three Jackaroos via a slide. She can leave this location through the hole in the northwest side of the tent."
+      "location": "s2-3",
+      "__comment": "s2-3: Three Stalfos swing swords and shields. Two doors appear and disappear in random order, one leading west and the other north.",
+      "actors": []
     },
     {
-      "__comment": "s2-3: Three Stalfos swing swords and shields. Two doors appear and disappear in random order, one leading west and the other north."
+      "location": "s2-4",
+      "__comment": "s2-4: Zelda receives a key if she kills the Vire. This key opens the door at location S2-17.",
+      "actors": []
     },
     {
-      "__comment": "s2-4: Zelda receives a key if she kills the Vire. This key opens the door at location S2-17."
+      "location": "s2-5",
+      "__comment": "s2-5: The middle door is the only accessible one; the other two are fake.",
+      "actors": []
     },
     {
-      "__comment": "s2-5: The middle door is the only accessible one; the other two are fake."
+      "location": "s2-6",
+      "__comment": "s2-6: If Zelda kills the Vire, it drops a map of the second tomb.",
+      "actors": []
     },
     {
-      "__comment": "s2-6: If Zelda kills the Vire, it drops a map of the second tomb."
+      "location": "s2-7",
+      "__comment": "s2-7: Zelda needs the N spell to kill the guard.",
+      "actors": []
     },
     {
-      "__comment": "s2-7: Zelda needs the N spell to kill the guard."
+      "location": "s2-8",
+      "__comment": "s2-8: Stones appear and disappear one by one, forming a path across a chasm. If Zelda falls in, she returns to the first location of this tomb. The northeast door is the only real one; the others are fake.",
+      "actors": []
     },
     {
-      "__comment": "s2-8: Stones appear and disappear one by one, forming a path across a chasm. If Zelda falls in, she returns to the first location of this tomb. The northeast door is the only real one; the others are fake."
+      "location": "s2-9",
+      "__comment": "s2-9: Two Wizzrobes fire sound waves at Zelda, who must kill them with the dagger. Afterward, they drop a compass.",
+      "actors": []
     },
     {
-      "__comment": "s2-9: Two Wizzrobes fire sound waves at Zelda, who must kill them with the dagger. Afterward, they drop a compass."
+      "location": "s2-10",
+      "__comment": "s2-10: Three Wizzrobes fire sound waves.",
+      "actors": []
     },
     {
-      "__comment": "s2-10: Three Wizzrobes fire sound waves."
+      "location": "s2-11",
+      "__comment": "s2-11: Zelda must carefully cross a chasm using a slippery narrow path. Two Wizzrobes fire at her from the east and west. If Zelda falls into the depths, she returns to the first location of this tomb.",
+      "actors": []
     },
     {
-      "__comment": "s2-11: Zelda must carefully cross a chasm using a slippery narrow path. Two Wizzrobes fire at her from the east and west. If Zelda falls into the depths, she returns to the first location of this tomb."
+      "location": "s2-12",
+      "__comment": "s2-12: Three Patras. Only the middle door is accessible; the rest are fake again.",
+      "actors": []
     },
     {
-      "__comment": "s2-12: Three Patras. Only the middle door is accessible; the rest are fake again."
+      "location": "s2-13",
+      "__comment": "s2-13: If Zelda kills the four Patras, they drop a black orb. The door to the west is fake.",
+      "actors": []
     },
     {
-      "__comment": "s2-13: If Zelda kills the four Patras, they drop a black orb. The door to the west is fake."
+      "location": "s2-14",
+      "__comment": "s2-14: Zelda must place the black orb in the holder in the center of this screen to open the eastern door. Four Patras.",
+      "actors": []
     },
     {
-      "__comment": "s2-14: Zelda must place the black orb in the holder in the center of this screen to open the eastern door. Four Patras."
+      "location": "s2-15",
+      "__comment": "s2-15: If Zelda kills the two Goriyas, they drop a knife. Zelda can use this knife to cut a passage in the east side of the tent.",
+      "actors": []
     },
     {
-      "__comment": "s2-15: If Zelda kills the two Goriyas, they drop a knife. Zelda can use this knife to cut a passage in the east side of the tent."
+      "location": "s2-16",
+      "__comment": "s2-16: Two Goriyas.",
+      "actors": []
     },
     {
-      "__comment": "s2-16: Two Goriyas."
+      "location": "s2-17",
+      "__comment": "s2-17: Pasquinade speaks to Zelda and disappears again before Zelda can fight this Shrine Keeper. Zelda can only open the southeast door if she has taken the key from location S2-4.",
+      "actors": []
     },
     {
-      "__comment": "s2-17: Pasquinade speaks to Zelda and disappears again before Zelda can fight this Shrine Keeper. Zelda can only open the southeast door if she has taken the key from location S2-4."
+      "location": "s2-18",
+      "__comment": "s2-18: Four Stalfos.",
+      "actors": []
     },
     {
-      "__comment": "s2-18: Four Stalfos."
+      "location": "s2-19",
+      "__comment": "s2-19: Spikes block the northern exit. Zelda must kill all four Stalfos to make the spikes disappear. The door in the west wall is fake.",
+      "actors": []
     },
     {
-      "__comment": "s2-19: Spikes block the northern exit. Zelda must kill all four Stalfos to make the spikes disappear. The door in the west wall is fake."
+      "location": "s2-20",
+      "__comment": "s2-20: Three Molluskas fire pearls at Zelda. She must kill them to get a key that opens the eastern door.",
+      "actors": []
     },
     {
-      "__comment": "s2-20: Three Molluskas fire pearls at Zelda. She must kill them to get a key that opens the eastern door."
+      "location": "s2-21",
+      "__comment": "s2-21: Three Molluskas.",
+      "actors": []
     },
     {
-      "__comment": "s2-21: Three Molluskas."
+      "location": "s2-22",
+      "__comment": "s2-22: Two Wall Masters, ghost hands, try to grab Zelda. If she is hit, she returns to the first location of the second tomb. Zelda can leave this screen through the hole in the northeast corner of the tent.",
+      "actors": []
     },
     {
-      "__comment": "s2-22: Two Wall Masters, ghost hands, try to grab Zelda. If she is hit, she returns to the first location of the second tomb. Zelda can leave this screen through the hole in the northeast corner of the tent."
+      "location": "s2-23",
+      "__comment": "s2-23: Two Jackaroos.",
+      "actors": []
     },
     {
-      "__comment": "s2-23: Two Jackaroos."
+      "location": "s2-24",
+      "__comment": "s2-24: Zelda meets Pasquinade in his hideout. The exits are blocked and the doors only open once Zelda has killed him. If Pasquinade kills Zelda, she returns to S2-23.",
+      "actors": []
     },
     {
-      "__comment": "s2-24: Zelda meets Pasquinade in his hideout. The exits are blocked and the doors only open once Zelda has killed him. If Pasquinade kills Zelda, she returns to S2-23."
-    },
-    {
-      "__comment": "s2-25: Zelda can now take the second Celestial Sign."
+      "location": "s2-25",
+      "__comment": "s2-25: Zelda can now take the second Celestial Sign.",
+      "actors": []
     }
   ]
 }

@@ -1,86 +1,134 @@
 {
-  "actors": [
+  "locations": [
     {
-      "__comment": "s5",
-      "type": null
+      "location": "s5-1",
+      "__comment": "s5-1: Nothing.",
+      "actors": []
     },
     {
-      "__comment": "s5-1: Nothing."
+      "location": "s5-2",
+      "__comment": "s5-2: Dangerous spears come down at Zelda from above.",
+      "actors": []
     },
     {
-      "__comment": "s5-2: Dangerous spears come down at Zelda from above."
+      "location": "s5-3",
+      "__comment": "s5-3: Spears from above. Two Zols.",
+      "actors": []
     },
     {
-      "__comment": "s5-3: Spears from above. Two Zols."
+      "location": "s5-4",
+      "__comment": "s5-4: A plank lies between the stalactites.",
+      "actors": []
     },
     {
-      "__comment": "s5-4: A plank lies between the stalactites."
+      "location": "s5-5",
+      "__comment": "s5-5: Zelda can place the plank over the gap in the rope bridge and cross to the other side.",
+      "actors": []
     },
     {
-      "__comment": "s5-5: Zelda can place the plank over the gap in the rope bridge and cross to the other side."
+      "location": "s5-6",
+      "__comment": "s5-6: Three Zols.",
+      "actors": []
     },
     {
-      "__comment": "s5-6: Three Zols."
+      "location": "s5-7",
+      "__comment": "s5-7: Nothing.",
+      "actors": []
     },
     {
-      "__comment": "s5-7: Nothing."
+      "location": "s5-8",
+      "__comment": "s5-8: Zelda must kill the southern Kelpi with the turquoise ring to remove the spikes in the eastern passage.",
+      "actors": []
     },
     {
-      "__comment": "s5-8: Zelda must kill the southern Kelpi with the turquoise ring to remove the spikes in the eastern passage."
+      "location": "s5-9",
+      "__comment": "s5-9: Spears from above. Two Zols.",
+      "actors": []
     },
     {
-      "__comment": "s5-9: Spears from above. Two Zols."
+      "location": "s5-10",
+      "__comment": "s5-10: One Octorok.",
+      "actors": []
     },
     {
-      "__comment": "s5-10: One Octorok."
+      "location": "s5-11",
+      "__comment": "s5-11: One Octorok.",
+      "actors": []
     },
     {
-      "__comment": "s5-11: One Octorok."
+      "location": "s5-12",
+      "__comment": "s5-12: Nothing.",
+      "actors": []
     },
     {
-      "__comment": "s5-12: Nothing."
+      "location": "s5-13",
+      "__comment": "s5-13: Zelda must kill the northern Kelpi with the turquoise ring to remove the spikes from the passage to the east.",
+      "actors": []
     },
     {
-      "__comment": "s5-13: Zelda must kill the northern Kelpi with the turquoise ring to remove the spikes from the passage to the east."
+      "location": "s5-14",
+      "__comment": "s5-14: Spears from above. The compass for the fifth tomb lies in the southeast corner. Zelda can go through the middle passage in the northern wall.",
+      "actors": []
     },
     {
-      "__comment": "s5-14: Spears from above. The compass for the fifth tomb lies in the southeast corner. Zelda can go through the middle passage in the northern wall."
+      "location": "s5-15",
+      "__comment": "s5-15: Two giant squids.",
+      "actors": []
     },
     {
-      "__comment": "s5-15: Two giant squids."
+      "location": "s5-16",
+      "__comment": "s5-16: AgWanda speaks with Zelda and disappears again before Zelda can fight her. Zelda must use her raft once AgWanda has disappeared. When Zelda steps onto the raft, she is automatically carried downstream to the east.",
+      "actors": []
     },
     {
-      "__comment": "s5-16: AgWanda speaks with Zelda and disappears again before Zelda can fight her. Zelda must use her raft once AgWanda has disappeared. When Zelda steps onto the raft, she is automatically carried downstream to the east."
+      "location": "s5-17",
+      "__comment": "s5-17: The raft stops at a small harbor, where Zelda can go ashore. A giant squid lurks in the southeast corner.",
+      "actors": []
     },
     {
-      "__comment": "s5-17: The raft stops at a small harbor, where Zelda can go ashore. A giant squid lurks in the southeast corner."
+      "location": "s5-18",
+      "__comment": "s5-18: Nothing.",
+      "actors": []
     },
     {
-      "__comment": "s5-18: Nothing."
+      "location": "s5-19",
+      "__comment": "s5-19: Zelda must use her raft again. Two turtles surface and dive back underwater.",
+      "actors": []
     },
     {
-      "__comment": "s5-19: Zelda must use her raft again. Two turtles surface and dive back underwater."
+      "location": "s5-20",
+      "__comment": "s5-20: Zelda's raft keeps drifting. Two turtles. Zelda's raft continues onward.",
+      "actors": []
     },
     {
-      "__comment": "s5-20: Zelda's raft keeps drifting. Two turtles. Zelda's raft continues onward."
+      "location": "s5-21",
+      "__comment": "s5-21: The eastern Kelpi stands guard.",
+      "actors": []
     },
     {
-      "__comment": "s5-21: The eastern Kelpi stands guard."
+      "location": "s5-22",
+      "__comment": "s5-22: Three rays. Zelda's raft continues onward.",
+      "actors": []
     },
     {
-      "__comment": "s5-22: Three rays. Zelda's raft continues onward."
+      "location": "s5-23",
+      "__comment": "s5-23: One giant squid. Zelda's raft continues onward.",
+      "actors": []
     },
     {
-      "__comment": "s5-23: One giant squid. Zelda's raft continues onward."
+      "location": "s5-24",
+      "__comment": "s5-24: Zelda's raft reaches land at the southeast corner.",
+      "actors": []
     },
     {
-      "__comment": "s5-24: Zelda's raft reaches land at the southeast corner."
+      "location": "s5-25",
+      "__comment": "s5-25: The tomb keeper AgWanda attacks Zelda with water weapons. The doors open when AgWanda is defeated.",
+      "actors": []
     },
     {
-      "__comment": "s5-25: The tomb keeper AgWanda attacks Zelda with water weapons. The doors open when AgWanda is defeated."
-    },
-    {
-      "__comment": "s5-26: Zelda can now take the fifth Celestial Sign."
+      "location": "s5-26",
+      "__comment": "s5-26: Zelda can now take the fifth Celestial Sign.",
+      "actors": []
     }
   ]
 }

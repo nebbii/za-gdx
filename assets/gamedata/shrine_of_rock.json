@@ -1,71 +1,109 @@
 {
-  "actors": [
+  "locations": [
     {
-      "__comment": "s1",
-      "type": null
+      "location": "s1-1",
+      "__comment": "s1-1: Zelda can use the opening in the northwest corner of the wall to enter.",
+      "actors": []
     },
     {
-      "__comment": "s1-1: Zelda can use the opening in the northwest corner of the wall to enter."
+      "location": "s1-2",
+      "__comment": "s1-2: Zelda must use the ladder to cross the chasm.",
+      "actors": []
     },
     {
-      "__comment": "s1-2: Zelda must use the ladder to cross the chasm."
+      "location": "s1-3",
+      "__comment": "s1-3: Two red Tektites.",
+      "actors": []
     },
     {
-      "__comment": "s1-3: Two red Tektites."
+      "location": "s1-4",
+      "__comment": "s1-4: If Zelda kills the three bats, they drop a compass. Use this compass anywhere in the Overworld to send Zelda to the entrance of the first tomb. Inside any tomb, the compass is completely useless.",
+      "actors": []
     },
     {
-      "__comment": "s1-4: If Zelda kills the three bats, they drop a compass. Use this compass anywhere in the Overworld to send Zelda to the entrance of the first tomb. Inside any tomb, the compass is completely useless."
+      "location": "s1-6",
+      "__comment": "s1-6: Two bats.",
+      "actors": []
     },
     {
-      "__comment": "s1-6: Two bats."
+      "location": "s1-7",
+      "__comment": "s1-7: The southern Sardak can only be killed with the Jade Ring. All three Sardaks must be killed to gain access to Llort's hideout.",
+      "actors": []
     },
     {
-      "__comment": "s1-7: The southern Sardak can only be killed with the Jade Ring. All three Sardaks must be killed to gain access to Llort's hideout."
+      "location": "s1-8",
+      "__comment": "s1-8: The treasure chest speaks and gives Zelda the Jade Ring. Zelda can now continue east through the opening in the southeast side of the wall.",
+      "actors": []
     },
     {
-      "__comment": "s1-8: The treasure chest speaks and gives Zelda the Jade Ring. Zelda can now continue east through the opening in the southeast side of the wall."
+      "location": "s1-9",
+      "__comment": "s1-9: The exit is hidden behind the stalactites on the northeast side of this screen.",
+      "actors": []
     },
     {
-      "__comment": "s1-9: The exit is hidden behind the stalactites on the northeast side of this screen."
+      "location": "s1-10",
+      "__comment": "s1-10: Four bats.",
+      "actors": []
     },
     {
-      "__comment": "s1-10: Four bats."
+      "location": "s1-11",
+      "__comment": "s1-11: One bat.",
+      "actors": []
     },
     {
-      "__comment": "s1-11: One bat."
+      "location": "s1-12",
+      "__comment": "s1-12: The middle Sardak must be killed with the Jade Ring to gain access to Llort's hideout.",
+      "actors": []
     },
     {
-      "__comment": "s1-12: The middle Sardak must be killed with the Jade Ring to gain access to Llort's hideout."
+      "location": "s1-13",
+      "__comment": "s1-13: No action.",
+      "actors": []
     },
     {
-      "__comment": "s1-13: No action."
+      "location": "s1-14",
+      "__comment": "s1-14: Here you find two separate corridors that do not intersect. Zelda must come from location S1-13 to reach Llort's hideout. The corridor leading northwest is a dead end.",
+      "actors": []
     },
     {
-      "__comment": "s1-14: Here you find two separate corridors that do not intersect. Zelda must come from location S1-13 to reach Llort's hideout. The corridor leading northwest is a dead end."
+      "location": "s1-15",
+      "__comment": "s1-15: Here too, there are two separate corridors. A bat flies in the eastern corridor. There is also one in the western corridor, but that corridor dead-ends at location S1-16.",
+      "actors": []
     },
     {
-      "__comment": "s1-15: Here too, there are two separate corridors. A bat flies in the eastern corridor. There is also one in the western corridor, but that corridor dead-ends at location S1-16."
+      "location": "s1-16",
+      "__comment": "s1-16: Three red Tektites guard the red boots, which let Zelda cross the river north of Vision Henge in region 1 of the Overworld.",
+      "actors": []
     },
     {
-      "__comment": "s1-16: Three red Tektites guard the red boots, which let Zelda cross the river north of Vision Henge in region 1 of the Overworld."
+      "location": "s1-17",
+      "__comment": "s1-17: Zelda must use the candle to light the room.",
+      "actors": []
     },
     {
-      "__comment": "s1-17: Zelda must use the candle to light the room."
+      "location": "s1-18",
+      "__comment": "s1-18: Llort appears and speaks to Zelda. He then quickly flees before Zelda can fight him.",
+      "actors": []
     },
     {
-      "__comment": "s1-18: Llort appears and speaks to Zelda. He then quickly flees before Zelda can fight him."
+      "location": "s1-19",
+      "__comment": "s1-19: No action.",
+      "actors": []
     },
     {
-      "__comment": "s1-19: No action."
+      "location": "s1-20",
+      "__comment": "s1-20: The northern Sardak throws spears at Zelda. A beam of light blocks the northern entrance. If the Sardak is killed with the Jade Ring, this beam of light disappears.",
+      "actors": []
     },
     {
-      "__comment": "s1-20: The northern Sardak throws spears at Zelda. A beam of light blocks the northern entrance. If the Sardak is killed with the Jade Ring, this beam of light disappears."
+      "location": "s1-21",
+      "__comment": "s1-21: Zelda is trapped in the hideout while Llort, the Shrine Keeper, throws axes at her. Zelda's magic wand is the best weapon against him, but other weapons also work. When Llort is killed, the door opens. If he kills Zelda, she returns to location S1-20.",
+      "actors": []
     },
     {
-      "__comment": "s1-21: Zelda is trapped in the hideout while Llort, the Shrine Keeper, throws axes at her. Zelda's magic wand is the best weapon against him, but other weapons also work. When Llort is killed, the door opens. If he kills Zelda, she returns to location S1-20."
-    },
-    {
-      "__comment": "s1-22: Zelda can now take the first Celestial Sign."
+      "location": "s1-22",
+      "__comment": "s1-22: Zelda can now take the first Celestial Sign.",
+      "actors": []
     }
   ]
 }
