@@ -205,18 +205,26 @@ public class GameManager {
 
     public void addTreasure(Treasure treasure) {
         treasures.add(treasure);
+        world.getSaveManager().addTreasure(treasure.toString());
+        world.getSaveManager().writeCurrentSave();
     }
 
     public void removeTreasure(Treasure treasure) {
         treasures.remove(treasure);
+        world.getSaveManager().removeTreasure(treasure.toString());
+        world.getSaveManager().writeCurrentSave();
     }
 
     public void addWeapon(Weapon weapon) {
         weapons.add(weapon);
+        world.getSaveManager().addWeapon(weapon.toString());
+        world.getSaveManager().writeCurrentSave();
     }
 
     public void removeWeapon(Weapon weapon) {
         weapons.remove(weapon);
+        world.getSaveManager().removeWeapon(weapon.toString());
+        world.getSaveManager().writeCurrentSave();
     }
 
     public Zelda getZelda() {

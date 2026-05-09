@@ -31,6 +31,7 @@ public class World {
 
     private GameInput input;
     private GameManager gameManager;
+    private SaveManager saveManager;
 
     private SpriteBatch batch;
 
@@ -51,6 +52,8 @@ public class World {
 
         gameManager = new GameManager(this);
         mapManager = new MapManager(this, batch, camera);
+        saveManager = new SaveManager(this);
+        saveManager.loadSave("A");
         worldCamera = new WorldCamera(camera, mapManager);
 
         shapes = new ShapeRenderer();
@@ -324,6 +327,10 @@ public class World {
 
     public GameManager getGameManager() {
         return gameManager;
+    }
+
+    public SaveManager getSaveManager() {
+        return saveManager;
     }
 
     public MenuPause getMenuPause() {
