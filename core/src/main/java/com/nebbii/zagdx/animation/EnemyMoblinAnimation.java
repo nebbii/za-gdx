@@ -29,8 +29,8 @@ public class EnemyMoblinAnimation extends GameAnimation {
         super("walkDown");
         this.enemy = enemy;
 
-        baseOffsetX = -5;
-        baseOffsetY = 10;
+        baseOffsetX = -10;
+        baseOffsetY = 15;
         offsetX = 0;
         offsetY = 0;
 
@@ -117,14 +117,14 @@ public class EnemyMoblinAnimation extends GameAnimation {
         Texture[] textures = World.images.getEnemyMoblinAnimation(EnemyMoblinAnimationGroup.WALKRIGHT);
 
         int[][] frameData = {
-            {0, 0, 0},
-            {1, 0, 0},
-            {2, 0, 0},
-            {3, 0, 0},
-            {4, 0, 0},
-            {3, 0, 0},
-            {2, 0, 0},
-            {1, 0, 0}
+            {0, 0, 0-10}, // 67 65
+            {1, 0, 5-10}, // 75 60
+            {2, 0, 7-10}, // 79 58
+            {3, 0, 13-10}, // 91 51
+            {4, 0, 16-10}, // 95 48
+            {3, 0, 13-10}, // 91 51
+            {2, 0, 7-10}, // 79 58
+            {1, 0, 5-10}, // 75 60
         };
 
         TextureRegion[] frames = new TextureRegion[frameData.length];
@@ -147,13 +147,13 @@ public class EnemyMoblinAnimation extends GameAnimation {
 
         int[][] frameData = {
             {0, 0, 0},
-            {1, 0, 0},
-            {2, 0, 0},
-            {3, 0, 0},
-            {4, 0, 0},
-            {3, 0, 0},
-            {2, 0, 0},
-            {1, 0, 0}
+            {1, 0, -2},
+            {2, 0, 1},
+            {3, 0, 11},
+            {4, 0, 10},
+            {3, 0, 11},
+            {2, 0, 1},
+            {1, 0, -2},
         };
 
         TextureRegion[] frames = new TextureRegion[frameData.length];
@@ -176,12 +176,13 @@ public class EnemyMoblinAnimation extends GameAnimation {
 
         int[][] frameData = {
             {0, 0, 0},
-            {1, 0, 0},
-            {2, 0, 0},
-            {3, 0, 0},
-            {4, 0, 0},
-            {3, 0, 0},
-            {2, 0, 0}
+            {1, 0, -3},
+            {2, 0, -3},
+            {3, 0, -3},
+            {4, 0, -5},
+            {3, 0, -3},
+            {2, 0, -3},
+            {1, 0, -3},
         };
 
         TextureRegion[] frames = new TextureRegion[frameData.length];
