@@ -26,6 +26,7 @@ public class PickupPitcherFull extends Pickup {
     }
 
     public void onPickup(GameManager game) {
+        super.onPickup(game);
         game.addTreasure(Treasure.PITCHER_FULL);
         this.setState(State.DEAD);
     }

@@ -23,6 +23,7 @@ public class PickupWand extends Pickup {
     }
 
     public void onPickup(GameManager game) {
+        super.onPickup(game);
         game.addWeapon(Weapon.WAND);
         game.getZelda().setCurrentItem(Weapon.WAND);
         this.setState(State.DEAD);

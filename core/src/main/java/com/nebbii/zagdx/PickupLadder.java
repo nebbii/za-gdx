@@ -28,6 +28,7 @@ public class PickupLadder extends Pickup {
     }
 
     public void onPickup(GameManager game) {
+        super.onPickup(game);
         game.addTreasure(Treasure.LADDER);
         this.setState(State.DEAD);
     }

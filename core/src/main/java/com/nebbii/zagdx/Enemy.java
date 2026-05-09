@@ -9,7 +9,7 @@ import com.badlogic.gdx.math.Rectangle;
 public class Enemy extends Rectangle implements Actor {
     protected boolean solid;
     protected MapManager map;
-    private String locationEntry;
+    protected String locationEntry;
 
     protected int health;
     protected int defense;

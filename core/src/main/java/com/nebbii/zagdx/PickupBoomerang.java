@@ -28,6 +28,7 @@ public class PickupBoomerang extends Pickup {
     }
 
     public void onPickup(GameManager game) {
+        super.onPickup(game);
         game.addWeapon(Weapon.BOOMERANG);
         this.setState(State.DEAD);
     }

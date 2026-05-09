@@ -8,8 +8,8 @@ import com.badlogic.gdx.math.Rectangle;
 public class Pickup extends Rectangle implements Actor {
     private State state;
     private ActorType type;
-    private MapManager map;
-    private String locationEntry;
+    protected MapManager map;
+    protected String locationEntry;
     private int drawOrder;
     private boolean solid;
     private Texture image;
@@ -61,7 +61,10 @@ public class Pickup extends Rectangle implements Actor {
         batch.draw(getImage(), getX(), getY() + offsetY, getWidth(), getHeight());
     }
 
-    public void onPickup(GameManager game) {}
+    public void onPickup(GameManager game) {
+        Gdx.app.log(this.getClass().getSimpleName(), "storing pickup in save");
+        map.getSaveManager().addLocationEntry(getLocationEntry(), "picked up");
+    }
 
     @Override
     public Rectangle getHitbox() {

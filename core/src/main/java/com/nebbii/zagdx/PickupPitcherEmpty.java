@@ -28,6 +28,8 @@ public class PickupPitcherEmpty extends Pickup {
     }
 
     public void onPickup(GameManager game) {
+        super.onPickup(game);
+        Gdx.app.log(this.getClass().getSimpleName(), "picked up and made dead!");
         game.addTreasure(Treasure.PITCHER_EMPTY);
         this.setState(State.DEAD);
     }
