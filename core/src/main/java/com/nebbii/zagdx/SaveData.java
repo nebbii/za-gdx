@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class SaveData {
     public String name;
+    public int rubies;
 
     public ArrayList<String> treasures = new ArrayList<>();
     public ArrayList<String> weapons = new ArrayList<>();

@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Rectangle;
 public class Enemy extends Rectangle implements Actor {
     protected boolean solid;
     protected MapManager map;
+    private String locationEntry;
 
     protected int health;
     protected int defense;
@@ -150,6 +151,7 @@ public class Enemy extends Rectangle implements Actor {
 
     public void onDeath() {
         setState(State.DEAD);
+        map.getSaveManager().addLocationEntry(locationEntry, "dead");
     }
 
     public void drawFlashOverlay(SpriteBatch batch, boolean weakness) {
@@ -389,5 +391,15 @@ public class Enemy extends Rectangle implements Actor {
 
     public void setMap(MapManager map) {
         this.map = map;
+    }
+
+    @Override
+    public String getLocationEntry() {
+        return locationEntry;
+    }
+
+    @Override
+    public void setLocationEntry(String locationEntry) {
+        this.locationEntry = locationEntry;
     }
 }

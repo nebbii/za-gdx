@@ -34,4 +34,7 @@ public interface Actor {
 
     MapManager getMap();
     void setMap(MapManager map);
+
+    String getLocationEntry();
+    void setLocationEntry(String locationEntry);
 }

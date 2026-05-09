@@ -11,7 +11,10 @@ public class Zelda extends Rectangle implements Actor {
     private final boolean solid = true;
 
     private World world;
+
     private MapManager map; // zelda can spawn actors
+    private String locationEntry;
+
     private boolean movedLastFrame;
     public ZeldaAnimation animation;
 
@@ -463,5 +466,15 @@ public class Zelda extends Rectangle implements Actor {
             World.convertWorldYToCellRow(y) == World.convertWorldYToCellRow(world.getWorldCamera().getTargetY());
 
         return currentColumn && currentRow;
+    }
+
+    @Override
+    public String getLocationEntry() {
+        return locationEntry;
+    }
+
+    @Override
+    public void setLocationEntry(String locationEntry) {
+        this.locationEntry = locationEntry;
     }
 }

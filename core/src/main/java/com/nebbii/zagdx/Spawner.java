@@ -10,6 +10,7 @@ public class Spawner extends Rectangle implements Actor {
     private int drawOrder;
     private boolean solid = false;
     protected MapManager map;
+    private String locationEntry;
 
     public Spawner() {
         setWidth(1);
@@ -107,5 +108,15 @@ public class Spawner extends Rectangle implements Actor {
 
     public void setMap(MapManager map) {
         this.map = map;
+    }
+
+    @Override
+    public String getLocationEntry() {
+        return locationEntry;
+    }
+
+    @Override
+    public void setLocationEntry(String locationEntry) {
+        this.locationEntry = locationEntry;
     }
 }

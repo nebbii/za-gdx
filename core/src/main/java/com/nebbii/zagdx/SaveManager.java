@@ -105,4 +105,27 @@ public class SaveManager {
     public ArrayList<SavedLocationEntry> getLocations() {
         return currentSave.locations;
     }
+
+    public boolean hasLocationEntry(String location) {
+        for (SavedLocationEntry entry : currentSave.locations) {
+            if (entry.id.equals(location)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public void addLocationEntry(String location, String action) {
+        if (hasLocationEntry(location)) {
+            return;
+        }
+
+        SavedLocationEntry entry = new SavedLocationEntry();
+        entry.id = location;
+        entry.action = action;
+
+        currentSave.locations.add(entry);
+        writeCurrentSave();
+    }
 }

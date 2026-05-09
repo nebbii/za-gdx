@@ -11,6 +11,8 @@ public class Npc extends Rectangle implements Actor {
     protected ActorType type;
     protected int drawOrder;
 
+    private String locationEntry;
+
     public enum NpcState {
         TALKY,
         TALKING,
@@ -125,5 +127,15 @@ public class Npc extends Rectangle implements Actor {
 
     public void setMap(MapManager map) {
         this.map = map;
+    }
+
+    @Override
+    public String getLocationEntry() {
+        return locationEntry;
+    }
+
+    @Override
+    public void setLocationEntry(String locationEntry) {
+        this.locationEntry = locationEntry;
     }
 }

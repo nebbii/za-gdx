@@ -287,10 +287,12 @@ public class MapManager {
         for (LocationJsonEntry location : data.locations) {
             if (location.location == null) continue;
 
+            int i = 0;
             for (ActorJsonEntry entry : location.actors) {
                 if (entry.type == null) continue;
 
-                addActor(createActorFromJsonEntry(entry));
+                addActor(createActorFromJsonEntry(entry, location.location + "_" + i));
+                i++;
             }
         }
 
@@ -312,7 +314,7 @@ public class MapManager {
     }
 
     // initialize actors based on class names from json files, unique parameters through switch
-    public Actor createActorFromJsonEntry(ActorJsonEntry entry) {
+    public Actor createActorFromJsonEntry(ActorJsonEntry entry, String locationEntry) {
         try {
             switch (entry.type) {
             case "PickupRuby":
@@ -330,6 +332,9 @@ public class MapManager {
 
                 Actor actor = (Actor) object;
                 actor.getCollisionBox().setPosition(entry.x, entry.y);
+
+                actor.setLocationEntry(locationEntry);
+
                 return actor;
             }
         }
@@ -356,5 +361,9 @@ public class MapManager {
 
     public void setCurrentLayerToggle(LayerToggle currentLayerToggle) {
         this.currentLayerToggle = currentLayerToggle;
+    }
+
+    public SaveManager getSaveManager() {
+        return world.getSaveManager();
     }
 }

@@ -9,6 +9,7 @@ public class Pickup extends Rectangle implements Actor {
     private State state;
     private ActorType type;
     private MapManager map;
+    private String locationEntry;
     private int drawOrder;
     private boolean solid;
     private Texture image;
@@ -155,5 +156,15 @@ public class Pickup extends Rectangle implements Actor {
 
     public void setMap(MapManager map) {
         this.map = map;
+    }
+
+    @Override
+    public String getLocationEntry() {
+        return locationEntry;
+    }
+
+    @Override
+    public void setLocationEntry(String locationEntry) {
+        this.locationEntry = locationEntry;
     }
 }

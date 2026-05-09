@@ -292,4 +292,8 @@ public class GameManager {
     public void setCurrentMap(String currentMap) {
         this.currentMap = currentMap;
     }
+
+    public SaveManager getSaveManager() {
+        return this.world.getSaveManager();
+    }
 }

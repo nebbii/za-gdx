@@ -8,6 +8,7 @@ public class Projectile extends Rectangle implements Actor {
     protected boolean solid = false;
 
     protected MapManager map;
+    private String locationEntry;
     protected int damage;
     protected int bonusDamage;
     protected float stateTime;
@@ -129,5 +130,15 @@ public class Projectile extends Rectangle implements Actor {
 
     public void setMap(MapManager map) {
         this.map = map;
+    }
+
+    @Override
+    public String getLocationEntry() {
+        return locationEntry;
+    }
+
+    @Override
+    public void setLocationEntry(String locationEntry) {
+        this.locationEntry = locationEntry;
     }
 }
