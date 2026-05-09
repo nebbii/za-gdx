@@ -1,54 +1,53 @@
 {
-  "actors": [
+  "locations": [
     {
-      "__comment": "All these cell comments ripped from the official zelda adventure guide and translated from Dutch to English",
-      "type": null
+      "__comment": "All these cell comments ripped from the official zelda adventure guide and translated from Dutch to English"
     },
-
     {
       "__comment": "a"
     },
-      {
-        "__comment": "a7: Four Skoras spit fireballs."
-      },
-      {
-        "__comment": "a8: Two Skoras spit fireballs."
-      },
-
+    {
+      "location": "a7",
+      "__comment": "a7: Four Skoras spit fireballs.",
+      "actors": []
+    },
+    {
+      "location": "a8",
+      "__comment": "a8: Two Skoras spit fireballs.",
+      "actors": []
+    },
     {
       "__comment": "b"
     },
-      {
-        "__comment": "b7: Entrance to the seventh tomb, the Tomb of Fire. If Zelda has not completed the first six tombs yet, flames block the entrance."
-      },
-      {
-        "__comment": "b8: Two Squibbers."
-      },
-
+    {
+      "location": "b7",
+      "__comment": "b7: Entrance to the seventh tomb, the Tomb of Fire. If Zelda has not completed the first six tombs yet, flames block the entrance.",
+      "actors": []
+    },
+    {
+      "location": "b8",
+      "__comment": "b8: Two Squibbers.",
+      "actors": []
+    },
     {
       "__comment": "c"
     },
-      {
-        "__comment": "c7: One Skora spits fireballs."
-      },
-      {
-        "__comment": "c8: Two Skoras and one Bounder spit at Zelda."
-      },
-
     {
-      "__comment": "d",
-      "type": null
+      "__comment": "c7: One Skora spits fireballs."
     },
-      {
-        "__comment": "d7: Three Skoras spit fireballs at Zelda."
-      },
-      {
-        "__comment": "d8: Two Leevers."
-      },
-      {
-        "__comment": "d24: A Goriya throws boomerangs. By killing the Goriya, Zelda claims the boomerang weapon for her own use.",
-        "type": null
-      },
+    {
+      "__comment": "c8: Two Skoras and one Bounder spit at Zelda."
+    },
+    {
+      "__comment": "d"
+    },
+    {
+      "__comment": "d7: Three Skoras spit fireballs at Zelda."
+    },
+    {
+      "location": "d8",
+      "__comment": "d8: Two Leevers.",
+      "actors": [
         {
           "type": "SpawnerBoomerang",
           "x": 1224,
@@ -59,34 +58,59 @@
           "__comment": "Defeating this guy spawns the boomerang",
           "x": 1370,
           "y": 2025
-        },
-
-    {
-      "__comment": "e",
-      "type": null
+        }
+      ]
     },
-      {
-        "__comment": "e7: Ryco sells a life potion for 200 rupees."
-      },
-      {
-        "__comment": "e8: Four Leevers."
-      },
-      {
-        "__comment": "e10: The bridge takes Zelda across the water to several hidden life hearts."
-      },
-      {
-        "__comment": "e20: If Zelda uses the empty water pitcher at this location, a full pitcher automatically appears.",
-        "type": null
-      },
+    {
+      "location": "d24",
+      "__comment": "d24: A Goriya throws boomerangs. By killing the Goriya, Zelda claims the boomerang weapon for her own use.",
+      "actors": [
+        {
+          "type": "SpawnerBoomerang",
+          "x": 1224,
+          "y": 1988
+        },
+        {
+          "type": "EnemyGoriya",
+          "__comment": "Defeating this guy spawns the boomerang",
+          "x": 1370,
+          "y": 2025
+        }
+      ]
+    },
+    {
+      "__comment": "e"
+    },
+    {
+      "location": "e7",
+      "__comment": "e7: Ryco sells a life potion for 200 rupees.",
+      "actors": []
+    },
+    {
+      "location": "e8",
+      "__comment": "e8: Four Leevers.",
+      "actors": []
+    },
+    {
+      "location": "e10",
+      "__comment": "e10: The bridge takes Zelda across the water to several hidden life hearts.",
+      "actors": []
+    },
+    {
+      "location": "e20",
+      "__comment": "e20: If Zelda uses the empty water pitcher at this location, a full pitcher automatically appears.",
+      "actors": [
         {
           "type": "SpawnerPitcherFull",
           "x": 1627,
           "y": 2938
-        },
-      {
-        "__comment": "e21: Two Goriyas throw boomerangs. Zelda can walk through the water if she has the red boots.",
-        "type": null
-      },
+        }
+      ]
+    },
+    {
+      "location": "e21",
+      "__comment": "e21: Two Goriyas throw boomerangs. Zelda can walk through the water if she has the red boots.",
+      "actors": [
         {
           "type": "EnemyGoriya",
           "x": 1694,
@@ -96,11 +120,13 @@
           "type": "EnemyGoriya",
           "x": 1649,
           "y": 2714
-        },
-      {
-        "__comment": "e22: Four Peahats throw peas. (these are supposed to be Peahats)",
-        "type": null
-      },
+        }
+      ]
+    },
+    {
+      "location": "e22",
+      "__comment": "e22: Four Peahats throw peas. (these are supposed to be Peahats)",
+      "actors": [
         {
           "type": "EnemyGoriya",
           "x": 1652,
@@ -120,11 +146,13 @@
           "type": "EnemyGoriya",
           "x": 1744,
           "y": 2503
-        },
-      {
-        "__comment": "e23: Three Goriyas throw boomerangs.",
-        "type": null
-      },
+        }
+      ]
+    },
+    {
+      "location": "e23",
+      "__comment": "e23: Three Goriyas throw boomerangs.",
+      "actors": [
         {
           "type": "EnemyGoriya",
           "x": 1669,
@@ -139,11 +167,13 @@
           "type": "EnemyGoriya",
           "x": 1769,
           "y": 2251
-        },
-      {
-        "__comment": "e24: Three Goriyas throw boomerangs. (@nebbii: guide error, it's two)",
-        "type": null
-      },
+        }
+      ]
+    },
+    {
+      "location": "e24",
+      "__comment": "e24: Three Goriyas throw boomerangs. (@nebbii: guide error, it's two)",
+      "actors": [
         {
           "type": "EnemyGoriya",
           "x": 1706,
@@ -153,28 +183,36 @@
           "type": "EnemyGoriya",
           "x": 1680,
           "y": 2035
-        },
-
-    {
-      "__comment": "f",
-      "type": null
+        }
+      ]
     },
-      {
-        "__comment": "f7: Three Deelers."
-      },
-      {
-        "__comment": "f9: Three Peahats fire beans at Zelda."
-      },
-      {
-        "__comment": "f10: A hidden life heart lies under the tree in the southwest of this location. This increases Zelda's life by one heart. Zelda must go west from here to reach the bridge."
-      },
-      {
-        "__comment": "f20: Two Peahats throw peas. Zelda can cross the water if she has the red boots."
-      },
-      {
-        "__comment": "f21: Five Tumblebots.",
-        "type": null
-      },
+    {
+      "__comment": "f"
+    },
+    {
+      "location": "f7",
+      "__comment": "f7: Three Deelers.",
+      "actors": []
+    },
+    {
+      "location": "f9",
+      "__comment": "f9: Three Peahats fire beans at Zelda.",
+      "actors": []
+    },
+    {
+      "location": "f10",
+      "__comment": "f10: A hidden life heart lies under the tree in the southwest of this location. This increases Zelda's life by one heart. Zelda must go west from here to reach the bridge.",
+      "actors": []
+    },
+    {
+      "location": "f20",
+      "__comment": "f20: Two Peahats throw peas. Zelda can cross the water if she has the red boots.",
+      "actors": []
+    },
+    {
+      "location": "f21",
+      "__comment": "f21: Five Tumblebots.",
+      "actors": [
         {
           "type": "EnemyTumblebot",
           "x": 2009,
@@ -199,11 +237,13 @@
           "type": "EnemyTumblebot",
           "x": 2161,
           "y": 2772
-        },
-      {
-        "__comment": "f25: Three Tumblebots.",
-        "type": null
-      },
+        }
+      ]
+    },
+    {
+      "location": "f25",
+      "__comment": "f25: Three Tumblebots.",
+      "actors": [
         {
           "type": "EnemyTumblebot",
           "x": 1998,
@@ -218,10 +258,13 @@
           "type": "EnemyTumblebot",
           "x": 2122,
           "y": 1773
-        },
-      {
-        "__comment": "f26: A forest merchant sells Zelda a candle for 100 rupees and a magic shield for 500 rupees."
-      },
+        }
+      ]
+    },
+    {
+      "location": "f26",
+      "__comment": "f26: A forest merchant sells Zelda a candle for 100 rupees and a magic shield for 500 rupees.",
+      "actors": [
         {
           "__comment": "merchant at X: 2086 Y: 1533ish"
         },
@@ -230,10 +273,13 @@
         },
         {
           "__comment": "shield at X:2040 Y:1493"
-        },
-      {
-        "__comment": "f27: Three Molblins."
-      },
+        }
+      ]
+    },
+    {
+      "location": "f27",
+      "__comment": "f27: Three Molblins.",
+      "actors": [
         {
           "type": "EnemyMoblin",
           "x": 2053,
@@ -248,35 +294,47 @@
           "type": "EnemyMoblin",
           "x": 2171,
           "y": 1283
-        },
-      {
-        "__comment": "f28: Zelda finds a ladder under the middle tree."
-      },
+        }
+      ]
+    },
+    {
+      "location": "f28",
+      "__comment": "f28: Zelda finds a ladder under the middle tree.",
+      "actors": [
         {
           "type": "PickupLadder",
           "x": 2118,
           "y": 1056
-        },
-    {
-      "__comment": "g",
-      "type": null
+        }
+      ]
     },
-      {
-        "__comment": "g9: A Goblin hides in his hut. After a while he comes out on his own, or he appears if Zelda enters his home."
-      },
-      {
-        "__comment": "g20: Zelda can cross the water here if she has the red boots."
-      },
-      {
-        "__comment": "g21: Three Peahats throw peas."
-      },
-      {
-        "__comment": "g23: Zelda starts the game at Vision Henge."
-      },
-      {
-        "__comment": "g25: Three Tumblebots.",
-        "type": null
-      },
+    {
+      "__comment": "g"
+    },
+    {
+      "location": "g9",
+      "__comment": "g9: A Goblin hides in his hut. After a while he comes out on his own, or he appears if Zelda enters his home.",
+      "actors": []
+    },
+    {
+      "location": "g20",
+      "__comment": "g20: Zelda can cross the water here if she has the red boots.",
+      "actors": []
+    },
+    {
+      "location": "g21",
+      "__comment": "g21: Three Peahats throw peas.",
+      "actors": []
+    },
+    {
+      "location": "g23",
+      "__comment": "g23: Zelda starts the game at Vision Henge.",
+      "actors": []
+    },
+    {
+      "location": "g25",
+      "__comment": "g25: Three Tumblebots.",
+      "actors": [
         {
           "type": "EnemyTumblebot",
           "x": 2419,
@@ -291,11 +349,13 @@
           "type": "EnemyTumblebot",
           "x": 2550,
           "y": 1759
-        },
-      {
-        "__comment": "g26: Three Mobies.",
-        "type": null
-      },
+        }
+      ]
+    },
+    {
+      "location": "g26",
+      "__comment": "g26: Three Mobies.",
+      "actors": [
         {
           "type": "EnemyMoby",
           "x": 2413,
@@ -310,10 +370,13 @@
           "type": "EnemyMoby",
           "x": 2555,
           "y": 1554
-        },
-      {
-        "__comment": "g27: Two Molblins."
-      },
+        }
+      ]
+    },
+    {
+      "location": "g27",
+      "__comment": "g27: Two Molblins.",
+      "actors": [
         {
           "type": "EnemyMoblin",
           "x": 2915,
@@ -323,10 +386,13 @@
           "type": "EnemyMoblin",
           "x": 2525,
           "y": 1282
-        },
-      {
-        "__comment": "g28: Two Molblins."
-      },
+        }
+      ]
+    },
+    {
+      "location": "g28",
+      "__comment": "g28: Two Molblins.",
+      "actors": [
         {
           "type": "EnemyMoblin",
           "x": 2424,
@@ -336,10 +402,13 @@
           "type": "EnemyMoblin",
           "x": 2546,
           "y": 1037
-        },
-      {
-        "__comment": "g29: Two Molblins. (wrong, game has deelers)"
-      },
+        }
+      ]
+    },
+    {
+      "location": "g29",
+      "__comment": "g29: Two Molblins. (wrong, game has deelers)",
+      "actors": [
         {
           "type": "EnemyDeeler",
           "x": 2465,
@@ -349,10 +418,13 @@
           "type": "EnemyDeeler",
           "x": 2538,
           "y": 851
-        },
-      {
-        "__comment": "g30: Three Deelers."
-      },
+        }
+      ]
+    },
+    {
+      "location": "g30",
+      "__comment": "g30: Three Deelers.",
+      "actors": [
         {
           "type": "EnemyDeeler",
           "x": 2469,
@@ -367,10 +439,13 @@
           "type": "EnemyDeeler",
           "x": 2541,
           "y": 557
-        },
-      {
-        "__comment": "g31: Four Deelers."
-      },
+        }
+      ]
+    },
+    {
+      "location": "g31",
+      "__comment": "g31: Four Deelers.",
+      "actors": [
         {
           "type": "EnemyDeeler",
           "x": 2407,
@@ -390,40 +465,52 @@
           "type": "EnemyDeeler",
           "x": 2598,
           "y": 323
-        },
-      {
-        "__comment": "g32: The upper cave is the entrance to the first tomb, the Shrine of Rock. Zelda can enter both caves."
-      },
-
-    {
-      "__comment": "h",
-      "type": null
+        }
+      ]
     },
-      {
-        "__comment": "h9: A Goblin gives Zelda a jousting stick."
-      },
-      {
-        "__comment": "h10: Two Squibbers are stuck on a tree trunk."
-      },
-      {
-        "__comment": "h20: Two Tumblebots on the north side of the water. Zelda can cross the water if she has the red boots."
-      },
-      {
-        "__comment": "h21: Five Tumblebots. Zelda can walk through the water here if she has the red boots."
-      },
-      {
-        "__comment": "h23: Zelda finds the magic wand that she uses to defeat enemies.",
-        "type": null
-      },
+    {
+      "location": "g32",
+      "__comment": "g32: The upper cave is the entrance to the first tomb, the Shrine of Rock. Zelda can enter both caves.",
+      "actors": []
+    },
+    {
+      "__comment": "h"
+    },
+    {
+      "location": "h9",
+      "__comment": "h9: A Goblin gives Zelda a jousting stick.",
+      "actors": []
+    },
+    {
+      "location": "h10",
+      "__comment": "h10: Two Squibbers are stuck on a tree trunk.",
+      "actors": []
+    },
+    {
+      "location": "h20",
+      "__comment": "h20: Two Tumblebots on the north side of the water. Zelda can cross the water if she has the red boots.",
+      "actors": []
+    },
+    {
+      "location": "h21",
+      "__comment": "h21: Five Tumblebots. Zelda can walk through the water here if she has the red boots.",
+      "actors": []
+    },
+    {
+      "location": "h23",
+      "__comment": "h23: Zelda finds the magic wand that she uses to defeat enemies.",
+      "actors": [
         {
           "type": "PickupWand",
           "x": 2754,
           "y": 2283
-        },
-      {
-        "__comment": "h25: Three Tumblebots.",
-        "type": null
-      },
+        }
+      ]
+    },
+    {
+      "location": "h25",
+      "__comment": "h25: Three Tumblebots.",
+      "actors": [
         {
           "type": "EnemyTumblebot",
           "x": 2737,
@@ -438,10 +525,13 @@
           "type": "EnemyTumblebot",
           "x": 2937,
           "y": 1783
-        },
-      {
-        "__comment": "h26: Three Molblins."
-      },
+        }
+      ]
+    },
+    {
+      "location": "h26",
+      "__comment": "h26: Three Molblins.",
+      "actors": [
         {
           "type": "EnemyMoblin",
           "x": 2808,
@@ -456,37 +546,51 @@
           "type": "EnemyMoblin",
           "x": 2899,
           "y": 1485
-        },
-      {
-        "__comment": "h27: Three Leevers."
-      },
-      {
-        "__comment": "h28: Three Leevers."
-      },
-      {
-        "__comment": "h29: The old woman Enid sits by a fire. If Zelda touches her, she starts speaking and steals one heart of health from her."
-      },
-
-    {
-      "__comment": "i",
-      "type": null
+        }
+      ]
     },
-      {
-        "__comment": "i10: Two Squibbers."
-      },
-      {
-        "__comment": "i20: Three Peahats throw peas."
-      },
-      {
-        "__comment": "i21: Two Tumblebots, one on the southwest side of the water and one on the northeast side. Zelda can cross the water if she has the red boots."
-      },
-      {
-        "__comment": "i22: Four Tumblebots. Zelda can cross the water if she has the red boots."
-      },
-      {
-        "__comment": "i23: Three Goriyas throw boomerangs.",
-        "type": null
-      },
+    {
+      "location": "h27",
+      "__comment": "h27: Three Leevers.",
+      "actors": []
+    },
+    {
+      "location": "h28",
+      "__comment": "h28: Three Leevers.",
+      "actors": []
+    },
+    {
+      "location": "h29",
+      "__comment": "h29: The old woman Enid sits by a fire. If Zelda touches her, she starts speaking and steals one heart of health from her.",
+      "actors": []
+    },
+    {
+      "__comment": "i"
+    },
+    {
+      "location": "i10",
+      "__comment": "i10: Two Squibbers.",
+      "actors": []
+    },
+    {
+      "location": "i20",
+      "__comment": "i20: Three Peahats throw peas.",
+      "actors": []
+    },
+    {
+      "location": "i21",
+      "__comment": "i21: Two Tumblebots, one on the southwest side of the water and one on the northeast side. Zelda can cross the water if she has the red boots.",
+      "actors": []
+    },
+    {
+      "location": "i22",
+      "__comment": "i22: Four Tumblebots. Zelda can cross the water if she has the red boots.",
+      "actors": []
+    },
+    {
+      "location": "i23",
+      "__comment": "i23: Three Goriyas throw boomerangs.",
+      "actors": [
         {
           "type": "EnemyGoriya",
           "x": 3239,
@@ -501,11 +605,13 @@
           "type": "EnemyGoriya",
           "x": 3296,
           "y": 2234
-        },
-      {
-        "__comment": "i24: Five Tumblebots.",
-        "type": null
-      },
+        }
+      ]
+    },
+    {
+      "location": "i24",
+      "__comment": "i24: Five Tumblebots.",
+      "actors": [
         {
           "type": "EnemyTumblebot",
           "x": 3305,
@@ -540,11 +646,13 @@
           "type": "EnemyTumblebot",
           "x": 3169,
           "y": 2042
-        },
-      {
-        "__comment": "i25: Four Tumblebots.",
-        "type": null
-      },
+        }
+      ]
+    },
+    {
+      "location": "i25",
+      "__comment": "i25: Four Tumblebots.",
+      "actors": [
         {
           "type": "EnemyTumblebot",
           "x": 3165,
@@ -564,40 +672,56 @@
           "type": "EnemyTumblebot",
           "x": 3316,
           "y": 1743
-        },
-      {
-        "__comment": "i26: Three Leevers."
-      },
-
-    {
-      "__comment": "j",
-      "type": null
+        }
+      ]
     },
-      {
-        "__comment": "j16: One Tektite."
-      },
-      {
-        "__comment": "j17: Twin ghosts stand next to the farm and speak with Zelda if she touches them."
-      },
-      {
-        "__comment": "j20: Three Molblins."
-      },
-      {
-        "__comment": "j21: Two Molblins."
-      },
-      {
-        "__comment": "j22: A beggar woman in front of the Molblin Inn gives Zelda the Firestorm weapon in exchange for 5 rupees. Zelda can enter the Molblin Inn."
-      },
-      {
-        "__comment": "j22a: Inside the Molblin Inn, Zelda meets the innkeeper Lothar and three customers. Zelda can buy the C spell here for 100 rupees. The man in the red shirt, Krebb, gives her a dagger if she talks to him. The woman at the table and the soldier also speak if Zelda touches them."
-      },
-      {
-        "__comment": "j23: Four Peahats throw peas."
-      },
-      {
-        "__comment": "j24: From the thirsty old woman Glebb, Zelda receives an empty water pitcher. She can fill it at location E20. After that, the old woman gives her the Vial of Wind in exchange for the water.",
-        "type": null
-      },
+    {
+      "location": "i26",
+      "__comment": "i26: Three Leevers.",
+      "actors": []
+    },
+    {
+      "__comment": "j"
+    },
+    {
+      "location": "j16",
+      "__comment": "j16: One Tektite.",
+      "actors": []
+    },
+    {
+      "location": "j17",
+      "__comment": "j17: Twin ghosts stand next to the farm and speak with Zelda if she touches them.",
+      "actors": []
+    },
+    {
+      "location": "j20",
+      "__comment": "j20: Three Molblins.",
+      "actors": []
+    },
+    {
+      "location": "j21",
+      "__comment": "j21: Two Molblins.",
+      "actors": []
+    },
+    {
+      "location": "j22",
+      "__comment": "j22: A beggar woman in front of the Molblin Inn gives Zelda the Firestorm weapon in exchange for 5 rupees. Zelda can enter the Molblin Inn.",
+      "actors": []
+    },
+    {
+      "location": "j22a",
+      "__comment": "j22a: Inside the Molblin Inn, Zelda meets the innkeeper Lothar and three customers. Zelda can buy the C spell here for 100 rupees. The man in the red shirt, Krebb, gives her a dagger if she talks to him. The woman at the table and the soldier also speak if Zelda touches them.",
+      "actors": []
+    },
+    {
+      "location": "j23",
+      "__comment": "j23: Four Peahats throw peas.",
+      "actors": []
+    },
+    {
+      "location": "j24",
+      "__comment": "j24: From the thirsty old woman Glebb, Zelda receives an empty water pitcher. She can fill it at location E20. After that, the old woman gives her the Vial of Wind in exchange for the water.",
+      "actors": [
         {
           "type": "NpcGlebb",
           "x": 3716,
@@ -612,634 +736,985 @@
           "type": "SpawnerVialOfWind",
           "x": 3672,
           "y": 2075
-        },
-      {
-        "__comment": "j25: Two Mobies."
-      },
-      {
-        "__comment": "j26: Two Mobies."
-      },
-
+        }
+      ]
+    },
+    {
+      "location": "j25",
+      "__comment": "j25: Two Mobies.",
+      "actors": []
+    },
+    {
+      "location": "j26",
+      "__comment": "j26: Two Mobies.",
+      "actors": []
+    },
     {
       "__comment": "k"
     },
-      {
-        "__comment": "k13: Someone sits between two shops. A dog runs around Zelda's legs. Zelda can trade the bone for an axe and then enter both shops."
-      },
-      {
-        "__comment": "k13a: Inside the Meadows shop, a fat shopkeeper stands behind the counter. Zelda can buy a bone for 20 rupees. Knave stands left of the door and speaks with Zelda if she touches him."
-      },
-      {
-        "__comment": "k13b: In this shop, Madame Kriggle stands behind the counter. Zelda can buy the turquoise ring for 20 rupees, the jade amulet for 100 rupees, and the fire wreath for 150 rupees."
-      },
-      {
-        "__comment": "k14: Zelda can buy a candle for 100 rupees from the woman at the vegetable stall, and a life potion for 200 rupees. The woman speaks with Zelda if Zelda touches her. After a while, a villager walks past."
-      },
-      {
-        "__comment": "k15: Two blue Tektites guard the raft."
-      },
-      {
-        "__comment": "k16: Three blue Tektites."
-      },
-      {
-        "__comment": "k17: Two Leevers."
-      },
-      {
-        "__comment": "k18: Three Leevers."
-      },
-      {
-        "__comment": "k19: Three Molblins."
-      },
-      {
-        "__comment": "k20: The talking mushroom shakes its head and tells a joke if Zelda touches it."
-      },
-      {
-        "__comment": "k28: One Sea Eagle."
-      },
-
+    {
+      "location": "k13",
+      "__comment": "k13: Someone sits between two shops. A dog runs around Zelda's legs. Zelda can trade the bone for an axe and then enter both shops.",
+      "actors": []
+    },
+    {
+      "location": "k13a",
+      "__comment": "k13a: Inside the Meadows shop, a fat shopkeeper stands behind the counter. Zelda can buy a bone for 20 rupees. Knave stands left of the door and speaks with Zelda if she touches him.",
+      "actors": []
+    },
+    {
+      "location": "k13b",
+      "__comment": "k13b: In this shop, Madame Kriggle stands behind the counter. Zelda can buy the turquoise ring for 20 rupees, the jade amulet for 100 rupees, and the fire wreath for 150 rupees.",
+      "actors": []
+    },
+    {
+      "location": "k14",
+      "__comment": "k14: Zelda can buy a candle for 100 rupees from the woman at the vegetable stall, and a life potion for 200 rupees. The woman speaks with Zelda if Zelda touches her. After a while, a villager walks past.",
+      "actors": []
+    },
+    {
+      "location": "k15",
+      "__comment": "k15: Two blue Tektites guard the raft.",
+      "actors": []
+    },
+    {
+      "location": "k16",
+      "__comment": "k16: Three blue Tektites.",
+      "actors": []
+    },
+    {
+      "location": "k17",
+      "__comment": "k17: Two Leevers.",
+      "actors": []
+    },
+    {
+      "location": "k18",
+      "__comment": "k18: Three Leevers.",
+      "actors": []
+    },
+    {
+      "location": "k19",
+      "__comment": "k19: Three Molblins.",
+      "actors": []
+    },
+    {
+      "location": "k20",
+      "__comment": "k20: The talking mushroom shakes its head and tells a joke if Zelda touches it.",
+      "actors": []
+    },
+    {
+      "location": "k28",
+      "__comment": "k28: One Sea Eagle.",
+      "actors": []
+    },
     {
       "__comment": "l"
     },
-      {
-        "__comment": "l8: Entrance to the second tomb, the Shrine of Illusion. If Zelda has not completed the first tomb yet, spikes block the tent entrance."
-      },
-      {
-        "__comment": "l9: One invisible man."
-      },
-      {
-        "__comment": "l10: Two Molblins."
-      },
-      {
-        "__comment": "l11: One Octorok."
-      },
-      {
-        "__comment": "l12: Two Zolas throw spiked balls. Only one of them throws across the path."
-      },
-      {
-        "__comment": "l13: Two villagers dressed in red walk along the stone path between the two houses after a while. Zelda can enter the blue shop."
-      },
-      {
-        "__comment": "l13a: Inside, Zelda gives the shy shopkeeper the coal, after which he gives her 999 rupees. Zelda can buy a candle for 100 rupees."
-      },
-      {
-        "__comment": "l14: Musician Yvonne and the twins, Eric and Ian, stand in front of a house. If Zelda touches Yvonne, she gives Zelda a flute and a harp. The twins also speak with Zelda if she touches them. Zelda can now enter the house."
-      },
-      {
-        "__comment": "l14a: The twins' father sits in a chair in the middle of the living room."
-      },
-      {
-        "__comment": "l15: Alice sits next to the corner of the house. Zelda can use the tree trunk to get across the water."
-      },
-      {
-        "__comment": "l16: Two blue Tektites."
-      },
-      {
-        "__comment": "l17: A farmer stands next to his barn and warns Zelda."
-      },
-      {
-        "__comment": "l18: One Leever and two Mobies."
-      },
-      {
-        "__comment": "l19: Two Goriyas throw boomerangs."
-      },
-      {
-        "__comment": "l27: A sailor dressed in blue with a crate walks toward another sailor, then walks off the right side of this screen. Zelda can enter the building on her right."
-      },
-      {
-        "__comment": "l27a: Inside, Toobar with the eyepatch stands at the bar and speaks with Zelda if she touches him. A thief sits against the north wall and steals 25 rupees from Zelda if she touches him."
-      },
-      {
-        "__comment": "l28: If Zelda has completed the first four tombs, two sailors wait for her at the harbor with a raft. Zelda must give them 20 rupees plus the Vial of Wind. If Zelda steps onto the raft, she is automatically taken to the fifth tomb. If she has not completed the first four tombs yet, the sailors and raft are not there."
-      },
-
+    {
+      "location": "l8",
+      "__comment": "l8: Entrance to the second tomb, the Shrine of Illusion. If Zelda has not completed the first tomb yet, spikes block the tent entrance.",
+      "actors": []
+    },
+    {
+      "location": "l9",
+      "__comment": "l9: One invisible man.",
+      "actors": []
+    },
+    {
+      "location": "l10",
+      "__comment": "l10: Two Molblins.",
+      "actors": []
+    },
+    {
+      "location": "l11",
+      "__comment": "l11: One Octorok.",
+      "actors": []
+    },
+    {
+      "location": "l12",
+      "__comment": "l12: Two Zolas throw spiked balls. Only one of them throws across the path.",
+      "actors": []
+    },
+    {
+      "location": "l13",
+      "__comment": "l13: Two villagers dressed in red walk along the stone path between the two houses after a while. Zelda can enter the blue shop.",
+      "actors": []
+    },
+    {
+      "location": "l13a",
+      "__comment": "l13a: Inside, Zelda gives the shy shopkeeper the coal, after which he gives her 999 rupees. Zelda can buy a candle for 100 rupees.",
+      "actors": []
+    },
+    {
+      "location": "l14",
+      "__comment": "l14: Musician Yvonne and the twins, Eric and Ian, stand in front of a house. If Zelda touches Yvonne, she gives Zelda a flute and a harp. The twins also speak with Zelda if she touches them. Zelda can now enter the house.",
+      "actors": []
+    },
+    {
+      "location": "l14a",
+      "__comment": "l14a: The twins' father sits in a chair in the middle of the living room.",
+      "actors": []
+    },
+    {
+      "location": "l15",
+      "__comment": "l15: Alice sits next to the corner of the house. Zelda can use the tree trunk to get across the water.",
+      "actors": []
+    },
+    {
+      "location": "l16",
+      "__comment": "l16: Two blue Tektites.",
+      "actors": []
+    },
+    {
+      "location": "l17",
+      "__comment": "l17: A farmer stands next to his barn and warns Zelda.",
+      "actors": []
+    },
+    {
+      "location": "l18",
+      "__comment": "l18: One Leever and two Mobies.",
+      "actors": []
+    },
+    {
+      "location": "l19",
+      "__comment": "l19: Two Goriyas throw boomerangs.",
+      "actors": []
+    },
+    {
+      "location": "l27",
+      "__comment": "l27: A sailor dressed in blue with a crate walks toward another sailor, then walks off the right side of this screen. Zelda can enter the building on her right.",
+      "actors": []
+    },
+    {
+      "location": "l27a",
+      "__comment": "l27a: Inside, Toobar with the eyepatch stands at the bar and speaks with Zelda if she touches him. A thief sits against the north wall and steals 25 rupees from Zelda if she touches him.",
+      "actors": []
+    },
+    {
+      "location": "l28",
+      "__comment": "l28: If Zelda has completed the first four tombs, two sailors wait for her at the harbor with a raft. Zelda must give them 20 rupees plus the Vial of Wind. If Zelda steps onto the raft, she is automatically taken to the fifth tomb. If she has not completed the first four tombs yet, the sailors and raft are not there.",
+      "actors": []
+    },
     {
       "__comment": "m"
     },
-      {
-        "__comment": "m8: Two invisible men."
-      },
-      {
-        "__comment": "m9: One invisible man."
-      },
-      {
-        "__comment": "m10: One Molblin and two Deelers."
-      },
-      {
-        "__comment": "m11: Three Peahats throw peas."
-      },
-      {
-        "__comment": "m12: Two Molblins."
-      },
-      {
-        "__comment": "m13: Two Deelers and one Octorok."
-      },
-      {
-        "__comment": "m14: One blue Tektite on the east side of the water."
-      },
-      {
-        "__comment": "m15: Three blue Tektites."
-      },
-      {
-        "__comment": "m16: Three Leevers."
-      },
-      {
-        "__comment": "m17: Three Mobies."
-      },
-      {
-        "__comment": "m18: Three Lowders."
-      },
-      {
-        "__comment": "m19: Two Goriyas throw boomerangs."
-      },
-      {
-        "__comment": "m25: Two Dolomites throw stones. Zelda can enter the cave in the north."
-      },
-      {
-        "__comment": "m25a: Inside, if Zelda hits the blue globe with a projectile weapon, a bridge appears that lets her reach a hidden life heart across the stream. This increases her life energy by one heart."
-      },
-      {
-        "__comment": "m26: Two Sea Zolas throw spiked balls."
-      },
-      {
-        "__comment": "m27: A sailor dressed in blue with a crate under his arm stands on the beach looking out to sea. Eventually he walks off the left side of the screen."
-      },
-
+    {
+      "location": "m8",
+      "__comment": "m8: Two invisible men.",
+      "actors": []
+    },
+    {
+      "location": "m9",
+      "__comment": "m9: One invisible man.",
+      "actors": []
+    },
+    {
+      "location": "m10",
+      "__comment": "m10: One Molblin and two Deelers.",
+      "actors": []
+    },
+    {
+      "location": "m11",
+      "__comment": "m11: Three Peahats throw peas.",
+      "actors": []
+    },
+    {
+      "location": "m12",
+      "__comment": "m12: Two Molblins.",
+      "actors": []
+    },
+    {
+      "location": "m13",
+      "__comment": "m13: Two Deelers and one Octorok.",
+      "actors": []
+    },
+    {
+      "location": "m14",
+      "__comment": "m14: One blue Tektite on the east side of the water.",
+      "actors": []
+    },
+    {
+      "location": "m15",
+      "__comment": "m15: Three blue Tektites.",
+      "actors": []
+    },
+    {
+      "location": "m16",
+      "__comment": "m16: Three Leevers.",
+      "actors": []
+    },
+    {
+      "location": "m17",
+      "__comment": "m17: Three Mobies.",
+      "actors": []
+    },
+    {
+      "location": "m18",
+      "__comment": "m18: Three Lowders.",
+      "actors": []
+    },
+    {
+      "location": "m19",
+      "__comment": "m19: Two Goriyas throw boomerangs.",
+      "actors": []
+    },
+    {
+      "location": "m25",
+      "__comment": "m25: Two Dolomites throw stones. Zelda can enter the cave in the north.",
+      "actors": []
+    },
+    {
+      "location": "m25a",
+      "__comment": "m25a: Inside, if Zelda hits the blue globe with a projectile weapon, a bridge appears that lets her reach a hidden life heart across the stream. This increases her life energy by one heart.",
+      "actors": []
+    },
+    {
+      "location": "m26",
+      "__comment": "m26: Two Sea Zolas throw spiked balls.",
+      "actors": []
+    },
+    {
+      "location": "m27",
+      "__comment": "m27: A sailor dressed in blue with a crate under his arm stands on the beach looking out to sea. Eventually he walks off the left side of the screen.",
+      "actors": []
+    },
     {
       "__comment": "n"
     },
-      {
-        "__comment": "n8: Two Molblins."
-      },
-      {
-        "__comment": "n9: A mermaid restores Zelda's energy if Zelda touches the edge of the pond."
-      },
-      {
-        "__comment": "n10: Three Peahats throw peas."
-      },
-      {
-        "__comment": "n11: Waldensop stands outside the White Steed Lodge with two horses. Zelda can enter the lodge. Have her go back outside, then back inside again, and Waldensop gives her a feather."
-      },
-      {
-        "__comment": "n11a: Inside the White Steed Lodge, four people sit around a table. Among them are a deer hunter, Debblin of Durod, and the owner, who speaks with Zelda if she touches him. A man with a leaf leaves this location shortly after Zelda enters."
-      },
-      {
-        "__comment": "n12: Two Zolas hide behind a tree. One throws spiked balls along the tree trunk that Zelda can use to cross the stream."
-      },
-      {
-        "__comment": "n13: One Deeler rushes past. Zelda can cross the stream on a tree trunk."
-      },
-      {
-        "__comment": "n14: Three Tumblebots."
-      },
-      {
-        "__comment": "n15: Three Peahats throw peas."
-      },
-      {
-        "__comment": "n16: Two Mobies."
-      },
-      {
-        "__comment": "n17: One Goriya throws boomerangs. A man dressed in red sleeps in the northwest corner."
-      },
-      {
-        "__comment": "n18: Three Dolomites throw stones."
-      },
-      {
-        "__comment": "n25: Two Sea Zolas throw spiked balls."
-      },
-
+    {
+      "location": "n8",
+      "__comment": "n8: Two Molblins.",
+      "actors": []
+    },
+    {
+      "location": "n9",
+      "__comment": "n9: A mermaid restores Zelda's energy if Zelda touches the edge of the pond.",
+      "actors": []
+    },
+    {
+      "location": "n10",
+      "__comment": "n10: Three Peahats throw peas.",
+      "actors": []
+    },
+    {
+      "location": "n11",
+      "__comment": "n11: Waldensop stands outside the White Steed Lodge with two horses. Zelda can enter the lodge. Have her go back outside, then back inside again, and Waldensop gives her a feather.",
+      "actors": []
+    },
+    {
+      "location": "n11a",
+      "__comment": "n11a: Inside the White Steed Lodge, four people sit around a table. Among them are a deer hunter, Debblin of Durod, and the owner, who speaks with Zelda if she touches him. A man with a leaf leaves this location shortly after Zelda enters.",
+      "actors": []
+    },
+    {
+      "location": "n12",
+      "__comment": "n12: Two Zolas hide behind a tree. One throws spiked balls along the tree trunk that Zelda can use to cross the stream.",
+      "actors": []
+    },
+    {
+      "location": "n13",
+      "__comment": "n13: One Deeler rushes past. Zelda can cross the stream on a tree trunk.",
+      "actors": []
+    },
+    {
+      "location": "n14",
+      "__comment": "n14: Three Tumblebots.",
+      "actors": []
+    },
+    {
+      "location": "n15",
+      "__comment": "n15: Three Peahats throw peas.",
+      "actors": []
+    },
+    {
+      "location": "n16",
+      "__comment": "n16: Two Mobies.",
+      "actors": []
+    },
+    {
+      "location": "n17",
+      "__comment": "n17: One Goriya throws boomerangs. A man dressed in red sleeps in the northwest corner.",
+      "actors": []
+    },
+    {
+      "location": "n18",
+      "__comment": "n18: Three Dolomites throw stones.",
+      "actors": []
+    },
+    {
+      "location": "n25",
+      "__comment": "n25: Two Sea Zolas throw spiked balls.",
+      "actors": []
+    },
     {
       "__comment": "o"
     },
-      {
-        "__comment": "o9: One Dolomite hides inside a ring of trees."
-      },
-      {
-        "__comment": "o10: One Dolomite throws stones."
-      },
-      {
-        "__comment": "o11: Zelda can enter the abandoned mine."
-      },
-      {
-        "__comment": "o11a: Zelda can enter the hollow tree to find a hidden life heart."
-      },
-      {
-        "__comment": "o12: One Molblin and one Deeler."
-      },
-      {
-        "__comment": "o13: Three Molluskas throw pearls."
-      },
-      {
-        "__comment": "o14: Three Bounders spit at Zelda, two in the stream and one south of it."
-      },
-      {
-        "__comment": "o15: Three Tumblebots."
-      },
-      {
-        "__comment": "o16: Two Goriyas throw boomerangs."
-      },
-      {
-        "__comment": "o17: Three Lowders."
-      },
-      {
-        "__comment": "o22: Two Sea Eagles. Zelda can enter the northern cave."
-      },
-      {
-        "__comment": "o23: One Dolomite throws stones."
-      },
-      {
-        "__comment": "o24: Two Sea Eagles."
-      },
-      {
-        "__comment": "o25: Two Sea Zolas throw spiked balls."
-      },
-      {
-        "__comment": "o28: The head and neck of a sea monster rise from the sea and attack Zelda's raft."
-      },
-
+    {
+      "location": "o9",
+      "__comment": "o9: One Dolomite hides inside a ring of trees.",
+      "actors": []
+    },
+    {
+      "location": "o10",
+      "__comment": "o10: One Dolomite throws stones.",
+      "actors": []
+    },
+    {
+      "location": "o11",
+      "__comment": "o11: Zelda can enter the abandoned mine.",
+      "actors": []
+    },
+    {
+      "location": "o11a",
+      "__comment": "o11a: Zelda can enter the hollow tree to find a hidden life heart.",
+      "actors": []
+    },
+    {
+      "location": "o12",
+      "__comment": "o12: One Molblin and one Deeler.",
+      "actors": []
+    },
+    {
+      "location": "o13",
+      "__comment": "o13: Three Molluskas throw pearls.",
+      "actors": []
+    },
+    {
+      "location": "o14",
+      "__comment": "o14: Three Bounders spit at Zelda, two in the stream and one south of it.",
+      "actors": []
+    },
+    {
+      "location": "o15",
+      "__comment": "o15: Three Tumblebots.",
+      "actors": []
+    },
+    {
+      "location": "o16",
+      "__comment": "o16: Two Goriyas throw boomerangs.",
+      "actors": []
+    },
+    {
+      "location": "o17",
+      "__comment": "o17: Three Lowders.",
+      "actors": []
+    },
+    {
+      "location": "o22",
+      "__comment": "o22: Two Sea Eagles. Zelda can enter the northern cave.",
+      "actors": []
+    },
+    {
+      "location": "o23",
+      "__comment": "o23: One Dolomite throws stones.",
+      "actors": []
+    },
+    {
+      "location": "o24",
+      "__comment": "o24: Two Sea Eagles.",
+      "actors": []
+    },
+    {
+      "location": "o25",
+      "__comment": "o25: Two Sea Zolas throw spiked balls.",
+      "actors": []
+    },
+    {
+      "location": "o28",
+      "__comment": "o28: The head and neck of a sea monster rise from the sea and attack Zelda's raft.",
+      "actors": []
+    },
     {
       "__comment": "p"
     },
-      {
-        "__comment": "p8: Sir Basil gives Zelda a broadsword on the west side of the stream."
-      },
-      {
-        "__comment": "p9: Two Dolomites on the east side of the stream. Only one throws stones."
-      },
-      {
-        "__comment": "p10: Three Dolomites throw stones."
-      },
-      {
-        "__comment": "p11: One Tumblebot."
-      },
-      {
-        "__comment": "p12: Kron the Paddler sells a life potion for 200 rupees."
-      },
-      {
-        "__comment": "p13: Two Bounders and two Tumblebots."
-      },
-      {
-        "__comment": "p14: Three Bounders spit from the stream."
-      },
-      {
-        "__comment": "p16: Three Mardlegs."
-      },
-      {
-        "__comment": "p20: Zelda can enter the boarded-up house."
-      },
-      {
-        "__comment": "p20a: Inside, a retired captain and a foreign woman each speak with Zelda if she touches them."
-      },
-      {
-        "__comment": "p21: Two Sea Eagles."
-      },
-      {
-        "__comment": "p22: Two Sea Zolas throw spiked balls."
-      },
-
+    {
+      "location": "p8",
+      "__comment": "p8: Sir Basil gives Zelda a broadsword on the west side of the stream.",
+      "actors": []
+    },
+    {
+      "location": "p9",
+      "__comment": "p9: Two Dolomites on the east side of the stream. Only one throws stones.",
+      "actors": []
+    },
+    {
+      "location": "p10",
+      "__comment": "p10: Three Dolomites throw stones.",
+      "actors": []
+    },
+    {
+      "location": "p11",
+      "__comment": "p11: One Tumblebot.",
+      "actors": []
+    },
+    {
+      "location": "p12",
+      "__comment": "p12: Kron the Paddler sells a life potion for 200 rupees.",
+      "actors": []
+    },
+    {
+      "location": "p13",
+      "__comment": "p13: Two Bounders and two Tumblebots.",
+      "actors": []
+    },
+    {
+      "location": "p14",
+      "__comment": "p14: Three Bounders spit from the stream.",
+      "actors": []
+    },
+    {
+      "location": "p16",
+      "__comment": "p16: Three Mardlegs.",
+      "actors": []
+    },
+    {
+      "location": "p20",
+      "__comment": "p20: Zelda can enter the boarded-up house.",
+      "actors": []
+    },
+    {
+      "location": "p20a",
+      "__comment": "p20a: Inside, a retired captain and a foreign woman each speak with Zelda if she touches them.",
+      "actors": []
+    },
+    {
+      "location": "p21",
+      "__comment": "p21: Two Sea Eagles.",
+      "actors": []
+    },
+    {
+      "location": "p22",
+      "__comment": "p22: Two Sea Zolas throw spiked balls.",
+      "actors": []
+    },
     {
       "__comment": "q"
     },
-      {
-        "__comment": "q8: Two Molblins."
-      },
-      {
-        "__comment": "q9: Two Mobies."
-      },
-      {
-        "__comment": "q10: Three blue Tektites."
-      },
-      {
-        "__comment": "q13: Three Tumblebots."
-      },
-      {
-        "__comment": "q14: Three Bounders spit at Zelda."
-      },
-      {
-        "__comment": "q15: Spikes block the only passage through the toll gate. Zelda must pay Yalzan 20 rupees to pass."
-      },
-      {
-        "__comment": "q16: Two Mardlegs."
-      },
-      {
-        "__comment": "q17: Four Dolomites throw stones in all four directions. If Zelda has the green boots, she can go east into the swamp."
-      },
-      {
-        "__comment": "q18: Three Mardlegs. Zelda can go east if she has the green boots."
-      },
-      {
-        "__comment": "q19: Three Mardlegs."
-      },
-      {
-        "__comment": "q20: Two Mardlegs."
-      },
-      {
-        "__comment": "q28: When Zelda's raft docks, she can walk onto the beach of Sea Island. This raft also brings her back to the mainland."
-      },
-
+    {
+      "location": "q8",
+      "__comment": "q8: Two Molblins.",
+      "actors": []
+    },
+    {
+      "location": "q9",
+      "__comment": "q9: Two Mobies.",
+      "actors": []
+    },
+    {
+      "location": "q10",
+      "__comment": "q10: Three blue Tektites.",
+      "actors": []
+    },
+    {
+      "location": "q13",
+      "__comment": "q13: Three Tumblebots.",
+      "actors": []
+    },
+    {
+      "location": "q14",
+      "__comment": "q14: Three Bounders spit at Zelda.",
+      "actors": []
+    },
+    {
+      "location": "q15",
+      "__comment": "q15: Spikes block the only passage through the toll gate. Zelda must pay Yalzan 20 rupees to pass.",
+      "actors": []
+    },
+    {
+      "location": "q16",
+      "__comment": "q16: Two Mardlegs.",
+      "actors": []
+    },
+    {
+      "location": "q17",
+      "__comment": "q17: Four Dolomites throw stones in all four directions. If Zelda has the green boots, she can go east into the swamp.",
+      "actors": []
+    },
+    {
+      "location": "q18",
+      "__comment": "q18: Three Mardlegs. Zelda can go east if she has the green boots.",
+      "actors": []
+    },
+    {
+      "location": "q19",
+      "__comment": "q19: Three Mardlegs.",
+      "actors": []
+    },
+    {
+      "location": "q20",
+      "__comment": "q20: Two Mardlegs.",
+      "actors": []
+    },
+    {
+      "location": "q28",
+      "__comment": "q28: When Zelda's raft docks, she can walk onto the beach of Sea Island. This raft also brings her back to the mainland.",
+      "actors": []
+    },
     {
       "__comment": "r"
     },
-      {
-        "__comment": "r5: One red Tektite."
-      },
-      {
-        "__comment": "r6: Three Mobies."
-      },
-      {
-        "__comment": "r7: Three Molblins."
-      },
-      {
-        "__comment": "r8: Three blue Tektites."
-      },
-      {
-        "__comment": "r9: If Zelda touches the farmer Lonlyn, he speaks and gives her 25 rupees. The farmhand Gwynla comes in after Zelda. If Zelda touches her, Gwynla speaks with her and gives Zelda the Noise spell."
-      },
-      {
-        "__comment": "r10: If Zelda touches Squire Grip, he speaks with her and Merribal sings a song. If Zelda touches the minstrel Merribal, he sings another song that points toward the direction of the fourth tomb."
-      },
-      {
-        "__comment": "r15: Two Tumblebots."
-      },
-      {
-        "__comment": "r17: Zelda can walk through the swamp if she has the green boots. Three Zolas throw spiked balls."
-      },
-      {
-        "__comment": "r18: Zelda can walk through the swamp if she has the green boots. Three Zolas throw spiked balls."
-      },
-      {
-        "__comment": "r19: Zelda can walk through the swamp if she has the green boots."
-      },
-      {
-        "__comment": "r20: One Alligaroo. Zelda can enter the swamp to the north if she has the green boots."
-      },
-      {
-        "__comment": "r29: Entrance to Tomb 5, the Tomb of Water. Zelda can enter the cave."
-      },
-
+    {
+      "location": "r5",
+      "__comment": "r5: One red Tektite.",
+      "actors": []
+    },
+    {
+      "location": "r6",
+      "__comment": "r6: Three Mobies.",
+      "actors": []
+    },
+    {
+      "location": "r7",
+      "__comment": "r7: Three Molblins.",
+      "actors": []
+    },
+    {
+      "location": "r8",
+      "__comment": "r8: Three blue Tektites.",
+      "actors": []
+    },
+    {
+      "location": "r9",
+      "__comment": "r9: If Zelda touches the farmer Lonlyn, he speaks and gives her 25 rupees. The farmhand Gwynla comes in after Zelda. If Zelda touches her, Gwynla speaks with her and gives Zelda the Noise spell.",
+      "actors": []
+    },
+    {
+      "location": "r10",
+      "__comment": "r10: If Zelda touches Squire Grip, he speaks with her and Merribal sings a song. If Zelda touches the minstrel Merribal, he sings another song that points toward the direction of the fourth tomb.",
+      "actors": []
+    },
+    {
+      "location": "r15",
+      "__comment": "r15: Two Tumblebots.",
+      "actors": []
+    },
+    {
+      "location": "r17",
+      "__comment": "r17: Zelda can walk through the swamp if she has the green boots. Three Zolas throw spiked balls.",
+      "actors": []
+    },
+    {
+      "location": "r18",
+      "__comment": "r18: Zelda can walk through the swamp if she has the green boots. Three Zolas throw spiked balls.",
+      "actors": []
+    },
+    {
+      "location": "r19",
+      "__comment": "r19: Zelda can walk through the swamp if she has the green boots.",
+      "actors": []
+    },
+    {
+      "location": "r20",
+      "__comment": "r20: One Alligaroo. Zelda can enter the swamp to the north if she has the green boots.",
+      "actors": []
+    },
+    {
+      "location": "r29",
+      "__comment": "r29: Entrance to Tomb 5, the Tomb of Water. Zelda can enter the cave.",
+      "actors": []
+    },
     {
       "__comment": "s"
     },
-      {
-        "__comment": "s5: Entrance to the third tomb. If Zelda has not completed the first three tombs yet, spikes block the entrance."
-      },
-      {
-        "__comment": "s6: Two ghosts, Ethera and her dog Ghini, walk through the Memorial of Mortality."
-      },
-      {
-        "__comment": "s7: Three Molblins. One Mobie. One blue Tektite."
-      },
-      {
-        "__comment": "s8: Two Mobies."
-      },
-      {
-        "__comment": "s16: Two Alligaroos and one Zola."
-      },
-      {
-        "__comment": "s17: The boat stops at the docks and Zelda can walk to it. The boat brings her back to Fox the Boatman, after which she receives a secret life heart."
-      },
-      {
-        "__comment": "s18: Zelda can find a hidden life heart here, increasing her health by one heart."
-      },
-      {
-        "__comment": "s19: Zelda can walk through the swamp if she has the green boots."
-      },
-      {
-        "__comment": "s20: One giant squid. Zelda can enter the swamp to the north if she has the green boots."
-      },
-
+    {
+      "location": "s5",
+      "__comment": "s5: Entrance to the third tomb. If Zelda has not completed the first three tombs yet, spikes block the entrance.",
+      "actors": []
+    },
+    {
+      "location": "s6",
+      "__comment": "s6: Two ghosts, Ethera and her dog Ghini, walk through the Memorial of Mortality.",
+      "actors": []
+    },
+    {
+      "location": "s7",
+      "__comment": "s7: Three Molblins. One Mobie. One blue Tektite.",
+      "actors": []
+    },
+    {
+      "location": "s8",
+      "__comment": "s8: Two Mobies.",
+      "actors": []
+    },
+    {
+      "location": "s16",
+      "__comment": "s16: Two Alligaroos and one Zola.",
+      "actors": []
+    },
+    {
+      "location": "s17",
+      "__comment": "s17: The boat stops at the docks and Zelda can walk to it. The boat brings her back to Fox the Boatman, after which she receives a secret life heart.",
+      "actors": []
+    },
+    {
+      "location": "s18",
+      "__comment": "s18: Zelda can find a hidden life heart here, increasing her health by one heart.",
+      "actors": []
+    },
+    {
+      "location": "s19",
+      "__comment": "s19: Zelda can walk through the swamp if she has the green boots.",
+      "actors": []
+    },
+    {
+      "location": "s20",
+      "__comment": "s20: One giant squid. Zelda can enter the swamp to the north if she has the green boots.",
+      "actors": []
+    },
     {
       "__comment": "t"
     },
-      {
-        "__comment": "t6: Zelda can enter the cave in the eastern wall."
-      },
-      {
-        "__comment": "t8: One Molblin."
-      },
-      {
-        "__comment": "t14: One Octorok."
-      },
-      {
-        "__comment": "t15: Two Zolas throw spiked balls."
-      },
-      {
-        "__comment": "t16: Two Alligaroos and one Zola."
-      },
-      {
-        "__comment": "t18: If Zelda does not have the Calm spell, her path is blocked by two waterspouts. The boat stops and returns to the dock."
-      },
-      {
-        "__comment": "t19: Zelda can walk through the swamp if she has the green boots."
-      },
-      {
-        "__comment": "t20: A beachcomber sells a candle for 100 rupees and a life potion for 200. Zelda can enter the swamp to the north if she has the green boots."
-      },
-
+    {
+      "location": "t6",
+      "__comment": "t6: Zelda can enter the cave in the eastern wall.",
+      "actors": []
+    },
+    {
+      "location": "t8",
+      "__comment": "t8: One Molblin.",
+      "actors": []
+    },
+    {
+      "location": "t14",
+      "__comment": "t14: One Octorok.",
+      "actors": []
+    },
+    {
+      "location": "t15",
+      "__comment": "t15: Two Zolas throw spiked balls.",
+      "actors": []
+    },
+    {
+      "location": "t16",
+      "__comment": "t16: Two Alligaroos and one Zola.",
+      "actors": []
+    },
+    {
+      "location": "t18",
+      "__comment": "t18: If Zelda does not have the Calm spell, her path is blocked by two waterspouts. The boat stops and returns to the dock.",
+      "actors": []
+    },
+    {
+      "location": "t19",
+      "__comment": "t19: Zelda can walk through the swamp if she has the green boots.",
+      "actors": []
+    },
+    {
+      "location": "t20",
+      "__comment": "t20: A beachcomber sells a candle for 100 rupees and a life potion for 200. Zelda can enter the swamp to the north if she has the green boots.",
+      "actors": []
+    },
     {
       "__comment": "u"
     },
-      {
-        "__comment": "u14: Two Alligaroos."
-      },
-      {
-        "__comment": "u15: One Octorok."
-      },
-      {
-        "__comment": "u16: Yelena stands in front of the hut and gives Zelda a map."
-      },
-      {
-        "__comment": "u18: Fox the Boatman waits at the dock with his boat. For 2 rupees, Zelda can take the boat to Mystery Island."
-      },
-      {
-        "__comment": "u19: Zelda can enter the swamp if she has the green boots."
-      },
-
+    {
+      "location": "u14",
+      "__comment": "u14: Two Alligaroos.",
+      "actors": []
+    },
+    {
+      "location": "u15",
+      "__comment": "u15: One Octorok.",
+      "actors": []
+    },
+    {
+      "location": "u16",
+      "__comment": "u16: Yelena stands in front of the hut and gives Zelda a map.",
+      "actors": []
+    },
+    {
+      "location": "u18",
+      "__comment": "u18: Fox the Boatman waits at the dock with his boat. For 2 rupees, Zelda can take the boat to Mystery Island.",
+      "actors": []
+    },
+    {
+      "location": "u19",
+      "__comment": "u19: Zelda can enter the swamp if she has the green boots.",
+      "actors": []
+    },
     {
       "__comment": "v"
     },
-      {
-        "__comment": "v5: Thabul sits by the cave entrance. When Zelda touches him, he advises her to go in a certain direction. Zelda can enter the cave."
-      },
-      {
-        "__comment": "v7: Two Cactoroks throw stones."
-      },
-      {
-        "__comment": "v8: Three Lowders."
-      },
-      {
-        "__comment": "v9: Two blue Tektites."
-      },
-      {
-        "__comment": "v10: Two blue Tektites."
-      },
-      {
-        "__comment": "v11: Toatabor hides behind the north side of the building. As soon as Zelda touches him, he speaks with her."
-      },
-      {
-        "__comment": "v12: One Lowder. Two blue Tektites."
-      },
-      {
-        "__comment": "v14: A giant swamp rat gives Zelda the green boots and sells a monster-repelling potion for 100 rupees."
-      },
-      {
-        "__comment": "v15: One Alligaroo."
-      },
-      {
-        "__comment": "v16: A woman gives Zelda yellow boots. Zelda can enter the dome house."
-      },
-      {
-        "__comment": "v16a: Inside the dome house, Sirram Bew gives Zelda a bottle of acid."
-      },
-      {
-        "__comment": "v18: Two Alligaroos. Zelda can walk through the swamp if she has the green boots."
-      },
-      {
-        "__comment": "v19: Three Sea Zolas throw spiked balls."
-      },
-      {
-        "__comment": "v20: One Mardleg."
-      },
-
+    {
+      "location": "v5",
+      "__comment": "v5: Thabul sits by the cave entrance. When Zelda touches him, he advises her to go in a certain direction. Zelda can enter the cave.",
+      "actors": []
+    },
+    {
+      "location": "v7",
+      "__comment": "v7: Two Cactoroks throw stones.",
+      "actors": []
+    },
+    {
+      "location": "v8",
+      "__comment": "v8: Three Lowders.",
+      "actors": []
+    },
+    {
+      "location": "v9",
+      "__comment": "v9: Two blue Tektites.",
+      "actors": []
+    },
+    {
+      "location": "v10",
+      "__comment": "v10: Two blue Tektites.",
+      "actors": []
+    },
+    {
+      "location": "v11",
+      "__comment": "v11: Toatabor hides behind the north side of the building. As soon as Zelda touches him, he speaks with her.",
+      "actors": []
+    },
+    {
+      "location": "v12",
+      "__comment": "v12: One Lowder. Two blue Tektites.",
+      "actors": []
+    },
+    {
+      "location": "v14",
+      "__comment": "v14: A giant swamp rat gives Zelda the green boots and sells a monster-repelling potion for 100 rupees.",
+      "actors": []
+    },
+    {
+      "location": "v15",
+      "__comment": "v15: One Alligaroo.",
+      "actors": []
+    },
+    {
+      "location": "v16",
+      "__comment": "v16: A woman gives Zelda yellow boots. Zelda can enter the dome house.",
+      "actors": []
+    },
+    {
+      "location": "v16a",
+      "__comment": "v16a: Inside the dome house, Sirram Bew gives Zelda a bottle of acid.",
+      "actors": []
+    },
+    {
+      "location": "v18",
+      "__comment": "v18: Two Alligaroos. Zelda can walk through the swamp if she has the green boots.",
+      "actors": []
+    },
+    {
+      "location": "v19",
+      "__comment": "v19: Three Sea Zolas throw spiked balls.",
+      "actors": []
+    },
+    {
+      "location": "v20",
+      "__comment": "v20: One Mardleg.",
+      "actors": []
+    },
     {
       "__comment": "w"
     },
-      {
-        "__comment": "w5: Two Romravens, which are purple birds. One Goriya throws boomerangs."
-      },
-      {
-        "__comment": "w7: Three Romravens."
-      },
-      {
-        "__comment": "w8: A mermaid restores Zelda's full health when she touches the water."
-      },
-      {
-        "__comment": "w9: Two Cactoroks throw stones."
-      },
-      {
-        "__comment": "w10: Myntoll speaks to Zelda when she touches him. If she returns and touches him again, he says something different."
-      },
-      {
-        "__comment": "w12: Four Lowders."
-      },
-      {
-        "__comment": "w15: Two Alligaroos."
-      },
-      {
-        "__comment": "w16: One Octorok."
-      },
-
+    {
+      "location": "w5",
+      "__comment": "w5: Two Romravens, which are purple birds. One Goriya throws boomerangs.",
+      "actors": []
+    },
+    {
+      "location": "w7",
+      "__comment": "w7: Three Romravens.",
+      "actors": []
+    },
+    {
+      "location": "w8",
+      "__comment": "w8: A mermaid restores Zelda's full health when she touches the water.",
+      "actors": []
+    },
+    {
+      "location": "w9",
+      "__comment": "w9: Two Cactoroks throw stones.",
+      "actors": []
+    },
+    {
+      "location": "w10",
+      "__comment": "w10: Myntoll speaks to Zelda when she touches him. If she returns and touches him again, he says something different.",
+      "actors": []
+    },
+    {
+      "location": "w12",
+      "__comment": "w12: Four Lowders.",
+      "actors": []
+    },
+    {
+      "location": "w15",
+      "__comment": "w15: Two Alligaroos.",
+      "actors": []
+    },
+    {
+      "location": "w16",
+      "__comment": "w16: One Octorok.",
+      "actors": []
+    },
     {
       "__comment": "x"
     },
-      {
-        "__comment": "x5: Two Romravens."
-      },
-      {
-        "__comment": "x6: Three Lowders."
-      },
-      {
-        "__comment": "x7: Three Lowders."
-      },
-      {
-        "__comment": "x8: Two Cactoroks throw stones."
-      },
-      {
-        "__comment": "x9: Two blue Tektites."
-      },
-      {
-        "__comment": "x11: A man sleeps on the doorstep of a house."
-      },
-      {
-        "__comment": "x14: Three Mongchips."
-      },
-      {
-        "__comment": "x15: Two Mongchips."
-      },
-      {
-        "__comment": "x16: Three Mongchips, one of which is stuck in the tree."
-      },
-
+    {
+      "location": "x5",
+      "__comment": "x5: Two Romravens.",
+      "actors": []
+    },
+    {
+      "location": "x6",
+      "__comment": "x6: Three Lowders.",
+      "actors": []
+    },
+    {
+      "location": "x7",
+      "__comment": "x7: Three Lowders.",
+      "actors": []
+    },
+    {
+      "location": "x8",
+      "__comment": "x8: Two Cactoroks throw stones.",
+      "actors": []
+    },
+    {
+      "location": "x9",
+      "__comment": "x9: Two blue Tektites.",
+      "actors": []
+    },
+    {
+      "location": "x11",
+      "__comment": "x11: A man sleeps on the doorstep of a house.",
+      "actors": []
+    },
+    {
+      "location": "x14",
+      "__comment": "x14: Three Mongchips.",
+      "actors": []
+    },
+    {
+      "location": "x15",
+      "__comment": "x15: Two Mongchips.",
+      "actors": []
+    },
+    {
+      "location": "x16",
+      "__comment": "x16: Three Mongchips, one of which is stuck in the tree.",
+      "actors": []
+    },
     {
       "__comment": "y"
     },
-      {
-        "__comment": "y3: One Romraven."
-      },
-      {
-        "__comment": "y4: One Lowder."
-      },
-      {
-        "__comment": "y5: Bitterbeck the Mountain Man stands by a log cabin and speaks with Zelda."
-      },
-      {
-        "__comment": "y6: One Goriya throws boomerangs. One Lowder. One Romraven."
-      },
-      {
-        "__comment": "y14: Zelda can pick up the bow and arrow weapon lying here."
-      },
-      {
-        "__comment": "y15: Two Lowders."
-      },
-      {
-        "__comment": "y16: Two Mongchips."
-      },
-      {
-        "__comment": "y17: Three Molluskas fire pearls at Zelda."
-      },
-
+    {
+      "location": "y3",
+      "__comment": "y3: One Romraven.",
+      "actors": []
+    },
+    {
+      "location": "y4",
+      "__comment": "y4: One Lowder.",
+      "actors": []
+    },
+    {
+      "location": "y5",
+      "__comment": "y5: Bitterbeck the Mountain Man stands by a log cabin and speaks with Zelda.",
+      "actors": []
+    },
+    {
+      "location": "y6",
+      "__comment": "y6: One Goriya throws boomerangs. One Lowder. One Romraven.",
+      "actors": []
+    },
+    {
+      "location": "y14",
+      "__comment": "y14: Zelda can pick up the bow and arrow weapon lying here.",
+      "actors": []
+    },
+    {
+      "location": "y15",
+      "__comment": "y15: Two Lowders.",
+      "actors": []
+    },
+    {
+      "location": "y16",
+      "__comment": "y16: Two Mongchips.",
+      "actors": []
+    },
+    {
+      "location": "y17",
+      "__comment": "y17: Three Molluskas fire pearls at Zelda.",
+      "actors": []
+    },
     {
       "__comment": "z"
     },
-      {
-        "__comment": "z1: Nimonee sits on the beach and speaks with Zelda when Zelda touches her."
-      },
-      {
-        "__comment": "z2: Three Lowders."
-      },
-      {
-        "__comment": "z3: Two Goriyas throw boomerangs."
-      },
-      {
-        "__comment": "z4: One Dolomite throws stones."
-      },
-      {
-        "__comment": "z5: Entrance to the third tomb. If Zelda has completed the first two tombs, a condor flies overhead. When Zelda touches the bird, it flies her to the third tomb."
-      },
-      {
-        "__comment": "z13: Two Anti-Ganon soldiers are hidden here."
-      },
-      {
-        "__comment": "z15: Two Mongchips."
-      },
-      {
-        "__comment": "z17: Sir Basil warns Zelda about the fifth tomb."
-      },
-
+    {
+      "location": "z1",
+      "__comment": "z1: Nimonee sits on the beach and speaks with Zelda when Zelda touches her.",
+      "actors": []
+    },
+    {
+      "location": "z2",
+      "__comment": "z2: Three Lowders.",
+      "actors": []
+    },
+    {
+      "location": "z3",
+      "__comment": "z3: Two Goriyas throw boomerangs.",
+      "actors": []
+    },
+    {
+      "location": "z4",
+      "__comment": "z4: One Dolomite throws stones.",
+      "actors": []
+    },
+    {
+      "location": "z5",
+      "__comment": "z5: Entrance to the third tomb. If Zelda has completed the first two tombs, a condor flies overhead. When Zelda touches the bird, it flies her to the third tomb.",
+      "actors": []
+    },
+    {
+      "location": "z13",
+      "__comment": "z13: Two Anti-Ganon soldiers are hidden here.",
+      "actors": []
+    },
+    {
+      "location": "z15",
+      "__comment": "z15: Two Mongchips.",
+      "actors": []
+    },
+    {
+      "location": "z17",
+      "__comment": "z17: Sir Basil warns Zelda about the fifth tomb.",
+      "actors": []
+    },
     {
       "__comment": "aa"
     },
-      {
-        "__comment": "aa15: The miner gives Zelda a large lump of coal. The mine can only be entered through location AA17."
-      },
-      {
-        "__comment": "aa16: Entrance to the mine."
-      },
-
+    {
+      "location": "aa15",
+      "__comment": "aa15: The miner gives Zelda a large lump of coal. The mine can only be entered through location AA17.",
+      "actors": []
+    },
+    {
+      "location": "aa16",
+      "__comment": "aa16: Entrance to the mine.",
+      "actors": []
+    },
     {
       "__comment": "ab"
     },
-      {
-        "__comment": "ab17: Entrance to Tomb 6, the Tomb of Power. If Zelda has not completed the first five tombs yet, a blue light beam blocks the entrance."
-      },
-
+    {
+      "location": "ab17",
+      "__comment": "ab17: Entrance to Tomb 6, the Tomb of Power. If Zelda has not completed the first five tombs yet, a blue light beam blocks the entrance.",
+      "actors": []
+    },
     {
       "__comment": "ac"
     },
-      {
-        "__comment": "ac17: Three Lowders."
-      },
-      {
-        "__comment": "ac18: A mermaid restores Zelda's full health when Zelda touches the water."
-      }
+    {
+      "location": "ac17",
+      "__comment": "ac17: Three Lowders.",
+      "actors": []
+    },
+    {
+      "location": "ac18",
+      "__comment": "ac18: A mermaid restores Zelda's full health when Zelda touches the water.",
+      "actors": []
+    }
   ]
 }

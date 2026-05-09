@@ -284,9 +284,14 @@ public class MapManager {
         zelda.setPosition(zelda.getSpawnX(), zelda.getSpawnY());
         addActor(zelda);
 
-        for (ActorJsonEntry entry : data.actors) {
-            if (entry.type == null) continue;
-            addActor(createActorFromJsonEntry(entry));
+        for (LocationJsonEntry location : data.locations) {
+            if (location.location == null) continue;
+
+            for (ActorJsonEntry entry : location.actors) {
+                if (entry.type == null) continue;
+
+                addActor(createActorFromJsonEntry(entry));
+            }
         }
 
         world.getWorldCamera().resetPosition();
