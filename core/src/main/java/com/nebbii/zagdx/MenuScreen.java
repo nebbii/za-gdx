@@ -77,14 +77,21 @@ public class MenuScreen implements Screen {
     }
 
     public void draw(){
+        Gdx.gl.glEnable(GL20.GL_BLEND);
+        Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+
         ScreenUtils.clear(0f, 0f, 0f, 1f);
         camera.update();
 
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
         batch.draw(background, 0, 0, WORLD_WIDTH, WORLD_HEIGHT);
+        for (MenuButton button : menuButtons) {
+            button.draw();
+        }
         batch.end();
 
+        /*
         shapes.setProjectionMatrix(camera.combined);
         shapes.begin(ShapeRenderer.ShapeType.Line);
 
@@ -96,14 +103,15 @@ public class MenuScreen implements Screen {
             shapes.rect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
         }
         shapes.end();
+        */
 
-        Gdx.gl.glEnable(GL20.GL_BLEND);
-        Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
-
+        /*
+        shapes.setProjectionMatrix(camera.combined);
         shapes.begin(ShapeRenderer.ShapeType.Filled);
         shapes.setColor(0f, 0f, 0f, fadeOpacity);
         shapes.rect(0f, 0f, WORLD_WIDTH, WORLD_HEIGHT);
         shapes.end();
+        */
     }
 
     @Override

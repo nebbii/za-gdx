@@ -13,6 +13,8 @@ public class MenuPauseSlotWeapons extends Rectangle implements MenuButton {
         heldItem = Weapon.NONE;
     }
 
+    public void draw() {}
+
     @Override
     public void onTouch() {
         gameManager.getZelda().setCurrentItem(getHeldItem());

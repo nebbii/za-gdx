@@ -18,6 +18,8 @@ public class MenuPauseSlotEquip extends Rectangle implements MenuButton {
         this.gameManager = gameManager;
     }
 
+    public void draw() {}
+
 	@Override
     public void onTouch() {
         switch(slotType) {

@@ -1,8 +1,11 @@
 package com.nebbii.zagdx;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 // TODO: Eventually swap out the dummy assets with real ones once the exporter supports it
 public class MainMenuScreen extends MenuScreen {
@@ -12,12 +15,18 @@ public class MainMenuScreen extends MenuScreen {
     MenuButtonDeleteSave menuButtonDeleteSave;
     MenuButtonHowToPlay menuButtonHowToPlay;
 
+    private BitmapFont font;
+
+    private SaveManager saveManager;
+
     public MainMenuScreen(Game core) {
         super(core);
     }
 
     public void show() {
         super.show();
+
+        font = new BitmapFont();
 
         menuButtonPlay = new MenuButtonPlay(core, 46, 71, 92, 29);
         menuButtons.add(menuButtonPlay);
@@ -31,6 +40,8 @@ public class MainMenuScreen extends MenuScreen {
         menuButtons.add(menuButtonHowToPlay);
 
         // menuSaveBox = new MenuSaveBox(core, 76, 115, 234, 80)
+
+        saveManager = new SaveManager();
 
         background = new Texture(Gdx.files.internal("dummy-main-menu.png"));
     }
@@ -47,6 +58,25 @@ public class MainMenuScreen extends MenuScreen {
 
     public void draw(){
         super.draw();
+
+        drawSaveBox();
+    }
+
+    public void drawSaveBox() {
+        ArrayList<String> saves = saveManager.listSaves();
+
+        int yOffset = 180;
+
+        batch.setProjectionMatrix(camera.combined);
+        batch.begin();
+
+        int i = 0;
+        for (String save : saves) {
+            font.draw(batch, save, 90, yOffset - (20 * i));
+            i++;
+        }
+
+        batch.end();
     }
 
     @Override

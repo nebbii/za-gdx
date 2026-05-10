@@ -59,6 +59,21 @@ public class SaveManager {
         writeCurrentSave();
     }
 
+    public ArrayList<String> listSaves() {
+        FileHandle[] files = saveFolder.list();
+
+        ArrayList<String> fileNames = new ArrayList<>();
+
+        for(FileHandle file : files) {
+            SaveData save = json.fromJson(SaveData.class, file);
+            if (save.name != null) {
+                fileNames.add(save.name);
+            }
+        }
+
+        return fileNames;
+    }
+
     public void loadSave(String fileName) {
         FileHandle file = saveFolder.child(fileName + ".json");
 

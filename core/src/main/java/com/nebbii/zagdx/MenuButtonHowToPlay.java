@@ -11,6 +11,8 @@ public class MenuButtonHowToPlay extends Rectangle implements MenuButton {
         this.core = core;
     }
 
+    public void draw() {}
+
     @Override
     public void onTouch() {
     }

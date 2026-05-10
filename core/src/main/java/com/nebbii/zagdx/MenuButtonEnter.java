@@ -13,6 +13,8 @@ public class MenuButtonEnter implements MenuButton {
         this.collisionBox = new Rectangle(x, y, width, height);
     }
 
+    public void draw() {}
+
     @Override
     public Rectangle getCollisionBox() {
         return collisionBox;

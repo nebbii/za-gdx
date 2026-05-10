@@ -13,6 +13,8 @@ public class MenuPauseSlotTreasures extends Rectangle implements MenuButton {
         heldItem = Treasure.NONE;
     }
 
+    public void draw() {}
+
     @Override
     public void onTouch() {
         gameManager.getZelda().setCurrentItem(getHeldItem());
