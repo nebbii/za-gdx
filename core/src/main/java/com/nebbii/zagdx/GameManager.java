@@ -197,10 +197,14 @@ public class GameManager {
 
     public void increaseRubies(int count) {
         setRubies(getRubies() + count);
+        world.getSaveManager().setRubies(getRubies());
+        world.getSaveManager().writeCurrentSave();
     }
 
     public void decreaseRubies(int count) {
         setRubies(getRubies() - count);
+        world.getSaveManager().setRubies(getRubies());
+        world.getSaveManager().writeCurrentSave();
     }
 
     public void addTreasure(Treasure treasure) {

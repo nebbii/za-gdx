@@ -94,6 +94,10 @@ public class SaveManager {
         currentSaveFile.writeString(json.prettyPrint(currentSave), false);
     }
 
+    public void setRubies(int rubies) {
+        currentSave.rubies = rubies;
+    }
+
     public void addTreasure(String treasure) {
         currentSave.treasures.add(treasure);
     }

@@ -62,7 +62,7 @@ public class Pickup extends Rectangle implements Actor {
     }
 
     public void onPickup(GameManager game) {
-        Gdx.app.log(this.getClass().getSimpleName(), "storing pickup in save");
+        Gdx.app.log(this.getClass().getSimpleName(), "Storing pickup in save");
         map.getSaveManager().addLocationEntry(getLocationEntry(), "picked up");
     }
 
