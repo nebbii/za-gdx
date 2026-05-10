@@ -76,10 +76,10 @@ public class SaveManager {
     }
 
     public void loadSave(String fileName) {
-        FileHandle file = saveFolder.child(fileName + ".json");
+        FileHandle file = saveFolder.child(fileName);
 
         if (!file.exists()) {
-            throw new RuntimeException("Requested save doesn't exist: " + fileName);
+            throw new RuntimeException("Requested save doesn't exist: " + file.name());
         }
 
         currentSave = json.fromJson(SaveData.class, file);

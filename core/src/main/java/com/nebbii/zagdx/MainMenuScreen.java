@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 // TODO: Eventually swap out the dummy assets with real ones once the exporter supports it
 public class MainMenuScreen extends MenuScreen {
@@ -14,8 +13,6 @@ public class MainMenuScreen extends MenuScreen {
     MenuButtonCreateSave menuButtonCreateSave;
     MenuButtonDeleteSave menuButtonDeleteSave;
     MenuButtonHowToPlay menuButtonHowToPlay;
-
-    private BitmapFont font;
 
     private SaveManager saveManager;
     private String selectedFilename;
@@ -26,8 +23,6 @@ public class MainMenuScreen extends MenuScreen {
 
     public void show() {
         super.show();
-
-        font = new BitmapFont();
 
         menuButtonPlay = new MenuButtonPlay(core, this, 46, 71, 92, 29);
         menuButtons.add(menuButtonPlay);
