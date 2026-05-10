@@ -9,25 +9,25 @@ import com.badlogic.gdx.math.Rectangle;
 public class MenuButtonSaveFile extends Rectangle implements MenuButton {
     private final MainMenuScreen mainMenuScreen;
 
-    private String filename;
+    private SaveData saveFile;
     private BitmapFont font;
 
-    public MenuButtonSaveFile(MainMenuScreen mainMenuScreen, String filename, float x, float y, int width, int height) {
+    public MenuButtonSaveFile(MainMenuScreen mainMenuScreen, SaveData saveFile, float x, float y, int width, int height) {
         super(x, y, width, height);
 
         this.mainMenuScreen = mainMenuScreen;
-        this.filename = filename;
+        this.saveFile = saveFile;
 
         this.font = new BitmapFont();
     }
 
     public void draw(SpriteBatch batch) {
-        font.draw(batch, filename, x, y);
+        font.draw(batch, saveFile.name, x, y);
     }
 
     @Override
     public void onTouch() {
-        Gdx.app.log(this.getClass().getSimpleName(), "file: " + filename);
+        Gdx.app.log(this.getClass().getSimpleName(), "saveFile: " + saveFile.filename);
     }
 
     public boolean contains(float x, float y) {

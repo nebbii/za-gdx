@@ -9,4 +9,5 @@ public class SaveData {
     public ArrayList<String> treasures = new ArrayList<>();
     public ArrayList<String> weapons = new ArrayList<>();
     public ArrayList<SavedLocationEntry> locations = new ArrayList<>();
+    public String filename;
 }

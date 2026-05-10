@@ -59,19 +59,20 @@ public class SaveManager {
         writeCurrentSave();
     }
 
-    public ArrayList<String> listSaves() {
+    // TODO: make this get real saves so that the buttons can load the files and show the names
+    public ArrayList<SaveData> getSaves() {
         FileHandle[] files = saveFolder.list();
 
-        ArrayList<String> fileNames = new ArrayList<>();
+        ArrayList<SaveData> saves = new ArrayList<>();
 
         for(FileHandle file : files) {
             SaveData save = json.fromJson(SaveData.class, file);
-            if (save.name != null) {
-                fileNames.add(save.name);
-            }
+
+            save.filename = file.name();
+            saves.add(save);
         }
 
-        return fileNames;
+        return saves;
     }
 
     public void loadSave(String fileName) {

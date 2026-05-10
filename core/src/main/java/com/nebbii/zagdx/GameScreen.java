@@ -12,15 +12,17 @@ public class GameScreen implements Screen {
     private World world;
 
     final Game core;
+    String filename;
 
-    public GameScreen(Game core) {
+    public GameScreen(Game core, String filename) {
         this.core = core;
+        this.filename = filename;
     }
 
     public void show() {
         batch = new SpriteBatch();
 
-        world = new World(batch);
+        world = new World(batch, filename);
     }
 
     @Override

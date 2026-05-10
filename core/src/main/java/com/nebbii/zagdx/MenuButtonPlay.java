@@ -6,17 +6,19 @@ import com.badlogic.gdx.math.Rectangle;
 
 public class MenuButtonPlay extends Rectangle implements MenuButton {
     final Game core;
+    private MainMenuScreen mainMenuScreen;
 
-    public MenuButtonPlay(Game core, float x, float y, int width, int height) {
+    public MenuButtonPlay(Game core, MainMenuScreen mainMenuScreen, float x, float y, int width, int height) {
         super(x, y, width, height);
         this.core = core;
+        this.mainMenuScreen = mainMenuScreen;
     }
 
     public void draw(SpriteBatch batch) {}
 
     @Override
     public void onTouch() {
-        core.setScreen(new GameScreen(core));
+        core.setScreen(new GameScreen(core, mainMenuScreen.getSelectedFilename()));
     }
 
     public boolean contains(float x, float y) {

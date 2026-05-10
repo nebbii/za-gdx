@@ -46,7 +46,7 @@ public class World {
 
     private BitmapFont font;
 
-    public World(SpriteBatch batch) {
+    public World(SpriteBatch batch, String filename) {
         camera = (OrthographicCamera) worldViewport.getCamera();
         input = new GameInput(this);
 
@@ -73,6 +73,9 @@ public class World {
 
         WorldShaders.init();
         this.batch = batch;
+
+        Gdx.app.log(this.getClass().getSimpleName(), "loading this save! " + filename);
+        saveManager.loadSave(filename);
 
         updateWorldBorders();
     }

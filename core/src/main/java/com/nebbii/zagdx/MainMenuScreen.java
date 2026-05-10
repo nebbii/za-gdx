@@ -18,8 +18,9 @@ public class MainMenuScreen extends MenuScreen {
     private BitmapFont font;
 
     private SaveManager saveManager;
+    private String selectedFilename;
 
-    public MainMenuScreen(Game core) {
+	public MainMenuScreen(Game core) {
         super(core);
     }
 
@@ -28,7 +29,7 @@ public class MainMenuScreen extends MenuScreen {
 
         font = new BitmapFont();
 
-        menuButtonPlay = new MenuButtonPlay(core, 46, 71, 92, 29);
+        menuButtonPlay = new MenuButtonPlay(core, this, 46, 71, 92, 29);
         menuButtons.add(menuButtonPlay);
         menuButtonCreateSave = new MenuButtonCreateSave(core, 46, 37, 92, 29);
         menuButtons.add(menuButtonCreateSave);
@@ -62,10 +63,10 @@ public class MainMenuScreen extends MenuScreen {
     }
 
     public void loadSaveBox() {
-        ArrayList<String> saves = saveManager.listSaves();
+        ArrayList<SaveData> saves = saveManager.getSaves();
 
         int i = 0;
-        for (String save : saves) {
+        for (SaveData save : saves) {
             menuButtons.add(new MenuButtonSaveFile(this, save, 90, 180 - (20 * i), 200, 20));
             i++;
         }
@@ -93,5 +94,13 @@ public class MainMenuScreen extends MenuScreen {
 
     @Override
     public void dispose() {
+    }
+
+    public String getSelectedFilename() {
+        return selectedFilename;
+    }
+
+    public void setSelectedFilename(String selectedFilename) {
+        this.selectedFilename = selectedFilename;
     }
 }
