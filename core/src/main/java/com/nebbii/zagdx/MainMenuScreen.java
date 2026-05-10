@@ -39,9 +39,9 @@ public class MainMenuScreen extends MenuScreen {
         menuButtonHowToPlay = new MenuButtonHowToPlay(core, 251, 37, 92, 29);
         menuButtons.add(menuButtonHowToPlay);
 
-        // menuSaveBox = new MenuSaveBox(core, 76, 115, 234, 80)
-
         saveManager = new SaveManager();
+
+        loadSaveBox();
 
         background = new Texture(Gdx.files.internal("dummy-main-menu.png"));
     }
@@ -59,24 +59,16 @@ public class MainMenuScreen extends MenuScreen {
     public void draw(){
         super.draw();
 
-        drawSaveBox();
     }
 
-    public void drawSaveBox() {
+    public void loadSaveBox() {
         ArrayList<String> saves = saveManager.listSaves();
-
-        int yOffset = 180;
-
-        batch.setProjectionMatrix(camera.combined);
-        batch.begin();
 
         int i = 0;
         for (String save : saves) {
-            font.draw(batch, save, 90, yOffset - (20 * i));
+            menuButtons.add(new MenuButtonSaveFile(this, save, 90, 180 - (20 * 0), 200, 20));
             i++;
         }
-
-        batch.end();
     }
 
     @Override

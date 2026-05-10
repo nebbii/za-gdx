@@ -1,6 +1,7 @@
 package com.nebbii.zagdx;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
 public class MenuButtonDeleteSave extends Rectangle implements MenuButton {
@@ -12,7 +13,7 @@ public class MenuButtonDeleteSave extends Rectangle implements MenuButton {
         this.core = core;
     }
 
-    public void draw() {}
+    public void draw(SpriteBatch batch) {}
 
     @Override
     public void onTouch() {

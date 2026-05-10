@@ -1,5 +1,6 @@
 package com.nebbii.zagdx;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
 public class MenuPauseSlotTreasures extends Rectangle implements MenuButton {
@@ -13,7 +14,7 @@ public class MenuPauseSlotTreasures extends Rectangle implements MenuButton {
         heldItem = Treasure.NONE;
     }
 
-    public void draw() {}
+    public void draw(SpriteBatch batch) {}
 
     @Override
     public void onTouch() {
