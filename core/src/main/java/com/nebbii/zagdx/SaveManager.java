@@ -94,6 +94,14 @@ public class SaveManager {
         currentSaveFile.writeString(json.prettyPrint(currentSave), false);
     }
 
+    public Item getEquippedItem() {
+        return currentSave.equippedItem;
+    }
+
+    public void setEquippedItem(Item equippedItem) {
+        this.currentSave.equippedItem = equippedItem;
+    }
+
     public int getRubies() {
         return currentSave.rubies;
     }

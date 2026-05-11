@@ -164,6 +164,7 @@ public class GameManager {
 
     public void reloadSave() {
         reloadRubies();
+        reloadEquippedItem();
         reloadTreasures();
         reloadWeapons();
         reloadLocations();
@@ -172,6 +173,11 @@ public class GameManager {
     public void reloadRubies() {
         SaveManager saveManager = world.getSaveManager();
         setRubies(saveManager.getRubies(), false);
+    }
+
+    public void reloadEquippedItem() {
+        SaveManager saveManager = world.getSaveManager();
+        getZelda().setCurrentItem(saveManager.getEquippedItem());
     }
 
     public void reloadTreasures() {

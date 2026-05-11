@@ -27,6 +27,8 @@ public class MenuPauseSlotEquip extends Rectangle implements MenuButton {
         case MAINHAND:
         default:
             gameManager.getZelda().setCurrentItem(Treasure.NONE);
+            gameManager.getSaveManager().setEquippedItem(Treasure.NONE);
+            gameManager.getSaveManager().writeCurrentSave();
         }
     }
 

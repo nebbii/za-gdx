@@ -19,6 +19,8 @@ public class MenuPauseSlotWeapons extends Rectangle implements MenuButton {
     @Override
     public void onTouch() {
         gameManager.getZelda().setCurrentItem(getHeldItem());
+        gameManager.getSaveManager().setEquippedItem(getHeldItem());
+        gameManager.getSaveManager().writeCurrentSave();
     }
 
     public Rectangle getHitbox() {
