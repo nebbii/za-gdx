@@ -86,6 +86,11 @@ public class SaveManager {
         currentSaveFile = file;
     }
 
+    public void deleteSave() {
+        FileHandle file = saveFolder.child(fileName);
+
+    }
+
     public void writeCurrentSave() {
         if (currentSave == null || currentSaveFile == null) {
             throw new RuntimeException("No save is currently loaded");

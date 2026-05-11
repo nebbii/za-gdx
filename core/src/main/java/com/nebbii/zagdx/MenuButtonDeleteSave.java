@@ -6,17 +6,19 @@ import com.badlogic.gdx.math.Rectangle;
 
 public class MenuButtonDeleteSave extends Rectangle implements MenuButton {
 
-    final Game core;
+    private MainMenuScreen menuScreen;
 
-    public MenuButtonDeleteSave(Game core, float x, float y, int width, int height) {
+    public MenuButtonDeleteSave(MainMenuScreen menuScreen, float x, float y, int width, int height) {
         super(x, y, width, height);
-        this.core = core;
+        this.menuScreen = menuScreen;
     }
 
     public void draw(SpriteBatch batch) {}
 
     @Override
     public void onTouch() {
+        //menuScreen.getSelectedFilename();
+        //menuScreen.getSaveManager();
     }
 
     public boolean contains(float x, float y) {

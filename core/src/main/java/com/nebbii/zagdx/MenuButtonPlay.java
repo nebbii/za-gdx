@@ -19,8 +19,8 @@ public class MenuButtonPlay extends Rectangle implements MenuButton {
 
     @Override
     public void onTouch() {
-        if (mainMenuScreen.getSelectedFilename() != null) {
-            core.setScreen(new GameScreen(core, mainMenuScreen.getSelectedFilename()));
+        if (mainMenuScreen.getSelectedFile() != null) {
+            core.setScreen(new GameScreen(core, mainMenuScreen.getSelectedFile()));
         }
         else {
             Gdx.app.log(getClass().getSimpleName(), "No file selected");

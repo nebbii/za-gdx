@@ -129,7 +129,6 @@ public class Zelda extends Rectangle implements Actor {
     public void action() {
         if (!isActive()) return;
         if (!isMoving() && !isStopped()) return;
-        Gdx.app.log(getClass().getSimpleName(), "doing action");
 
         if (getCurrentItem() instanceof Treasure) {
             switch ((Treasure) getCurrentItem()) {
@@ -162,7 +161,6 @@ public class Zelda extends Rectangle implements Actor {
             default:
             }
 
-            Gdx.app.log(getClass().getSimpleName(), "almost at return");
             return; // treasures never do the attack animation
         }
         else if (getCurrentItem() instanceof Weapon) {
@@ -179,7 +177,6 @@ public class Zelda extends Rectangle implements Actor {
             default:
             }
         }
-        Gdx.app.log(getClass().getSimpleName(), "past the if else");
 
         switch (getAnimState()) {
         case STOPLEFT:

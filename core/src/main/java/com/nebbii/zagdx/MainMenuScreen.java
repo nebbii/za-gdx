@@ -15,7 +15,7 @@ public class MainMenuScreen extends MenuScreen {
     MenuButtonHowToPlay menuButtonHowToPlay;
 
     private SaveManager saveManager;
-    private String selectedFilename;
+    private SaveData selectedFile;
 
 	public MainMenuScreen(Game core) {
         super(core);
@@ -28,7 +28,7 @@ public class MainMenuScreen extends MenuScreen {
         menuButtons.add(menuButtonPlay);
         menuButtonCreateSave = new MenuButtonCreateSave(core, 46, 37, 92, 29);
         menuButtons.add(menuButtonCreateSave);
-        menuButtonDeleteSave = new MenuButtonDeleteSave(core, 147, 37, 92, 29);
+        menuButtonDeleteSave = new MenuButtonDeleteSave(this, 147, 37, 92, 29);
         menuButtons.add(menuButtonDeleteSave);
         menuButtonExit = new MenuButtonExit(core, 290, 71, 55, 39);
         menuButtons.add(menuButtonExit);
@@ -91,11 +91,15 @@ public class MainMenuScreen extends MenuScreen {
     public void dispose() {
     }
 
-    public String getSelectedFilename() {
-        return selectedFilename;
+    public SaveData getSelectedFile() {
+        return selectedFile;
     }
 
-    public void setSelectedFilename(String selectedFilename) {
-        this.selectedFilename = selectedFilename;
+    public void setSelectedFile(SaveData selectedFile) {
+        this.selectedFile = selectedFile;
+    }
+
+    public SaveManager getSaveManager() {
+        return this.saveManager;
     }
 }

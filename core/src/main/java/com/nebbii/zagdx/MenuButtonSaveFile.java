@@ -27,7 +27,7 @@ public class MenuButtonSaveFile extends Rectangle implements MenuButton {
 
     @Override
     public void onTouch() {
-        mainMenuScreen.setSelectedFilename(saveFile.filename);
+        mainMenuScreen.setSelectedFile(saveFile);
         Gdx.app.log(this.getClass().getSimpleName(), "saveFile: " + saveFile.filename);
     }
 
