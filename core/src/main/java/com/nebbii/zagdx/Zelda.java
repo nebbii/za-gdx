@@ -142,6 +142,7 @@ public class Zelda extends Rectangle implements Actor {
 
                 spawnerPitcherFull.activate(world.getGameManager());
                 equipItem(Weapon.WAND);
+                world.getSaveManager().setEquippedItem(Weapon.WAND);
                 break;
             case PITCHER_FULL:
                 SpawnerVialOfWind spawnerVialOfWind = (SpawnerVialOfWind) map.findActorByType(SpawnerVialOfWind.class);
@@ -151,6 +152,7 @@ public class Zelda extends Rectangle implements Actor {
 
                 spawnerVialOfWind.activate(world.getGameManager());
                 equipItem(Weapon.WAND);
+                world.getSaveManager().setEquippedItem(Weapon.WAND);
                 break;
             default:
             }

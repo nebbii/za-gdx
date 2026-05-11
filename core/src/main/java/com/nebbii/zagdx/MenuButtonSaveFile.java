@@ -22,7 +22,7 @@ public class MenuButtonSaveFile extends Rectangle implements MenuButton {
     }
 
     public void draw(SpriteBatch batch) {
-        font.draw(batch, saveFile.name, x, y);
+        font.draw(batch, saveFile.name, x, y + 15); // temporary (hopefully) until it's rendered
     }
 
     @Override

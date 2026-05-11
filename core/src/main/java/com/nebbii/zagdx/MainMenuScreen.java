@@ -62,7 +62,7 @@ public class MainMenuScreen extends MenuScreen {
 
         int i = 0;
         for (SaveData save : saves) {
-            menuButtons.add(new MenuButtonSaveFile(this, save, 90, 180 - (20 * i), 200, 20));
+            menuButtons.add(new MenuButtonSaveFile(this, save, 90, 165 - (20 * i), 200, 20));
             i++;
         }
     }
