@@ -54,17 +54,6 @@
       "location": "d8",
       "__comment": "d8: Two Leevers.",
       "actors": [
-        {
-          "type": "SpawnerBoomerang",
-          "x": 1224,
-          "y": 1988
-        },
-        {
-          "type": "EnemyGoriya",
-          "__comment": "Defeating this guy spawns the boomerang",
-          "x": 1370,
-          "y": 2025
-        }
       ]
     },
     {
