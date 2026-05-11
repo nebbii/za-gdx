@@ -129,6 +129,7 @@ public class Zelda extends Rectangle implements Actor {
     public void action() {
         if (!isActive()) return;
         if (!isMoving() && !isStopped()) return;
+        Gdx.app.log(getClass().getSimpleName(), "doing action");
 
         if (getCurrentItem() instanceof Treasure) {
             switch ((Treasure) getCurrentItem()) {
@@ -141,8 +142,10 @@ public class Zelda extends Rectangle implements Actor {
                 if (!spawnerPitcherFull.isActive()) return;
 
                 spawnerPitcherFull.activate(world.getGameManager());
+                /*
                 equipItem(Weapon.WAND);
                 world.getSaveManager().setEquippedItem(Weapon.WAND);
+                */
                 break;
             case PITCHER_FULL:
                 SpawnerVialOfWind spawnerVialOfWind = (SpawnerVialOfWind) map.findActorByType(SpawnerVialOfWind.class);
@@ -151,16 +154,18 @@ public class Zelda extends Rectangle implements Actor {
                 if (!spawnerVialOfWind.isActive()) return;
 
                 spawnerVialOfWind.activate(world.getGameManager());
+                /*
                 equipItem(Weapon.WAND);
                 world.getSaveManager().setEquippedItem(Weapon.WAND);
+                */
                 break;
             default:
             }
 
+            Gdx.app.log(getClass().getSimpleName(), "almost at return");
             return; // treasures never do the attack animation
         }
-
-        if (getCurrentItem() instanceof Weapon) {
+        else if (getCurrentItem() instanceof Weapon) {
             switch ((Weapon) getCurrentItem()) {
             case BOOMERANG:
                 if (world.getGameManager().getRubies() > 0
@@ -174,6 +179,7 @@ public class Zelda extends Rectangle implements Actor {
             default:
             }
         }
+        Gdx.app.log(getClass().getSimpleName(), "past the if else");
 
         switch (getAnimState()) {
         case STOPLEFT:
