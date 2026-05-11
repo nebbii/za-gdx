@@ -94,31 +94,35 @@ public class SaveManager {
         currentSaveFile.writeString(json.prettyPrint(currentSave), false);
     }
 
+    public int getRubies() {
+        return currentSave.rubies;
+    }
+
     public void setRubies(int rubies) {
         currentSave.rubies = rubies;
     }
 
-    public void addTreasure(String treasure) {
+    public void addTreasure(Treasure treasure) {
         currentSave.treasures.add(treasure);
     }
 
-    public void addWeapon(String weapon) {
+    public void addWeapon(Weapon weapon) {
         currentSave.weapons.add(weapon);
     }
 
-    public boolean removeTreasure(String treasure) {
+    public boolean removeTreasure(Treasure treasure) {
         return currentSave.treasures.remove(treasure);
     }
 
-    public boolean removeWeapon(String weapon) {
+    public boolean removeWeapon(Weapon weapon) {
         return currentSave.weapons.remove(weapon);
     }
 
-    public ArrayList<String> getTreasures() {
+    public ArrayList<Treasure> getTreasures() {
         return currentSave.treasures;
     }
 
-    public ArrayList<String> getWeapons() {
+    public ArrayList<Weapon> getWeapons() {
         return currentSave.weapons;
     }
 
@@ -147,5 +151,13 @@ public class SaveManager {
 
         currentSave.locations.add(entry);
         writeCurrentSave();
+    }
+
+    public SaveData getCurrentSave() {
+        return currentSave;
+    }
+
+    public void setCurrentSave(SaveData currentSave) {
+        this.currentSave = currentSave;
     }
 }

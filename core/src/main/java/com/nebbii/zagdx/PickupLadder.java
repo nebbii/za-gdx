@@ -29,7 +29,7 @@ public class PickupLadder extends Pickup {
 
     public void onPickup(GameManager game) {
         super.onPickup(game);
-        game.addTreasure(Treasure.LADDER);
+        game.addTreasure(Treasure.LADDER, true);
         this.setState(State.DEAD);
     }
 }

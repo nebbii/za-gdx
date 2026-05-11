@@ -1,6 +1,7 @@
 package com.nebbii.zagdx;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
@@ -18,7 +19,12 @@ public class MenuButtonPlay extends Rectangle implements MenuButton {
 
     @Override
     public void onTouch() {
-        core.setScreen(new GameScreen(core, mainMenuScreen.getSelectedFilename()));
+        if (mainMenuScreen.getSelectedFilename() != null) {
+            core.setScreen(new GameScreen(core, mainMenuScreen.getSelectedFilename()));
+        }
+        else {
+            Gdx.app.log(getClass().getSimpleName(), "No file selected");
+        }
     }
 
     public boolean contains(float x, float y) {

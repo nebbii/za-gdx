@@ -24,7 +24,7 @@ public class SpawnerBoomerang extends Spawner {
         pickup.setPosition(this.getX(), this.getY());
         Gdx.app.log(this.getClass().getSimpleName(), "item placed");
 
-        map.addNewActor(pickup);
+        map.addNewPickupWithParent(pickup, this);
         setState(State.DEAD);
     }
 }

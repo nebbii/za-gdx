@@ -29,7 +29,7 @@ public class PickupVialOfWind extends Pickup {
 
     public void onPickup(GameManager game) {
         super.onPickup(game);
-        game.addTreasure(Treasure.VIAL_OF_WIND);
+        game.addTreasure(Treasure.VIAL_OF_WIND, true);
         this.setState(State.DEAD);
     }
 }

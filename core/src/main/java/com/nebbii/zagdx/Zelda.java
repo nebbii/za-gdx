@@ -163,7 +163,7 @@ public class Zelda extends Rectangle implements Actor {
             case BOOMERANG:
                 if (world.getGameManager().getRubies() > 0
                     && map.findActorByType(ZeldaActionBoomerang.class) == null) {
-                    world.getGameManager().decreaseRubies(1);
+                    world.getGameManager().decreaseRubies(1, true);
                     map.addNewActor(new ZeldaActionBoomerang(this, getX(), getY()));
                 }
                 break;

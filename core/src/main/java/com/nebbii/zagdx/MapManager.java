@@ -145,9 +145,30 @@ public class MapManager {
         newActors.add(actor);
     }
 
+    // for applying checks when a spawned item gets picked up
+    public void addNewPickupWithParent(Pickup pickup, Spawner spawner) {
+        pickup.setMap(this);
+        pickup.setSpawnerParent(spawner);
+        newActors.add(pickup);
+    }
+
     public Actor findActorByType(Class<? extends Actor> type) {
         for (Actor actor : actors) {
             if (type.isInstance(actor)) {
+                return actor;
+            }
+        }
+
+        return null;
+    }
+
+    public Actor findActorByLocationEntry(String locationEntry) {
+        if (locationEntry == null) {
+            return null;
+        }
+
+        for (Actor actor : actors) {
+            if (locationEntry.equals(actor.getLocationEntry())) {
                 return actor;
             }
         }

@@ -40,10 +40,10 @@ public class PickupRuby extends Pickup {
     public void onPickup(GameManager game) {
         switch(getRubyType()) {
         case BLUE:
-            game.increaseRubies(5);
+            game.increaseRubies(5, true);
             break;
         case YELLOW:
-            game.increaseRubies(10);
+            game.increaseRubies(10, true);
             break;
         default:
             throw new IllegalStateException("PickupRuby: Unhandled ruby type: " + getRubyType());

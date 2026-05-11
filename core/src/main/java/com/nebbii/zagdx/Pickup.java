@@ -13,6 +13,7 @@ public class Pickup extends Rectangle implements Actor {
     private int drawOrder;
     private boolean solid;
     private Texture image;
+    private Spawner spawnerParent;
 
     private float duration;
 
@@ -26,6 +27,7 @@ public class Pickup extends Rectangle implements Actor {
         setState(State.PENDING);
         this.drawOrder = 1;
         this.duration = 0;
+        this.spawnerParent = null;
     }
 
     @Override
@@ -63,7 +65,13 @@ public class Pickup extends Rectangle implements Actor {
 
     public void onPickup(GameManager game) {
         Gdx.app.log(this.getClass().getSimpleName(), "Storing pickup in save");
-        map.getSaveManager().addLocationEntry(getLocationEntry(), "picked up");
+
+        if (spawnerParent != null) {
+            map.getSaveManager().addLocationEntry(spawnerParent.getLocationEntry(), "spawned");
+        }
+        else if (getLocationEntry() != null) {
+            map.getSaveManager().addLocationEntry(getLocationEntry(), "picked_up");
+        }
     }
 
     @Override
@@ -169,5 +177,13 @@ public class Pickup extends Rectangle implements Actor {
     @Override
     public void setLocationEntry(String locationEntry) {
         this.locationEntry = locationEntry;
+    }
+
+    public Spawner getSpawnerParent() {
+        return spawnerParent;
+    }
+
+    public void setSpawnerParent(Spawner spawnerParent) {
+        this.spawnerParent = spawnerParent;
     }
 }

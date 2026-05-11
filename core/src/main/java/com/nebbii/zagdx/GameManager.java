@@ -43,7 +43,7 @@ public class GameManager {
 
         currentMap = "overworld";
 
-        gameState = GameState.FADE_WARP;
+        gameState = GameState.FADE_GAMEOVER;
         fadeToggle = FadeToggle.IN;
 
         rubies = 0;
@@ -139,8 +139,11 @@ public class GameManager {
 
         Zelda zelda = world.getMapManager().getZelda();
 
+        world.getMapManager().loadMapByName(currentMap);
+
         if (hasDied) {
             zelda.revive();
+
             switch(currentMap) {
             case "shrine_of_earth":
                 world.getMapManager().updateSpawnLocation("exit_earth");
@@ -149,10 +152,37 @@ public class GameManager {
                 world.getMapManager().updateSpawnLocation("overworld_pedestal");
             }
         }
-        world.getMapManager().loadMapByName(currentMap);
+
+        if (hasDied) {
+            reloadSave();
+        }
 
         zelda.setPosition(zelda.getSpawnX(), zelda.getSpawnY());
         world.getWorldCamera().resetPosition();
+    }
+
+    public void reloadSave() {
+        SaveManager saveManager = world.getSaveManager();
+        setRubies(saveManager.getRubies(), false);
+
+        for(Treasure treasure : saveManager.getTreasures()) {
+            addTreasure(treasure, false);
+        }
+
+        for(Weapon weapon : saveManager.getWeapons()) {
+            addWeapon(weapon, false);
+        }
+
+        for(SavedLocationEntry locationEntry : saveManager.getLocations()) {
+            switch(locationEntry.action) {
+            case "picked_up":
+            case "permadead":
+            case "spawned":
+                Actor actor = world.getMapManager().findActorByLocationEntry(locationEntry.id);
+                actor.setState(State.DEAD);
+                break;
+            }
+        }
     }
 
     public int calculateProjectileDamage(Projectile projectile) {
@@ -191,44 +221,57 @@ public class GameManager {
         return rubies;
     }
 
-    public void setRubies(int rubies) {
+    public void setRubies(int rubies, boolean save) {
         this.rubies = rubies;
+
+        if (save) {
+            world.getSaveManager().setRubies(rubies);
+            world.getSaveManager().writeCurrentSave();
+        }
     }
 
-    public void increaseRubies(int count) {
-        setRubies(getRubies() + count);
-        world.getSaveManager().setRubies(getRubies());
-        world.getSaveManager().writeCurrentSave();
+    public void increaseRubies(int count, boolean save) {
+        setRubies(getRubies() + count, save);
     }
 
-    public void decreaseRubies(int count) {
-        setRubies(getRubies() - count);
-        world.getSaveManager().setRubies(getRubies());
-        world.getSaveManager().writeCurrentSave();
+    public void decreaseRubies(int count, boolean save) {
+        setRubies(getRubies() - count, save);
     }
 
-    public void addTreasure(Treasure treasure) {
+    public void addTreasure(Treasure treasure, boolean save) {
         treasures.add(treasure);
-        world.getSaveManager().addTreasure(treasure.toString());
-        world.getSaveManager().writeCurrentSave();
+
+        if (save) {
+            world.getSaveManager().addTreasure(treasure);
+            world.getSaveManager().writeCurrentSave();
+        }
     }
 
-    public void removeTreasure(Treasure treasure) {
+    public void removeTreasure(Treasure treasure, boolean save) {
         treasures.remove(treasure);
-        world.getSaveManager().removeTreasure(treasure.toString());
-        world.getSaveManager().writeCurrentSave();
+
+        if (save) {
+            world.getSaveManager().removeTreasure(treasure);
+            world.getSaveManager().writeCurrentSave();
+        }
     }
 
-    public void addWeapon(Weapon weapon) {
+    public void addWeapon(Weapon weapon, boolean save) {
         weapons.add(weapon);
-        world.getSaveManager().addWeapon(weapon.toString());
-        world.getSaveManager().writeCurrentSave();
+
+        if (save) {
+            world.getSaveManager().addWeapon(weapon);
+            world.getSaveManager().writeCurrentSave();
+        }
     }
 
-    public void removeWeapon(Weapon weapon) {
+    public void removeWeapon(Weapon weapon, boolean save) {
         weapons.remove(weapon);
-        world.getSaveManager().removeWeapon(weapon.toString());
-        world.getSaveManager().writeCurrentSave();
+
+        if (save) {
+            world.getSaveManager().removeWeapon(weapon);
+            world.getSaveManager().writeCurrentSave();
+        }
     }
 
     public Zelda getZelda() {

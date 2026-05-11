@@ -6,8 +6,8 @@ public class SaveData {
     public String name;
     public int rubies;
 
-    public ArrayList<String> treasures = new ArrayList<>();
-    public ArrayList<String> weapons = new ArrayList<>();
+    public ArrayList<Treasure> treasures = new ArrayList<>();
+    public ArrayList<Weapon> weapons = new ArrayList<>();
     public ArrayList<SavedLocationEntry> locations = new ArrayList<>();
     public String filename;
 }

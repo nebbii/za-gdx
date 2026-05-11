@@ -22,7 +22,7 @@ public class SpawnerPitcherFull extends Spawner {
         Gdx.app.log(getClass().getSimpleName(), "item placed");
 
         map.addActor(pitcher);
-        game.removeTreasure(Treasure.PITCHER_EMPTY);
+        game.removeTreasure(Treasure.PITCHER_EMPTY, true);
         setState(State.DEAD);
     }
 }
