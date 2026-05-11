@@ -177,7 +177,9 @@ public class GameManager {
 
     public void reloadEquippedItem() {
         SaveManager saveManager = world.getSaveManager();
-        getZelda().setCurrentItem(saveManager.getEquippedItem());
+        if (saveManager.getEquippedItem() != null) {
+            getZelda().setCurrentItem(saveManager.getEquippedItem());
+        }
     }
 
     public void reloadTreasures() {

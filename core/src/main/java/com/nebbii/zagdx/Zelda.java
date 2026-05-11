@@ -339,6 +339,7 @@ public class Zelda extends Rectangle implements Actor {
     }
 
     public void equipItem(Item item) {
+        Gdx.app.log(getClass().getSimpleName(), "Equipping item: " + item.toString());
         if (world.getGameManager().hasItem(item)) {
             setCurrentItem(item);
         }
