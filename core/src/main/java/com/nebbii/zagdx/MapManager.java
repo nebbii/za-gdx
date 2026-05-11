@@ -291,7 +291,7 @@ public class MapManager {
     }
 
     public void loadMapByName(String mapName) {
-        Gdx.app.log(getClass().getSimpleName(), "loading map: " + mapName);
+        Gdx.app.log(getClass().getSimpleName(), "loadMapByName(" + mapName + ")");
 
         overlay.loadObjectsFromLayer(loader, mapName, "Overlay");
         collision.loadObjectsFromLayer(loader, mapName, "Collision");

@@ -151,10 +151,11 @@ public class GameManager {
             default:
                 world.getMapManager().updateSpawnLocation("overworld_pedestal");
             }
-        }
 
-        if (hasDied) {
             reloadSave();
+        }
+        else {
+            reloadLocations();
         }
 
         zelda.setPosition(zelda.getSpawnX(), zelda.getSpawnY());
@@ -162,16 +163,39 @@ public class GameManager {
     }
 
     public void reloadSave() {
+        reloadRubies();
+        reloadTreasures();
+        reloadWeapons();
+        reloadLocations();
+    }
+
+    public void reloadRubies() {
         SaveManager saveManager = world.getSaveManager();
         setRubies(saveManager.getRubies(), false);
+    }
+
+    public void reloadTreasures() {
+        SaveManager saveManager = world.getSaveManager();
+
+        this.treasures = new ArrayList<Treasure>();
 
         for(Treasure treasure : saveManager.getTreasures()) {
             addTreasure(treasure, false);
         }
+    }
+
+    public void reloadWeapons() {
+        SaveManager saveManager = world.getSaveManager();
+
+        this.weapons = new ArrayList<Weapon>();
 
         for(Weapon weapon : saveManager.getWeapons()) {
             addWeapon(weapon, false);
         }
+    }
+
+    public void reloadLocations() {
+        SaveManager saveManager = world.getSaveManager();
 
         for(SavedLocationEntry locationEntry : saveManager.getLocations()) {
             switch(locationEntry.action) {
@@ -179,11 +203,14 @@ public class GameManager {
             case "permadead":
             case "spawned":
                 Actor actor = world.getMapManager().findActorByLocationEntry(locationEntry.id);
-                actor.setState(State.DEAD);
+                if (actor != null) {
+                    actor.setState(State.DEAD);
+                }
                 break;
             }
         }
     }
+
 
     public int calculateProjectileDamage(Projectile projectile) {
         return 20;
