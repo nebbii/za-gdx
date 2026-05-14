@@ -188,6 +188,7 @@ public class WorldCollision {
 
     private void collideZeldaWithSpecial(PolygonMapObject polygonObject, Zelda zelda) {
         String name = polygonObject.getName();
+        SaveManager saveManager = game.getSaveManager();
 
         if (name == null) {
             name = "";
@@ -206,6 +207,12 @@ public class WorldCollision {
         case "exit_earth":
             map.updateSpawnLocation("exit_earth");
             game.initializeFadeWarp();
+            break;
+        case "ladder_bridge_1":
+        case "ladder_bridge_2":
+            if (!saveManager.hasLocationEntry("s1-2_0")) {
+                resolveRectangleVsPolygon(zelda.getCollisionBox(), polygonObject.getPolygon());
+            }
             break;
         default:
             resolveRectangleVsPolygon(zelda.getCollisionBox(), polygonObject.getPolygon());

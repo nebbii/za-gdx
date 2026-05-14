@@ -44,10 +44,6 @@ public class MapManager {
         newActors = new ArrayList<>();
 
         zelda = new Zelda(world, this);
-
-        if (zelda.getSpawnX() == -1 && zelda.getSpawnY() == -1) {
-            updateSpawnLocation("overworld_pedestal");
-        }
     }
 
     public void logic() {

@@ -8,7 +8,18 @@
     {
       "location": "s1-2",
       "__comment": "s1-2: Zelda must use the ladder to cross the chasm.",
-      "actors": []
+      "actors": [
+        {
+          "type": "SpawnerLadder",
+          "x": 530,
+          "y": 850
+        },
+        {
+          "type": "SpriteLadder",
+          "x": 517,
+          "y": 781
+        }
+      ]
     },
     {
       "location": "s1-3",

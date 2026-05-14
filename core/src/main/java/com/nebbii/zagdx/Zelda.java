@@ -2,9 +2,7 @@ package com.nebbii.zagdx;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
 import com.nebbii.zagdx.animation.ZeldaAnimation;
 
 public class Zelda extends Rectangle implements Actor {
@@ -137,26 +135,23 @@ public class Zelda extends Rectangle implements Actor {
             case PITCHER_EMPTY:
                 SpawnerPitcherFull spawnerPitcherFull = (SpawnerPitcherFull) map.findActorByType(SpawnerPitcherFull.class);
 
-                if (spawnerPitcherFull == null) return;
-                if (!spawnerPitcherFull.isActive()) return;
-
-                spawnerPitcherFull.activate(world.getGameManager());
-                /*
-                equipItem(Weapon.WAND);
-                world.getSaveManager().setEquippedItem(Weapon.WAND);
-                */
+                if (spawnerPitcherFull != null && spawnerPitcherFull.isActive()) {
+                    spawnerPitcherFull.activate(world.getGameManager());
+                }
                 break;
             case PITCHER_FULL:
                 SpawnerVialOfWind spawnerVialOfWind = (SpawnerVialOfWind) map.findActorByType(SpawnerVialOfWind.class);
 
-                if (spawnerVialOfWind == null) return;
-                if (!spawnerVialOfWind.isActive()) return;
+                if (spawnerVialOfWind != null && spawnerVialOfWind.isActive()) {
+                    spawnerVialOfWind.activate(world.getGameManager());
+                }
+                break;
+            case LADDER:
+                SpawnerLadder spawnerLadder = (SpawnerLadder) map.findActorByType(SpawnerLadder.class);
 
-                spawnerVialOfWind.activate(world.getGameManager());
-                /*
-                equipItem(Weapon.WAND);
-                world.getSaveManager().setEquippedItem(Weapon.WAND);
-                */
+                if (spawnerLadder != null && spawnerLadder.isActive()) {
+                    spawnerLadder.activate(world.getGameManager());
+                }
                 break;
             default:
             }

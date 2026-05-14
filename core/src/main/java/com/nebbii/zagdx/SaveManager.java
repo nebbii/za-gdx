@@ -59,7 +59,6 @@ public class SaveManager {
         writeCurrentSave();
     }
 
-    // TODO: make this get real saves so that the buttons can load the files and show the names
     public ArrayList<SaveData> getSaves() {
         FileHandle[] files = saveFolder.list();
 
@@ -145,9 +144,19 @@ public class SaveManager {
         return currentSave.locations;
     }
 
-    public boolean hasLocationEntry(String location) {
+    public SavedLocationEntry getLocationEntryById(String id) {
         for (SavedLocationEntry entry : currentSave.locations) {
-            if (entry.id.equals(location)) {
+            if (entry.id.equals(id)) {
+                return entry;
+            }
+        }
+
+        return null;
+    }
+
+    public boolean hasLocationEntry(String id) {
+        for (SavedLocationEntry entry : currentSave.locations) {
+            if (entry.id.equals(id)) {
                 return true;
             }
         }

@@ -62,6 +62,9 @@ public class ImageLoader {
     /* NPCs */
     private Texture[] npcGlebb;
 
+    /* Map stuff */
+    private Texture spriteLadder;
+
     /* Treasures */
     private Texture bone;
     private Texture ladder;
@@ -157,7 +160,11 @@ public class ImageLoader {
         enemyDeeler.put(EnemyDeelerAnimationGroup.WALK,
             loadTextureArray("export/overworld/g29/sprites/desc0/group0", 3));
 
+        /* NPCs */
         npcGlebb = loadTextureArray("export/overworld/j24/sprites/desc0/group0", 5);
+
+        /* Map stuff */
+        spriteLadder = new Texture("export/underworld/s102/sprites/desc0/group0/sprite0.png");
 
         /* Items */
         rubyBlue = new Texture("export/common/hudSprites/3.png");
@@ -247,6 +254,9 @@ public class ImageLoader {
         for (Texture texture : npcGlebb) {
             texture.dispose();
         }
+
+        /* Map stuff */
+        spriteLadder.dispose();
 
         /* Items */
         rubyBlue.dispose();
@@ -426,6 +436,10 @@ public class ImageLoader {
 
     public Texture getLadder() {
         return ladder;
+    }
+
+    public Texture getSpriteLadder() {
+        return spriteLadder;
     }
 
     public Texture getPitcherEmpty() {
