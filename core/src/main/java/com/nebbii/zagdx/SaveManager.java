@@ -86,9 +86,11 @@ public class SaveManager {
         currentSaveFile = file;
     }
 
-    public void deleteSave() {
+    // TODO: this needs a confirm prompt lmao
+    public boolean deleteSave(String fileName) {
         FileHandle file = saveFolder.child(fileName);
 
+        return file.delete();
     }
 
     public void writeCurrentSave() {

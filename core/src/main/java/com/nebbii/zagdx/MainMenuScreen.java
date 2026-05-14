@@ -14,6 +14,8 @@ public class MainMenuScreen extends MenuScreen {
     MenuButtonDeleteSave menuButtonDeleteSave;
     MenuButtonHowToPlay menuButtonHowToPlay;
 
+    protected ArrayList<MenuButtonSaveFile> menuButtonSaves;
+
     private SaveManager saveManager;
     private SaveData selectedFile;
 
@@ -37,7 +39,7 @@ public class MainMenuScreen extends MenuScreen {
 
         saveManager = new SaveManager();
 
-        loadSaveBox();
+        reloadSaves();
 
         background = new Texture(Gdx.files.internal("dummy-main-menu.png"));
     }
@@ -50,19 +52,38 @@ public class MainMenuScreen extends MenuScreen {
 
     public void logic() {
         super.logic();
+
+        if (Gdx.input.justTouched()) {
+            touchPos.set(Gdx.input.getX(), Gdx.input.getY());
+            viewport.unproject(touchPos);
+
+            for (MenuButtonSaveFile button : menuButtonSaves) {
+                if (button.contains(touchPos.x, touchPos.y)) {
+                    button.onTouch();
+                }
+            }
+        }
     }
 
     public void draw(){
         super.draw();
 
+        batch.setProjectionMatrix(camera.combined);
+        batch.begin();
+        for (MenuButtonSaveFile button : menuButtonSaves) {
+            button.draw(batch);
+        }
+        batch.end();
     }
 
-    public void loadSaveBox() {
+    public void reloadSaves() {
+        menuButtonSaves = new ArrayList<MenuButtonSaveFile>();
+
         ArrayList<SaveData> saves = saveManager.getSaves();
 
         int i = 0;
         for (SaveData save : saves) {
-            menuButtons.add(new MenuButtonSaveFile(this, save, 90, 165 - (20 * i), 200, 20));
+            menuButtonSaves.add(new MenuButtonSaveFile(this, save, 90, 165 - (20 * i), 200, 20));
             i++;
         }
     }
