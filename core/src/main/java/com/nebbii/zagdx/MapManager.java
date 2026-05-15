@@ -24,6 +24,9 @@ public class MapManager {
     public ArrayList<Actor> actors;
     public ArrayList<Actor> newActors;
 
+    private int mapWidth = 0;
+    private int mapHeight = 0;
+
     private Zelda zelda;
 
     private LayerToggle currentLayerToggle;
@@ -313,6 +316,9 @@ public class MapManager {
             }
         }
 
+        setMapWidth(data.width);
+        setMapHeight(data.height);
+
         world.getWorldCamera().resetPosition();
     }
 
@@ -382,5 +388,21 @@ public class MapManager {
 
     public SaveManager getSaveManager() {
         return world.getSaveManager();
+    }
+
+    public int getMapWidth() {
+        return mapWidth;
+    }
+
+    public void setMapWidth(int mapWidth) {
+        this.mapWidth = mapWidth;
+    }
+
+    public int getMapHeight() {
+        return mapHeight;
+    }
+
+    public void setMapHeight(int mapHeight) {
+        this.mapHeight = mapHeight;
     }
 }

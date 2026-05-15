@@ -17,6 +17,7 @@ public class EnemyDeeler extends Enemy {
         super(ActorType.ENEMY, true);
         setHeight(26);
         setHealth(20);
+        setDamage(40);
         setDefense(20);
 
         this.animation = new EnemyDeelerAnimation(this);

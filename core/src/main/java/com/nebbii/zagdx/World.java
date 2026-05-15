@@ -296,7 +296,9 @@ public class World {
     }
 
     public String rowAndColumnToRealCell(int x, int y) {
-        return indexToLetters(x) + (y+1);
+        int actualMapHeight = mapManager.getMapHeight();
+
+        return indexToLetters(x) + (actualMapHeight - y);
     }
 
     public Rectangle[] getWorldBorders() {
