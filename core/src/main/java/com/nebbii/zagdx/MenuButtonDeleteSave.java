@@ -18,6 +18,8 @@ public class MenuButtonDeleteSave extends Rectangle implements MenuButton {
     @Override
     public void onTouch() {
         menuScreen.getSaveManager().deleteSave(menuScreen.getSelectedFile().filename);
+        menuScreen.setSelectedFile(null);
+
         menuScreen.reloadSaves();
     }
 
