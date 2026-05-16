@@ -86,7 +86,13 @@
     {
       "location": "s1-16",
       "__comment": "s1-16: Three red Tektites guard the red boots, which let Zelda cross the river north of Vision Henge in region 1 of the Overworld.",
-      "actors": []
+      "actors": [
+        {
+          "type": "PickupRedBoots",
+          "x": 1410,
+          "y": 1522
+        }
+      ]
     },
     {
       "location": "s1-17",

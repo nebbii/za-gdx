@@ -80,6 +80,7 @@ public class ImageLoader {
     private Texture rubyBlue;
     private Texture rubyYellow;
     private Texture heart;
+    private Texture redBoots;
 
     /* Projectiles */
     private Texture[] projectileBoomerang;
@@ -177,6 +178,7 @@ public class ImageLoader {
         pitcherEmpty = new Texture("export/overworld/j24/sprites/desc1/group0/sprite0.png");
         pitcherFull = new Texture("export/overworld/e20/sprites/desc0/group0/sprite0.png");
         vialOfWind = new Texture("export/overworld/j24/sprites/desc2/group0/sprite0.png");
+        redBoots = new Texture("export/underworld/s116/sprites/desc1/group0/sprite0.png");
 
         /* Weapons */
         wand = new Texture("export/overworld/h23/sprites/desc0/group0/sprite0.png");
@@ -269,6 +271,7 @@ public class ImageLoader {
         pitcherEmpty.dispose();
         pitcherFull.dispose();
         vialOfWind.dispose();
+        redBoots.dispose();
 
         /* Weapons */
         wand.dispose();
@@ -319,6 +322,7 @@ public class ImageLoader {
             case PLANK:
             case RAFT:
             case RED_BOOTS:
+                return getRedBoots();
             case RED_RIBBON:
             case RUG:
             case RUPEES:
@@ -460,5 +464,9 @@ public class ImageLoader {
 
     public Texture[] getProjectileBoomerang() {
         return projectileBoomerang;
+    }
+
+    public Texture getRedBoots() {
+        return redBoots;
     }
 }
