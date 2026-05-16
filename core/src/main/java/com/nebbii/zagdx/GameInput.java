@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.math.Vector3;
+import com.nebbii.zagdx.GameManager.GameState;
 import com.nebbii.zagdx.MenuPause.MenuState;
 
 public class GameInput {
@@ -56,7 +57,14 @@ public class GameInput {
 
     public void handlePause() {
         if (Gdx.input.isKeyJustPressed(Keys.P)) {
-            world.getGameManager().togglePause();
+            GameManager game = world.getGameManager();
+
+            if (game.getGameState() != GameState.PLAY ||
+                game.getGameState() != GameState.PAUSE_ITEMS ||
+                game.getGameState() != GameState.PAUSE_MAP)
+            {
+                world.getGameManager().togglePause();
+            }
         }
     }
 
