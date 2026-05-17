@@ -1,6 +1,6 @@
 # ZaGdx
 
-A port of ZA (originally for the CD-i) written in Java with [libGDX](https://libgdx.com/). 
+A port of ZA (originally for the CD-i) written in Java with [libGDX](https://libgdx.com/).
 
 ## Setup
 ### Requirements
@@ -28,7 +28,7 @@ Execute `./gradlew lwjgl3:run` in the project folder. On initial setup this will
 
 ### Controls
 - Arrows - Move
-- Ctrl - Action
+- Left Shift - Action
 - P - Open inventory
 - Mouse - Interact with inventory
 - Space - Toggle debug data visibility

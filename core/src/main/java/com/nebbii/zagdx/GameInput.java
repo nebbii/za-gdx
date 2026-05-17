@@ -43,7 +43,7 @@ public class GameInput {
     }
 
     public void handleAction(Zelda zelda) {
-        if (Gdx.input.isKeyPressed(Keys.CONTROL_LEFT)) {
+        if (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT)) {
             zelda.action();
         }
     }
