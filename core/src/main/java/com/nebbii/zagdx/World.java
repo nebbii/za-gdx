@@ -46,6 +46,8 @@ public class World {
 
     private BitmapFont font;
 
+    private ArchipelagoClient archipelagoClient;
+
     public World(SpriteBatch batch, SaveData selectedFile) {
         camera = (OrthographicCamera) worldViewport.getCamera();
         input = new GameInput(this);
@@ -70,6 +72,8 @@ public class World {
 
         interfaceCamera = new OrthographicCamera();
         interfaceViewport = new FitViewport(WORLD_WIDTH, WORLD_HEIGHT, interfaceCamera);
+
+        archipelagoClient = new ArchipelagoClient();
 
         WorldShaders.init();
         this.batch = batch;
@@ -379,5 +383,7 @@ public class World {
         batch.dispose();
         mapManager.dispose();
         images.dispose();
+
+        archipelagoClient.close();
     }
 }

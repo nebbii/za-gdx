@@ -8,6 +8,8 @@ dependencies {
     implementation "io.github.berstanio:gdx-svmhelper-annotations:$graalHelperVersion"
   }
 
+  implementation 'io.github.archipelagomw:Java-Client:0.2.1'
+
   testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
   testImplementation 'org.mockito:mockito-core:5.11.0'
 

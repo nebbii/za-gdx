@@ -161,6 +161,7 @@ Thumbs.db
 *.cue
 *.chd
 *.dat
+/assets/archipelago/config.json
 
 ## Special cases:
 
