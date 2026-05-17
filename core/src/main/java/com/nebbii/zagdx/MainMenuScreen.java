@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 // TODO: Eventually swap out the dummy assets with real ones once the exporter supports it
 public class MainMenuScreen extends MenuScreen {
@@ -19,8 +20,13 @@ public class MainMenuScreen extends MenuScreen {
     private SaveManager saveManager;
     private SaveData selectedFile;
 
-	public MainMenuScreen(Game core) {
+    private ArchipelagoClient archipelagoClient;
+
+    private BitmapFont font;
+
+    public MainMenuScreen(Core core) {
         super(core);
+        this.archipelagoClient = core.getArchipelagoClient();
     }
 
     public void show() {
@@ -40,6 +46,8 @@ public class MainMenuScreen extends MenuScreen {
         saveManager = new SaveManager();
 
         reloadSaves();
+
+        this.font = new BitmapFont();
 
         background = new Texture(Gdx.files.internal("dummy-main-menu.png"));
     }
@@ -65,7 +73,7 @@ public class MainMenuScreen extends MenuScreen {
         }
     }
 
-    public void draw(){
+    public void draw() {
         super.draw();
 
         batch.setProjectionMatrix(camera.combined);
@@ -73,6 +81,11 @@ public class MainMenuScreen extends MenuScreen {
         for (MenuButtonSaveFile button : menuButtonSaves) {
             button.draw(batch);
         }
+
+        if (archipelagoClient.isConnected()) {
+            font.draw(batch, "AP connected", 10, 15);
+        }
+
         batch.end();
     }
 
