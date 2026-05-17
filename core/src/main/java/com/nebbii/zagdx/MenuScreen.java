@@ -2,17 +2,13 @@ package com.nebbii.zagdx;
 
 import java.util.ArrayList;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -33,11 +29,11 @@ public class MenuScreen implements Screen {
     protected Texture background;
     public float fadeOpacity;
 
-    protected final Game core;
+    protected final Core core;
 
     protected ArrayList<MenuButton> menuButtons;
 
-    public MenuScreen(Game core) {
+    public MenuScreen(Core core) {
         this.core = core;
     }
 

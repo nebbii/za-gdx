@@ -11,10 +11,10 @@ public class GameScreen implements Screen {
     private SpriteBatch batch;
     private World world;
 
-    final Game core;
+    final Core core;
     SaveData selectedFile;
 
-    public GameScreen(Game core, SaveData selectedFile) {
+    public GameScreen(Core core, SaveData selectedFile) {
         this.core = core;
         this.selectedFile = selectedFile;
     }
@@ -22,7 +22,7 @@ public class GameScreen implements Screen {
     public void show() {
         batch = new SpriteBatch();
 
-        world = new World(batch, selectedFile);
+        world = new World(batch, selectedFile, core.getArchipelagoClient());
     }
 
     @Override

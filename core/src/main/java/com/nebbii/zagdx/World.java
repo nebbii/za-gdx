@@ -46,7 +46,9 @@ public class World {
 
     private BitmapFont font;
 
-    public World(SpriteBatch batch, SaveData selectedFile) {
+    private ArchipelagoClient archipelagoClient;
+
+    public World(SpriteBatch batch, SaveData selectedFile, ArchipelagoClient archipelagoClient) {
         camera = (OrthographicCamera) worldViewport.getCamera();
         input = new GameInput(this);
 
@@ -76,6 +78,8 @@ public class World {
 
         Gdx.app.log(this.getClass().getSimpleName(), "loading this save! " + selectedFile.filename);
         saveManager.loadSave(selectedFile.filename);
+
+        this.archipelagoClient = archipelagoClient;
 
         updateWorldBorders();
     }
@@ -218,6 +222,8 @@ public class World {
         //debugLines.add("Equip: " + mapManager.getZelda().getCurrentItem().toString());
         //debugLines.add("State: " + mapManager.getZelda().getState());
         debugLines.add("GameState: " + gameManager.getGameState());
+        debugLines.add("AP: " + archipelagoClient.isConnected());
+
 
         batch.setProjectionMatrix(interfaceCamera.combined);
         batch.begin();
@@ -379,5 +385,7 @@ public class World {
         batch.dispose();
         mapManager.dispose();
         images.dispose();
+
+        archipelagoClient.close();
     }
 }

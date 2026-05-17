@@ -1,15 +1,14 @@
 package com.nebbii.zagdx;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
 public class MenuButtonPlay extends Rectangle implements MenuButton {
-    final Game core;
+    final Core core;
     private MainMenuScreen mainMenuScreen;
 
-    public MenuButtonPlay(Game core, MainMenuScreen mainMenuScreen, float x, float y, int width, int height) {
+    public MenuButtonPlay(Core core, MainMenuScreen mainMenuScreen, float x, float y, int width, int height) {
         super(x, y, width, height);
         this.core = core;
         this.mainMenuScreen = mainMenuScreen;

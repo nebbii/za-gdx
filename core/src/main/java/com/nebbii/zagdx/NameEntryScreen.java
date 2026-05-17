@@ -1,6 +1,5 @@
 package com.nebbii.zagdx;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -31,7 +30,7 @@ public class NameEntryScreen extends MenuScreen {
 
     private SaveManager saveManager;
 
-    public NameEntryScreen(Game core) {
+    public NameEntryScreen(Core core) {
         super(core);
 
         saveManager = new SaveManager();
