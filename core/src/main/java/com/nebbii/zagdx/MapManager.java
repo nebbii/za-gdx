@@ -9,7 +9,9 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.maps.objects.PolygonMapObject;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Rectangle;
 
 public class MapManager {
@@ -72,6 +74,35 @@ public class MapManager {
 
         for (Actor actor : actors) {
             actor.draw(batch);
+        }
+    }
+
+    public void drawActorsWithMask(SpriteBatch batch, OrthographicCamera camera) {
+        actors.sort(Comparator.comparingInt(Actor::getDrawOrder));
+
+        for (Actor actor : actors) {
+            Rectangle actorBox = actor.getCollisionBox();
+            float actorLowestY = actorBox.y;
+
+            mask.beginMask(camera);
+
+            // draw the actor above or below the mask depending on the bottom position
+            for (PolygonMapObject object : overlay.getPolygonObjects()) {
+                Polygon polygon = object.getPolygon();
+                float maskLowestY = mask.getLowestY(polygon);
+
+                if (actorLowestY > maskLowestY) {
+                    mask.maskPolygon(polygon);
+                }
+            }
+
+            mask.endMask();
+
+            batch.begin();
+            actor.draw(batch);
+            batch.end();
+
+            mask.disable();
         }
     }
 

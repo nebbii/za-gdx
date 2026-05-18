@@ -68,4 +68,18 @@ public class MapRendererMask {
         Gdx.gl.glStencilMask(0xFF);
         Gdx.gl.glDisable(GL20.GL_STENCIL_TEST);
     }
+
+    public float getLowestY(Polygon polygon) {
+        float[] verts = polygon.getTransformedVertices();
+
+        float lowest = verts[1];
+
+        for (int i = 3; i < verts.length; i += 2) {
+            if (verts[i] < lowest) {
+                lowest = verts[i];
+            }
+        }
+
+        return lowest;
+    }
 }
