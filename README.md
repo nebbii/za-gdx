@@ -33,6 +33,9 @@ Execute `./gradlew lwjgl3:run` in the project folder. On initial setup this will
 - Mouse - Interact with inventory
 - Space - Toggle debug data visibility
 
+### Contributing
+Pull requests are welcome! Please maintain [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) and [branch naming](https://conventional-branch.github.io/)
+
 ## Credits
 - nebbii - Coding, mapping
 - Phlosioneer - [Game asset extracting script](https://github.com/Phlosioneer/ZeldasAdventureExtractor)
