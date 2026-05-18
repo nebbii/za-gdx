@@ -203,6 +203,7 @@ public class World {
     private void drawDebugText() {
         ArrayList<String> debugLines = new ArrayList<>();
 
+        debugLines.add("FPS " + Gdx.graphics.getFramesPerSecond());
         debugLines.add("X: " + mapManager.getZelda().getX());
         debugLines.add("Y: " + mapManager.getZelda().getY());
         //debugLines.add("rX: " + getRelativePositionX(mapManager.getZelda().getX()));

@@ -89,6 +89,7 @@ public class MapManager {
             // draw the actor above or below the mask depending on the bottom position
             for (PolygonMapObject object : overlay.getPolygonObjects()) {
                 Polygon polygon = object.getPolygon();
+                if (!polygon.contains(actorBox.x, actorBox.y)) continue;
                 float maskLowestY = mask.getLowestY(polygon);
 
                 if (actorLowestY > maskLowestY) {
