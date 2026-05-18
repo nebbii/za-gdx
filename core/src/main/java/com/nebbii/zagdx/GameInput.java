@@ -59,9 +59,9 @@ public class GameInput {
         if (Gdx.input.isKeyJustPressed(Keys.P)) {
             GameManager game = world.getGameManager();
 
-            if (game.getGameState() != GameState.PLAY ||
-                game.getGameState() != GameState.PAUSE_ITEMS ||
-                game.getGameState() != GameState.PAUSE_MAP)
+            if (game.getGameState() == GameState.PLAY ||
+                game.getGameState() == GameState.PAUSE_ITEMS ||
+                game.getGameState() == GameState.PAUSE_MAP)
             {
                 world.getGameManager().togglePause();
             }
