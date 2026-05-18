@@ -138,20 +138,9 @@ public class World {
      */
     public void drawGame() {
         mapManager.renderer.draw();
-        mapManager.mask.beginMask(camera);
-
-        for (PolygonMapObject object : mapManager.overlay.getPolygonObjects()) {
-            mapManager.mask.maskPolygon(object.getPolygon());
-        }
-
-        mapManager.mask.endMask();
 
         batch.setProjectionMatrix(camera.combined);
-        batch.begin();
-        mapManager.drawActors(batch);
-        batch.end();
-
-        mapManager.mask.disable();
+        mapManager.drawActorsWithMask(batch, camera);
 
         // debug
         mapManager.drawBoundingBoxes(shapes, camera);
