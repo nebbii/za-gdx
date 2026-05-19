@@ -81,7 +81,7 @@ public class MapManager {
         actors.sort(Comparator.comparingInt(Actor::getDrawOrder));
 
         for (Actor actor : actors) {
-            Rectangle actorBox = actor.getCollisionBox();
+            Rectangle actorBox = actor.getHitbox();
             float actorLowestY = actorBox.y;
 
             mask.beginMask(camera);
