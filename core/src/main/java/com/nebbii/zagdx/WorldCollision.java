@@ -255,7 +255,7 @@ public class WorldCollision {
         /* Shrine of earth specials */
         case "ladder_bridge_1":
         case "ladder_bridge_2":
-            if (!saveManager.hasLocationEntry("s1-2_0")) {
+            if (!saveManager.hasLocationEntry("s102_0")) {
                 resolveRectangleVsPolygon(zelda.getCollisionBox(), polygonObject.getPolygon());
             }
             break;

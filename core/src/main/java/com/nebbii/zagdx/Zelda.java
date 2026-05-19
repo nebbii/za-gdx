@@ -137,6 +137,7 @@ public class Zelda extends Rectangle implements Actor {
 
                 if (spawnerPitcherFull != null && spawnerPitcherFull.isActive()) {
                     spawnerPitcherFull.activate(world.getGameManager());
+                    unequipItem();
                 }
                 break;
             case PITCHER_FULL:
@@ -144,6 +145,7 @@ public class Zelda extends Rectangle implements Actor {
 
                 if (spawnerVialOfWind != null && spawnerVialOfWind.isActive()) {
                     spawnerVialOfWind.activate(world.getGameManager());
+                    unequipItem();
                 }
                 break;
             case LADDER:
@@ -151,6 +153,7 @@ public class Zelda extends Rectangle implements Actor {
 
                 if (spawnerLadder != null && spawnerLadder.isActive()) {
                     spawnerLadder.activate(world.getGameManager());
+                    unequipItem();
                 }
                 break;
             default:
@@ -336,14 +339,9 @@ public class Zelda extends Rectangle implements Actor {
         return defense;
     }
 
-    public void equipItem(Item item) {
-        Gdx.app.log(getClass().getSimpleName(), "Equipping item: " + item.toString());
-        if (world.getGameManager().hasItem(item)) {
-            setCurrentItem(item);
-        }
-        else {
-            setCurrentItem(Treasure.NONE);
-        }
+    public void unequipItem() {
+        setCurrentItem(Treasure.NONE);
+        world.getGameManager().getSaveManager().setEquippedItem(Treasure.NONE);
     }
 
     public Item getCurrentItem() {
