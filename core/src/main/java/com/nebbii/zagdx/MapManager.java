@@ -81,7 +81,7 @@ public class MapManager {
         actors.sort(Comparator.comparingInt(Actor::getDrawOrder));
 
         for (Actor actor : actors) {
-            Rectangle actorBox = actor.getHitbox();
+            Rectangle actorBox = actor.getCollisionBox();
             float actorLowestY = actorBox.y;
 
             mask.beginMask(camera);
@@ -89,7 +89,10 @@ public class MapManager {
             // draw the actor above or below the mask depending on the bottom position
             for (PolygonMapObject object : overlay.getPolygonObjects()) {
                 Polygon polygon = object.getPolygon();
-                if (!polygon.contains(actorBox.x, actorBox.y)) continue;
+
+                // cheap bounds check
+                if (!polygon.getBoundingRectangle().contains(actorBox.x, actorBox.y)) continue;
+
                 float maskLowestY = mask.getLowestY(polygon);
 
                 if (actorLowestY > maskLowestY) {
