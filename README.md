@@ -22,6 +22,9 @@ You'll need to acquire a bin/cue or .CHD of the original game and place it in th
 ### Running the game
 Execute `./gradlew lwjgl3:run` in the project folder. On initial setup this will create an assets export from your disc image.
 
+### Running tests
+Execute `./gradlew core:test --info --rerun-tasks`
+
 ### Building an executable
 1. `./gradlew lwjgl3:build`
 2. The executable can be found under lwjgl3/build/libs
