@@ -18,7 +18,7 @@ public class SpriteLadder extends Sprite {
 
     @Override
     public void draw(SpriteBatch batch) {
-        if (getMap().getSaveManager().hasLocationEntry("s1-2_0")) {
+        if (getMap().getSaveManager().hasLocationEntry("s102_0")) {
             batch.draw(getImage(), getX(), getY(), getWidth(), getHeight());
         }
     }
