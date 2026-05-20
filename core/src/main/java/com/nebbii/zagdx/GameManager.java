@@ -139,8 +139,6 @@ public class GameManager {
 
         Zelda zelda = world.getMapManager().getZelda();
 
-        world.getMapManager().loadMapByName(currentMap);
-
         if (hasDied) {
             zelda.revive();
 
@@ -157,6 +155,8 @@ public class GameManager {
         else {
             reloadLocations();
         }
+
+        world.getMapManager().loadMapByName(currentMap);
 
         zelda.setPosition(zelda.getSpawnX(), zelda.getSpawnY());
         world.getWorldCamera().resetPosition();
