@@ -25,7 +25,7 @@ public class SpawnerUnderworldMap1 extends Spawner {
 
         Gdx.app.log(getClass().getSimpleName(), "item placed");
 
-        map.addNewActor(underworldMap);
+        map.addNewPickupWithParent(underworldMap, this);
         setState(State.DEAD);
     }
 }
