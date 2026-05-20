@@ -52,6 +52,11 @@
           "type": "EnemyTektite",
           "x": 1335,
           "y": 762
+        },
+        {
+          "type": "PickupUnderworldMap1",
+          "x": 1335,
+          "y": 702
         }
       ]
     },

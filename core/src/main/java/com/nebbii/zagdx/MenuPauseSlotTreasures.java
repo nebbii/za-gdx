@@ -9,6 +9,13 @@ public class MenuPauseSlotTreasures extends Rectangle implements MenuButton {
 
     private static final Treasure[] NOTEQUIPPABLE = {
         Treasure.RED_BOOTS,
+        Treasure.UNDERWORLD_MAP_1,
+        Treasure.UNDERWORLD_MAP_2,
+        Treasure.UNDERWORLD_MAP_3,
+        Treasure.UNDERWORLD_MAP_4,
+        Treasure.UNDERWORLD_MAP_5,
+        Treasure.UNDERWORLD_MAP_6,
+        Treasure.UNDERWORLD_MAP_7
     };
 
     public MenuPauseSlotTreasures(float x, float y, int width, int height, GameManager gameManager) {

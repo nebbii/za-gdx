@@ -76,6 +76,13 @@ public class ImageLoader {
     private Texture pitcherEmpty;
     private Texture pitcherFull;
     private Texture vialOfWind;
+    private Texture underworldMap1;
+    private Texture underworldMap2;
+    private Texture underworldMap3;
+    private Texture underworldMap4;
+    private Texture underworldMap5;
+    private Texture underworldMap6;
+    private Texture underworldMap7;
 
     /* Weapons */
     private Texture wand;
@@ -189,6 +196,14 @@ public class ImageLoader {
         vialOfWind = new Texture("export/overworld/j24/sprites/desc2/group0/sprite0.png");
         redBoots = new Texture("export/underworld/s116/sprites/desc1/group0/sprite0.png");
 
+        underworldMap1 = new Texture("export/underworld/s104/sprites/desc1/group0/sprite0.png");
+        underworldMap2 = new Texture("export/underworld/s104/sprites/desc1/group0/sprite0.png"); // TODO: get correct map image
+        underworldMap3 = new Texture("export/underworld/s104/sprites/desc1/group0/sprite0.png"); // TODO: get correct map image
+        underworldMap4 = new Texture("export/underworld/s104/sprites/desc1/group0/sprite0.png"); // TODO: get correct map image
+        underworldMap5 = new Texture("export/underworld/s104/sprites/desc1/group0/sprite0.png"); // TODO: get correct map image
+        underworldMap6 = new Texture("export/underworld/s104/sprites/desc1/group0/sprite0.png"); // TODO: get correct map image
+        underworldMap7 = new Texture("export/underworld/s104/sprites/desc1/group0/sprite0.png"); // TODO: get correct map image
+
         /* Weapons */
         wand = new Texture("export/overworld/h23/sprites/desc0/group0/sprite0.png");
         boomerang = new Texture("export/overworld/d24/sprites/desc2/group0/sprite0.png");
@@ -291,6 +306,13 @@ public class ImageLoader {
         pitcherFull.dispose();
         vialOfWind.dispose();
         redBoots.dispose();
+        underworldMap1.dispose();
+        underworldMap2.dispose();
+        underworldMap3.dispose();
+        underworldMap4.dispose();
+        underworldMap5.dispose();
+        underworldMap6.dispose();
+        underworldMap7.dispose();
 
         /* Weapons */
         wand.dispose();
@@ -347,12 +369,19 @@ public class ImageLoader {
             case RUPEES:
             case TICKET:
             case UNDERWORLD_MAP_1:
+                return getUnderworldMap(1);
             case UNDERWORLD_MAP_2:
+                return getUnderworldMap(2);
             case UNDERWORLD_MAP_3:
+                return getUnderworldMap(3);
             case UNDERWORLD_MAP_4:
+                return getUnderworldMap(4);
             case UNDERWORLD_MAP_5:
+                return getUnderworldMap(5);
             case UNDERWORLD_MAP_6:
+                return getUnderworldMap(6);
             case UNDERWORLD_MAP_7:
+                return getUnderworldMap(7);
             case VIAL_OF_WIND:
                 return getVialOfWind();
             case ZOLA_REPELLENT:
@@ -491,5 +520,26 @@ public class ImageLoader {
 
     public Texture getRedBoots() {
         return redBoots;
+    }
+
+    public Texture getUnderworldMap(int index) {
+        switch(index) {
+        case 1:
+            return underworldMap1;
+        case 2:
+            return underworldMap2;
+        case 3:
+            return underworldMap3;
+        case 4:
+            return underworldMap4;
+        case 5:
+            return underworldMap5;
+        case 6:
+            return underworldMap6;
+        case 7:
+            return underworldMap7;
+        default:
+            throw new IllegalStateException(this.getClass().getSimpleName() + ": underworld map out of index");
+        }
     }
 }
