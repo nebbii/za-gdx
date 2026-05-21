@@ -16,7 +16,7 @@ public class EnemySardakRed extends EnemySardak {
         super();
         setHealth(280);
         setDamage(50);
-        setDefense(300);
+        setDefense(30);
         setBonusDamage(70);
 
         this.animation = new EnemySardakRedAnimation(this);
