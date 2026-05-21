@@ -67,7 +67,9 @@ public class Enemy extends Rectangle implements Actor {
         knockback = Math.max(0f, knockback - Gdx.graphics.getDeltaTime());
 
         if (knockback > 0) {
-            movePushback();
+            if (hurtWeakness) {
+                movePushback();
+            }
         }
         else {
             switch(enemyState) {
