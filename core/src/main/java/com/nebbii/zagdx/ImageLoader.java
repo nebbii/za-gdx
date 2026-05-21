@@ -63,6 +63,13 @@ public class ImageLoader {
         WALKLEFT
     }
 
+    public enum EnemySardakBlueAnimationGroup {
+        WALKUP,
+        WALKRIGHT,
+        WALKDOWN,
+        WALKLEFT
+    }
+
     private EnumMap<ZeldaAnimationGroup, Texture[]> zelda;
     private EnumMap<EnemyGoriyaAnimationGroup, Texture[]> enemyGoriya;
     private EnumMap<EnemyTumblebotAnimationGroup, Texture[]> enemyTumblebot;
@@ -71,6 +78,7 @@ public class ImageLoader {
     private EnumMap<EnemyDeelerAnimationGroup, Texture[]> enemyDeeler;
     private EnumMap<EnemyTektiteAnimationGroup, Texture[]> enemyTektite;
     private EnumMap<EnemySardakRedAnimationGroup, Texture[]> enemySardakRed;
+    private EnumMap<EnemySardakBlueAnimationGroup, Texture[]> enemySardakBlue;
 
     /* NPCs */
     private Texture[] npcGlebb;
@@ -195,6 +203,16 @@ public class ImageLoader {
         enemySardakRed.put(EnemySardakRedAnimationGroup.WALKLEFT,
             loadTextureArray("export/underworld/s107/sprites/desc0/group3", 5));
 
+        enemySardakBlue = new EnumMap<>(EnemySardakBlueAnimationGroup.class);
+        enemySardakBlue.put(EnemySardakBlueAnimationGroup.WALKUP,
+            loadTextureArray("export/underworld/s112/sprites/desc0/group0", 5));
+        enemySardakBlue.put(EnemySardakBlueAnimationGroup.WALKRIGHT,
+            loadTextureArray("export/underworld/s112/sprites/desc0/group1", 5));
+        enemySardakBlue.put(EnemySardakBlueAnimationGroup.WALKDOWN,
+            loadTextureArray("export/underworld/s112/sprites/desc0/group2", 5));
+        enemySardakBlue.put(EnemySardakBlueAnimationGroup.WALKLEFT,
+            loadTextureArray("export/underworld/s112/sprites/desc0/group3", 5));
+
         /* NPCs */
         npcGlebb = loadTextureArray("export/overworld/j24/sprites/desc0/group0", 5);
 
@@ -306,6 +324,16 @@ public class ImageLoader {
         }
 
         for (Texture[] textures : enemySardakRed.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemySardakBlue.values()) {
             if (textures == null) continue;
 
             for (Texture texture : textures) {
@@ -488,6 +516,10 @@ public class ImageLoader {
 
     public Texture[] getEnemySardakRedAnimation(EnemySardakRedAnimationGroup anim) {
         return enemySardakRed.get(anim);
+    }
+
+    public Texture[] getEnemySardakBlueAnimation(EnemySardakBlueAnimationGroup anim) {
+        return enemySardakBlue.get(anim);
     }
 
     public Texture getNone() {
