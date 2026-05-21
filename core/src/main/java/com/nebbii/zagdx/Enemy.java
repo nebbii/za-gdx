@@ -338,7 +338,7 @@ public class Enemy extends Rectangle implements Actor {
     }
 
     public void decreaseHealth(int amount) {
-        Gdx.app.log(this.getClass().getSimpleName(), "decreasing health (" + getHealth() + ") by " + amount);
+        //Gdx.app.log(this.getClass().getSimpleName(), "decreasing health (" + getHealth() + ") by " + amount);
 
         setHealth(getHealth() - amount);
     }
