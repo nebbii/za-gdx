@@ -105,8 +105,10 @@ public class WorldCollision {
                 ZeldaAction projectile = (ZeldaAction) overlapee;
 
                 if (enemy.getHitbox().overlaps(projectile.getHitbox())) {
-                    int damage = game.calculateProjectileDamage(projectile);
+                    int damage = game.calculateDamage(projectile, enemy);
                     float knockback = game.calculateZeldaKnockback();
+
+                    //if (enemy.getWeaknesses(). projectile.getClass()
 
                     enemy.setHurtDirection(projectile.getDirection());
                     enemy.onHit(damage, knockback);

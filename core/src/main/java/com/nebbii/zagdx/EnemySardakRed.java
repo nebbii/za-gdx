@@ -1,6 +1,7 @@
 package com.nebbii.zagdx;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Array;
 import com.nebbii.zagdx.animation.EnemySardakRedAnimation;
 
 // TODO: Set actual original game accurate values
@@ -45,7 +46,8 @@ public class EnemySardakRed extends EnemySardak {
         if (knockback > 0) endDrawFlashOverlay(batch);
     }
 
-    public String[] getWeaknesses() {
-        return new String[] { "ZeldaActionJadeRing" };
+    @Override
+    public Array<String> getWeaknesses() {
+        return Array.with("ZeldaActionJadeRing");
     }
 }
