@@ -99,4 +99,45 @@ public class DamageCalculatorTest {
 
         assertTrue(goriya.getHealth() <= 0, "Goriya should be killed by hit 3. Health: " + goriya.getHealth());
     }
+
+    @Test
+    public void sardakRedTakesNoDamageFromBaseWandProjectileBecauseOfDefense() {
+        GameManager gameManager = new GameManager(null);
+
+        Actor wandProjectile = new TestWandProjectile(30);
+        Enemy sardak = new TestSardakRed();
+
+        int damage = gameManager.calculateDamage(wandProjectile, sardak);
+
+        assertEquals(0, damage);
+
+        sardak.onHit(damage, 0f);
+
+        assertEquals(280, sardak.getHealth());
+        assertFalse(sardak.isDead());
+    }
+
+    @Test
+    public void sardakRedCanBeKilledByJadeRing() {
+        GameManager gameManager = new GameManager(null);
+
+        Actor jadeRing = new TestZeldaActionJadeRing(30);
+        Enemy sardak = new TestSardakRed();
+
+        int damage = gameManager.calculateDamage(jadeRing, sardak);
+
+        assertEquals(70, damage);
+
+        sardak.onHit(damage, 0f);
+        assertFalse(sardak.getHealth() <= 0, "Sardak should survive hit 1. Health: " + sardak.getHealth());
+
+        sardak.onHit(damage, 0f);
+        assertFalse(sardak.getHealth() <= 0, "Sardak should survive hit 2. Health: " + sardak.getHealth());
+
+        sardak.onHit(damage, 0f);
+        assertFalse(sardak.getHealth() <= 0, "Sardak should survive hit 3. Health: " + sardak.getHealth());
+
+        sardak.onHit(damage, 0f);
+        assertTrue(sardak.getHealth() <= 0, "Sardak should be killed by hit 4. Health: " + sardak.getHealth());
+    }
 }
