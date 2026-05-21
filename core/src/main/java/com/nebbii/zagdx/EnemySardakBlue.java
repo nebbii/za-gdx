@@ -25,16 +25,6 @@ public class EnemySardakBlue extends EnemySardak {
     @Override
     public void logic() {
         super.logic();
-
-        switch(enemyState) {
-            case SEARCH:
-                setSpeed(80f);
-                break;
-            case FIGHT:
-                setSpeed(110f);
-                break;
-            default:
-        }
     }
 
     @Override

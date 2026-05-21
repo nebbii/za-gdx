@@ -28,7 +28,7 @@ public class ZeldaActionBoomerang extends ZeldaAction {
 
         setWidth(10);
         setHeight(10);
-        setDamage(45);
+        setDamage(actor.getDamage());
 
         hitbox = new Rectangle();
         hitbox.setWidth(28);

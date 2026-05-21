@@ -26,10 +26,10 @@ public class EnemySardak extends Enemy {
 
         switch(enemyState) {
             case SEARCH:
-                setSpeed(80f);
+                setSpeed(70f);
                 break;
             case FIGHT:
-                setSpeed(110f);
+                setSpeed(90f);
                 break;
             default:
         }

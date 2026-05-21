@@ -5,7 +5,8 @@
     {
       "location": "s101",
       "__comment": "s101: Zelda can use the opening in the northwest corner of the wall to enter.",
-      "actors": []
+      "actors": [
+      ]
     },
     {
       "location": "s102",
@@ -104,7 +105,13 @@
     {
       "location": "s112",
       "__comment": "s112: The middle Sardak must be killed with the Jade Ring to gain access to Llort's hideout.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemySardakBlue",
+          "x": 2536,
+          "y": 842
+        }
+      ]
     },
     {
       "location": "s113",
