@@ -73,7 +73,13 @@
     {
       "location": "s107",
       "__comment": "s107: The southern Sardak can only be killed with the Jade Ring. All three Sardaks must be killed to gain access to Llort's hideout.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemySardakRed",
+          "x": 1821,
+          "y": 324
+        }
+      ]
     },
     {
       "location": "s108",
