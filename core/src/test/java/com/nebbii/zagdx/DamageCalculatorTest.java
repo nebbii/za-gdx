@@ -50,7 +50,8 @@ public class DamageCalculatorTest {
         GameManager gameManager = new GameManager(null);
 
         Actor attacker = new TestWeapon();
-        Actor defender = mock(Actor.class);
+        // weaknesses only run on enemies
+        Enemy defender = mock(Enemy.class);
 
         when(defender.getDefense()).thenReturn(5);
         when(defender.getWeaknesses()).thenReturn(Array.with("TestWeapon"));
@@ -66,7 +67,8 @@ public class DamageCalculatorTest {
         GameManager gameManager = new GameManager(null);
 
         Actor attacker = new TestWeapon();
-        Actor defender = mock(Actor.class);
+        // weaknesses only run on enemies
+        Enemy defender = mock(Enemy.class);
 
         when(defender.getDefense()).thenReturn(5);
         when(defender.getWeaknesses()).thenReturn(Array.with("SomeOtherWeapon"));

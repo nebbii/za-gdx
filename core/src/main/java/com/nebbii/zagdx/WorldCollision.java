@@ -108,8 +108,6 @@ public class WorldCollision {
                     int damage = game.calculateDamage(projectile, enemy);
                     float knockback = game.calculateZeldaKnockback();
 
-                    //if (enemy.getWeaknesses(). projectile.getClass()
-
                     enemy.setHurtDirection(projectile.getDirection());
                     enemy.onHit(damage, knockback);
 

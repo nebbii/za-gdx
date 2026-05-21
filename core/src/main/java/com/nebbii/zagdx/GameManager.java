@@ -233,11 +233,20 @@ public class GameManager {
 
         String attackerType = attacker.getClass().getSimpleName();
 
-        // on weakness, add bonus damage
-        for (String weakness : defender.getWeaknesses()) {
-            if (weakness.equals(attackerType)) {
-                damage += defender.getBonusDamage();
-                break;
+        if (defender instanceof Enemy) {
+            Enemy enemy = (Enemy) defender;
+
+            if (enemy.getWeaknesses().size > 0) {
+                enemy.setHurtWeakness(false);
+            }
+
+            // on weakness, add bonus damage
+            for (String weakness : enemy.getWeaknesses()) {
+                if (weakness.equals(attackerType)) {
+                    damage += enemy.getBonusDamage();
+                    enemy.setHurtWeakness(true);
+                    break;
+                }
             }
         }
         // return damage amount
