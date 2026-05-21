@@ -172,7 +172,13 @@
     {
       "location": "s120",
       "__comment": "s120: The northern Sardak throws spears at Zelda. A beam of light blocks the northern entrance. If the Sardak is killed with the Jade Ring, this beam of light disappears.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemySardakYellow",
+          "x": 2535,
+          "y": 1713
+        }
+      ]
     },
     {
       "location": "s121",
