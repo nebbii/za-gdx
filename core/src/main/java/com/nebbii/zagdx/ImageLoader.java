@@ -56,6 +56,10 @@ public class ImageLoader {
         WALK
     }
 
+    public enum EnemyKeeseAnimationGroup {
+        FLY
+    }
+
     public enum EnemySardakRedAnimationGroup {
         WALKUP,
         WALKRIGHT,
@@ -84,6 +88,7 @@ public class ImageLoader {
     private EnumMap<EnemyMoblinAnimationGroup, Texture[]> enemyMoblin;
     private EnumMap<EnemyDeelerAnimationGroup, Texture[]> enemyDeeler;
     private EnumMap<EnemyTektiteAnimationGroup, Texture[]> enemyTektite;
+    private EnumMap<EnemyKeeseAnimationGroup, Texture[]> enemyKeese;
     private EnumMap<EnemySardakRedAnimationGroup, Texture[]> enemySardakRed;
     private EnumMap<EnemySardakBlueAnimationGroup, Texture[]> enemySardakBlue;
     private EnumMap<EnemySardakYellowAnimationGroup, Texture[]> enemySardakYellow;
@@ -200,6 +205,10 @@ public class ImageLoader {
         enemyTektite = new EnumMap<>(EnemyTektiteAnimationGroup.class);
         enemyTektite.put(EnemyTektiteAnimationGroup.WALK,
             loadTextureArray("export/underworld/s118/sprites/desc1/group0", 5));
+
+        enemyKeese = new EnumMap<>(EnemyKeeseAnimationGroup.class);
+        enemyKeese.put(EnemyKeeseAnimationGroup.FLY,
+            loadTextureArray("export/underworld/s106/sprites/desc0/group0", 5));
 
         enemySardakRed = new EnumMap<>(EnemySardakRedAnimationGroup.class);
         enemySardakRed.put(EnemySardakRedAnimationGroup.WALKUP,
@@ -332,6 +341,16 @@ public class ImageLoader {
         }
 
         for (Texture[] textures : enemyTektite.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyKeese.values()) {
             if (textures == null) continue;
 
             for (Texture texture : textures) {
@@ -540,6 +559,10 @@ public class ImageLoader {
 
     public Texture[] getEnemyTektiteAnimation(EnemyTektiteAnimationGroup anim) {
         return enemyTektite.get(anim);
+    }
+
+    public Texture[] getEnemyKeeseAnimation(EnemyKeeseAnimationGroup anim) {
+        return enemyKeese.get(anim);
     }
 
     public Texture[] getEnemySardakRedAnimation(EnemySardakRedAnimationGroup anim) {
