@@ -60,6 +60,11 @@ public class ImageLoader {
         FLY
     }
 
+    public enum EnemyLlortAnimationGroup {
+        WALK,
+        ATTACK
+    }
+
     public enum EnemySardakRedAnimationGroup {
         WALKUP,
         WALKRIGHT,
@@ -89,6 +94,7 @@ public class ImageLoader {
     private EnumMap<EnemyDeelerAnimationGroup, Texture[]> enemyDeeler;
     private EnumMap<EnemyTektiteAnimationGroup, Texture[]> enemyTektite;
     private EnumMap<EnemyKeeseAnimationGroup, Texture[]> enemyKeese;
+    private EnumMap<EnemyLlortAnimationGroup, Texture[]> enemyLlort;
     private EnumMap<EnemySardakRedAnimationGroup, Texture[]> enemySardakRed;
     private EnumMap<EnemySardakBlueAnimationGroup, Texture[]> enemySardakBlue;
     private EnumMap<EnemySardakYellowAnimationGroup, Texture[]> enemySardakYellow;
@@ -209,6 +215,12 @@ public class ImageLoader {
         enemyKeese = new EnumMap<>(EnemyKeeseAnimationGroup.class);
         enemyKeese.put(EnemyKeeseAnimationGroup.FLY,
             loadTextureArray("export/underworld/s106/sprites/desc0/group0", 5));
+
+        enemyLlort = new EnumMap<>(EnemyLlortAnimationGroup.class);
+        enemyLlort.put(EnemyLlortAnimationGroup.WALK,
+            loadTextureArray("export/underworld/s121/sprites/desc0/group0", 5));
+        enemyLlort.put(EnemyLlortAnimationGroup.ATTACK,
+            loadTextureArray("export/underworld/s121/sprites/desc0/group1", 7));
 
         enemySardakRed = new EnumMap<>(EnemySardakRedAnimationGroup.class);
         enemySardakRed.put(EnemySardakRedAnimationGroup.WALKUP,
@@ -351,6 +363,16 @@ public class ImageLoader {
         }
 
         for (Texture[] textures : enemyKeese.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyLlort.values()) {
             if (textures == null) continue;
 
             for (Texture texture : textures) {
@@ -563,6 +585,10 @@ public class ImageLoader {
 
     public Texture[] getEnemyKeeseAnimation(EnemyKeeseAnimationGroup anim) {
         return enemyKeese.get(anim);
+    }
+
+    public Texture[] getEnemyLlortAnimation(EnemyLlortAnimationGroup anim) {
+        return enemyLlort.get(anim);
     }
 
     public Texture[] getEnemySardakRedAnimation(EnemySardakRedAnimationGroup anim) {
