@@ -64,12 +64,39 @@
     {
       "location": "s105",
       "__comment": "s105: If Zelda kills the three Keese, they drop a compass. Use this compass anywhere in the Overworld to send Zelda to the entrance of the first tomb. Inside any tomb, the compass is completely useless.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyKeese",
+          "x": 1190,
+          "y": 650
+        },
+        {
+          "type": "EnemyKeese",
+          "x": 1409,
+          "y": 652
+        },
+        {
+          "type": "EnemyKeese",
+          "x": 1368,
+          "y": 573
+        }
+      ]
     },
     {
       "location": "s106",
       "__comment": "s106: Two Keese.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyKeese",
+          "x": 1447,
+          "y": 360
+        },
+        {
+          "type": "EnemyKeese",
+          "x": 1365,
+          "y": 248
+        }
+      ]
     },
     {
       "location": "s107",
@@ -95,12 +122,39 @@
     {
       "location": "s110",
       "__comment": "s110: Four Keese.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyKeese",
+          "x": 1588,
+          "y": 916
+        },
+        {
+          "type": "EnemyKeese",
+          "x": 1658,
+          "y": 913
+        },
+        {
+          "type": "EnemyKeese",
+          "x": 1836,
+          "y": 907
+        },
+        {
+          "type": "EnemyKeese",
+          "x": 1722,
+          "y": 765
+        }
+      ]
     },
     {
       "location": "s111",
       "__comment": "s111: One Keese.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyKeese",
+          "x": 1959,
+          "y": 819
+        }
+      ]
     },
     {
       "location": "s112",
@@ -126,7 +180,24 @@
     {
       "location": "s115",
       "__comment": "s115: Here too, there are two separate corridors. A bat flies in the eastern corridor. There is also one in the western corridor, but that corridor dead-ends at location S116.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyKeese",
+          "x": 1457,
+          "y": 1300
+        },
+        {
+          "type": "EnemyKeese",
+          "x": 1195,
+          "y": 1344
+        },
+        {
+          "__comment": "torch at x1183 y1381"
+        },
+        {
+          "__comment": "torch at x1170 y1295"
+        }
+      ]
     },
     {
       "location": "s116",
@@ -162,12 +233,29 @@
     {
       "location": "s118",
       "__comment": "s118: Llort appears and speaks to Zelda. He then quickly flees before Zelda can fight him.",
-      "actors": []
+      "actors": [
+        {
+          "__comment": "Llort apparition at x1749 y1760"
+        },
+        {
+          "__comment": "torch at x1627 y1739"
+        },
+        {
+          "__comment": "torch at x1809 y1845"
+        }
+      ]
     },
     {
       "location": "s119",
       "__comment": "s119: No action.",
-      "actors": []
+      "actors": [
+        {
+          "__comment": "torch at x2030 y1866"
+        },
+        {
+          "__comment": "torch at x2097 y1860"
+        }
+      ]
     },
     {
       "location": "s120",
@@ -183,12 +271,20 @@
     {
       "location": "s121",
       "__comment": "s121: Zelda is trapped in the hideout while Llort, the Shrine Keeper, throws axes at her. Zelda's magic wand is the best weapon against him, but other weapons also work. When Llort is killed, the door opens. If he kills Zelda, she returns to location S120.",
-      "actors": []
+      "actors": [
+        {
+          "__comment": "llort at x2499 y2020"
+        }
+      ]
     },
     {
       "location": "s122",
       "__comment": "s122: Zelda can now take the first Celestial Sign.",
-      "actors": []
+      "actors": [
+        {
+          "__comment": "stone at x2477 y2321"
+        }
+      ]
     }
   ]
 }
