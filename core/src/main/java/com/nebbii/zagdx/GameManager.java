@@ -152,11 +152,9 @@ public class GameManager {
 
             reloadSave();
         }
-        else {
-            reloadLocations();
-        }
 
         world.getMapManager().loadMapByName(currentMap);
+        reloadLocations();
 
         zelda.setPosition(zelda.getSpawnX(), zelda.getSpawnY());
         world.getWorldCamera().resetPosition();
@@ -167,7 +165,7 @@ public class GameManager {
         reloadEquippedItem();
         reloadTreasures();
         reloadWeapons();
-        reloadLocations();
+        //reloadLocations();
     }
 
     public void reloadRubies() {
