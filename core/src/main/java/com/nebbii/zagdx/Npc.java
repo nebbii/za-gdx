@@ -139,4 +139,12 @@ public class Npc extends Rectangle implements Actor {
     public void setLocationEntry(String locationEntry) {
         this.locationEntry = locationEntry;
     }
+
+    public NpcState getNpcState() {
+        return npcState;
+    }
+
+    public void setNpcState(NpcState npcState) {
+        this.npcState = npcState;
+    }
 }
