@@ -1,10 +1,13 @@
 package com.nebbii.zagdx;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Screen;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class Core extends Game {
     private ArchipelagoClient archipelagoClient;
+
+    private Screen nextScreen;
 
     @Override
     public void create() {
@@ -16,4 +19,12 @@ public class Core extends Game {
     public ArchipelagoClient getArchipelagoClient() {
 		return archipelagoClient;
 	}
+
+    public Screen getNextScreen() {
+        return nextScreen;
+    }
+
+    public void setNextScreen(Screen nextScreen) {
+        this.nextScreen = nextScreen;
+    }
 }

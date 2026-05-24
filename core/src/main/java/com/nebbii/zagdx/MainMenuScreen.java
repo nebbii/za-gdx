@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 // TODO: Eventually swap out the dummy assets with real ones once the exporter supports it
 public class MainMenuScreen extends MenuScreen {
@@ -61,6 +63,8 @@ public class MainMenuScreen extends MenuScreen {
     public void logic() {
         super.logic();
 
+        if (isFading()) return;
+
         if (Gdx.input.justTouched()) {
             touchPos.set(Gdx.input.getX(), Gdx.input.getY());
             viewport.unproject(touchPos);
@@ -75,7 +79,6 @@ public class MainMenuScreen extends MenuScreen {
 
     public void draw() {
         super.draw();
-
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
         for (MenuButtonSaveFile button : menuButtonSaves) {
@@ -87,6 +90,8 @@ public class MainMenuScreen extends MenuScreen {
         }
 
         batch.end();
+
+        drawFade();
     }
 
     public void reloadSaves() {
