@@ -259,6 +259,12 @@ public class WorldCollision {
                 resolveRectangleVsPolygon(zelda.getCollisionBox(), polygonObject.getPolygon());
             }
             break;
+        case "guard_gate_1":
+        case "guard_gate_2":
+            if (!saveManager.hasLocationEntry("s120_0")) {
+                resolveRectangleVsPolygon(zelda.getCollisionBox(), polygonObject.getPolygon());
+            }
+            break;
 
         default:
             resolveRectangleVsPolygon(zelda.getCollisionBox(), polygonObject.getPolygon());

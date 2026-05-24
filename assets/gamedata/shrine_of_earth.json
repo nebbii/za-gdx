@@ -112,7 +112,13 @@
     {
       "location": "s108",
       "__comment": "s108: The treasure chest speaks and gives Zelda the Jade Ring. Zelda can now continue east through the opening in the southeast side of the wall.",
-      "actors": []
+      "actors": [
+        {
+          "type": "NpcTalkingChest",
+          "x": 1746,
+          "y": 72
+        }
+      ]
     },
     {
       "location": "s109",
@@ -273,7 +279,9 @@
       "__comment": "s121: Zelda is trapped in the hideout while Llort, the Shrine Keeper, throws axes at her. Zelda's magic wand is the best weapon against him, but other weapons also work. When Llort is killed, the door opens. If he kills Zelda, she returns to location S120.",
       "actors": [
         {
-          "__comment": "llort at x2499 y2020"
+          "type": "EnemyLlort",
+          "x": 2499,
+          "y": 2020
         }
       ]
     },

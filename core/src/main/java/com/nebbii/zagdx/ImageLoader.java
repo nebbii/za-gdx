@@ -86,6 +86,10 @@ public class ImageLoader {
         WALKLEFT
     }
 
+    public enum NpcTalkingChestAnimationGroup {
+        IDLE
+    }
+
     private EnumMap<ZeldaAnimationGroup, Texture[]> zelda;
     private EnumMap<EnemyGoriyaAnimationGroup, Texture[]> enemyGoriya;
     private EnumMap<EnemyTumblebotAnimationGroup, Texture[]> enemyTumblebot;
@@ -101,6 +105,7 @@ public class ImageLoader {
 
     /* NPCs */
     private Texture[] npcGlebb;
+    private EnumMap<NpcTalkingChestAnimationGroup, Texture[]> npcTalkingChest;
 
     /* Map stuff */
     private Texture spriteLadder;
@@ -254,6 +259,10 @@ public class ImageLoader {
 
         /* NPCs */
         npcGlebb = loadTextureArray("export/overworld/j24/sprites/desc0/group0", 5);
+
+        npcTalkingChest = new EnumMap<>(NpcTalkingChestAnimationGroup.class);
+        npcTalkingChest.put(NpcTalkingChestAnimationGroup.IDLE,
+            loadTextureArray("export/underworld/s108/sprites/desc0/group0", 4));
 
         /* Map stuff */
         spriteLadder = new Texture("export/underworld/s102/sprites/desc0/group0/sprite0.png");
@@ -414,6 +423,16 @@ public class ImageLoader {
 
         for (Texture texture : npcGlebb) {
             texture.dispose();
+        }
+
+        for (Texture[] textures : npcTalkingChest.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
         }
 
         /* Map stuff */
@@ -609,6 +628,10 @@ public class ImageLoader {
 
     public Texture[] getNpcGlebb() {
         return npcGlebb;
+    }
+
+    public Texture[] getNpcTalkingChestAnimation(NpcTalkingChestAnimationGroup anim) {
+        return npcTalkingChest.get(anim);
     }
 
     public Texture getRubyBlue() {
