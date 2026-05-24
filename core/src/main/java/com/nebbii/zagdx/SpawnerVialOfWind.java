@@ -12,6 +12,18 @@ public class SpawnerVialOfWind extends Spawner {
         super.logic();
     }
 
+    public void activate() {
+        if (!isActive()) return;
+
+        PickupVialOfWind vialOfWind = new PickupVialOfWind();
+        vialOfWind.setPosition(this.getX(), this.getY());
+
+        Gdx.app.log(getClass().getSimpleName(), "item placed");
+
+        map.addNewActor(vialOfWind);
+        setState(State.DEAD);
+    }
+
     public void activate(GameManager game) {
         if (!isActive()) return;
 
@@ -20,7 +32,7 @@ public class SpawnerVialOfWind extends Spawner {
 
         Gdx.app.log(getClass().getSimpleName(), "item placed");
 
-        map.addActor(vialOfWind);
+        map.addNewActor(vialOfWind);
         game.removeTreasure(Treasure.PITCHER_FULL, true);
         setState(State.DEAD);
     }

@@ -1,22 +1,18 @@
 package com.nebbii.zagdx;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class PickupPitcherEmpty extends Pickup {
-    private Texture image;
-
-    public PickupPitcherEmpty() {
+public class PickupJadeRing extends Pickup {
+    public PickupJadeRing() {
         super();
-
-        setImage(World.images.getPitcherEmpty());
+        setImage(World.images.getJadeRing());
 
         baseOffsetX = -2;
         baseOffsetY = 2;
 
-        setWidth(24);
-        setHeight(29);
+        setWidth(31);
+        setHeight(23);
+        setState(State.PENDING);
     }
 
     public void logic() {
@@ -29,7 +25,7 @@ public class PickupPitcherEmpty extends Pickup {
 
     public void onPickup(GameManager game) {
         super.onPickup(game);
-        game.addTreasure(Treasure.PITCHER_EMPTY, true);
+        game.addWeapon(Weapon.JADE_RING, true);
         this.setState(State.DEAD);
     }
 }

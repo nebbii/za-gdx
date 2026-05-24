@@ -28,6 +28,8 @@ public class Spawner extends Rectangle implements Actor {
     @Override
     public void draw(SpriteBatch batch) {}
 
+    public void activate() {}
+
     @Override
     public int getDrawOrder() {
         return drawOrder;

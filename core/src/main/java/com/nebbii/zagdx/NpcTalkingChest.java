@@ -37,8 +37,11 @@ public class NpcTalkingChest extends Npc {
                 break;
             case TALKING:
                 timer += Gdx.graphics.getDeltaTime();
-                if (timer > 6) {
-                    Gdx.app.log(this.getClass().getSimpleName(), "spawn the ring!");
+                if (timer > 6f) {
+                    for (Spawner spawner : map.findActiveActorsByType(Spawner.class)) {
+                        spawner.activate();
+                    }
+
                     setNpcState(NpcState.DONE);
                 }
                 break;

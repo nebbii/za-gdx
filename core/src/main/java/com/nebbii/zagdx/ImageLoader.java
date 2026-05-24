@@ -116,6 +116,7 @@ public class ImageLoader {
     private Texture pitcherEmpty;
     private Texture pitcherFull;
     private Texture vialOfWind;
+    private Texture redBoots;
     private Texture underworldMap1;
     private Texture underworldMap2;
     private Texture underworldMap3;
@@ -127,12 +128,12 @@ public class ImageLoader {
     /* Weapons */
     private Texture wand;
     private Texture boomerang;
+    private Texture jadeRing;
 
     /* Pickups */
     private Texture rubyBlue;
     private Texture rubyYellow;
     private Texture heart;
-    private Texture redBoots;
 
     /* Projectiles */
     private Texture[] projectileBoomerang;
@@ -291,6 +292,7 @@ public class ImageLoader {
         /* Weapons */
         wand = new Texture("export/overworld/h23/sprites/desc0/group0/sprite0.png");
         boomerang = new Texture("export/overworld/d24/sprites/desc2/group0/sprite0.png");
+        jadeRing = new Texture("export/underworld/s108/sprites/desc1/group0/sprite0.png");
 
         /* Projectiles */
         projectileBoomerang = loadTextureArray("export/overworld/d24/sprites/desc1/group0", 4);
@@ -450,6 +452,7 @@ public class ImageLoader {
         pitcherFull.dispose();
         vialOfWind.dispose();
         redBoots.dispose();
+        jadeRing.dispose();
         underworldMap1.dispose();
         underworldMap2.dispose();
         underworldMap3.dispose();
@@ -461,6 +464,7 @@ public class ImageLoader {
         /* Weapons */
         wand.dispose();
         boomerang.dispose();
+        jadeRing.dispose();
     }
 
     public Texture getImageByItem(Item item) {
@@ -548,6 +552,7 @@ public class ImageLoader {
             case HAMMER:
             case JADE_AMULET:
             case JADE_RING:
+                return getJadeRing();
             case JOUST:
             case NOISE:
             case NONE:
@@ -684,6 +689,10 @@ public class ImageLoader {
 
     public Texture[] getProjectileBoomerang() {
         return projectileBoomerang;
+    }
+
+    public Texture getJadeRing() {
+        return jadeRing;
     }
 
     public Texture getRedBoots() {

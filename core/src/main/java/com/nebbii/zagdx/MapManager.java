@@ -13,6 +13,7 @@ import com.badlogic.gdx.maps.objects.PolygonMapObject;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.utils.Array;
 
 public class MapManager {
     private World world;
@@ -210,6 +211,18 @@ public class MapManager {
         return null;
     }
 
+    public <T extends Actor> Array<T> findActiveActorsByType(Class<T> type) {
+        Array<T> results = new Array<>();
+
+        for (Actor actor : actors) {
+            if (type.isInstance(actor) && actor.isActive()) {
+                results.add(type.cast(actor));
+            }
+        }
+
+        return results;
+    }
+
     public void freezeAllActors() {
         Gdx.app.log(getClass().getSimpleName(), "Freezing actors");
         for (Actor actor : actors) {
@@ -218,6 +231,8 @@ public class MapManager {
             actor.setState(State.IDLE);
         }
     }
+
+
 
     public void freezeVisibleActors() {
         for (Actor actor : actors) {

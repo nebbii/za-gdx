@@ -2,26 +2,22 @@ package com.nebbii.zagdx;
 
 import com.badlogic.gdx.Gdx;
 
-public class SpawnerBoomerang extends Spawner {
+public class SpawnerJadeRing extends Spawner {
 
-    public SpawnerBoomerang() {
+    public SpawnerJadeRing() {
         super();
     }
 
     public void logic() {
         super.logic();
         if (!isActive()) return;
-
-        if (!map.activeActorsContain(EnemyGoriya.class)) {
-            activate();
-        }
     }
 
     @Override
     public void activate() {
         if (!isActive()) return;
 
-        PickupBoomerang pickup = new PickupBoomerang();
+        PickupJadeRing pickup = new PickupJadeRing();
         pickup.setPosition(this.getX(), this.getY());
         Gdx.app.log(this.getClass().getSimpleName(), "item placed");
 

@@ -13,6 +13,16 @@ public class SpawnerLadder extends Spawner {
         if (!isActive()) return;
     }
 
+    /* uhh maybe in randomizer you know */
+    public void activate() {
+        if (!isActive()) return;
+
+        Gdx.app.log(this.getClass().getSimpleName(), "ladder placed");
+        map.getSaveManager().addLocationEntry(getLocationEntry(), "placed");
+
+        setState(State.DEAD);
+    }
+
     public void activate(GameManager game) {
         if (!isActive()) return;
 
