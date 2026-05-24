@@ -21,6 +21,7 @@ public class World {
     static final int WORLD_WIDTH = 384;
     static final int WORLD_HEIGHT = 240;
     static final public ImageLoader images = new ImageLoader();
+    static final public SoundLoader sounds = new SoundLoader();
 
     private final Viewport worldViewport = new FitViewport(WORLD_WIDTH, WORLD_HEIGHT);
     private WorldCamera worldCamera;
