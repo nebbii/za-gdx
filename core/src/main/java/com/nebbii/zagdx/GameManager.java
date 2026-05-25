@@ -147,7 +147,7 @@ public class GameManager {
                 world.getMapManager().updateSpawnLocation("overworld_entrance_earth");
                 break;
             default:
-                world.getMapManager().updateSpawnLocation("overworld_entrance_earth");
+                world.getMapManager().updateSpawnLocation("overworld_pedestal");
             }
 
             reloadSave();
