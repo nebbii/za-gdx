@@ -101,7 +101,13 @@ public class MainMenuScreen extends MenuScreen {
 
         int i = 0;
         for (SaveData save : saves) {
-            menuButtonSaves.add(new MenuButtonSaveFile(this, save, 90, 165 - (20 * i), 200, 20));
+            boolean selected = false;
+
+            if (getSelectedFile() != null && save.filename.equals(getSelectedFile().filename)) {
+                selected = true;
+            }
+
+            menuButtonSaves.add(new MenuButtonSaveFile(this, save, selected, 90, 165 - (20 * i), 200, 20));
             i++;
         }
     }
