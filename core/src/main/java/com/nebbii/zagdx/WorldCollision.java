@@ -259,8 +259,7 @@ public class WorldCollision {
                 resolveRectangleVsPolygon(zelda.getCollisionBox(), polygonObject.getPolygon());
             }
             break;
-        case "shrine_of_earth_guard_gate_1":
-        case "shrine_of_earth_guard_gate_2":
+        case "shrine_of_earth_guard_gate":
             if (!saveManager.hasLocationEntry("s120_0")) {
                 resolveRectangleVsPolygon(zelda.getCollisionBox(), polygonObject.getPolygon());
             }
@@ -270,7 +269,46 @@ public class WorldCollision {
                 resolveRectangleVsPolygon(zelda.getCollisionBox(), polygonObject.getPolygon());
             }
             break;
-
+        case "shrine_of_earth_dark_cave_entrance":
+            map.updateSpawnLocation("shrine_of_earth_dark_cave_exit");
+            game.initializeFadeWarp();
+            break;
+        case "shrine_of_earth_dark_cave_exit":
+            map.updateSpawnLocation("shrine_of_earth_dark_cave_entrance");
+            game.initializeFadeWarp();
+            break;
+        case "shrine_of_earth_llort_warning_entrance":
+            map.updateSpawnLocation("shrine_of_earth_llort_warning_exit");
+            game.initializeFadeWarp();
+            break;
+        case "shrine_of_earth_llort_warning_exit":
+            map.updateSpawnLocation("shrine_of_earth_llort_warning_entrance");
+            game.initializeFadeWarp();
+            break;
+        case "shrine_of_earth_llort_hall_entrance":
+            map.updateSpawnLocation("shrine_of_earth_llort_hall_exit");
+            game.initializeFadeWarp();
+            break;
+        case "shrine_of_earth_llort_hall_exit":
+            map.updateSpawnLocation("shrine_of_earth_llort_hall_entrance");
+            game.initializeFadeWarp();
+            break;
+        case "shrine_of_earth_llort_gate_entrance":
+            map.updateSpawnLocation("shrine_of_earth_llort_gate_exit");
+            game.initializeFadeWarp();
+            break;
+        case "shrine_of_earth_llort_gate_exit":
+            map.updateSpawnLocation("shrine_of_earth_llort_gate_entrance");
+            game.initializeFadeWarp();
+            break;
+        case "shrine_of_earth_celestial_sign_1_entrance":
+            map.updateSpawnLocation("shrine_of_earth_celestial_sign_1_exit");
+            game.initializeFadeWarp();
+            break;
+        case "shrine_of_earth_celestial_sign_1_exit":
+            map.updateSpawnLocation("shrine_of_earth_celestial_sign_1_entrance");
+            game.initializeFadeWarp();
+            break;
         default:
             resolveRectangleVsPolygon(zelda.getCollisionBox(), polygonObject.getPolygon());
         }

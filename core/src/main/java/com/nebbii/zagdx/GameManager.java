@@ -144,10 +144,10 @@ public class GameManager {
 
             switch(currentMap) {
             case "shrine_of_earth":
-                world.getMapManager().updateSpawnLocation("exit_earth");
+                world.getMapManager().updateSpawnLocation("overworld_entrance_earth");
                 break;
             default:
-                world.getMapManager().updateSpawnLocation("overworld_pedestal");
+                world.getMapManager().updateSpawnLocation("overworld_entrance_earth");
             }
 
             reloadSave();
