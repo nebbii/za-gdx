@@ -137,6 +137,9 @@ public class ImageLoader {
 
     /* HUD */
     private Texture[] hudNumbers;
+    private Texture hudHeartEmpty;
+    private Texture hudHeartHalf;
+    private Texture hudHeartFull;
 
     /* Projectiles */
     private Texture[] friendlyBoomerang;
@@ -280,6 +283,9 @@ public class ImageLoader {
 
         /* HUD */
         hudNumbers = loadTextureArray("export/common/zinitVideo/record3_hud_palette", 10); // path subject to change in the future
+        hudHeartEmpty = new Texture("export/common/hudSprites/0.png");
+        hudHeartHalf = new Texture("export/common/hudSprites/1.png");
+        hudHeartFull = new Texture("export/common/hudSprites/2.png");
 
         /* Treasures */
         bone = new Texture("export/overworld/k13a/sprites/desc2/group0/sprite0.png");
@@ -465,6 +471,10 @@ public class ImageLoader {
                 texture.dispose();
             }
         }
+
+        hudHeartEmpty.dispose();
+        hudHeartHalf.dispose();
+        hudHeartFull.dispose();
 
         /* Treasures */
         bone.dispose();
@@ -682,6 +692,18 @@ public class ImageLoader {
         }
 
         return hudNumbers[number];
+    }
+
+    public Texture getHudHeartEmpty() {
+        return hudHeartEmpty;
+    }
+
+    public Texture getHudHeartHalf() {
+        return hudHeartHalf;
+    }
+
+    public Texture getHudHeartFull() {
+        return hudHeartFull;
     }
 
     public Texture getWand() {

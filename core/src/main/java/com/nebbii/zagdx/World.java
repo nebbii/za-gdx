@@ -169,17 +169,19 @@ public class World {
     private void drawHud() {
         batch.setProjectionMatrix(interfaceCamera.combined);
         batch.begin();
-        batch.draw(World.images.getRubyBlue(), 40f, WORLD_HEIGHT - 42f);
+        batch.draw(World.images.getRubyBlue(), 40f, WORLD_HEIGHT - 35f);
 
         drawHudRubyAmount(gameManager.getRubies(),
                           3,
                           52f,
-                          WORLD_HEIGHT - 42f);
+                          WORLD_HEIGHT - 35f);
 
-        font.draw(batch,
-                  "H: " + gameManager.getZelda().getHealth(),
-                  WORLD_WIDTH - 60f,
-                  WORLD_HEIGHT - 20f);
+        drawHudHearts(
+            gameManager.getZelda().getHealth(),
+            gameManager.getZelda().getMaxHealth(),
+            WORLD_WIDTH - 138f,
+            WORLD_HEIGHT - 35f
+        );
         batch.end();
     }
 
@@ -202,6 +204,54 @@ public class World {
             Texture digitTexture = World.images.getHudNumber(digit);
             batch.draw(digitTexture, x + i * digitSpacing, y);
         }
+    }
+
+    private void drawHudHearts(int health, int maxHealth, float x, float y) {
+        final int heartsPerRow = 7;
+        final int maxHeartSlots = 20;
+
+        final float heartSpacingX = 14f;
+        final float heartSpacingY = 14f;
+
+        int heartSlots = Math.min(maxHeartSlots, getHeartSlotCount(maxHealth));
+
+        for (int i = 0; i < maxHeartSlots; i++) {
+            int column = i % heartsPerRow;
+            int row = i / heartsPerRow;
+
+            float drawX = x + column * heartSpacingX;
+            float drawY = y - row * heartSpacingY;
+
+            if (i >= heartSlots) {
+                continue;
+            }
+
+            Texture heartTexture = getHudHeartTextureForSlot(health, i);
+            batch.draw(heartTexture, drawX, drawY);
+        }
+    }
+
+    private int getHeartSlotCount(int maxHealth) {
+        if (maxHealth <= 0) {
+            return 0;
+        }
+
+        return Math.max(1, (maxHealth + 19) / 20);
+    }
+
+    private Texture getHudHeartTextureForSlot(int health, int slotIndex) {
+        int fullHeartThreshold = (slotIndex + 1) * 20;
+        int halfHeartThreshold = slotIndex * 20 + 1;
+
+        if (health >= fullHeartThreshold) {
+            return World.images.getHudHeartFull();
+        }
+
+        if (health >= halfHeartThreshold) {
+            return World.images.getHudHeartHalf();
+        }
+
+        return World.images.getHudHeartEmpty();
     }
 
     private void drawFadeOverlay() {
