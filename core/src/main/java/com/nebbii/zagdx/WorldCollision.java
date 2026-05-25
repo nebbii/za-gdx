@@ -197,7 +197,7 @@ public class WorldCollision {
         switch(name) {
         /* Overworld warps */
         case "entrance_earth":
-            map.updateSpawnLocation("entrance_earth");
+            map.updateSpawnLocation("exit_earth");
             game.initializeFadeWarp();
             break;
         /* Overworld specials */
@@ -208,47 +208,47 @@ public class WorldCollision {
             break;
         /* Shrine of earth warps */
         case "exit_earth":
-            map.updateSpawnLocation("exit_earth");
+            map.updateSpawnLocation("entrance_earth");
             game.initializeFadeWarp();
             break;
         case "chest_entry":
-            map.updateSpawnLocation("chest_entry");
-            game.initializeFadeWarp();
-            break;
-        case "chest_exit":
             map.updateSpawnLocation("chest_exit");
             game.initializeFadeWarp();
             break;
-        case "blue_1_entrance":
-            map.updateSpawnLocation("blue_1_entrance");
+        case "chest_exit":
+            map.updateSpawnLocation("chest_entry");
             game.initializeFadeWarp();
             break;
-        case "blue_1_exit":
+        case "blue_1_entrance":
             map.updateSpawnLocation("blue_1_exit");
             game.initializeFadeWarp();
             break;
-        case "blue_2_entrance":
-            map.updateSpawnLocation("blue_2_entrance");
+        case "blue_1_exit":
+            map.updateSpawnLocation("blue_1_entrance");
             game.initializeFadeWarp();
             break;
-        case "blue_2_exit":
+        case "blue_2_entrance":
             map.updateSpawnLocation("blue_2_exit");
             game.initializeFadeWarp();
             break;
-        case "blue_3_entrance":
-            map.updateSpawnLocation("blue_3_entrance");
+        case "blue_2_exit":
+            map.updateSpawnLocation("blue_2_entrance");
             game.initializeFadeWarp();
             break;
-        case "blue_3_exit":
+        case "blue_3_entrance":
             map.updateSpawnLocation("blue_3_exit");
             game.initializeFadeWarp();
             break;
+        case "blue_3_exit":
+            map.updateSpawnLocation("blue_3_entrance");
+            game.initializeFadeWarp();
+            break;
         case "cave_1_entrance":
-            map.updateSpawnLocation("cave_1_entrance");
+            map.updateSpawnLocation("cave_1_exit");
             game.initializeFadeWarp();
             break;
         case "cave_1_exit":
-            map.updateSpawnLocation("cave_1_exit");
+            map.updateSpawnLocation("cave_1_entrance");
             game.initializeFadeWarp();
             break;
 
