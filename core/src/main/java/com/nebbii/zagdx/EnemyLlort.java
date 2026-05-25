@@ -47,6 +47,6 @@ public class EnemyLlort extends Enemy {
 
     @Override
     public Array<String> getWeaknesses() {
-        return new Array<>();
+        return Array.with("ZeldaActionWand");
     }
 }
