@@ -78,7 +78,7 @@ public class ZeldaActionBoomerang extends ZeldaAction {
                 setX(getX() + speed * deltaTime);
                 break;
             default:
-                throw new IllegalStateException(getClass().getSimpleName() + "Unhandled direction somehow?!");
+                throw new IllegalStateException(getClass().getSimpleName() + "Unhandled direction");
         }
 
         if (stateTime >= duration) setState(State.DEAD);

@@ -137,6 +137,7 @@ public class ImageLoader {
 
     /* Projectiles */
     private Texture[] friendlyBoomerang;
+    private Texture[] friendlyJadeRing;
     private Texture[] enemyBoomerang;
 
     private Texture itemScreen;
@@ -297,6 +298,11 @@ public class ImageLoader {
 
         /* Projectiles */
         friendlyBoomerang = loadTextureArray("export/common/weapons/Boomerang/group0", 4);
+        friendlyJadeRing = new Texture[4];
+        friendlyJadeRing[0] = new Texture("export/common/weapons/JadeRing/group0/sprite0.png");
+        friendlyJadeRing[1] = new Texture("export/common/weapons/JadeRing/group1/sprite0.png");
+        friendlyJadeRing[2] = new Texture("export/common/weapons/JadeRing/group2/sprite0.png");
+        friendlyJadeRing[3] = new Texture("export/common/weapons/JadeRing/group3/sprite0.png");
         enemyBoomerang = loadTextureArray("export/overworld/d24/sprites/desc1/group0", 4);
     }
 
@@ -691,6 +697,10 @@ public class ImageLoader {
 
     public Texture[] getFriendlyBoomerang() {
         return friendlyBoomerang;
+    }
+
+    public Texture[] getFriendlyJadeRing() {
+        return friendlyJadeRing;
     }
 
     public Texture[] getEnemyBoomerang() {
