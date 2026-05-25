@@ -6,10 +6,10 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
-import com.nebbii.zagdx.animation.ActionBoomerangAnimation;
+import com.nebbii.zagdx.animation.EnemyBoomerangAnimation;
 
 public class EnemyActionBoomerang extends EnemyAction {
-    public ActionBoomerangAnimation animation;
+    public EnemyBoomerangAnimation animation;
 
     float speed;
 
@@ -24,7 +24,7 @@ public class EnemyActionBoomerang extends EnemyAction {
 
         solid = true;
 
-        this.animation = new ActionBoomerangAnimation();
+        this.animation = new EnemyBoomerangAnimation();
 
         setWidth(10);
         setHeight(10);

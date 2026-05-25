@@ -6,10 +6,10 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
-import com.nebbii.zagdx.animation.ActionBoomerangAnimation;
+import com.nebbii.zagdx.animation.FriendlyBoomerangAnimation;
 
 public class ZeldaActionBoomerang extends ZeldaAction {
-    public ActionBoomerangAnimation animation;
+    public FriendlyBoomerangAnimation animation;
 
     float speed;
 
@@ -24,7 +24,7 @@ public class ZeldaActionBoomerang extends ZeldaAction {
 
         solid = true;
 
-        this.animation = new ActionBoomerangAnimation();
+        this.animation = new FriendlyBoomerangAnimation();
 
         setWidth(10);
         setHeight(10);

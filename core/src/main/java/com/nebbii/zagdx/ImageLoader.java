@@ -136,7 +136,8 @@ public class ImageLoader {
     private Texture heart;
 
     /* Projectiles */
-    private Texture[] projectileBoomerang;
+    private Texture[] friendlyBoomerang;
+    private Texture[] enemyBoomerang;
 
     private Texture itemScreen;
 
@@ -295,7 +296,8 @@ public class ImageLoader {
         jadeRing = new Texture("export/underworld/s108/sprites/desc1/group0/sprite0.png");
 
         /* Projectiles */
-        projectileBoomerang = loadTextureArray("export/overworld/d24/sprites/desc1/group0", 4);
+        friendlyBoomerang = loadTextureArray("export/common/weapons/Boomerang/group0", 4);
+        enemyBoomerang = loadTextureArray("export/overworld/d24/sprites/desc1/group0", 4);
     }
 
     public void dispose() {
@@ -687,8 +689,12 @@ public class ImageLoader {
       return itemScreen;
     }
 
-    public Texture[] getProjectileBoomerang() {
-        return projectileBoomerang;
+    public Texture[] getFriendlyBoomerang() {
+        return friendlyBoomerang;
+    }
+
+    public Texture[] getEnemyBoomerang() {
+        return enemyBoomerang;
     }
 
     public Texture getJadeRing() {
