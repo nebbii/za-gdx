@@ -196,76 +196,76 @@ public class WorldCollision {
 
         switch(name) {
         /* Overworld warps */
-        case "entrance_earth":
-            map.updateSpawnLocation("exit_earth");
+        case "overworld_entrance_earth":
+            map.updateSpawnLocation("shrine_of_earth_exit_earth");
             game.initializeFadeWarp();
             break;
         /* Overworld specials */
-        case "andor":
+        case "overworld_andor":
             if (game.getTreasures().contains(Treasure.RED_BOOTS)) {
                 // do nothing
             }
             break;
         /* Shrine of earth warps */
-        case "exit_earth":
-            map.updateSpawnLocation("entrance_earth");
+        case "shrine_of_earth_exit_earth":
+            map.updateSpawnLocation("overworld_entrance_earth");
             game.initializeFadeWarp();
             break;
-        case "chest_entry":
-            map.updateSpawnLocation("chest_exit");
+        case "shrine_of_earth_chest_entrance":
+            map.updateSpawnLocation("shrine_of_earth_chest_exit");
             game.initializeFadeWarp();
             break;
-        case "chest_exit":
-            map.updateSpawnLocation("chest_entry");
+        case "shrine_of_earth_chest_exit":
+            map.updateSpawnLocation("shrine_of_earth_chest_entrance");
             game.initializeFadeWarp();
             break;
-        case "blue_1_entrance":
-            map.updateSpawnLocation("blue_1_exit");
+        case "shrine_of_earth_blue_1_entrance":
+            map.updateSpawnLocation("shrine_of_earth_blue_1_exit");
             game.initializeFadeWarp();
             break;
-        case "blue_1_exit":
-            map.updateSpawnLocation("blue_1_entrance");
+        case "shrine_of_earth_blue_1_exit":
+            map.updateSpawnLocation("shrine_of_earth_blue_1_entrance");
             game.initializeFadeWarp();
             break;
-        case "blue_2_entrance":
-            map.updateSpawnLocation("blue_2_exit");
+        case "shrine_of_earth_blue_2_entrance":
+            map.updateSpawnLocation("shrine_of_earth_blue_2_exit");
             game.initializeFadeWarp();
             break;
-        case "blue_2_exit":
-            map.updateSpawnLocation("blue_2_entrance");
+        case "shrine_of_earth_blue_2_exit":
+            map.updateSpawnLocation("shrine_of_earth_blue_2_entrance");
             game.initializeFadeWarp();
             break;
-        case "blue_3_entrance":
-            map.updateSpawnLocation("blue_3_exit");
+        case "shrine_of_earth_blue_3_entrance":
+            map.updateSpawnLocation("shrine_of_earth_blue_3_exit");
             game.initializeFadeWarp();
             break;
-        case "blue_3_exit":
-            map.updateSpawnLocation("blue_3_entrance");
+        case "shrine_of_earth_blue_3_exit":
+            map.updateSpawnLocation("shrine_of_earth_blue_3_entrance");
             game.initializeFadeWarp();
             break;
-        case "cave_1_entrance":
-            map.updateSpawnLocation("cave_1_exit");
+        case "shrine_of_earth_cave_1_entrance":
+            map.updateSpawnLocation("shrine_of_earth_cave_1_exit");
             game.initializeFadeWarp();
             break;
-        case "cave_1_exit":
-            map.updateSpawnLocation("cave_1_entrance");
+        case "shrine_of_earth_cave_1_exit":
+            map.updateSpawnLocation("shrine_of_earth_cave_1_entrance");
             game.initializeFadeWarp();
             break;
 
         /* Shrine of earth specials */
-        case "ladder_bridge_1":
-        case "ladder_bridge_2":
+        case "shrine_of_earth_ladder_bridge_1":
+        case "shrine_of_earth_ladder_bridge_2":
             if (!saveManager.hasLocationEntry("s102_0")) {
                 resolveRectangleVsPolygon(zelda.getCollisionBox(), polygonObject.getPolygon());
             }
             break;
-        case "guard_gate_1":
-        case "guard_gate_2":
+        case "shrine_of_earth_guard_gate_1":
+        case "shrine_of_earth_guard_gate_2":
             if (!saveManager.hasLocationEntry("s120_0")) {
                 resolveRectangleVsPolygon(zelda.getCollisionBox(), polygonObject.getPolygon());
             }
             break;
-        case "llort_gate":
+        case "shrine_of_earth_llort_gate":
             if (!saveManager.hasLocationEntry("s121_0")) {
                 resolveRectangleVsPolygon(zelda.getCollisionBox(), polygonObject.getPolygon());
             }
