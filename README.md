@@ -37,7 +37,7 @@ Execute `./gradlew core:test --info --rerun-tasks`
 - Space - Toggle debug data visibility
 
 ### Contributing
-Pull requests are welcome! Please maintain [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) and [branch naming](https://conventional-branch.github.io/)
+Pull requests are welcome! Please maintain [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) and [branch naming](https://conventional-branch.github.io/) if possible. Check out the [Issues page](https://github.com/nebbii/za-gdx/issues) for stuff to do
 
 ## Credits
 - nebbii - Coding, mapping
