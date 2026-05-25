@@ -135,6 +135,9 @@ public class ImageLoader {
     private Texture rubyYellow;
     private Texture heart;
 
+    /* HUD */
+    private Texture[] hudNumbers;
+
     /* Projectiles */
     private Texture[] friendlyBoomerang;
     private Texture[] friendlyJadeRing;
@@ -274,6 +277,9 @@ public class ImageLoader {
         rubyBlue = new Texture("export/common/hudSprites/3.png");
         rubyYellow = new Texture("export/common/hudSprites/4.png");
         heart = new Texture("export/common/hudSprites/5.png");
+
+        /* HUD */
+        hudNumbers = loadTextureArray("export/common/zinitVideo/record3_hud_palette", 10); // path subject to change in the future
 
         /* Treasures */
         bone = new Texture("export/overworld/k13a/sprites/desc2/group0/sprite0.png");
@@ -452,6 +458,13 @@ public class ImageLoader {
         rubyBlue.dispose();
         rubyYellow.dispose();
         heart.dispose();
+
+        /* Hud */
+        for (Texture texture : hudNumbers) {
+            if (texture != null) {
+                texture.dispose();
+            }
+        }
 
         /* Treasures */
         bone.dispose();
@@ -657,6 +670,18 @@ public class ImageLoader {
 
     public Texture getHeart() {
         return heart;
+    }
+
+    public Texture[] getHudNumbers() {
+        return hudNumbers;
+    }
+
+    public Texture getHudNumber(int number) {
+        if (number < 0 || number >= hudNumbers.length) {
+            throw new IllegalArgumentException("HUD number out of range: " + number);
+        }
+
+        return hudNumbers[number];
     }
 
     public Texture getWand() {

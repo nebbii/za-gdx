@@ -7,6 +7,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -168,16 +169,39 @@ public class World {
     private void drawHud() {
         batch.setProjectionMatrix(interfaceCamera.combined);
         batch.begin();
-        font.draw(batch,
-                  "R: " + gameManager.getRubies(),
-                  20f,
-                  WORLD_HEIGHT - 20f);
+        batch.draw(World.images.getRubyBlue(), 40f, WORLD_HEIGHT - 42f);
+
+        drawHudRubyAmount(gameManager.getRubies(),
+                          3,
+                          52f,
+                          WORLD_HEIGHT - 42f);
 
         font.draw(batch,
                   "H: " + gameManager.getZelda().getHealth(),
                   WORLD_WIDTH - 60f,
                   WORLD_HEIGHT - 20f);
         batch.end();
+    }
+
+    private void drawHudRubyAmount(int number, int minDigits, float x, float y) {
+        String text = String.valueOf(number);
+
+        while (text.length() < minDigits) {
+            text = "0" + text;
+        }
+
+        float digitSpacing = 9f;
+
+        for (int i = 0; i < text.length(); i++) {
+            int digit = Character.getNumericValue(text.charAt(i));
+
+            if (digit < 0 || digit > 9) {
+                continue;
+            }
+
+            Texture digitTexture = World.images.getHudNumber(digit);
+            batch.draw(digitTexture, x + i * digitSpacing, y);
+        }
     }
 
     private void drawFadeOverlay() {
