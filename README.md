@@ -4,7 +4,9 @@ A port of ZA (originally for the CD-i) written in Java with [libGDX](https://lib
 
 ## Setup
 ### Requirements
+#### ...for running the game/building an executable
 - [Java JDK 17 or 21](https://adoptium.net/temurin/releases?version=21&os=any&arch=any) (for libgdx)
+#### ...for the initial setup
 - [git](https://git-scm.com/) (for loading the submodule)
 - [chdman](https://docs.mamedev.org/tools/chdman.html) (if using bin/cue)
 - [python3](https://www.python.org/), with the following dependencies:
