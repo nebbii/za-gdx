@@ -6,11 +6,12 @@ A port of ZA (originally for the CD-i) written in Java with [libGDX](https://lib
 ### Requirements
 - [Java JDK 17 or 21](https://adoptium.net/temurin/releases?version=21&os=any&arch=any) (for libgdx)
 - [git](https://git-scm.com/) (for loading the submodule)
+- [chdman](https://docs.mamedev.org/tools/chdman.html) (if using bin/cue)
 - [python3](https://www.python.org/), with the following dependencies:
   - tqdm
   - pillow
-- [chdman](https://docs.mamedev.org/tools/chdman.html) (if using bin/cue)
 
+You can do the initial run in [venv](https://docs.python.org/3/library/venv.html) to avoid installing dependencies directly on your machine.
 ### Providing an asset source
 You'll need to acquire a bin/cue or .CHD of the original game and place it in the project directory.
 ```
