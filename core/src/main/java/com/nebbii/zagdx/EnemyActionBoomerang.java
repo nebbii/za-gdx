@@ -8,81 +8,25 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.nebbii.zagdx.animation.EnemyBoomerangAnimation;
 
-public class EnemyActionBoomerang extends EnemyAction {
+public class EnemyActionBoomerang extends EnemyActionProjectile {
     public EnemyBoomerangAnimation animation;
-
-    float speed;
 
     int[] defaultOffset;
 
-    private Rectangle hitbox;
-
     public EnemyActionBoomerang(Actor actor, float x, float y) {
-        super(actor, x, y);
-        duration = 1.2f;
-        speed = 150f;
-
-        solid = true;
-
+        super(actor, x, y, 150f, 1.2f);
         this.animation = new EnemyBoomerangAnimation();
 
         setWidth(10);
         setHeight(10);
         setDamage(40);
-
-        hitbox = new Rectangle();
         hitbox.setWidth(28);
         hitbox.setHeight(31);
-
-        switch(actor.getDirection()) {
-        case LEFT:
-            setX(actor.getCenterPointX() - actor.getHitbox().getWidth() / 2 - this.getWidth());
-            setY(actor.getCenterPointY());
-            break;
-        case DOWN:
-            setX(actor.getCenterPointX() - this.getWidth() / 2);
-            setY(actor.getHitbox().getY() - this.getHeight() / 2);
-            break;
-        case UP:
-            setX(actor.getCenterPointX() - this.getWidth() / 2);
-            setY(actor.getCenterPointY() + actor.getHitbox().getHeight());
-            break;
-        case RIGHT:
-            setX(actor.getCenterPointX() + actor.getHitbox().getWidth());
-            setY(actor.getCenterPointY());
-            break;
-        default:
-            break;
-        }
-
-        setDirection(enemy.getDirection());
     }
 
     public void logic() {
         super.logic();
         if (!isActive()) return;
-
-        float deltaTime = Gdx.graphics.getDeltaTime();
-
-        switch(getDirection()) {
-            case LEFT:
-                setX(getX() - speed * deltaTime);
-                break;
-            case DOWN:
-                setY(getY() - speed * deltaTime);
-                break;
-            case UP:
-                setY(getY() + speed * deltaTime);
-                break;
-            case RIGHT:
-                setX(getX() + speed * deltaTime);
-                break;
-            default:
-                throw new IllegalStateException(getClass().getSimpleName() + "Unhandled direction somehow?!");
-        }
-
-        if (stateTime >= duration) setState(State.DEAD);
-        stateTime += deltaTime;
     }
 
     @Override
