@@ -145,6 +145,7 @@ public class ImageLoader {
     private Texture[] friendlyBoomerang;
     private Texture[] friendlyJadeRing;
     private Texture[] enemyBoomerang;
+    private Texture[] enemySpear;
 
     private Texture itemScreen;
 
@@ -316,6 +317,11 @@ public class ImageLoader {
         friendlyJadeRing[2] = new Texture("export/common/weapons/JadeRing/group2/sprite0.png");
         friendlyJadeRing[3] = new Texture("export/common/weapons/JadeRing/group3/sprite0.png");
         enemyBoomerang = loadTextureArray("export/overworld/d24/sprites/desc1/group0", 4);
+        enemySpear = new Texture[4];
+        enemySpear[0] = new Texture("export/underworld/s120/sprites/desc1/group0/sprite0.png");
+        enemySpear[1] = new Texture("export/underworld/s120/sprites/desc1/group1/sprite0.png");
+        enemySpear[2] = new Texture("export/underworld/s120/sprites/desc1/group2/sprite0.png");
+        enemySpear[3] = new Texture("export/underworld/s120/sprites/desc1/group3/sprite0.png");
     }
 
     public void dispose() {
@@ -496,6 +502,31 @@ public class ImageLoader {
         wand.dispose();
         boomerang.dispose();
         jadeRing.dispose();
+
+        /* Projectiles */
+        for (Texture texture : friendlyBoomerang) {
+            if (texture != null) {
+                texture.dispose();
+            }
+        }
+
+        for (Texture texture : friendlyJadeRing) {
+            if (texture != null) {
+                texture.dispose();
+            }
+        }
+
+        for (Texture texture : enemyBoomerang) {
+            if (texture != null) {
+                texture.dispose();
+            }
+        }
+
+        for (Texture texture : enemySpear) {
+            if (texture != null) {
+                texture.dispose();
+            }
+        }
     }
 
     public Texture getImageByItem(Item item) {
@@ -752,6 +783,10 @@ public class ImageLoader {
 
     public Texture[] getEnemyBoomerang() {
         return enemyBoomerang;
+    }
+
+    public Texture[] getEnemySpear() {
+        return enemySpear;
     }
 
     public Texture getJadeRing() {

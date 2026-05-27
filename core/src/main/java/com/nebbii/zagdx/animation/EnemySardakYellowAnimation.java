@@ -28,8 +28,8 @@ public class EnemySardakYellowAnimation extends GameAnimation {
         super("walkDown");
         this.enemy = enemy;
 
-        baseOffsetX = -4;
-        baseOffsetY = 7;
+        baseOffsetX = 16;
+        baseOffsetY = 17;
         offsetX = 0;
         offsetY = 0;
 
