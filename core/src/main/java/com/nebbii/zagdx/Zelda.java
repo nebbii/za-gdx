@@ -157,6 +157,10 @@ public class Zelda extends Rectangle implements Actor {
                     unequipItem();
                 }
                 break;
+            case COMPASS_1:
+                map.updateSpawnLocation("overworld_entrance_earth");
+                world.getGameManager().initializeFadeWarp();
+                break;
             default:
             }
 
