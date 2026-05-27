@@ -131,6 +131,13 @@ public class ImageLoader {
     private Texture compass5;
     private Texture compass6;
     private Texture compass7;
+    private Texture celestialStone1;
+    private Texture celestialStone2;
+    private Texture celestialStone3;
+    private Texture celestialStone4;
+    private Texture celestialStone5;
+    private Texture celestialStone6;
+    private Texture celestialStone7;
 
     /* Weapons */
     private Texture wand;
@@ -318,6 +325,14 @@ public class ImageLoader {
         compass5 = new Texture("export/underworld/s105/sprites/desc1/group0/sprite0.png"); // TODO: get correct compass image
         compass6 = new Texture("export/underworld/s105/sprites/desc1/group0/sprite0.png"); // TODO: get correct compass image
         compass7 = new Texture("export/underworld/s105/sprites/desc1/group0/sprite0.png"); // TODO: get correct compass image
+
+        celestialStone1 = new Texture("export/underworld/s122/sprites/desc0/group0/sprite0.png");
+        celestialStone2 = new Texture("export/underworld/s122/sprites/desc0/group0/sprite0.png"); // TODO: get correct celestial stone image
+        celestialStone3 = new Texture("export/underworld/s122/sprites/desc0/group0/sprite0.png"); // TODO: get correct celestial stone image
+        celestialStone4 = new Texture("export/underworld/s122/sprites/desc0/group0/sprite0.png"); // TODO: get correct celestial stone image
+        celestialStone5 = new Texture("export/underworld/s122/sprites/desc0/group0/sprite0.png"); // TODO: get correct celestial stone image
+        celestialStone6 = new Texture("export/underworld/s122/sprites/desc0/group0/sprite0.png"); // TODO: get correct celestial stone image
+        celestialStone7 = new Texture("export/underworld/s122/sprites/desc0/group0/sprite0.png"); // TODO: get correct celestial stone image
 
         /* Weapons */
         wand = new Texture("export/overworld/h23/sprites/desc0/group0/sprite0.png");
@@ -519,6 +534,13 @@ public class ImageLoader {
         compass5.dispose();
         compass6.dispose();
         compass7.dispose();
+        celestialStone1.dispose();
+        celestialStone2.dispose();
+        celestialStone3.dispose();
+        celestialStone4.dispose();
+        celestialStone5.dispose();
+        celestialStone6.dispose();
+        celestialStone7.dispose();
 
         /* Weapons */
         wand.dispose();
@@ -559,13 +581,21 @@ public class ImageLoader {
                 return getBone();
             case CANDLE:
             case CELESTIAL_SIGN_1:
+                return getCelestialStone(1);
             case CELESTIAL_SIGN_2:
+                return getCelestialStone(2);
             case CELESTIAL_SIGN_3:
+                return getCelestialStone(3);
             case CELESTIAL_SIGN_4:
+                return getCelestialStone(4);
             case CELESTIAL_SIGN_5:
+                return getCelestialStone(5);
             case CELESTIAL_SIGN_6:
+                return getCelestialStone(6);
             case CELESTIAL_SIGN_7:
+                return getCelestialStone(7);
             case COAL:
+                return getLadder();
             case COMPASS_1:
                 return getCompass(1);
             case COMPASS_2:
@@ -824,6 +854,27 @@ public class ImageLoader {
 
     public Texture getRedBoots() {
         return redBoots;
+    }
+
+    public Texture getCelestialStone(int index) {
+        switch(index) {
+        case 1:
+            return celestialStone1;
+        case 2:
+            return celestialStone2;
+        case 3:
+            return celestialStone3;
+        case 4:
+            return celestialStone4;
+        case 5:
+            return celestialStone5;
+        case 6:
+            return celestialStone6;
+        case 7:
+            return celestialStone7;
+        default:
+            throw new IllegalStateException(this.getClass().getSimpleName() + ": celestial stone out of index");
+        }
     }
 
     public Texture getCompass(int index) {

@@ -300,7 +300,9 @@
       "__comment": "s122: Zelda can now take the first Celestial Sign.",
       "actors": [
         {
-          "__comment": "stone at x2477 y2321"
+          "type": "PickupCelestialStone1",
+          "x": 2477,
+          "y": 2321
         }
       ]
     }
