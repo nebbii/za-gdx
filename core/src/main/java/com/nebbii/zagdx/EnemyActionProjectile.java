@@ -56,6 +56,7 @@ public class EnemyActionProjectile extends EnemyAction {
         super.logic();
         if (!isActive()) return;
 
+        /*
         float deltaTime = Gdx.graphics.getDeltaTime();
 
         switch(getDirection()) {
@@ -77,6 +78,7 @@ public class EnemyActionProjectile extends EnemyAction {
 
         if (stateTime >= duration) setState(State.DEAD);
         stateTime += deltaTime;
+        */
     }
 
     @Override
