@@ -79,6 +79,11 @@
           "type": "EnemyKeese",
           "x": 1368,
           "y": 573
+        },
+        {
+          "type": "SpawnerCompass1",
+          "x": 1314,
+          "y": 535
         }
       ]
     },

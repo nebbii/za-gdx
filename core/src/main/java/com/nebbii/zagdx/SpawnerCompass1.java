@@ -2,9 +2,9 @@ package com.nebbii.zagdx;
 
 import com.badlogic.gdx.Gdx;
 
-public class SpawnerBoomerang extends Spawner {
+public class SpawnerCompass1 extends Spawner {
 
-    public SpawnerBoomerang() {
+    public SpawnerCompass1() {
         super();
     }
 
@@ -21,7 +21,7 @@ public class SpawnerBoomerang extends Spawner {
     public void activate() {
         if (!isActive()) return;
 
-        PickupBoomerang pickup = new PickupBoomerang();
+        PickupCompass1 pickup = new PickupCompass1();
         pickup.setPosition(this.getX(), this.getY());
         Gdx.app.log(this.getClass().getSimpleName(), "item placed");
 
