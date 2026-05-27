@@ -83,7 +83,7 @@ public class EnemySpearAnimation extends GameAnimation {
     private Animation<TextureRegion> initUp() {
         Texture[] textures = World.images.getEnemySpear();
         int[][] frameData = {
-            {0, -5, 0}
+            {0, -5, -14}
         };
 
         TextureRegion[] frames = new TextureRegion[frameData.length];
@@ -102,7 +102,7 @@ public class EnemySpearAnimation extends GameAnimation {
     private Animation<TextureRegion> initRight() {
         Texture[] textures = World.images.getEnemySpear();
         int[][] frameData = {
-            {1, 0, -5}
+            {1, -30, -5}
         };
 
         TextureRegion[] frames = new TextureRegion[frameData.length];
@@ -121,7 +121,7 @@ public class EnemySpearAnimation extends GameAnimation {
     private Animation<TextureRegion> initDown() {
         Texture[] textures = World.images.getEnemySpear();
         int[][] frameData = {
-            {2, -5, -42}
+            {2, -5, -36}
         };
 
         TextureRegion[] frames = new TextureRegion[frameData.length];
@@ -140,7 +140,7 @@ public class EnemySpearAnimation extends GameAnimation {
     private Animation<TextureRegion> initLeft() {
         Texture[] textures = World.images.getEnemySpear();
         int[][] frameData = {
-            {3, -42, -5}
+            {3, -20, 1}
         };
 
         TextureRegion[] frames = new TextureRegion[frameData.length];

@@ -501,6 +501,11 @@
           "type": "PickupWand",
           "x": 2754,
           "y": 2283
+        },
+        {
+          "type": "EnemySardakYellow",
+          "x": 2954,
+          "y": 2283
         }
       ]
     },
