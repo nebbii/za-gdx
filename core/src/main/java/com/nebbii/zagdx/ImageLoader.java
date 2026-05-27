@@ -124,6 +124,13 @@ public class ImageLoader {
     private Texture underworldMap5;
     private Texture underworldMap6;
     private Texture underworldMap7;
+    private Texture compass1;
+    private Texture compass2;
+    private Texture compass3;
+    private Texture compass4;
+    private Texture compass5;
+    private Texture compass6;
+    private Texture compass7;
 
     /* Weapons */
     private Texture wand;
@@ -303,6 +310,14 @@ public class ImageLoader {
         underworldMap5 = new Texture("export/underworld/s104/sprites/desc1/group0/sprite0.png"); // TODO: get correct map image
         underworldMap6 = new Texture("export/underworld/s104/sprites/desc1/group0/sprite0.png"); // TODO: get correct map image
         underworldMap7 = new Texture("export/underworld/s104/sprites/desc1/group0/sprite0.png"); // TODO: get correct map image
+
+        compass1 = new Texture("export/underworld/s105/sprites/desc1/group0/sprite0.png");
+        compass2 = new Texture("export/underworld/s105/sprites/desc1/group0/sprite0.png"); // TODO: get correct compass image
+        compass3 = new Texture("export/underworld/s105/sprites/desc1/group0/sprite0.png"); // TODO: get correct compass image
+        compass4 = new Texture("export/underworld/s105/sprites/desc1/group0/sprite0.png"); // TODO: get correct compass image
+        compass5 = new Texture("export/underworld/s105/sprites/desc1/group0/sprite0.png"); // TODO: get correct compass image
+        compass6 = new Texture("export/underworld/s105/sprites/desc1/group0/sprite0.png"); // TODO: get correct compass image
+        compass7 = new Texture("export/underworld/s105/sprites/desc1/group0/sprite0.png"); // TODO: get correct compass image
 
         /* Weapons */
         wand = new Texture("export/overworld/h23/sprites/desc0/group0/sprite0.png");
@@ -497,6 +512,13 @@ public class ImageLoader {
         underworldMap5.dispose();
         underworldMap6.dispose();
         underworldMap7.dispose();
+        compass1.dispose();
+        compass2.dispose();
+        compass3.dispose();
+        compass4.dispose();
+        compass5.dispose();
+        compass6.dispose();
+        compass7.dispose();
 
         /* Weapons */
         wand.dispose();
@@ -545,12 +567,19 @@ public class ImageLoader {
             case CELESTIAL_SIGN_7:
             case COAL:
             case COMPASS_1:
+                return getCompass(1);
             case COMPASS_2:
+                return getCompass(2);
             case COMPASS_3:
+                return getCompass(3);
             case COMPASS_4:
+                return getCompass(4);
             case COMPASS_5:
+                return getCompass(5);
             case COMPASS_6:
+                return getCompass(6);
             case COMPASS_7:
+                return getCompass(7);
             case CRYSTALHEART:
             case DIAMOND:
             case FAIRY:
@@ -795,6 +824,27 @@ public class ImageLoader {
 
     public Texture getRedBoots() {
         return redBoots;
+    }
+
+    public Texture getCompass(int index) {
+        switch(index) {
+        case 1:
+            return compass1;
+        case 2:
+            return compass2;
+        case 3:
+            return compass3;
+        case 4:
+            return compass4;
+        case 5:
+            return compass5;
+        case 6:
+            return compass6;
+        case 7:
+            return compass7;
+        default:
+            throw new IllegalStateException(this.getClass().getSimpleName() + ": compass out of index");
+        }
     }
 
     public Texture getUnderworldMap(int index) {
