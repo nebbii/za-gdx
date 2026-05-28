@@ -50,4 +50,9 @@ public class GameAnimation {
     public float getStateTime() {
         return stateTime;
     }
+
+    public void setStateTime(float stateTime) {
+        this.stateTime = stateTime;
+    }
+
 }

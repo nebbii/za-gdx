@@ -15,8 +15,9 @@ public class EnemyLlort extends Enemy {
 
     private int currentMoveStep = -1;
 
-    public float timer;
+    private float timer;
     private float interval = 2f;
+    private float attackTimer;
 
     private final float[][] pathCoordinates = {
         {-104f,  10f},
@@ -36,7 +37,7 @@ public class EnemyLlort extends Enemy {
         setHealth(60);
         setDamage(60);
         setDefense(24);
-        setSpeed(100f);
+        setSpeed(110f);
 
         setStartX(getX());
         setStartY(getY());
@@ -60,8 +61,17 @@ public class EnemyLlort extends Enemy {
             // no pushback
         }
         else {
-            move(delta);
-            // walk through set path
+            switch(enemyState) {
+            case SEARCH:
+                move(delta);
+                break;
+            case FIGHT:
+                attack(delta);
+                break;
+            default:
+
+            }
+            animation.play();
         }
 
     }
@@ -83,11 +93,20 @@ public class EnemyLlort extends Enemy {
 
             setGoalX(getX() + pathCoordinates[step][0]);
             setGoalY(getY() + pathCoordinates[step][1]);
+
+            animation.setStateTime(0);
+            setEnemyState(EnemyState.FIGHT);
         }
 
         moveTowardGoal(delta);
 
         timer += delta;
+    }
+
+    private void attack(float delta) {
+        if (animation.isAnimationFinished()) {
+            setEnemyState(EnemyState.SEARCH);
+        }
     }
 
     private void moveTowardGoal(float delta) {
