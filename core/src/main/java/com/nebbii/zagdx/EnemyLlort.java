@@ -17,7 +17,6 @@ public class EnemyLlort extends Enemy {
 
     private float timer;
     private float interval = 2f;
-    private float attackTimer;
 
     private final float[][] pathCoordinates = {
         {-104f,  10f},
@@ -34,7 +33,7 @@ public class EnemyLlort extends Enemy {
 
         setWidth(48);
         setHeight(64);
-        setHealth(60);
+        setHealth(600);
         setDamage(60);
         setDefense(24);
         setSpeed(110f);
@@ -57,10 +56,7 @@ public class EnemyLlort extends Enemy {
 
         knockback = Math.max(0f, knockback - delta);
 
-        if (knockback > 0) {
-            // no pushback
-        }
-        else {
+        if (knockback <= 0) {
             switch(enemyState) {
             case SEARCH:
                 move(delta);
