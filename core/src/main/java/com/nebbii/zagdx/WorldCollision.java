@@ -354,7 +354,8 @@ public class WorldCollision {
 
     private void checkOverlapAlertBoxes() {
         for (Actor actor : actors) {
-            if (!actor.isActive() || !(actor instanceof Enemy)) continue;
+            if (!actor.isActive()) continue;
+            if (!(actor instanceof Enemy) || actor.getType() != ActorType.ENEMY) continue;
 
             Enemy enemy = (Enemy) actor;
             Zelda zelda = map.getZelda();

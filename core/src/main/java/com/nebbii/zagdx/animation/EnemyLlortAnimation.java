@@ -22,8 +22,8 @@ public class EnemyLlortAnimation extends GameAnimation {
         super("walk");
         this.enemy = enemy;
 
-        baseOffsetX = -40;
-        baseOffsetY = 0;
+        baseOffsetX = -46;
+        baseOffsetY = -5;
         offsetX = 0;
         offsetY = 0;
 
