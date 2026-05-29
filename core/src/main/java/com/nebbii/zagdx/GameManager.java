@@ -142,9 +142,17 @@ public class GameManager {
         if (hasDied) {
             zelda.revive();
 
+            WorldCamera worldCamera = world.getWorldCamera();
+            String lastCell = world.rowAndColumnToRealCell(worldCamera.getTargetCellColumn(), worldCamera.getTargetCellRow());
+
             switch(currentMap) {
             case "shrine_of_earth":
-                world.getMapManager().updateSpawnLocation("overworld_entrance_earth");
+                if (lastCell.equals("g2")) {
+                    world.getMapManager().updateSpawnLocation("shrine_of_earth_llort_gate_entrance");
+                }
+                else {
+                    world.getMapManager().updateSpawnLocation("overworld_entrance_earth");
+                }
                 break;
             default:
                 world.getMapManager().updateSpawnLocation("overworld_pedestal");

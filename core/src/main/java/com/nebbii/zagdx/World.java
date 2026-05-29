@@ -286,9 +286,10 @@ public class World {
         debugLines.add("Cell: " + rowAndColumnToRealCell(worldCamera.getTargetCellColumn(), worldCamera.getTargetCellRow()));
         //debugLines.add("Equip: " + mapManager.getZelda().getCurrentItem().toString());
         //debugLines.add("State: " + mapManager.getZelda().getState());
-        debugLines.add("GameState: " + gameManager.getGameState());
-        debugLines.add("AP: " + archipelagoClient.isConnected());
-
+        //debugLines.add("GameState: " + gameManager.getGameState());
+        if (archipelagoClient.isConnected()) {
+            debugLines.add("AP connected");
+        }
 
         batch.setProjectionMatrix(interfaceCamera.combined);
         batch.begin();
@@ -359,7 +360,7 @@ public class World {
         while (index > 0) {
             index--;
             int remainder = index % 26;
-            result.append((char) ('A' + remainder));
+            result.append((char) ('a' + remainder));
             index /= 26;
         }
 
