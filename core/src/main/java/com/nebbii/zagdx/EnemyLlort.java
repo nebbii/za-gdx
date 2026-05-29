@@ -121,6 +121,12 @@ public class EnemyLlort extends Enemy {
     }
 
     @Override
+    public void onDeath() {
+        setState(State.DEAD);
+        map.getSaveManager().addLocationEntry(locationEntry, "permadead");
+    }
+
+    @Override
     public Array<String> getWeaknesses() {
         return Array.with("ZeldaActionWand");
     }
