@@ -260,7 +260,10 @@ public class WorldCollision {
             }
             break;
         case "shrine_of_earth_guard_gate":
-            if (!saveManager.hasLocationEntry("s120_0")) {
+            if (!(saveManager.hasLocationForClass("shrine_of_earth", "EnemySardakBlue", "permadead")
+                && saveManager.hasLocationForClass("shrine_of_earth", "EnemySardakRed", "permadead")
+                && saveManager.hasLocationForClass("shrine_of_earth", "EnemySardakYellow", "permadead")))
+            {
                 resolveRectangleVsPolygon(zelda.getCollisionBox(), polygonObject.getPolygon());
             }
             break;
