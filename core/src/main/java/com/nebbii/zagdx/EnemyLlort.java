@@ -33,8 +33,8 @@ public class EnemyLlort extends Enemy {
 
         setWidth(48);
         setHeight(64);
-        setHealth(600);
-        setDamage(60);
+        setHealth(60);
+        setDamage(50);
         setDefense(24);
         setSpeed(110f);
 
