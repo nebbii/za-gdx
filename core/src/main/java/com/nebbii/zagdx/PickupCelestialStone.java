@@ -8,6 +8,8 @@ public class PickupCelestialStone extends Pickup {
     public PickupCelestialStone(Treasure celestialStoneType) {
         super();
 
+        setState(State.ACTIVE);
+
         this.celestialStoneType = celestialStoneType;
 
         switch(celestialStoneType) {
