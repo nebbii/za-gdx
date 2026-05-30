@@ -134,7 +134,7 @@ public class Zelda extends Rectangle implements Actor {
             case NONE:
                 break;
             case PITCHER_EMPTY:
-                SpawnerPitcherFull spawnerPitcherFull = (SpawnerPitcherFull) map.findActorByType(SpawnerPitcherFull.class);
+                SpawnerPitcherFull spawnerPitcherFull = (SpawnerPitcherFull) map.findFirstActorByType(SpawnerPitcherFull.class);
 
                 if (spawnerPitcherFull != null && spawnerPitcherFull.isActive()) {
                     spawnerPitcherFull.activate(world.getGameManager());
@@ -142,7 +142,7 @@ public class Zelda extends Rectangle implements Actor {
                 }
                 break;
             case PITCHER_FULL:
-                SpawnerVialOfWind spawnerVialOfWind = (SpawnerVialOfWind) map.findActorByType(SpawnerVialOfWind.class);
+                SpawnerVialOfWind spawnerVialOfWind = (SpawnerVialOfWind) map.findFirstActorByType(SpawnerVialOfWind.class);
 
                 if (spawnerVialOfWind != null && spawnerVialOfWind.isActive()) {
                     spawnerVialOfWind.activate(world.getGameManager());
@@ -150,7 +150,7 @@ public class Zelda extends Rectangle implements Actor {
                 }
                 break;
             case LADDER:
-                SpawnerLadder spawnerLadder = (SpawnerLadder) map.findActorByType(SpawnerLadder.class);
+                SpawnerLadder spawnerLadder = (SpawnerLadder) map.findFirstActorByType(SpawnerLadder.class);
 
                 if (spawnerLadder != null && spawnerLadder.isActive()) {
                     spawnerLadder.activate(world.getGameManager());
@@ -170,14 +170,14 @@ public class Zelda extends Rectangle implements Actor {
             switch ((Weapon) getCurrentItem()) {
             case BOOMERANG:
                 if (world.getGameManager().getRubies() > 0
-                    && map.findActorByType(ZeldaActionBoomerang.class) == null) {
+                    && map.findFirstActorByType(ZeldaActionBoomerang.class) == null) {
                     world.getGameManager().decreaseRubies(1, true);
                     map.addNewActor(new ZeldaActionBoomerang(this, getX(), getY()));
                 }
                 break;
             case JADE_RING:
                 if (world.getGameManager().getRubies() >= 3
-                    && map.findActorByType(ZeldaActionJadeRing.class) == null) {
+                    && map.findFirstActorByType(ZeldaActionJadeRing.class) == null) {
                     world.getGameManager().decreaseRubies(3, true);
                     map.addNewActor(new ZeldaActionJadeRing(this, getX(), getY()));
                 }

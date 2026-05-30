@@ -281,6 +281,11 @@
           "type": "EnemySardakYellow",
           "x": 2535,
           "y": 1713
+        },
+        {
+          "type": "SpriteLlortLaser",
+          "x": 2428,
+          "y": 1882
         }
       ]
     },

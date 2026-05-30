@@ -90,6 +90,10 @@ public class ImageLoader {
         IDLE
     }
 
+    public enum SpriteLlortLaserAnimationGroup {
+        IDLE
+    }
+
     private EnumMap<ZeldaAnimationGroup, Texture[]> zelda;
     private EnumMap<EnemyGoriyaAnimationGroup, Texture[]> enemyGoriya;
     private EnumMap<EnemyTumblebotAnimationGroup, Texture[]> enemyTumblebot;
@@ -109,6 +113,7 @@ public class ImageLoader {
 
     /* Map stuff */
     private Texture spriteLadder;
+    private EnumMap<SpriteLlortLaserAnimationGroup, Texture[]> spriteLlortLaser;
 
     /* Treasures */
     private Texture bone;
@@ -290,6 +295,10 @@ public class ImageLoader {
 
         /* Map stuff */
         spriteLadder = new Texture("export/underworld/s102/sprites/desc0/group0/sprite0.png");
+
+        spriteLlortLaser = new EnumMap<>(SpriteLlortLaserAnimationGroup.class);
+        spriteLlortLaser.put(SpriteLlortLaserAnimationGroup.IDLE,
+            loadTextureArray("export/underworld/s120/sprites/desc2/group0", 4));
 
         /* Items */
         rubyBlue = new Texture("export/common/hudSprites/3.png");
@@ -495,6 +504,16 @@ public class ImageLoader {
 
         /* Map stuff */
         spriteLadder.dispose();
+
+        for (Texture[] textures : spriteLlortLaser.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
 
         /* Items */
         rubyBlue.dispose();
@@ -814,6 +833,14 @@ public class ImageLoader {
 
     public Texture getSpriteLadder() {
         return spriteLadder;
+    }
+
+    public Texture[] getSpriteLlortLaserAnimation(SpriteLlortLaserAnimationGroup anim) {
+        return spriteLlortLaser.get(anim);
+    }
+
+    public Texture[] getSpriteLlortLaser() {
+        return getSpriteLlortLaserAnimation(SpriteLlortLaserAnimationGroup.IDLE);
     }
 
     public Texture getPitcherEmpty() {

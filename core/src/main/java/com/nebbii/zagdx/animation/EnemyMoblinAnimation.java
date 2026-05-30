@@ -88,7 +88,7 @@ public class EnemyMoblinAnimation extends GameAnimation {
         Texture[] textures = World.images.getEnemyMoblinAnimation(EnemyMoblinAnimationGroup.WALKUP);
 
         int[][] frameData = {
-            {0, 0, 0},
+            {0, 0, -5},
             {1, 0, 0},
             {2, 0, 0},
             {3, 0, 0},
@@ -146,14 +146,14 @@ public class EnemyMoblinAnimation extends GameAnimation {
         Texture[] textures = World.images.getEnemyMoblinAnimation(EnemyMoblinAnimationGroup.WALKDOWN);
 
         int[][] frameData = {
-            {0, 0, 0},
-            {1, 0, -2},
-            {2, 0, 1},
-            {3, 0, 11},
-            {4, 0, 10},
-            {3, 0, 11},
-            {2, 0, 1},
-            {1, 0, -2},
+            {0, 0, 0-4},
+            {1, 0, -2-4},
+            {2, 0, 1-4},
+            {3, 0, 11-4},
+            {4, 0, 10-4},
+            {3, 0, 11-4},
+            {2, 0, 1-4},
+            {1, 0, -2-4},
         };
 
         TextureRegion[] frames = new TextureRegion[frameData.length];

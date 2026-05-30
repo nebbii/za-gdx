@@ -187,14 +187,26 @@ public class MapManager {
         newActors.add(pickup);
     }
 
-    public Actor findActorByType(Class<? extends Actor> type) {
+    public <T extends Actor> T findFirstActorByType(Class<T> type) {
         for (Actor actor : actors) {
             if (type.isInstance(actor)) {
-                return actor;
+                return type.cast(actor);
             }
         }
 
         return null;
+    }
+
+    public <T extends Actor> Array<T> findAllActorsByType(Class<T> type) {
+        Array<T> results = new Array<>();
+
+        for (Actor actor : actors) {
+            if (type.isInstance(actor)) {
+                results.add(type.cast(actor));
+            }
+        }
+
+        return results;
     }
 
     public Actor findActorByLocationEntry(String locationEntry) {
