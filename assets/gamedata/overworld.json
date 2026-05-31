@@ -700,7 +700,28 @@
     {
       "location": "j22a",
       "__comment": "j22a: Inside the Molblin Inn, Zelda meets the innkeeper Lothar and three customers. Zelda can buy the C spell here for 100 rupees. The man in the red shirt, Krebb, gives her a dagger if she talks to him. The woman at the table and the soldier also speak if Zelda touches them.",
-      "actors": []
+      "actors": [
+        {
+          "type": "NpcExhaustedTraveler",
+          "x": 2178,
+          "y": 7004
+        },
+        {
+          "type": "NpcBlueLady",
+          "x": 2035,
+          "y": 7017
+        },
+        {
+          "type": "NpcLothar",
+          "x": 2058,
+          "y": 7101
+        },
+        {
+          "type": "NpcKrebb",
+          "x": 2171,
+          "y": 7032
+        }
+      ]
     },
     {
       "location": "j23",

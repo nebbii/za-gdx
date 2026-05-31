@@ -19,11 +19,11 @@ public class NpcKrebbAnimation extends GameAnimation {
     private int[] idle1OffsetY;
 
     public NpcKrebbAnimation(NpcKrebb npc) {
-        super("idle0");
+        super("idle1");
         this.npc = npc;
 
         baseOffsetX = 0;
-        baseOffsetY = 15;
+        baseOffsetY = 10;
         offsetX = 0;
         offsetY = 0;
 

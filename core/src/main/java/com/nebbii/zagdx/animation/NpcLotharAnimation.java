@@ -23,7 +23,7 @@ public class NpcLotharAnimation extends GameAnimation {
         this.npc = npc;
 
         baseOffsetX = 0;
-        baseOffsetY = 15;
+        baseOffsetY = 10;
         offsetX = 0;
         offsetY = 0;
 

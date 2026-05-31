@@ -22,7 +22,7 @@ public class NpcBlueLadyAnimation extends GameAnimation {
         super("idle0");
         this.npc = npc;
 
-        baseOffsetX = 0;
+        baseOffsetX = 12;
         baseOffsetY = 15;
         offsetX = 0;
         offsetY = 0;
@@ -65,8 +65,8 @@ public class NpcBlueLadyAnimation extends GameAnimation {
     private Animation<TextureRegion> initIdle0() {
         int[][] frameData = {
             {0, 0, 0},
-            {1, 0, 0},
-            {2, 0, 0}
+            {1, -1, -1},
+            {2, -2, -3}
         };
 
         idle0OffsetX = new int[frameData.length];
