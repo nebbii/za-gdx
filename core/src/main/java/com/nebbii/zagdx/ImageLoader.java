@@ -96,6 +96,26 @@ public class ImageLoader {
         IDLE2
     }
 
+    public enum NpcExhaustedTravelerAnimationGroup {
+        IDLE0,
+        IDLE1
+    }
+
+    public enum NpcBlueLadyAnimationGroup {
+        IDLE0,
+        IDLE1
+    }
+
+    public enum NpcLotharAnimationGroup {
+        IDLE0,
+        IDLE1
+    }
+
+    public enum NpcKrebbAnimationGroup {
+        IDLE0,
+        IDLE1
+    }
+
     public enum SpriteLlortLaserAnimationGroup {
         IDLE
     }
@@ -117,6 +137,10 @@ public class ImageLoader {
     private Texture[] npcGlebb;
     private EnumMap<NpcTalkingChestAnimationGroup, Texture[]> npcTalkingChest;
     private EnumMap<NpcOghamAnimationGroup, Texture[]> npcOgham;
+    private EnumMap<NpcExhaustedTravelerAnimationGroup, Texture[]> npcExhaustedTraveler;
+    private EnumMap<NpcBlueLadyAnimationGroup, Texture[]> npcBlueLady;
+    private EnumMap<NpcLotharAnimationGroup, Texture[]> npcLothar;
+    private EnumMap<NpcKrebbAnimationGroup, Texture[]> npcKrebb;
 
     /* Map stuff */
     private Texture spriteLadder;
@@ -307,6 +331,30 @@ public class ImageLoader {
             loadTextureArray("export/overworld/f26/sprites/desc0/group1", 3));
         npcOgham.put(NpcOghamAnimationGroup.IDLE2,
             loadTextureArray("export/overworld/f26/sprites/desc0/group2", 3));
+
+        npcExhaustedTraveler = new EnumMap<>(NpcExhaustedTravelerAnimationGroup.class);
+        npcExhaustedTraveler.put(NpcExhaustedTravelerAnimationGroup.IDLE0,
+            loadTextureArray("export/overworld/j22a/sprites/desc0/group0", 3));
+        npcExhaustedTraveler.put(NpcExhaustedTravelerAnimationGroup.IDLE1,
+            loadTextureArray("export/overworld/j22a/sprites/desc0/group1", 3));
+
+        npcBlueLady = new EnumMap<>(NpcBlueLadyAnimationGroup.class);
+        npcBlueLady.put(NpcBlueLadyAnimationGroup.IDLE0,
+            loadTextureArray("export/overworld/j22a/sprites/desc1/group0", 3));
+        npcBlueLady.put(NpcBlueLadyAnimationGroup.IDLE1,
+            loadTextureArray("export/overworld/j22a/sprites/desc1/group1", 3));
+
+        npcLothar = new EnumMap<>(NpcLotharAnimationGroup.class);
+        npcLothar.put(NpcLotharAnimationGroup.IDLE0,
+            loadTextureArray("export/overworld/j22a/sprites/desc2/group0", 5));
+        npcLothar.put(NpcLotharAnimationGroup.IDLE1,
+            loadTextureArray("export/overworld/j22a/sprites/desc2/group1", 5));
+
+        npcKrebb = new EnumMap<>(NpcKrebbAnimationGroup.class);
+        npcKrebb.put(NpcKrebbAnimationGroup.IDLE0,
+            loadTextureArray("export/overworld/j22a/sprites/desc4/group0", 5));
+        npcKrebb.put(NpcKrebbAnimationGroup.IDLE1,
+            loadTextureArray("export/overworld/j22a/sprites/desc4/group1", 5));
 
         /* Map stuff */
         spriteLadder = new Texture("export/underworld/s102/sprites/desc0/group0/sprite0.png");
@@ -518,6 +566,46 @@ public class ImageLoader {
         }
 
         for (Texture[] textures : npcOgham.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcExhaustedTraveler.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcBlueLady.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcLothar.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcKrebb.values()) {
             if (textures == null) continue;
 
             for (Texture texture : textures) {
@@ -806,6 +894,22 @@ public class ImageLoader {
 
     public Texture[] getNpcOghamAnimation(NpcOghamAnimationGroup anim) {
         return npcOgham.get(anim);
+    }
+
+    public Texture[] getNpcExhaustedTravelerAnimation(NpcExhaustedTravelerAnimationGroup anim) {
+        return npcExhaustedTraveler.get(anim);
+    }
+
+    public Texture[] getNpcBlueLadyAnimation(NpcBlueLadyAnimationGroup anim) {
+        return npcBlueLady.get(anim);
+    }
+
+    public Texture[] getNpcLotharAnimation(NpcLotharAnimationGroup anim) {
+        return npcLothar.get(anim);
+    }
+
+    public Texture[] getNpcKrebbAnimation(NpcKrebbAnimationGroup anim) {
+        return npcKrebb.get(anim);
     }
 
     public Texture getRubyBlue() {
