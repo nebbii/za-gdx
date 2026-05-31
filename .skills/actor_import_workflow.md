@@ -22,6 +22,10 @@ ActorName_files.zip
 
 The updated `ImageLoader` should be a full replacement file, not a patch snippet, unless the user explicitly asks for only changed sections.
 
+## Validation policy
+
+Do not run Gradle compile, test, or launch commands as part of this actor import workflow unless the user explicitly asks for that validation. Limit default verification to file/diff sanity checks and obvious source inspection.
+
 ## Required inputs
 
 Do not make assumptions if any of these are missing. Ask for the missing information instead.
