@@ -8,12 +8,6 @@ import com.nebbii.zagdx.NpcOgham;
 import com.nebbii.zagdx.World;
 
 public class NpcOghamAnimation extends GameAnimation {
-    private static final int[][] IDLE_FRAME_DATA = {
-        {0, 0, 0},
-        {1, 0, 0},
-        {2, 0, 0}
-    };
-
     private final NpcOgham npc;
 
     private Animation<TextureRegion> idle0;
@@ -31,21 +25,14 @@ public class NpcOghamAnimation extends GameAnimation {
         super("idle0");
         this.npc = npc;
 
-        baseOffsetX = 0;
+        baseOffsetX = 10;
         baseOffsetY = 15;
         offsetX = 0;
         offsetY = 0;
 
-        idle0OffsetX = new int[IDLE_FRAME_DATA.length];
-        idle0OffsetY = new int[IDLE_FRAME_DATA.length];
-        idle1OffsetX = new int[IDLE_FRAME_DATA.length];
-        idle1OffsetY = new int[IDLE_FRAME_DATA.length];
-        idle2OffsetX = new int[IDLE_FRAME_DATA.length];
-        idle2OffsetY = new int[IDLE_FRAME_DATA.length];
-
-        idle0 = initIdle(NpcOghamAnimationGroup.IDLE0, idle0OffsetX, idle0OffsetY);
-        idle1 = initIdle(NpcOghamAnimationGroup.IDLE1, idle1OffsetX, idle1OffsetY);
-        idle2 = initIdle(NpcOghamAnimationGroup.IDLE2, idle2OffsetX, idle2OffsetY);
+        idle0 = initIdle0();
+        idle1 = initIdle1();
+        idle2 = initIdle2();
     }
 
     @Override
@@ -84,19 +71,72 @@ public class NpcOghamAnimation extends GameAnimation {
         return frame;
     }
 
+    private Animation<TextureRegion> initIdle0() {
+        int[][] frameData = {
+            {1, 0, 0},
+            {1, 0, 0},
+            {1, 0, 0},
+            {1, 0, 0},
+            {2, 0, 0},
+            {1, 0, 0},
+            {0, 0, 0},
+            {1, 0, 0}
+        };
+
+        idle0OffsetX = new int[frameData.length];
+        idle0OffsetY = new int[frameData.length];
+
+        return initIdle(NpcOghamAnimationGroup.IDLE0, frameData, idle0OffsetX, idle0OffsetY);
+    }
+
+    private Animation<TextureRegion> initIdle1() {
+        int[][] frameData = {
+            {0, 0, 0},
+            {0, 0, 0},
+            {0, 0, 0},
+            {0, 0, 0},
+            {1, 0, 0},
+            {2, 0, 0},
+            {1, 0, 0}
+        };
+
+        idle1OffsetX = new int[frameData.length];
+        idle1OffsetY = new int[frameData.length];
+
+        return initIdle(NpcOghamAnimationGroup.IDLE1, frameData, idle1OffsetX, idle1OffsetY);
+    }
+
+    private Animation<TextureRegion> initIdle2() {
+        int[][] frameData = {
+            {0, 0, 0},
+            {0, 0, 0},
+            {0, 0, 0},
+            {0, 0, 0},
+            {1, 0, 0},
+            {2, 0, 0},
+            {1, 0, 0}
+        };
+
+        idle2OffsetX = new int[frameData.length];
+        idle2OffsetY = new int[frameData.length];
+
+        return initIdle(NpcOghamAnimationGroup.IDLE2, frameData, idle2OffsetX, idle2OffsetY);
+    }
+
     private Animation<TextureRegion> initIdle(
         NpcOghamAnimationGroup group,
+        int[][] frameData,
         int[] animationOffsetX,
         int[] animationOffsetY
     ) {
         Texture[] textures = World.images.getNpcOghamAnimation(group);
 
-        TextureRegion[] frames = new TextureRegion[IDLE_FRAME_DATA.length];
+        TextureRegion[] frames = new TextureRegion[frameData.length];
 
-        for (int i = 0; i < IDLE_FRAME_DATA.length; i++) {
-            frames[i] = new TextureRegion(textures[IDLE_FRAME_DATA[i][0]]);
-            animationOffsetX[i] = IDLE_FRAME_DATA[i][1];
-            animationOffsetY[i] = IDLE_FRAME_DATA[i][2];
+        for (int i = 0; i < frameData.length; i++) {
+            frames[i] = new TextureRegion(textures[frameData[i][0]]);
+            animationOffsetX[i] = frameData[i][1];
+            animationOffsetY[i] = frameData[i][2];
         }
 
         Animation<TextureRegion> anim = new Animation<TextureRegion>(0.400f, frames);

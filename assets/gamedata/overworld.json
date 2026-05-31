@@ -263,7 +263,9 @@
       "__comment": "f26: A forest merchant sells Zelda a candle for 100 rupees and a magic shield for 500 rupees.",
       "actors": [
         {
-          "__comment": "merchant at X: 2086 Y: 1533ish"
+          "type": "NpcOgham",
+          "x": 2056,
+          "y": 1543
         },
         {
           "__comment": "candle at X: 2108 Y: 1493"
