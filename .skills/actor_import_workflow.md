@@ -289,6 +289,7 @@ Generated animation classes must follow the existing project animation pattern:
 [ ] Import the actor class from `com.nebbii.zagdx`
 [ ] Import the relevant `ImageLoader.ActorNameAnimationGroup`
 [ ] Import `World` and read textures through `World.images.getActorNameAnimation(...)`
+[ ] Define a local `int[][] frameData` block inside each animation init method, with rows shaped as `{frameIndex, offsetX, offsetY}`
 ```
 
 Example constructor shape:
@@ -311,6 +312,8 @@ For directional animations, use a stable default animation name such as `"walkDo
 
 Do not generate animation classes that omit the `super(...)` call. `GameAnimation` is not optional; it owns shared animation state such as `animation`, `stateTime`, `baseOffsetX`, `baseOffsetY`, `offsetX`, `offsetY`, and `play()`.
 
+Always make frame offsets directly editable in the generated animation class. Each generated animation init method (`initIdle()`, `initIdle0()`, `initWalkDown()`, etc.) must declare its own local `int[][] frameData` block and populate offset arrays from that block. Do not use one shared static/global frame-data constant across multiple animations, because each animation may need independent per-frame X/Y offsets.
+
 ## Four-direction animation class pattern
 
 For a four-direction, five-frame actor, the animation class should:
@@ -325,6 +328,7 @@ For a four-direction, five-frame actor, the animation class should:
 [ ] Select animation from actor.getDirection(), only if the actor exposes direction
 [ ] Use World.images.getActorNameAnimation(...)
 [ ] Use the 8-step ping-pong frame pattern: 0, 1, 2, 3, 4, 3, 2, 1
+[ ] Use a separate local `int[][] frameData` block for each direction init method
 [ ] Use state-aware animation speed when the actor is an Enemy
 [ ] Use a simple fixed animation speed when the actor is an Npc unless told otherwise
 [ ] Draw relative to actor position using getX() and getY()
@@ -358,6 +362,7 @@ For a single-animation actor, the animation class should:
 [ ] Store the actor instance
 [ ] Have one Animation<TextureRegion>
 [ ] Have X/Y offset arrays
+[ ] Use a local `int[][] frameData` block for the animation init method
 [ ] Use World.images.getActorNameAnimation(...)
 [ ] Use a looped animation
 [ ] Draw relative to actor position using getX() and getY()
@@ -368,6 +373,14 @@ Single-animation actors do not need direction switching, but they still must ext
 ## Offset policy
 
 If the user says to use the same offsets as another actor, copy those offsets exactly.
+
+All generated animation frame rows must use this shape:
+
+```java
+{frameIndex, offsetX, offsetY}
+```
+
+Generate these rows even when all offsets are zero, so the user can edit X/Y offsets per frame later.
 
 If the user asks for pixel alignment and provides sprite images, inspect the sprite dimensions and transparent bounds before choosing offsets.
 
