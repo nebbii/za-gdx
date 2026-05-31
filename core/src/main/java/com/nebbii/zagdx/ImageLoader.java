@@ -90,6 +90,12 @@ public class ImageLoader {
         IDLE
     }
 
+    public enum NpcOghamAnimationGroup {
+        IDLE0,
+        IDLE1,
+        IDLE2
+    }
+
     public enum SpriteLlortLaserAnimationGroup {
         IDLE
     }
@@ -110,6 +116,7 @@ public class ImageLoader {
     /* NPCs */
     private Texture[] npcGlebb;
     private EnumMap<NpcTalkingChestAnimationGroup, Texture[]> npcTalkingChest;
+    private EnumMap<NpcOghamAnimationGroup, Texture[]> npcOgham;
 
     /* Map stuff */
     private Texture spriteLadder;
@@ -292,6 +299,14 @@ public class ImageLoader {
         npcTalkingChest = new EnumMap<>(NpcTalkingChestAnimationGroup.class);
         npcTalkingChest.put(NpcTalkingChestAnimationGroup.IDLE,
             loadTextureArray("export/underworld/s108/sprites/desc0/group0", 4));
+
+        npcOgham = new EnumMap<>(NpcOghamAnimationGroup.class);
+        npcOgham.put(NpcOghamAnimationGroup.IDLE0,
+            loadTextureArray("export/overworld/f26/sprites/desc0/group0", 3));
+        npcOgham.put(NpcOghamAnimationGroup.IDLE1,
+            loadTextureArray("export/overworld/f26/sprites/desc0/group1", 3));
+        npcOgham.put(NpcOghamAnimationGroup.IDLE2,
+            loadTextureArray("export/overworld/f26/sprites/desc0/group2", 3));
 
         /* Map stuff */
         spriteLadder = new Texture("export/underworld/s102/sprites/desc0/group0/sprite0.png");
@@ -493,6 +508,16 @@ public class ImageLoader {
         }
 
         for (Texture[] textures : npcTalkingChest.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcOgham.values()) {
             if (textures == null) continue;
 
             for (Texture texture : textures) {
@@ -777,6 +802,10 @@ public class ImageLoader {
 
     public Texture[] getNpcTalkingChestAnimation(NpcTalkingChestAnimationGroup anim) {
         return npcTalkingChest.get(anim);
+    }
+
+    public Texture[] getNpcOghamAnimation(NpcOghamAnimationGroup anim) {
+        return npcOgham.get(anim);
     }
 
     public Texture getRubyBlue() {
