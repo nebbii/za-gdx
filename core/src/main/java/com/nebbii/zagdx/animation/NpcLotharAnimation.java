@@ -65,6 +65,11 @@ public class NpcLotharAnimation extends GameAnimation {
     private Animation<TextureRegion> initIdle0() {
         int[][] frameData = {
             {0, 0, 0},
+            {0, 0, 0},
+            {0, 0, 0},
+            {0, 0, 0},
+            {0, 0, 0},
+            {0, 0, 0},
             {1, 0, 0},
             {2, 0, 0},
             {3, 0, 0},

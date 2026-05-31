@@ -65,6 +65,13 @@ public class NpcExhaustedTravelerAnimation extends GameAnimation {
     private Animation<TextureRegion> initIdle0() {
         int[][] frameData = {
             {0, 0, 0},
+            {0, 0, 0},
+            {0, 0, 0},
+            {0, 0, 0},
+            {0, 0, 0},
+            {0, 0, 0},
+            {0, 0, 0},
+            {0, 0, 0},
             {1, 0, 0},
             {2, 0, 0}
         };
@@ -77,6 +84,13 @@ public class NpcExhaustedTravelerAnimation extends GameAnimation {
 
     private Animation<TextureRegion> initIdle1() {
         int[][] frameData = {
+            {0, 0, 0},
+            {0, 0, 0},
+            {0, 0, 0},
+            {0, 0, 0},
+            {0, 0, 0},
+            {0, 0, 0},
+            {0, 0, 0},
             {0, 0, 0},
             {1, 0, 0},
             {2, 0, 0}

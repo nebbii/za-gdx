@@ -66,9 +66,14 @@ public class NpcKrebbAnimation extends GameAnimation {
         int[][] frameData = {
             {0, 0, 0},
             {1, 0, 0},
-            {2, 0, 0},
+            {2, 0, -1},
             {3, 0, 0},
-            {4, 0, 0}
+            {4, 0, 0},
+            {3, 0, 0},
+            {3, 0, 0},
+            {3, 0, 0},
+            {3, 0, 0},
+            {3, 0, 0}
         };
 
         idle0OffsetX = new int[frameData.length];
@@ -81,9 +86,14 @@ public class NpcKrebbAnimation extends GameAnimation {
         int[][] frameData = {
             {0, 0, 0},
             {1, 0, 0},
-            {2, 0, 0},
+            {2, 0, -1},
             {3, 0, 0},
-            {4, 0, 0}
+            {4, 0, 0},
+            {3, 0, 0},
+            {3, 0, 0},
+            {3, 0, 0},
+            {3, 0, 0},
+            {3, 0, 0}
         };
 
         idle1OffsetX = new int[frameData.length];
