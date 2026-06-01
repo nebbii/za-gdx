@@ -702,7 +702,9 @@
           "y": 2439
         },
         {
-          "__comment": "firestorm at X: 3610 Y: 2436"
+          "type": "SpawnerFirestorm",
+          "x": 3610,
+          "y": 2436
         }
       ]
     },
