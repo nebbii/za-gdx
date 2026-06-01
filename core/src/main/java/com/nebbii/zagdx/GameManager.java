@@ -197,6 +197,10 @@ public class GameManager {
         for(Treasure treasure : saveManager.getTreasures()) {
             addTreasure(treasure, false);
         }
+
+        if (this.rubies > 0) {
+            addTreasure(Treasure.RUBIES, false);
+        }
     }
 
     public void reloadWeapons() {

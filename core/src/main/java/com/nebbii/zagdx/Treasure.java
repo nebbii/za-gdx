@@ -39,7 +39,7 @@ public enum Treasure implements Item {
     RED_BOOTS,
     RED_RIBBON,
     RUG,
-    RUPEES,
+    RUBIES,
     TICKET,
     UNDERWORLD_MAP_1,
     UNDERWORLD_MAP_2,

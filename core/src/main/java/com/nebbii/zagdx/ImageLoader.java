@@ -796,7 +796,7 @@ public class ImageLoader {
                 return getRedBoots();
             case RED_RIBBON:
             case RUG:
-            case RUPEES:
+            case RUBIES:
             case TICKET:
             case UNDERWORLD_MAP_1:
                 return getUnderworldMap(1);
