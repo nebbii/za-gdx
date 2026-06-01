@@ -8,7 +8,8 @@ import com.nebbii.zagdx.animation.NpcBeggarAnimation;
 public class NpcBeggar extends Npc {
     public NpcBeggarAnimation animation;
 
-    private Sound sound;
+    private Sound line0;
+    private Sound line2;
     private float timer;
 
     public NpcBeggar() {
@@ -19,23 +20,25 @@ public class NpcBeggar extends Npc {
         this.timer = 0;
 
         this.animation = new NpcBeggarAnimation(this);
-        this.sound = World.sounds.getNpcTalkingChestLine0(); // TODO: use the real line
+        this.line0 = World.sounds.getNpcBeggarLine0();
+        this.line2 = World.sounds.getNpcBeggarLine2();
     }
 
     @Override
     public void logic() {
         super.logic();
         if (!isActive()) {
-            sound.stop();
+            line0.stop();
             return;
         }
 
         switch(npcState) {
             case TALKY:
-                sound.play();
+                line0.play();
                 setNpcState(NpcState.TALKING);
                 break;
             case TALKING:
+                /*
                 timer += Gdx.graphics.getDeltaTime();
                 if (timer > 6f) {
                     for (Spawner spawner : map.findActiveActorsByType(Spawner.class)) {
@@ -44,9 +47,9 @@ public class NpcBeggar extends Npc {
 
                     setNpcState(NpcState.DONE);
                 }
+                */
                 break;
             case DONE:
-                sound.stop();
                 break;
             default:
                 break;
