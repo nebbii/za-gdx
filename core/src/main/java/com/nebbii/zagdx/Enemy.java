@@ -62,16 +62,17 @@ public class Enemy extends Rectangle implements Actor {
 
     public void logic() {
         if (getState() != State.ACTIVE) return;
-        if (health <= 0) onDeath();
 
         knockback = Math.max(0f, knockback - Gdx.graphics.getDeltaTime());
 
         if (knockback > 0) {
-            if (hurtWeakness) {
+            if (hurtWeakness && health > 0) {
                 movePushback();
             }
         }
         else {
+            if (health <= 0) onDeath();
+
             switch(enemyState) {
             case SEARCH:
                 searchDurationCap = 4.0f;
