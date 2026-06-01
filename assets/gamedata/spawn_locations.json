@@ -5,65 +5,125 @@
       "x": 2487.18,
       "y": 2262.32
     },
-    "entrance_earth": {
-      "targetMap": "shrine_of_earth",
-      "x": 136.32,
-      "y": 790.60
+    "overworld_moblin_head_inn_entrance": {
+      "targetMap": "overworld",
+      "x": 3555,
+      "y": 2445
     },
-    "exit_earth": {
+    "overworld_moblin_head_inn_exit": {
+      "targetMap": "overworld",
+      "x": 1985,
+      "y": 7049
+    },
+    "overworld_entrance_earth": {
       "targetMap": "overworld",
       "x": 2548.19,
       "y": 149.02
     },
-    "chest_entry": {
+    "shrine_of_earth_exit_earth": {
+      "targetMap": "shrine_of_earth",
+      "x": 136.32,
+      "y": 790.60
+    },
+    "shrine_of_earth_chest_exit": {
       "targetMap": "shrine_of_earth",
       "x": 1695.97,
       "y": 186.99
     },
-    "chest_exit": {
+    "shrine_of_earth_chest_entrance": {
       "targetMap": "shrine_of_earth",
       "x": 1695.97,
       "y": 261.99
     },
-    "blue_1_entrance": {
+    "shrine_of_earth_blue_1_exit": {
       "targetMap": "shrine_of_earth",
       "x": 1965.26,
       "y": 78.14
     },
-    "blue_1_exit": {
+    "shrine_of_earth_blue_1_entrance": {
       "targetMap": "shrine_of_earth",
       "x": 1840.04,
       "y": 79.47
     },
-    "blue_2_entrance": {
+    "shrine_of_earth_blue_2_exit": {
       "targetMap": "shrine_of_earth",
       "x": 2201.78,
       "y": 748.46
     },
-    "blue_2_exit": {
+    "shrine_of_earth_blue_2_entrance": {
       "targetMap": "shrine_of_earth",
       "x": 2201.78,
       "y": 178.58
     },
-    "blue_3_entrance": {
+    "shrine_of_earth_blue_3_exit": {
       "targetMap": "shrine_of_earth",
       "x": 2343.14,
       "y": 867.28
     },
-    "blue_3_exit": {
+    "shrine_of_earth_blue_3_entrance": {
       "targetMap": "shrine_of_earth",
       "x": 2248.15,
       "y": 867.28
     },
-    "cave_1_entrance": {
+    "shrine_of_earth_cave_1_exit": {
       "targetMap": "shrine_of_earth",
       "x": 1489.0,
       "y": 1042.5
     },
-    "cave_1_exit": {
+    "shrine_of_earth_cave_1_entrance": {
       "targetMap": "shrine_of_earth",
       "x": 1955.0,
       "y": 1052.5
+    },
+    "shrine_of_earth_dark_cave_entrance": {
+      "targetMap": "shrine_of_earth",
+      "x": 1475,
+      "y": 1557
+    },
+    "shrine_of_earth_dark_cave_exit": {
+      "targetMap": "shrine_of_earth",
+      "x": 1580,
+      "y": 1557
+    },
+    "shrine_of_earth_llort_warning_entrance": {
+      "targetMap": "shrine_of_earth",
+      "x": 1856,
+      "y": 1586
+    },
+    "shrine_of_earth_llort_warning_exit": {
+      "targetMap": "shrine_of_earth",
+      "x": 1855,
+      "y": 1715
+    },
+    "shrine_of_earth_llort_hall_entrance": {
+      "targetMap": "shrine_of_earth",
+      "x": 1863,
+      "y": 1759
+    },
+    "shrine_of_earth_llort_hall_exit": {
+      "targetMap": "shrine_of_earth",
+      "x": 1959,
+      "y": 1770
+    },
+    "shrine_of_earth_llort_gate_entrance": {
+      "targetMap": "shrine_of_earth",
+      "x": 2481,
+      "y": 1841
+    },
+    "shrine_of_earth_llort_gate_exit": {
+      "targetMap": "shrine_of_earth",
+      "x": 2481,
+      "y": 1951
+    },
+    "shrine_of_earth_celestial_sign_1_entrance": {
+      "targetMap": "shrine_of_earth",
+      "x": 2481,
+      "y": 2081
+    },
+    "shrine_of_earth_celestial_sign_1_exit": {
+      "targetMap": "shrine_of_earth",
+      "x": 2481,
+      "y": 2191
     }
   }
 }

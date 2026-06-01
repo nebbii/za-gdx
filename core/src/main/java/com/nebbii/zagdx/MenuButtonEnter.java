@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
+import com.nebbii.zagdx.MenuScreen.FadeToggle;
 
 public class MenuButtonEnter implements MenuButton {
     private final NameEntryScreen nameEntry;
@@ -24,6 +25,10 @@ public class MenuButtonEnter implements MenuButton {
     @Override
     public void onTouch() {
         nameEntry.createNewSave();
-        nameEntry.core.setScreen(new MainMenuScreen(nameEntry.core));
+
+        Core core = nameEntry.core;
+        MenuScreen currentMenuScreen = (MenuScreen) core.getScreen();
+        currentMenuScreen.setFadeToggle(FadeToggle.OUT);
+        core.setNextScreen(new MainMenuScreen(nameEntry.core));
     }
 }

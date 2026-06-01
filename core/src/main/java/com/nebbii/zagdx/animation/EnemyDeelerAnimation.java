@@ -21,7 +21,7 @@ public class EnemyDeelerAnimation extends GameAnimation {
         this.enemy = enemy;
 
         baseOffsetX = 0;
-        baseOffsetY = 5;
+        baseOffsetY = 0;
         offsetX = 0;
         offsetY = 0;
 

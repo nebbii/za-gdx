@@ -3,6 +3,7 @@ package com.nebbii.zagdx;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
+import com.nebbii.zagdx.MenuScreen.FadeToggle;
 
 public class MenuButtonPlay extends Rectangle implements MenuButton {
     final Core core;
@@ -19,7 +20,10 @@ public class MenuButtonPlay extends Rectangle implements MenuButton {
     @Override
     public void onTouch() {
         if (mainMenuScreen.getSelectedFile() != null) {
-            core.setScreen(new GameScreen(core, mainMenuScreen.getSelectedFile()));
+
+            MenuScreen currentMenuScreen = (MenuScreen) core.getScreen();
+            currentMenuScreen.setFadeToggle(FadeToggle.OUT);
+            core.setNextScreen(new GameScreen(core, mainMenuScreen.getSelectedFile()));
         }
         else {
             Gdx.app.log(getClass().getSimpleName(), "No file selected");

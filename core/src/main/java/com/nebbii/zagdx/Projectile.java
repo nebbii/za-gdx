@@ -3,6 +3,7 @@ package com.nebbii.zagdx;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.utils.Array;
 
 public class Projectile extends Rectangle implements Actor {
     protected boolean solid = false;
@@ -62,8 +63,8 @@ public class Projectile extends Rectangle implements Actor {
         return getY() + getHeight() / 2;
     }
 
-    public String[] getWeaknesses() {
-        return new String[] {};
+    public Array<String> getWeaknesses() {
+        return new Array<>();
     }
 
     public int getDamage() {

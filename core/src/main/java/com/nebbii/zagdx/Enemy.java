@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.utils.Array;
 
 public class Enemy extends Rectangle implements Actor {
     protected boolean solid;
@@ -25,7 +26,6 @@ public class Enemy extends Rectangle implements Actor {
     protected float knockback;
     protected Direction hurtDirection;
     protected boolean hurtWeakness = true;
-
     protected State state;
     protected ActorType type;
     protected int drawOrder;
@@ -67,7 +67,9 @@ public class Enemy extends Rectangle implements Actor {
         knockback = Math.max(0f, knockback - Gdx.graphics.getDeltaTime());
 
         if (knockback > 0) {
-            movePushback();
+            if (hurtWeakness) {
+                movePushback();
+            }
         }
         else {
             switch(enemyState) {
@@ -171,7 +173,7 @@ public class Enemy extends Rectangle implements Actor {
             if (t < 0.04f) {
                 currentColor = Color.BLUE;
             } else if (t < 0.08f) {
-                currentColor = Color.WHITE;
+                currentColor = Color.CYAN;
             } else {
                 currentColor = Color.BLUE;
             }
@@ -271,8 +273,8 @@ public class Enemy extends Rectangle implements Actor {
         return getY() + getHeight() / 2;
     }
 
-    public String[] getWeaknesses() {
-        return new String[] {};
+    public Array<String> getWeaknesses() {
+        return new Array<>();
     }
 
     public int getDamage() {
@@ -336,7 +338,7 @@ public class Enemy extends Rectangle implements Actor {
     }
 
     public void decreaseHealth(int amount) {
-        Gdx.app.log(this.getClass().getSimpleName(), "decreasing health (" + getHealth() + ") by " + amount);
+        //Gdx.app.log(this.getClass().getSimpleName(), "decreasing health (" + getHealth() + ") by " + amount);
 
         setHealth(getHealth() - amount);
     }
@@ -401,5 +403,13 @@ public class Enemy extends Rectangle implements Actor {
     @Override
     public void setLocationEntry(String locationEntry) {
         this.locationEntry = locationEntry;
+    }
+
+    public boolean isHurtWeakness() {
+        return hurtWeakness;
+    }
+
+    public void setHurtWeakness(boolean hurtWeakness) {
+        this.hurtWeakness = hurtWeakness;
     }
 }

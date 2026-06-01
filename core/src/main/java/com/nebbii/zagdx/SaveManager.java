@@ -1,6 +1,8 @@
 package com.nebbii.zagdx;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
@@ -9,11 +11,11 @@ import com.badlogic.gdx.utils.JsonWriter;
 
 public class SaveManager {
     private static final String SAVE_FOLDER = "saves/";
-
-    private World world;
+    private World world; // TODO: remove this here and from the constructor
 
     private final FileHandle saveFolder;
     private final Json json;
+    private final Map<String, MapData> mapDataCache = new HashMap<>();
 
     private SaveData currentSave;
     private FileHandle currentSaveFile;
@@ -175,6 +177,102 @@ public class SaveManager {
 
         currentSave.locations.add(entry);
         writeCurrentSave();
+    }
+
+    public boolean hasLocationForClass(String mapName, String className, String action) {
+        if (currentSave == null || currentSave.locations == null) {
+            return false;
+        }
+
+        for (SavedLocationEntry savedEntry : currentSave.locations) {
+            if (action != null && !action.equals(savedEntry.action)) {
+                continue;
+            }
+
+            String savedClassName = getClassNameByLocationEntry(mapName, savedEntry.id);
+
+            if (className.equals(savedClassName)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private MapData getCachedMapData(String mapName) {
+        MapData data = mapDataCache.get(mapName);
+
+        if (data == null) {
+            data = JsonLoader.load("gamedata/" + mapName + ".json", MapData.class);
+            mapDataCache.put(mapName, data);
+        }
+
+        return data;
+    }
+
+    public void clearMapDataCache() {
+        mapDataCache.clear();
+    }
+
+    public String getClassNameByLocationEntry(String mapName, String locationEntryId) {
+        if (mapName == null || locationEntryId == null) {
+            throw new IllegalArgumentException("Blank argument(s): " + mapName + ", " + locationEntryId);
+        }
+
+        int underscoreIndex = locationEntryId.lastIndexOf("_");
+
+        if (underscoreIndex == -1 || underscoreIndex == locationEntryId.length() - 1) {
+            return null;
+        }
+
+        String locationId = locationEntryId.substring(0, underscoreIndex);
+        String actorIndexText = locationEntryId.substring(underscoreIndex + 1);
+
+        int actorIndex;
+
+        try {
+            actorIndex = Integer.parseInt(actorIndexText);
+        }
+        catch (NumberFormatException e) {
+            return null;
+        }
+
+        MapData data = getCachedMapData(mapName);
+
+        if (data == null || data.locations == null) {
+            throw new IllegalStateException(
+                "Map to save discrepancy error: Couldn't find map and/or locations"
+            );
+        }
+
+        for (LocationJsonEntry location : data.locations) {
+            if (!locationId.equals(location.location)) {
+                continue;
+            }
+
+            if (location.actors == null) {
+                throw new IllegalStateException(
+                    "Map to save discrepancy error: Save entry points to location with no actors (mapName=" + mapName + ", locationEntryId=" + locationEntryId + ")"
+                );
+            }
+
+            int currentIndex = 0;
+
+            for (ActorJsonEntry actorEntry : location.actors) {
+                if (actorEntry.type == null) {
+                    continue; // _comment entry
+                }
+
+                if (currentIndex == actorIndex) {
+                    return actorEntry.type;
+                }
+
+                currentIndex++;
+            }
+            return null;
+        }
+
+        return null;
     }
 
     public SaveData getCurrentSave() {

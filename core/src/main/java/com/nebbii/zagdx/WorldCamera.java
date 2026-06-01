@@ -14,12 +14,9 @@ public class WorldCamera {
     private float targetX;
     private float targetY;
 
-    public boolean targetJustUpdated;
-
 	public WorldCamera(OrthographicCamera camera, MapManager map) {
         this.camera = camera;
         this.map = map;
-        this.targetJustUpdated = false;
     }
 
     public void logic() {

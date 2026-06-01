@@ -2,6 +2,7 @@ package com.nebbii.zagdx;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.utils.Array;
 
 public class Npc extends Rectangle implements Actor {
     private boolean solid;
@@ -69,8 +70,8 @@ public class Npc extends Rectangle implements Actor {
         return getY() + getHeight() / 2;
     }
 
-    public String[] getWeaknesses() {
-        return new String[] {};
+    public Array<String> getWeaknesses() {
+        return new Array<>();
     }
 
     public int getDamage() {
@@ -137,5 +138,13 @@ public class Npc extends Rectangle implements Actor {
     @Override
     public void setLocationEntry(String locationEntry) {
         this.locationEntry = locationEntry;
+    }
+
+    public NpcState getNpcState() {
+        return npcState;
+    }
+
+    public void setNpcState(NpcState npcState) {
+        this.npcState = npcState;
     }
 }

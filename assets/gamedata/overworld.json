@@ -263,7 +263,9 @@
       "__comment": "f26: A forest merchant sells Zelda a candle for 100 rupees and a magic shield for 500 rupees.",
       "actors": [
         {
-          "__comment": "merchant at X: 2086 Y: 1533ish"
+          "type": "NpcOgham",
+          "x": 2056,
+          "y": 1543
         },
         {
           "__comment": "candle at X: 2108 Y: 1493"
@@ -501,6 +503,11 @@
           "type": "PickupWand",
           "x": 2754,
           "y": 2283
+        },
+        {
+          "type": "EnemySardakYellow",
+          "x": 2954,
+          "y": 2283
         }
       ]
     },
@@ -693,12 +700,42 @@
     {
       "location": "j22",
       "__comment": "j22: A beggar woman in front of the Molblin Inn gives Zelda the Firestorm weapon in exchange for 5 rupees. Zelda can enter the Molblin Inn.",
-      "actors": []
+      "actors": [
+        {
+          "type": "NpcBeggar",
+          "x": 3646,
+          "y": 2439
+        },
+        {
+          "__comment": "firestorm at X: 3610 Y: 2436"
+        }
+      ]
     },
     {
       "location": "j22a",
       "__comment": "j22a: Inside the Molblin Inn, Zelda meets the innkeeper Lothar and three customers. Zelda can buy the C spell here for 100 rupees. The man in the red shirt, Krebb, gives her a dagger if she talks to him. The woman at the table and the soldier also speak if Zelda touches them.",
-      "actors": []
+      "actors": [
+        {
+          "type": "NpcExhaustedTraveler",
+          "x": 2178,
+          "y": 7004
+        },
+        {
+          "type": "NpcBlueLady",
+          "x": 2035,
+          "y": 7017
+        },
+        {
+          "type": "NpcLothar",
+          "x": 2058,
+          "y": 7101
+        },
+        {
+          "type": "NpcKrebb",
+          "x": 2171,
+          "y": 7032
+        }
+      ]
     },
     {
       "location": "j23",

@@ -12,11 +12,12 @@ public class SpawnerBoomerang extends Spawner {
         super.logic();
         if (!isActive()) return;
 
-        if (!map.activeActorsContain(EnemyGoriya.class)) {
+        if (!map.activeActorsContain(Enemy.class)) {
             activate();
         }
     }
 
+    @Override
     public void activate() {
         if (!isActive()) return;
 

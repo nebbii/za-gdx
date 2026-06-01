@@ -33,6 +33,13 @@ public class MenuScreen implements Screen {
 
     protected ArrayList<MenuButton> menuButtons;
 
+    public enum FadeToggle {
+        IN,
+        OUT
+    }
+
+    private FadeToggle fadeToggle;
+
     public MenuScreen(Core core) {
         this.core = core;
     }
@@ -48,7 +55,8 @@ public class MenuScreen implements Screen {
         camera.position.set(WORLD_WIDTH / 2f, WORLD_HEIGHT / 2f, 0f);
         camera.update();
 
-        fadeOpacity = 0f;
+        fadeToggle = FadeToggle.IN;
+        fadeOpacity = 1f;
 
         menuButtons = new ArrayList<>();
     }
@@ -60,6 +68,13 @@ public class MenuScreen implements Screen {
     }
 
     public void logic() {
+        if (isFading()) {
+            return;
+        }
+        else if (fadeToggle == FadeToggle.OUT && core.getNextScreen() != null) {
+            core.setScreen(core.getNextScreen());
+        }
+
         if (Gdx.input.justTouched()) {
             touchPos.set(Gdx.input.getX(), Gdx.input.getY());
             viewport.unproject(touchPos);
@@ -86,28 +101,37 @@ public class MenuScreen implements Screen {
             button.draw(batch);
         }
         batch.end();
+    }
 
-        /*
-        shapes.setProjectionMatrix(camera.combined);
-        shapes.begin(ShapeRenderer.ShapeType.Line);
-
-        // TODO: replace with button images once the export has it
-        for (MenuButton button : menuButtons) {
-            Rectangle rectangle = button.getCollisionBox();
-            shapes.setColor(Color.RED);
-
-            shapes.rect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
+    public void drawFade() {
+        switch(fadeToggle) {
+			case IN:
+            if (fadeOpacity > 0) {
+                fadeOpacity -= Gdx.graphics.getDeltaTime() * 2;
+                if (fadeOpacity < 0) fadeOpacity = 0;
+            }
+				break;
+			case OUT:
+            if (fadeOpacity < 1) {
+                fadeOpacity += Gdx.graphics.getDeltaTime() * 2;
+                if (fadeOpacity > 1) fadeOpacity = 1;
+            }
+				break;
+			default:
+				break;
         }
-        shapes.end();
-        */
 
-        /*
+        Gdx.gl.glEnable(GL20.GL_BLEND);
+        Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
         shapes.setProjectionMatrix(camera.combined);
         shapes.begin(ShapeRenderer.ShapeType.Filled);
         shapes.setColor(0f, 0f, 0f, fadeOpacity);
         shapes.rect(0f, 0f, WORLD_WIDTH, WORLD_HEIGHT);
         shapes.end();
-        */
+    }
+
+    public boolean isFading() {
+        return fadeOpacity > 0 && fadeOpacity < 1;
     }
 
     @Override
@@ -132,5 +156,13 @@ public class MenuScreen implements Screen {
 
     @Override
     public void dispose() {
+    }
+
+    public FadeToggle getFadeToggle() {
+        return fadeToggle;
+    }
+
+    public void setFadeToggle(FadeToggle fadeToggle) {
+        this.fadeToggle = fadeToggle;
     }
 }

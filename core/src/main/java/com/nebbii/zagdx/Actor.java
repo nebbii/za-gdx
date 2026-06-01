@@ -2,6 +2,7 @@ package com.nebbii.zagdx;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.utils.Array;
 
 public interface Actor {
     void logic();
@@ -14,7 +15,7 @@ public interface Actor {
     float getCenterPointX();
     float getCenterPointY();
 
-    String[] getWeaknesses();
+    Array<String> getWeaknesses();
     int getDamage();
     int getBonusDamage();
     int getDefense();

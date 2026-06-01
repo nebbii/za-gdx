@@ -14,6 +14,17 @@ public class SpawnerPitcherFull extends Spawner {
         super.logic();
     }
 
+    public void activate() {
+        if (!isActive()) return;
+
+        PickupPitcherFull pitcher = new PickupPitcherFull();
+        pitcher.setPosition(this.getX(), this.getY());
+        Gdx.app.log(getClass().getSimpleName(), "item placed");
+
+        map.addNewActor(pitcher);
+        setState(State.DEAD);
+    }
+
     public void activate(GameManager game) {
         if (!isActive()) return;
 
@@ -21,7 +32,7 @@ public class SpawnerPitcherFull extends Spawner {
         pitcher.setPosition(this.getX(), this.getY());
         Gdx.app.log(getClass().getSimpleName(), "item placed");
 
-        map.addActor(pitcher);
+        map.addNewActor(pitcher);
         game.removeTreasure(Treasure.PITCHER_EMPTY, true);
         setState(State.DEAD);
     }
