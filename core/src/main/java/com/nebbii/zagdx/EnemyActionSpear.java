@@ -16,7 +16,7 @@ public class EnemyActionSpear extends EnemyActionProjectile {
     private final Rectangle collisionBox;
 
     public EnemyActionSpear(Actor actor, float x, float y) {
-        super(actor, x, y, 150f, 1.2f);
+        super(actor, x, y, 100f, 1.2f);
         this.animation = new EnemySpearAnimation();
         this.direction = actor.getDirection();
         this.collisionBox = new Rectangle();

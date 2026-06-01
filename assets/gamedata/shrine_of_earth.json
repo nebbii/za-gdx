@@ -79,6 +79,11 @@
           "type": "EnemyKeese",
           "x": 1368,
           "y": 573
+        },
+        {
+          "type": "SpawnerCompass1",
+          "x": 1314,
+          "y": 535
         }
       ]
     },
@@ -276,6 +281,11 @@
           "type": "EnemySardakYellow",
           "x": 2535,
           "y": 1713
+        },
+        {
+          "type": "SpriteLlortLaser",
+          "x": 2428,
+          "y": 1882
         }
       ]
     },
@@ -295,7 +305,9 @@
       "__comment": "s122: Zelda can now take the first Celestial Sign.",
       "actors": [
         {
-          "__comment": "stone at x2477 y2321"
+          "type": "PickupCelestialStone1",
+          "x": 2477,
+          "y": 2321
         }
       ]
     }

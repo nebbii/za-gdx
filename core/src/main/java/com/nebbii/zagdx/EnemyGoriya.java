@@ -9,7 +9,6 @@ public class EnemyGoriya extends Enemy {
     public EnemyGoriyaAnimation animation;
     public float timer;
 
-    // TODO: Set actual original game accurate values
     public EnemyGoriya() {
         super(ActorType.ENEMY, true);
         setWidth(48);

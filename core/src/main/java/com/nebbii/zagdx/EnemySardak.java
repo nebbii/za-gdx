@@ -45,4 +45,10 @@ public class EnemySardak extends Enemy {
         if (knockback > 0) endDrawFlashOverlay(batch);
         */
     }
+
+    @Override
+    public void onDeath() {
+        setState(State.DEAD);
+        map.getSaveManager().addLocationEntry(locationEntry, "permadead");
+    }
 }

@@ -187,14 +187,26 @@ public class MapManager {
         newActors.add(pickup);
     }
 
-    public Actor findActorByType(Class<? extends Actor> type) {
+    public <T extends Actor> T findFirstActorByType(Class<T> type) {
         for (Actor actor : actors) {
             if (type.isInstance(actor)) {
-                return actor;
+                return type.cast(actor);
             }
         }
 
         return null;
+    }
+
+    public <T extends Actor> Array<T> findAllActorsByType(Class<T> type) {
+        Array<T> results = new Array<>();
+
+        for (Actor actor : actors) {
+            if (type.isInstance(actor)) {
+                results.add(type.cast(actor));
+            }
+        }
+
+        return results;
     }
 
     public Actor findActorByLocationEntry(String locationEntry) {
@@ -296,20 +308,45 @@ public class MapManager {
         Gdx.app.log(getClass().getSimpleName(), "Handle dead actor: " + actor.getClass());
 
         switch (actor.getClass().getSimpleName()) {
+        case "EnemyLlort":
+        case "EnemySardakRed":
+        case "EnemySardakYellow":
+        case "EnemySardakBlue":
+            break;
         case "EnemyDragonfly":
-            Actor pickup = new PickupHeart();
-            pickup.setMap(this);
-            pickup.getCollisionBox().setPosition(actor.getCenterPointX(), actor.getCenterPointY());
-            newActors.add(pickup);
-            iterator.remove();
+            // TODO: drop a guaranteed heart in the gauntlet
+            dropRandomPickup(actor.getCenterPointX(), actor.getCenterPointY());
             break;
         default:
             if (actor instanceof Enemy) {
                 dropRandomPickup(actor.getCenterPointX(), actor.getCenterPointY());
             }
-            iterator.remove();
             break;
         }
+
+        iterator.remove();
+    }
+
+    public void dropSpecificPickup(String pickupName, float x, float y) {
+        Actor pickup;
+
+        switch (pickupName) {
+        case "PickupHeart":
+            pickup = new PickupHeart();
+            break;
+        case "PickupRubyBlue":
+            pickup = new PickupRuby(RubyType.BLUE);
+            break;
+        case "PickupRubyYellow":
+            pickup = new PickupRuby(RubyType.YELLOW);
+            break;
+        default:
+            throw new RuntimeException("Requested specific pickup does not exist (" + pickupName + ")");
+        }
+
+        pickup.setMap(this);
+        pickup.getCollisionBox().setPosition(x, y);
+        newActors.add(pickup);
     }
 
     public void dropRandomPickup(float x, float y) {

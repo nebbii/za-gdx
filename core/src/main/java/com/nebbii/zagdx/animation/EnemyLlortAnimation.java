@@ -22,8 +22,8 @@ public class EnemyLlortAnimation extends GameAnimation {
         super("walk");
         this.enemy = enemy;
 
-        baseOffsetX = -40;
-        baseOffsetY = 0;
+        baseOffsetX = -46;
+        baseOffsetY = -5;
         offsetX = 0;
         offsetY = 0;
 
@@ -50,8 +50,6 @@ public class EnemyLlortAnimation extends GameAnimation {
             default:
                 throw new IllegalStateException("Unhandled Llort enemy state");
         }
-
-        play();
 
         TextureRegion frame = animation.getKeyFrame(stateTime, true);
 
@@ -108,12 +106,18 @@ public class EnemyLlortAnimation extends GameAnimation {
 
         int[][] frameData = {
             {0, 0, 0},
+            {0, 0, 0},
+            {0, 0, 0},
             {1, 0, 0},
             {2, 0, 0},
             {3, 0, 0},
             {4, 0, 0},
+            {4, 0, 0},
+            {4, 0, 0},
             {5, 0, 0},
-            {6, 0, 0}
+            {6, 0, 0},
+            {0, 0, 0},
+            {0, 0, 0}
         };
 
         TextureRegion[] frames = new TextureRegion[frameData.length];
@@ -127,7 +131,7 @@ public class EnemyLlortAnimation extends GameAnimation {
         }
 
         Animation<TextureRegion> result = new Animation<>(0.14f, frames);
-        result.setPlayMode(Animation.PlayMode.LOOP);
+        result.setPlayMode(Animation.PlayMode.NORMAL);
         return result;
     }
 

@@ -200,6 +200,14 @@ public class WorldCollision {
             map.updateSpawnLocation("shrine_of_earth_exit_earth");
             game.initializeFadeWarp();
             break;
+        case "overworld_moblin_head_inn_entrance":
+            map.updateSpawnLocation("overworld_moblin_head_inn_exit");
+            game.initializeFadeWarp();
+            break;
+        case "overworld_moblin_head_inn_exit":
+            map.updateSpawnLocation("overworld_moblin_head_inn_entrance");
+            game.initializeFadeWarp();
+            break;
         /* Overworld specials */
         case "overworld_andor":
             if (game.getTreasures().contains(Treasure.RED_BOOTS)) {
@@ -260,7 +268,10 @@ public class WorldCollision {
             }
             break;
         case "shrine_of_earth_guard_gate":
-            if (!saveManager.hasLocationEntry("s120_0")) {
+            if (!(saveManager.hasLocationForClass("shrine_of_earth", "EnemySardakBlue", "permadead")
+                && saveManager.hasLocationForClass("shrine_of_earth", "EnemySardakRed", "permadead")
+                && saveManager.hasLocationForClass("shrine_of_earth", "EnemySardakYellow", "permadead")))
+            {
                 resolveRectangleVsPolygon(zelda.getCollisionBox(), polygonObject.getPolygon());
             }
             break;
@@ -354,7 +365,8 @@ public class WorldCollision {
 
     private void checkOverlapAlertBoxes() {
         for (Actor actor : actors) {
-            if (!actor.isActive() || !(actor instanceof Enemy)) continue;
+            if (!actor.isActive()) continue;
+            if (!(actor instanceof Enemy) || actor.getType() != ActorType.ENEMY) continue;
 
             Enemy enemy = (Enemy) actor;
             Zelda zelda = map.getZelda();

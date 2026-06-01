@@ -5,6 +5,16 @@
       "x": 2487.18,
       "y": 2262.32
     },
+    "overworld_moblin_head_inn_entrance": {
+      "targetMap": "overworld",
+      "x": 3555,
+      "y": 2445
+    },
+    "overworld_moblin_head_inn_exit": {
+      "targetMap": "overworld",
+      "x": 1985,
+      "y": 7049
+    },
     "overworld_entrance_earth": {
       "targetMap": "overworld",
       "x": 2548.19,
@@ -20,7 +30,7 @@
       "x": 1695.97,
       "y": 186.99
     },
-    "shrine_of_earth_chest_entry": {
+    "shrine_of_earth_chest_entrance": {
       "targetMap": "shrine_of_earth",
       "x": 1695.97,
       "y": 261.99

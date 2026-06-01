@@ -138,26 +138,35 @@ public class GameManager {
         Gdx.app.log(getClass().getSimpleName(), "Respawning zelda...");
 
         Zelda zelda = world.getMapManager().getZelda();
+        MapManager map = world.getMapManager();
+        WorldCamera worldCamera = world.getWorldCamera();
 
         if (hasDied) {
             zelda.revive();
 
+            String lastCell = world.rowAndColumnToRealCell(worldCamera.getTargetCellColumn(), worldCamera.getTargetCellRow());
+
             switch(currentMap) {
             case "shrine_of_earth":
-                world.getMapManager().updateSpawnLocation("overworld_entrance_earth");
+                if (lastCell.equals("g2")) {
+                    map.updateSpawnLocation("shrine_of_earth_llort_gate_entrance");
+                }
+                else {
+                    map.updateSpawnLocation("overworld_entrance_earth");
+                }
                 break;
             default:
-                world.getMapManager().updateSpawnLocation("overworld_pedestal");
+                map.updateSpawnLocation("overworld_pedestal");
             }
 
             reloadSave();
         }
 
-        world.getMapManager().loadMapByName(currentMap);
+        map.loadMapByName(currentMap);
         reloadLocations();
 
         zelda.setPosition(zelda.getSpawnX(), zelda.getSpawnY());
-        world.getWorldCamera().resetPosition();
+        worldCamera.resetPosition();
     }
 
     public void reloadSave() {
@@ -202,17 +211,28 @@ public class GameManager {
 
     public void reloadLocations() {
         SaveManager saveManager = world.getSaveManager();
+        MapManager mapManager = world.getMapManager();
 
         for(SavedLocationEntry locationEntry : saveManager.getLocations()) {
             switch(locationEntry.action) {
             case "picked_up":
             case "permadead":
             case "spawned":
-                Actor actor = world.getMapManager().findActorByLocationEntry(locationEntry.id);
+                Actor actor = mapManager.findActorByLocationEntry(locationEntry.id);
                 if (actor != null) {
                     actor.setState(State.DEAD);
                 }
                 break;
+            }
+        }
+
+        // exceptions (for now)
+        if (saveManager.hasLocationForClass("shrine_of_earth", "EnemySardakBlue", "permadead")
+            && saveManager.hasLocationForClass("shrine_of_earth", "EnemySardakRed", "permadead")
+            && saveManager.hasLocationForClass("shrine_of_earth", "EnemySardakYellow", "permadead"))
+        {
+            for (SpriteLlortLaser laser : mapManager.findAllActorsByType(SpriteLlortLaser.class)) {
+                laser.setState(State.DEAD);
             }
         }
     }

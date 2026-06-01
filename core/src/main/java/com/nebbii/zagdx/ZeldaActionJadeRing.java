@@ -26,30 +26,26 @@ public class ZeldaActionJadeRing extends ZeldaAction {
         hitbox.setWidth(39);
         hitbox.setHeight(39);
 
-        switch(actor.getDirection()) {
+        switch(getDirection()) {
         case LEFT:
-            setImage(World.images.getFriendlyJadeRing()[3]);
             offsetX = -15;
             offsetY = -15;
             setX(actor.getCenterPointX() - actor.getHitbox().getWidth() / 2 - this.getWidth());
             setY(actor.getCenterPointY() + actor.getHitbox().getHeight() / 3);
             break;
         case DOWN:
-            setImage(World.images.getFriendlyJadeRing()[2]);
             offsetX = -15;
             offsetY = -10;
             setX(actor.getCenterPointX() - this.getWidth() / 2);
             setY(actor.getHitbox().getY() - this.getHeight() / 2);
             break;
         case UP:
-            setImage(World.images.getFriendlyJadeRing()[0]);
             offsetX = -15;
             offsetY = 0;
             setX(actor.getCenterPointX() - this.getWidth() / 2);
             setY(actor.getCenterPointY() + actor.getHitbox().getHeight());
             break;
         case RIGHT:
-            setImage(World.images.getFriendlyJadeRing()[1]);
             offsetX = -15;
             offsetY = -15;
             setX(actor.getCenterPointX() + actor.getHitbox().getWidth());
@@ -68,20 +64,20 @@ public class ZeldaActionJadeRing extends ZeldaAction {
         float deltaTime = Gdx.graphics.getDeltaTime();
 
         switch(getDirection()) {
-            case LEFT:
-                setX(getX() - speed * deltaTime);
-                break;
-            case DOWN:
-                setY(getY() - speed * deltaTime);
-                break;
-            case UP:
-                setY(getY() + speed * deltaTime);
-                break;
-            case RIGHT:
-                setX(getX() + speed * deltaTime);
-                break;
-            default:
-                throw new IllegalStateException(getClass().getSimpleName() + "Unhandled direction");
+        case LEFT:
+            setX(getX() - speed * deltaTime);
+            break;
+        case DOWN:
+            setY(getY() - speed * deltaTime);
+            break;
+        case UP:
+            setY(getY() + speed * deltaTime);
+            break;
+        case RIGHT:
+            setX(getX() + speed * deltaTime);
+            break;
+        default:
+            throw new IllegalStateException(getClass().getSimpleName() + "Unhandled direction");
         }
 
         if (stateTime >= duration) setState(State.DEAD);
@@ -90,6 +86,24 @@ public class ZeldaActionJadeRing extends ZeldaAction {
 
     @Override
     public void draw(SpriteBatch batch) {
+        if (getImage() == null) {
+            switch(getDirection()) {
+            case LEFT:
+                setImage(World.images.getFriendlyJadeRing()[3]);
+                break;
+            case DOWN:
+                setImage(World.images.getFriendlyJadeRing()[2]);
+                break;
+            case UP:
+                setImage(World.images.getFriendlyJadeRing()[0]);
+                break;
+            case RIGHT:
+                setImage(World.images.getFriendlyJadeRing()[1]);
+                break;
+            default:
+                throw new IllegalStateException(getClass().getSimpleName() + ": Unhandled direction: " + getDirection());
+            }
+        }
         batch.draw(getImage(), getX() + offsetX, getY() + offsetY);
     }
 
