@@ -695,7 +695,16 @@
     {
       "location": "j22",
       "__comment": "j22: A beggar woman in front of the Molblin Inn gives Zelda the Firestorm weapon in exchange for 5 rupees. Zelda can enter the Molblin Inn.",
-      "actors": []
+      "actors": [
+        {
+          "type": "NpcBeggar",
+          "x": 3646,
+          "y": 2439
+        },
+        {
+          "__comment": "firestorm at X: 3610 Y: 2436"
+        }
+      ]
     },
     {
       "location": "j22a",

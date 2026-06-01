@@ -8,7 +8,7 @@ public class NpcBeggar extends Npc {
 
     public NpcBeggar() {
         super(ActorType.FRIENDLY, false);
-        setWidth(32);
+        setWidth(20);
         setHeight(32);
         setNpcState(NpcState.TALKY);
 
