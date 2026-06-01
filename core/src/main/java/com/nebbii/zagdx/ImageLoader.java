@@ -835,6 +835,7 @@ public class ImageLoader {
             case RED_RIBBON:
             case RUG:
             case RUBIES:
+                return getRubyYellow(); // TODO: replace once proper sprite is exported
             case TICKET:
             case UNDERWORLD_MAP_1:
                 return getUnderworldMap(1);
