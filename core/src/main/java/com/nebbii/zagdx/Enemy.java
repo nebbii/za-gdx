@@ -153,6 +153,7 @@ public class Enemy extends Rectangle implements Actor {
 
     public void onDeath() {
         setState(State.DEAD);
+        map.addNewActor(new SpriteExplosion(getCenterPointX(), getCenterPointY()));
         map.getSaveManager().addLocationEntry(locationEntry, "dead");
     }
 

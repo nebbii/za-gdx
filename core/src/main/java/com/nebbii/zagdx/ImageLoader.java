@@ -125,6 +125,14 @@ public class ImageLoader {
         IDLE
     }
 
+    public enum SpriteExplosionAnimationGroup {
+        IDLE
+    }
+
+    public enum SpriteSparkleAnimationGroup {
+        IDLE
+    }
+
     private EnumMap<ZeldaAnimationGroup, Texture[]> zelda;
     private EnumMap<EnemyGoriyaAnimationGroup, Texture[]> enemyGoriya;
     private EnumMap<EnemyTumblebotAnimationGroup, Texture[]> enemyTumblebot;
@@ -151,6 +159,8 @@ public class ImageLoader {
     /* Map stuff */
     private Texture spriteLadder;
     private EnumMap<SpriteLlortLaserAnimationGroup, Texture[]> spriteLlortLaser;
+    private EnumMap<SpriteExplosionAnimationGroup, Texture[]> spriteExplosion;
+    private EnumMap<SpriteSparkleAnimationGroup, Texture[]> spriteSparkle;
 
     /* Treasures */
     private Texture bone;
@@ -375,6 +385,14 @@ public class ImageLoader {
         spriteLlortLaser = new EnumMap<>(SpriteLlortLaserAnimationGroup.class);
         spriteLlortLaser.put(SpriteLlortLaserAnimationGroup.IDLE,
             loadTextureArray("export/underworld/s120/sprites/desc2/group0", 4));
+
+        spriteExplosion = new EnumMap<>(SpriteExplosionAnimationGroup.class);
+        spriteExplosion.put(SpriteExplosionAnimationGroup.IDLE,
+            loadTextureArray("export/common/zinitVideo/record1_zelda_palette", 6));
+
+        spriteSparkle = new EnumMap<>(SpriteSparkleAnimationGroup.class);
+        spriteSparkle.put(SpriteSparkleAnimationGroup.IDLE,
+            loadTextureArray("export/common/zinitVideo/record2_zelda_palette", 6));
 
         /* Items */
         rubyBlue = new Texture("export/common/hudSprites/3.png");
@@ -643,6 +661,26 @@ public class ImageLoader {
         spriteLadder.dispose();
 
         for (Texture[] textures : spriteLlortLaser.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : spriteExplosion.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : spriteSparkle.values()) {
             if (textures == null) continue;
 
             for (Texture texture : textures) {
@@ -1016,6 +1054,22 @@ public class ImageLoader {
 
     public Texture[] getSpriteLlortLaser() {
         return getSpriteLlortLaserAnimation(SpriteLlortLaserAnimationGroup.IDLE);
+    }
+
+    public Texture[] getSpriteExplosionAnimation(SpriteExplosionAnimationGroup anim) {
+        return spriteExplosion.get(anim);
+    }
+
+    public Texture[] getSpriteExplosion() {
+        return getSpriteExplosionAnimation(SpriteExplosionAnimationGroup.IDLE);
+    }
+
+    public Texture[] getSpriteSparkleAnimation(SpriteSparkleAnimationGroup anim) {
+        return spriteSparkle.get(anim);
+    }
+
+    public Texture[] getSpriteSparkle() {
+        return getSpriteSparkleAnimation(SpriteSparkleAnimationGroup.IDLE);
     }
 
     public Texture getPitcherEmpty() {
