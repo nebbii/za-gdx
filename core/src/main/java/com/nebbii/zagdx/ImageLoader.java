@@ -184,6 +184,7 @@ public class ImageLoader {
     /* Weapons */
     private Texture wand;
     private Texture boomerang;
+    private Texture[] firestorm;
     private Texture jadeRing;
 
     /* Pickups */
@@ -421,6 +422,7 @@ public class ImageLoader {
         /* Weapons */
         wand = new Texture("export/overworld/h23/sprites/desc0/group0/sprite0.png");
         boomerang = new Texture("export/overworld/d24/sprites/desc2/group0/sprite0.png");
+        firestorm = loadTextureArray("export/overworld/j22/sprites/desc2/group0", 3);
         jadeRing = new Texture("export/underworld/s108/sprites/desc1/group0/sprite0.png");
 
         /* Projectiles */
@@ -699,6 +701,11 @@ public class ImageLoader {
         /* Weapons */
         wand.dispose();
         boomerang.dispose();
+        for (Texture texture : firestorm) {
+            if (texture != null) {
+                texture.dispose();
+            }
+        }
         jadeRing.dispose();
 
         /* Projectiles */
@@ -823,6 +830,7 @@ public class ImageLoader {
             case DAGGER:
             case FEATHER:
             case FIRESTORM:
+                return getFirestorm();
             case GOLD_NECKLACE:
             case HAMMER:
             case JADE_AMULET:
@@ -980,6 +988,14 @@ public class ImageLoader {
 
     public Texture getBoomerang() {
         return boomerang;
+    }
+
+    public Texture getFirestorm() {
+        return firestorm[0];
+    }
+
+    public Texture[] getFirestormAnimation() {
+        return firestorm;
     }
 
     public Texture getBone() {
