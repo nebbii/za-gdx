@@ -1,26 +1,29 @@
 # ZA Actor Import Workflow
 
-This workflow describes how to generate a new animated actor for the project. The actor may be either an `Enemy` or an `Npc`. The goal is that the user can provide the actor name, the current `ImageLoader.java`, the sprite files, and a file tree of the animation folders; then ChatGPT returns downloadable Java files instead of snippets.
+This workflow describes how to generate a new animated actor for the project. The actor may be either an `Enemy` or an `Npc`. The goal is that the user can provide the actor name, the current `ImageLoader.java`, the sprite files, and a file tree of the animation folders; then ChatGPT either edits the project files directly or returns downloadable Java files instead of snippets.
 
 ## Output files to generate
 
-For each new actor, generate:
+For each new actor, create or update these Java files:
 
 ```text
-ImageLoader_<ActorName>.java
+ImageLoader.java
 ActorName.java
 ActorNameAnimation.java
 ```
 
 `ActorNameAnimation.java` must live in the animation package (`package com.nebbii.zagdx.animation;`) because it extends the existing `GameAnimation` class in that package.
 
-Also generate a ZIP containing all three files:
+When directly adding and editing files in the repository, do not generate a ZIP file. The ZIP is only useful when the output is being returned as downloadable files rather than written to the workspace.
+
+When returning downloadable files instead of editing the repository directly, name the ImageLoader replacement and ZIP like this:
 
 ```text
+ImageLoader_<ActorName>.java
 ActorName_files.zip
 ```
 
-The updated `ImageLoader` should be a full replacement file, not a patch snippet, unless the user explicitly asks for only changed sections.
+The updated `ImageLoader` should be edited in place when working directly in the repository. When returning downloadable files, provide a full replacement file, not a patch snippet, unless the user explicitly asks for only changed sections.
 
 ## Validation policy
 
@@ -405,7 +408,7 @@ When updating `ImageLoader.java`, do all of this:
 [ ] Keep existing ImageLoader content intact
 [ ] Fix obvious missing getters only if directly required by the generated files
 [ ] Preserve package, imports, comments, and existing style as much as possible
-[ ] Return the full updated ImageLoader as a downloadable file
+[ ] If returning downloadable output, return the full updated ImageLoader as a downloadable file
 ```
 
 Use lower camel case for the texture map field:
@@ -486,7 +489,6 @@ Please return:
   - updated ImageLoader.java
   - EnemyExample.java
   - EnemyExampleAnimation.java
-  - ZIP with all three
 ```
 
 For an NPC:
@@ -516,5 +518,4 @@ Please return:
   - updated ImageLoader.java
   - NpcExample.java
   - NpcExampleAnimation.java
-  - ZIP with all three
 ```
