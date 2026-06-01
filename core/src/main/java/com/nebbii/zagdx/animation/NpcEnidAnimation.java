@@ -19,8 +19,8 @@ public class NpcEnidAnimation extends GameAnimation {
         super("idle");
         this.npc = npc;
 
-        baseOffsetX = 0;
-        baseOffsetY = 15;
+        baseOffsetX = 5;
+        baseOffsetY = 12;
         offsetX = 0;
         offsetY = 0;
 
@@ -44,10 +44,16 @@ public class NpcEnidAnimation extends GameAnimation {
 
     private Animation<TextureRegion> initIdle() {
         int[][] frameData = {
+            {2, 0, 5},
+            {2, 0, 5},
+            {2, 0, 5},
+            {2, 0, 5},
+            {2, 0, 5},
+            {2, 0, 5},
+            {2, 0, 5},
+            {1, 0, 3},
             {0, 0, 0},
-            {1, 0, 0},
-            {2, 0, 0},
-            {1, 0, 0}
+            {1, 0, 3}
         };
 
         Texture[] textures = World.images.getNpcEnidAnimation(NpcEnidAnimationGroup.IDLE);

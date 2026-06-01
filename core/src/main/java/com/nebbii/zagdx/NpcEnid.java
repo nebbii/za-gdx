@@ -8,7 +8,7 @@ public class NpcEnid extends Npc {
 
     public NpcEnid() {
         super(ActorType.FRIENDLY, false);
-        setWidth(20);
+        setWidth(40);
         setHeight(32);
         setNpcState(NpcState.TALKY);
 
