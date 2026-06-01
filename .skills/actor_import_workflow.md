@@ -1,6 +1,6 @@
 # ZA Actor Import Workflow
 
-This workflow describes how to generate a new animated actor for the project. The actor may be either an `Enemy` or an `Npc`. The goal is that the user can provide the actor name, the current `ImageLoader.java`, the sprite files, and a file tree of the animation folders; then ChatGPT either edits the project files directly or returns downloadable Java files instead of snippets.
+This workflow describes how to generate a new animated actor for the project. The actor may be an `Enemy`, `Npc`, or `Sprite`. The goal is that the user can provide the actor name, the current `ImageLoader.java`, the sprite files, and a file tree of the animation folders; then ChatGPT either edits the project files directly or returns downloadable Java files instead of snippets.
 
 ## Output files to generate
 
@@ -34,8 +34,8 @@ Do not run Gradle compile, test, or launch commands as part of this actor import
 Do not make assumptions if any of these are missing. Ask for the missing information instead.
 
 ```text
-[ ] Actor class name, for example EnemyExample or NpcExample
-[ ] Superclass: Enemy or Npc
+[ ] Actor class name, for example EnemyExample, NpcExample, or SpriteExample
+[ ] Superclass: Enemy, Npc, or Sprite
 [ ] Current ImageLoader.java file
 [ ] Sprite files, or enough sprite metadata to determine frame count and offsets
 [ ] File tree showing animation folder layout
@@ -73,13 +73,15 @@ not an absolute local path like:
 
 ## Superclass rules
 
-The superclass will always be either `Enemy` or `Npc`.
+The superclass will always be `Enemy`, `Npc`, or `Sprite`.
 
 Use `Enemy` when the actor is a combat actor. The current `Enemy` base class already provides movement state, direction, health, damage, defense, bonus damage, knockback, weakness hooks, alert box logic, and death/save behavior.
 
 Use `Npc` when the actor is non-combat or primarily interactable. The current `Npc` base class provides actor state, collision/hitbox behavior, map/location entry hooks, draw order, and a default `Direction.DOWN` direction.
 
-If the user does not say whether the actor is an enemy or NPC, ask before generating files.
+Use `Sprite` when the actor is a simple map/world sprite, visual effect, or non-interactable decorative object. The current `Sprite` base class provides actor state, collision/hitbox behavior, draw order, type, damage fields, and map/location entry hooks, but it does not provide enemy stats, NPC interaction, or direction behavior unless the subclass adds them.
+
+If the user does not say whether the actor is an enemy, NPC, or sprite, ask before generating files.
 
 ## Enemy class pattern
 
@@ -202,9 +204,76 @@ NPC-specific values that must be supplied or explicitly allowed as placeholders:
 
 The base `Npc` currently returns `Direction.DOWN` by default. If a generated NPC animation class needs directional switching, first confirm that the specific NPC class will store or expose direction. Otherwise, generate a single-animation or non-directional animation class.
 
+## Sprite class pattern
+
+Use this pattern when `Superclass: Sprite`.
+
+```java
+package com.nebbii.zagdx;
+
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.nebbii.zagdx.animation.ActorNameAnimation;
+
+public class ActorName extends Sprite {
+    public ActorNameAnimation animation;
+
+    public ActorName() {
+        super(ActorType.FRIENDLY, false);
+        setWidth(/* required or inferred from sprite dimensions */);
+        setHeight(/* required or inferred from sprite dimensions */);
+
+        this.animation = new ActorNameAnimation(this);
+    }
+
+    @Override
+    public void logic() {
+        super.logic();
+    }
+
+    @Override
+    public void draw(SpriteBatch batch) {
+        batch.draw(animation.playCurrentAnimation(), animation.getX(), animation.getY());
+    }
+}
+```
+
+Sprite-specific values that must be supplied or inferred from nearby `Sprite` subclasses and sprite assets:
+
+```text
+[ ] width
+[ ] height
+[ ] solid true/false
+[ ] ActorType value, usually ActorType.FRIENDLY for map sprites/effects unless context says otherwise
+[ ] whether the sprite is single-animation or has multiple animation groups
+```
+
+For simple visual effects and decorative animated sprites, it is acceptable to infer `ActorType.FRIENDLY`, `solid=false`, a single `IDLE` animation, and neutral offsets when the asset folder is a flat sequence such as `sprite0.png` through `sprite5.png` and nearby `Sprite` subclasses use the same pattern. Infer width and height from the largest frame dimensions in the sprite set unless the user supplies gameplay collision dimensions.
+
+Note: the current `Sprite` constructor accepts a `solid` argument but does not assign it to `this.solid`. That is a base-class issue; do not work around it in generated subclasses unless the requested behavior depends on `isSolid()`.
+
 ## Animation layout inference
 
 Infer frame count from the file tree by counting `sprite0.png`, `sprite1.png`, and so on inside each group.
+
+Flat sprite folders are valid for simple `Sprite` actors. If the supplied path directly contains `sprite0.png`, `sprite1.png`, and so on, infer that the folder itself is the asset-relative root and generate a single animation group from that path. Example:
+
+```text
+assets/export/common/zinitVideo/record1_zelda_palette
+├── sprite0.png
+├── sprite1.png
+├── sprite2.png
+├── sprite3.png
+├── sprite4.png
+└── sprite5.png
+```
+
+means:
+
+```text
+asset-relative root = export/common/zinitVideo/record1_zelda_palette
+frame count = 6
+animation group = IDLE
+```
 
 Infer the asset-relative root from the provided path and tree. For example:
 
@@ -279,6 +348,14 @@ public enum ActorNameAnimationGroup {
 
 If the file tree has multiple groups but their meanings are not obvious, ask what each group represents.
 
+For simple `Sprite` actors with one flat frame sequence, use:
+
+```java
+public enum ActorNameAnimationGroup {
+    IDLE
+}
+```
+
 ## Animation class base rules
 
 Generated animation classes must follow the existing project animation pattern:
@@ -333,7 +410,7 @@ For a four-direction, five-frame actor, the animation class should:
 [ ] Use the 8-step ping-pong frame pattern: 0, 1, 2, 3, 4, 3, 2, 1
 [ ] Use a separate local `int[][] frameData` block for each direction init method
 [ ] Use state-aware animation speed when the actor is an Enemy
-[ ] Use a simple fixed animation speed when the actor is an Npc unless told otherwise
+[ ] Use a simple fixed animation speed when the actor is an Npc or Sprite unless told otherwise
 [ ] Draw relative to actor position using getX() and getY()
 ```
 
@@ -371,7 +448,7 @@ For a single-animation actor, the animation class should:
 [ ] Draw relative to actor position using getX() and getY()
 ```
 
-Single-animation actors do not need direction switching, but they still must extend `GameAnimation` and call `super(...)` in the constructor.
+Single-animation actors do not need direction switching, but they still must extend `GameAnimation` and call `super(...)` in the constructor. For simple `Sprite` visual effects, use `super("idle")`, an `idle` animation field, `idleOffsetX/Y` arrays, and `new Animation<TextureRegion>(0.12f, frames)` unless the user supplies a different timing or nearby matching actor uses another speed.
 
 ## Offset policy
 
@@ -422,6 +499,7 @@ Example:
 ```java
 private EnumMap<EnemyExampleAnimationGroup, Texture[]> enemyExample;
 private EnumMap<NpcExampleAnimationGroup, Texture[]> npcExample;
+private EnumMap<SpriteExampleAnimationGroup, Texture[]> spriteExample;
 ```
 
 ## Missing-information policy
@@ -430,13 +508,14 @@ If any of these are missing, stop and ask instead of generating guessed files:
 
 ```text
 Missing actor name -> ask for class name
-Missing superclass -> ask whether it extends Enemy or Npc
+Missing superclass -> ask whether it extends Enemy, Npc, or Sprite
 Missing current ImageLoader.java -> ask for upload
 Missing asset-relative path and cannot infer it from the file tree/path -> ask for asset-relative path
 Missing frame count and cannot infer it from the tree -> ask for frame count or sprite files
 Missing group meaning for non-obvious multi-group layouts -> ask what each group represents
 Missing Enemy stats -> ask unless placeholders are explicitly allowed
 Missing NPC solidity/dimensions -> ask unless placeholders are explicitly allowed
+Missing Sprite solidity/dimensions -> infer from nearby Sprite subclasses and sprite frame dimensions when safe; otherwise ask
 Missing weakness/loot/special behavior -> ask or mark TODO only when allowed
 ```
 
@@ -518,4 +597,28 @@ Please return:
   - updated ImageLoader.java
   - NpcExample.java
   - NpcExampleAnimation.java
+```
+
+For a Sprite:
+
+```text
+Please import two new animated sprites.
+
+Actor name: SpriteExplosion
+Superclass: Sprite
+Sprites: export/common/zinitVideo/record1_zelda_palette
+
+Actor name: SpriteSparkle
+Superclass: Sprite
+Sprites: export/common/zinitVideo/record2_zelda_palette
+
+Use the existing Sprite subclasses as the source of truth for any missing Sprite-specific conventions.
+Ask about uncertainties that cannot be answered by inspecting nearby Sprite subclasses and the sprite assets.
+
+Please return:
+  - updated ImageLoader.java
+  - SpriteExplosion.java
+  - SpriteExplosionAnimation.java
+  - SpriteSparkle.java
+  - SpriteSparkleAnimation.java
 ```
