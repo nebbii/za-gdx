@@ -101,6 +101,10 @@ public class ImageLoader {
         IDLE1
     }
 
+    public enum NpcEnidAnimationGroup {
+        IDLE
+    }
+
     public enum NpcExhaustedTravelerAnimationGroup {
         IDLE0,
         IDLE1
@@ -133,6 +137,10 @@ public class ImageLoader {
         IDLE
     }
 
+    public enum SpriteCampfireAnimationGroup {
+        IDLE
+    }
+
     private EnumMap<ZeldaAnimationGroup, Texture[]> zelda;
     private EnumMap<EnemyGoriyaAnimationGroup, Texture[]> enemyGoriya;
     private EnumMap<EnemyTumblebotAnimationGroup, Texture[]> enemyTumblebot;
@@ -151,6 +159,7 @@ public class ImageLoader {
     private EnumMap<NpcTalkingChestAnimationGroup, Texture[]> npcTalkingChest;
     private EnumMap<NpcOghamAnimationGroup, Texture[]> npcOgham;
     private EnumMap<NpcBeggarAnimationGroup, Texture[]> npcBeggar;
+    private EnumMap<NpcEnidAnimationGroup, Texture[]> npcEnid;
     private EnumMap<NpcExhaustedTravelerAnimationGroup, Texture[]> npcExhaustedTraveler;
     private EnumMap<NpcBlueLadyAnimationGroup, Texture[]> npcBlueLady;
     private EnumMap<NpcLotharAnimationGroup, Texture[]> npcLothar;
@@ -161,6 +170,7 @@ public class ImageLoader {
     private EnumMap<SpriteLlortLaserAnimationGroup, Texture[]> spriteLlortLaser;
     private EnumMap<SpriteExplosionAnimationGroup, Texture[]> spriteExplosion;
     private EnumMap<SpriteSparkleAnimationGroup, Texture[]> spriteSparkle;
+    private EnumMap<SpriteCampfireAnimationGroup, Texture[]> spriteCampfire;
 
     /* Treasures */
     private Texture bone;
@@ -355,6 +365,10 @@ public class ImageLoader {
         npcBeggar.put(NpcBeggarAnimationGroup.IDLE1,
             loadTextureArray("export/overworld/j22/sprites/desc0/group1", 5));
 
+        npcEnid = new EnumMap<>(NpcEnidAnimationGroup.class);
+        npcEnid.put(NpcEnidAnimationGroup.IDLE,
+            loadTextureArray("export/overworld/h29/sprites/desc0/group0", 3));
+
         npcExhaustedTraveler = new EnumMap<>(NpcExhaustedTravelerAnimationGroup.class);
         npcExhaustedTraveler.put(NpcExhaustedTravelerAnimationGroup.IDLE0,
             loadTextureArray("export/overworld/j22a/sprites/desc0/group0", 3));
@@ -393,6 +407,10 @@ public class ImageLoader {
         spriteSparkle = new EnumMap<>(SpriteSparkleAnimationGroup.class);
         spriteSparkle.put(SpriteSparkleAnimationGroup.IDLE,
             loadTextureArray("export/common/zinitVideo/record2_zelda_palette", 6));
+
+        spriteCampfire = new EnumMap<>(SpriteCampfireAnimationGroup.class);
+        spriteCampfire.put(SpriteCampfireAnimationGroup.IDLE,
+            loadTextureArray("export/overworld/h29/sprites/desc1/group0", 4));
 
         /* Items */
         rubyBlue = new Texture("export/common/hudSprites/3.png");
@@ -617,6 +635,16 @@ public class ImageLoader {
             }
         }
 
+        for (Texture[] textures : npcEnid.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
         for (Texture[] textures : npcExhaustedTraveler.values()) {
             if (textures == null) continue;
 
@@ -681,6 +709,16 @@ public class ImageLoader {
         }
 
         for (Texture[] textures : spriteSparkle.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : spriteCampfire.values()) {
             if (textures == null) continue;
 
             for (Texture texture : textures) {
@@ -969,6 +1007,10 @@ public class ImageLoader {
         return npcBeggar.get(anim);
     }
 
+    public Texture[] getNpcEnidAnimation(NpcEnidAnimationGroup anim) {
+        return npcEnid.get(anim);
+    }
+
     public Texture[] getNpcExhaustedTravelerAnimation(NpcExhaustedTravelerAnimationGroup anim) {
         return npcExhaustedTraveler.get(anim);
     }
@@ -1071,6 +1113,14 @@ public class ImageLoader {
 
     public Texture[] getSpriteSparkle() {
         return getSpriteSparkleAnimation(SpriteSparkleAnimationGroup.IDLE);
+    }
+
+    public Texture[] getSpriteCampfireAnimation(SpriteCampfireAnimationGroup anim) {
+        return spriteCampfire.get(anim);
+    }
+
+    public Texture[] getSpriteCampfire() {
+        return getSpriteCampfireAnimation(SpriteCampfireAnimationGroup.IDLE);
     }
 
     public Texture getPitcherEmpty() {
