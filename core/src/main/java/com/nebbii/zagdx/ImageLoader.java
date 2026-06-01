@@ -96,6 +96,11 @@ public class ImageLoader {
         IDLE2
     }
 
+    public enum NpcBeggarAnimationGroup {
+        IDLE0,
+        IDLE1
+    }
+
     public enum NpcExhaustedTravelerAnimationGroup {
         IDLE0,
         IDLE1
@@ -137,6 +142,7 @@ public class ImageLoader {
     private Texture[] npcGlebb;
     private EnumMap<NpcTalkingChestAnimationGroup, Texture[]> npcTalkingChest;
     private EnumMap<NpcOghamAnimationGroup, Texture[]> npcOgham;
+    private EnumMap<NpcBeggarAnimationGroup, Texture[]> npcBeggar;
     private EnumMap<NpcExhaustedTravelerAnimationGroup, Texture[]> npcExhaustedTraveler;
     private EnumMap<NpcBlueLadyAnimationGroup, Texture[]> npcBlueLady;
     private EnumMap<NpcLotharAnimationGroup, Texture[]> npcLothar;
@@ -331,6 +337,12 @@ public class ImageLoader {
             loadTextureArray("export/overworld/f26/sprites/desc0/group1", 3));
         npcOgham.put(NpcOghamAnimationGroup.IDLE2,
             loadTextureArray("export/overworld/f26/sprites/desc0/group2", 3));
+
+        npcBeggar = new EnumMap<>(NpcBeggarAnimationGroup.class);
+        npcBeggar.put(NpcBeggarAnimationGroup.IDLE0,
+            loadTextureArray("export/overworld/j22/sprites/desc0/group0", 5));
+        npcBeggar.put(NpcBeggarAnimationGroup.IDLE1,
+            loadTextureArray("export/overworld/j22/sprites/desc0/group1", 5));
 
         npcExhaustedTraveler = new EnumMap<>(NpcExhaustedTravelerAnimationGroup.class);
         npcExhaustedTraveler.put(NpcExhaustedTravelerAnimationGroup.IDLE0,
@@ -566,6 +578,16 @@ public class ImageLoader {
         }
 
         for (Texture[] textures : npcOgham.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcBeggar.values()) {
             if (textures == null) continue;
 
             for (Texture texture : textures) {
@@ -894,6 +916,10 @@ public class ImageLoader {
 
     public Texture[] getNpcOghamAnimation(NpcOghamAnimationGroup anim) {
         return npcOgham.get(anim);
+    }
+
+    public Texture[] getNpcBeggarAnimation(NpcBeggarAnimationGroup anim) {
+        return npcBeggar.get(anim);
     }
 
     public Texture[] getNpcExhaustedTravelerAnimation(NpcExhaustedTravelerAnimationGroup anim) {
