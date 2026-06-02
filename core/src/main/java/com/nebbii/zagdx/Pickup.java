@@ -26,6 +26,8 @@ public class Pickup extends Rectangle implements Actor {
     protected float baseOffsetY;
     protected float offsetX; // animation specific
     protected float offsetY;
+    private float priceImageOffsetX;
+    private float priceImageOffsetY;
 
     public Pickup() {
         setType(ActorType.PICKUP);
@@ -36,6 +38,8 @@ public class Pickup extends Rectangle implements Actor {
         this.purchasable = false;
         this.price = 0;
         this.priceImage = null;
+        this.priceImageOffsetX = 0;
+        this.priceImageOffsetY = 0;
         this.overlappingZelda = false;
     }
 
@@ -52,15 +56,16 @@ public class Pickup extends Rectangle implements Actor {
             drawBounceAnim(batch);
         }
         else {
-            float drawX = getX() + offsetX + baseOffsetX;
-            float drawY = getY() + offsetY + baseOffsetY;
+            float drawX = getImageDrawX();
+            float drawY = getImageDrawY();
 
             if (shouldDrawPrice()) {
                 if (hasPriceImage()) {
                     Texture priceImage = getPriceImage();
-                    float priceImageX = drawX + (getWidth() - priceImage.getWidth()) / 2f;
+                    float priceImageX = getPriceImageDrawX(priceImage);
+                    float priceImageY = getPriceImageDrawY();
 
-                    batch.draw(priceImage, priceImageX, drawY, priceImage.getWidth(), priceImage.getHeight());
+                    batch.draw(priceImage, priceImageX, priceImageY, priceImage.getWidth(), priceImage.getHeight());
                 }
                 else {
                     drawPrice(batch, drawX, drawY + getHeight() / 3, getWidth(), getHeight());
@@ -83,9 +88,25 @@ public class Pickup extends Rectangle implements Actor {
     public void drawBounceAnim(SpriteBatch batch) {
         float decay = (float) Math.exp(-4 * duration);
         float bounce = (float) Math.pow(Math.abs(Math.sin(8f * Math.PI * duration)), 1.5f) * decay;
-        float offsetY = bounce * 10f;
+        float bounceOffsetY = bounce * 10f;
 
-        batch.draw(getImage(), getX(), getY() + offsetY, getWidth(), getHeight());
+        batch.draw(getImage(), getImageDrawX(), getImageDrawY() + bounceOffsetY, getWidth(), getHeight());
+    }
+
+    protected float getImageDrawX() {
+        return getX() + offsetX + baseOffsetX;
+    }
+
+    protected float getImageDrawY() {
+        return getY() + offsetY + baseOffsetY;
+    }
+
+    protected float getPriceImageDrawX(Texture priceImage) {
+        return getX() + priceImageOffsetX + (getWidth() - priceImage.getWidth()) / 2f;
+    }
+
+    protected float getPriceImageDrawY() {
+        return getY() + priceImageOffsetY;
     }
 
     protected void drawPrice(SpriteBatch batch, float x, float y, float width, float height) {
@@ -229,6 +250,16 @@ public class Pickup extends Rectangle implements Actor {
         this.image = image;
     }
 
+    public void setImage(Texture image, float offsetX, float offsetY) {
+        setImage(image);
+        setImageOffset(offsetX, offsetY);
+    }
+
+    public void setImageOffset(float offsetX, float offsetY) {
+        this.baseOffsetX = offsetX;
+        this.baseOffsetY = offsetY;
+    }
+
     public Texture getPriceImage() {
         if (priceImage == null) {
             return getImage();
@@ -239,6 +270,16 @@ public class Pickup extends Rectangle implements Actor {
 
     public void setPriceImage(Texture priceImage) {
         this.priceImage = priceImage;
+    }
+
+    public void setPriceImage(Texture priceImage, float offsetX, float offsetY) {
+        setPriceImage(priceImage);
+        setPriceImageOffset(offsetX, offsetY);
+    }
+
+    public void setPriceImageOffset(float offsetX, float offsetY) {
+        this.priceImageOffsetX = offsetX;
+        this.priceImageOffsetY = offsetY;
     }
 
     protected boolean hasPriceImage() {
