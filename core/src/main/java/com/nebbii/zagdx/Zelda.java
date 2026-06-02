@@ -161,6 +161,13 @@ public class Zelda extends Rectangle implements Actor {
                 map.updateSpawnLocation("overworld_entrance_earth");
                 world.getGameManager().initializeFadeWarp();
                 break;
+            case RUBIES:
+                Pickup pickup = map.findOverlappingPurchasablePickup(getHitbox());
+
+                if (pickup != null) {
+                    pickup.tryPickup(world.getGameManager());
+                }
+                break;
             default:
             }
 

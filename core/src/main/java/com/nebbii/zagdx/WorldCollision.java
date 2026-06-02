@@ -44,12 +44,16 @@ public class WorldCollision {
     }
 
     private void collideZeldaWithPickups() {
+        Rectangle zeldaHitbox = map.getZelda().getHitbox();
+
         for (Actor pickup : actors) {
             if (!(pickup instanceof Pickup) || !pickup.isActive()) continue;
 
             Pickup pickupActor = (Pickup) pickup;
+            boolean overlapsZelda = pickup.getHitbox().overlaps(zeldaHitbox);
+            pickupActor.setOverlappingZelda(overlapsZelda);
 
-            if (pickup.getHitbox().overlaps(map.getZelda().getHitbox())) {
+            if (overlapsZelda && !pickupActor.isPurchasable()) {
                 pickupActor.tryPickup(game);
             }
         }

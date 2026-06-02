@@ -269,15 +269,15 @@
         },
         {
           "type": "PickupCandle",
-          "x": 2108,
-          "y": 1493,
+          "x": 2097,
+          "y": 1507,
           "purchasable": true,
           "price": 100
         },
         {
           "type": "PickupMagicShield",
-          "x": 2040,
-          "y": 1493,
+          "x": 2025,
+          "y": 1502,
           "purchasable": true,
           "price": 500
         }

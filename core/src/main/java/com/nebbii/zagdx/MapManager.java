@@ -235,6 +235,20 @@ public class MapManager {
         return results;
     }
 
+    public Pickup findOverlappingPurchasablePickup(Rectangle hitbox) {
+        for (Actor actor : actors) {
+            if (!(actor instanceof Pickup) || !actor.isActive()) continue;
+
+            Pickup pickup = (Pickup) actor;
+
+            if (pickup.isPurchasable() && pickup.getHitbox().overlaps(hitbox)) {
+                return pickup;
+            }
+        }
+
+        return null;
+    }
+
     public void freezeAllActors() {
         Gdx.app.log(getClass().getSimpleName(), "Freezing actors");
         for (Actor actor : actors) {

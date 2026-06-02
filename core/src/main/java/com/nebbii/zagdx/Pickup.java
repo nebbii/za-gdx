@@ -18,6 +18,7 @@ public class Pickup extends Rectangle implements Actor {
     private Spawner spawnerParent;
     private boolean purchasable;
     private int price;
+    private boolean overlappingZelda;
 
     private float duration;
 
@@ -35,6 +36,7 @@ public class Pickup extends Rectangle implements Actor {
         this.purchasable = false;
         this.price = 0;
         this.priceImage = null;
+        this.overlappingZelda = false;
     }
 
     @Override
@@ -53,14 +55,17 @@ public class Pickup extends Rectangle implements Actor {
             float drawX = getX() + offsetX + baseOffsetX;
             float drawY = getY() + offsetY + baseOffsetY;
 
-            if (hasPriceImage()) {
-                Texture priceImage = getPriceImage();
-                float priceImageX = drawX + (getWidth() - priceImage.getWidth()) / 2f;
+            batch.draw(getImage(), drawX, drawY, getWidth(), getHeight());
 
-                batch.draw(priceImage, priceImageX, drawY, priceImage.getWidth(), priceImage.getHeight());
+            if (hasPriceImage()) {
+                if (shouldDrawPrice()) {
+                    Texture priceImage = getPriceImage();
+                    float priceImageX = drawX + (getWidth() - priceImage.getWidth()) / 2f;
+
+                    batch.draw(priceImage, priceImageX, drawY, priceImage.getWidth(), priceImage.getHeight());
+                }
             }
             else {
-                batch.draw(getImage(), drawX, drawY, getWidth(), getHeight());
                 drawPrice(batch, drawX, drawY + getHeight() / 3, getWidth(), getHeight());
             }
         }
@@ -83,11 +88,11 @@ public class Pickup extends Rectangle implements Actor {
     }
 
     protected void drawPrice(SpriteBatch batch, float x, float y, float width, float height) {
-        if (!isPurchasable()) {
+        if (hasPriceImage()) {
             return;
         }
 
-        if (hasPriceImage()) {
+        if (!shouldDrawPrice()) {
             return;
         }
 
@@ -118,6 +123,22 @@ public class Pickup extends Rectangle implements Actor {
 
         onPickup(game);
         return true;
+    }
+
+    boolean shouldDrawPrice() {
+        return shouldDrawPrice(duration);
+    }
+
+    boolean shouldDrawPrice(float elapsedTime) {
+        if (!isPurchasable()) {
+            return false;
+        }
+
+        if (!isOverlappingZelda()) {
+            return false;
+        }
+
+        return elapsedTime % 1f < 0.5f;
     }
 
     @Override
@@ -237,6 +258,14 @@ public class Pickup extends Rectangle implements Actor {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public boolean isOverlappingZelda() {
+        return overlappingZelda;
+    }
+
+    public void setOverlappingZelda(boolean overlappingZelda) {
+        this.overlappingZelda = overlappingZelda;
     }
 
     public MapManager getMap() {
