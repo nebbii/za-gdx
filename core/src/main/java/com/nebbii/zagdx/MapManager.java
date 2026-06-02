@@ -452,6 +452,10 @@ public class MapManager {
                 Pickup pickup = (Pickup) actor;
                 pickup.setPurchasable(entry.purchasable);
                 pickup.setPrice(entry.price);
+
+                if (entry.purchasable) {
+                    pickup.setState(State.ACTIVE);
+                }
             }
 
             return actor;

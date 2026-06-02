@@ -174,7 +174,11 @@ public class ImageLoader {
 
     /* Treasures */
     private Texture bone;
+    private Texture candle;
+    private Texture candlePrice;
     private Texture ladder;
+    private Texture magicShield;
+    private Texture magicShieldPrice;
     private Texture pitcherEmpty;
     private Texture pitcherFull;
     private Texture vialOfWind;
@@ -425,7 +429,11 @@ public class ImageLoader {
 
         /* Treasures */
         bone = new Texture("export/overworld/k13a/sprites/desc2/group0/sprite0.png");
+        candle = new Texture("export/overworld/f26/sprites/desc1/group0/sprite0.png");
+        candlePrice = new Texture("export/overworld/f26/sprites/desc1/group1/sprite0.png");
         ladder = new Texture("export/overworld/f28/sprites/desc0/group0/sprite0.png");
+        magicShield = new Texture("export/overworld/f26/sprites/desc3/group0/sprite0.png");
+        magicShieldPrice = new Texture("export/overworld/f26/sprites/desc3/group1/sprite0.png");
         pitcherEmpty = new Texture("export/overworld/j24/sprites/desc1/group0/sprite0.png");
         pitcherFull = new Texture("export/overworld/e20/sprites/desc0/group0/sprite0.png");
         vialOfWind = new Texture("export/overworld/j24/sprites/desc2/group0/sprite0.png");
@@ -746,7 +754,11 @@ public class ImageLoader {
 
         /* Treasures */
         bone.dispose();
+        candle.dispose();
+        candlePrice.dispose();
         ladder.dispose();
+        magicShield.dispose();
+        magicShieldPrice.dispose();
         pitcherEmpty.dispose();
         pitcherFull.dispose();
         vialOfWind.dispose();
@@ -817,6 +829,7 @@ public class ImageLoader {
             case BONE:
                 return getBone();
             case CANDLE:
+                return getCandle();
             case CELESTIAL_SIGN_1:
                 return getCelestialStone(1);
             case CELESTIAL_SIGN_2:
@@ -860,6 +873,7 @@ public class ImageLoader {
             case LIFE_HEART:
             case LIFE_POTION:
             case MAGIC_SHIELD:
+                return getMagicShield();
             case NONE:
                 return getNone();
             case PITCHER_EMPTY:
@@ -1083,8 +1097,24 @@ public class ImageLoader {
         return bone;
     }
 
+    public Texture getCandle() {
+        return candle;
+    }
+
+    public Texture getCandlePrice() {
+        return candlePrice;
+    }
+
     public Texture getLadder() {
         return ladder;
+    }
+
+    public Texture getMagicShield() {
+        return magicShield;
+    }
+
+    public Texture getMagicShieldPrice() {
+        return magicShieldPrice;
     }
 
     public Texture getSpriteLadder() {

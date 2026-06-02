@@ -49,8 +49,8 @@ public class WorldCollision {
 
             Pickup pickupActor = (Pickup) pickup;
 
-            if (pickup.getHitbox().overlaps(map.getZelda().getHitbox()) && !pickupActor.isPurchasable()) {
-                pickupActor.onPickup(game);
+            if (pickup.getHitbox().overlaps(map.getZelda().getHitbox())) {
+                pickupActor.tryPickup(game);
             }
         }
     }

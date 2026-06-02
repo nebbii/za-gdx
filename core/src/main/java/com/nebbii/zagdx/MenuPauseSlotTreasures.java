@@ -8,6 +8,7 @@ public class MenuPauseSlotTreasures extends Rectangle implements MenuButton {
     private Treasure heldItem;
 
     private static final Treasure[] NOTEQUIPPABLE = {
+        Treasure.MAGIC_SHIELD,
         Treasure.RED_BOOTS,
         Treasure.CELESTIAL_SIGN_1,
         Treasure.CELESTIAL_SIGN_2,

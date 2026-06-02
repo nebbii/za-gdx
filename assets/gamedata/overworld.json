@@ -268,10 +268,18 @@
           "y": 1543
         },
         {
-          "__comment": "candle at X: 2108 Y: 1493"
+          "type": "PickupCandle",
+          "x": 2108,
+          "y": 1493,
+          "purchasable": true,
+          "price": 100
         },
         {
-          "__comment": "shield at X:2040 Y:1493"
+          "type": "PickupMagicShield",
+          "x": 2040,
+          "y": 1493,
+          "purchasable": true,
+          "price": 500
         }
       ]
     },

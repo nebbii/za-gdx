@@ -53,8 +53,16 @@ public class Pickup extends Rectangle implements Actor {
             float drawX = getX() + offsetX + baseOffsetX;
             float drawY = getY() + offsetY + baseOffsetY;
 
-            batch.draw(getImage(), drawX, drawY, getWidth(), getHeight());
-            drawPrice(batch, drawX, drawY + getHeight() / 3, getWidth(), getHeight());
+            if (hasPriceImage()) {
+                Texture priceImage = getPriceImage();
+                float priceImageX = drawX + (getWidth() - priceImage.getWidth()) / 2f;
+
+                batch.draw(priceImage, priceImageX, drawY, priceImage.getWidth(), priceImage.getHeight());
+            }
+            else {
+                batch.draw(getImage(), drawX, drawY, getWidth(), getHeight());
+                drawPrice(batch, drawX, drawY + getHeight() / 3, getWidth(), getHeight());
+            }
         }
     }
 
@@ -79,10 +87,7 @@ public class Pickup extends Rectangle implements Actor {
             return;
         }
 
-        Texture priceImage = getPriceImage();
-
-        if (priceImage != getImage()) {
-            batch.draw(priceImage, x, y, width, height);
+        if (hasPriceImage()) {
             return;
         }
 
@@ -100,6 +105,19 @@ public class Pickup extends Rectangle implements Actor {
         else if (getLocationEntry() != null) {
             map.getSaveManager().addLocationEntry(getLocationEntry(), "picked_up");
         }
+    }
+
+    public boolean tryPickup(GameManager game) {
+        if (isPurchasable()) {
+            if (game.getRubies() < getPrice()) {
+                return false;
+            }
+
+            game.decreaseRubies(getPrice(), true);
+        }
+
+        onPickup(game);
+        return true;
     }
 
     @Override
@@ -199,6 +217,10 @@ public class Pickup extends Rectangle implements Actor {
 
     public void setPriceImage(Texture priceImage) {
         this.priceImage = priceImage;
+    }
+
+    protected boolean hasPriceImage() {
+        return getPriceImage() != getImage();
     }
 
     public boolean isPurchasable() {
