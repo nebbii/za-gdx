@@ -426,12 +426,13 @@ public class MapManager {
     // initialize actors based on class names from json files, unique parameters through switch
     public Actor createActorFromJsonEntry(ActorJsonEntry entry, String locationEntry) {
         try {
+            Actor actor;
+
             switch (entry.type) {
             case "PickupRuby":
                 RubyType rubyType = RubyType.valueOf(entry.rubyType);
-                PickupRuby ruby = new PickupRuby(rubyType);
-                ruby.setPosition(entry.x, entry.y);
-                return ruby;
+                actor = new PickupRuby(rubyType);
+                break;
             default:
                 Class<?> newClass = Class.forName("com.nebbii.zagdx." + entry.type);
                 Object object = newClass.getDeclaredConstructor().newInstance();
@@ -440,13 +441,20 @@ public class MapManager {
                     throw new IllegalArgumentException(entry.type + " is not a known actor");
                 }
 
-                Actor actor = (Actor) object;
-                actor.getCollisionBox().setPosition(entry.x, entry.y);
-
-                actor.setLocationEntry(locationEntry);
-
-                return actor;
+                actor = (Actor) object;
+                break;
             }
+
+            actor.getCollisionBox().setPosition(entry.x, entry.y);
+            actor.setLocationEntry(locationEntry);
+
+            if (actor instanceof Pickup) {
+                Pickup pickup = (Pickup) actor;
+                pickup.setPurchasable(entry.purchasable);
+                pickup.setPrice(entry.price);
+            }
+
+            return actor;
         }
         catch (Exception e) {
             throw new RuntimeException("Failed to load actor: " + entry.type, e);

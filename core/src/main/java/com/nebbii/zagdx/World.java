@@ -171,10 +171,13 @@ public class World {
         batch.begin();
         batch.draw(World.images.getRubyBlue(), 40f, WORLD_HEIGHT - 35f);
 
-        drawHudRubyAmount(gameManager.getRubies(),
-                          3,
-                          52f,
-                          WORLD_HEIGHT - 35f);
+        HudNumberRenderer.draw(
+            batch,
+            gameManager.getRubies(),
+            3,
+            52f,
+            WORLD_HEIGHT - 35f
+        );
 
         drawHudHearts(
             gameManager.getZelda().getHealth(),
@@ -183,27 +186,6 @@ public class World {
             WORLD_HEIGHT - 35f
         );
         batch.end();
-    }
-
-    private void drawHudRubyAmount(int number, int minDigits, float x, float y) {
-        String text = String.valueOf(number);
-
-        while (text.length() < minDigits) {
-            text = "0" + text;
-        }
-
-        float digitSpacing = 9f;
-
-        for (int i = 0; i < text.length(); i++) {
-            int digit = Character.getNumericValue(text.charAt(i));
-
-            if (digit < 0 || digit > 9) {
-                continue;
-            }
-
-            Texture digitTexture = World.images.getHudNumber(digit);
-            batch.draw(digitTexture, x + i * digitSpacing, y);
-        }
     }
 
     private void drawHudHearts(int health, int maxHealth, float x, float y) {

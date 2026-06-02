@@ -6,6 +6,9 @@ public class ActorJsonEntry {
     public float y;
 
     // extra fields
-    public String rubyType;
     public String __comment;
+    public String rubyType;
+    public boolean purchasable;
+    public int price;
+
 }

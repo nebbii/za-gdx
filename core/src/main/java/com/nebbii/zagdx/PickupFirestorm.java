@@ -41,6 +41,10 @@ public class PickupFirestorm extends Pickup {
             getWidth(),
             getHeight()
         );
+
+        if (isActive()) {
+            drawPrice(batch, animation.getX(), animation.getY(), getWidth(), getHeight());
+        }
     }
 
     public void onPickup(GameManager game) {

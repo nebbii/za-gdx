@@ -14,7 +14,10 @@ public class Pickup extends Rectangle implements Actor {
     private int drawOrder;
     private boolean solid;
     private Texture image;
+    private Texture priceImage;
     private Spawner spawnerParent;
+    private boolean purchasable;
+    private int price;
 
     private float duration;
 
@@ -29,6 +32,9 @@ public class Pickup extends Rectangle implements Actor {
         this.drawOrder = 1;
         this.duration = 0;
         this.spawnerParent = null;
+        this.purchasable = false;
+        this.price = 0;
+        this.priceImage = null;
     }
 
     @Override
@@ -44,7 +50,11 @@ public class Pickup extends Rectangle implements Actor {
             drawBounceAnim(batch);
         }
         else {
-            batch.draw(getImage(), getX() + offsetX + baseOffsetX, getY() + offsetY + baseOffsetY, getWidth(), getHeight());
+            float drawX = getX() + offsetX + baseOffsetX;
+            float drawY = getY() + offsetY + baseOffsetY;
+
+            batch.draw(getImage(), drawX, drawY, getWidth(), getHeight());
+            drawPrice(batch, drawX, drawY + getHeight() / 3, getWidth(), getHeight());
         }
     }
 
@@ -62,6 +72,21 @@ public class Pickup extends Rectangle implements Actor {
         float offsetY = bounce * 10f;
 
         batch.draw(getImage(), getX(), getY() + offsetY, getWidth(), getHeight());
+    }
+
+    protected void drawPrice(SpriteBatch batch, float x, float y, float width, float height) {
+        if (!isPurchasable()) {
+            return;
+        }
+
+        Texture priceImage = getPriceImage();
+
+        if (priceImage != getImage()) {
+            batch.draw(priceImage, x, y, width, height);
+            return;
+        }
+
+        HudNumberRenderer.drawCentered(batch, getPrice(), 0, x, y, width, height);
     }
 
     public void onPickup(GameManager game) {
@@ -162,6 +187,34 @@ public class Pickup extends Rectangle implements Actor {
 
     public void setImage(Texture image) {
         this.image = image;
+    }
+
+    public Texture getPriceImage() {
+        if (priceImage == null) {
+            return getImage();
+        }
+
+        return priceImage;
+    }
+
+    public void setPriceImage(Texture priceImage) {
+        this.priceImage = priceImage;
+    }
+
+    public boolean isPurchasable() {
+        return purchasable;
+    }
+
+    public void setPurchasable(boolean purchasable) {
+        this.purchasable = purchasable;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public MapManager getMap() {
