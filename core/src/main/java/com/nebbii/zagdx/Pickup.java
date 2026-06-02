@@ -55,18 +55,19 @@ public class Pickup extends Rectangle implements Actor {
             float drawX = getX() + offsetX + baseOffsetX;
             float drawY = getY() + offsetY + baseOffsetY;
 
-            batch.draw(getImage(), drawX, drawY, getWidth(), getHeight());
-
-            if (hasPriceImage()) {
-                if (shouldDrawPrice()) {
+            if (shouldDrawPrice()) {
+                if (hasPriceImage()) {
                     Texture priceImage = getPriceImage();
                     float priceImageX = drawX + (getWidth() - priceImage.getWidth()) / 2f;
 
                     batch.draw(priceImage, priceImageX, drawY, priceImage.getWidth(), priceImage.getHeight());
                 }
+                else {
+                    drawPrice(batch, drawX, drawY + getHeight() / 3, getWidth(), getHeight());
+                }
             }
             else {
-                drawPrice(batch, drawX, drawY + getHeight() / 3, getWidth(), getHeight());
+                batch.draw(getImage(), drawX, drawY, getWidth(), getHeight());
             }
         }
     }
