@@ -8,6 +8,18 @@ import com.nebbii.zagdx.animation.EnemyLlortAnimation;
 public class EnemyLlort extends Enemy {
     public EnemyLlortAnimation animation;
 
+    private static class PathStep {
+        private final float x;
+        private final float y;
+        private final boolean attackAfter;
+
+        private PathStep(float x, float y, boolean attackAfter) {
+            this.x = x;
+            this.y = y;
+            this.attackAfter = attackAfter;
+        }
+    }
+
     private float startX;
     private float startY;
     private float goalX;
@@ -19,14 +31,14 @@ public class EnemyLlort extends Enemy {
     private float interval = 1.5f;
     private boolean axesThrown;
 
-    private final float[][] pathCoordinates = {
-        {-104f,  10f},
-        { 104f, -40f},
-        {  84f,  40f},
-        { -84f, -60f},
-        {  96f, -12f},
-        {-188f,   0f},
-        {  92f,  72f}
+    private final PathStep[] pathCoordinates = {
+        new PathStep(-104f,  10f, false),
+        new PathStep( 104f, -40f, false),
+        new PathStep(  84f,  40f, true),
+        new PathStep( -84f, -60f, false),
+        new PathStep(  96f, -12f, false),
+        new PathStep(-188f,   0f, true),
+        new PathStep(  92f,  72f, false)
     };
 
     public EnemyLlort() {
@@ -41,6 +53,7 @@ public class EnemyLlort extends Enemy {
 
         setStartX(getX());
         setStartY(getY());
+
         timer = 0;
         axesThrown = false;
 
@@ -60,19 +73,21 @@ public class EnemyLlort extends Enemy {
 
         if (knockback <= 0) {
             switch(enemyState) {
-            case SEARCH:
-                move(delta);
-                break;
-            case FIGHT:
-                attack(delta);
-                break;
-            default:
-
+                case SEARCH:
+                    move(delta);
+                    break;
+                case FIGHT:
+                    attack(delta);
+                    break;
+                default:
             }
-            animation.play();
-            if (enemyState == EnemyState.FIGHT) throwAxesOnFrame(5);
-        }
 
+            animation.play();
+
+            if (enemyState == EnemyState.FIGHT) {
+                throwAxesOnFrame(5);
+            }
+        }
     }
 
     @Override
@@ -85,22 +100,31 @@ public class EnemyLlort extends Enemy {
     }
 
     private void move(float delta) {
-        int step = (int)(timer / interval) % pathCoordinates.length;
+        int stepIndex = (int)(timer / interval) % pathCoordinates.length;
 
-        if (step != currentMoveStep) {
-            currentMoveStep = step;
+        if (stepIndex != currentMoveStep) {
+            currentMoveStep = stepIndex;
 
-            setGoalX(getX() + pathCoordinates[step][0]);
-            setGoalY(getY() + pathCoordinates[step][1]);
+            PathStep step = pathCoordinates[stepIndex];
 
-            animation.setStateTime(0);
-            axesThrown = false;
-            setEnemyState(EnemyState.FIGHT);
+            setGoalX(getX() + step.x);
+            setGoalY(getY() + step.y);
+
+            if (step.attackAfter) {
+                beginAttack();
+                return;
+            }
         }
 
         moveTowardGoal(delta);
 
         timer += delta;
+    }
+
+    private void beginAttack() {
+        axesThrown = false;
+        animation.setStateTime(0);
+        setEnemyState(EnemyState.FIGHT);
     }
 
     private void attack(float delta) {
@@ -116,6 +140,7 @@ public class EnemyLlort extends Enemy {
 
         map.addNewActor(new EnemyProjectileLlortAxe(this, Direction.LEFT));
         map.addNewActor(new EnemyProjectileLlortAxe(this, Direction.RIGHT));
+
         axesThrown = true;
     }
 
