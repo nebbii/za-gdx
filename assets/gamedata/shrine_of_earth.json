@@ -97,12 +97,14 @@
         {
           "type": "EnemyKeese",
           "x": 1447,
-          "y": 360
+          "y": 360,
+          "pathMode": "RANDOM"
         },
         {
           "type": "EnemyKeese",
           "x": 1365,
-          "y": 248
+          "y": 248,
+          "pathMode": "RANDOM"
         }
       ]
     },
@@ -145,22 +147,26 @@
         {
           "type": "EnemyKeese",
           "x": 1588,
-          "y": 916
+          "y": 916,
+          "pathMode": "RANDOM"
         },
         {
           "type": "EnemyKeese",
           "x": 1658,
-          "y": 913
+          "y": 913,
+          "pathMode": "RANDOM"
         },
         {
           "type": "EnemyKeese",
           "x": 1836,
-          "y": 907
+          "y": 907,
+          "pathMode": "RANDOM"
         },
         {
           "type": "EnemyKeese",
           "x": 1722,
-          "y": 765
+          "y": 765,
+          "pathMode": "RANDOM"
         }
       ]
     },
@@ -171,7 +177,8 @@
         {
           "type": "EnemyKeese",
           "x": 1959,
-          "y": 819
+          "y": 819,
+          "pathMode": "RANDOM"
         }
       ]
     },
@@ -203,12 +210,14 @@
         {
           "type": "EnemyKeese",
           "x": 1457,
-          "y": 1300
+          "y": 1300,
+          "pathMode": "RANDOM"
         },
         {
           "type": "EnemyKeese",
           "x": 1195,
-          "y": 1344
+          "y": 1344,
+          "pathMode": "RANDOM"
         },
         {
           "__comment": "torch at x1183 y1381"
