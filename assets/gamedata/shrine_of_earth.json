@@ -68,17 +68,20 @@
         {
           "type": "EnemyKeese",
           "x": 1190,
-          "y": 650
+          "y": 650,
+          "pathMode": "RANDOM"
         },
         {
           "type": "EnemyKeese",
           "x": 1409,
-          "y": 652
+          "y": 652,
+          "pathMode": "RANDOM"
         },
         {
           "type": "EnemyKeese",
           "x": 1368,
-          "y": 573
+          "y": 573,
+          "pathMode": "RANDOM"
         },
         {
           "type": "SpawnerCompass1",

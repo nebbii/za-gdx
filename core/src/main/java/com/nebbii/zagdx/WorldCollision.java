@@ -233,6 +233,22 @@ public class WorldCollision {
             Enemy enemy = (Enemy) actor;
             Zelda zelda = map.getZelda();
 
+            if (enemy instanceof EnemyKeese) {
+                EnemyKeese keese = (EnemyKeese) enemy;
+
+                if (keese.hasConfiguredPathMovement()) {
+                    if (enemy.getAlertBox().overlaps(zelda.getHitbox())) {
+                        boolean alreadyStarted = keese.isPathStarted();
+                        keese.startPathIfNeeded();
+
+                        if (!alreadyStarted && keese.isPathStarted()) {
+                            Gdx.app.log(getClass().getSimpleName(), actor.getClass() + " started pathing!");
+                        }
+                    }
+                    continue;
+                }
+            }
+
             if (enemy.getAlertBox().overlaps(zelda.getHitbox())) {
                 enemy.setTargetX(zelda.getCenterPointX());
                 enemy.setTargetY(zelda.getCenterPointY());

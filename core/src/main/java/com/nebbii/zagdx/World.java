@@ -409,6 +409,22 @@ public class World {
         return MathUtils.floor(y / World.WORLD_HEIGHT);
     }
 
+    public static float getCurrentScreenLeft(float x) {
+        return convertWorldXToCellColumn(x) * World.WORLD_WIDTH;
+    }
+
+    public static float getCurrentScreenRight(float x) {
+        return getCurrentScreenLeft(x) + World.WORLD_WIDTH;
+    }
+
+    public static float getCurrentScreenBottom(float y) {
+        return convertWorldYToCellRow(y) * World.WORLD_HEIGHT;
+    }
+
+    public static float getCurrentScreenTop(float y) {
+        return getCurrentScreenBottom(y) + World.WORLD_HEIGHT;
+    }
+
     // get the center point X based on the cell number
     public static float getCenterPointOfCellColumn(int cellColumn) {
         return cellColumn * World.WORLD_WIDTH + World.WORLD_WIDTH / 2f;

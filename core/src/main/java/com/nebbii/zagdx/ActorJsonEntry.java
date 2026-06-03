@@ -1,5 +1,7 @@
 package com.nebbii.zagdx;
 
+import java.util.ArrayList;
+
 public class ActorJsonEntry {
     public String type;
     public float x;
@@ -10,5 +12,7 @@ public class ActorJsonEntry {
     public String rubyType;
     public boolean purchasable;
     public int price;
+    public String pathMode;
+    public ArrayList<ActorPathPointJsonEntry> path = new ArrayList<>();
 
 }

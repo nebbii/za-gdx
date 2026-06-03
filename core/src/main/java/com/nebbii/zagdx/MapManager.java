@@ -462,6 +462,10 @@ public class MapManager {
             actor.getCollisionBox().setPosition(entry.x, entry.y);
             actor.setLocationEntry(locationEntry);
 
+            if (actor instanceof EnemyKeese) {
+                configureKeesePath((EnemyKeese) actor, entry);
+            }
+
             if (actor instanceof Pickup) {
                 Pickup pickup = (Pickup) actor;
                 pickup.setPurchasable(entry.purchasable);
@@ -476,6 +480,31 @@ public class MapManager {
         }
         catch (Exception e) {
             throw new RuntimeException("Failed to load actor: " + entry.type, e);
+        }
+    }
+
+    private void configureKeesePath(EnemyKeese keese, ActorJsonEntry entry) {
+        boolean hasSetPath = entry.path != null && !entry.path.isEmpty();
+
+        if (entry.pathMode == null || entry.pathMode.trim().isEmpty()) {
+            if (hasSetPath) {
+                keese.setRelativePath(entry.path);
+            }
+            return;
+        }
+
+        switch (entry.pathMode.trim().toUpperCase()) {
+        case "SET":
+            if (!hasSetPath) {
+                throw new IllegalArgumentException("EnemyKeese pathMode SET requires at least one path point");
+            }
+            keese.setRelativePath(entry.path);
+            break;
+        case "RANDOM":
+            keese.enableRandomPathMode();
+            break;
+        default:
+            throw new IllegalArgumentException("Unknown EnemyKeese pathMode: " + entry.pathMode);
         }
     }
 
