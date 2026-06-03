@@ -44,13 +44,24 @@ public class EnemyLlort extends Enemy {
     private boolean axesThrown;
 
     private final PathStep[] pathCoordinates = {
-        new PathStep(-64f,  10f, 1f, false),
-        new PathStep( 104f, -40f, 1f, true),
-        new PathStep(  84f,  40f, 1f, false),
-        new PathStep( -84f, -60f, 1f, false),
-        new PathStep(  96f, -12f, 1f, false),
-        new PathStep(-188f,   0f, 1f, false),
-        new PathStep(  92f,  72f, 1f, false)
+        new PathStep(-100f,  25f, 0.8f, false),
+        new PathStep( 40f, -40f, 0.5f, true),
+        new PathStep( 104f, 0f, 0.7f, false),
+        new PathStep(  40f,  40f, 0.5f, false),
+        new PathStep( -60, -60f, 0.5f, true),
+        new PathStep( -24f, 0f, 0.5f, false),
+        new PathStep(  24f, -12f, 0.3f, true),
+        new PathStep(  50, 0f, 0.8f, false),
+        new PathStep(  -20f, 0f, 0.2f, false),
+        new PathStep(  20, -20f, 0.2f, false),
+        //new PathStep(  10, 72f, 0.8f, false),
+        //new PathStep(  50f,  -90f, 0.7f, false),
+        new PathStep(-188f,   0f, 1.5f, false),
+        new PathStep(  95f,  92f, 1f, false),
+        new PathStep(  10f,  40f, 1f, true),
+        new PathStep(  -50f,  0f, 1.2f, false),
+        new PathStep(  80f,  0f, 1.2f, false),
+        new PathStep(  -40f,  -50f, 0.3f, false)
     };
 
     public EnemyLlort() {
@@ -130,6 +141,7 @@ public class EnemyLlort extends Enemy {
                 if (enemyState != EnemyState.SEARCH) return;
             }
 
+
             PathStep step = pathCoordinates[currentMoveStep];
             float stepRemaining = step.duration - currentStepElapsed;
             float elapsedThisFrame = Math.min(remainingDelta, stepRemaining);
@@ -153,6 +165,7 @@ public class EnemyLlort extends Enemy {
         stepStartY = getY();
 
         PathStep step = pathCoordinates[currentMoveStep];
+        Gdx.app.log(getClass().getSimpleName(), "next coordinates: X: " + pathCoordinates[currentMoveStep].x + " Y: " + pathCoordinates[currentMoveStep].y);
 
         setGoalX(stepStartX + step.x);
         setGoalY(stepStartY + step.y);
