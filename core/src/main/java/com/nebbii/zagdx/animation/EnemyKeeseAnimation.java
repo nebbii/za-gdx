@@ -56,6 +56,11 @@ public class EnemyKeeseAnimation extends GameAnimation {
         return fly.getKeyFrame(stateTime, true);
     }
 
+    public TextureRegion playFirstFrame() {
+        currentFrameIndex = fly.getKeyFrameIndex(0f);
+        return fly.getKeyFrame(0f, true);
+    }
+
     public float getX() {
         return enemy.getX() + xOffsets[currentFrameIndex];
     }

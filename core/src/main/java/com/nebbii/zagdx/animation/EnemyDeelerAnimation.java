@@ -23,7 +23,7 @@ public class EnemyDeelerAnimation extends GameAnimation {
         baseOffsetX = 0;
         baseOffsetY = 0;
         offsetX = 0;
-        offsetY = 0;
+        offsetY = 20;
 
         walk = initWalk();
     }

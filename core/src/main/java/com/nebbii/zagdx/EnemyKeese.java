@@ -77,7 +77,12 @@ public class EnemyKeese extends Enemy {
     public void draw(SpriteBatch batch) {
         if (knockback > 0) drawFlashOverlay(batch, hurtWeakness);
 
-        batch.draw(animation.playCurrentAnimation(), animation.getX(), animation.getY());
+        if (hasConfiguredPathMovement() && !pathStarted) {
+            batch.draw(animation.playFirstFrame(), animation.getX(), animation.getY());
+        }
+        else {
+            batch.draw(animation.playCurrentAnimation(), animation.getX(), animation.getY());
+        }
 
         if (knockback > 0) endDrawFlashOverlay(batch);
     }
