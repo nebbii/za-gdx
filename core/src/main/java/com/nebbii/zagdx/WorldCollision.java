@@ -99,6 +99,8 @@ public class WorldCollision {
 
             Enemy enemy = (Enemy) overlapper;
 
+            if (enemy.getInvincibility() > 0 || enemy.getKnockback() > 0) continue;
+
             for (Actor overlapee : actors) {
                 if (!overlapee.isActive()) continue;
                 if (!(overlapee instanceof ZeldaAction)) continue;

@@ -101,6 +101,7 @@ public class EnemyLlort extends Enemy {
         if (health <= 0) onDeath();
 
         knockback = Math.max(0f, knockback - delta);
+        invincibility = Math.max(0f, invincibility - delta);
 
         if (knockback <= 0) {
             switch(enemyState) {
@@ -220,6 +221,12 @@ public class EnemyLlort extends Enemy {
         map.addNewActor(new EnemyProjectileLlortAxe(this, Direction.RIGHT));
 
         axesThrown = true;
+    }
+
+    @Override
+    public void onHit(int damage, float knockback) {
+        super.onHit(damage, knockback);
+        increaseInvincibility(knockback * 2);
     }
 
     @Override

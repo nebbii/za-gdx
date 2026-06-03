@@ -24,6 +24,7 @@ public class Enemy extends Rectangle implements Actor {
     protected float targetY;
 
     protected float knockback;
+    protected float invincibility;
     protected Direction hurtDirection;
     protected boolean hurtWeakness = true;
     protected State state;
@@ -64,6 +65,7 @@ public class Enemy extends Rectangle implements Actor {
         if (getState() != State.ACTIVE) return;
 
         knockback = Math.max(0f, knockback - Gdx.graphics.getDeltaTime());
+        invincibility = Math.max(0f, invincibility - Gdx.graphics.getDeltaTime());
 
         if (knockback > 0) {
             if (hurtWeakness && health > 0) {
@@ -349,6 +351,10 @@ public class Enemy extends Rectangle implements Actor {
         this.knockback += amount;
     }
 
+    public void increaseInvincibility(float amount) {
+        this.invincibility += amount;
+    }
+
     public int getHealth() {
         return health;
     }
@@ -414,4 +420,20 @@ public class Enemy extends Rectangle implements Actor {
     public void setHurtWeakness(boolean hurtWeakness) {
         this.hurtWeakness = hurtWeakness;
     }
+
+    public float getKnockback() {
+        return knockback;
+    }
+
+    public void setKnockback(float knockback) {
+        this.knockback = knockback;
+    }
+
+    public float getInvincibility() {
+		return invincibility;
+	}
+
+	public void setInvincibility(float invincibility) {
+		this.invincibility = invincibility;
+	}
 }
