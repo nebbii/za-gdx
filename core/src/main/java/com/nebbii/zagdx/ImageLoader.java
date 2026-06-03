@@ -227,6 +227,7 @@ public class ImageLoader {
     private Texture[] friendlyJadeRing;
     private Texture[] enemyBoomerang;
     private Texture[] enemySpear;
+    private Texture[] enemyLlortAxe;
 
     private Texture itemScreen;
 
@@ -482,6 +483,7 @@ public class ImageLoader {
         enemySpear[1] = new Texture("export/underworld/s120/sprites/desc1/group1/sprite0.png");
         enemySpear[2] = new Texture("export/underworld/s120/sprites/desc1/group2/sprite0.png");
         enemySpear[3] = new Texture("export/underworld/s120/sprites/desc1/group3/sprite0.png");
+        enemyLlortAxe = loadTextureArray("export/underworld/s121/sprites/desc1/group0", 4);
     }
 
     public void dispose() {
@@ -816,6 +818,12 @@ public class ImageLoader {
         }
 
         for (Texture texture : enemySpear) {
+            if (texture != null) {
+                texture.dispose();
+            }
+        }
+
+        for (Texture texture : enemyLlortAxe) {
             if (texture != null) {
                 texture.dispose();
             }
@@ -1183,6 +1191,10 @@ public class ImageLoader {
 
     public Texture[] getEnemySpear() {
         return enemySpear;
+    }
+
+    public Texture[] getEnemyLlortAxe() {
+        return enemyLlortAxe;
     }
 
     public Texture getJadeRing() {

@@ -29,6 +29,7 @@ public class EnemyLlortAnimation extends GameAnimation {
 
         walk = initWalk();
         attack = initAttack();
+        animation = walk;
     }
 
     public TextureRegion playCurrentAnimation() {
@@ -51,17 +52,29 @@ public class EnemyLlortAnimation extends GameAnimation {
                 throw new IllegalStateException("Unhandled Llort enemy state");
         }
 
+        animation.setFrameDuration(getAnimationSpeed());
+
         TextureRegion frame = animation.getKeyFrame(stateTime, true);
 
         float wrappedTime = stateTime % animation.getAnimationDuration();
         int frameIndex = animation.getKeyFrameIndex(wrappedTime);
 
-        animation.setFrameDuration(getAnimationSpeed());
-
         offsetX = offsetsX[frameIndex];
         offsetY = offsetsY[frameIndex];
 
         return frame;
+    }
+
+    public int getCurrentAttackFrameIndex() {
+        if (enemy.getEnemyState() != EnemyLlort.EnemyState.FIGHT) return -1;
+
+        attack.setFrameDuration(getAnimationSpeed());
+        return attack.getKeyFrameIndex(stateTime % attack.getAnimationDuration());
+    }
+
+    public boolean isAttackAnimationFinished() {
+        attack.setFrameDuration(getAnimationSpeed());
+        return attack.isAnimationFinished(stateTime);
     }
 
     public float getX() {

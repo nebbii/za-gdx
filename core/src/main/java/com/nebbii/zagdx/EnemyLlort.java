@@ -16,7 +16,8 @@ public class EnemyLlort extends Enemy {
     private int currentMoveStep = -1;
 
     private float timer;
-    private float interval = 2f;
+    private float interval = 1.5f;
+    private boolean axesThrown;
 
     private final float[][] pathCoordinates = {
         {-104f,  10f},
@@ -41,6 +42,7 @@ public class EnemyLlort extends Enemy {
         setStartX(getX());
         setStartY(getY());
         timer = 0;
+        axesThrown = false;
 
         this.animation = new EnemyLlortAnimation(this);
 
@@ -68,6 +70,7 @@ public class EnemyLlort extends Enemy {
 
             }
             animation.play();
+            if (enemyState == EnemyState.FIGHT) throwAxesOnFrame(5);
         }
 
     }
@@ -91,6 +94,7 @@ public class EnemyLlort extends Enemy {
             setGoalY(getY() + pathCoordinates[step][1]);
 
             animation.setStateTime(0);
+            axesThrown = false;
             setEnemyState(EnemyState.FIGHT);
         }
 
@@ -100,9 +104,19 @@ public class EnemyLlort extends Enemy {
     }
 
     private void attack(float delta) {
-        if (animation.isAnimationFinished()) {
+        if (animation.isAttackAnimationFinished()) {
             setEnemyState(EnemyState.SEARCH);
+            axesThrown = false;
         }
+    }
+
+    private void throwAxesOnFrame(int frame) {
+        if (axesThrown) return;
+        if (animation.getCurrentAttackFrameIndex() < frame) return;
+
+        map.addNewActor(new EnemyProjectileLlortAxe(this, Direction.LEFT));
+        map.addNewActor(new EnemyProjectileLlortAxe(this, Direction.RIGHT));
+        axesThrown = true;
     }
 
     private void moveTowardGoal(float delta) {
