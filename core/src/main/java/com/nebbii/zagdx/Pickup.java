@@ -37,6 +37,8 @@ public class Pickup extends Rectangle implements Actor {
         this.spawnerParent = null;
         this.purchasable = false;
         this.price = 0;
+        this.baseOffsetX = 0;
+        this.baseOffsetY = 0;
         this.priceImage = null;
         this.priceImageOffsetX = 0;
         this.priceImageOffsetY = 0;
@@ -68,6 +70,7 @@ public class Pickup extends Rectangle implements Actor {
                     batch.draw(priceImage, priceImageX, priceImageY, priceImage.getWidth(), priceImage.getHeight());
                 }
                 else {
+                    batch.draw(getImage(), drawX, drawY, getWidth(), getHeight());
                     drawPrice(batch, drawX, drawY + getHeight() / 3, getWidth(), getHeight());
                 }
             }
