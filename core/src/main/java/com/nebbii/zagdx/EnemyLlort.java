@@ -2,6 +2,7 @@ package com.nebbii.zagdx;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 import com.nebbii.zagdx.animation.EnemyLlortAnimation;
 
@@ -11,41 +12,60 @@ public class EnemyLlort extends Enemy {
     private static class PathStep {
         private final float x;
         private final float y;
-        private final boolean attackAfter;
+        private final float duration;
+        private final boolean attackBefore;
 
-        private PathStep(float x, float y, boolean attackAfter) {
+        private PathStep(float x, float y, float duration, boolean attackBefore) {
+            if (duration <= 0f) {
+                throw new IllegalArgumentException("Llort path step duration must be positive");
+            }
+
             this.x = x;
             this.y = y;
-            this.attackAfter = attackAfter;
+            this.duration = duration;
+            this.attackBefore = attackBefore;
         }
     }
 
+    private Rectangle hitbox;
+    private float hitboxOffsetX = -8;
+    private float hitboxOffsetY = 0;
+
     private float startX;
     private float startY;
+    private float stepStartX;
+    private float stepStartY;
     private float goalX;
     private float goalY;
 
     private int currentMoveStep = -1;
 
-    private float timer;
-    private float interval = 1.5f;
+    private float currentStepElapsed;
     private boolean axesThrown;
 
     private final PathStep[] pathCoordinates = {
-        new PathStep(-104f,  10f, false),
-        new PathStep( 104f, -40f, false),
-        new PathStep(  84f,  40f, true),
-        new PathStep( -84f, -60f, false),
-        new PathStep(  96f, -12f, false),
-        new PathStep(-188f,   0f, true),
-        new PathStep(  92f,  72f, false)
+        new PathStep(-64f,  10f, 1f, false),
+        new PathStep( 104f, -40f, 1f, true),
+        new PathStep(  84f,  40f, 1f, false),
+        new PathStep( -84f, -60f, 1f, false),
+        new PathStep(  96f, -12f, 1f, false),
+        new PathStep(-188f,   0f, 1f, false),
+        new PathStep(  92f,  72f, 1f, false)
     };
 
     public EnemyLlort() {
         super(ActorType.BOSS, true);
 
-        setWidth(48);
-        setHeight(64);
+        setWidth(16);
+        setHeight(16);
+
+        hitbox = new Rectangle();
+        hitbox.setWidth(52);
+        hitbox.setHeight(72);
+
+        hitboxOffsetX = this.x + this.getWidth() / 2 - hitbox.getWidth() / 2;
+        hitboxOffsetY = this.y;
+
         setHealth(60);
         setDamage(50);
         setDefense(24);
@@ -54,7 +74,7 @@ public class EnemyLlort extends Enemy {
         setStartX(getX());
         setStartY(getY());
 
-        timer = 0;
+        currentStepElapsed = 0f;
         axesThrown = false;
 
         this.animation = new EnemyLlortAnimation(this);
@@ -100,25 +120,70 @@ public class EnemyLlort extends Enemy {
     }
 
     private void move(float delta) {
-        int stepIndex = (int)(timer / interval) % pathCoordinates.length;
+        if (pathCoordinates.length == 0) return;
 
-        if (stepIndex != currentMoveStep) {
-            currentMoveStep = stepIndex;
+        float remainingDelta = delta;
 
-            PathStep step = pathCoordinates[stepIndex];
+        while (remainingDelta > 0f && enemyState == EnemyState.SEARCH) {
+            if (currentMoveStep < 0) {
+                beginMoveStep(0);
+                if (enemyState != EnemyState.SEARCH) return;
+            }
 
-            setGoalX(getX() + step.x);
-            setGoalY(getY() + step.y);
+            PathStep step = pathCoordinates[currentMoveStep];
+            float stepRemaining = step.duration - currentStepElapsed;
+            float elapsedThisFrame = Math.min(remainingDelta, stepRemaining);
 
-            if (step.attackAfter) {
-                beginAttack();
+            moveAlongStep(step, elapsedThisFrame);
+            currentStepElapsed += elapsedThisFrame;
+            remainingDelta -= elapsedThisFrame;
+
+            if (currentStepElapsed < step.duration) {
                 return;
             }
+
+            beginMoveStep((currentMoveStep + 1) % pathCoordinates.length);
+        }
+    }
+
+    private void beginMoveStep(int stepIndex) {
+        currentMoveStep = stepIndex;
+        currentStepElapsed = 0f;
+        stepStartX = getX();
+        stepStartY = getY();
+
+        PathStep step = pathCoordinates[currentMoveStep];
+
+        setGoalX(stepStartX + step.x);
+        setGoalY(stepStartY + step.y);
+
+        if (step.attackBefore) {
+            beginAttack();
+        }
+    }
+
+    private void moveAlongStep(PathStep step, float delta) {
+        float dx = getGoalX() - getX();
+        float dy = getGoalY() - getY();
+        float distance = (float)Math.sqrt(dx * dx + dy * dy);
+
+        if (distance <= 0.001) {
+            setX(getGoalX());
+            setY(getGoalY());
+            return;
         }
 
-        moveTowardGoal(delta);
+        float stepDistance = (float)Math.sqrt(step.x * step.x + step.y * step.y);
+        float moveDistance = stepDistance / step.duration * delta;
 
-        timer += delta;
+        if (distance <= moveDistance) {
+            setX(getGoalX());
+            setY(getGoalY());
+            return;
+        }
+
+        setX(getX() + dx / distance * moveDistance);
+        setY(getY() + dy / distance * moveDistance);
     }
 
     private void beginAttack() {
@@ -144,21 +209,6 @@ public class EnemyLlort extends Enemy {
         axesThrown = true;
     }
 
-    private void moveTowardGoal(float delta) {
-        float dx = getGoalX() - getX();
-        float dy = getGoalY() - getY();
-
-        float distance = (float)Math.sqrt(dx * dx + dy * dy);
-
-        if (distance == 0f) return;
-
-        float directionX = dx / distance;
-        float directionY = dy / distance;
-
-        setX(getX() + directionX * speed * delta);
-        setY(getY() + directionY * speed * delta);
-    }
-
     @Override
     public void onDeath() {
         setState(State.DEAD);
@@ -168,6 +218,15 @@ public class EnemyLlort extends Enemy {
     @Override
     public Array<String> getWeaknesses() {
         return Array.with("ZeldaActionWand");
+    }
+
+
+    @Override
+    public Rectangle getHitbox() {
+        hitbox.setX(this.x+hitboxOffsetX);
+        hitbox.setY(this.y+hitboxOffsetY);
+
+        return hitbox;
     }
 
     public float getStartX() {
