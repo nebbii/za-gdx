@@ -37,14 +37,13 @@ public class EnemyPeahat extends Enemy {
         switch(enemyState) {
         case SEARCH:
             setSpeed(50f);
-            throwProjectileIfReady();
             break;
         case FIGHT:
             setSpeed(90f);
             throwProjectileIfReady();
             break;
         case STOP:
-            if (timer > 4) {
+            if (timer > 3) {
                 setEnemyState(EnemyState.SEARCH);
                 timer = 0;
             }
@@ -56,7 +55,7 @@ public class EnemyPeahat extends Enemy {
     }
 
     private void throwProjectileIfReady() {
-        if (timer <= 3) return;
+        if (timer <= 2) return;
 
         map.addNewActor(new EnemyActionPeahatProjectile(this, getX(), getY()));
         setEnemyState(EnemyState.STOP);
