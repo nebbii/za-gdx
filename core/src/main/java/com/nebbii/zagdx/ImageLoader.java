@@ -38,6 +38,10 @@ public class ImageLoader {
         ROLLLEFT
     }
 
+    public enum EnemyLeeverAnimationGroup {
+        WALK
+    }
+
     public enum EnemyMobyAnimationGroup {
         FLYUP,
         FLYRIGHT,
@@ -149,6 +153,7 @@ public class ImageLoader {
     private EnumMap<EnemyGoriyaAnimationGroup, Texture[]> enemyGoriya;
     private EnumMap<EnemyPeahatAnimationGroup, Texture[]> enemyPeahat;
     private EnumMap<EnemyTumblebotAnimationGroup, Texture[]> enemyTumblebot;
+    private EnumMap<EnemyLeeverAnimationGroup, Texture[]> enemyLeever;
     private EnumMap<EnemyMobyAnimationGroup, Texture[]> enemyMoby;
     private EnumMap<EnemyMoblinAnimationGroup, Texture[]> enemyMoblin;
     private EnumMap<EnemyDeelerAnimationGroup, Texture[]> enemyDeeler;
@@ -290,6 +295,10 @@ public class ImageLoader {
             loadTextureArray("export/overworld/h21/sprites/desc0/group2", 8));
         enemyTumblebot.put(EnemyTumblebotAnimationGroup.ROLLLEFT,
             loadTextureArray("export/overworld/h21/sprites/desc0/group3", 8));
+
+        enemyLeever = new EnumMap<>(EnemyLeeverAnimationGroup.class);
+        enemyLeever.put(EnemyLeeverAnimationGroup.WALK,
+            loadTextureArray("export/overworld/h27/sprites/desc0/group0", 5));
 
         enemyMoby = new EnumMap<>(EnemyMobyAnimationGroup.class);
         enemyMoby.put(EnemyMobyAnimationGroup.FLYUP,
@@ -533,6 +542,16 @@ public class ImageLoader {
         }
 
         for (Texture[] textures : enemyTumblebot.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyLeever.values()) {
             if (textures == null) continue;
 
             for (Texture texture : textures) {
@@ -998,6 +1017,10 @@ public class ImageLoader {
 
     public Texture[] getEnemyTumblebotAnimation(EnemyTumblebotAnimationGroup anim) {
         return enemyTumblebot.get(anim);
+    }
+
+    public Texture[] getEnemyLeeverAnimation(EnemyLeeverAnimationGroup anim) {
+        return enemyLeever.get(anim);
     }
 
     public Texture[] getEnemyMobyAnimation(EnemyMobyAnimationGroup anim) {
