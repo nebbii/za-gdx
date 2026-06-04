@@ -41,8 +41,8 @@ public class SpecialCollisionHandler {
             break;
         /* Overworld specials */
         case "overworld_andor":
-            if (game.getTreasures().contains(Treasure.RED_BOOTS)) {
-                // do nothing
+            if (!game.getTreasures().contains(Treasure.RED_BOOTS)) {
+                polygonResolver.resolveRectangleVsPolygon(zelda.getCollisionBox(), polygonObject.getPolygon());
             }
             break;
         /* Shrine of earth warps */
