@@ -7,7 +7,7 @@ public class PickupCandle extends Pickup {
         super();
 
         setImage(World.images.getCandle(), -4, 0);
-        //setPriceImage(World.images.getCandlePrice());
+        setPriceImage(World.images.getCandlePrice());
 
         setWidth(27);
         setHeight(42);
