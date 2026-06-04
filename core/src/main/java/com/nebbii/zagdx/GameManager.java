@@ -156,7 +156,7 @@ public class GameManager {
                 }
                 break;
             default:
-                map.updateSpawnLocation("overworld_pedestal");
+                map.updateSpawnLocation("shrine_of_earth_llort_gate_entrance");
             }
 
             reloadSave();

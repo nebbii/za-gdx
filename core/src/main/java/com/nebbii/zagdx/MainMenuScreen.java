@@ -34,6 +34,8 @@ public class MainMenuScreen extends MenuScreen {
     public void show() {
         super.show();
 
+        core.getControlInput().initialize();
+
         menuButtonPlay = new MenuButtonPlay(core, this, 46, 71, 92, 29);
         menuButtons.add(menuButtonPlay);
         menuButtonCreateSave = new MenuButtonCreateSave(core, 46, 37, 92, 29);

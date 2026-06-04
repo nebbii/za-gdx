@@ -50,11 +50,13 @@ public class World {
 
     private ArchipelagoClient archipelagoClient;
     private SettingsManager settingsManager;
+    private ControlInput controlInput;
 
-    public World(SpriteBatch batch, SaveData selectedFile, ArchipelagoClient archipelagoClient, SettingsManager settingsManager) {
+    public World(SpriteBatch batch, SaveData selectedFile, ArchipelagoClient archipelagoClient, SettingsManager settingsManager, ControlInput controlInput) {
         camera = (OrthographicCamera) worldViewport.getCamera();
         this.settingsManager = settingsManager;
-        input = new GameInput(this, settingsManager);
+        this.controlInput = controlInput;
+        input = new GameInput(this, controlInput);
 
         gameManager = new GameManager(this);
         mapManager = new MapManager(this, batch, camera);
@@ -395,6 +397,10 @@ public class World {
 
     public SettingsManager getSettingsManager() {
         return settingsManager;
+    }
+
+    public ControlInput getControlInput() {
+        return controlInput;
     }
 
     public MenuPause getMenuPause() {

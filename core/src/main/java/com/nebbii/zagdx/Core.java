@@ -7,12 +7,14 @@ import com.badlogic.gdx.Screen;
 public class Core extends Game {
     private ArchipelagoClient archipelagoClient;
     private SettingsManager settingsManager;
+    private ControlInput controlInput;
 
     private Screen nextScreen;
 
     @Override
     public void create() {
         settingsManager = new SettingsManager();
+        controlInput = new ControlInput(settingsManager);
         archipelagoClient = new ArchipelagoClient();
 
         setScreen(new MainMenuScreen(this));
@@ -24,6 +26,10 @@ public class Core extends Game {
 
     public SettingsManager getSettingsManager() {
         return settingsManager;
+    }
+
+    public ControlInput getControlInput() {
+        return controlInput;
     }
 
     public Screen getNextScreen() {
