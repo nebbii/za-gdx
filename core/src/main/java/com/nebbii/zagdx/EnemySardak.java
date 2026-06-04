@@ -26,7 +26,7 @@ public class EnemySardak extends Enemy {
 
         switch(enemyState) {
             case SEARCH:
-                setSpeed(70f);
+                setSpeed(60f);
                 break;
             case FIGHT:
                 setSpeed(90f);
@@ -49,6 +49,7 @@ public class EnemySardak extends Enemy {
     @Override
     public void onDeath() {
         setState(State.DEAD);
+        map.addNewActor(new SpriteExplosion(getCenterPointX(), getCenterPointY()));
         map.getSaveManager().addLocationEntry(locationEntry, "permadead");
     }
 }

@@ -232,6 +232,7 @@ public class EnemyLlort extends Enemy {
     @Override
     public void onDeath() {
         setState(State.DEAD);
+        map.addNewActor(new SpriteExplosion(getCenterPointX(), getCenterPointY()));
         map.getSaveManager().addLocationEntry(locationEntry, "permadead");
     }
 

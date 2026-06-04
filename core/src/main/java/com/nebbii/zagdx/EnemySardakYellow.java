@@ -34,14 +34,12 @@ public class EnemySardakYellow extends EnemySardak {
 
         switch(enemyState) {
         case SEARCH:
-            setSpeed(80f);
             if (timer > 3) {
                 map.addNewActor(new EnemyActionSpear(this, getX(), getY()));
                 setEnemyState(EnemyState.STOP);
             }
             break;
         case FIGHT:
-            setSpeed(110f);
             if (timer > 3) {
                 map.addNewActor(new EnemyActionSpear(this, getX(), getY()));
                 setEnemyState(EnemyState.STOP);
