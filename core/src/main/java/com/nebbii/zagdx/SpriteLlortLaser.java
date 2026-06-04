@@ -18,6 +18,15 @@ public class SpriteLlortLaser extends Sprite {
     @Override
     public void logic() {
         super.logic();
+        SaveManager saveManager = map.getSaveManager();
+
+        // extra check in case the laser is on screen with the defeated sardak
+        if (saveManager.hasLocationForClass("shrine_of_earth", "EnemySardakBlue", "permadead")
+            && saveManager.hasLocationForClass("shrine_of_earth", "EnemySardakRed", "permadead")
+            && saveManager.hasLocationForClass("shrine_of_earth", "EnemySardakYellow", "permadead"))
+        {
+            setState(State.DEAD);
+        }
     }
 
     @Override
