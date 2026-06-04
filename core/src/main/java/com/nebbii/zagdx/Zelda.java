@@ -126,6 +126,25 @@ public class Zelda extends Rectangle implements Actor {
         setY(getY() + inputY * deltaTime);
     }
 
+    public void movePushback(float knockback) {
+        switch(getHurtDirection()) {
+            case LEFT:
+                setX(getX() - knockback);
+                break;
+            case DOWN:
+                setY(getY() - knockback);
+                break;
+            case UP:
+                setY(getY() + knockback);
+                break;
+            case RIGHT:
+                setX(getX() + knockback);
+                break;
+            default:
+                throw new IllegalStateException(this.getClass() + "->movePushback(): Unhandled movement state" + getDirection());
+        }
+    }
+
     public void action() {
         if (!isActive()) return;
         if (!isMoving() && !isStopped()) return;
@@ -243,6 +262,7 @@ public class Zelda extends Rectangle implements Actor {
         if (!isActive()) return;
         if (hurtDuration > 0) return;
 
+        movePushback(knockback);
         decreaseHealth(damage);
         increaseHurtDuration(1);
     }

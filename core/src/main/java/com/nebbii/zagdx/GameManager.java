@@ -275,8 +275,12 @@ public class GameManager {
         return damage;
     }
 
-    public float calculateZeldaKnockback() {
-        return 0.2f;
+    // Basing this on damage for now as the actual formula is not fully figured out
+    /* Phlosion: "Knockback happens in 5-pixel chunks applied once every three frames. The number of knockback chunks depends on the weapon stats, which are embedded in a bespoke weapon scripting language that I don't think I managed to automate decoding." */
+    public float calculateZeldaKnockback(Actor attacker, Actor defender) {
+        float pixelAmount = calculateDamage(attacker, defender) / 10f;
+        Gdx.app.log(this.getClass().getSimpleName(), "pixels: " + pixelAmount);
+        return pixelAmount * 5f;
     }
 
     public World getWorld() {
