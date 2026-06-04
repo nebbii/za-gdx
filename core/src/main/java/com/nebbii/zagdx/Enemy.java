@@ -152,6 +152,7 @@ public class Enemy extends Rectangle implements Actor {
         if (this.knockback > 0) return;
         decreaseHealth(damage);
         increaseKnockback(knockback);
+        increaseInvincibility(knockback * 2);
     }
 
     public void onDeath() {
