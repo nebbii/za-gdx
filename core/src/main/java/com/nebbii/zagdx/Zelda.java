@@ -36,8 +36,8 @@ public class Zelda extends Rectangle implements Actor {
     private float hitboxOffsetX = -8;
     private float hitboxOffsetY = 0;
 
-    private float spawnX = -1;
-    private float spawnY = -1;
+    private float spawnX;
+    private float spawnY;
 
     public Zelda(World world, MapManager map) {
         setWidth(6);
@@ -45,8 +45,6 @@ public class Zelda extends Rectangle implements Actor {
         setState(State.IDLE);
         setAnimState(AnimState.STOPDOWN);
         setType(ActorType.PLAYER);
-        setHealth(60);
-        setCurrentItem(Treasure.NONE);
         this.drawOrder = 3;
 
         animation = new ZeldaAnimation(this);
@@ -58,6 +56,9 @@ public class Zelda extends Rectangle implements Actor {
         this.bonusDamage = 0;
         this.world = world;
         this.map = map;
+
+        setHealth(getMaxHealth());
+        setCurrentItem(Treasure.NONE);
     }
 
     @Override
@@ -359,8 +360,13 @@ public class Zelda extends Rectangle implements Actor {
     }
 
     public void unequipItem() {
-        setCurrentItem(Treasure.NONE);
-        world.getGameManager().getSaveManager().setEquippedItem(Treasure.NONE);
+        if (world.getGameManager().hasItem(Weapon.WAND)) {
+            setCurrentItem(Weapon.WAND);
+        }
+        else {
+            setCurrentItem(Treasure.NONE);
+            world.getGameManager().getSaveManager().setEquippedItem(Treasure.NONE);
+        }
     }
 
     public Item getCurrentItem() {
