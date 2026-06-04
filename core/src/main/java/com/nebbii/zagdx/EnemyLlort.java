@@ -44,24 +44,24 @@ public class EnemyLlort extends Enemy {
     private boolean axesThrown;
 
     private final PathStep[] pathCoordinates = {
-        new PathStep(-100f,  25f, 0.8f, false),
-        new PathStep( 40f, -40f, 0.5f, true),
-        new PathStep( 104f, 0f, 0.7f, false),
-        new PathStep(  40f,  40f, 0.5f, false),
-        new PathStep( -60, -60f, 0.5f, true),
-        new PathStep( -24f, 0f, 0.5f, false),
-        new PathStep(  24f, -12f, 0.3f, true),
-        new PathStep(  50, 0f, 0.8f, false),
-        new PathStep(  -20f, 0f, 0.2f, false),
-        new PathStep(  20, -20f, 0.2f, false),
+        new PathStep(-100f,  25f, 0.7f, false),
+        new PathStep( 40f, -40f, 0.4f, true),
+        new PathStep( 104f, 0f, 0.6f, false),
+        new PathStep(  40f,  40f, 0.4f, false),
+        new PathStep( -60, -60f, 0.4f, true),
+        new PathStep( -24f, 0f, 0.4f, false),
+        new PathStep(  24f, -12f, 0.2f, true),
+        new PathStep(  50, 0f, 0.7f, false),
+        new PathStep(  -20f, 0f, 0.3f, false),
+        new PathStep(  20, -20f, 0.3f, false),
         //new PathStep(  10, 72f, 0.8f, false),
         //new PathStep(  50f,  -90f, 0.7f, false),
-        new PathStep(-188f,   0f, 1.5f, false),
-        new PathStep(  95f,  92f, 1f, false),
-        new PathStep(  10f,  40f, 1f, true),
-        new PathStep(  -50f,  0f, 1.2f, false),
-        new PathStep(  80f,  0f, 1.2f, false),
-        new PathStep(  -40f,  -50f, 0.3f, false)
+        new PathStep(-188f,   0f, 1.3f, false),
+        new PathStep(  95f,  92f, 0.9f, false),
+        new PathStep(  10f,  40f, 0.9f, true),
+        new PathStep(  -50f,  0f, 1f, false),
+        new PathStep(  80f,  0f, 1f, false),
+        new PathStep(  -40f,  -50f, 0.4f, false)
     };
 
     public EnemyLlort() {
@@ -226,7 +226,7 @@ public class EnemyLlort extends Enemy {
     @Override
     public void onHit(int damage, float knockback) {
         super.onHit(damage, knockback);
-        increaseInvincibility(knockback * 2);
+        increaseInvincibility(knockback * 3);
     }
 
     @Override
