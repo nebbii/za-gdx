@@ -1,5 +1,6 @@
 package com.nebbii.zagdx;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.nebbii.zagdx.animation.EnemyPeahatProjectileAnimation;
@@ -10,33 +11,49 @@ public class EnemyActionPeahatProjectile extends EnemyActionProjectile {
     private static final float PROJECTILE_SIZE = 20f;
     private static final float HITBOX_SIZE = 20f;
 
-    public EnemyActionPeahatProjectile(Actor actor, float x, float y) {
-        this(actor, x, y, 0f, 0f);
-    }
+    private float velocityX;
+    private float velocityY;
 
-    public EnemyActionPeahatProjectile(Actor actor, float x, float y, float offsetX, float offsetY) {
+    public EnemyActionPeahatProjectile(Actor actor, float x, float y) {
         super(actor, x, y, 150f, 1.2f);
+
         this.animation = new EnemyPeahatProjectileAnimation();
-        this.animation.setProjectileOffset(offsetX, offsetY);
+        this.animation.setProjectileOffset(0, 0);
 
         setWidth(PROJECTILE_SIZE);
         setHeight(PROJECTILE_SIZE);
-        alignToSourceActor(actor);
+
+        aimAtZelda(actor);
 
         setDamage(46);
+
         hitbox.setWidth(HITBOX_SIZE);
         hitbox.setHeight(HITBOX_SIZE);
     }
 
     @Override
     public void logic() {
-        super.logic();
         if (!isActive()) return;
+
+        float deltaTime = Gdx.graphics.getDeltaTime();
+
+        setX(getX() + velocityX * deltaTime);
+        setY(getY() + velocityY * deltaTime);
+
+        stateTime += deltaTime;
+
+        if (stateTime >= duration) {
+            setState(State.DEAD);
+        }
     }
 
     @Override
     public void draw(SpriteBatch batch) {
-        batch.draw(animation.playCurrentAnimation(), this.getX() + animation.getX(), this.getY() + animation.getY());
+        batch.draw(
+            animation.playCurrentAnimation(),
+            getX() + animation.getX(),
+            getY() + animation.getY()
+        );
     }
 
     public void setProjectileOffset(float offsetX, float offsetY) {
@@ -45,8 +62,8 @@ public class EnemyActionPeahatProjectile extends EnemyActionProjectile {
 
     @Override
     public Rectangle getHitbox() {
-        hitbox.setX(this.x + getCollisionBox().getWidth() / 2 - hitbox.getWidth() / 2);
-        hitbox.setY(this.y + getCollisionBox().getHeight() / 2 - hitbox.getHeight() / 2);
+        hitbox.setX(getX() + getWidth() / 2f - hitbox.getWidth() / 2f);
+        hitbox.setY(getY() + getHeight() / 2f - hitbox.getHeight() / 2f);
 
         return hitbox;
     }
@@ -56,26 +73,30 @@ public class EnemyActionPeahatProjectile extends EnemyActionProjectile {
         return this;
     }
 
-    private void alignToSourceActor(Actor actor) {
-        switch(actor.getDirection()) {
-        case LEFT:
-            setX(actor.getCenterPointX() - actor.getHitbox().getWidth() / 2 - getWidth());
-            setY(actor.getCenterPointY() - getHeight() / 2);
-            break;
-        case DOWN:
-            setX(actor.getCenterPointX() - getWidth() / 2);
-            setY(actor.getHitbox().getY() - getHeight() / 2);
-            break;
-        case UP:
-            setX(actor.getCenterPointX() - getWidth() / 2);
-            setY(actor.getCenterPointY() + actor.getHitbox().getHeight());
-            break;
-        case RIGHT:
-            setX(actor.getCenterPointX() + actor.getHitbox().getWidth());
-            setY(actor.getCenterPointY() - getHeight() / 2);
-            break;
-        default:
-            break;
+    private void aimAtZelda(Actor actor) {
+        Zelda zelda = actor.getMap().getZelda();
+
+        if (zelda == null) {
+            return;
+        }
+
+        float deltaX = zelda.getCenterPointX() - getCenterPointX();
+        float deltaY = zelda.getCenterPointY() - getCenterPointY();
+
+        float length = (float)Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+        velocityX = deltaX / length * speed;
+        velocityY = deltaY / length * speed;
+
+        setDirectionFromVelocity();
+    }
+
+    private void setDirectionFromVelocity() {
+        if (Math.abs(velocityX) > Math.abs(velocityY)) {
+            setDirection(velocityX < 0f ? Direction.LEFT : Direction.RIGHT);
+        }
+        else {
+            setDirection(velocityY < 0f ? Direction.DOWN : Direction.UP);
         }
     }
 }

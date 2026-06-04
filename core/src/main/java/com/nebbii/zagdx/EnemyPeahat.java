@@ -22,6 +22,8 @@ public class EnemyPeahat extends Enemy {
         setHealth(60);
         setDamage(44);
         setDefense(10);
+        this.alertBox.setWidth(400);
+        this.alertBox.setHeight(300);
         timer = MathUtils.random(0f, 2f);
 
         this.animation = new EnemyPeahatAnimation(this);
@@ -36,14 +38,14 @@ public class EnemyPeahat extends Enemy {
 
         switch(enemyState) {
         case SEARCH:
-            setSpeed(50f);
+            setSpeed(60f);
             break;
         case FIGHT:
-            setSpeed(90f);
+            setSpeed(80f);
             throwProjectileIfReady();
             break;
         case STOP:
-            if (timer > 3) {
+            if (timer > 2.2f) {
                 setEnemyState(EnemyState.SEARCH);
                 timer = 0;
             }
@@ -57,7 +59,7 @@ public class EnemyPeahat extends Enemy {
     private void throwProjectileIfReady() {
         if (timer <= 2) return;
 
-        map.addNewActor(new EnemyActionPeahatProjectile(this, getX(), getY()));
+        map.addNewActor(new EnemyActionPeahatProjectile(this, this.getCenterPointX(), this.getCenterPointY()));
         setEnemyState(EnemyState.STOP);
     }
 
