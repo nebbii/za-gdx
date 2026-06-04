@@ -122,25 +122,25 @@
     },
     {
       "location": "e22",
-      "__comment": "e22: Four Peahats throw peas. (these are supposed to be Peahats)",
+      "__comment": "e22: Four Peahats throw peas.",
       "actors": [
         {
-          "type": "EnemyGoriya",
+          "type": "EnemyPeahat",
           "x": 1652,
           "y": 2500
         },
         {
-          "type": "EnemyGoriya",
+          "type": "EnemyPeahat",
           "x": 1674,
           "y": 2518
         },
         {
-          "type": "EnemyGoriya",
+          "type": "EnemyPeahat",
           "x": 1776,
           "y": 2521
         },
         {
-          "type": "EnemyGoriya",
+          "type": "EnemyPeahat",
           "x": 1744,
           "y": 2503
         }

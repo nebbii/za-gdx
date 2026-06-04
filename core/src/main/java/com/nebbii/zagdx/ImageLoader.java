@@ -27,6 +27,10 @@ public class ImageLoader {
         WALKLEFT
     }
 
+    public enum EnemyPeahatAnimationGroup {
+        WALK
+    }
+
     public enum EnemyTumblebotAnimationGroup {
         ROLLUP,
         ROLLRIGHT,
@@ -143,6 +147,7 @@ public class ImageLoader {
 
     private EnumMap<ZeldaAnimationGroup, Texture[]> zelda;
     private EnumMap<EnemyGoriyaAnimationGroup, Texture[]> enemyGoriya;
+    private EnumMap<EnemyPeahatAnimationGroup, Texture[]> enemyPeahat;
     private EnumMap<EnemyTumblebotAnimationGroup, Texture[]> enemyTumblebot;
     private EnumMap<EnemyMobyAnimationGroup, Texture[]> enemyMoby;
     private EnumMap<EnemyMoblinAnimationGroup, Texture[]> enemyMoblin;
@@ -228,6 +233,7 @@ public class ImageLoader {
     private Texture[] enemyBoomerang;
     private Texture[] enemySpear;
     private Texture[] enemyLlortAxe;
+    private Texture enemyPeahatProjectile;
 
     private Texture itemScreen;
 
@@ -270,6 +276,10 @@ public class ImageLoader {
             loadTextureArray("export/overworld/d24/sprites/desc0/group2", 5));
         enemyGoriya.put(EnemyGoriyaAnimationGroup.WALKLEFT,
             loadTextureArray("export/overworld/d24/sprites/desc0/group3", 5));
+
+        enemyPeahat = new EnumMap<>(EnemyPeahatAnimationGroup.class);
+        enemyPeahat.put(EnemyPeahatAnimationGroup.WALK,
+            loadTextureArray("export/overworld/e22/sprites/desc0/group0", 5));
 
         enemyTumblebot = new EnumMap<>(EnemyTumblebotAnimationGroup.class);
         enemyTumblebot.put(EnemyTumblebotAnimationGroup.ROLLUP,
@@ -484,6 +494,7 @@ public class ImageLoader {
         enemySpear[2] = new Texture("export/underworld/s120/sprites/desc1/group2/sprite0.png");
         enemySpear[3] = new Texture("export/underworld/s120/sprites/desc1/group3/sprite0.png");
         enemyLlortAxe = loadTextureArray("export/underworld/s121/sprites/desc1/group0", 4);
+        enemyPeahatProjectile = new Texture("export/overworld/e22/sprites/desc1/group0/sprite0.png");
     }
 
     public void dispose() {
@@ -502,6 +513,16 @@ public class ImageLoader {
         }
 
         for (Texture[] textures : enemyGoriya.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyPeahat.values()) {
             if (textures == null) continue;
 
             for (Texture texture : textures) {
@@ -828,6 +849,8 @@ public class ImageLoader {
                 texture.dispose();
             }
         }
+
+        enemyPeahatProjectile.dispose();
     }
 
     public Texture getImageByItem(Item item) {
@@ -967,6 +990,10 @@ public class ImageLoader {
 
     public Texture[] getEnemyGoriyaAnimation(EnemyGoriyaAnimationGroup anim) {
         return enemyGoriya.get(anim);
+    }
+
+    public Texture[] getEnemyPeahatAnimation(EnemyPeahatAnimationGroup anim) {
+        return enemyPeahat.get(anim);
     }
 
     public Texture[] getEnemyTumblebotAnimation(EnemyTumblebotAnimationGroup anim) {
@@ -1195,6 +1222,10 @@ public class ImageLoader {
 
     public Texture[] getEnemyLlortAxe() {
         return enemyLlortAxe;
+    }
+
+    public Texture getEnemyPeahatProjectile() {
+        return enemyPeahatProjectile;
     }
 
     public Texture getJadeRing() {
