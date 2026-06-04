@@ -6,11 +6,13 @@ import com.badlogic.gdx.Screen;
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class Core extends Game {
     private ArchipelagoClient archipelagoClient;
+    private SettingsManager settingsManager;
 
     private Screen nextScreen;
 
     @Override
     public void create() {
+        settingsManager = new SettingsManager();
         archipelagoClient = new ArchipelagoClient();
 
         setScreen(new MainMenuScreen(this));
@@ -19,6 +21,10 @@ public class Core extends Game {
     public ArchipelagoClient getArchipelagoClient() {
 		return archipelagoClient;
 	}
+
+    public SettingsManager getSettingsManager() {
+        return settingsManager;
+    }
 
     public Screen getNextScreen() {
         return nextScreen;

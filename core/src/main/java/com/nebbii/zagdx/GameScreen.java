@@ -22,7 +22,7 @@ public class GameScreen implements Screen {
     public void show() {
         batch = new SpriteBatch();
 
-        world = new World(batch, selectedFile, core.getArchipelagoClient());
+        world = new World(batch, selectedFile, core.getArchipelagoClient(), core.getSettingsManager());
     }
 
     @Override

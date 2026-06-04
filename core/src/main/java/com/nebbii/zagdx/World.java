@@ -49,10 +49,12 @@ public class World {
     private BitmapFont font;
 
     private ArchipelagoClient archipelagoClient;
+    private SettingsManager settingsManager;
 
-    public World(SpriteBatch batch, SaveData selectedFile, ArchipelagoClient archipelagoClient) {
+    public World(SpriteBatch batch, SaveData selectedFile, ArchipelagoClient archipelagoClient, SettingsManager settingsManager) {
         camera = (OrthographicCamera) worldViewport.getCamera();
-        input = new GameInput(this);
+        this.settingsManager = settingsManager;
+        input = new GameInput(this, settingsManager);
 
         gameManager = new GameManager(this);
         mapManager = new MapManager(this, batch, camera);
@@ -89,14 +91,14 @@ public class World {
     public void logic() {
         switch(gameManager.getGameState()) {
         case PLAY:
+        case PAUSE_MAP:
+        case PAUSE_ITEMS:
+            input.logic();
             worldCollision.logic();
         case MOVE:
         case FADE_GAMEOVER:
         case FADE_WARP:
         case FADE_IN:
-        case PAUSE_MAP:
-        case PAUSE_ITEMS:
-            input.logic();
             mapManager.logic();
             gameManager.logic();
             worldCamera.logic();
@@ -389,6 +391,10 @@ public class World {
 
     public SaveManager getSaveManager() {
         return saveManager;
+    }
+
+    public SettingsManager getSettingsManager() {
+        return settingsManager;
     }
 
     public MenuPause getMenuPause() {
