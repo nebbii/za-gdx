@@ -10,10 +10,12 @@ import com.nebbii.zagdx.MenuPause.MenuState;
 
 public class GameInput {
     private World world;
-    private Vector3 lastTouch;
+    private ControlInput controlInput;
+    private boolean pauseWasPressed;
 
-    public GameInput(World world) {
+    public GameInput(World world, ControlInput controlInput) {
         this.world = world;
+        this.controlInput = controlInput;
     }
 
     public void logic() {
@@ -28,22 +30,30 @@ public class GameInput {
     }
 
     public void handleMovement(Zelda zelda) {
-        if (Gdx.input.isKeyPressed(Keys.UP)) {
-            zelda.move(0, zelda.getSpeed());
+        float inputX = 0f;
+        float inputY = 0f;
+
+        if (controlInput.isActionPressed(ControlAction.MOVE_UP)) {
+            inputY += zelda.getSpeed();
         }
-        if (Gdx.input.isKeyPressed(Keys.DOWN)) {
-            zelda.move(0, -zelda.getSpeed());
+
+        if (controlInput.isActionPressed(ControlAction.MOVE_DOWN)) {
+            inputY -= zelda.getSpeed();
         }
-        if (Gdx.input.isKeyPressed(Keys.LEFT)) {
-            zelda.move(-zelda.getSpeed(), 0);
+
+        if (controlInput.isActionPressed(ControlAction.MOVE_LEFT)) {
+            inputX -= zelda.getSpeed();
         }
-        if (Gdx.input.isKeyPressed(Keys.RIGHT)) {
-            zelda.move(zelda.getSpeed(), 0);
+
+        if (controlInput.isActionPressed(ControlAction.MOVE_RIGHT)) {
+            inputX += zelda.getSpeed();
         }
+
+        zelda.move(inputX, inputY);
     }
 
     public void handleAction(Zelda zelda) {
-        if (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT)) {
+        if (controlInput.isActionPressed(ControlAction.ACTION)) {
             zelda.action();
         }
     }
@@ -56,7 +66,9 @@ public class GameInput {
     }
 
     public void handlePause() {
-        if (Gdx.input.isKeyJustPressed(Keys.P)) {
+        boolean pausePressed = controlInput.isActionPressed(ControlAction.PAUSE);
+
+        if (pausePressed && !pauseWasPressed) {
             GameManager game = world.getGameManager();
 
             if (game.getGameState() == GameState.PLAY ||
@@ -66,6 +78,8 @@ public class GameInput {
                 world.getGameManager().togglePause();
             }
         }
+
+        pauseWasPressed = pausePressed;
     }
 
     public void handleTouchMenuPause(Zelda zelda) {

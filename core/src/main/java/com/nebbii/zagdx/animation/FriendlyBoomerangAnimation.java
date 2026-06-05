@@ -5,13 +5,13 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.nebbii.zagdx.World;
 
-public class ActionBoomerangAnimation extends GameAnimation {
+public class FriendlyBoomerangAnimation extends GameAnimation {
     private Animation<TextureRegion> animation;
 
     private int[] defaultOffsetsX;
     private int[] defaultOffsetsY;
 
-    public ActionBoomerangAnimation() {
+    public FriendlyBoomerangAnimation() {
         super("default");
 
         baseOffsetX = -10;
@@ -37,7 +37,7 @@ public class ActionBoomerangAnimation extends GameAnimation {
     }
 
     private Animation<TextureRegion> initSpin() {
-        Texture[] textures = World.images.getProjectileBoomerang();
+        Texture[] textures = World.images.getFriendlyBoomerang();
 
         int[][] frameData = {
             {0, 0, 0},

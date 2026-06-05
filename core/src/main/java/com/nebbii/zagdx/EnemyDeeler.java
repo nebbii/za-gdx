@@ -31,10 +31,10 @@ public class EnemyDeeler extends Enemy {
 
         switch(enemyState) {
             case SEARCH:
-                setSpeed(80f);
+                setSpeed(50f);
                 break;
             case FIGHT:
-                setSpeed(110f);
+                setSpeed(100f);
                 break;
             default:
         }

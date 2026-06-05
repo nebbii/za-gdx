@@ -59,6 +59,8 @@ public class NameEntryScreen extends MenuScreen {
     public void logic() {
         super.logic();
 
+        if (isFading()) return;
+
         if (drawLayout != null) {
             nameWidth = drawLayout.width;
         }
@@ -71,6 +73,8 @@ public class NameEntryScreen extends MenuScreen {
         batch.begin();
         drawLayout = font.draw(batch, nameString, 90, 145f);
         batch.end();
+
+        drawFade();
     }
 
     public void addLetterToName(char letter) {

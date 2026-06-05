@@ -7,6 +7,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -21,6 +22,7 @@ public class World {
     static final int WORLD_WIDTH = 384;
     static final int WORLD_HEIGHT = 240;
     static final public ImageLoader images = new ImageLoader();
+    static final public SoundLoader sounds = new SoundLoader();
 
     private final Viewport worldViewport = new FitViewport(WORLD_WIDTH, WORLD_HEIGHT);
     private WorldCamera worldCamera;
@@ -47,10 +49,14 @@ public class World {
     private BitmapFont font;
 
     private ArchipelagoClient archipelagoClient;
+    private SettingsManager settingsManager;
+    private ControlInput controlInput;
 
-    public World(SpriteBatch batch, SaveData selectedFile, ArchipelagoClient archipelagoClient) {
+    public World(SpriteBatch batch, SaveData selectedFile, ArchipelagoClient archipelagoClient, SettingsManager settingsManager, ControlInput controlInput) {
         camera = (OrthographicCamera) worldViewport.getCamera();
-        input = new GameInput(this);
+        this.settingsManager = settingsManager;
+        this.controlInput = controlInput;
+        input = new GameInput(this, controlInput);
 
         gameManager = new GameManager(this);
         mapManager = new MapManager(this, batch, camera);
@@ -87,14 +93,14 @@ public class World {
     public void logic() {
         switch(gameManager.getGameState()) {
         case PLAY:
+        case PAUSE_MAP:
+        case PAUSE_ITEMS:
+            input.logic();
             worldCollision.logic();
         case MOVE:
         case FADE_GAMEOVER:
         case FADE_WARP:
         case FADE_IN:
-        case PAUSE_MAP:
-        case PAUSE_ITEMS:
-            input.logic();
             mapManager.logic();
             gameManager.logic();
             worldCamera.logic();
@@ -167,16 +173,71 @@ public class World {
     private void drawHud() {
         batch.setProjectionMatrix(interfaceCamera.combined);
         batch.begin();
-        font.draw(batch,
-                  "R: " + gameManager.getRubies(),
-                  20f,
-                  WORLD_HEIGHT - 20f);
+        batch.draw(World.images.getRubyBlue(), 40f, WORLD_HEIGHT - 35f);
 
-        font.draw(batch,
-                  "H: " + gameManager.getZelda().getHealth(),
-                  WORLD_WIDTH - 60f,
-                  WORLD_HEIGHT - 20f);
+        HudNumberRenderer.draw(
+            batch,
+            gameManager.getRubies(),
+            3,
+            52f,
+            WORLD_HEIGHT - 35f
+        );
+
+        drawHudHearts(
+            gameManager.getZelda().getHealth(),
+            gameManager.getZelda().getMaxHealth(),
+            WORLD_WIDTH - 138f,
+            WORLD_HEIGHT - 35f
+        );
         batch.end();
+    }
+
+    private void drawHudHearts(int health, int maxHealth, float x, float y) {
+        final int heartsPerRow = 7;
+        final int maxHeartSlots = 20;
+
+        final float heartSpacingX = 14f;
+        final float heartSpacingY = 14f;
+
+        int heartSlots = Math.min(maxHeartSlots, getHeartSlotCount(maxHealth));
+
+        for (int i = 0; i < maxHeartSlots; i++) {
+            int column = i % heartsPerRow;
+            int row = i / heartsPerRow;
+
+            float drawX = x + column * heartSpacingX;
+            float drawY = y - row * heartSpacingY;
+
+            if (i >= heartSlots) {
+                continue;
+            }
+
+            Texture heartTexture = getHudHeartTextureForSlot(health, i);
+            batch.draw(heartTexture, drawX, drawY);
+        }
+    }
+
+    private int getHeartSlotCount(int maxHealth) {
+        if (maxHealth <= 0) {
+            return 0;
+        }
+
+        return Math.max(1, (maxHealth + 19) / 20);
+    }
+
+    private Texture getHudHeartTextureForSlot(int health, int slotIndex) {
+        int fullHeartThreshold = (slotIndex + 1) * 20;
+        int halfHeartThreshold = slotIndex * 20 + 1;
+
+        if (health >= fullHeartThreshold) {
+            return World.images.getHudHeartFull();
+        }
+
+        if (health >= halfHeartThreshold) {
+            return World.images.getHudHeartHalf();
+        }
+
+        return World.images.getHudHeartEmpty();
     }
 
     private void drawFadeOverlay() {
@@ -211,9 +272,10 @@ public class World {
         debugLines.add("Cell: " + rowAndColumnToRealCell(worldCamera.getTargetCellColumn(), worldCamera.getTargetCellRow()));
         //debugLines.add("Equip: " + mapManager.getZelda().getCurrentItem().toString());
         //debugLines.add("State: " + mapManager.getZelda().getState());
-        debugLines.add("GameState: " + gameManager.getGameState());
-        debugLines.add("AP: " + archipelagoClient.isConnected());
-
+        //debugLines.add("GameState: " + gameManager.getGameState());
+        if (archipelagoClient.isConnected()) {
+            debugLines.add("AP connected");
+        }
 
         batch.setProjectionMatrix(interfaceCamera.combined);
         batch.begin();
@@ -284,7 +346,7 @@ public class World {
         while (index > 0) {
             index--;
             int remainder = index % 26;
-            result.append((char) ('A' + remainder));
+            result.append((char) ('a' + remainder));
             index /= 26;
         }
 
@@ -333,6 +395,14 @@ public class World {
         return saveManager;
     }
 
+    public SettingsManager getSettingsManager() {
+        return settingsManager;
+    }
+
+    public ControlInput getControlInput() {
+        return controlInput;
+    }
+
     public MenuPause getMenuPause() {
         return menuPause;
     }
@@ -349,6 +419,22 @@ public class World {
     // get the cell Y based on a Y coordinate
     public static int convertWorldYToCellRow(float y) {
         return MathUtils.floor(y / World.WORLD_HEIGHT);
+    }
+
+    public static float getScreenLeft(float x) {
+        return convertWorldXToCellColumn(x) * World.WORLD_WIDTH;
+    }
+
+    public static float getScreenRight(float x) {
+        return getScreenLeft(x) + World.WORLD_WIDTH;
+    }
+
+    public static float getScreenBottom(float y) {
+        return convertWorldYToCellRow(y) * World.WORLD_HEIGHT;
+    }
+
+    public static float getScreenTop(float y) {
+        return getScreenBottom(y) + World.WORLD_HEIGHT;
     }
 
     // get the center point X based on the cell number

@@ -1,11 +1,13 @@
 package com.nebbii.zagdx;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.utils.Array;
+
 import org.junit.jupiter.api.Test;
 
 public class DamageCalculatorTest {
@@ -18,7 +20,7 @@ public class DamageCalculatorTest {
 
         when(attacker.getDamage()).thenReturn(10);
         when(defender.getDefense()).thenReturn(5);
-        when(defender.getWeaknesses()).thenReturn(new String[0]);
+        when(defender.getWeaknesses()).thenReturn(new Array<>());
         when(defender.getBonusDamage()).thenReturn(0);
 
         int damage = gameManager.calculateDamage(attacker, defender);
@@ -35,7 +37,7 @@ public class DamageCalculatorTest {
 
         when(attacker.getDamage()).thenReturn(5);
         when(defender.getDefense()).thenReturn(10);
-        when(defender.getWeaknesses()).thenReturn(new String[0]);
+        when(defender.getWeaknesses()).thenReturn(new Array<>());
         when(defender.getBonusDamage()).thenReturn(0);
 
         int damage = gameManager.calculateDamage(attacker, defender);
@@ -48,10 +50,11 @@ public class DamageCalculatorTest {
         GameManager gameManager = new GameManager(null);
 
         Actor attacker = new TestWeapon();
-        Actor defender = mock(Actor.class);
+        // weaknesses only run on enemies
+        Enemy defender = mock(Enemy.class);
 
         when(defender.getDefense()).thenReturn(5);
-        when(defender.getWeaknesses()).thenReturn(new String[] { "TestWeapon" });
+        when(defender.getWeaknesses()).thenReturn(Array.with("TestWeapon"));
         when(defender.getBonusDamage()).thenReturn(20);
 
         int damage = gameManager.calculateDamage(attacker, defender);
@@ -64,10 +67,11 @@ public class DamageCalculatorTest {
         GameManager gameManager = new GameManager(null);
 
         Actor attacker = new TestWeapon();
-        Actor defender = mock(Actor.class);
+        // weaknesses only run on enemies
+        Enemy defender = mock(Enemy.class);
 
         when(defender.getDefense()).thenReturn(5);
-        when(defender.getWeaknesses()).thenReturn(new String[] { "SomeOtherWeapon" });
+        when(defender.getWeaknesses()).thenReturn(Array.with("SomeOtherWeapon"));
         when(defender.getBonusDamage()).thenReturn(20);
 
         int damage = gameManager.calculateDamage(attacker, defender);
@@ -75,114 +79,67 @@ public class DamageCalculatorTest {
         assertEquals(5, damage);
     }
 
-    private static class TestWeapon implements Actor {
-        @Override
-        public int getDamage() {
-            return 10;
-        }
+    @Test
+    public void goriyaDiesInThreeHitsFromWandProjectile() {
+        GameManager gameManager = new GameManager(null);
 
-        @Override
-        public String[] getWeaknesses() {
-            return new String[0];
-        }
+        Actor wandProjectile = new TestWandProjectile(30);
+        Enemy goriya = new TestGoriya();
 
-        @Override
-        public int getBonusDamage() {
-            return 0;
-        }
+        int damage1 = gameManager.calculateDamage(wandProjectile, goriya);
+        goriya.onHit(damage1, 0f);
 
-        @Override
-        public int getDefense() {
-            return 0;
-        }
+        assertFalse(goriya.getHealth() <= 0, "Goriya should survive hit 1. Health: " + goriya.getHealth());
 
-        @Override
-        public void logic() {
-        }
+        int damage2 = gameManager.calculateDamage(wandProjectile, goriya);
+        goriya.onHit(damage2, 0f);
 
-        @Override
-        public void draw(SpriteBatch batch) {
-        }
+        assertFalse(goriya.getHealth() <= 0, "Goriya should survive hit 2. Health: " + goriya.getHealth());
 
-        @Override
-        public int getDrawOrder() {
-            return 0;
-        }
+        int damage3 = gameManager.calculateDamage(wandProjectile, goriya);
+        goriya.onHit(damage3, 0f);
 
-        @Override
-        public Rectangle getCollisionBox() {
-            return null;
-        }
+        assertTrue(goriya.getHealth() <= 0, "Goriya should be killed by hit 3. Health: " + goriya.getHealth());
+    }
 
-        @Override
-        public Rectangle getHitbox() {
-            return null;
-        }
+    @Test
+    public void sardakRedTakesNoDamageFromBaseWandProjectileBecauseOfDefense() {
+        GameManager gameManager = new GameManager(null);
 
-        @Override
-        public float getCenterPointX() {
-            return 0;
-        }
+        Actor wandProjectile = new TestWandProjectile(30);
+        Enemy sardak = new TestSardakRed();
 
-        @Override
-        public float getCenterPointY() {
-            return 0;
-        }
+        int damage = gameManager.calculateDamage(wandProjectile, sardak);
 
-        @Override
-        public State getState() {
-            return null;
-        }
+        assertEquals(0, damage);
 
-        @Override
-        public void setState(State state) {
-        }
+        sardak.onHit(damage, 0f);
 
-        @Override
-        public Direction getDirection() {
-            return null;
-        }
+        assertEquals(280, sardak.getHealth());
+        assertFalse(sardak.isDead());
+    }
 
-        @Override
-        public boolean isActive() {
-            return false;
-        }
+    @Test
+    public void sardakRedCanBeKilledByJadeRing() {
+        GameManager gameManager = new GameManager(null);
 
-        @Override
-        public boolean isDead() {
-            return false;
-        }
+        Actor jadeRing = new TestZeldaActionJadeRing(30);
+        Enemy sardak = new TestSardakRed();
 
-        @Override
-        public ActorType getType() {
-            return null;
-        }
+        int damage = gameManager.calculateDamage(jadeRing, sardak);
 
-        @Override
-        public void setType(ActorType type) {
-        }
+        assertEquals(70, damage);
 
-        @Override
-        public boolean isSolid() {
-            return false;
-        }
+        sardak.onHit(damage, 0f);
+        assertFalse(sardak.getHealth() <= 0, "Sardak should survive hit 1. Health: " + sardak.getHealth());
 
-        @Override
-        public MapManager getMap() {
-            return null;
-        }
+        sardak.onHit(damage, 0f);
+        assertFalse(sardak.getHealth() <= 0, "Sardak should survive hit 2. Health: " + sardak.getHealth());
 
-        @Override
-        public void setMap(MapManager map) {
-        }
+        sardak.onHit(damage, 0f);
+        assertFalse(sardak.getHealth() <= 0, "Sardak should survive hit 3. Health: " + sardak.getHealth());
 
-        @Override
-        public String getLocationEntry() {
-            return null;
-        }
-
-        @Override
-        public void setLocationEntry(String locationEntry) {
-        }
+        sardak.onHit(damage, 0f);
+        assertTrue(sardak.getHealth() <= 0, "Sardak should be killed by hit 4. Health: " + sardak.getHealth());
     }
 }

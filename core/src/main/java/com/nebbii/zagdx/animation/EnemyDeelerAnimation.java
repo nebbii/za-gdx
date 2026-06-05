@@ -7,7 +7,6 @@ import com.nebbii.zagdx.EnemyDeeler;
 import com.nebbii.zagdx.ImageLoader.EnemyDeelerAnimationGroup;
 import com.nebbii.zagdx.World;
 
-// TODO: align animation frames
 public class EnemyDeelerAnimation extends GameAnimation {
     private final EnemyDeeler enemy;
 
@@ -21,7 +20,7 @@ public class EnemyDeelerAnimation extends GameAnimation {
         this.enemy = enemy;
 
         baseOffsetX = 0;
-        baseOffsetY = 5;
+        baseOffsetY = 10;
         offsetX = 0;
         offsetY = 0;
 
@@ -51,8 +50,10 @@ public class EnemyDeelerAnimation extends GameAnimation {
 
         int[][] frameData = {
             {0, 0, 0},
+            {0, 0, 0},
             {1, 0, 0},
-            {2, 0, 0}
+            {2, 0, 0},
+            {1, 0, 0}
         };
 
         TextureRegion[] frames = new TextureRegion[frameData.length];
@@ -73,7 +74,7 @@ public class EnemyDeelerAnimation extends GameAnimation {
     private float getAnimationSpeed() {
         switch(enemy.getEnemyState()) {
             case FIGHT:
-                return 0.20f;
+                return 0.15f;
             case SEARCH:
             default:
                 return 0.30f;

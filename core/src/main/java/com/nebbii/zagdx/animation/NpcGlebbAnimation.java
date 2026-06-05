@@ -49,7 +49,6 @@ public class NpcGlebbAnimation extends GameAnimation {
             idleOffsetY[i] = frameData[i][2];
         }
 
-
         Animation<TextureRegion> anim = new Animation<TextureRegion>(0.400f, frames);
         anim.setPlayMode(Animation.PlayMode.LOOP);
         return anim;

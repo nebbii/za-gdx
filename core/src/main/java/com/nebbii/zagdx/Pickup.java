@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.utils.Array;
 
 public class Pickup extends Rectangle implements Actor {
     private State state;
@@ -13,7 +14,11 @@ public class Pickup extends Rectangle implements Actor {
     private int drawOrder;
     private boolean solid;
     private Texture image;
+    private Texture priceImage;
     private Spawner spawnerParent;
+    private boolean purchasable;
+    private int price;
+    private boolean overlappingZelda;
 
     private float duration;
 
@@ -21,6 +26,8 @@ public class Pickup extends Rectangle implements Actor {
     protected float baseOffsetY;
     protected float offsetX; // animation specific
     protected float offsetY;
+    private float priceImageOffsetX;
+    private float priceImageOffsetY;
 
     public Pickup() {
         setType(ActorType.PICKUP);
@@ -28,6 +35,14 @@ public class Pickup extends Rectangle implements Actor {
         this.drawOrder = 1;
         this.duration = 0;
         this.spawnerParent = null;
+        this.purchasable = false;
+        this.price = 0;
+        this.baseOffsetX = 0;
+        this.baseOffsetY = 0;
+        this.priceImage = null;
+        this.priceImageOffsetX = 0;
+        this.priceImageOffsetY = 0;
+        this.overlappingZelda = false;
     }
 
     @Override
@@ -43,7 +58,25 @@ public class Pickup extends Rectangle implements Actor {
             drawBounceAnim(batch);
         }
         else {
-            batch.draw(getImage(), getX() + offsetX + baseOffsetX, getY() + offsetY + baseOffsetY, getWidth(), getHeight());
+            float drawX = getImageDrawX();
+            float drawY = getImageDrawY();
+
+            if (shouldDrawPrice()) {
+                if (hasPriceImage()) {
+                    Texture priceImage = getPriceImage();
+                    float priceImageX = getPriceImageDrawX(priceImage);
+                    float priceImageY = getPriceImageDrawY();
+
+                    batch.draw(priceImage, priceImageX, priceImageY, priceImage.getWidth(), priceImage.getHeight());
+                }
+                else {
+                    batch.draw(getImage(), drawX, drawY, getWidth(), getHeight());
+                    drawPrice(batch, drawX, drawY + getHeight() / 3, getWidth(), getHeight());
+                }
+            }
+            else {
+                batch.draw(getImage(), drawX, drawY, getWidth(), getHeight());
+            }
         }
     }
 
@@ -58,13 +91,43 @@ public class Pickup extends Rectangle implements Actor {
     public void drawBounceAnim(SpriteBatch batch) {
         float decay = (float) Math.exp(-4 * duration);
         float bounce = (float) Math.pow(Math.abs(Math.sin(8f * Math.PI * duration)), 1.5f) * decay;
-        float offsetY = bounce * 10f;
+        float bounceOffsetY = bounce * 10f;
 
-        batch.draw(getImage(), getX(), getY() + offsetY, getWidth(), getHeight());
+        batch.draw(getImage(), getImageDrawX(), getImageDrawY() + bounceOffsetY, getWidth(), getHeight());
+    }
+
+    protected float getImageDrawX() {
+        return getX() + offsetX + baseOffsetX;
+    }
+
+    protected float getImageDrawY() {
+        return getY() + offsetY + baseOffsetY;
+    }
+
+    protected float getPriceImageDrawX(Texture priceImage) {
+        return getX() + priceImageOffsetX + (getWidth() - priceImage.getWidth()) / 2f;
+    }
+
+    protected float getPriceImageDrawY() {
+        return getY() + priceImageOffsetY;
+    }
+
+    protected void drawPrice(SpriteBatch batch, float x, float y, float width, float height) {
+        if (hasPriceImage()) {
+            return;
+        }
+
+        if (!shouldDrawPrice()) {
+            return;
+        }
+
+        HudNumberRenderer.drawCentered(batch, getPrice(), 0, x, y, width, height);
     }
 
     public void onPickup(GameManager game) {
         Gdx.app.log(this.getClass().getSimpleName(), "Storing pickup in save");
+
+        map.addNewActor(new SpriteSparkle(getCenterPointX(), getCenterPointY()));
 
         if (spawnerParent != null) {
             map.getSaveManager().addLocationEntry(spawnerParent.getLocationEntry(), "spawned");
@@ -72,6 +135,35 @@ public class Pickup extends Rectangle implements Actor {
         else if (getLocationEntry() != null) {
             map.getSaveManager().addLocationEntry(getLocationEntry(), "picked_up");
         }
+    }
+
+    public boolean tryPickup(GameManager game) {
+        if (isPurchasable()) {
+            if (game.getRubies() < getPrice()) {
+                return false;
+            }
+
+            game.decreaseRubies(getPrice(), true);
+        }
+
+        onPickup(game);
+        return true;
+    }
+
+    boolean shouldDrawPrice() {
+        return shouldDrawPrice(duration);
+    }
+
+    boolean shouldDrawPrice(float elapsedTime) {
+        if (!isPurchasable()) {
+            return false;
+        }
+
+        if (!isOverlappingZelda()) {
+            return false;
+        }
+
+        return elapsedTime % 1f < 0.5f;
     }
 
     @Override
@@ -92,8 +184,8 @@ public class Pickup extends Rectangle implements Actor {
         return getY() + getHeight() / 2;
     }
 
-    public String[] getWeaknesses() {
-        return new String[] {};
+    public Array<String> getWeaknesses() {
+        return new Array<>();
     }
 
     public int getDamage() {
@@ -159,6 +251,66 @@ public class Pickup extends Rectangle implements Actor {
 
     public void setImage(Texture image) {
         this.image = image;
+    }
+
+    public void setImage(Texture image, float offsetX, float offsetY) {
+        setImage(image);
+        setImageOffset(offsetX, offsetY);
+    }
+
+    public void setImageOffset(float offsetX, float offsetY) {
+        this.baseOffsetX = offsetX;
+        this.baseOffsetY = offsetY;
+    }
+
+    public Texture getPriceImage() {
+        if (priceImage == null) {
+            return getImage();
+        }
+
+        return priceImage;
+    }
+
+    public void setPriceImage(Texture priceImage) {
+        this.priceImage = priceImage;
+    }
+
+    public void setPriceImage(Texture priceImage, float offsetX, float offsetY) {
+        setPriceImage(priceImage);
+        setPriceImageOffset(offsetX, offsetY);
+    }
+
+    public void setPriceImageOffset(float offsetX, float offsetY) {
+        this.priceImageOffsetX = offsetX;
+        this.priceImageOffsetY = offsetY;
+    }
+
+    protected boolean hasPriceImage() {
+        return getPriceImage() != getImage();
+    }
+
+    public boolean isPurchasable() {
+        return purchasable;
+    }
+
+    public void setPurchasable(boolean purchasable) {
+        this.purchasable = purchasable;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public boolean isOverlappingZelda() {
+        return overlappingZelda;
+    }
+
+    public void setOverlappingZelda(boolean overlappingZelda) {
+        this.overlappingZelda = overlappingZelda;
     }
 
     public MapManager getMap() {

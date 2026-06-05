@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.utils.Array;
 
 public class Enemy extends Rectangle implements Actor {
     protected boolean solid;
@@ -23,9 +24,9 @@ public class Enemy extends Rectangle implements Actor {
     protected float targetY;
 
     protected float knockback;
+    protected float invincibility;
     protected Direction hurtDirection;
     protected boolean hurtWeakness = true;
-
     protected State state;
     protected ActorType type;
     protected int drawOrder;
@@ -62,14 +63,18 @@ public class Enemy extends Rectangle implements Actor {
 
     public void logic() {
         if (getState() != State.ACTIVE) return;
-        if (health <= 0) onDeath();
 
         knockback = Math.max(0f, knockback - Gdx.graphics.getDeltaTime());
+        invincibility = Math.max(0f, invincibility - Gdx.graphics.getDeltaTime());
 
         if (knockback > 0) {
-            movePushback();
+            if (hurtWeakness && health > 0) {
+                movePushback();
+            }
         }
         else {
+            if (health <= 0) onDeath();
+
             switch(enemyState) {
             case SEARCH:
                 searchDurationCap = 4.0f;
@@ -147,11 +152,15 @@ public class Enemy extends Rectangle implements Actor {
         if (this.knockback > 0) return;
         decreaseHealth(damage);
         increaseKnockback(knockback);
+        increaseInvincibility(knockback * 2);
     }
 
     public void onDeath() {
         setState(State.DEAD);
-        map.getSaveManager().addLocationEntry(locationEntry, "dead");
+        map.addNewActor(new SpriteExplosion(getCenterPointX(), getCenterPointY()));
+        if (locationEntry != null) {
+            map.getSaveManager().addLocationEntry(locationEntry, "dead");
+        }
     }
 
     public void drawFlashOverlay(SpriteBatch batch, boolean weakness) {
@@ -171,7 +180,7 @@ public class Enemy extends Rectangle implements Actor {
             if (t < 0.04f) {
                 currentColor = Color.BLUE;
             } else if (t < 0.08f) {
-                currentColor = Color.WHITE;
+                currentColor = Color.CYAN;
             } else {
                 currentColor = Color.BLUE;
             }
@@ -271,8 +280,8 @@ public class Enemy extends Rectangle implements Actor {
         return getY() + getHeight() / 2;
     }
 
-    public String[] getWeaknesses() {
-        return new String[] {};
+    public Array<String> getWeaknesses() {
+        return new Array<>();
     }
 
     public int getDamage() {
@@ -336,13 +345,17 @@ public class Enemy extends Rectangle implements Actor {
     }
 
     public void decreaseHealth(int amount) {
-        Gdx.app.log(this.getClass().getSimpleName(), "decreasing health (" + getHealth() + ") by " + amount);
+        //Gdx.app.log(this.getClass().getSimpleName(), "decreasing health (" + getHealth() + ") by " + amount);
 
         setHealth(getHealth() - amount);
     }
 
     public void increaseKnockback(float amount) {
         this.knockback += amount;
+    }
+
+    public void increaseInvincibility(float amount) {
+        this.invincibility += amount;
     }
 
     public int getHealth() {
@@ -402,4 +415,28 @@ public class Enemy extends Rectangle implements Actor {
     public void setLocationEntry(String locationEntry) {
         this.locationEntry = locationEntry;
     }
+
+    public boolean isHurtWeakness() {
+        return hurtWeakness;
+    }
+
+    public void setHurtWeakness(boolean hurtWeakness) {
+        this.hurtWeakness = hurtWeakness;
+    }
+
+    public float getKnockback() {
+        return knockback;
+    }
+
+    public void setKnockback(float knockback) {
+        this.knockback = knockback;
+    }
+
+    public float getInvincibility() {
+		return invincibility;
+	}
+
+	public void setInvincibility(float invincibility) {
+		this.invincibility = invincibility;
+	}
 }

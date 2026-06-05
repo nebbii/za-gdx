@@ -2,9 +2,9 @@ package com.nebbii.zagdx;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
+import com.nebbii.zagdx.MenuScreen.FadeToggle;
 
 public class MenuButtonCreateSave extends Rectangle implements MenuButton {
-
     final Core core;
 
     public MenuButtonCreateSave(Core core, float x, float y, int width, int height) {
@@ -16,7 +16,9 @@ public class MenuButtonCreateSave extends Rectangle implements MenuButton {
 
     @Override
     public void onTouch() {
-        core.setScreen(new NameEntryScreen(core));
+        MenuScreen currentMenuScreen = (MenuScreen) core.getScreen();
+        currentMenuScreen.setFadeToggle(FadeToggle.OUT);
+        core.setNextScreen(new NameEntryScreen(core));
     }
 
     public boolean contains(float x, float y) {

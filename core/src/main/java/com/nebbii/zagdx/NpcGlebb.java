@@ -9,13 +9,16 @@ public class NpcGlebb extends Npc {
 
     public NpcGlebb() {
         super(ActorType.FRIENDLY, false);
+        setWidth(32);
+        setHeight(32);
+        setNpcState(NpcState.TALKY);
         this.animation = new NpcGlebbAnimation(this);
-
-        this.npcState = NpcState.TALKY;
     }
 
     @Override
     public void logic() {
+        super.logic();
+
         switch(npcState) {
             case TALKY:
                 break;

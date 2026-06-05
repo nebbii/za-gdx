@@ -63,7 +63,9 @@
       "__comment": "d24: A Goriya throws boomerangs. By killing the Goriya, Zelda claims the boomerang weapon for her own use.",
       "actors": [
         {
-          "type": "SpawnerBoomerang",
+          "type": "SpawnerPickup",
+          "pickupType": "PickupBoomerang",
+          "trigger": "NO_ENEMIES",
           "x": 1224,
           "y": 1988
         },
@@ -98,7 +100,9 @@
       "__comment": "e20: If Zelda uses the empty water pitcher at this location, a full pitcher automatically appears.",
       "actors": [
         {
-          "type": "SpawnerPitcherFull",
+          "type": "SpawnerPickup",
+          "pickupType": "PickupPitcherFull",
+          "trigger": "MANUAL",
           "x": 1627,
           "y": 2938
         }
@@ -122,25 +126,25 @@
     },
     {
       "location": "e22",
-      "__comment": "e22: Four Peahats throw peas. (these are supposed to be Peahats)",
+      "__comment": "e22: Four Peahats throw peas.",
       "actors": [
         {
-          "type": "EnemyGoriya",
+          "type": "EnemyPeahat",
           "x": 1652,
           "y": 2500
         },
         {
-          "type": "EnemyGoriya",
+          "type": "EnemyPeahat",
           "x": 1674,
           "y": 2518
         },
         {
-          "type": "EnemyGoriya",
+          "type": "EnemyPeahat",
           "x": 1776,
           "y": 2521
         },
         {
-          "type": "EnemyGoriya",
+          "type": "EnemyPeahat",
           "x": 1744,
           "y": 2503
         }
@@ -263,13 +267,23 @@
       "__comment": "f26: A forest merchant sells Zelda a candle for 100 rupees and a magic shield for 500 rupees.",
       "actors": [
         {
-          "__comment": "merchant at X: 2086 Y: 1533ish"
+          "type": "NpcOgham",
+          "x": 2056,
+          "y": 1543
         },
         {
-          "__comment": "candle at X: 2108 Y: 1493"
+          "type": "PickupCandle",
+          "x": 2097,
+          "y": 1507,
+          "purchasable": true,
+          "price": 100
         },
         {
-          "__comment": "shield at X:2040 Y:1493"
+          "type": "PickupMagicShield",
+          "x": 2025,
+          "y": 1502,
+          "purchasable": true,
+          "price": 500
         }
       ]
     },
@@ -471,6 +485,42 @@
       "actors": []
     },
     {
+      "location": "s101a",
+      "__comment": "(not in the guide, deeler ambush cave)",
+      "actors": [
+        {
+          "type": "EnemyTektite",
+          "x": 201,
+          "y": 7533
+        },
+        {
+          "type": "SpawnerTektiteAmbush",
+          "x": 132,
+          "y": 7537
+        },
+        {
+          "type": "SpawnerTektiteAmbush",
+          "x": 132,
+          "y": 7530
+        },
+        {
+          "type": "SpawnerTektiteAmbush",
+          "x": 209,
+          "y": 7504
+        },
+        {
+          "type": "SpawnerTektiteAmbush",
+          "x": 209,
+          "y": 7568
+        },
+        {
+          "type": "SpawnerTektiteAmbush",
+          "x": 270,
+          "y": 7533
+        }
+      ]
+    },
+    {
       "__comment": "h"
     },
     {
@@ -549,17 +599,60 @@
     {
       "location": "h27",
       "__comment": "h27: Three Leevers.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyLeever",
+          "x": 2790,
+          "y": 1309
+        },
+        {
+          "type": "EnemyLeever",
+          "x": 2850,
+          "y": 1313
+        },
+        {
+          "type": "EnemyLeever",
+          "x": 2861,
+          "y": 1313
+        }
+      ]
     },
     {
       "location": "h28",
       "__comment": "h28: Three Leevers.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyLeever",
+          "x": 2865,
+          "y": 1074
+        },
+        {
+          "type": "EnemyLeever",
+          "x": 2867,
+          "y": 1078
+        },
+        {
+          "type": "EnemyLeever",
+          "x": 2860,
+          "y": 1074
+        }
+      ]
     },
     {
       "location": "h29",
       "__comment": "h29: The old woman Enid sits by a fire. If Zelda touches her, she starts speaking and steals one heart of health from her.",
-      "actors": []
+      "actors": [
+        {
+          "type": "NpcEnid",
+          "x": 2992,
+          "y": 772
+        },
+        {
+          "type": "SpriteCampfire",
+          "x": 2954,
+          "y": 782
+        }
+      ]
     },
     {
       "__comment": "i"
@@ -693,12 +786,46 @@
     {
       "location": "j22",
       "__comment": "j22: A beggar woman in front of the Molblin Inn gives Zelda the Firestorm weapon in exchange for 5 rupees. Zelda can enter the Molblin Inn.",
-      "actors": []
+      "actors": [
+        {
+          "type": "NpcBeggar",
+          "x": 3646,
+          "y": 2439
+        },
+        {
+          "type": "SpawnerPickup",
+          "pickupType": "PickupFirestorm",
+          "trigger": "MANUAL",
+          "x": 3595,
+          "y": 2436
+        }
+      ]
     },
     {
       "location": "j22a",
       "__comment": "j22a: Inside the Molblin Inn, Zelda meets the innkeeper Lothar and three customers. Zelda can buy the C spell here for 100 rupees. The man in the red shirt, Krebb, gives her a dagger if she talks to him. The woman at the table and the soldier also speak if Zelda touches them.",
-      "actors": []
+      "actors": [
+        {
+          "type": "NpcExhaustedTraveler",
+          "x": 2178,
+          "y": 7004
+        },
+        {
+          "type": "NpcBlueLady",
+          "x": 2035,
+          "y": 7017
+        },
+        {
+          "type": "NpcLothar",
+          "x": 2058,
+          "y": 7101
+        },
+        {
+          "type": "NpcKrebb",
+          "x": 2171,
+          "y": 7032
+        }
+      ]
     },
     {
       "location": "j23",
@@ -720,7 +847,9 @@
           "y": 2055
         },
         {
-          "type": "SpawnerVialOfWind",
+          "type": "SpawnerPickup",
+          "pickupType": "PickupVialOfWind",
+          "trigger": "MANUAL",
           "x": 3672,
           "y": 2075
         }

@@ -3,6 +3,7 @@ package com.nebbii.zagdx;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.utils.Array;
 import com.nebbii.zagdx.animation.ZeldaAnimation;
 
 public class Zelda extends Rectangle implements Actor {
@@ -21,6 +22,8 @@ public class Zelda extends Rectangle implements Actor {
     private float hurtDuration;
     private Direction hurtDirection;
 
+    private float cooldownDuration;
+
     private ActorType type;
     private int drawOrder;
 
@@ -35,8 +38,8 @@ public class Zelda extends Rectangle implements Actor {
     private float hitboxOffsetX = -8;
     private float hitboxOffsetY = 0;
 
-    private float spawnX = -1;
-    private float spawnY = -1;
+    private float spawnX;
+    private float spawnY;
 
     public Zelda(World world, MapManager map) {
         setWidth(6);
@@ -44,8 +47,6 @@ public class Zelda extends Rectangle implements Actor {
         setState(State.IDLE);
         setAnimState(AnimState.STOPDOWN);
         setType(ActorType.PLAYER);
-        setHealth(60);
-        setCurrentItem(Treasure.NONE);
         this.drawOrder = 3;
 
         animation = new ZeldaAnimation(this);
@@ -57,6 +58,9 @@ public class Zelda extends Rectangle implements Actor {
         this.bonusDamage = 0;
         this.world = world;
         this.map = map;
+
+        setHealth(getMaxHealth());
+        setCurrentItem(Treasure.NONE);
     }
 
     @Override
@@ -64,12 +68,13 @@ public class Zelda extends Rectangle implements Actor {
         float deltaTime = Gdx.graphics.getDeltaTime();
 
         hurtDuration = Math.max(0f, hurtDuration - deltaTime);
+        cooldownDuration = Math.max(0f, cooldownDuration - deltaTime);
 
         if (health <= 0) {
             onDeath();
         }
 
-        if (isAttacking() && animation.isAnimationFinished()) {
+        if (isAttacking(getAnimState()) && animation.isAnimationFinished()) {
             finishAction();
         }
 
@@ -108,49 +113,99 @@ public class Zelda extends Rectangle implements Actor {
     // TODO: Ice physics walking for certain rooms
     public void move(float inputX, float inputY) {
         if (!isActive()) return;
-        if (!isMoving() && !isStopped()) return;
+        if (!isMoving(getAnimState()) && !isStopped(getAnimState())) return;
         if (inputX == 0 && inputY == 0) return;
 
         float deltaTime = Gdx.graphics.getDeltaTime();
 
         setMovedLastFrame(true);
 
-        if (inputX < 0) setAnimState(AnimState.MOVELEFT);
-        if (inputY < 0) setAnimState(AnimState.MOVEDOWN);
-        if (inputY > 0) setAnimState(AnimState.MOVEUP);
-        if (inputX > 0) setAnimState(AnimState.MOVERIGHT);
+        AnimState nextAnimState = getAnimState();
+
+        if (inputX < 0) {
+            nextAnimState = AnimState.MOVELEFT;
+        }
+        else if (inputX > 0) {
+            nextAnimState = AnimState.MOVERIGHT;
+        }
+        else if (inputY < 0) {
+            nextAnimState = AnimState.MOVEDOWN;
+        }
+        else if (inputY > 0) {
+            nextAnimState = AnimState.MOVEUP;
+        }
+
+        setAnimState(nextAnimState);
 
         setX(getX() + inputX * deltaTime);
         setY(getY() + inputY * deltaTime);
     }
 
+    public void movePushback(float knockback) {
+        switch(getHurtDirection()) {
+            case LEFT:
+                setX(getX() - knockback);
+                break;
+            case DOWN:
+                setY(getY() - knockback);
+                break;
+            case UP:
+                setY(getY() + knockback);
+                break;
+            case RIGHT:
+                setX(getX() + knockback);
+                break;
+            default:
+                throw new IllegalStateException(this.getClass() + "->movePushback(): Unhandled movement state" + getDirection());
+        }
+    }
+
     public void action() {
         if (!isActive()) return;
-        if (!isMoving() && !isStopped()) return;
+        if (!isMoving(getAnimState()) && !isStopped(getAnimState())) return;
+        if (cooldownDuration > 0) return;
 
         if (getCurrentItem() instanceof Treasure) {
+            cooldownDuration = 0.5f;
+
             switch ((Treasure) getCurrentItem()) {
             case NONE:
                 break;
             case PITCHER_EMPTY:
-                SpawnerPitcherFull spawnerPitcherFull = (SpawnerPitcherFull) map.findActorByType(SpawnerPitcherFull.class);
+                SpawnerPickup spawnerPitcherFull = findActivePickupSpawner("PickupPitcherFull");
 
-                if (spawnerPitcherFull != null && spawnerPitcherFull.isActive()) {
-                    spawnerPitcherFull.activate(world.getGameManager());
+                if (spawnerPitcherFull != null) {
+                    world.getGameManager().removeTreasure(Treasure.PITCHER_EMPTY, false);
+                    spawnerPitcherFull.activate();
+                    unequipItem();
                 }
                 break;
             case PITCHER_FULL:
-                SpawnerVialOfWind spawnerVialOfWind = (SpawnerVialOfWind) map.findActorByType(SpawnerVialOfWind.class);
+                SpawnerPickup spawnerVialOfWind = findActivePickupSpawner("PickupVialOfWind");
 
-                if (spawnerVialOfWind != null && spawnerVialOfWind.isActive()) {
-                    spawnerVialOfWind.activate(world.getGameManager());
+                if (spawnerVialOfWind != null) {
+                    world.getGameManager().removeTreasure(Treasure.PITCHER_FULL, false);
+                    spawnerVialOfWind.activate();
+                    unequipItem();
                 }
                 break;
             case LADDER:
-                SpawnerLadder spawnerLadder = (SpawnerLadder) map.findActorByType(SpawnerLadder.class);
+                SpawnerLadder spawnerLadder = (SpawnerLadder) map.findFirstActorByType(SpawnerLadder.class);
 
                 if (spawnerLadder != null && spawnerLadder.isActive()) {
                     spawnerLadder.activate(world.getGameManager());
+                    unequipItem();
+                }
+                break;
+            case COMPASS_1:
+                map.updateSpawnLocation("overworld_entrance_earth");
+                world.getGameManager().initializeFadeWarp();
+                break;
+            case RUBIES:
+                Pickup pickup = map.findOverlappingPurchasablePickup(getHitbox());
+
+                if (pickup != null) {
+                    pickup.tryPickup(world.getGameManager());
                 }
                 break;
             default:
@@ -159,12 +214,21 @@ public class Zelda extends Rectangle implements Actor {
             return; // treasures never do the attack animation
         }
         else if (getCurrentItem() instanceof Weapon) {
+            cooldownDuration = 0.35f;
+
             switch ((Weapon) getCurrentItem()) {
             case BOOMERANG:
                 if (world.getGameManager().getRubies() > 0
-                    && map.findActorByType(ZeldaActionBoomerang.class) == null) {
+                    && map.findFirstActorByType(ZeldaActionBoomerang.class) == null) {
                     world.getGameManager().decreaseRubies(1, true);
                     map.addNewActor(new ZeldaActionBoomerang(this, getX(), getY()));
+                }
+                break;
+            case JADE_RING:
+                if (world.getGameManager().getRubies() >= 3
+                    && map.findFirstActorByType(ZeldaActionJadeRing.class) == null) {
+                    world.getGameManager().decreaseRubies(3, true);
+                    map.addNewActor(new ZeldaActionJadeRing(this, getX(), getY()));
                 }
                 break;
             case WAND:
@@ -197,6 +261,16 @@ public class Zelda extends Rectangle implements Actor {
         map.addNewActor(new ZeldaActionWand(this, getX(), getY()));
     }
 
+    private SpawnerPickup findActivePickupSpawner(String pickupType) {
+        for (SpawnerPickup spawner : map.findActiveActorsByType(SpawnerPickup.class)) {
+            if (pickupType.equals(spawner.getPickupType())) {
+                return spawner;
+            }
+        }
+
+        return null;
+    }
+
     public void finishAction() {
         switch (getAnimState()) {
         case ATTACKLEFT:
@@ -220,6 +294,7 @@ public class Zelda extends Rectangle implements Actor {
         if (!isActive()) return;
         if (hurtDuration > 0) return;
 
+        movePushback(knockback);
         decreaseHealth(damage);
         increaseHurtDuration(1);
     }
@@ -299,8 +374,8 @@ public class Zelda extends Rectangle implements Actor {
         return getY() + getHeight() / 2;
     }
 
-    public String[] getWeaknesses() {
-        return new String[] {};
+    public Array<String> getWeaknesses() {
+        return new Array<>();
     }
 
     // Using this to store scaling wand damage, as zelda has no contact damage
@@ -336,13 +411,13 @@ public class Zelda extends Rectangle implements Actor {
         return defense;
     }
 
-    public void equipItem(Item item) {
-        Gdx.app.log(getClass().getSimpleName(), "Equipping item: " + item.toString());
-        if (world.getGameManager().hasItem(item)) {
-            setCurrentItem(item);
+    public void unequipItem() {
+        if (world.getGameManager().hasItem(Weapon.WAND)) {
+            setCurrentItem(Weapon.WAND);
         }
         else {
             setCurrentItem(Treasure.NONE);
+            world.getGameManager().getSaveManager().setEquippedItem(Treasure.NONE);
         }
     }
 
@@ -369,6 +444,12 @@ public class Zelda extends Rectangle implements Actor {
     }
 
     public void setAnimState(AnimState animState) {
+        if (this.animState == animState) return;
+
+        if (animation != null) {
+            animation.setStateTime(0f);
+        }
+
         this.animState = animState;
     }
 
@@ -384,16 +465,16 @@ public class Zelda extends Rectangle implements Actor {
         return getState() == State.DEAD;
     }
 
-    public boolean isStopped() {
-        return getAnimState().name().startsWith("STOP");
+    public boolean isStopped(AnimState animState) {
+        return animState.name().startsWith("STOP");
     }
 
-    public boolean isMoving() {
-        return getAnimState().name().startsWith("MOVE");
+    public boolean isMoving(AnimState animState) {
+        return animState.name().startsWith("MOVE");
     }
 
-    public boolean isAttacking() {
-        return getAnimState().name().startsWith("ATTACK");
+    public boolean isAttacking(AnimState animState) {
+        return animState.name().startsWith("ATTACK");
     }
 
     public void setMovedLastFrame(boolean movedLastFrame) {

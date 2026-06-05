@@ -138,28 +138,35 @@ public class GameManager {
         Gdx.app.log(getClass().getSimpleName(), "Respawning zelda...");
 
         Zelda zelda = world.getMapManager().getZelda();
-
-        world.getMapManager().loadMapByName(currentMap);
+        MapManager map = world.getMapManager();
+        WorldCamera worldCamera = world.getWorldCamera();
 
         if (hasDied) {
             zelda.revive();
 
+            String lastCell = world.rowAndColumnToRealCell(worldCamera.getTargetCellColumn(), worldCamera.getTargetCellRow());
+
             switch(currentMap) {
             case "shrine_of_earth":
-                world.getMapManager().updateSpawnLocation("exit_earth");
+                if (lastCell.equals("g2")) {
+                    map.updateSpawnLocation("shrine_of_earth_llort_gate_entrance");
+                }
+                else {
+                    map.updateSpawnLocation("overworld_entrance_earth");
+                }
                 break;
             default:
-                world.getMapManager().updateSpawnLocation("overworld_pedestal");
+                map.updateSpawnLocation("overworld_pedestal");
             }
 
             reloadSave();
         }
-        else {
-            reloadLocations();
-        }
+
+        map.loadMapByName(currentMap);
+        reloadLocations();
 
         zelda.setPosition(zelda.getSpawnX(), zelda.getSpawnY());
-        world.getWorldCamera().resetPosition();
+        worldCamera.resetPosition();
     }
 
     public void reloadSave() {
@@ -167,7 +174,7 @@ public class GameManager {
         reloadEquippedItem();
         reloadTreasures();
         reloadWeapons();
-        reloadLocations();
+        //reloadLocations();
     }
 
     public void reloadRubies() {
@@ -190,6 +197,10 @@ public class GameManager {
         for(Treasure treasure : saveManager.getTreasures()) {
             addTreasure(treasure, false);
         }
+
+        if (this.rubies > 0) {
+            addTreasure(Treasure.RUBIES, false);
+        }
     }
 
     public void reloadWeapons() {
@@ -204,17 +215,28 @@ public class GameManager {
 
     public void reloadLocations() {
         SaveManager saveManager = world.getSaveManager();
+        MapManager mapManager = world.getMapManager();
 
         for(SavedLocationEntry locationEntry : saveManager.getLocations()) {
             switch(locationEntry.action) {
             case "picked_up":
             case "permadead":
             case "spawned":
-                Actor actor = world.getMapManager().findActorByLocationEntry(locationEntry.id);
+                Actor actor = mapManager.findActorByLocationEntry(locationEntry.id);
                 if (actor != null) {
                     actor.setState(State.DEAD);
                 }
                 break;
+            }
+        }
+
+        // exceptions (for now)
+        if (saveManager.hasLocationForClass("shrine_of_earth", "EnemySardakBlue", "permadead")
+            && saveManager.hasLocationForClass("shrine_of_earth", "EnemySardakRed", "permadead")
+            && saveManager.hasLocationForClass("shrine_of_earth", "EnemySardakYellow", "permadead"))
+        {
+            for (SpriteLlortLaser laser : mapManager.findAllActorsByType(SpriteLlortLaser.class)) {
+                laser.setState(State.DEAD);
             }
         }
     }
@@ -233,19 +255,31 @@ public class GameManager {
 
         String attackerType = attacker.getClass().getSimpleName();
 
-        // on weakness, add bonus damage
-        for (String weakness : defender.getWeaknesses()) {
-            if (weakness.equals(attackerType)) {
-                damage += defender.getBonusDamage();
-                break;
+        if (defender instanceof Enemy) {
+            Enemy enemy = (Enemy) defender;
+
+            if (enemy.getWeaknesses().size > 0) {
+                enemy.setHurtWeakness(false);
+            }
+
+            // on weakness, add bonus damage
+            for (String weakness : enemy.getWeaknesses()) {
+                if (weakness.equals(attackerType)) {
+                    damage += enemy.getBonusDamage();
+                    enemy.setHurtWeakness(true);
+                    break;
+                }
             }
         }
         // return damage amount
         return damage;
     }
 
-    public float calculateZeldaKnockback() {
-        return 0.2f;
+    // Basing this on damage for now as the actual formula is not fully figured out
+    /* Phlosion: "Knockback happens in 5-pixel chunks applied once every three frames. The number of knockback chunks depends on the weapon stats, which are embedded in a bespoke weapon scripting language that I don't think I managed to automate decoding." */
+    public float calculateZeldaKnockback(Actor attacker, Actor defender) {
+        float pixelAmount = calculateDamage(attacker, defender) / 10f;
+        return pixelAmount * 5f;
     }
 
     public World getWorld() {
@@ -278,7 +312,7 @@ public class GameManager {
 
         if (save) {
             world.getSaveManager().addTreasure(treasure);
-            world.getSaveManager().writeCurrentSave();
+            world.getSaveManager().writeCurrentSave(this);
         }
     }
 
@@ -287,7 +321,7 @@ public class GameManager {
 
         if (save) {
             world.getSaveManager().removeTreasure(treasure);
-            world.getSaveManager().writeCurrentSave();
+            world.getSaveManager().writeCurrentSave(this);
         }
     }
 
@@ -296,7 +330,7 @@ public class GameManager {
 
         if (save) {
             world.getSaveManager().addWeapon(weapon);
-            world.getSaveManager().writeCurrentSave();
+            world.getSaveManager().writeCurrentSave(this);
         }
     }
 
@@ -305,7 +339,7 @@ public class GameManager {
 
         if (save) {
             world.getSaveManager().removeWeapon(weapon);
-            world.getSaveManager().writeCurrentSave();
+            world.getSaveManager().writeCurrentSave(this);
         }
     }
 

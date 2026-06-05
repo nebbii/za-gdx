@@ -3,6 +3,7 @@ package com.nebbii.zagdx;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.utils.Array;
 
 public class Spawner extends Rectangle implements Actor {
     private State state;
@@ -11,6 +12,7 @@ public class Spawner extends Rectangle implements Actor {
     private boolean solid = false;
     protected MapManager map;
     private String locationEntry;
+    private String pickupType;
 
     public Spawner() {
         setWidth(1);
@@ -26,6 +28,48 @@ public class Spawner extends Rectangle implements Actor {
 
     @Override
     public void draw(SpriteBatch batch) {}
+
+    public void activate() {}
+
+    protected Pickup createPickup() {
+        if (pickupType == null || pickupType.trim().isEmpty()) {
+            throw new IllegalStateException(getClass().getSimpleName() + " requires pickupType");
+        }
+
+        try {
+            Class<?> newClass = Class.forName("com.nebbii.zagdx." + pickupType.trim());
+            Object object = newClass.getDeclaredConstructor().newInstance();
+
+            if (!(object instanceof Pickup)) {
+                throw new IllegalArgumentException(pickupType + " is not a pickup");
+            }
+
+            Pickup pickup = (Pickup) object;
+            pickup.setPosition(this.getX(), this.getY());
+            return pickup;
+        }
+        catch (Exception e) {
+            throw new RuntimeException("Failed to create pickup: " + pickupType, e);
+        }
+    }
+
+    protected void placePickup() {
+        Pickup pickup = createPickup();
+        logItemPlaced();
+        map.addNewActor(pickup);
+    }
+
+    protected void placePickupWithParent() {
+        Pickup pickup = createPickup();
+        logItemPlaced();
+        map.addNewPickupWithParent(pickup, this);
+    }
+
+    protected void logItemPlaced() {
+        if (Gdx.app != null) {
+            Gdx.app.log(getClass().getSimpleName(), "item placed");
+        }
+    }
 
     @Override
     public int getDrawOrder() {
@@ -49,8 +93,8 @@ public class Spawner extends Rectangle implements Actor {
         return getY() + getHeight() / 2;
     }
 
-    public String[] getWeaknesses() {
-        return new String[] {};
+    public Array<String> getWeaknesses() {
+        return new Array<>();
     }
 
     public int getDamage() {
@@ -118,5 +162,13 @@ public class Spawner extends Rectangle implements Actor {
     @Override
     public void setLocationEntry(String locationEntry) {
         this.locationEntry = locationEntry;
+    }
+
+    public String getPickupType() {
+        return pickupType;
+    }
+
+    public void setPickupType(String pickupType) {
+        this.pickupType = pickupType;
     }
 }
