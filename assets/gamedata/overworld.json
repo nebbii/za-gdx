@@ -569,7 +569,18 @@
     {
       "location": "h29",
       "__comment": "h29: The old woman Enid sits by a fire. If Zelda touches her, she starts speaking and steals one heart of health from her.",
-      "actors": []
+      "actors": [
+        {
+          "type": "NpcEnid",
+          "x": 2992,
+          "y": 772
+        },
+        {
+          "type": "SpriteCampfire",
+          "x": 2954,
+          "y": 782
+        }
+      ]
     },
     {
       "__comment": "i"
