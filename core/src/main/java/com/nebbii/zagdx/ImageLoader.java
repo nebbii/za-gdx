@@ -137,6 +137,14 @@ public class ImageLoader {
         IDLE
     }
 
+    public enum SpriteLlortGateBottomAnimationGroup {
+        IDLE
+    }
+
+    public enum SpriteLlortGateTopAnimationGroup {
+        IDLE
+    }
+
     public enum SpriteExplosionAnimationGroup {
         IDLE
     }
@@ -178,6 +186,8 @@ public class ImageLoader {
     /* Map stuff */
     private Texture spriteLadder;
     private EnumMap<SpriteLlortLaserAnimationGroup, Texture[]> spriteLlortLaser;
+    private EnumMap<SpriteLlortGateBottomAnimationGroup, Texture[]> spriteLlortGateBottom;
+    private EnumMap<SpriteLlortGateTopAnimationGroup, Texture[]> spriteLlortGateTop;
     private EnumMap<SpriteExplosionAnimationGroup, Texture[]> spriteExplosion;
     private EnumMap<SpriteSparkleAnimationGroup, Texture[]> spriteSparkle;
     private EnumMap<SpriteCampfireAnimationGroup, Texture[]> spriteCampfire;
@@ -419,6 +429,14 @@ public class ImageLoader {
 
         /* Map stuff */
         spriteLadder = new Texture("export/underworld/s102/sprites/desc0/group0/sprite0.png");
+
+        spriteLlortGateBottom = new EnumMap<>(SpriteLlortGateBottomAnimationGroup.class);
+        spriteLlortGateBottom.put(SpriteLlortGateBottomAnimationGroup.IDLE,
+            loadTextureArray("export/underworld/s121/sprites/desc3/group0", 1));
+
+        spriteLlortGateTop = new EnumMap<>(SpriteLlortGateTopAnimationGroup.class);
+        spriteLlortGateTop.put(SpriteLlortGateTopAnimationGroup.IDLE,
+            loadTextureArray("export/underworld/s121/sprites/desc2/group0", 1));
 
         spriteLlortLaser = new EnumMap<>(SpriteLlortLaserAnimationGroup.class);
         spriteLlortLaser.put(SpriteLlortLaserAnimationGroup.IDLE,
@@ -737,6 +755,26 @@ public class ImageLoader {
 
         /* Map stuff */
         spriteLadder.dispose();
+
+        for (Texture[] textures : spriteLlortGateBottom.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : spriteLlortGateTop.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
 
         for (Texture[] textures : spriteLlortLaser.values()) {
             if (textures == null) continue;
@@ -1177,6 +1215,22 @@ public class ImageLoader {
 
     public Texture getSpriteLadder() {
         return spriteLadder;
+    }
+
+    public Texture[] getSpriteLlortGateBottomAnimation(SpriteLlortGateBottomAnimationGroup anim) {
+        return spriteLlortGateBottom.get(anim);
+    }
+
+    public Texture[] getSpriteLlortGateBottom() {
+        return getSpriteLlortGateBottomAnimation(SpriteLlortGateBottomAnimationGroup.IDLE);
+    }
+
+    public Texture[] getSpriteLlortGateTopAnimation(SpriteLlortGateTopAnimationGroup anim) {
+        return spriteLlortGateTop.get(anim);
+    }
+
+    public Texture[] getSpriteLlortGateTop() {
+        return getSpriteLlortGateTopAnimation(SpriteLlortGateTopAnimationGroup.IDLE);
     }
 
     public Texture[] getSpriteLlortLaserAnimation(SpriteLlortLaserAnimationGroup anim) {
