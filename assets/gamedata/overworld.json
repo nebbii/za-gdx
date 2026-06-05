@@ -481,6 +481,42 @@
       "actors": []
     },
     {
+      "location": "s101a",
+      "__comment": "(not in the guide, deeler ambush cave)",
+      "actors": [
+        {
+          "type": "EnemyTektite",
+          "x": 201,
+          "y": 7533
+        },
+        {
+          "type": "SpawnerTektiteAmbush",
+          "x": 132,
+          "y": 7537
+        },
+        {
+          "type": "SpawnerTektiteAmbush",
+          "x": 132,
+          "y": 7530
+        },
+        {
+          "type": "SpawnerTektiteAmbush",
+          "x": 209,
+          "y": 7504
+        },
+        {
+          "type": "SpawnerTektiteAmbush",
+          "x": 209,
+          "y": 7568
+        },
+        {
+          "type": "SpawnerTektiteAmbush",
+          "x": 270,
+          "y": 7533
+        }
+      ]
+    },
+    {
       "__comment": "h"
     },
     {
