@@ -10,8 +10,6 @@ public class EnemyPeahatProjectileAnimation extends GameAnimation {
 
     private int[] idleOffsetX;
     private int[] idleOffsetY;
-    private float projectileOffsetX;
-    private float projectileOffsetY;
 
     public EnemyPeahatProjectileAnimation() {
         super("idle");
@@ -20,8 +18,6 @@ public class EnemyPeahatProjectileAnimation extends GameAnimation {
         baseOffsetY = 0;
         offsetX = 0;
         offsetY = 0;
-        projectileOffsetX = 0;
-        projectileOffsetY = 0;
 
         idle = initIdle();
     }
@@ -36,15 +32,10 @@ public class EnemyPeahatProjectileAnimation extends GameAnimation {
         float wrappedTime = stateTime % animation.getAnimationDuration();
         int frameIndex = animation.getKeyFrameIndex(wrappedTime);
 
-        offsetX = idleOffsetX[frameIndex] + projectileOffsetX;
-        offsetY = idleOffsetY[frameIndex] + projectileOffsetY;
+        offsetX = idleOffsetX[frameIndex];
+        offsetY = idleOffsetY[frameIndex];
 
         return frame;
-    }
-
-    public void setProjectileOffset(float offsetX, float offsetY) {
-        this.projectileOffsetX = offsetX;
-        this.projectileOffsetY = offsetY;
     }
 
     private Animation<TextureRegion> initIdle() {
