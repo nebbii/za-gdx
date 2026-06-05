@@ -15,6 +15,16 @@
       "x": 1985,
       "y": 7049
     },
+    "overworld_ambush_cave_entrance": {
+      "targetMap": "overworld",
+      "x": 2585.19,
+      "y": 53.02
+    },
+    "overworld_ambush_cave_exit": {
+      "targetMap": "overworld",
+      "x": 60,
+      "y": 7539
+    },
     "overworld_entrance_earth": {
       "targetMap": "overworld",
       "x": 2548.19,

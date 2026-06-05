@@ -39,6 +39,14 @@ public class SpecialCollisionHandler {
             map.updateSpawnLocation("overworld_moblin_head_inn_entrance");
             game.initializeFadeWarp();
             break;
+        case "overworld_ambush_cave_entrance":
+            map.updateSpawnLocation("overworld_ambush_cave_exit");
+            game.initializeFadeWarp();
+            break;
+        case "overworld_ambush_cave_exit":
+            map.updateSpawnLocation("overworld_ambush_cave_entrance");
+            game.initializeFadeWarp();
+            break;
         /* Overworld specials */
         case "overworld_andor":
             if (!game.getTreasures().contains(Treasure.RED_BOOTS)) {

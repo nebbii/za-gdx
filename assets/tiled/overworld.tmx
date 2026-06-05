@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="left-up" width="29" height="32" tilewidth="384" tileheight="240" infinite="0" nextlayerid="7" nextobjectid="2220">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="left-up" width="29" height="32" tilewidth="384" tileheight="240" infinite="0" nextlayerid="7" nextobjectid="2221">
  <tileset firstgid="1" source="export_overworld.tsx"/>
  <tileset firstgid="306" source="export_overworld_spritetreeHeightBoxes.tsx"/>
  <layer id="5" name="Background" width="29" height="32">
@@ -2641,7 +2641,7 @@
   <object id="2210" x="6374.25" y="3489.5">
    <polygon points="0,0 68.5,0.25 68,13 -1.75,12.75"/>
   </object>
-  <object id="2211" name="overworld_entrance_cave" x="2607.27" y="7569.27">
+  <object id="2211" name="overworld_ambush_cave_entrance" x="2607.27" y="7569.27">
    <polygon points="0,0 10.7273,4.54545 23.2217,9.83049 32.9091,18 37.9134,24.4956 30.1818,31.0909 21.4545,21.0909 16.7273,17.2727 7.09091,13.8182 -6,10.9091 -7.81818,0.727273"/>
   </object>
   <object id="2212" name="overworld_moblin_head_inn_entrance" x="3582.67" y="5169">
@@ -2649,6 +2649,9 @@
   </object>
   <object id="2213" name="overworld_moblin_head_inn_exit" x="1963" y="610.5">
    <polygon points="0,0 -7,46 -21.5,46 -14,-2.5"/>
+  </object>
+  <object id="2220" name="overworld_ambush_cave_exit" x="-5.5" y="95">
+   <polygon points="0,0 -2,52.5 16.5,52 15.5,0"/>
   </object>
  </objectgroup>
  <objectgroup id="3" name="Overlay">
