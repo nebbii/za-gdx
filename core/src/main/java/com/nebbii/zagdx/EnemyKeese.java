@@ -12,13 +12,8 @@ import com.nebbii.zagdx.animation.EnemyKeeseAnimation;
 public class EnemyKeese extends Enemy {
     public EnemyKeeseAnimation animation;
 
-    private static final float SEARCH_SPEED = 80f;
-    private static final float FIGHT_SPEED = 110f;
     private static final float MIN_GOAL_RANGE = 60f;
     private static final float MAX_GOAL_RANGE = 130f;
-    private static final float GOAL_HOLD_DURATION = 0.3f;
-    private static final int GOAL_PICK_ATTEMPTS = 100;
-    private static final float ARRIVAL_EPSILON = 0.001f;
 
     private enum PathMode {
         NONE,
@@ -45,6 +40,7 @@ public class EnemyKeese extends Enemy {
         setHealth(60);
         setDamage(45);
         setDefense(10);
+        setSpeed(100f);
 
         this.animation = new EnemyKeeseAnimation(this);
 
@@ -54,13 +50,66 @@ public class EnemyKeese extends Enemy {
 
     @Override
     public void logic() {
+        if (getState() != State.ACTIVE) return;
+
         if (!hasConfiguredPathMovement()) {
             super.logic();
-            updateSpeedForState();
             return;
         }
 
-        logicPathMovement();
+        float delta = Gdx.graphics.getDeltaTime();
+        knockback = Math.max(0f, knockback - delta);
+        invincibility = Math.max(0f, invincibility - Gdx.graphics.getDeltaTime());
+
+        if (knockback > 0) {
+            if (hurtWeakness && health > 0) {
+                movePushback();
+            }
+            return;
+        }
+
+        if (health <= 0) {
+            onDeath();
+            return;
+        }
+
+        if (returningToLastPassedPoint) {
+            setEnemyState(EnemyState.FIGHT);
+            goalX = lastPassedX;
+            goalY = lastPassedY;
+
+            if (moveTowardGoal(delta)) {
+                returningToLastPassedPoint = false;
+
+                if (pathStarted) {
+                    handleReachedPathGoal();
+                }
+            }
+            return;
+        }
+
+        if (!pathStarted) {
+            setEnemyState(EnemyState.SEARCH);
+            return;
+        }
+
+        setEnemyState(EnemyState.FIGHT);
+
+        if (pathMode == PathMode.RANDOM && randomGoalHold > 0f) {
+            randomGoalHold = Math.max(0f, randomGoalHold - delta);
+
+            if (randomGoalHold <= 0f) {
+                chooseNextPathGoal();
+            }
+            return;
+        }
+
+        if (moveTowardGoal(delta)) {
+            lastPassedX = getX();
+            lastPassedY = getY();
+
+            handleReachedPathGoal();
+        }
     }
 
     public float getAnimationSpeed() {
@@ -178,80 +227,6 @@ public class EnemyKeese extends Enemy {
         return goalY;
     }
 
-    private void logicPathMovement() {
-        if (getState() != State.ACTIVE) return;
-
-        float delta = Gdx.graphics.getDeltaTime();
-        knockback = Math.max(0f, knockback - delta);
-
-        if (knockback > 0) {
-            if (hurtWeakness && health > 0) {
-                movePushback();
-            }
-            return;
-        }
-
-        if (health <= 0) {
-            onDeath();
-            return;
-        }
-
-        updateSpeedForState();
-
-        if (returningToLastPassedPoint) {
-            setEnemyState(EnemyState.FIGHT);
-            setSpeed(FIGHT_SPEED);
-            goalX = lastPassedX;
-            goalY = lastPassedY;
-
-            if (moveTowardGoal(delta)) {
-                returningToLastPassedPoint = false;
-
-                if (pathStarted) {
-                    handleReachedPathGoal();
-                }
-            }
-            return;
-        }
-
-        if (!pathStarted) {
-            setEnemyState(EnemyState.SEARCH);
-            setSpeed(SEARCH_SPEED);
-            return;
-        }
-
-        setEnemyState(EnemyState.FIGHT);
-        setSpeed(FIGHT_SPEED);
-
-        if (pathMode == PathMode.RANDOM && randomGoalHold > 0f) {
-            randomGoalHold = Math.max(0f, randomGoalHold - delta);
-
-            if (randomGoalHold <= 0f) {
-                chooseNextPathGoal();
-            }
-            return;
-        }
-
-        if (moveTowardGoal(delta)) {
-            lastPassedX = getX();
-            lastPassedY = getY();
-
-            handleReachedPathGoal();
-        }
-    }
-
-    private void updateSpeedForState() {
-        switch(enemyState) {
-            case SEARCH:
-                setSpeed(SEARCH_SPEED);
-                break;
-            case FIGHT:
-                setSpeed(FIGHT_SPEED);
-                break;
-            default:
-        }
-    }
-
     private void chooseNextPathGoal() {
         switch(pathMode) {
             case SET:
@@ -276,18 +251,18 @@ public class EnemyKeese extends Enemy {
     private void chooseNextRandomPathGoal() {
         randomGoalHold = 0f;
 
-        for (int i = 0; i < GOAL_PICK_ATTEMPTS; i++) {
+        for (int i = 0; i < 100; i++) {
             float goalDistance = MathUtils.random(
                 Math.min(MIN_GOAL_RANGE, MAX_GOAL_RANGE),
                 MAX_GOAL_RANGE
             );
             float goalAngle = MathUtils.random(MathUtils.PI2);
-            float candidateGoalX = getX() + MathUtils.cos(goalAngle) * goalDistance;
-            float candidateGoalY = getY() + MathUtils.sin(goalAngle) * goalDistance;
+            float attemptedGoalX = getX() + MathUtils.cos(goalAngle) * goalDistance;
+            float attemptedGoalY = getY() + MathUtils.sin(goalAngle) * goalDistance;
 
-            if (isRandomGoalWithinCurrentScreen(candidateGoalX, candidateGoalY)) {
-                goalX = candidateGoalX;
-                goalY = candidateGoalY;
+            if (isGoalWithinScreen(attemptedGoalX, attemptedGoalY)) {
+                goalX = attemptedGoalX;
+                goalY = attemptedGoalY;
                 return;
             }
         }
@@ -298,36 +273,36 @@ public class EnemyKeese extends Enemy {
         );
         float goalAngle = MathUtils.random(MathUtils.PI2);
 
-        goalX = clampRandomGoalXToCurrentScreen(getX() + MathUtils.cos(goalAngle) * goalDistance);
-        goalY = clampRandomGoalYToCurrentScreen(getY() + MathUtils.sin(goalAngle) * goalDistance);
+        goalX = clampRandomGoalXToScreen(getX() + MathUtils.cos(goalAngle) * goalDistance);
+        goalY = clampRandomGoalYToScreen(getY() + MathUtils.sin(goalAngle) * goalDistance);
     }
 
-    private boolean isRandomGoalWithinCurrentScreen(float candidateGoalX, float candidateGoalY) {
-        return candidateGoalX >= World.getCurrentScreenLeft(getCenterPointX())
-            && candidateGoalX + getWidth() <= World.getCurrentScreenRight(getCenterPointX())
-            && candidateGoalY >= World.getCurrentScreenBottom(getCenterPointY())
-            && candidateGoalY + getHeight() <= World.getCurrentScreenTop(getCenterPointY());
+    private boolean isGoalWithinScreen(float attemptedGoalX, float attemptedGoalY) {
+        return attemptedGoalX >= World.getScreenLeft(getCenterPointX())
+            && attemptedGoalX + getWidth() <= World.getScreenRight(getCenterPointX())
+            && attemptedGoalY >= World.getScreenBottom(getCenterPointY())
+            && attemptedGoalY + getHeight() <= World.getScreenTop(getCenterPointY());
     }
 
-    private float clampRandomGoalXToCurrentScreen(float candidateGoalX) {
+    private float clampRandomGoalXToScreen(float attemptedGoalX) {
         return MathUtils.clamp(
-            candidateGoalX,
-            World.getCurrentScreenLeft(getCenterPointX()),
-            World.getCurrentScreenRight(getCenterPointX()) - getWidth()
+            attemptedGoalX,
+            World.getScreenLeft(getCenterPointX()),
+            World.getScreenRight(getCenterPointX()) - getWidth()
         );
     }
 
-    private float clampRandomGoalYToCurrentScreen(float candidateGoalY) {
+    private float clampRandomGoalYToScreen(float attemptedGoalY) {
         return MathUtils.clamp(
-            candidateGoalY,
-            World.getCurrentScreenBottom(getCenterPointY()),
-            World.getCurrentScreenTop(getCenterPointY()) - getHeight()
+            attemptedGoalY,
+            World.getScreenBottom(getCenterPointY()),
+            World.getScreenTop(getCenterPointY()) - getHeight()
         );
     }
 
     private void handleReachedPathGoal() {
         if (pathMode == PathMode.RANDOM) {
-            randomGoalHold = GOAL_HOLD_DURATION;
+            randomGoalHold = 0.3f;
             return;
         }
 
@@ -343,7 +318,7 @@ public class EnemyKeese extends Enemy {
         float dy = goalY - getY();
         float distance = (float)Math.sqrt(dx * dx + dy * dy);
 
-        if (distance <= ARRIVAL_EPSILON || distance <= speed * delta) {
+        if (distance <= 0.001f || distance <= speed * delta) {
             setX(goalX);
             setY(goalY);
             return true;
