@@ -559,12 +559,44 @@
     {
       "location": "h27",
       "__comment": "h27: Three Leevers.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyLeever",
+          "x": 2790,
+          "y": 1309
+        },
+        {
+          "type": "EnemyLeever",
+          "x": 2850,
+          "y": 1313
+        },
+        {
+          "type": "EnemyLeever",
+          "x": 2861,
+          "y": 1313
+        }
+      ]
     },
     {
       "location": "h28",
       "__comment": "h28: Three Leevers.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyLeever",
+          "x": 2865,
+          "y": 1074
+        },
+        {
+          "type": "EnemyLeever",
+          "x": 2867,
+          "y": 1078
+        },
+        {
+          "type": "EnemyLeever",
+          "x": 2860,
+          "y": 1074
+        }
+      ]
     },
     {
       "location": "h29",
