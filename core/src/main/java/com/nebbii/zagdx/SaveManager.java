@@ -94,12 +94,41 @@ public class SaveManager {
         return file.delete();
     }
 
+    // update save file with the current info
     public void writeCurrentSave() {
         if (currentSave == null || currentSaveFile == null) {
             throw new RuntimeException("No save is currently loaded");
         }
 
         currentSaveFile.writeString(json.prettyPrint(currentSave), false);
+    }
+
+    // write the current game state to the save
+    public void writeCurrentSave(GameManager gameManager) {
+        if (currentSave == null || currentSaveFile == null) {
+            throw new RuntimeException("No save is currently loaded");
+        }
+
+        syncInventoryFromGameManager(gameManager);
+
+        currentSaveFile.writeString(json.prettyPrint(currentSave), false);
+    }
+
+    private void syncInventoryFromGameManager(GameManager gameManager) {
+        if (gameManager == null) {
+            return;
+        }
+
+        currentSave.rubies = gameManager.getRubies();
+        currentSave.equippedItem = gameManager.getZelda().getCurrentItem();
+
+        if (gameManager.getTreasures() != null) {
+            currentSave.treasures = new ArrayList<>(gameManager.getTreasures());
+        }
+
+        if (gameManager.getWeapons() != null) {
+            currentSave.weapons = new ArrayList<>(gameManager.getWeapons());
+        }
     }
 
     public Item getEquippedItem() {

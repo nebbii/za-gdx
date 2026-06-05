@@ -312,7 +312,7 @@ public class GameManager {
 
         if (save) {
             world.getSaveManager().addTreasure(treasure);
-            world.getSaveManager().writeCurrentSave();
+            world.getSaveManager().writeCurrentSave(this);
         }
     }
 
@@ -321,7 +321,7 @@ public class GameManager {
 
         if (save) {
             world.getSaveManager().removeTreasure(treasure);
-            world.getSaveManager().writeCurrentSave();
+            world.getSaveManager().writeCurrentSave(this);
         }
     }
 
@@ -330,7 +330,7 @@ public class GameManager {
 
         if (save) {
             world.getSaveManager().addWeapon(weapon);
-            world.getSaveManager().writeCurrentSave();
+            world.getSaveManager().writeCurrentSave(this);
         }
     }
 
@@ -339,7 +339,7 @@ public class GameManager {
 
         if (save) {
             world.getSaveManager().removeWeapon(weapon);
-            world.getSaveManager().writeCurrentSave();
+            world.getSaveManager().writeCurrentSave(this);
         }
     }
 
