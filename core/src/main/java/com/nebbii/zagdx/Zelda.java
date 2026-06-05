@@ -22,6 +22,8 @@ public class Zelda extends Rectangle implements Actor {
     private float hurtDuration;
     private Direction hurtDirection;
 
+    private float cooldownDuration;
+
     private ActorType type;
     private int drawOrder;
 
@@ -66,12 +68,13 @@ public class Zelda extends Rectangle implements Actor {
         float deltaTime = Gdx.graphics.getDeltaTime();
 
         hurtDuration = Math.max(0f, hurtDuration - deltaTime);
+        cooldownDuration = Math.max(0f, cooldownDuration - deltaTime);
 
         if (health <= 0) {
             onDeath();
         }
 
-        if (isAttacking() && animation.isAnimationFinished()) {
+        if (isAttacking(getAnimState()) && animation.isAnimationFinished()) {
             finishAction();
         }
 
@@ -110,17 +113,29 @@ public class Zelda extends Rectangle implements Actor {
     // TODO: Ice physics walking for certain rooms
     public void move(float inputX, float inputY) {
         if (!isActive()) return;
-        if (!isMoving() && !isStopped()) return;
+        if (!isMoving(getAnimState()) && !isStopped(getAnimState())) return;
         if (inputX == 0 && inputY == 0) return;
 
         float deltaTime = Gdx.graphics.getDeltaTime();
 
         setMovedLastFrame(true);
 
-        if (inputX < 0) setAnimState(AnimState.MOVELEFT);
-        if (inputY < 0) setAnimState(AnimState.MOVEDOWN);
-        if (inputY > 0) setAnimState(AnimState.MOVEUP);
-        if (inputX > 0) setAnimState(AnimState.MOVERIGHT);
+        AnimState nextAnimState = getAnimState();
+
+        if (inputX < 0) {
+            nextAnimState = AnimState.MOVELEFT;
+        }
+        else if (inputX > 0) {
+            nextAnimState = AnimState.MOVERIGHT;
+        }
+        else if (inputY < 0) {
+            nextAnimState = AnimState.MOVEDOWN;
+        }
+        else if (inputY > 0) {
+            nextAnimState = AnimState.MOVEUP;
+        }
+
+        setAnimState(nextAnimState);
 
         setX(getX() + inputX * deltaTime);
         setY(getY() + inputY * deltaTime);
@@ -147,9 +162,12 @@ public class Zelda extends Rectangle implements Actor {
 
     public void action() {
         if (!isActive()) return;
-        if (!isMoving() && !isStopped()) return;
+        if (!isMoving(getAnimState()) && !isStopped(getAnimState())) return;
+        if (cooldownDuration > 0) return;
 
         if (getCurrentItem() instanceof Treasure) {
+            cooldownDuration = 0.5f;
+
             switch ((Treasure) getCurrentItem()) {
             case NONE:
                 break;
@@ -194,6 +212,8 @@ public class Zelda extends Rectangle implements Actor {
             return; // treasures never do the attack animation
         }
         else if (getCurrentItem() instanceof Weapon) {
+            cooldownDuration = 0.35f;
+
             switch ((Weapon) getCurrentItem()) {
             case BOOMERANG:
                 if (world.getGameManager().getRubies() > 0
@@ -412,6 +432,12 @@ public class Zelda extends Rectangle implements Actor {
     }
 
     public void setAnimState(AnimState animState) {
+        if (this.animState == animState) return;
+
+        if (animation != null) {
+            animation.setStateTime(0f);
+        }
+
         this.animState = animState;
     }
 
@@ -427,16 +453,16 @@ public class Zelda extends Rectangle implements Actor {
         return getState() == State.DEAD;
     }
 
-    public boolean isStopped() {
-        return getAnimState().name().startsWith("STOP");
+    public boolean isStopped(AnimState animState) {
+        return animState.name().startsWith("STOP");
     }
 
-    public boolean isMoving() {
-        return getAnimState().name().startsWith("MOVE");
+    public boolean isMoving(AnimState animState) {
+        return animState.name().startsWith("MOVE");
     }
 
-    public boolean isAttacking() {
-        return getAnimState().name().startsWith("ATTACK");
+    public boolean isAttacking(AnimState animState) {
+        return animState.name().startsWith("ATTACK");
     }
 
     public void setMovedLastFrame(boolean movedLastFrame) {

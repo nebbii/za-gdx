@@ -30,18 +30,26 @@ public class GameInput {
     }
 
     public void handleMovement(Zelda zelda) {
+        float inputX = 0f;
+        float inputY = 0f;
+
         if (controlInput.isActionPressed(ControlAction.MOVE_UP)) {
-            zelda.move(0, zelda.getSpeed());
+            inputY += zelda.getSpeed();
         }
+
         if (controlInput.isActionPressed(ControlAction.MOVE_DOWN)) {
-            zelda.move(0, -zelda.getSpeed());
+            inputY -= zelda.getSpeed();
         }
+
         if (controlInput.isActionPressed(ControlAction.MOVE_LEFT)) {
-            zelda.move(-zelda.getSpeed(), 0);
+            inputX -= zelda.getSpeed();
         }
+
         if (controlInput.isActionPressed(ControlAction.MOVE_RIGHT)) {
-            zelda.move(zelda.getSpeed(), 0);
+            inputX += zelda.getSpeed();
         }
+
+        zelda.move(inputX, inputY);
     }
 
     public void handleAction(Zelda zelda) {
