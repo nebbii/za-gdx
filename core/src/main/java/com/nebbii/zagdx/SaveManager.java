@@ -124,6 +124,7 @@ public class SaveManager {
 
         if (gameManager.getTreasures() != null) {
             currentSave.treasures = new ArrayList<>(gameManager.getTreasures());
+            currentSave.treasures.removeIf(treasure -> treasure == Treasure.RUBIES);
         }
 
         if (gameManager.getWeapons() != null) {
