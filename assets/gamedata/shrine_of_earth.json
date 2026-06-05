@@ -55,7 +55,9 @@
           "y": 762
         },
         {
-          "type": "SpawnerUnderworldMap1",
+          "type": "SpawnerPickup",
+          "pickupType": "PickupUnderworldMap1",
+          "trigger": "NO_ENEMIES",
           "x": 1335,
           "y": 802
         }
@@ -84,7 +86,9 @@
           "pathMode": "RANDOM"
         },
         {
-          "type": "SpawnerCompass1",
+          "type": "SpawnerPickup",
+          "pickupType": "PickupCompass1",
+          "trigger": "NO_ENEMIES",
           "x": 1314,
           "y": 535
         }
@@ -129,7 +133,9 @@
           "y": 72
         },
         {
-          "type": "SpawnerJadeRing",
+          "type": "SpawnerPickup",
+          "pickupType": "PickupJadeRing",
+          "trigger": "MANUAL",
           "x": 1700,
           "y": 82
         }

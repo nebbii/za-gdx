@@ -466,6 +466,16 @@ public class MapManager {
                 configureKeesePath((EnemyKeese) actor, entry);
             }
 
+            if (actor instanceof Spawner) {
+                Spawner spawner = (Spawner) actor;
+                spawner.setPickupType(entry.pickupType);
+            }
+
+            if (actor instanceof SpawnerPickup) {
+                SpawnerPickup spawner = (SpawnerPickup) actor;
+                spawner.setTrigger(entry.trigger);
+            }
+
             if (actor instanceof Pickup) {
                 Pickup pickup = (Pickup) actor;
                 pickup.setPurchasable(entry.purchasable);

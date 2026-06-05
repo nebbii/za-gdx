@@ -10,6 +10,8 @@ public class ActorJsonEntry {
     // extra fields
     public String __comment;
     public String rubyType;
+    public String pickupType;
+    public String trigger;
     public boolean purchasable;
     public int price;
     public String pathMode;

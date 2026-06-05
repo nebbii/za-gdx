@@ -172,18 +172,20 @@ public class Zelda extends Rectangle implements Actor {
             case NONE:
                 break;
             case PITCHER_EMPTY:
-                SpawnerPitcherFull spawnerPitcherFull = (SpawnerPitcherFull) map.findFirstActorByType(SpawnerPitcherFull.class);
+                SpawnerPickup spawnerPitcherFull = findActivePickupSpawner("PickupPitcherFull");
 
-                if (spawnerPitcherFull != null && spawnerPitcherFull.isActive()) {
-                    spawnerPitcherFull.activate(world.getGameManager());
+                if (spawnerPitcherFull != null) {
+                    world.getGameManager().removeTreasure(Treasure.PITCHER_EMPTY, false);
+                    spawnerPitcherFull.activate();
                     unequipItem();
                 }
                 break;
             case PITCHER_FULL:
-                SpawnerVialOfWind spawnerVialOfWind = (SpawnerVialOfWind) map.findFirstActorByType(SpawnerVialOfWind.class);
+                SpawnerPickup spawnerVialOfWind = findActivePickupSpawner("PickupVialOfWind");
 
-                if (spawnerVialOfWind != null && spawnerVialOfWind.isActive()) {
-                    spawnerVialOfWind.activate(world.getGameManager());
+                if (spawnerVialOfWind != null) {
+                    world.getGameManager().removeTreasure(Treasure.PITCHER_FULL, false);
+                    spawnerVialOfWind.activate();
                     unequipItem();
                 }
                 break;
@@ -257,6 +259,16 @@ public class Zelda extends Rectangle implements Actor {
         }
 
         map.addNewActor(new ZeldaActionWand(this, getX(), getY()));
+    }
+
+    private SpawnerPickup findActivePickupSpawner(String pickupType) {
+        for (SpawnerPickup spawner : map.findActiveActorsByType(SpawnerPickup.class)) {
+            if (pickupType.equals(spawner.getPickupType())) {
+                return spawner;
+            }
+        }
+
+        return null;
     }
 
     public void finishAction() {

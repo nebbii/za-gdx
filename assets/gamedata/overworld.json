@@ -63,7 +63,9 @@
       "__comment": "d24: A Goriya throws boomerangs. By killing the Goriya, Zelda claims the boomerang weapon for her own use.",
       "actors": [
         {
-          "type": "SpawnerBoomerang",
+          "type": "SpawnerPickup",
+          "pickupType": "PickupBoomerang",
+          "trigger": "NO_ENEMIES",
           "x": 1224,
           "y": 1988
         },
@@ -98,7 +100,9 @@
       "__comment": "e20: If Zelda uses the empty water pitcher at this location, a full pitcher automatically appears.",
       "actors": [
         {
-          "type": "SpawnerPitcherFull",
+          "type": "SpawnerPickup",
+          "pickupType": "PickupPitcherFull",
+          "trigger": "MANUAL",
           "x": 1627,
           "y": 2938
         }
@@ -789,7 +793,9 @@
           "y": 2439
         },
         {
-          "type": "SpawnerFirestorm",
+          "type": "SpawnerPickup",
+          "pickupType": "PickupFirestorm",
+          "trigger": "MANUAL",
           "x": 3595,
           "y": 2436
         }
@@ -841,7 +847,9 @@
           "y": 2055
         },
         {
-          "type": "SpawnerVialOfWind",
+          "type": "SpawnerPickup",
+          "pickupType": "PickupVialOfWind",
+          "trigger": "MANUAL",
           "x": 3672,
           "y": 2075
         }
