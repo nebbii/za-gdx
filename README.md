@@ -23,7 +23,11 @@ You'll need to acquire a bin/cue or .CHD of the original game and place it in th
 ```
 
 ### Running the game
-Execute `./gradlew lwjgl3:run` in the project folder. On initial setup this will create an assets export from your disc image.
+
+On windows:
+- Open powershell and execute `./gradlew lwjgl3:run Pchdman=/path/to/your/chdman.exe` in the project folder
+On Linux:
+- Open a terminal window and execute `./gradlew lwjgl3:run` in the project folder.
 
 ### Running tests
 Execute `./gradlew core:test --info --rerun-tasks`
