@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
+// sloppy poorly aligned menu screen sorryyy
 public class SettingsMenuScreen extends MenuScreen {
     private BitmapFont font;
 
@@ -18,7 +19,12 @@ public class SettingsMenuScreen extends MenuScreen {
         font = new BitmapFont();
         background = new Texture(Gdx.files.internal("blank-menu-screen.png"));
 
-        menuButtons.add(new MenuTextButton("Controls", font, 142, 119, 100, 24, () -> {
+        menuButtons.add(new MenuTextButton("Controls", font, 142, 149, 100, 24, () -> {
+            setFadeToggle(FadeToggle.OUT);
+            core.setNextScreen(new ControlBindingScreen(core));
+        }));
+
+        menuButtons.add(new MenuTextButton("Archipelago", font, 142, 119, 100, 24, () -> {
             setFadeToggle(FadeToggle.OUT);
             core.setNextScreen(new ControlBindingScreen(core));
         }));
@@ -35,7 +41,7 @@ public class SettingsMenuScreen extends MenuScreen {
 
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
-        font.draw(batch, "Settings", 162, 177);
+        font.draw(batch, "Settings", 165, 200);
         batch.end();
 
         drawFade();
