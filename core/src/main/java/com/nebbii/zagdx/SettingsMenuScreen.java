@@ -17,7 +17,7 @@ public class SettingsMenuScreen extends MenuScreen {
         super.show();
 
         font = new BitmapFont();
-        background = new Texture(Gdx.files.internal("blank-menu-screen.png"));
+        background = new Texture(Gdx.files.internal("blank-menu-screen-2.png"));
 
         menuButtons.add(new MenuTextButton("Controls", font, 142, 149, 100, 24, () -> {
             setFadeToggle(FadeToggle.OUT);
