@@ -6,6 +6,28 @@ import shutil
 import subprocess
 import sys
 
+def find_chdman(requested_path: str | None = None) -> str:
+    executable_names = ["chdman.exe", "chdman"] if sys.platform.startswith("win") else ["chdman"]
+
+    if requested_path:
+        requested = Path(requested_path).expanduser().resolve()
+
+        if requested.is_file():
+            return str(requested)
+
+        raise FileNotFoundError(f"Requested chdman path does not exist: {requested}")
+
+    for name in executable_names:
+        found = shutil.which(name)
+
+        if found:
+            return found
+
+    raise RuntimeError(
+        "chdman was not found in PATH.\n"
+        "Install MAME/mame-tools and add chdman to PATH, or run Gradle with:\n"
+        "  ./gradlew lwjgl3:run -Pchdman=/path/to/chdman"
+    )
 
 def run(cmd, cwd=None):
     print("[assets]", " ".join(str(c) for c in cmd))
@@ -13,8 +35,14 @@ def run(cmd, cwd=None):
 
 
 def find_single_source(project_root: Path) -> Path:
-    cues = sorted(project_root.glob("*.cue"))
-    chds = sorted(project_root.glob("*.chd"))
+    cues = sorted(
+        path for path in project_root.iterdir()
+        if path.is_file() and path.suffix.lower() == ".cue"
+    )
+    chds = sorted(
+        path for path in project_root.iterdir()
+        if path.is_file() and path.suffix.lower() == ".chd"
+    )
 
     if cues:
         if len(cues) > 1:
@@ -63,6 +91,12 @@ def main():
         help="Output export folder",
     )
 
+    parser.add_argument(
+        "--chdman",
+        default=None,
+        help="Path to chdman/chdman.exe. If omitted, PATH is checked.",
+    )
+
     args = parser.parse_args()
 
     project_root = Path(__file__).resolve().parents[1]
@@ -109,7 +143,10 @@ def main():
     dat_path = source_path.with_suffix(".dat")
 
     if source_suffix == ".cue":
-        bin_files = list(source_path.parent.glob("*.bin"))
+        bin_files = [
+            path for path in source_path.parent.iterdir()
+            if path.is_file() and path.suffix.lower() == ".bin"
+        ]
 
         if not bin_files:
             existing_chd = source_path.with_suffix(".chd")
@@ -132,13 +169,7 @@ def main():
         if source_suffix != ".cue":
             raise FileNotFoundError(f"CHD file does not exist: {chd_path}")
 
-        chdman = shutil.which("chdman") or shutil.which("chdman.exe")
-
-        if not chdman:
-            raise RuntimeError(
-                "chdman was not found in PATH. "
-                "Install MAME/mame-tools and add chdman to PATH."
-            )
+        chdman = find_chdman(args.chdman)
 
         run([
             chdman,
