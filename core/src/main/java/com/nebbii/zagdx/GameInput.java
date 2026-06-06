@@ -1,6 +1,7 @@
 package com.nebbii.zagdx;
 
 import java.util.ArrayList;
+import java.util.EnumMap;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
@@ -9,9 +10,18 @@ import com.nebbii.zagdx.GameManager.GameState;
 import com.nebbii.zagdx.MenuPause.MenuState;
 
 public class GameInput {
+    private static final ControlAction[] PAUSE_MENU_INPUTS = {
+        ControlAction.MOVE_UP,
+        ControlAction.MOVE_DOWN,
+        ControlAction.MOVE_LEFT,
+        ControlAction.MOVE_RIGHT,
+        ControlAction.ACTION
+    };
+
     private World world;
     private ControlInput controlInput;
     private boolean pauseWasPressed;
+    private final EnumMap<ControlAction, Boolean> pauseMenuWasPressed = new EnumMap<>(ControlAction.class);
 
     public GameInput(World world, ControlInput controlInput) {
         this.world = world;
@@ -23,6 +33,18 @@ public class GameInput {
 
         handlePause();
 
+        if (world.getMenuPause().getMenuState() == MenuState.ACTIVE) {
+            handlePauseMenuInput();
+            handleTouchMenuPause(zelda);
+            return;
+        }
+
+        if (world.getMenuPause().getMenuState() != MenuState.INACTIVE) {
+            rememberPauseMenuInputState();
+            return;
+        }
+
+        rememberPauseMenuInputState();
         handleAction(zelda);
         handleMovement(zelda);
         handleDebug(zelda);
@@ -82,6 +104,25 @@ public class GameInput {
         pauseWasPressed = pausePressed;
     }
 
+    public void handlePauseMenuInput() {
+        for (ControlAction action : PAUSE_MENU_INPUTS) {
+            boolean pressed = controlInput.isActionPressed(action);
+            boolean wasPressed = pauseMenuWasPressed.getOrDefault(action, false);
+
+            if (pressed && !wasPressed) {
+                world.getMenuPause().handleMenuInput(action);
+            }
+
+            pauseMenuWasPressed.put(action, pressed);
+        }
+    }
+
+    private void rememberPauseMenuInputState() {
+        for (ControlAction action : PAUSE_MENU_INPUTS) {
+            pauseMenuWasPressed.put(action, controlInput.isActionPressed(action));
+        }
+    }
+
     public void handleTouchMenuPause(Zelda zelda) {
         if (Gdx.input.justTouched() && world.getMenuPause().getMenuState() == MenuState.ACTIVE) {
             Vector3 lastTouch = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
@@ -94,7 +135,9 @@ public class GameInput {
 
             for (MenuButton slot : allSlots) {
                 if (slot.contains(lastTouch.x, lastTouch.y)) {
+                    world.getMenuPause().selectSlot(slot);
                     slot.onTouch();
+                    break;
                 }
             }
         }
