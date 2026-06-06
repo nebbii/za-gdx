@@ -27,6 +27,7 @@ public class MenuScreen implements Screen {
     protected final Vector2 touchPos = new Vector2();
 
     protected Texture background;
+    protected Texture buttonTexture;
     public float fadeOpacity;
 
     protected final Core core;
@@ -58,6 +59,7 @@ public class MenuScreen implements Screen {
         fadeToggle = FadeToggle.IN;
         fadeOpacity = 1f;
 
+        buttonTexture = new Texture(Gdx.files.internal("menu-button.png"));
         menuButtons = new ArrayList<>();
     }
 
@@ -156,6 +158,7 @@ public class MenuScreen implements Screen {
 
     @Override
     public void dispose() {
+        buttonTexture.dispose();
     }
 
     public FadeToggle getFadeToggle() {
@@ -164,5 +167,9 @@ public class MenuScreen implements Screen {
 
     public void setFadeToggle(FadeToggle fadeToggle) {
         this.fadeToggle = fadeToggle;
+    }
+
+    public Texture getButtonTexture() {
+        return buttonTexture;
     }
 }
