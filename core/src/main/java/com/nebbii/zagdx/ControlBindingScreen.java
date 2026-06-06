@@ -47,7 +47,7 @@ public class ControlBindingScreen extends MenuScreen {
 
         font = new BitmapFont();
         layout = new GlyphLayout();
-        background = new Texture(Gdx.files.internal("blank-menu-screen.png"));
+        background = new Texture(Gdx.files.internal("blank-menu-screen-2.png"));
 
         setupBindingButtons();
 
