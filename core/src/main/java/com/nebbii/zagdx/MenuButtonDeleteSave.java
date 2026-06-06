@@ -17,6 +17,8 @@ public class MenuButtonDeleteSave extends Rectangle implements MenuButton {
 
     @Override
     public void onTouch() {
+        if (menuScreen.getSelectedFile() == null) return;
+
         menuScreen.getSaveManager().deleteSave(menuScreen.getSelectedFile().filename);
         menuScreen.setSelectedFile(null);
 
