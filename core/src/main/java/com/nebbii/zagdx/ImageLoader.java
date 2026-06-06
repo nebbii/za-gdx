@@ -251,10 +251,12 @@ public class ImageLoader {
     private Texture enemyPeahatProjectile;
 
     private Texture itemScreen;
+    private Texture glow;
 
     public ImageLoader() {
         none = new Texture("invisible.png");
         itemScreen = new Texture("dummy-pause-screen.png"); // TODO: swap with real asset
+        glow = new Texture("glow.png");
 
         /* Actors */
         zelda = new EnumMap<>(ZeldaAnimationGroup.class);
@@ -527,6 +529,7 @@ public class ImageLoader {
     public void dispose() {
         none.dispose();
         itemScreen.dispose();
+        glow.dispose();
 
         /* Actors */
         for (Texture[] textures : zelda.values()) {
@@ -1279,6 +1282,10 @@ public class ImageLoader {
 
     public Texture getItemScreen() {
       return itemScreen;
+    }
+
+    public Texture getGlow() {
+        return glow;
     }
 
     public Texture[] getFriendlyBoomerang() {

@@ -1,14 +1,11 @@
 package com.nebbii.zagdx;
 
 import java.util.ArrayList;
-import java.util.Vector;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
 import com.nebbii.zagdx.GameManager.GameState;
 
 public class MenuPause {
@@ -31,6 +28,7 @@ public class MenuPause {
 
     private MenuState menuState;
     private float opacity;
+    private int selectedSlotIndex;
 
     final int pauseMenuWidth = 346;
     final int pauseMenuHeight = 210;
@@ -55,10 +53,15 @@ public class MenuPause {
     final int equipSlotWidth = weaponTrayWidth / 6;
 
     public MenuPause(GameManager gameManager) {
+        this(gameManager, World.images.getItemScreen());
+    }
+
+    MenuPause(GameManager gameManager, Texture pauseTexture) {
         this.gameManager = gameManager;
-        this.pauseTexture = World.images.getItemScreen();
+        this.pauseTexture = pauseTexture;
         this.opacity = 0f;
         this.menuState = MenuState.INACTIVE;
+        this.selectedSlotIndex = 0;
 
         treasureTray = new ArrayList<MenuPauseSlotTreasures>();
         weaponTray = new ArrayList<MenuPauseSlotWeapons>();
@@ -174,7 +177,29 @@ public class MenuPause {
             );
         }
 
+        if (getMenuState() == MenuState.ACTIVE) {
+            drawCursor(batch);
+        }
+
         batch.setColor(1f, 1f, 1f, 1f);
+    }
+
+    private void drawCursor(SpriteBatch batch) {
+        MenuButton selectedSlot = getSelectedSlot();
+
+        if (selectedSlot == null) {
+            return;
+        }
+
+        Rectangle currentBox = selectedSlot.getCollisionBox();
+
+        batch.draw(
+            World.images.getGlow(),
+            currentBox.x,
+            currentBox.y,
+            currentBox.width,
+            currentBox.height
+        );
     }
 
     public void updateTrays() {
@@ -211,6 +236,139 @@ public class MenuPause {
 
     public void decreaseOpacity() {
         opacity -= 1.3f * Gdx.graphics.getDeltaTime();
+    }
+
+    public boolean handleMenuInput(ControlAction action) {
+        switch(action) {
+        case MOVE_UP:
+        case MOVE_DOWN:
+        case MOVE_LEFT:
+        case MOVE_RIGHT:
+            return moveSelection(action);
+        case ACTION:
+            return activateSelectedSlot();
+        default:
+            return false;
+        }
+    }
+
+    public boolean moveSelection(ControlAction action) {
+        MenuButton currentSlot = getSelectedSlot();
+
+        if (currentSlot == null) {
+            selectedSlotIndex = 0;
+            return false;
+        }
+
+        ArrayList<MenuButton> slots = getSelectableSlots();
+        Rectangle currentBounds = currentSlot.getCollisionBox();
+        float currentCenterX = centerX(currentBounds);
+        float currentCenterY = centerY(currentBounds);
+        int bestIndex = -1;
+        float bestDistance = Float.MAX_VALUE;
+
+        for (int i = 0; i < slots.size(); i++) {
+            if (i == selectedSlotIndex) {
+                continue;
+            }
+
+            Rectangle candidateBounds = slots.get(i).getCollisionBox();
+            float dx = centerX(candidateBounds) - currentCenterX;
+            float dy = centerY(candidateBounds) - currentCenterY;
+
+            if (!isInDirection(action, dx, dy)) {
+                continue;
+            }
+
+            float distance = dx * dx + dy * dy;
+
+            if (distance < bestDistance) {
+                bestDistance = distance;
+                bestIndex = i;
+            }
+        }
+
+        if (bestIndex < 0) {
+            return false;
+        }
+
+        selectedSlotIndex = bestIndex;
+        return true;
+    }
+
+    public boolean activateSelectedSlot() {
+        MenuButton selectedSlot = getSelectedSlot();
+
+        if (selectedSlot == null) {
+            return false;
+        }
+
+        selectedSlot.onTouch();
+        return true;
+    }
+
+    public void selectSlot(MenuButton slot) {
+        ArrayList<MenuButton> slots = getSelectableSlots();
+
+        for (int i = 0; i < slots.size(); i++) {
+            if (slots.get(i) == slot) {
+                selectedSlotIndex = i;
+                return;
+            }
+        }
+    }
+
+    private boolean isInDirection(ControlAction action, float dx, float dy) {
+        switch(action) {
+        case MOVE_UP:
+            return dy > 0f;
+        case MOVE_DOWN:
+            return dy < 0f;
+        case MOVE_LEFT:
+            return dx < 0f;
+        case MOVE_RIGHT:
+            return dx > 0f;
+        default:
+            return false;
+        }
+    }
+
+    private float centerX(Rectangle bounds) {
+        return bounds.x + bounds.width / 2f;
+    }
+
+    private float centerY(Rectangle bounds) {
+        return bounds.y + bounds.height / 2f;
+    }
+
+    private ArrayList<MenuButton> getSelectableSlots() {
+        ArrayList<MenuButton> slots = new ArrayList<MenuButton>(
+            6 + 6 + 1
+        );
+
+        slots.addAll(treasureTray);
+        slots.addAll(weaponTray);
+        slots.addAll(equipTray);
+
+        return slots;
+    }
+
+    public MenuButton getSelectedSlot() {
+        ArrayList<MenuButton> slots = getSelectableSlots();
+
+        if (slots.isEmpty()) {
+            return null;
+        }
+
+        if (selectedSlotIndex < 0 || selectedSlotIndex >= slots.size()) {
+            selectedSlotIndex = 0;
+        }
+
+        return slots.get(selectedSlotIndex);
+    }
+
+    public int getSelectedSlotIndex() {
+        return selectedSlotIndex;
     }
 
     public MenuState getMenuState() {
