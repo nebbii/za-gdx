@@ -76,6 +76,58 @@ public class SettingsManagerTest {
         assertFalse(hasControlCode(parse(file), ControlAction.MOVE_UP, ControlBindType.KEYBOARD, Keys.UP));
     }
 
+    @Test
+    public void duplicateKeyboardBindMovesToNewAction() {
+        FileHandle file = settingsFile();
+        SettingsManager settings = new SettingsManager(file);
+
+        settings.setKeyboardBind(ControlAction.MOVE_DOWN, Keys.UP);
+        settings.saveSettings();
+
+        assertTrue(hasBind(settings.getBinds(ControlAction.MOVE_DOWN), ControlBindType.KEYBOARD, Keys.UP));
+        assertFalse(hasBind(settings.getBinds(ControlAction.MOVE_UP), ControlBindType.KEYBOARD, Keys.UP));
+    }
+
+    @Test
+    public void duplicateGamepadButtonBindMovesToNewAction() {
+        FileHandle file = settingsFile();
+        SettingsManager settings = new SettingsManager(file);
+
+        settings.setGamepadButtonBind(ControlAction.PAUSE, GamepadControl.BUTTON_A);
+        settings.saveSettings();
+
+        assertTrue(hasStandardBind(settings.getBinds(ControlAction.PAUSE), ControlBindType.GAMEPAD_BUTTON, GamepadControl.BUTTON_A, 1));
+        assertFalse(hasStandardBind(settings.getBinds(ControlAction.ACTION), ControlBindType.GAMEPAD_BUTTON, GamepadControl.BUTTON_A, 1));
+        assertFalse(hasStandardBind(settings.getBinds(ControlAction.PAUSE), ControlBindType.GAMEPAD_BUTTON, GamepadControl.BUTTON_START, 1));
+    }
+
+    @Test
+    public void duplicateGamepadAxisBindMovesToNewAction() {
+        FileHandle file = settingsFile();
+        SettingsManager settings = new SettingsManager(file);
+
+        settings.setGamepadAxisBind(ControlAction.MOVE_DOWN, GamepadControl.AXIS_LEFT_Y, -1);
+        settings.saveSettings();
+
+        assertTrue(hasStandardBind(settings.getBinds(ControlAction.MOVE_DOWN), ControlBindType.GAMEPAD_AXIS, GamepadControl.AXIS_LEFT_Y, -1));
+        assertFalse(hasStandardBind(settings.getBinds(ControlAction.MOVE_UP), ControlBindType.GAMEPAD_AXIS, GamepadControl.AXIS_LEFT_Y, -1));
+        assertFalse(hasStandardBind(settings.getBinds(ControlAction.MOVE_DOWN), ControlBindType.GAMEPAD_AXIS, GamepadControl.AXIS_LEFT_Y, 1));
+        assertFalse(hasStandardBind(settings.getBinds(ControlAction.MOVE_DOWN), ControlBindType.GAMEPAD_BUTTON, GamepadControl.BUTTON_DPAD_DOWN, 1));
+    }
+
+    @Test
+    public void replacingGamepadBindRemovesOldButtonAndAxisForAction() {
+        FileHandle file = settingsFile();
+        SettingsManager settings = new SettingsManager(file);
+
+        settings.setGamepadButtonBind(ControlAction.MOVE_UP, GamepadControl.BUTTON_B);
+        settings.saveSettings();
+
+        assertTrue(hasStandardBind(settings.getBinds(ControlAction.MOVE_UP), ControlBindType.GAMEPAD_BUTTON, GamepadControl.BUTTON_B, 1));
+        assertFalse(hasStandardBind(settings.getBinds(ControlAction.MOVE_UP), ControlBindType.GAMEPAD_AXIS, GamepadControl.AXIS_LEFT_Y, -1));
+        assertFalse(hasStandardBind(settings.getBinds(ControlAction.MOVE_UP), ControlBindType.GAMEPAD_BUTTON, GamepadControl.BUTTON_DPAD_UP, 1));
+    }
+
     private FileHandle settingsFile() {
         return new FileHandle(tempDir.resolve("settings.json").toFile());
     }

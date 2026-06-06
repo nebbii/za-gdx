@@ -16,6 +16,7 @@ public class MainMenuScreen extends MenuScreen {
     MenuButtonCreateSave menuButtonCreateSave;
     MenuButtonDeleteSave menuButtonDeleteSave;
     MenuButtonHowToPlay menuButtonHowToPlay;
+    MenuButtonSettings menuButtonSettings;
 
     protected ArrayList<MenuButtonSaveFile> menuButtonSaves;
 
@@ -35,6 +36,7 @@ public class MainMenuScreen extends MenuScreen {
         super.show();
 
         core.getControlInput().initialize();
+        this.font = new BitmapFont();
 
         menuButtonPlay = new MenuButtonPlay(core, this, 46, 71, 92, 29);
         menuButtons.add(menuButtonPlay);
@@ -42,6 +44,8 @@ public class MainMenuScreen extends MenuScreen {
         menuButtons.add(menuButtonCreateSave);
         menuButtonDeleteSave = new MenuButtonDeleteSave(this, 147, 37, 92, 29);
         menuButtons.add(menuButtonDeleteSave);
+        menuButtonSettings = new MenuButtonSettings(core, 147, 71, 92, 29);
+        menuButtons.add(menuButtonSettings);
         menuButtonExit = new MenuButtonExit(core, 290, 71, 55, 39);
         menuButtons.add(menuButtonExit);
         menuButtonHowToPlay = new MenuButtonHowToPlay(core, 251, 37, 92, 29);
@@ -50,9 +54,6 @@ public class MainMenuScreen extends MenuScreen {
         saveManager = new SaveManager();
 
         reloadSaves();
-
-        this.font = new BitmapFont();
-
         background = new Texture(Gdx.files.internal("dummy-main-menu.png"));
     }
 

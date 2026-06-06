@@ -55,11 +55,27 @@ public class SettingsManager {
     }
 
     public void setGamepadButtonBind(ControlAction action, int buttonCode) {
-        replaceBinds(action, ControlBindType.GAMEPAD_BUTTON, ControlBind.gamepadButton(action, buttonCode));
+        replaceGamepadBinds(action, ControlBind.gamepadButton(action, buttonCode));
+    }
+
+    public void setGamepadButtonBind(ControlAction action, GamepadControl gamepadControl) {
+        if (!gamepadControl.isButton()) {
+            throw new IllegalArgumentException(gamepadControl + " is not a gamepad button");
+        }
+
+        replaceGamepadBinds(action, ControlBind.standardGamepadButton(action, gamepadControl));
     }
 
     public void setGamepadAxisBind(ControlAction action, int axisCode, int direction) {
-        replaceBinds(action, ControlBindType.GAMEPAD_AXIS, ControlBind.gamepadAxis(action, axisCode, direction));
+        replaceGamepadBinds(action, ControlBind.gamepadAxis(action, axisCode, direction));
+    }
+
+    public void setGamepadAxisBind(ControlAction action, GamepadControl gamepadControl, int direction) {
+        if (!gamepadControl.isAxis()) {
+            throw new IllegalArgumentException(gamepadControl + " is not a gamepad axis");
+        }
+
+        replaceGamepadBinds(action, ControlBind.standardGamepadAxis(action, gamepadControl, direction));
     }
 
     public void resetDefaultBinds() {
@@ -190,6 +206,8 @@ public class SettingsManager {
     }
 
     private void replaceBinds(ControlAction action, ControlBindType type, ControlBind newBind) {
+        removeConflictingBinds(newBind);
+
         for (int i = controls.size() - 1; i >= 0; i--) {
             ControlBind bind = controls.get(i);
 
@@ -199,6 +217,60 @@ public class SettingsManager {
         }
 
         controls.add(newBind);
+    }
+
+    private void replaceGamepadBinds(ControlAction action, ControlBind newBind) {
+        removeConflictingBinds(newBind);
+
+        for (int i = controls.size() - 1; i >= 0; i--) {
+            ControlBind bind = controls.get(i);
+
+            if (bind.action == action && isGamepadBind(bind)) {
+                controls.remove(i);
+            }
+        }
+
+        controls.add(newBind);
+    }
+
+    private void removeConflictingBinds(ControlBind newBind) {
+        for (int i = controls.size() - 1; i >= 0; i--) {
+            ControlBind bind = controls.get(i);
+
+            if (bind.action != newBind.action && isSameInput(bind, newBind)) {
+                controls.remove(i);
+            }
+        }
+    }
+
+    private boolean isSameInput(ControlBind first, ControlBind second) {
+        if (first.type != second.type) {
+            return false;
+        }
+
+        if (first.type == ControlBindType.GAMEPAD_AXIS) {
+            return isSameGamepadControl(first, second) &&
+                first.code == second.code &&
+                first.getDirection() == second.getDirection();
+        }
+
+        if (isGamepadBind(first)) {
+            return isSameGamepadControl(first, second) && first.code == second.code;
+        }
+
+        return first.code == second.code;
+    }
+
+    private boolean isSameGamepadControl(ControlBind first, ControlBind second) {
+        if (first.gamepadControl != null && second.gamepadControl != null) {
+            return first.gamepadControl == second.gamepadControl;
+        }
+
+        return true;
+    }
+
+    private boolean isGamepadBind(ControlBind bind) {
+        return bind.type == ControlBindType.GAMEPAD_BUTTON || bind.type == ControlBindType.GAMEPAD_AXIS;
     }
 
     private ArrayList<ControlBind> createDefaultBinds() {

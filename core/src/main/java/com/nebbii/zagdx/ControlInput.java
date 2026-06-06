@@ -85,7 +85,7 @@ public class ControlInput {
         return bind.gamepadControl.resolve(controller.getMapping());
     }
 
-    private Controller getActiveController() {
+    public Controller getActiveController() {
         try {
             Controller current = Controllers.getCurrent();
 
