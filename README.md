@@ -25,9 +25,13 @@ You'll need to acquire a bin/cue or .CHD of the original game and place it in th
 ### Running the game
 
 On windows:
-- Open powershell and execute `./gradlew lwjgl3:run Pchdman=/path/to/your/chdman.exe` in the project folder
+- Open powershell and execute the following command in the project folder:
+  - `./gradlew lwjgl3:run Pchdman=/path/to/your/chdman.exe`
+- Note: After the initial setup, you can drop the chdman parameter!
+
 On Linux:
-- Open a terminal window and execute `./gradlew lwjgl3:run` in the project folder.
+- Open a terminal window and execute the following command in the project folder:
+  - `./gradlew lwjgl3:run`
 
 ### Running tests
 Execute `./gradlew core:test --info --rerun-tasks`
