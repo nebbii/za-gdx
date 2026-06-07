@@ -29,6 +29,7 @@ public class NpcBeggar extends Npc {
         super.logic();
         if (!isActive()) {
             line0.stop();
+            line2.stop();
             return;
         }
 
@@ -58,4 +59,9 @@ public class NpcBeggar extends Npc {
     public void draw(SpriteBatch batch) {
         batch.draw(animation.playCurrentAnimation(), animation.getX(), animation.getY());
     }
+
+    public Sound getLine2() {
+        return line2;
+    }
+
 }
