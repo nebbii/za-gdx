@@ -172,7 +172,7 @@ public class Zelda extends Rectangle implements Actor {
             case NONE:
                 break;
             case PITCHER_EMPTY:
-                SpawnerPickup spawnerPitcherFull = findActivePickupSpawner("PickupPitcherFull");
+                SpawnerPickup spawnerPitcherFull = map.findActivePickupSpawner("PickupPitcherFull");
 
                 if (spawnerPitcherFull != null) {
                     world.getGameManager().removeTreasure(Treasure.PITCHER_EMPTY, false);
@@ -181,7 +181,7 @@ public class Zelda extends Rectangle implements Actor {
                 }
                 break;
             case PITCHER_FULL:
-                SpawnerPickup spawnerVialOfWind = findActivePickupSpawner("PickupVialOfWind");
+                SpawnerPickup spawnerVialOfWind = map.findActivePickupSpawner("PickupVialOfWind");
 
                 if (spawnerVialOfWind != null) {
                     world.getGameManager().removeTreasure(Treasure.PITCHER_FULL, false);
@@ -202,10 +202,22 @@ public class Zelda extends Rectangle implements Actor {
                 world.getGameManager().initializeFadeWarp();
                 break;
             case RUBIES:
-                Pickup pickup = map.findOverlappingPurchasablePickup(getHitbox());
+                Pickup pickup = map.findOverlappingPurchasablePickup(this);
 
                 if (pickup != null) {
                     pickup.tryPickup(world.getGameManager());
+                }
+                else {
+                    SpawnerPickup spawnerFirestorm = map.findActivePickupSpawner("PickupFirestorm");
+
+                    if (spawnerFirestorm == null) {
+                        return;
+                    }
+
+                    if (world.getGameManager().getRubies() > 0) {
+                        world.getGameManager().decreaseRubies(1, false);
+                        spawnerFirestorm.activate();
+                    }
                 }
                 break;
             default:
@@ -259,16 +271,6 @@ public class Zelda extends Rectangle implements Actor {
         }
 
         map.addNewActor(new ZeldaActionWand(this, getX(), getY()));
-    }
-
-    private SpawnerPickup findActivePickupSpawner(String pickupType) {
-        for (SpawnerPickup spawner : map.findActiveActorsByType(SpawnerPickup.class)) {
-            if (pickupType.equals(spawner.getPickupType())) {
-                return spawner;
-            }
-        }
-
-        return null;
     }
 
     public void finishAction() {

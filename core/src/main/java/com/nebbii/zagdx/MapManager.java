@@ -14,6 +14,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
+import com.nebbii.zagdx.SpawnerPickup.Trigger;
 
 public class MapManager {
     private World world;
@@ -235,13 +236,13 @@ public class MapManager {
         return results;
     }
 
-    public Pickup findOverlappingPurchasablePickup(Rectangle hitbox) {
+    public Pickup findOverlappingPurchasablePickup(Actor overlapper) {
         for (Actor actor : actors) {
             if (!(actor instanceof Pickup) || !actor.isActive()) continue;
 
             Pickup pickup = (Pickup) actor;
 
-            if (pickup.isPurchasable() && pickup.getHitbox().overlaps(hitbox)) {
+            if (pickup.isPurchasable() && pickup.getHitbox().overlaps(overlapper.getHitbox())) {
                 return pickup;
             }
         }
@@ -486,6 +487,10 @@ public class MapManager {
             if (actor instanceof SpawnerPickup) {
                 SpawnerPickup spawner = (SpawnerPickup) actor;
                 spawner.setTrigger(entry.trigger);
+
+                if (spawner.getTrigger() == Trigger.MANUAL_NPC) {
+                    spawner.setState(State.PENDING);
+                }
             }
 
             if (actor instanceof Pickup) {

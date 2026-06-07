@@ -3,6 +3,7 @@ package com.nebbii.zagdx;
 public class SpawnerPickup extends Spawner {
     public enum Trigger {
         MANUAL,
+        MANUAL_NPC,
         NO_ENEMIES
     }
 
@@ -20,6 +21,7 @@ public class SpawnerPickup extends Spawner {
 
         switch (trigger) {
         case MANUAL:
+        case MANUAL_NPC:
             break;
         case NO_ENEMIES:
             if (!map.activeActorsContain(Enemy.class)) {
