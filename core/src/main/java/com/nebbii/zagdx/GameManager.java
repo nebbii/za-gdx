@@ -301,10 +301,12 @@ public class GameManager {
 
     public void increaseRubies(int count, boolean save) {
         setRubies(getRubies() + count, save);
+        reloadTreasures();
     }
 
     public void decreaseRubies(int count, boolean save) {
         setRubies(getRubies() - count, save);
+        reloadTreasures();
     }
 
     public void addTreasure(Treasure treasure, boolean save) {

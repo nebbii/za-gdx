@@ -472,6 +472,12 @@ public class MapManager {
                 break;
             }
 
+            // Check for NPCs that only vanish after a map reload
+            if (shouldActorBeDead(actor)) {
+                actor.setState(State.DEAD);
+                return actor;
+            }
+
             actor.getCollisionBox().setPosition(entry.x, entry.y);
             actor.setLocationEntry(locationEntry);
 
@@ -508,6 +514,18 @@ public class MapManager {
         catch (Exception e) {
             throw new RuntimeException("Failed to load actor: " + entry.type, e);
         }
+    }
+
+    private boolean shouldActorBeDead(Actor actor) {
+        if (actor instanceof NpcBeggar && getSaveManager().hasLocationEntry("j22_1")) {
+            return true;
+        }
+
+        if (actor instanceof NpcTalkingChest && getSaveManager().hasLocationEntry("s108_1")) {
+            return true;
+        }
+
+        return false;
     }
 
     private void configureKeesePath(EnemyKeese keese, ActorJsonEntry entry) {
