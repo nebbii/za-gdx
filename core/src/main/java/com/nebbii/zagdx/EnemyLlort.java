@@ -225,7 +225,9 @@ public class EnemyLlort extends Enemy {
 
     @Override
     public void onHit(int damage, float knockback) {
-        super.onHit(damage, knockback);
+        if (this.knockback > 0) return;
+        decreaseHealth(damage);
+        increaseKnockback(knockback);
         increaseInvincibility(knockback * 4);
     }
 
