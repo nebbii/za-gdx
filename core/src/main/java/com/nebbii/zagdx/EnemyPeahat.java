@@ -41,7 +41,7 @@ public class EnemyPeahat extends Enemy {
             setSpeed(60f);
             break;
         case FIGHT:
-            setSpeed(80f);
+            setSpeed(100f);
             throwProjectileIfReady();
             break;
         case STOP:
