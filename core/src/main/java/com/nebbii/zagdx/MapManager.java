@@ -249,10 +249,20 @@ public class MapManager {
         return null;
     }
 
+    public SpawnerPickup findActivePickupSpawner(String pickupType) {
+        for (SpawnerPickup spawner : findActiveActorsByType(SpawnerPickup.class)) {
+            if (pickupType.equals(spawner.getPickupType())) {
+                return spawner;
+            }
+        }
+
+        return null;
+    }
+
     public void freezeAllActors() {
         Gdx.app.log(getClass().getSimpleName(), "Freezing actors");
         for (Actor actor : actors) {
-            if (actor.getState() == State.IDLE) continue;
+            if (actor.getState() != State.ACTIVE) continue;
             Gdx.app.log(getClass().getSimpleName(), "Actor: " + actor.getClass() + " set to idle");
             actor.setState(State.IDLE);
         }
@@ -263,6 +273,7 @@ public class MapManager {
     public void freezeVisibleActors() {
         for (Actor actor : actors) {
             if (!isActorVisible(actor)) continue;
+            if (actor.getState() != State.ACTIVE) continue;
 
             actor.setState(State.IDLE);
         }
@@ -273,6 +284,7 @@ public class MapManager {
 
         for (Actor actor : actors) {
             if (!isActorVisible(actor)) continue;
+            if (actor.getState() != State.IDLE) continue;
 
             Gdx.app.log(getClass().getSimpleName(), "Actor: " + actor.getClass() + " set to active");
             actor.setState(State.ACTIVE);
