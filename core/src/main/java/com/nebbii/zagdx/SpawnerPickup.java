@@ -3,6 +3,7 @@ package com.nebbii.zagdx;
 public class SpawnerPickup extends Spawner {
     public enum Trigger {
         MANUAL,
+        MANUAL_NPC,
         NO_ENEMIES
     }
 
@@ -20,6 +21,7 @@ public class SpawnerPickup extends Spawner {
 
         switch (trigger) {
         case MANUAL:
+        case MANUAL_NPC:
             break;
         case NO_ENEMIES:
             if (!map.activeActorsContain(Enemy.class)) {
@@ -34,6 +36,14 @@ public class SpawnerPickup extends Spawner {
     @Override
     public void activate() {
         if (!isActive()) return;
+
+        if (getPickupType().equals("PickupFirestorm")) {
+            NpcBeggar npcBeggar = (NpcBeggar) map.findFirstActorByType(NpcBeggar.class);
+
+            if (npcBeggar != null) {
+                npcBeggar.getLine2().play();
+            }
+        }
 
         placePickupWithParent();
         setState(State.DEAD);

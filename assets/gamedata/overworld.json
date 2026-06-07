@@ -795,7 +795,7 @@
         {
           "type": "SpawnerPickup",
           "pickupType": "PickupFirestorm",
-          "trigger": "MANUAL",
+          "trigger": "MANUAL_NPC",
           "x": 3595,
           "y": 2436
         }

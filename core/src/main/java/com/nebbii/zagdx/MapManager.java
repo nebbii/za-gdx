@@ -14,6 +14,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
+import com.nebbii.zagdx.SpawnerPickup.Trigger;
 
 public class MapManager {
     private World world;
@@ -235,14 +236,24 @@ public class MapManager {
         return results;
     }
 
-    public Pickup findOverlappingPurchasablePickup(Rectangle hitbox) {
+    public Pickup findOverlappingPurchasablePickup(Actor overlapper) {
         for (Actor actor : actors) {
             if (!(actor instanceof Pickup) || !actor.isActive()) continue;
 
             Pickup pickup = (Pickup) actor;
 
-            if (pickup.isPurchasable() && pickup.getHitbox().overlaps(hitbox)) {
+            if (pickup.isPurchasable() && pickup.getHitbox().overlaps(overlapper.getHitbox())) {
                 return pickup;
+            }
+        }
+
+        return null;
+    }
+
+    public SpawnerPickup findActivePickupSpawner(String pickupType) {
+        for (SpawnerPickup spawner : findActiveActorsByType(SpawnerPickup.class)) {
+            if (pickupType.equals(spawner.getPickupType())) {
+                return spawner;
             }
         }
 
@@ -252,7 +263,7 @@ public class MapManager {
     public void freezeAllActors() {
         Gdx.app.log(getClass().getSimpleName(), "Freezing actors");
         for (Actor actor : actors) {
-            if (actor.getState() == State.IDLE) continue;
+            if (actor.getState() != State.ACTIVE) continue;
             Gdx.app.log(getClass().getSimpleName(), "Actor: " + actor.getClass() + " set to idle");
             actor.setState(State.IDLE);
         }
@@ -263,6 +274,7 @@ public class MapManager {
     public void freezeVisibleActors() {
         for (Actor actor : actors) {
             if (!isActorVisible(actor)) continue;
+            if (actor.getState() != State.ACTIVE) continue;
 
             actor.setState(State.IDLE);
         }
@@ -273,6 +285,7 @@ public class MapManager {
 
         for (Actor actor : actors) {
             if (!isActorVisible(actor)) continue;
+            if (actor.getState() != State.IDLE) continue;
 
             Gdx.app.log(getClass().getSimpleName(), "Actor: " + actor.getClass() + " set to active");
             actor.setState(State.ACTIVE);
@@ -474,6 +487,10 @@ public class MapManager {
             if (actor instanceof SpawnerPickup) {
                 SpawnerPickup spawner = (SpawnerPickup) actor;
                 spawner.setTrigger(entry.trigger);
+
+                if (spawner.getTrigger() == Trigger.MANUAL_NPC) {
+                    spawner.setState(State.PENDING);
+                }
             }
 
             if (actor instanceof Pickup) {

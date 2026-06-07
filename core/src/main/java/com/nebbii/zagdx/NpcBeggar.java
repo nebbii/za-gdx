@@ -29,6 +29,7 @@ public class NpcBeggar extends Npc {
         super.logic();
         if (!isActive()) {
             line0.stop();
+            line2.stop();
             return;
         }
 
@@ -38,16 +39,14 @@ public class NpcBeggar extends Npc {
                 setNpcState(NpcState.TALKING);
                 break;
             case TALKING:
-                /*
                 timer += Gdx.graphics.getDeltaTime();
-                if (timer > 6f) {
-                    for (Spawner spawner : map.findActiveActorsByType(Spawner.class)) {
-                        spawner.activate();
+                if (timer > 13f) {
+                    for (Spawner spawner : map.findAllActorsByType(Spawner.class)) {
+                        spawner.setState(State.ACTIVE);
                     }
 
                     setNpcState(NpcState.DONE);
                 }
-                */
                 break;
             case DONE:
                 break;
@@ -60,4 +59,9 @@ public class NpcBeggar extends Npc {
     public void draw(SpriteBatch batch) {
         batch.draw(animation.playCurrentAnimation(), animation.getX(), animation.getY());
     }
+
+    public Sound getLine2() {
+        return line2;
+    }
+
 }
