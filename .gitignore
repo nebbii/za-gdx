@@ -163,6 +163,7 @@ Thumbs.db
 *.dat
 /assets/archipelago/config.json
 /assets/settings.json
+/releases
 
 ## Special cases:
 
