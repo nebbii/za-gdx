@@ -29,11 +29,6 @@ public class GameScreen implements Screen {
     public void render(float delta) {
         ScreenUtils.clear(0f, 0f, 0f, 1f);
 
-        // for transparency
-        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
-            Gdx.app.exit();
-        }
-
         world.logic();
         world.draw();
     }

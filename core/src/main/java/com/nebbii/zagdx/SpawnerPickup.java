@@ -45,6 +45,14 @@ public class SpawnerPickup extends Spawner {
             }
         }
 
+        if (getPickupType().equals("PickupVialOfWind")) {
+            NpcGlebb npcGlebb = (NpcGlebb) map.findFirstActorByType(NpcGlebb.class);
+
+            if (npcGlebb != null) {
+                npcGlebb.getLine2().play();
+            }
+        }
+
         placePickupWithParent();
         setState(State.DEAD);
     }

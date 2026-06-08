@@ -338,4 +338,8 @@ public class Pickup extends Rectangle implements Actor {
     public void setSpawnerParent(Spawner spawnerParent) {
         this.spawnerParent = spawnerParent;
     }
+
+    public float getDuration() {
+        return duration;
+    }
 }
