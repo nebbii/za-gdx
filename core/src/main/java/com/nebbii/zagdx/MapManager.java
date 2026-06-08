@@ -485,14 +485,10 @@ public class MapManager {
                 configureKeesePath((EnemyKeese) actor, entry);
             }
 
-            if (actor instanceof Spawner) {
-                Spawner spawner = (Spawner) actor;
-                spawner.setPickupType(entry.pickupType);
-            }
-
             if (actor instanceof SpawnerPickup) {
                 SpawnerPickup spawner = (SpawnerPickup) actor;
                 spawner.setTrigger(entry.trigger);
+                spawner.setPickupType(entry.pickupType);
 
                 if (spawner.getTrigger() == Trigger.MANUAL_NPC) {
                     spawner.setState(State.PENDING);
@@ -522,6 +518,10 @@ public class MapManager {
         }
 
         if (actor instanceof NpcTalkingChest && getSaveManager().hasLocationEntry("s108_1")) {
+            return true;
+        }
+
+        if (actor instanceof NpcGlebb && getSaveManager().hasLocationEntry("j24_2")) {
             return true;
         }
 

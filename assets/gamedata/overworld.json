@@ -849,7 +849,7 @@
         {
           "type": "SpawnerPickup",
           "pickupType": "PickupVialOfWind",
-          "trigger": "MANUAL",
+          "trigger": "MANUAL_NPC",
           "x": 3672,
           "y": 2075
         }

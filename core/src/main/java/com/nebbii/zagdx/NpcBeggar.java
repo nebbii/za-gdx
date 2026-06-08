@@ -8,9 +8,9 @@ import com.nebbii.zagdx.animation.NpcBeggarAnimation;
 public class NpcBeggar extends Npc {
     public NpcBeggarAnimation animation;
 
+    private float timer;
     private Sound line0;
     private Sound line2;
-    private float timer;
 
     public NpcBeggar() {
         super(ActorType.FRIENDLY, false);
