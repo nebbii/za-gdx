@@ -27,6 +27,7 @@ rm -f "$SOURCE_ZIP_PATH"
 rsync -a \
   --filter=':- .gitignore' \
   --exclude='.codex/' \
+  --exclude='.agents/' \
   --exclude='.skills/' \
   --exclude='assets/export/' \
   --exclude='lwjgl3/bin/' \
