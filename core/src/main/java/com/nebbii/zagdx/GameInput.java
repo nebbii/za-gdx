@@ -81,7 +81,7 @@ public class GameInput {
     }
 
     public void handleDebug(Zelda zelda) {
-        if (Gdx.input.isKeyJustPressed(Keys.SPACE)) {
+        if (Gdx.input.isKeyJustPressed(Keys.F2)) {
             int next = (world.getMapManager().getCurrentLayerToggle().ordinal() + 1) % LayerToggle.values().length;
             world.getMapManager().setCurrentLayerToggle(LayerToggle.values()[next]);
         }

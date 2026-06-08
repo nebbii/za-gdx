@@ -132,11 +132,6 @@ public class ControlBindingScreen extends MenuScreen {
     }
 
     private void handleCapture() {
-        if (Gdx.input.isKeyJustPressed(Keys.ESCAPE)) {
-            finishCapture();
-            return;
-        }
-
         if (captureMode == CaptureMode.KEYBOARD) {
             handleKeyboardCapture();
         }
@@ -147,10 +142,6 @@ public class ControlBindingScreen extends MenuScreen {
 
     private void handleKeyboardCapture() {
         for (int keyCode = 1; keyCode <= Keys.MAX_KEYCODE; keyCode++) {
-            if (keyCode == Keys.ESCAPE) {
-                continue;
-            }
-
             if (Gdx.input.isKeyJustPressed(keyCode)) {
                 core.getSettingsManager().setKeyboardBind(captureAction, keyCode);
                 core.getSettingsManager().saveSettings();
