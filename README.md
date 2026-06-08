@@ -9,11 +9,12 @@ A port of ZA (originally for the CD-i) written in Java with [libGDX](https://lib
 #### ...for the initial setup
 - [git](https://git-scm.com/) (for loading the submodule)
 - [chdman](https://onionui.github.io/docs/advanced/chdman) (if using bin/cue)
+  - On Windows: Download and extract from the link above and pass the exe
+  - On Linux: Install `mame-tools` using your package manager of choice
 - [python3](https://www.python.org/), with the following dependencies:
   - tqdm
   - pillow
-
-You can do the initial run in [venv](https://docs.python.org/3/library/venv.html) to avoid installing dependencies directly on your machine.
+  - Note: You can do the initial run in [venv](https://docs.python.org/3/library/venv.html) to avoid installing dependencies directly on your machine.
 ### Providing an asset source
 You'll need to acquire a bin/cue or .CHD of the original game and place it in the project directory.
 ```
