@@ -14,10 +14,17 @@ public class PickupHeart extends Pickup {
 
     public void logic() {
         super.logic();
+
+        if (getDuration() > 6) {
+            map.addNewActor(new SpriteSparkle(getCenterPointX(), getCenterPointY()));
+            setState(State.DEAD);
+        }
     }
 
     public void draw(SpriteBatch batch) {
-        super.draw(batch);
+        if (!(getDuration() > 5 && getDuration() % 0.16f > 0.08f)) {
+            super.draw(batch);
+        }
     }
 
     public void onPickup(GameManager game) {
