@@ -12,9 +12,6 @@ import com.nebbii.zagdx.animation.EnemyKeeseAnimation;
 public class EnemyKeese extends Enemy {
     public EnemyKeeseAnimation animation;
 
-    private static final float MIN_GOAL_RANGE = 60f;
-    private static final float MAX_GOAL_RANGE = 130f;
-
     private enum PathMode {
         NONE,
         SET,
@@ -32,6 +29,7 @@ public class EnemyKeese extends Enemy {
     private int currentPathIndex;
     private boolean returningToLastPassedPoint;
     private float randomGoalHold;
+    private float pathGoalWait;
 
     public EnemyKeese() {
         super(ActorType.ENEMY, false);
@@ -82,7 +80,7 @@ public class EnemyKeese extends Enemy {
                 returningToLastPassedPoint = false;
 
                 if (pathStarted) {
-                    handleReachedPathGoal();
+                    handleReachedPathGoal(false);
                 }
             }
             return;
@@ -94,6 +92,11 @@ public class EnemyKeese extends Enemy {
         }
 
         setEnemyState(EnemyState.FIGHT);
+
+        if (pathGoalWait > 0f) {
+            pathGoalWait = Math.max(0f, pathGoalWait - delta);
+            return;
+        }
 
         if (pathMode == PathMode.RANDOM && randomGoalHold > 0f) {
             randomGoalHold = Math.max(0f, randomGoalHold - delta);
@@ -150,6 +153,7 @@ public class EnemyKeese extends Enemy {
         if (hasConfiguredPathMovement() && hurtWeakness && getHealth() > 0) {
             returningToLastPassedPoint = true;
             randomGoalHold = 0f;
+            pathGoalWait = 0f;
             goalX = lastPassedX;
             goalY = lastPassedY;
         }
@@ -165,6 +169,7 @@ public class EnemyKeese extends Enemy {
                 ActorPathPointJsonEntry pathPoint = new ActorPathPointJsonEntry();
                 pathPoint.x = sourcePoint.x;
                 pathPoint.y = sourcePoint.y;
+                pathPoint.command = sourcePoint.command;
                 path.add(pathPoint);
             }
         }
@@ -207,26 +212,6 @@ public class EnemyKeese extends Enemy {
         chooseNextPathGoal();
     }
 
-    public boolean isPathStarted() {
-        return pathStarted;
-    }
-
-    public float getLastPassedX() {
-        return lastPassedX;
-    }
-
-    public float getLastPassedY() {
-        return lastPassedY;
-    }
-
-    public float getGoalX() {
-        return goalX;
-    }
-
-    public float getGoalY() {
-        return goalY;
-    }
-
     private void chooseNextPathGoal() {
         switch(pathMode) {
             case SET:
@@ -248,13 +233,21 @@ public class EnemyKeese extends Enemy {
         goalY = lastPassedY + pathPoint.y;
     }
 
+    private void applySetPathCommand(ActorPathPointJsonEntry pathPoint) {
+        if (pathPoint.command == null) return;
+
+        if (pathPoint.command.trim().startsWith("stopMovement")) {
+            pathGoalWait = MathUtils.random(0f, 5f);
+        }
+    }
+
     private void chooseNextRandomPathGoal() {
         randomGoalHold = 0f;
 
         for (int i = 0; i < 100; i++) {
             float goalDistance = MathUtils.random(
-                Math.min(MIN_GOAL_RANGE, MAX_GOAL_RANGE),
-                MAX_GOAL_RANGE
+                Math.min(60f, 130f),
+                130f
             );
             float goalAngle = MathUtils.random(MathUtils.PI2);
             float attemptedGoalX = getX() + MathUtils.cos(goalAngle) * goalDistance;
@@ -268,8 +261,8 @@ public class EnemyKeese extends Enemy {
         }
 
         float goalDistance = MathUtils.random(
-            Math.min(MIN_GOAL_RANGE, MAX_GOAL_RANGE),
-            MAX_GOAL_RANGE
+            Math.min(60f, 130f),
+            130f
         );
         float goalAngle = MathUtils.random(MathUtils.PI2);
 
@@ -301,12 +294,19 @@ public class EnemyKeese extends Enemy {
     }
 
     private void handleReachedPathGoal() {
+        handleReachedPathGoal(true);
+    }
+
+    private void handleReachedPathGoal(boolean applyCurrentPathCommand) {
         if (pathMode == PathMode.RANDOM) {
             randomGoalHold = 0.3f;
             return;
         }
 
         if (pathMode == PathMode.SET) {
+            if (applyCurrentPathCommand) {
+                applySetPathCommand(path.get(currentPathIndex));
+            }
             currentPathIndex = (currentPathIndex + 1) % path.size();
         }
 
@@ -350,6 +350,28 @@ public class EnemyKeese extends Enemy {
         currentPathIndex = 0;
         returningToLastPassedPoint = false;
         randomGoalHold = 0f;
+        pathGoalWait = 0f;
         setEnemyState(EnemyState.SEARCH);
     }
+
+    public boolean isPathStarted() {
+        return pathStarted;
+    }
+
+    public float getLastPassedX() {
+        return lastPassedX;
+    }
+
+    public float getLastPassedY() {
+        return lastPassedY;
+    }
+
+    public float getGoalX() {
+        return goalX;
+    }
+
+    public float getGoalY() {
+        return goalY;
+    }
+
 }
