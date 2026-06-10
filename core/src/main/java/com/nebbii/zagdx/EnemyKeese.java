@@ -12,26 +12,19 @@ import com.nebbii.zagdx.animation.EnemyKeeseAnimation;
 public class EnemyKeese extends Enemy {
     public EnemyKeeseAnimation animation;
 
-    private static final float MIN_GOAL_RANGE = 60f;
-    private static final float MAX_GOAL_RANGE = 130f;
-
-    private enum PathMode {
-        NONE,
-        SET,
-        RANDOM
-    }
+    private enum PathMode { NONE, SET, RANDOM }
 
     private PathMode pathMode = PathMode.NONE;
     private final ArrayList<ActorPathPointJsonEntry> path = new ArrayList<>();
 
-    private boolean pathStarted;
-    private float lastPassedX;
-    private float lastPassedY;
+    private float anchorX;
+    private float anchorY;
     private float goalX;
     private float goalY;
+
     private int currentPathIndex;
-    private boolean returningToLastPassedPoint;
-    private float randomGoalHold;
+    private boolean returningToAnchor;
+    private float goalHold;
 
     public EnemyKeese() {
         super(ActorType.ENEMY, false);
@@ -43,9 +36,8 @@ public class EnemyKeese extends Enemy {
         setSpeed(100f);
 
         this.animation = new EnemyKeeseAnimation(this);
-
         this.enemyState = EnemyState.SEARCH;
-        resetPathStateToCurrentPosition();
+        resetToCurrentPosition();
     }
 
     @Override
@@ -59,12 +51,10 @@ public class EnemyKeese extends Enemy {
 
         float delta = Gdx.graphics.getDeltaTime();
         knockback = Math.max(0f, knockback - delta);
-        invincibility = Math.max(0f, invincibility - Gdx.graphics.getDeltaTime());
+        invincibility = Math.max(0f, invincibility - delta);
 
         if (knockback > 0) {
-            if (hurtWeakness && health > 0) {
-                movePushback();
-            }
+            if (hurtWeakness && health > 0) movePushback();
             return;
         }
 
@@ -73,42 +63,26 @@ public class EnemyKeese extends Enemy {
             return;
         }
 
-        if (returningToLastPassedPoint) {
-            setEnemyState(EnemyState.FIGHT);
-            goalX = lastPassedX;
-            goalY = lastPassedY;
-
-            if (moveTowardGoal(delta)) {
-                returningToLastPassedPoint = false;
-
-                if (pathStarted) {
-                    handleReachedPathGoal();
-                }
-            }
-            return;
+        if (goalX == getX() && goalY == getY() && goalHold <= 0f && !returningToAnchor) {
+            anchorX = getX();
+            anchorY = getY();
+            chooseNextGoal();
         }
 
-        if (!pathStarted) {
-            setEnemyState(EnemyState.SEARCH);
-            return;
-        }
-
-        setEnemyState(EnemyState.FIGHT);
-
-        if (pathMode == PathMode.RANDOM && randomGoalHold > 0f) {
-            randomGoalHold = Math.max(0f, randomGoalHold - delta);
-
-            if (randomGoalHold <= 0f) {
-                chooseNextPathGoal();
-            }
+        if (goalHold > 0f) {
+            goalHold = Math.max(0f, goalHold - delta);
+            if (goalHold <= 0f) chooseNextGoal();
             return;
         }
 
         if (moveTowardGoal(delta)) {
-            lastPassedX = getX();
-            lastPassedY = getY();
+            anchorX = getX();
+            anchorY = getY();
 
-            handleReachedPathGoal();
+            if (returningToAnchor) {
+                returningToAnchor = false;
+            }
+            handleReachedGoal();
         }
     }
 
@@ -125,14 +99,7 @@ public class EnemyKeese extends Enemy {
     @Override
     public void draw(SpriteBatch batch) {
         if (knockback > 0) drawFlashOverlay(batch, hurtWeakness);
-
-        if (hasConfiguredPathMovement() && !pathStarted) {
-            batch.draw(animation.playFirstFrame(), animation.getX(), animation.getY());
-        }
-        else {
-            batch.draw(animation.playCurrentAnimation(), animation.getX(), animation.getY());
-        }
-
+        batch.draw(animation.playCurrentAnimation(), animation.getX(), animation.getY());
         if (knockback > 0) endDrawFlashOverlay(batch);
     }
 
@@ -148,10 +115,10 @@ public class EnemyKeese extends Enemy {
         super.onHit(damage, knockback);
 
         if (hasConfiguredPathMovement() && hurtWeakness && getHealth() > 0) {
-            returningToLastPassedPoint = true;
-            randomGoalHold = 0f;
-            goalX = lastPassedX;
-            goalY = lastPassedY;
+            returningToAnchor = true;
+            goalHold = 0f;
+            goalX = anchorX;
+            goalY = anchorY;
         }
     }
 
@@ -159,197 +126,136 @@ public class EnemyKeese extends Enemy {
         path.clear();
 
         if (relativePath != null) {
-            for (ActorPathPointJsonEntry sourcePoint : relativePath) {
-                if (sourcePoint == null) continue;
-
-                ActorPathPointJsonEntry pathPoint = new ActorPathPointJsonEntry();
-                pathPoint.x = sourcePoint.x;
-                pathPoint.y = sourcePoint.y;
-                path.add(pathPoint);
+            for (ActorPathPointJsonEntry src : relativePath) {
+                if (src == null) continue;
+                ActorPathPointJsonEntry p = new ActorPathPointJsonEntry();
+                p.x = src.x;
+                p.y = src.y;
+                p.command = src.command;
+                path.add(p);
             }
         }
 
-        if (path.isEmpty()) {
-            pathMode = PathMode.NONE;
-        }
-        else {
-            pathMode = PathMode.SET;
-        }
-
-        resetPathStateToCurrentPosition();
+        pathMode = path.isEmpty() ? PathMode.NONE : PathMode.SET;
+        resetToCurrentPosition();
     }
 
     public void enableRandomPathMode() {
         path.clear();
         pathMode = PathMode.RANDOM;
-        resetPathStateToCurrentPosition();
+        resetToCurrentPosition();
     }
 
     public boolean hasConfiguredPathMovement() {
         return pathMode != PathMode.NONE;
     }
 
-    public void startPathIfNeeded() {
-        if (!hasConfiguredPathMovement() || pathStarted) return;
-
-        pathStarted = true;
-        setEnemyState(EnemyState.FIGHT);
-
-        if (returningToLastPassedPoint || knockback > 0) {
-            randomGoalHold = 0f;
-            goalX = lastPassedX;
-            goalY = lastPassedY;
-            return;
-        }
-
-        lastPassedX = getX();
-        lastPassedY = getY();
-        chooseNextPathGoal();
-    }
-
-    public boolean isPathStarted() {
-        return pathStarted;
-    }
-
-    public float getLastPassedX() {
-        return lastPassedX;
-    }
-
-    public float getLastPassedY() {
-        return lastPassedY;
-    }
-
-    public float getGoalX() {
-        return goalX;
-    }
-
-    public float getGoalY() {
-        return goalY;
-    }
-
-    private void chooseNextPathGoal() {
-        switch(pathMode) {
-            case SET:
-                chooseNextSetPathGoal();
-                break;
-            case RANDOM:
-                chooseNextRandomPathGoal();
-                break;
-            default:
-                break;
+    private void chooseNextGoal() {
+        switch (pathMode) {
+            case SET:    chooseNextSetGoal();    break;
+            case RANDOM: chooseNextRandomGoal(); break;
+            default:                             break;
         }
     }
 
-    private void chooseNextSetPathGoal() {
+    private void chooseNextSetGoal() {
         if (path.isEmpty()) return;
 
-        ActorPathPointJsonEntry pathPoint = path.get(currentPathIndex);
-        goalX = lastPassedX + pathPoint.x;
-        goalY = lastPassedY + pathPoint.y;
+        ActorPathPointJsonEntry p = path.get(currentPathIndex);
+        goalX = anchorX + p.x;
+        goalY = anchorY + p.y;
     }
 
-    private void chooseNextRandomPathGoal() {
-        randomGoalHold = 0f;
-
+    private void chooseNextRandomGoal() {
         for (int i = 0; i < 100; i++) {
-            float goalDistance = MathUtils.random(
-                Math.min(MIN_GOAL_RANGE, MAX_GOAL_RANGE),
-                MAX_GOAL_RANGE
-            );
-            float goalAngle = MathUtils.random(MathUtils.PI2);
-            float attemptedGoalX = getX() + MathUtils.cos(goalAngle) * goalDistance;
-            float attemptedGoalY = getY() + MathUtils.sin(goalAngle) * goalDistance;
+            float dist = MathUtils.random(60f, 130f);
+            float angle = MathUtils.random(MathUtils.PI2);
+            float tx = getX() + MathUtils.cos(angle) * dist;
+            float ty = getY() + MathUtils.sin(angle) * dist;
 
-            if (isGoalWithinScreen(attemptedGoalX, attemptedGoalY)) {
-                goalX = attemptedGoalX;
-                goalY = attemptedGoalY;
+            if (isGoalWithinScreen(tx, ty)) {
+                goalX = tx;
+                goalY = ty;
                 return;
             }
         }
 
-        float goalDistance = MathUtils.random(
-            Math.min(MIN_GOAL_RANGE, MAX_GOAL_RANGE),
-            MAX_GOAL_RANGE
-        );
-        float goalAngle = MathUtils.random(MathUtils.PI2);
-
-        goalX = clampRandomGoalXToScreen(getX() + MathUtils.cos(goalAngle) * goalDistance);
-        goalY = clampRandomGoalYToScreen(getY() + MathUtils.sin(goalAngle) * goalDistance);
+        float dist = MathUtils.random(60f, 130f);
+        float angle = MathUtils.random(MathUtils.PI2);
+        goalX = clampGoalX(getX() + MathUtils.cos(angle) * dist);
+        goalY = clampGoalY(getY() + MathUtils.sin(angle) * dist);
     }
 
-    private boolean isGoalWithinScreen(float attemptedGoalX, float attemptedGoalY) {
-        return attemptedGoalX >= World.getScreenLeft(getCenterPointX())
-            && attemptedGoalX + getWidth() <= World.getScreenRight(getCenterPointX())
-            && attemptedGoalY >= World.getScreenBottom(getCenterPointY())
-            && attemptedGoalY + getHeight() <= World.getScreenTop(getCenterPointY());
+    private boolean isGoalWithinScreen(float x, float y) {
+        return x >= World.getScreenLeft(getCenterPointX())
+            && x + getWidth() <= World.getScreenRight(getCenterPointX())
+            && y >= World.getScreenBottom(getCenterPointY())
+            && y + getHeight() <= World.getScreenTop(getCenterPointY());
     }
 
-    private float clampRandomGoalXToScreen(float attemptedGoalX) {
-        return MathUtils.clamp(
-            attemptedGoalX,
+    private float clampGoalX(float x) {
+        return MathUtils.clamp(x,
             World.getScreenLeft(getCenterPointX()),
-            World.getScreenRight(getCenterPointX()) - getWidth()
-        );
+            World.getScreenRight(getCenterPointX()) - getWidth());
     }
 
-    private float clampRandomGoalYToScreen(float attemptedGoalY) {
-        return MathUtils.clamp(
-            attemptedGoalY,
+    private float clampGoalY(float y) {
+        return MathUtils.clamp(y,
             World.getScreenBottom(getCenterPointY()),
-            World.getScreenTop(getCenterPointY()) - getHeight()
-        );
+            World.getScreenTop(getCenterPointY()) - getHeight());
     }
 
-    private void handleReachedPathGoal() {
+    private void handleReachedGoal() {
         if (pathMode == PathMode.RANDOM) {
-            randomGoalHold = 0.3f;
+            goalHold = 0.3f;
             return;
         }
 
         if (pathMode == PathMode.SET) {
+            applySetPathCommand(path.get(currentPathIndex));
             currentPathIndex = (currentPathIndex + 1) % path.size();
+            if (goalHold <= 0f) chooseNextSetGoal();
         }
+    }
 
-        chooseNextPathGoal();
+    private void applySetPathCommand(ActorPathPointJsonEntry p) {
+        if (p.command != null && p.command.trim().startsWith("stopMovement")) {
+            goalHold = MathUtils.random(0f, 5f);
+        }
     }
 
     private boolean moveTowardGoal(float delta) {
         float dx = goalX - getX();
         float dy = goalY - getY();
-        float distance = (float)Math.sqrt(dx * dx + dy * dy);
+        float distance = (float) Math.sqrt(dx * dx + dy * dy);
 
-        if (distance <= 0.001f || distance <= speed * delta) {
+        if (distance <= speed * delta) {
             setX(goalX);
             setY(goalY);
             return true;
         }
 
-        updateDirectionTowardGoal(dx, dy);
+        if (Math.abs(dx) > Math.abs(dy)) {
+            setDirection(dx < 0 ? Direction.LEFT : Direction.RIGHT);
+        } else {
+            setDirection(dy < 0 ? Direction.DOWN : Direction.UP);
+        }
 
         setX(getX() + dx / distance * speed * delta);
         setY(getY() + dy / distance * speed * delta);
-
         return false;
     }
 
-    private void updateDirectionTowardGoal(float dx, float dy) {
-        if (Math.abs(dx) > Math.abs(dy)) {
-            setDirection(dx < 0 ? Direction.LEFT : Direction.RIGHT);
-        }
-        else {
-            setDirection(dy < 0 ? Direction.DOWN : Direction.UP);
-        }
-    }
-
-    private void resetPathStateToCurrentPosition() {
-        pathStarted = false;
-        lastPassedX = getX();
-        lastPassedY = getY();
+    private void resetToCurrentPosition() {
+        anchorX = getX();
+        anchorY = getY();
         goalX = getX();
         goalY = getY();
         currentPathIndex = 0;
-        returningToLastPassedPoint = false;
-        randomGoalHold = 0f;
-        setEnemyState(EnemyState.SEARCH);
+        returningToAnchor = false;
+        goalHold = 0f;
     }
+
+    public float getGoalX() { return goalX; }
+    public float getGoalY() { return goalY; }
 }
