@@ -8,6 +8,7 @@ public class SpriteLlortLaser extends Sprite {
 
     public SpriteLlortLaser() {
         super(ActorType.FRIENDLY, false);
+        setDamage(50);
         setWidth(103);
         setHeight(17);
 
@@ -32,5 +33,9 @@ public class SpriteLlortLaser extends Sprite {
     @Override
     public void draw(SpriteBatch batch) {
         batch.draw(animation.playCurrentAnimation(), animation.getX(), animation.getY());
+    }
+
+    public Direction getDirection() {
+        return Direction.DOWN;
     }
 }

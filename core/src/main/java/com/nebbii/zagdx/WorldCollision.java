@@ -39,6 +39,7 @@ public class WorldCollision {
         collideZeldaWithEnemies();
         collideZeldaWithEnemyProjectiles();
         collideZeldaWithPickups();
+        collideZeldaWithSprites();
         checkOverlapAlertBoxes();
         collideEnemiesWithWorldBorders();
     }
@@ -51,10 +52,33 @@ public class WorldCollision {
 
             Pickup pickupActor = (Pickup) pickup;
             boolean overlapsZelda = pickup.getHitbox().overlaps(zeldaHitbox);
-            pickupActor.setOverlappingZelda(overlapsZelda);
 
             if (overlapsZelda && !pickupActor.isPurchasable()) {
                 pickupActor.tryPickup(game);
+            }
+        }
+    }
+
+    private void collideZeldaWithSprites() {
+        Zelda zelda = map.getZelda();
+
+        for (Actor sprite : actors) {
+            if (!(sprite instanceof Sprite) || !sprite.isActive()) continue;
+
+            boolean overlapsZelda = sprite.getHitbox().overlaps(zelda.getHitbox());
+
+            if (overlapsZelda) {
+                Sprite spriteActor = (Sprite) sprite;
+
+                switch (spriteActor.getClass().getSimpleName()) {
+                case "SpriteLlortLaser":
+                    int damage = game.calculateDamage(spriteActor, zelda);
+                    float knockback = game.calculateZeldaKnockback(spriteActor, zelda);
+                    zelda.setHurtDirection(spriteActor.getDirection());
+                    zelda.onHit(damage, knockback);
+                    break;
+                default:
+                }
             }
         }
     }
