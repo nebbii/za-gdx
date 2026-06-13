@@ -36,6 +36,7 @@ public class WorldCollision {
         collideProjectilesWithEnemies();
         collideProjectilesWithCollision();
         collideActorsWithCollision();
+        collideZeldaWithNpcs();
         collideZeldaWithEnemies();
         collideZeldaWithEnemyProjectiles();
         collideZeldaWithPickups();
@@ -91,6 +92,20 @@ public class WorldCollision {
                 zelda.setHurtDirection(projectile.getDirection());
                 zelda.onHit(damage, knockback);
                 projectile.onHit();
+            }
+        }
+    }
+
+    private void collideZeldaWithNpcs() {
+        Zelda zelda = map.getZelda();
+
+        for (Actor actor : actors) {
+            if (!(actor instanceof Npc) || !actor.isActive()) continue;
+
+            Npc npc = (Npc) actor;
+
+            if (npc.getHitbox().overlaps(zelda.getHitbox())) {
+                npc.onOverlap();
             }
         }
     }

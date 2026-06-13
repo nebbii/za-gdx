@@ -49,6 +49,12 @@ public class Npc extends Rectangle implements Actor {
     public void draw(SpriteBatch batch) {
     }
 
+    public void onOverlap() {
+        if (map.areAnyNpcsTalking()) {
+            return;
+        }
+    }
+
     @Override
     public int getDrawOrder() {
         return drawOrder;

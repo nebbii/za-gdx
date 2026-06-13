@@ -14,6 +14,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
+import com.nebbii.zagdx.Npc.NpcState;
 import com.nebbii.zagdx.SpawnerPickup.Trigger;
 
 public class MapManager {
@@ -234,6 +235,20 @@ public class MapManager {
         }
 
         return results;
+    }
+
+
+    public boolean areAnyNpcsTalking() {
+        for (Actor actor : actors) {
+            if (actor instanceof Npc && actor.isActive()) {
+                Npc npc = (Npc) actor;
+                if (npc.getNpcState() == NpcState.TALKING) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     public Pickup findOverlappingPurchasablePickup(Actor overlapper) {
