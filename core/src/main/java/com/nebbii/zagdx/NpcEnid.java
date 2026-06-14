@@ -59,8 +59,8 @@ public class NpcEnid extends Npc {
 
         line1.play();
         map.getZelda().decreaseHealth(20);
-        map.getWorld().getSaveManager().addLocationEntry("h29_0", "permadead");
-        map.getWorld().getSaveManager().addLocationEntry("h29_1", "permadead");
+        map.getSaveManager().addLocationEntry("h29_0", "permadead");
+        map.getSaveManager().addLocationEntry("h29_1", "permadead");
     }
 
     @Override

@@ -607,9 +607,4 @@ public class MapManager {
     public void setMapHeight(int mapHeight) {
         this.mapHeight = mapHeight;
     }
-
-    // Mainly intended for incidental access by actors like Enid that alter game state
-    public World getWorld() {
-        return world;
-    }
 }

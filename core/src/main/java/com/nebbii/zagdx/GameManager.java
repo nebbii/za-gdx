@@ -219,6 +219,12 @@ public class GameManager {
 
         for(SavedLocationEntry locationEntry : saveManager.getLocations()) {
             switch(locationEntry.action) {
+            case "interacted":
+                Npc npc = (Npc) mapManager.findActorByLocationEntry(locationEntry.id);
+                if (npc != null && npc instanceof Npc) {
+                    npc.setInteracted(true);
+                }
+                break;
             case "picked_up":
             case "permadead":
             case "spawned":
