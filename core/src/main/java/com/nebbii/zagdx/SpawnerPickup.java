@@ -37,20 +37,22 @@ public class SpawnerPickup extends Spawner {
     public void activate() {
         if (!isActive()) return;
 
-        if (getPickupType().equals("PickupFirestorm")) {
+        switch(getPickupType()) {
+        case "PickupFirestorm":
             NpcBeggar npcBeggar = (NpcBeggar) map.findFirstActorByType(NpcBeggar.class);
 
             if (npcBeggar != null) {
                 npcBeggar.getLine2().play();
             }
-        }
-
-        if (getPickupType().equals("PickupVialOfWind")) {
+            break;
+        case "PickupVialOfWind":
             NpcGlebb npcGlebb = (NpcGlebb) map.findFirstActorByType(NpcGlebb.class);
 
             if (npcGlebb != null) {
                 npcGlebb.getLine2().play();
             }
+            break;
+        default:
         }
 
         placePickupWithParent();
