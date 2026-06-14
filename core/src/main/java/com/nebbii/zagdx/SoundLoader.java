@@ -7,6 +7,8 @@ public class SoundLoader {
     private Sound npcTalkingChestLine0;
     private Sound npcBeggarLine0;
     private Sound npcBeggarLine2;
+    private Sound npcEnidLine0;
+    private Sound npcEnidLine1;
     private Sound npcGlebbLine0;
     private Sound npcGlebbLine2;
 
@@ -19,6 +21,12 @@ public class SoundLoader {
         );
         npcBeggarLine2 = Gdx.audio.newSound(
             Gdx.files.internal("export/overworld/j22/voice/line2.wav")
+        );
+        npcEnidLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/h29/voice/line0.wav")
+        );
+        npcEnidLine1 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/h29/voice/line1.wav")
         );
         npcGlebbLine0 = Gdx.audio.newSound(
             Gdx.files.internal("export/overworld/j24/voice/line0.wav")
@@ -51,4 +59,13 @@ public class SoundLoader {
     public Sound getNpcGlebbLine2() {
 		return npcGlebbLine2;
 	}
+
+    public Sound getNpcEnidLine0() {
+		return npcEnidLine0;
+	}
+
+	public Sound getNpcEnidLine1() {
+		return npcEnidLine1;
+	}
+
 }

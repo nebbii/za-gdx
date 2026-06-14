@@ -11,6 +11,7 @@ public class Npc extends Rectangle implements Actor {
     protected NpcState npcState;
     protected ActorType type;
     protected int drawOrder;
+    protected boolean interacted = false;
 
     private String locationEntry;
 
@@ -152,5 +153,14 @@ public class Npc extends Rectangle implements Actor {
 
     public void setNpcState(NpcState npcState) {
         this.npcState = npcState;
+    }
+
+
+    public boolean hasInteracted() {
+        return interacted;
+    }
+
+    public void setInteracted(boolean interacted) {
+        this.interacted = interacted;
     }
 }

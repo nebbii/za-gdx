@@ -99,13 +99,17 @@ public class WorldCollision {
     private void collideZeldaWithNpcs() {
         Zelda zelda = map.getZelda();
 
+        if (map.areAnyNpcsTalking()) return;
+
         for (Actor actor : actors) {
             if (!(actor instanceof Npc) || !actor.isActive()) continue;
 
             Npc npc = (Npc) actor;
 
-            if (npc.getHitbox().overlaps(zelda.getHitbox())) {
+
+            if (npc.getHitbox().overlaps(zelda.getHitbox()) && !npc.hasInteracted()) {
                 npc.onOverlap();
+                npc.setInteracted(true);
             }
         }
     }

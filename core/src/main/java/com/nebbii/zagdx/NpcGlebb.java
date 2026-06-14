@@ -28,6 +28,7 @@ public class NpcGlebb extends Npc {
         super.logic();
         if (!isActive()) {
             line0.stop();
+            line2.stop();
             return;
         }
 
