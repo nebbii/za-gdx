@@ -12,6 +12,7 @@ public class Npc extends Rectangle implements Actor {
     protected ActorType type;
     protected int drawOrder;
     protected boolean interacted = false;
+    protected Rectangle interactionBox;
 
     private String locationEntry;
 
@@ -28,6 +29,10 @@ public class Npc extends Rectangle implements Actor {
         setType(actorType);
         this.drawOrder = 2;
         this.solid = solid;
+
+        this.interactionBox = new Rectangle();
+        this.interactionBox.setWidth(this.width+10);
+        this.interactionBox.setHeight(this.height+10);
     }
 
     public void logic() {
@@ -63,6 +68,13 @@ public class Npc extends Rectangle implements Actor {
 
     public Rectangle getHitbox() {
         return this;
+    }
+
+    public Rectangle getInteractionBox() {
+        interactionBox.setX(getCenterPointX()-interactionBox.getWidth()/2);
+        interactionBox.setY(getCenterPointY()-interactionBox.getHeight()/2);
+
+        return interactionBox;
     }
 
     public Rectangle getCollisionBox() {
