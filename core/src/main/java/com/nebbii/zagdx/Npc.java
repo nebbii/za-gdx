@@ -11,6 +11,8 @@ public class Npc extends Rectangle implements Actor {
     protected NpcState npcState;
     protected ActorType type;
     protected int drawOrder;
+    protected boolean interacted = false;
+    protected Rectangle interactionBox;
 
     private String locationEntry;
 
@@ -27,6 +29,10 @@ public class Npc extends Rectangle implements Actor {
         setType(actorType);
         this.drawOrder = 2;
         this.solid = solid;
+
+        this.interactionBox = new Rectangle();
+        this.interactionBox.setWidth(this.width+10);
+        this.interactionBox.setHeight(this.height+10);
     }
 
     public void logic() {
@@ -49,6 +55,12 @@ public class Npc extends Rectangle implements Actor {
     public void draw(SpriteBatch batch) {
     }
 
+    public void onOverlap() {
+        if (map.areAnyNpcsTalking()) {
+            return;
+        }
+    }
+
     @Override
     public int getDrawOrder() {
         return drawOrder;
@@ -56,6 +68,13 @@ public class Npc extends Rectangle implements Actor {
 
     public Rectangle getHitbox() {
         return this;
+    }
+
+    public Rectangle getInteractionBox() {
+        interactionBox.setX(getCenterPointX()-interactionBox.getWidth()/2);
+        interactionBox.setY(getCenterPointY()-interactionBox.getHeight()/2);
+
+        return interactionBox;
     }
 
     public Rectangle getCollisionBox() {
@@ -146,5 +165,14 @@ public class Npc extends Rectangle implements Actor {
 
     public void setNpcState(NpcState npcState) {
         this.npcState = npcState;
+    }
+
+
+    public boolean hasInteracted() {
+        return interacted;
+    }
+
+    public void setInteracted(boolean interacted) {
+        this.interacted = interacted;
     }
 }

@@ -11,7 +11,7 @@ public class Zelda extends Rectangle implements Actor {
 
     private World world;
 
-    private MapManager map; // zelda can spawn actors
+    private MapManager map;
     private String locationEntry;
 
     private boolean movedLastFrame;
@@ -110,7 +110,6 @@ public class Zelda extends Rectangle implements Actor {
         return drawOrder;
     }
 
-    // TODO: Ice physics walking for certain rooms
     public void move(float inputX, float inputY) {
         if (!isActive()) return;
         if (!isMoving(getAnimState()) && !isStopped(getAnimState())) return;
@@ -137,6 +136,7 @@ public class Zelda extends Rectangle implements Actor {
 
         setAnimState(nextAnimState);
 
+        // TODO: Ice physics walking for certain rooms
         setX(getX() + inputX * deltaTime);
         setY(getY() + inputY * deltaTime);
     }
