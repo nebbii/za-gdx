@@ -5,13 +5,13 @@ A port of ZA (originally for the CD-i) written in Java with [libGDX](https://lib
 ## Setup
 ### Requirements
 #### ...for running the game/building an executable
-- [Java JDK 17 or 21](https://adoptium.net/temurin/releases?version=21&os=any&arch=any) (for libgdx)
+- [Java JDK 17](https://adoptium.net/temurin/releases?version=17&os=any&arch=any) (for libgdx)
 #### ...for the initial setup
 - [git](https://git-scm.com/) (for loading the submodule)
 - [chdman](https://onionui.github.io/docs/advanced/chdman) (if using bin/cue)
   - On Windows: Download and extract from the link above and pass the exe
   - On Linux: Install `mame-tools` using your package manager of choice
-- [python3](https://www.python.org/), with the following dependencies:
+- [python3](https://www.python.org/) (but not 3.14), with the following dependencies:
   - tqdm
   - pillow
   - Note: You can do the initial run in [venv](https://docs.python.org/3/library/venv.html) to avoid installing dependencies directly on your machine.
