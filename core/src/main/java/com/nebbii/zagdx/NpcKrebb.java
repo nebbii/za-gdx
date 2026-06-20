@@ -1,5 +1,6 @@
 package com.nebbii.zagdx;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.nebbii.zagdx.animation.NpcKrebbAnimation;
@@ -36,14 +37,29 @@ public class NpcKrebb extends Npc {
             return;
         }
 
-        switch(npcState) {
-            case TALKY:
-            case TALKING:
+        if (getNpcState() == NpcState.TALKING) {
+            timer += Gdx.graphics.getDeltaTime();
+            switch(currentLine) {
+                case 0:
+                    if (timer < 8) return;
+
+                    currentLine = 1;
+                    setInteracted(false);
+                    setNpcState(NpcState.TALKY);
+                    Gdx.app.log(this.getClass().getSimpleName(), "Switching to line 1");
+                    break;
+                case 1:
+                default:
+                    if (timer < 9) return;
+
+                    for (Spawner spawner : map.findAllActorsByType(Spawner.class)) {
+                        spawner.setState(State.ACTIVE);
+                    }
+
+                    Gdx.app.log(this.getClass().getSimpleName(), "Done with line 1!");
+                    setNpcState(NpcState.DONE);
                 break;
-            case DONE:
-                break;
-            default:
-                break;
+            }
         }
     }
 
@@ -51,6 +67,20 @@ public class NpcKrebb extends Npc {
     public void onOverlap() {
         if (map.areAnyNpcsTalking()) {
             return;
+        }
+
+        if (getNpcState() == NpcState.TALKY) {
+            timer = 0;
+            switch(currentLine) {
+                case 0:
+                    line0.play();
+                    break;
+                case 1:
+                default:
+                    line1.play();
+            }
+
+            setNpcState(NpcState.TALKING);
         }
     }
 
