@@ -46,17 +46,18 @@ public class NpcKrebb extends Npc {
                     currentLine = 1;
                     setInteracted(false);
                     setNpcState(NpcState.TALKY);
-                    Gdx.app.log(this.getClass().getSimpleName(), "Switching to line 1");
                     break;
                 case 1:
                 default:
                     if (timer < 9) return;
 
                     for (Spawner spawner : map.findAllActorsByType(Spawner.class)) {
+                        Gdx.app.log(this.getClass().getSimpleName(), spawner.toString());
                         spawner.setState(State.ACTIVE);
+                        spawner.activate();
                     }
+                    Gdx.app.log(this.getClass().getSimpleName(), "spawner activate");
 
-                    Gdx.app.log(this.getClass().getSimpleName(), "Done with line 1!");
                     setNpcState(NpcState.DONE);
                 break;
             }

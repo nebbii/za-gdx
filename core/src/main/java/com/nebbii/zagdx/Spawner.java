@@ -67,7 +67,7 @@ public class Spawner extends Rectangle implements Actor {
 
     protected void logItemPlaced() {
         if (Gdx.app != null) {
-            Gdx.app.log(getClass().getSimpleName(), "item placed");
+            Gdx.app.log(getClass().getSimpleName(), "item placed (" + pickupType + ")");
         }
     }
 
