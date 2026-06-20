@@ -9,6 +9,8 @@ public class SoundLoader {
     private Sound npcBeggarLine2;
     private Sound npcEnidLine0;
     private Sound npcEnidLine1;
+    private Sound npcKrebbLine0;
+    private Sound npcKrebbLine1;
     private Sound npcGlebbLine0;
     private Sound npcGlebbLine2;
     private Sound npcOghamLine0;
@@ -30,6 +32,12 @@ public class SoundLoader {
         npcEnidLine1 = Gdx.audio.newSound(
             Gdx.files.internal("export/overworld/h29/voice/line1.wav")
         );
+        npcKrebbLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/j22a/voice/line0.wav")
+        );
+        npcKrebbLine1 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/j22a/voice/line1.wav")
+        );
         npcGlebbLine0 = Gdx.audio.newSound(
             Gdx.files.internal("export/overworld/j24/voice/line0.wav")
         );
@@ -46,6 +54,16 @@ public class SoundLoader {
 
     public void dispose() {
         npcTalkingChestLine0.dispose();
+        npcBeggarLine0.dispose();
+        npcBeggarLine2.dispose();
+        npcEnidLine0.dispose();
+        npcEnidLine1.dispose();
+        npcKrebbLine0.dispose();
+        npcKrebbLine1.dispose();
+        npcGlebbLine0.dispose();
+        npcGlebbLine2.dispose();
+        npcOghamLine0.dispose();
+        npcOghamLine2.dispose();
     }
 
     public Sound getNpcTalkingChestLine0() {
@@ -53,35 +71,43 @@ public class SoundLoader {
     }
 
     public Sound getNpcBeggarLine0() {
-		return npcBeggarLine0;
-	}
+        return npcBeggarLine0;
+    }
 
     public Sound getNpcBeggarLine2() {
       return npcBeggarLine2;
+    }
+
+    public Sound getNpcKrebbLine0() {
+        return npcKrebbLine0;
+    }
+
+    public Sound getNpcKrebbLine1() {
+      return npcKrebbLine1;
     }
 
     public Sound getNpcOghamLine0() {
         return npcOghamLine0;
     }
 
-      public Sound getNpcOghamLine2() {
+    public Sound getNpcOghamLine2() {
         return npcOghamLine2;
     }
 
     public Sound getNpcGlebbLine0() {
-		return npcGlebbLine0;
-	}
+        return npcGlebbLine0;
+    }
 
     public Sound getNpcGlebbLine2() {
-		return npcGlebbLine2;
-	}
+        return npcGlebbLine2;
+    }
 
     public Sound getNpcEnidLine0() {
-		return npcEnidLine0;
-	}
+        return npcEnidLine0;
+    }
 
-	public Sound getNpcEnidLine1() {
-		return npcEnidLine1;
-	}
+    public Sound getNpcEnidLine1() {
+        return npcEnidLine1;
+    }
 
 }
