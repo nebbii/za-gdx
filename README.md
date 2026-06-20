@@ -27,7 +27,7 @@ You'll need to acquire a bin/cue or .CHD of the original game and place it in th
 
 On windows:
 - Open powershell and execute the following command in the project folder:
-  - `./gradlew.bat lwjgl3:run Pchdman=/path/to/your/chdman.exe`
+  - `./gradlew.bat lwjgl3:run -Pchdman=/path/to/your/chdman.exe`
 - Note: After the initial setup, you can drop the chdman parameter!
 
 On Linux:
