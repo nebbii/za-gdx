@@ -228,6 +228,7 @@ public class ImageLoader {
     /* Weapons */
     private Texture wand;
     private Texture boomerang;
+    private Texture dagger;
     private Texture[] firestorm;
     private Texture jadeRing;
 
@@ -244,6 +245,7 @@ public class ImageLoader {
 
     /* Projectiles */
     private Texture[] friendlyBoomerang;
+    private Texture[] friendlyDagger;
     private Texture[] friendlyJadeRing;
     private Texture[] enemyBoomerang;
     private Texture[] enemySpear;
@@ -506,11 +508,17 @@ public class ImageLoader {
         /* Weapons */
         wand = new Texture("export/overworld/h23/sprites/desc0/group0/sprite0.png");
         boomerang = new Texture("export/overworld/d24/sprites/desc2/group0/sprite0.png");
+        dagger = new Texture("export/overworld/j22a/sprites/desc5/group0/sprite0.png");
         firestorm = loadTextureArray("export/overworld/j22/sprites/desc2/group0", 3);
         jadeRing = new Texture("export/underworld/s108/sprites/desc1/group0/sprite0.png");
 
         /* Projectiles */
         friendlyBoomerang = loadTextureArray("export/common/weapons/Boomerang/group0", 4);
+        friendlyDagger = new Texture[4];
+        friendlyDagger[0] = new Texture("export/common/weapons/Dagger/group0/sprite0.png");
+        friendlyDagger[1] = new Texture("export/common/weapons/Dagger/group1/sprite0.png");
+        friendlyDagger[2] = new Texture("export/common/weapons/Dagger/group2/sprite0.png");
+        friendlyDagger[3] = new Texture("export/common/weapons/Dagger/group3/sprite0.png");
         friendlyJadeRing = new Texture[4];
         friendlyJadeRing[0] = new Texture("export/common/weapons/JadeRing/group0/sprite0.png");
         friendlyJadeRing[1] = new Texture("export/common/weapons/JadeRing/group1/sprite0.png");
@@ -872,6 +880,7 @@ public class ImageLoader {
         /* Weapons */
         wand.dispose();
         boomerang.dispose();
+        dagger.dispose();
         for (Texture texture : firestorm) {
             if (texture != null) {
                 texture.dispose();
@@ -881,6 +890,12 @@ public class ImageLoader {
 
         /* Projectiles */
         for (Texture texture : friendlyBoomerang) {
+            if (texture != null) {
+                texture.dispose();
+            }
+        }
+
+        for (Texture texture : friendlyDagger) {
             if (texture != null) {
                 texture.dispose();
             }
@@ -1006,10 +1021,11 @@ public class ImageLoader {
                 return getWand();
             case BOOMERANG:
                 return getBoomerang();
+            case DAGGER:
+                return getDagger();
             case BOW_AND_ARROW:
             case BROADSWORD:
             case CALM:
-            case DAGGER:
             case FEATHER:
             case FIRESTORM:
                 return getFirestorm();
@@ -1184,6 +1200,10 @@ public class ImageLoader {
         return boomerang;
     }
 
+    public Texture getDagger() {
+        return dagger;
+    }
+
     public Texture getFirestorm() {
         return firestorm[0];
     }
@@ -1290,6 +1310,10 @@ public class ImageLoader {
 
     public Texture[] getFriendlyBoomerang() {
         return friendlyBoomerang;
+    }
+
+    public Texture[] getFriendlyDagger() {
+        return friendlyDagger;
     }
 
     public Texture[] getFriendlyJadeRing() {
