@@ -236,6 +236,13 @@ public class Zelda extends Rectangle implements Actor {
                     map.addNewActor(new ZeldaActionBoomerang(this, getX(), getY()));
                 }
                 break;
+            case DAGGER:
+                if (world.getGameManager().getRubies() > 0
+                    && map.findFirstActorByType(ZeldaActionDagger.class) == null) {
+                    world.getGameManager().decreaseRubies(1, true);
+                    map.addNewActor(new ZeldaActionDagger(this, getX(), getY()));
+                }
+                break;
             case JADE_RING:
                 if (world.getGameManager().getRubies() >= 3
                     && map.findFirstActorByType(ZeldaActionJadeRing.class) == null) {

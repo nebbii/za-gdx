@@ -1,10 +1,18 @@
 package com.nebbii.zagdx;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.nebbii.zagdx.animation.NpcKrebbAnimation;
 
 public class NpcKrebb extends Npc {
     public NpcKrebbAnimation animation;
+
+    private float timer;
+    private int currentLine;
+
+    private Sound line0;
+    private Sound line1;
 
     public NpcKrebb() {
         super(ActorType.FRIENDLY, false);
@@ -13,21 +21,67 @@ public class NpcKrebb extends Npc {
         setNpcState(NpcState.TALKY);
 
         this.animation = new NpcKrebbAnimation(this);
+        this.timer = 0;
+        this.currentLine = 0;
+        this.line0 = World.sounds.getNpcKrebbLine0();
+        this.line1 = World.sounds.getNpcKrebbLine1();
     }
 
     @Override
     public void logic() {
         super.logic();
 
-        switch(npcState) {
-            case TALKY:
+        if (!isActive()) {
+            line0.stop();
+            line1.stop();
+            return;
+        }
+
+        if (getNpcState() == NpcState.TALKING) {
+            timer += Gdx.graphics.getDeltaTime();
+            switch(currentLine) {
+                case 0:
+                    if (timer < 8) return;
+
+                    currentLine = 1;
+                    setInteracted(false);
+                    setNpcState(NpcState.TALKY);
+                    break;
+                case 1:
+                default:
+                    if (timer < 9) return;
+
+                    for (Spawner spawner : map.findAllActorsByType(Spawner.class)) {
+                        Gdx.app.log(this.getClass().getSimpleName(), spawner.toString());
+                        spawner.setState(State.ACTIVE);
+                        spawner.activate();
+                    }
+                    Gdx.app.log(this.getClass().getSimpleName(), "spawner activate");
+
+                    setNpcState(NpcState.DONE);
                 break;
-            case TALKING:
-                break;
-            case DONE:
-                break;
-            default:
-                break;
+            }
+        }
+    }
+
+    @Override
+    public void onOverlap() {
+        if (map.areAnyNpcsTalking()) {
+            return;
+        }
+
+        if (getNpcState() == NpcState.TALKY) {
+            timer = 0;
+            switch(currentLine) {
+                case 0:
+                    line0.play();
+                    break;
+                case 1:
+                default:
+                    line1.play();
+            }
+
+            setNpcState(NpcState.TALKING);
         }
     }
 

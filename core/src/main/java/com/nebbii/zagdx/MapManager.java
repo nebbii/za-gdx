@@ -536,6 +536,10 @@ public class MapManager {
             return true;
         }
 
+        if (actor instanceof NpcKrebb && getSaveManager().hasLocationEntry("j22a_4")) {
+            return true;
+        }
+
         if (actor instanceof NpcGlebb && getSaveManager().hasLocationEntry("j24_2")) {
             return true;
         }

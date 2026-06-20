@@ -55,14 +55,14 @@ public class NpcOgham extends Npc {
     public void draw(SpriteBatch batch) {
         batch.draw(animation.playCurrentAnimation(), animation.getX(), animation.getY());
 
+        if (!isActive()) return;
+
         if (timer > 8) {
             animation.setCurrentAnimation("idle1");
-            Gdx.app.log(getClass().getSimpleName(), "setting animation idle1");
             if (timer > 16) timer = 0;
         }
         else {
             animation.setCurrentAnimation("idle0");
-            Gdx.app.log(getClass().getSimpleName(), "setting animation idle0");
         }
     }
 }

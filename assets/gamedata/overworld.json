@@ -824,6 +824,13 @@
           "type": "NpcKrebb",
           "x": 2171,
           "y": 7032
+        },
+        {
+          "type": "SpawnerPickup",
+          "pickupType": "PickupDagger",
+          "trigger": "MANUAL_NPC",
+          "x": 2131,
+          "y": 7050
         }
       ]
     },
