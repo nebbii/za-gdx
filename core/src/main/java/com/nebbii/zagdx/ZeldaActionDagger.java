@@ -28,26 +28,26 @@ public class ZeldaActionDagger extends ZeldaAction {
 
         switch(getDirection()) {
         case LEFT:
-            offsetX = -8.5f;
-            offsetY = -4.5f;
+            offsetX = -8f;
+            offsetY = 0f;
             setX(actor.getCenterPointX() - actor.getHitbox().getWidth() / 2 - this.getWidth());
             setY(actor.getCenterPointY() + actor.getHitbox().getHeight() / 3);
             break;
         case DOWN:
-            offsetX = -4.5f;
-            offsetY = -9f;
+            offsetX = -11f;
+            offsetY = -8f;
             setX(actor.getCenterPointX() - this.getWidth() / 2);
             setY(actor.getHitbox().getY() - this.getHeight() / 2);
             break;
         case UP:
-            offsetX = -4.5f;
-            offsetY = -8.5f;
+            offsetX = -11f;
+            offsetY = -8f;
             setX(actor.getCenterPointX() - this.getWidth() / 2);
             setY(actor.getCenterPointY() + actor.getHitbox().getHeight());
             break;
         case RIGHT:
-            offsetX = -8.5f;
-            offsetY = -4f;
+            offsetX = -8f;
+            offsetY = 0;
             setX(actor.getCenterPointX() + actor.getHitbox().getWidth());
             setY(actor.getCenterPointY() + actor.getHitbox().getHeight() / 3);
             break;
