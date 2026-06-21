@@ -335,7 +335,23 @@
     {
       "location": "g21",
       "__comment": "g21: Three Peahats throw peas.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyPeahat",
+          "x": 2424,
+          "y": 2755
+        },
+        {
+          "type": "EnemyPeahat",
+          "x": 2459,
+          "y": 2740
+        },
+        {
+          "type": "EnemyPeahat",
+          "x": 2532,
+          "y": 2743
+        }
+      ]
     },
     {
       "location": "g23",
@@ -541,7 +557,33 @@
     {
       "location": "h21",
       "__comment": "h21: Five Tumblebots. Zelda can walk through the water here if she has the red boots.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyTumblebot",
+          "x": 2730,
+          "y": 2826
+        },
+        {
+          "type": "EnemyTumblebot",
+          "x": 2788,
+          "y": 2783
+        },
+        {
+          "type": "EnemyTumblebot",
+          "x": 2788,
+          "y": 2698
+        },
+        {
+          "type": "EnemyTumblebot",
+          "x": 2925,
+          "y": 2774
+        },
+        {
+          "type": "EnemyTumblebot",
+          "x": 2925,
+          "y": 2698
+        }
+      ]
     },
     {
       "location": "h23",
@@ -675,7 +717,33 @@
     {
       "location": "i22",
       "__comment": "i22: Four Tumblebots. Zelda can cross the water if she has the red boots.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyTumblebot",
+          "x": 3224,
+          "y": 2488
+        },
+        {
+          "type": "EnemyTumblebot",
+          "x": 3229,
+          "y": 2478
+        },
+        {
+          "type": "EnemyTumblebot",
+          "x": 3229,
+          "y": 2484
+        },
+        {
+          "type": "EnemyTumblebot",
+          "x": 3235,
+          "y": 2480
+        },
+        {
+          "type": "EnemyTumblebot",
+          "x": 3248,
+          "y": 2509
+        }
+      ]
     },
     {
       "location": "i23",
@@ -837,7 +905,28 @@
     {
       "location": "j23",
       "__comment": "j23: Four Peahats throw peas.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyPeahat",
+          "x": 3568,
+          "y": 2283
+        },
+        {
+          "type": "EnemyPeahat",
+          "x": 3581,
+          "y": 2245
+        },
+        {
+          "type": "EnemyPeahat",
+          "x": 3669,
+          "y": 2278
+        },
+        {
+          "type": "EnemyPeahat",
+          "x": 3684,
+          "y": 2265
+        }
+      ]
     },
     {
       "location": "j24",
