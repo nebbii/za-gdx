@@ -13,6 +13,7 @@ public class Spawner extends Rectangle implements Actor {
     protected MapManager map;
     private String locationEntry;
     private String pickupType;
+    private String pickupItem;
 
     public Spawner() {
         setWidth(1);
@@ -32,16 +33,16 @@ public class Spawner extends Rectangle implements Actor {
     public void activate() {}
 
     protected Pickup createPickup() {
-        if (pickupType == null || pickupType.trim().isEmpty()) {
-            throw new IllegalStateException(getClass().getSimpleName() + " requires pickupType");
+        if (pickupItem == null || pickupItem.trim().isEmpty()) {
+            throw new IllegalStateException(getClass().getSimpleName() + " requires pickupItem");
         }
 
         try {
-            Class<?> newClass = Class.forName("com.nebbii.zagdx." + pickupType.trim());
+            Class<?> newClass = Class.forName("com.nebbii.zagdx." + pickupItem.trim());
             Object object = newClass.getDeclaredConstructor().newInstance();
 
             if (!(object instanceof Pickup)) {
-                throw new IllegalArgumentException(pickupType + " is not a pickup");
+                throw new IllegalArgumentException(pickupItem + " is not a pickup");
             }
 
             Pickup pickup = (Pickup) object;
@@ -49,7 +50,7 @@ public class Spawner extends Rectangle implements Actor {
             return pickup;
         }
         catch (Exception e) {
-            throw new RuntimeException("Failed to create pickup: " + pickupType, e);
+            throw new RuntimeException("Failed to create pickup: " + pickupItem, e);
         }
     }
 
@@ -67,7 +68,7 @@ public class Spawner extends Rectangle implements Actor {
 
     protected void logItemPlaced() {
         if (Gdx.app != null) {
-            Gdx.app.log(getClass().getSimpleName(), "item placed (" + pickupType + ")");
+            Gdx.app.log(getClass().getSimpleName(), "item placed (" + pickupItem + ")");
         }
     }
 
@@ -170,5 +171,13 @@ public class Spawner extends Rectangle implements Actor {
 
     public void setPickupType(String pickupType) {
         this.pickupType = pickupType;
+    }
+
+    public String getPickupItem() {
+        return pickupItem;
+    }
+
+    public void setPickupItem(String pickupItem) {
+        this.pickupItem = pickupItem;
     }
 }

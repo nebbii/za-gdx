@@ -11,6 +11,7 @@ public class ActorJsonEntry {
     public String __comment;
     public String rubyType;
     public String pickupType;
+    public String pickupItem;
     public String trigger;
     public boolean purchasable;
     public int price;
