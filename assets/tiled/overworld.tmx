@@ -2,7 +2,7 @@
 <map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="left-up" width="29" height="32" tilewidth="384" tileheight="240" infinite="0" nextlayerid="7" nextobjectid="2228">
  <tileset firstgid="1" source="export_overworld.tsx"/>
  <tileset firstgid="306" source="export_overworld_spritetreeHeightBoxes.tsx"/>
- <layer id="5" name="Background" width="29" height="32" visible="0">
+ <layer id="5" name="Background" width="29" height="32">
   <data encoding="csv">
 211,133,155,239,84,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,295,0,0,0,
 210,218,220,221,224,226,229,219,222,227,54,0,0,0,0,0,0,0,0,0,0,0,0,0,0,301,0,0,0,

@@ -529,7 +529,7 @@ public class Zelda extends Rectangle implements Actor {
     }
 
     public int getMaxHealth() {
-        int maxHealth = 60;
+        int maxHealth = 600;
 
         if (world.getGameManager().hasItem(Treasure.CELESTIAL_SIGN_1)) maxHealth += 20;
         if (world.getGameManager().hasItem(Treasure.CELESTIAL_SIGN_2)) maxHealth += 20;
