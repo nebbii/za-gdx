@@ -311,7 +311,7 @@ public class World {
         Rectangle top = worldBorders[3];
 
         left.set(
-            screenX - 1f,
+            screenX,
             screenY,
             1f,
             WORLD_HEIGHT
@@ -326,7 +326,7 @@ public class World {
 
         bottom.set(
             screenX,
-            screenY - 1f,
+            screenY,
             WORLD_WIDTH,
             1f
         );
