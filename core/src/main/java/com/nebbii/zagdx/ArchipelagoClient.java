@@ -1,6 +1,7 @@
 package com.nebbii.zagdx;
 
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.HashSet;
 
 import com.badlogic.gdx.Gdx;
@@ -10,13 +11,12 @@ import com.badlogic.gdx.utils.Json;
 import io.github.archipelagomw.Client;
 
 public class ArchipelagoClient extends Client {
-    private static final String CONFIG = "archipelago/config.json";
     private Json json;
 
     private ArchipelagoConfig config;
 
     public ArchipelagoClient() {
-        FileHandle configFile = Gdx.files.local(CONFIG);
+        FileHandle configFile = Gdx.files.local(ArchipelagoConfigManager.CONFIG_PATH);
 
         if (configFile.exists()) {
             json = new Json();
@@ -26,7 +26,7 @@ public class ArchipelagoClient extends Client {
                 setGame("Donkey Kong 64");
                 setName(config.slotName);
                 setPassword(config.password);
-                setTags(new HashSet<>(config.tags));
+                setTags(new HashSet<>(config.tags == null ? new ArrayList<String>() : config.tags));
 
                 connect(config.server);
             }
