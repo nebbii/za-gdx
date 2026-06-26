@@ -150,11 +150,7 @@ public class Pickup extends Rectangle implements Actor {
         return true;
     }
 
-    boolean shouldDrawPrice() {
-        return shouldDrawPrice(duration);
-    }
-
-    boolean shouldDrawPrice(float elapsedTime) {
+    public boolean shouldDrawPrice() {
         if (!isPurchasable()) {
             return false;
         }
@@ -163,7 +159,7 @@ public class Pickup extends Rectangle implements Actor {
             return false;
         }
 
-        return elapsedTime % 1f < 0.5f;
+        return duration % 1f < 0.5f;
     }
 
     @Override

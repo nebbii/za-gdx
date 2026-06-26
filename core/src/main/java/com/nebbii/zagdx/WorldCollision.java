@@ -52,9 +52,9 @@ public class WorldCollision {
             if (!(pickup instanceof Pickup) || !pickup.isActive()) continue;
 
             Pickup pickupActor = (Pickup) pickup;
-            boolean overlapsZelda = pickup.getHitbox().overlaps(zeldaHitbox);
+            pickupActor.setOverlappingZelda(pickup.getHitbox().overlaps(zeldaHitbox));
 
-            if (overlapsZelda && !pickupActor.isPurchasable()) {
+            if (pickupActor.isOverlappingZelda() && !pickupActor.isPurchasable()) {
                 pickupActor.tryPickup(game);
             }
         }

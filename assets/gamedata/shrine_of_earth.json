@@ -57,6 +57,7 @@
         {
           "type": "SpawnerPickup",
           "pickupType": "PickupUnderworldMap1",
+          "pickupItem": "PickupUnderworldMap1",
           "trigger": "NO_ENEMIES",
           "x": 1335,
           "y": 802
@@ -370,6 +371,7 @@
         {
           "type": "SpawnerPickup",
           "pickupType": "PickupCompass1",
+          "pickupItem": "PickupCompass1",
           "trigger": "NO_ENEMIES",
           "x": 1314,
           "y": 535
@@ -508,6 +510,7 @@
         {
           "type": "SpawnerPickup",
           "pickupType": "PickupJadeRing",
+          "pickupItem": "PickupJadeRing",
           "trigger": "MANUAL",
           "x": 1700,
           "y": 82

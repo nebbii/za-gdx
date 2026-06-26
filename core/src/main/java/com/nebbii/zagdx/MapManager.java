@@ -504,6 +504,10 @@ public class MapManager {
                 SpawnerPickup spawner = (SpawnerPickup) actor;
                 spawner.setTrigger(entry.trigger);
                 spawner.setPickupType(entry.pickupType);
+                if (entry.pickupItem == null || entry.pickupItem.trim().isEmpty()) {
+                    throw new IllegalArgumentException(entry.type + " at " + locationEntry + " requires pickupItem");
+                }
+                spawner.setPickupItem(entry.pickupItem);
 
                 if (spawner.getTrigger() == Trigger.MANUAL_NPC) {
                     spawner.setState(State.PENDING);

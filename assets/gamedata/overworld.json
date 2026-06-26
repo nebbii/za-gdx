@@ -65,6 +65,7 @@
         {
           "type": "SpawnerPickup",
           "pickupType": "PickupBoomerang",
+          "pickupItem": "PickupBoomerang",
           "trigger": "NO_ENEMIES",
           "x": 1224,
           "y": 1988
@@ -102,6 +103,7 @@
         {
           "type": "SpawnerPickup",
           "pickupType": "PickupPitcherFull",
+          "pickupItem": "PickupPitcherFull",
           "trigger": "MANUAL",
           "x": 1627,
           "y": 2938
@@ -863,6 +865,7 @@
         {
           "type": "SpawnerPickup",
           "pickupType": "PickupFirestorm",
+          "pickupItem": "PickupFirestorm",
           "trigger": "MANUAL_NPC",
           "x": 3595,
           "y": 2436
@@ -896,6 +899,7 @@
         {
           "type": "SpawnerPickup",
           "pickupType": "PickupDagger",
+          "pickupItem": "PickupDagger",
           "trigger": "MANUAL_NPC",
           "x": 2131,
           "y": 7050
@@ -945,6 +949,7 @@
         {
           "type": "SpawnerPickup",
           "pickupType": "PickupVialOfWind",
+          "pickupItem": "PickupVialOfWind",
           "trigger": "MANUAL_NPC",
           "x": 3672,
           "y": 2075
