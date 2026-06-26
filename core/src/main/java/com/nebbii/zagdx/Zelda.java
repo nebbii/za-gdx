@@ -303,9 +303,9 @@ public class Zelda extends Rectangle implements Actor {
         if (!isActive()) return;
         if (hurtDuration > 0) return;
 
+        increaseHurtDuration(1);
         movePushback(knockback);
         decreaseHealth(damage);
-        increaseHurtDuration(1);
     }
 
     public void onDeath() {
@@ -338,6 +338,14 @@ public class Zelda extends Rectangle implements Actor {
             default:
                 throw new IllegalStateException("Zelda->getDirection(): Unhandled animation state: " + getAnimState());
         }
+    }
+
+    public float getHurtDuration() {
+        return hurtDuration;
+    }
+
+    public void setHurtDuration(float hurtDuration) {
+        this.hurtDuration = hurtDuration;
     }
 
     public Direction getHurtDirection() {

@@ -311,31 +311,31 @@ public class World {
         Rectangle top = worldBorders[3];
 
         left.set(
-            screenX,
+            screenX - 5f,
             screenY,
-            1f,
+            10f,
             WORLD_HEIGHT
         );
 
         right.set(
-            screenX + WORLD_WIDTH,
+            screenX + WORLD_WIDTH - 5f,
             screenY,
-            1f,
+            10f,
             WORLD_HEIGHT
         );
 
         bottom.set(
             screenX,
-            screenY,
+            screenY - 5f,
             WORLD_WIDTH,
-            1f
+            10f
         );
 
         top.set(
             screenX,
-            screenY + WORLD_HEIGHT,
+            screenY + WORLD_HEIGHT - 5f,
             WORLD_WIDTH,
-            1f
+            10f
         );
     }
     public String indexToLetters(int index) {

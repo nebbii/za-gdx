@@ -42,7 +42,7 @@ public class WorldCollision {
         collideZeldaWithPickups();
         collideZeldaWithSprites();
         checkOverlapAlertBoxes();
-        collideEnemiesWithWorldBorders();
+        collideActorsWithWorldBorders();
     }
 
     private void collideZeldaWithPickups() {
@@ -233,7 +233,7 @@ public class WorldCollision {
         }
     }
 
-    private void collideEnemiesWithWorldBorders() {
+    private void collideActorsWithWorldBorders() {
         Rectangle[] borders = game.getWorld().getWorldBorders();
 
         Rectangle leftBorder = borders[0];
@@ -242,30 +242,40 @@ public class WorldCollision {
         Rectangle topBorder = borders[3];
 
         for (Actor actor : actors) {
-            if (!actor.isActive() || !(actor instanceof Enemy)) continue;
+            if (!actor.isActive()) continue;
 
-            Enemy enemy = (Enemy) actor;
-            Rectangle enemyCollision = enemy.getCollisionBox();
+            // Keep zelda within bounds while getting pushed
+            if (actor instanceof Zelda) {
+                Zelda zelda = (Zelda) actor;
+
+                if (zelda.getHurtDuration() <= 0) continue;
+            }
+            else if (!(actor instanceof Enemy)) {
+                continue;
+            }
+
+            Rectangle actorBox = actor.getCollisionBox();
 
             boolean bounced = false;
 
-            if (leftBorder.overlaps(enemyCollision)) {
-                enemy.setX(leftBorder.x + leftBorder.width + 1f);
+            if (leftBorder.overlaps(actorBox)) {
+                actorBox.setX(leftBorder.x + leftBorder.width + 1f);
                 bounced = true;
-            } else if (rightBorder.overlaps(enemyCollision)) {
-                enemy.setX(rightBorder.x - enemyCollision.width - 1f);
-                bounced = true;
-            }
-
-            if (bottomBorder.overlaps(enemyCollision)) {
-                enemy.setY(bottomBorder.y + bottomBorder.height + 1f);
-                bounced = true;
-            } else if (topBorder.overlaps(enemyCollision)) {
-                enemy.setY(topBorder.y - enemyCollision.height - 1f);
+            } else if (rightBorder.overlaps(actorBox)) {
+                actorBox.setX(rightBorder.x - actorBox.width - 1f);
                 bounced = true;
             }
 
-            if (bounced) {
+            if (bottomBorder.overlaps(actorBox)) {
+                actorBox.setY(bottomBorder.y + bottomBorder.height + 1f);
+                bounced = true;
+            } else if (topBorder.overlaps(actorBox)) {
+                actorBox.setY(topBorder.y - actorBox.height - 1f);
+                bounced = true;
+            }
+
+            if (actor instanceof Enemy && bounced) {
+                Enemy enemy = (Enemy) actor;
                 enemy.setDirection(enemy.getRandomDirection());
             }
         }
