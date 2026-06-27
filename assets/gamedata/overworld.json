@@ -714,7 +714,16 @@
     {
       "location": "i21",
       "__comment": "i21: Two Tumblebots, one on the southwest side of the water and one on the northeast side. Zelda can cross the water if she has the red boots.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyTumblebot",
+          "x": 3136,
+          "y": 2675
+        },
+        {
+          "__comment": "Second tumblebot at X: 3310, Y: 2791"
+        }
+      ]
     },
     {
       "location": "i22",
@@ -828,7 +837,23 @@
     {
       "location": "i26",
       "__comment": "i26: Three Leevers.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyLeever",
+          "x": 3247,
+          "y": 1539
+        },
+        {
+          "type": "EnemyLeever",
+          "x": 3268,
+          "y": 1539
+        },
+        {
+          "type": "EnemyLeever",
+          "x": 3253,
+          "y": 1571
+        }
+      ]
     },
     {
       "__comment": "j"
@@ -959,12 +984,34 @@
     {
       "location": "j25",
       "__comment": "j25: Two Mobies.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyMoby",
+          "x": 3575,
+          "y": 1779
+        },
+        {
+          "type": "EnemyMoby",
+          "x": 3723,
+          "y": 1797
+        }
+      ]
     },
     {
       "location": "j26",
       "__comment": "j26: Two Mobies.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyMoby",
+          "x": 3666,
+          "y": 1509
+        },
+        {
+          "type": "EnemyMoby",
+          "x": 3738,
+          "y": 1517
+        }
+      ]
     },
     {
       "__comment": "k"
