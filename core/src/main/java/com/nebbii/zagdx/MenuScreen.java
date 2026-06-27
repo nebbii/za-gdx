@@ -84,6 +84,7 @@ public class MenuScreen implements Screen {
             for (MenuButton button : menuButtons) {
                 if (button.contains(touchPos.x, touchPos.y)) {
                     button.onTouch();
+                    break;
                 }
             }
         }

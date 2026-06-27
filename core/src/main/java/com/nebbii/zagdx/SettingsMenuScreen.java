@@ -26,7 +26,7 @@ public class SettingsMenuScreen extends MenuScreen {
 
         menuButtons.add(new MenuTextButton("Archipelago", font, 142, 119, 100, 24, () -> {
             setFadeToggle(FadeToggle.OUT);
-            core.setNextScreen(new ControlBindingScreen(core));
+            core.setNextScreen(new ArchipelagoConfigScreen(core));
         }));
 
         menuButtons.add(new MenuTextButton("Back", font, 142, 82, 100, 24, () -> {

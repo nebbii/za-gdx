@@ -6,5 +6,5 @@ public class ArchipelagoConfig {
     public String server;
     public String slotName;
     public String password;
-    public ArrayList<String> tags;
+    public ArrayList<String> tags = new ArrayList<>();
 }
