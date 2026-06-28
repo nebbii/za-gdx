@@ -48,7 +48,7 @@ public class World {
 
     private BitmapFont font;
 
-    private ArchipelagoClient archipelagoClient;
+    private ArchipelagoManager archipelagoManager;
     private SettingsManager settingsManager;
     private ControlInput controlInput;
 
@@ -85,7 +85,7 @@ public class World {
         Gdx.app.log(this.getClass().getSimpleName(), "loading this save! " + selectedFile.filename);
         saveManager.loadSave(selectedFile.filename);
 
-        this.archipelagoClient = archipelagoClient;
+        this.archipelagoManager = new ArchipelagoManager(archipelagoClient);
 
         updateWorldBorders();
     }
@@ -273,7 +273,7 @@ public class World {
         //debugLines.add("Equip: " + mapManager.getZelda().getCurrentItem().toString());
         //debugLines.add("State: " + mapManager.getZelda().getState());
         //debugLines.add("GameState: " + gameManager.getGameState());
-        if (archipelagoClient.isConnected()) {
+        if (archipelagoManager.isConnected()) {
             debugLines.add("AP connected");
         }
 
