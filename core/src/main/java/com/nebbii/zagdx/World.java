@@ -85,7 +85,7 @@ public class World {
         Gdx.app.log(this.getClass().getSimpleName(), "loading this save! " + selectedFile.filename);
         saveManager.loadSave(selectedFile.filename);
 
-        this.archipelagoManager = new ArchipelagoManager(archipelagoClient);
+        this.archipelagoManager = new ArchipelagoManager(archipelagoClient, saveManager);
 
         updateWorldBorders();
     }
@@ -106,6 +106,10 @@ public class World {
             worldCamera.logic();
             updateWorldBorders();
             menuPause.logic();
+
+            if (archipelagoManager.isConnected()) {
+                archipelagoManager.logic();
+            }
             break;
         default:
             throw new IllegalStateException("World->draw(): Unhandled game state: " + gameManager.getGameState());

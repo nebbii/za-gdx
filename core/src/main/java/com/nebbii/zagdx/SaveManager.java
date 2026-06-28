@@ -19,6 +19,8 @@ public class SaveManager {
     private SaveData currentSave;
     private FileHandle currentSaveFile;
 
+    private boolean syncAP = false;
+
     public SaveManager() {
         saveFolder = Gdx.files.local(SAVE_FOLDER);
 
@@ -86,6 +88,8 @@ public class SaveManager {
             throw new RuntimeException("No save is currently loaded");
         }
 
+        setSyncAP(true);
+
         currentSaveFile.writeString(json.prettyPrint(currentSave), false);
     }
 
@@ -96,6 +100,8 @@ public class SaveManager {
         }
 
         syncInventoryFromGameManager(gameManager);
+
+        setSyncAP(true);
 
         currentSaveFile.writeString(json.prettyPrint(currentSave), false);
     }
@@ -297,5 +303,13 @@ public class SaveManager {
 
     public void setCurrentSave(SaveData currentSave) {
         this.currentSave = currentSave;
+    }
+
+    public boolean canSyncAP() {
+        return syncAP;
+    }
+
+    public void setSyncAP(boolean syncAP) {
+        this.syncAP = syncAP;
     }
 }
