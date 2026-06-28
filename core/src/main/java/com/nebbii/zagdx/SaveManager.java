@@ -30,17 +30,6 @@ public class SaveManager {
         json.setOutputType(JsonWriter.OutputType.json);
     }
 
-    public SaveManager() {
-        saveFolder = Gdx.files.local(SAVE_FOLDER);
-
-        if (!saveFolder.exists()) {
-            saveFolder.mkdirs();
-        }
-
-        json = new Json();
-        json.setOutputType(JsonWriter.OutputType.json);
-    }
-
     public void createSave(String fileName) {
         FileHandle file = saveFolder.child(fileName + ".json");
 
