@@ -461,7 +461,5 @@ public class World {
         batch.dispose();
         mapManager.dispose();
         images.dispose();
-
-        archipelagoClient.close();
     }
 }
