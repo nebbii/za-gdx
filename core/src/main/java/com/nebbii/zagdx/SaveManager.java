@@ -11,7 +11,6 @@ import com.badlogic.gdx.utils.JsonWriter;
 
 public class SaveManager {
     private static final String SAVE_FOLDER = "saves/";
-    private World world; // TODO: remove this here and from the constructor
 
     private final FileHandle saveFolder;
     private final Json json;
@@ -31,7 +30,7 @@ public class SaveManager {
         json.setOutputType(JsonWriter.OutputType.json);
     }
 
-    public SaveManager(World world) {
+    public SaveManager() {
         saveFolder = Gdx.files.local(SAVE_FOLDER);
 
         if (!saveFolder.exists()) {
@@ -40,8 +39,6 @@ public class SaveManager {
 
         json = new Json();
         json.setOutputType(JsonWriter.OutputType.json);
-
-        this.world = world;
     }
 
     public void createSave(String fileName) {

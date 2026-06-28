@@ -60,7 +60,7 @@ public class World {
 
         gameManager = new GameManager(this);
         mapManager = new MapManager(this, batch, camera);
-        saveManager = new SaveManager(this);
+        saveManager = new SaveManager();
         worldCamera = new WorldCamera(camera, mapManager);
 
         shapes = new ShapeRenderer();
