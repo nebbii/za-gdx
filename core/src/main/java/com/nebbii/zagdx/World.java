@@ -91,6 +91,10 @@ public class World {
     }
 
     public void logic() {
+        if (archipelagoManager.isConnected()) {
+            archipelagoManager.logic();
+        }
+
         switch(gameManager.getGameState()) {
         case PLAY:
         case PAUSE_MAP:
@@ -106,10 +110,6 @@ public class World {
             worldCamera.logic();
             updateWorldBorders();
             menuPause.logic();
-
-            if (archipelagoManager.isConnected()) {
-                archipelagoManager.logic();
-            }
             break;
         default:
             throw new IllegalStateException("World->draw(): Unhandled game state: " + gameManager.getGameState());

@@ -27,6 +27,7 @@ public class ArchipelagoClient extends Client {
                 setName(config.slotName);
                 setPassword(config.password);
                 setTags(new HashSet<>(config.tags == null ? new ArrayList<String>() : config.tags));
+                setItemsHandlingFlags(7);
 
                 connect(config.server);
             }
