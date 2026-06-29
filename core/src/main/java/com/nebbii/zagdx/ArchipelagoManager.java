@@ -2,6 +2,7 @@ package com.nebbii.zagdx;
 
 import com.badlogic.gdx.Gdx;
 
+import io.github.archipelagomw.APResult;
 import io.github.archipelagomw.events.ArchipelagoEventListener;
 import io.github.archipelagomw.events.ReceiveItemEvent;
 import io.github.archipelagomw.parts.NetworkItem;
@@ -32,48 +33,56 @@ public class ArchipelagoManager {
 
             // retrieve locations
             for (NetworkItem item : archipelagoClient.getItemManager().getReceivedItems()) {
-                int itemId = (int) item.itemID;
-                Item receivedItem = ArchipelagoItemMap.getItem(itemId);
-
-                if (!saveManager.hasArchipelagoCheck(item.locationID)) {
-                    Gdx.app.log(
-                        this.getClass().getSimpleName(),
-                        "New AP item"
-                            + ", item=" + item.itemID
-                            + ", location=" + item.locationID
-                            + ", itemName=" + receivedItem.toString()
-                    );
-
-                    if (receivedItem instanceof Treasure) {
-                        if (itemId == 1) {
-                            gameManager.increaseRubies(5, true);
-                        }
-                        else if (itemId == 15) { // 15 = yellow rubies
-                            gameManager.increaseRubies(10, true);
-                        }
-                        else {
-                            gameManager.addTreasure((Treasure) receivedItem, true);
-                        }
-                    }
-                    else if (receivedItem instanceof Weapon) {
-                        gameManager.addWeapon((Weapon) receivedItem, true);
-                    }
-
-                    saveManager.addArchipelagoCheck(item.locationID);
-                }
-                else {
-                    Gdx.app.log(
-                        this.getClass().getSimpleName(),
-                        "Existing AP item"
-                            + ", item=" + item.itemID
-                            + ", location=" + item.locationID
-                            + ", itemName=" + receivedItem.toString()
-                    );
-                }
+                handleReceivedItem(item);
             }
 
             saveManager.setSyncAP(false);
         }
+    }
+
+    private void handleReceivedItem(NetworkItem item) {
+        int itemId = (int) item.itemID;
+        Item receivedItem = ArchipelagoItemMap.getItem(itemId);
+
+        if (!saveManager.hasArchipelagoCheck(item.locationID)) {
+            Gdx.app.log(
+                this.getClass().getSimpleName(),
+                "New AP item"
+                    + ", item=" + item.itemID
+                    + ", location=" + item.locationID
+                    + ", itemName=" + receivedItem.toString()
+            );
+
+            if (receivedItem instanceof Treasure) {
+                if (itemId == 1) {
+                    gameManager.increaseRubies(5, true);
+                }
+                else if (itemId == 15) { // 15 = yellow rubies
+                    gameManager.increaseRubies(10, true);
+                }
+                else {
+                    gameManager.addTreasure((Treasure) receivedItem, true);
+                }
+            }
+            else if (receivedItem instanceof Weapon) {
+                gameManager.addWeapon((Weapon) receivedItem, true);
+            }
+
+            saveManager.addArchipelagoCheck(item.locationID);
+        }
+        else {
+            Gdx.app.log(
+                this.getClass().getSimpleName(),
+                "Existing AP item"
+                    + ", item=" + item.itemID
+                    + ", location=" + item.locationID
+                    + ", itemName=" + receivedItem.toString()
+            );
+        }
+    }
+
+    public ActorJsonEntry overrideJsonEntry(ActorJsonEntry entry) {
+        return entry;
     }
 
     @ArchipelagoEventListener

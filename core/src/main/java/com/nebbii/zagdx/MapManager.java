@@ -433,14 +433,20 @@ public class MapManager {
         zelda.setPosition(zelda.getSpawnX(), zelda.getSpawnY());
         addActor(zelda);
 
-        for (LocationJsonEntry location : data.locations) {
-            if (location.location == null) continue;
+        for (LocationJsonEntry locationEntry : data.locations) {
+            if (locationEntry.location == null) continue;
 
             int i = 0;
-            for (ActorJsonEntry entry : location.actors) {
+            for (ActorJsonEntry entry : locationEntry.actors) {
                 if (entry.type == null) continue;
+                String locationString = locationEntry.location + "_" + i;
 
-                addActor(createActorFromJsonEntry(entry, location.location + "_" + i));
+                // AP json override
+                if (world.getArchipelagoManager().isConnected()) {
+                    entry = world.getArchipelagoManager().overrideJsonEntry(entry);
+                }
+
+                addActor(createActorFromJsonEntry(entry, locationString));
                 i++;
             }
         }

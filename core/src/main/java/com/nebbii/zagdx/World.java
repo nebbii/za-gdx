@@ -403,6 +403,10 @@ public class World {
         return settingsManager;
     }
 
+    public ArchipelagoManager getArchipelagoManager() {
+        return archipelagoManager;
+    }
+
     public ControlInput getControlInput() {
         return controlInput;
     }
