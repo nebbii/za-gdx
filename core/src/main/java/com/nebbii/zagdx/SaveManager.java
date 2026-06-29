@@ -176,6 +176,23 @@ public class SaveManager {
         return currentSave.locations;
     }
 
+    public boolean hasArchipelagoCheck(long id) {
+        ensureArchipelagoChecks();
+
+        return currentSave.archipelagoChecks.contains(id);
+    }
+
+    public void addArchipelagoCheck(long id) {
+        ensureArchipelagoChecks();
+
+        if (hasArchipelagoCheck(id)) {
+            return;
+        }
+
+        currentSave.archipelagoChecks.add(id);
+        writeCurrentSave();
+    }
+
     public SavedLocationEntry getLocationEntryById(String id) {
         for (SavedLocationEntry entry : currentSave.locations) {
             if (entry.id.equals(id)) {
@@ -242,6 +259,12 @@ public class SaveManager {
 
     public void clearMapDataCache() {
         mapDataCache.clear();
+    }
+
+    private void ensureArchipelagoChecks() {
+        if (currentSave.archipelagoChecks == null) {
+            currentSave.archipelagoChecks = new ArrayList<>();
+        }
     }
 
     public String getClassNameByLocationEntry(String mapName, String locationEntryId) {

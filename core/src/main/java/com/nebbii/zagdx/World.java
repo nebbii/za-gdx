@@ -85,7 +85,7 @@ public class World {
         Gdx.app.log(this.getClass().getSimpleName(), "loading this save! " + selectedFile.filename);
         saveManager.loadSave(selectedFile.filename);
 
-        this.archipelagoManager = new ArchipelagoManager(archipelagoClient, saveManager);
+        this.archipelagoManager = new ArchipelagoManager(archipelagoClient, gameManager, saveManager);
 
         updateWorldBorders();
     }

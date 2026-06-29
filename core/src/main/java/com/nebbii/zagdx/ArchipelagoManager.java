@@ -8,36 +8,68 @@ import io.github.archipelagomw.parts.NetworkItem;
 
 public class ArchipelagoManager {
     private ArchipelagoClient archipelagoClient;
+    private GameManager gameManager;
     private SaveManager saveManager;
 
-    public ArchipelagoManager(ArchipelagoClient client, SaveManager saveManager) {
+    public ArchipelagoManager(ArchipelagoClient client, GameManager gameManager, SaveManager saveManager) {
         this.archipelagoClient = client;
+        this.gameManager = gameManager;
         this.saveManager = saveManager;
 
         this.archipelagoClient.getEventManager().registerListener(this);
     }
 
     public void logic() {
-
         if (saveManager.canSyncAP()) {
             Gdx.app.log(this.getClass().getSimpleName(), "Running sync");
 
             // send locations
             for (SavedLocationEntry locationEntry : saveManager.getLocations()) {
-                int locationId = ArchipelagoLocationMap.getId(locationEntry.id);
+                long locationId = ArchipelagoLocationMap.getId(locationEntry.id);
                 archipelagoClient.checkLocation(locationId);
+                saveManager.addArchipelagoCheck(locationId);
             }
 
             // retrieve locations
             for (NetworkItem item : archipelagoClient.getItemManager().getReceivedItems()) {
-                Gdx.app.log(
-                    this.getClass().getSimpleName(),
-                    "Existing AP item"
-                        + ", item=" + item.itemID
-                        + ", location=" + item.locationID
-                        + ", player=" + item.playerID
-                );
-                // if AP item
+                int itemId = (int) item.itemID;
+                Item receivedItem = ArchipelagoItemMap.getItem(itemId);
+
+                if (!saveManager.hasArchipelagoCheck(item.locationID)) {
+                    Gdx.app.log(
+                        this.getClass().getSimpleName(),
+                        "New AP item"
+                            + ", item=" + item.itemID
+                            + ", location=" + item.locationID
+                            + ", itemName=" + receivedItem.toString()
+                    );
+
+                    if (receivedItem instanceof Treasure) {
+                        if (itemId == 1) {
+                            gameManager.increaseRubies(5, true);
+                        }
+                        else if (itemId == 15) { // 15 = yellow rubies
+                            gameManager.increaseRubies(10, true);
+                        }
+                        else {
+                            gameManager.addTreasure((Treasure) receivedItem, true);
+                        }
+                    }
+                    else if (receivedItem instanceof Weapon) {
+                        gameManager.addWeapon((Weapon) receivedItem, true);
+                    }
+
+                    saveManager.addArchipelagoCheck(item.locationID);
+                }
+                else {
+                    Gdx.app.log(
+                        this.getClass().getSimpleName(),
+                        "Existing AP item"
+                            + ", item=" + item.itemID
+                            + ", location=" + item.locationID
+                            + ", itemName=" + receivedItem.toString()
+                    );
+                }
             }
 
             saveManager.setSyncAP(false);
@@ -46,32 +78,9 @@ public class ArchipelagoManager {
 
     @ArchipelagoEventListener
     public void onReceiveItem(ReceiveItemEvent event) {
-        Item item = ArchipelagoItemMap.getItem(event.getItemName());
+        Gdx.app.log(this.getClass().getSimpleName(), "Received an item!");
 
-        /*
-        if (item instanceof Treasure) {
-            saveManager.addTreasure((Treasure) item);
-        }
-        else if (item instanceof Weapon) {
-            saveManager.addWeapon((Weapon) item);
-        }
-        else {
-            switch(event.getItemName()) {
-            case "Blue Ruby":
-                saveManager.increaseRubies(5);
-                break;
-            case "Yellow Ruby":
-                saveManager.increaseRubies(10);
-                break;
-            }
-        }
-        */
-
-        Gdx.app.log(this.getClass().getSimpleName(), "Received an item!"
-                     + "Item: " + event.getItemName()
-                     + "Location: " + event.getLocationName()
-                     + "ID: " + event.getItemID()
-                    );
+        saveManager.setSyncAP(true);
     }
 
     public boolean isConnected() {
