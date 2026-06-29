@@ -1,9 +1,13 @@
 package com.nebbii.zagdx;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 import com.badlogic.gdx.Gdx;
 
-import io.github.archipelagomw.APResult;
 import io.github.archipelagomw.events.ArchipelagoEventListener;
+import io.github.archipelagomw.events.LocationInfoEvent;
 import io.github.archipelagomw.events.ReceiveItemEvent;
 import io.github.archipelagomw.parts.NetworkItem;
 
@@ -12,12 +16,21 @@ public class ArchipelagoManager {
     private GameManager gameManager;
     private SaveManager saveManager;
 
+    private Map<Long, Long> scoutedLocations;
+
     public ArchipelagoManager(ArchipelagoClient client, GameManager gameManager, SaveManager saveManager) {
         this.archipelagoClient = client;
         this.gameManager = gameManager;
         this.saveManager = saveManager;
 
         this.archipelagoClient.getEventManager().registerListener(this);
+
+        ArrayList<Long> locationIDs = new ArrayList<>(ArchipelagoItemMap.ID_TO_ITEM.keySet());
+
+        if (this.archipelagoClient.isConnected()) {
+            scoutedLocations = new HashMap<Long, Long>();
+            archipelagoClient.scoutLocations(locationIDs);
+        }
     }
 
     public void logic() {
@@ -70,6 +83,7 @@ public class ArchipelagoManager {
 
             saveManager.addArchipelagoCheck(item.locationID);
         }
+        /*
         else {
             Gdx.app.log(
                 this.getClass().getSimpleName(),
@@ -79,9 +93,29 @@ public class ArchipelagoManager {
                     + ", itemName=" + receivedItem.toString()
             );
         }
+        */
     }
 
-    public ActorJsonEntry overrideJsonEntry(ActorJsonEntry entry) {
+    public ActorJsonEntry overrideJsonEntry(ActorJsonEntry entry, String locationString) {
+        Long archipelagoId = ArchipelagoLocationMap.getId(locationString);
+        Long itemId = scoutedLocations.get(archipelagoId);
+
+        if (itemId == null) { // not in list of replaceable locations
+            return entry;
+        }
+
+        String scoutedItem = ArchipelagoItemMap.getPickup(Math.toIntExact(itemId));
+
+        entry.type = scoutedItem;
+
+        if (itemId == 1L) {
+            entry.rubyType = "BLUE";
+        }
+
+        if (itemId == 15L) {
+            entry.rubyType = "YELLOW";
+        }
+
         return entry;
     }
 
@@ -90,6 +124,21 @@ public class ArchipelagoManager {
         Gdx.app.log(this.getClass().getSimpleName(), "Received an item!");
 
         saveManager.setSyncAP(true);
+    }
+
+    @ArchipelagoEventListener
+    public void onLocationInfo(LocationInfoEvent event) {
+        for (NetworkItem item : event.locations) {
+            Gdx.app.log(
+                this.getClass().getSimpleName(),
+                "Scouted location"
+                    + ", location=" + item.locationID
+                    + ", item=" + item.itemID
+                //+ ", itemName=" + ArchipelagoItemMap.getItem((int) item.itemID).toString()
+            );
+
+            scoutedLocations.put(item.locationID, item.itemID);
+        }
     }
 
     public boolean isConnected() {

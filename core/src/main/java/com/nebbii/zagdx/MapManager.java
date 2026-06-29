@@ -369,28 +369,6 @@ public class MapManager {
         iterator.remove();
     }
 
-    public void dropSpecificPickup(String pickupName, float x, float y) {
-        Actor pickup;
-
-        switch (pickupName) {
-        case "PickupHeart":
-            pickup = new PickupHeart();
-            break;
-        case "PickupRubyBlue":
-            pickup = new PickupRuby(RubyType.BLUE);
-            break;
-        case "PickupRubyYellow":
-            pickup = new PickupRuby(RubyType.YELLOW);
-            break;
-        default:
-            throw new RuntimeException("Requested specific pickup does not exist (" + pickupName + ")");
-        }
-
-        pickup.setMap(this);
-        pickup.getCollisionBox().setPosition(x, y);
-        newActors.add(pickup);
-    }
-
     public void dropRandomPickup(float x, float y) {
         int roll = MathUtils.random(0, 3);
 
@@ -443,7 +421,7 @@ public class MapManager {
 
                 // AP json override
                 if (world.getArchipelagoManager().isConnected()) {
-                    entry = world.getArchipelagoManager().overrideJsonEntry(entry);
+                    entry = world.getArchipelagoManager().overrideJsonEntry(entry, locationString);
                 }
 
                 addActor(createActorFromJsonEntry(entry, locationString));
