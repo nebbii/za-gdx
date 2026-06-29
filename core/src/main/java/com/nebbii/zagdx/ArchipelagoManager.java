@@ -45,6 +45,54 @@ public class ArchipelagoManager {
 
     @ArchipelagoEventListener
     public void onReceiveItem(ReceiveItemEvent event) {
+        switch(event.getItemName()) {
+        case "Boomerang":
+            saveManager.addWeapon(Weapon.BOOMERANG);
+            break;
+        case "Celestial Sign 1":
+            saveManager.addTreasure(Treasure.CELESTIAL_SIGN_1);
+            break;
+        case "Compass 1":
+            saveManager.addTreasure(Treasure.COMPASS_1);
+            break;
+        case "Dagger":
+            saveManager.addWeapon(Weapon.DAGGER);
+            break;
+        case "Empty Pitcher":
+            saveManager.addTreasure(Treasure.PITCHER_EMPTY);
+            break;
+        case "Firestorm":
+            saveManager.addWeapon(Weapon.FIRESTORM);
+            break;
+        case "Full Pitcher":
+            saveManager.addTreasure(Treasure.PITCHER_FULL);
+            break;
+        case "Jade Ring":
+            saveManager.addWeapon(Weapon.JADE_RING);
+            break;
+        case "Ladder":
+            saveManager.addTreasure(Treasure.LADDER);
+            break;
+        case "Red Boots":
+            saveManager.addTreasure(Treasure.RED_BOOTS);
+            break;
+        case "Underworld Map 1":
+            saveManager.addTreasure(Treasure.UNDERWORLD_MAP_1);
+            break;
+        case "Vial of Wind":
+            saveManager.addTreasure(Treasure.VIAL_OF_WIND);
+            break;
+        case "Wand":
+            saveManager.addWeapon(Weapon.WAND);
+            break;
+        case "Blue Ruby":
+            saveManager.increaseRubies(5);
+            break;
+        case "Yellow Ruby":
+            saveManager.increaseRubies(10);
+            break;
+        }
+
         Gdx.app.log(this.getClass().getSimpleName(), "Received an item!"
                      + "Item: " + event.getItemName()
                      + "Location: " + event.getLocationName()

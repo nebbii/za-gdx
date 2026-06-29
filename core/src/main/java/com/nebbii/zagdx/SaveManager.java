@@ -140,6 +140,14 @@ public class SaveManager {
         currentSave.rubies = rubies;
     }
 
+    public void increaseRubies(int count) {
+        setRubies(getRubies() + count);
+    }
+
+    public void decreaseRubies(int count) {
+        setRubies(getRubies() - count);
+    }
+
     public void addTreasure(Treasure treasure) {
         currentSave.treasures.add(treasure);
     }
