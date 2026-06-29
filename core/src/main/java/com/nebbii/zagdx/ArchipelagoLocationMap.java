@@ -6,6 +6,7 @@ import java.util.Map;
 
 public final class ArchipelagoLocationMap {
     public static final Map<String, Integer> CELL_TO_ID = createCellToIdMap();
+    public static final Map<Integer, String> ID_TO_CELL = createIdToCellMap();
 
     private ArchipelagoLocationMap() {}
 
@@ -15,6 +16,14 @@ public final class ArchipelagoLocationMap {
         }
 
         return CELL_TO_ID.get(cell);
+    }
+
+    public static String getCell(Integer id) {
+        if (!ID_TO_CELL.containsKey(id)) {
+            return null;
+        }
+
+        return ID_TO_CELL.get(id);
     }
 
     private static Map<String, Integer> createCellToIdMap() {
@@ -170,6 +179,16 @@ public final class ArchipelagoLocationMap {
         map.put("s112_0", 2021);
         map.put("s120_0", 2022);
         map.put("s121_0", 2023);
+
+        return Collections.unmodifiableMap(map);
+    }
+
+    private static Map<Integer, String> createIdToCellMap() {
+        Map<Integer, String> map = new HashMap<>();
+
+        for (Map.Entry<String, Integer> entry : CELL_TO_ID.entrySet()) {
+            map.put(entry.getValue(), entry.getKey());
+        }
 
         return Collections.unmodifiableMap(map);
     }
