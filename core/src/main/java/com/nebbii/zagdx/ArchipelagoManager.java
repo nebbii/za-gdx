@@ -83,7 +83,6 @@ public class ArchipelagoManager {
 
             saveManager.addArchipelagoCheck(item.locationID);
         }
-        /*
         else {
             Gdx.app.log(
                 this.getClass().getSimpleName(),
@@ -93,7 +92,6 @@ public class ArchipelagoManager {
                     + ", itemName=" + receivedItem.toString()
             );
         }
-        */
     }
 
     public ActorJsonEntry overrideJsonEntry(ActorJsonEntry entry, String locationString) {
@@ -106,7 +104,14 @@ public class ArchipelagoManager {
 
         String scoutedItem = ArchipelagoItemMap.getPickup(Math.toIntExact(itemId));
 
-        entry.type = scoutedItem;
+        if (entry.type.equals("SpawnerPickup")) {
+            Gdx.app.log(this.getClass().getSimpleName(), "Replaced " + entry.pickupItem + " with " + scoutedItem);
+            entry.pickupItem = scoutedItem;
+        }
+        else if (entry.type.startsWith("Pickup")) {
+            Gdx.app.log(this.getClass().getSimpleName(), "Replaced " + entry.type + " with " + scoutedItem);
+            entry.type = scoutedItem;
+        }
 
         if (itemId == 1L) {
             entry.rubyType = "BLUE";

@@ -14,6 +14,7 @@ public class Spawner extends Rectangle implements Actor {
     private String locationEntry;
     private String pickupType;
     private String pickupItem;
+    private String rubyType;
 
     public Spawner() {
         setWidth(1);
