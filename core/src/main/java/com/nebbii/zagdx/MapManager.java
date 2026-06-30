@@ -377,13 +377,13 @@ public class MapManager {
         Gdx.app.log(getClass().getSimpleName(), "dropRandomPickup: rolled " + roll);
         switch (roll) {
         case 0:
-            pickup = new PickupHeart();
+            pickup = new PickupHeart(true);
             break;
         case 1:
-            pickup = new PickupRuby(RubyType.BLUE);
+            pickup = new PickupRuby(RubyType.BLUE, true);
             break;
         case 2:
-            pickup = new PickupRuby(RubyType.YELLOW);
+            pickup = new PickupRuby(RubyType.YELLOW, true);
             break;
         case 3:
             return;
@@ -457,7 +457,7 @@ public class MapManager {
             switch (entry.type) {
             case "PickupRuby":
                 RubyType rubyType = RubyType.valueOf(entry.rubyType);
-                actor = new PickupRuby(rubyType);
+                actor = new PickupRuby(rubyType, true);
                 break;
             default:
                 Class<?> newClass = Class.forName("com.nebbii.zagdx." + entry.type);

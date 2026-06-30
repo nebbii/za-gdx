@@ -3,7 +3,9 @@ package com.nebbii.zagdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class PickupHeart extends Pickup {
-    public PickupHeart() {
+    private boolean expires;
+
+    public PickupHeart(boolean expires) {
         super();
 
         setImage(World.images.getHeart());
@@ -15,14 +17,14 @@ public class PickupHeart extends Pickup {
     public void logic() {
         super.logic();
 
-        if (getDuration() > 6) {
+        if (expires && getDuration() > 6) {
             map.addNewActor(new SpriteSparkle(getCenterPointX(), getCenterPointY()));
             setState(State.DEAD);
         }
     }
 
     public void draw(SpriteBatch batch) {
-        if (!(getDuration() > 5 && getDuration() % 0.16f > 0.08f)) {
+        if (!expires || !(getDuration() > 5 && getDuration() % 0.16f > 0.08f)) {
             super.draw(batch);
         }
     }

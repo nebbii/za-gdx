@@ -9,13 +9,16 @@ public class ActorJsonEntry {
 
     // extra fields
     public String __comment;
-    public String rubyType;
     public String pickupType;
     public String pickupItem;
     public String trigger;
     public boolean purchasable;
     public int price;
+
+    // pathed enemies
     public String pathMode;
     public ArrayList<ActorPathPointJsonEntry> path = new ArrayList<>();
 
+    // rubies
+    public String rubyType;
 }
