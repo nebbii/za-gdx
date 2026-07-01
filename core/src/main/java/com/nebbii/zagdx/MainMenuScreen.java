@@ -2,12 +2,9 @@ package com.nebbii.zagdx;
 
 import java.util.ArrayList;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 // TODO: Eventually swap out the dummy assets with real ones once the exporter supports it
 public class MainMenuScreen extends MenuScreen {
@@ -63,23 +60,6 @@ public class MainMenuScreen extends MenuScreen {
         draw();
     }
 
-    public void logic() {
-        super.logic();
-
-        if (isFading()) return;
-
-        if (Gdx.input.justTouched()) {
-            touchPos.set(Gdx.input.getX(), Gdx.input.getY());
-            viewport.unproject(touchPos);
-
-            for (MenuButtonSaveFile button : menuButtonSaves) {
-                if (button.contains(touchPos.x, touchPos.y)) {
-                    button.onTouch();
-                }
-            }
-        }
-    }
-
     public void draw() {
         super.draw();
         batch.setProjectionMatrix(camera.combined);
@@ -113,6 +93,19 @@ public class MainMenuScreen extends MenuScreen {
             menuButtonSaves.add(new MenuButtonSaveFile(this, save, selected, 90, 165 - (20 * i), 200, 20));
             i++;
         }
+    }
+
+    @Override
+    protected ArrayList<MenuButton> getSelectableMenuButtons() {
+        int saveCount = menuButtonSaves == null ? 0 : menuButtonSaves.size();
+        ArrayList<MenuButton> buttons = new ArrayList<MenuButton>(menuButtons.size() + saveCount);
+        buttons.addAll(menuButtons);
+
+        if (menuButtonSaves != null) {
+            buttons.addAll(menuButtonSaves);
+        }
+
+        return buttons;
     }
 
     @Override
