@@ -39,4 +39,9 @@ public class Core extends Game {
     public void setNextScreen(Screen nextScreen) {
         this.nextScreen = nextScreen;
     }
+
+    @Override
+    public void dispose() {
+        archipelagoClient.close();
+    }
 }
