@@ -17,7 +17,7 @@ public class ArchipelagoManager {
     private GameManager gameManager;
     private SaveManager saveManager;
 
-    private Map<Long, Long> scoutedLocations;
+    private Map<Long, NetworkItem> scoutedLocations;
 
     public ArchipelagoManager(ArchipelagoClient client, GameManager gameManager, SaveManager saveManager) {
         this.archipelagoClient = client;
@@ -29,7 +29,7 @@ public class ArchipelagoManager {
         ArrayList<Long> locationIDs = new ArrayList<>(ArchipelagoItemMap.ID_TO_ITEM.keySet());
 
         if (this.archipelagoClient.isConnected()) {
-            scoutedLocations = new HashMap<Long, Long>();
+            scoutedLocations = new HashMap<Long, NetworkItem>();
             archipelagoClient.scoutLocations(locationIDs);
         }
     }
@@ -107,29 +107,32 @@ public class ArchipelagoManager {
 
     public ActorJsonEntry overrideJsonEntry(ActorJsonEntry entry, String locationString) {
         Long archipelagoId = ArchipelagoLocationMap.getId(locationString);
-        Long itemId = scoutedLocations.get(archipelagoId);
-
-        if (itemId == null) { // not in list of replaceable locations
+        NetworkItem item = scoutedLocations.get(archipelagoId);
+        String scoutedItem = "";
+        if (item == null) { // Item not found in AP
             return entry;
         }
+        else if (item.playerID != archipelagoClient.getSlot()) { // external item
+            scoutedItem = "PickupArchipelago";
+        }
+        else {
+            scoutedItem = ArchipelagoItemMap.getPickup(Math.toIntExact(item.itemID));
 
-        String scoutedItem = ArchipelagoItemMap.getPickup(Math.toIntExact(itemId));
+            // TODO: just make these separate items lol
+            if (item.itemID == 1L) {
+                entry.rubyType = "BLUE";
+            }
+
+            if (item.itemID == 15L) {
+                entry.rubyType = "YELLOW";
+            }
+        }
 
         if (entry.type.equals("SpawnerPickup")) {
-            Gdx.app.log(this.getClass().getSimpleName(), "Replaced " + entry.pickupItem + " with " + scoutedItem);
             entry.pickupItem = scoutedItem;
         }
         else if (entry.type.startsWith("Pickup")) {
-            Gdx.app.log(this.getClass().getSimpleName(), "Replaced " + entry.type + " with " + scoutedItem);
             entry.type = scoutedItem;
-        }
-
-        if (itemId == 1L) {
-            entry.rubyType = "BLUE";
-        }
-
-        if (itemId == 15L) {
-            entry.rubyType = "YELLOW";
         }
 
         return entry;
@@ -145,15 +148,16 @@ public class ArchipelagoManager {
     @ArchipelagoEventListener
     public void onLocationInfo(LocationInfoEvent event) {
         for (NetworkItem item : event.locations) {
+            /*
             Gdx.app.log(
                 this.getClass().getSimpleName(),
                 "Scouted location"
                     + ", location=" + item.locationID
                     + ", item=" + item.itemID
-                //+ ", itemName=" + ArchipelagoItemMap.getItem((int) item.itemID).toString()
             );
+            */
 
-            scoutedLocations.put(item.locationID, item.itemID);
+            scoutedLocations.put(item.locationID, item);
         }
     }
 
