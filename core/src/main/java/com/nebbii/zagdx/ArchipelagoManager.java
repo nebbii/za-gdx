@@ -41,7 +41,9 @@ public class ArchipelagoManager {
             for (SavedLocationEntry locationEntry : saveManager.getLocations()) {
                 long locationId = ArchipelagoLocationMap.getId(locationEntry.id);
                 archipelagoClient.checkLocation(locationId);
-                saveManager.addArchipelagoCheck(locationId);
+                if (!locationEntry.action.equals("dead")) {
+                    saveManager.addArchipelagoCheck(locationId);
+                }
             }
 
             // retrieve locations
@@ -84,6 +86,7 @@ public class ArchipelagoManager {
             saveManager.addArchipelagoCheck(item.locationID);
         }
         else {
+            /*
             Gdx.app.log(
                 this.getClass().getSimpleName(),
                 "Existing AP item"
@@ -91,6 +94,7 @@ public class ArchipelagoManager {
                     + ", location=" + item.locationID
                     + ", itemName=" + receivedItem.toString()
             );
+            */
         }
     }
 
