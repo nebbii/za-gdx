@@ -66,6 +66,8 @@ public final class ArchipelagoItemMap {
         map.put(13L, "PickupVialOfWind");
         map.put(14L, "PickupWand");
         map.put(15L, "PickupRuby");
+        map.put(16L, "PickupCandle");
+        map.put(17L, "PickupMagicShield");
 
         return Collections.unmodifiableMap(map);
     }

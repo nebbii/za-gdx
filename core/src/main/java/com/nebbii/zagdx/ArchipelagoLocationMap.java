@@ -32,6 +32,8 @@ public final class ArchipelagoLocationMap {
         // Overworld item / pickup locations
         map.put("d24_0", 1L);    // Overworld D24 Boomerang
         map.put("e20_0", 2L);    // Overworld E20 Full Pitcher
+        map.put("f26_1", 14L);    // Overworld F26 Candle
+        map.put("f26_2", 15L);    // Overworld F26 Magic Shield
         map.put("f28_0", 3L);    // Overworld F28 Ladder
         map.put("h23_0", 4L);    // Overworld H23 Wand
         map.put("j22_1", 5L);    // Overworld J22 Firestorm
