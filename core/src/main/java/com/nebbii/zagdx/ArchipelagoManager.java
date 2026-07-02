@@ -9,6 +9,7 @@ import com.badlogic.gdx.Gdx;
 import io.github.archipelagomw.events.ArchipelagoEventListener;
 import io.github.archipelagomw.events.LocationInfoEvent;
 import io.github.archipelagomw.events.ReceiveItemEvent;
+import io.github.archipelagomw.events.DeathLinkEvent;
 import io.github.archipelagomw.parts.NetworkItem;
 
 public class ArchipelagoManager {
@@ -52,6 +53,12 @@ public class ArchipelagoManager {
             }
 
             saveManager.setSyncAP(false);
+        }
+
+        if (saveManager.canDeathOutAP()) {
+            archipelagoClient.sendDeathlink(archipelagoClient.getAlias(), archipelagoClient.getAlias() + " ran out of hearts!");
+
+            saveManager.setDeathOutAP(false);
         }
     }
 
@@ -148,6 +155,11 @@ public class ArchipelagoManager {
 
             scoutedLocations.put(item.locationID, item.itemID);
         }
+    }
+
+    @ArchipelagoEventListener
+    public void onDeathLink(DeathLinkEvent event) {
+        saveManager.setDeathInAP(true);
     }
 
     public boolean isConnected() {

@@ -20,6 +20,8 @@ public class SaveManager {
     private FileHandle currentSaveFile;
 
     private boolean syncAP = false;
+    private boolean deathInAP = false;
+    private boolean deathOutAP = false;
 
     public SaveManager() {
         saveFolder = Gdx.files.local(SAVE_FOLDER);
@@ -334,6 +336,22 @@ public class SaveManager {
 
     public void setCurrentSave(SaveData currentSave) {
         this.currentSave = currentSave;
+    }
+
+    public boolean canDeathInAP() {
+        return deathInAP;
+    }
+
+    public void setDeathInAP(boolean deathInAP) {
+        this.deathInAP = deathInAP;
+    }
+
+    public boolean canDeathOutAP() {
+        return deathOutAP;
+    }
+
+    public void setDeathOutAP(boolean deathOutAP) {
+        this.deathOutAP = deathOutAP;
     }
 
     public boolean canSyncAP() {
