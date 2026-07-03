@@ -125,14 +125,14 @@ public class Pickup extends Rectangle implements Actor {
     }
 
     public void onPickup(GameManager game) {
-        Gdx.app.log(this.getClass().getSimpleName(), "Storing pickup in save");
-
         map.addNewActor(new SpriteSparkle(getCenterPointX(), getCenterPointY()));
 
         if (spawnerParent != null) {
+            Gdx.app.log(this.getClass().getSimpleName(), "Storing spawner pickup in save");
             map.getSaveManager().addLocationEntry(spawnerParent.getLocationEntry(), "spawned");
         }
         else if (getLocationEntry() != null) {
+            Gdx.app.log(this.getClass().getSimpleName(), "Storing pickup in save");
             map.getSaveManager().addLocationEntry(getLocationEntry(), "picked_up");
         }
     }

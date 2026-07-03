@@ -24,14 +24,14 @@ public class PickupHeart extends Pickup {
     }
 
     public void draw(SpriteBatch batch) {
-        super.onPickup(game);
-
         if (!expires || !(getDuration() > 5 && getDuration() % 0.16f > 0.08f)) {
             super.draw(batch);
         }
     }
 
     public void onPickup(GameManager game) {
+        super.onPickup(game);
+
         game.getZelda().increaseHealth(20);
         this.setState(State.DEAD);
     }
