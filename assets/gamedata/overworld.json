@@ -931,7 +931,7 @@
         },
         {
           "type": "PickupCalm",
-          "x": 2158,
+          "x": 2108,
           "y": 7101,
           "purchasable": true,
           "price": 100
