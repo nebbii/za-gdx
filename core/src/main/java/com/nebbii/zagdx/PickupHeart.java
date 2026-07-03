@@ -30,6 +30,8 @@ public class PickupHeart extends Pickup {
     }
 
     public void onPickup(GameManager game) {
+        super.onPickup(game);
+
         game.getZelda().increaseHealth(20);
         this.setState(State.DEAD);
     }

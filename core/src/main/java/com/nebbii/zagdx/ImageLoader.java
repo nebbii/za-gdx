@@ -248,6 +248,7 @@ public class ImageLoader {
 
     /* Projectiles */
     private Texture[] friendlyBoomerang;
+    private Texture[][] friendlyCalm;
     private Texture[] friendlyDagger;
     private Texture[] friendlyJadeRing;
     private Texture[] enemyBoomerang;
@@ -520,6 +521,11 @@ public class ImageLoader {
 
         /* Projectiles */
         friendlyBoomerang = loadTextureArray("export/common/weapons/Boomerang/group0", 4);
+        friendlyCalm = new Texture[4][];
+        friendlyCalm[0] = loadTextureArray("export/common/weapons/Calm/group0", 3);
+        friendlyCalm[1] = loadTextureArray("export/common/weapons/Calm/group1", 3);
+        friendlyCalm[2] = loadTextureArray("export/common/weapons/Calm/group2", 3);
+        friendlyCalm[3] = loadTextureArray("export/common/weapons/Calm/group3", 3);
         friendlyDagger = new Texture[4];
         friendlyDagger[0] = new Texture("export/common/weapons/Dagger/group0/sprite0.png");
         friendlyDagger[1] = new Texture("export/common/weapons/Dagger/group1/sprite0.png");
@@ -901,6 +907,14 @@ public class ImageLoader {
         for (Texture texture : friendlyBoomerang) {
             if (texture != null) {
                 texture.dispose();
+            }
+        }
+
+        for (Texture[] textures : friendlyCalm) {
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
             }
         }
 
@@ -1332,6 +1346,10 @@ public class ImageLoader {
 
     public Texture[] getFriendlyBoomerang() {
         return friendlyBoomerang;
+    }
+
+    public Texture[][] getFriendlyCalm() {
+        return friendlyCalm;
     }
 
     public Texture[] getFriendlyDagger() {
