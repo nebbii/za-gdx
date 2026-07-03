@@ -247,7 +247,10 @@ public class Zelda extends Rectangle implements Actor {
                 if (world.getGameManager().getRubies() > 0
                     && map.findFirstActorByType(ZeldaActionFirestorm.class) == null) {
                     world.getGameManager().decreaseRubies(1, true);
-                    map.addNewActor(new ZeldaActionFirestorm(this, getX(), getY()));
+                    map.addNewActor(new ZeldaActionFirestorm(this, Direction.UP, getX(), getY()));
+                    map.addNewActor(new ZeldaActionFirestorm(this, Direction.RIGHT, getX(), getY()));
+                    map.addNewActor(new ZeldaActionFirestorm(this, Direction.DOWN, getX(), getY()));
+                    map.addNewActor(new ZeldaActionFirestorm(this, Direction.LEFT, getX(), getY()));
                 }
                 break;
             case JADE_RING:

@@ -10,7 +10,7 @@ public class ZeldaActionFirestorm extends ZeldaAction {
     private FriendlyFirestormAnimation animation;
     private float speed;
 
-    public ZeldaActionFirestorm(Actor actor, float x, float y) {
+    public ZeldaActionFirestorm(Actor actor, Direction direction, float x, float y) {
         super(actor, x, y);
 
         duration = 1.2f;
@@ -20,13 +20,13 @@ public class ZeldaActionFirestorm extends ZeldaAction {
         setWidth(10f);
         setHeight(10f);
         setDamage(actor.getDamage());
-        setDirection(actor.getDirection());
+        setDirection(direction);
 
         hitbox = new Rectangle();
         hitbox.setWidth(10f);
         hitbox.setHeight(10f);
 
-        switch(getDirection()) {
+        switch(direction) {
         case LEFT:
             setX(actor.getCenterPointX() - actor.getHitbox().getWidth() / 2 - this.getWidth());
             setY(actor.getCenterPointY() + actor.getHitbox().getHeight() / 3);
