@@ -24,6 +24,8 @@ public class PickupHeart extends Pickup {
     }
 
     public void draw(SpriteBatch batch) {
+        super.onPickup(game);
+
         if (!expires || !(getDuration() > 5 && getDuration() % 0.16f > 0.08f)) {
             super.draw(batch);
         }
