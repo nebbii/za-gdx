@@ -76,9 +76,9 @@ public class FriendlyCalmAnimation extends GameAnimation {
 
     private Animation<TextureRegion> initUp() {
         int[][] frameData = {
-            {0, -11, -8},
-            {1, -11, -8},
-            {2, -11, -8}
+            {0, -20, -8},
+            {1, -20, -8},
+            {2, -20, -8}
         };
 
         upOffsetX = new int[frameData.length];
@@ -88,9 +88,9 @@ public class FriendlyCalmAnimation extends GameAnimation {
 
     private Animation<TextureRegion> initRight() {
         int[][] frameData = {
-            {0, -8, 0},
-            {1, -8, 0},
-            {2, -8, 0}
+            {0, -26, -2},
+            {1, -26, -2},
+            {2, -26, -2}
         };
 
         rightOffsetX = new int[frameData.length];
@@ -100,9 +100,9 @@ public class FriendlyCalmAnimation extends GameAnimation {
 
     private Animation<TextureRegion> initDown() {
         int[][] frameData = {
-            {0, -11, -8},
-            {1, -11, -8},
-            {2, -11, -8}
+            {0, -20, -4},
+            {1, -20, -4},
+            {2, -20, -4}
         };
 
         downOffsetX = new int[frameData.length];
@@ -112,9 +112,9 @@ public class FriendlyCalmAnimation extends GameAnimation {
 
     private Animation<TextureRegion> initLeft() {
         int[][] frameData = {
-            {0, -8, 0},
-            {1, -8, 0},
-            {2, -8, 0}
+            {0, -10, -2},
+            {1, -10, -2},
+            {2, -10, -2}
         };
 
         leftOffsetX = new int[frameData.length];
