@@ -76,10 +76,10 @@ public class FriendlyFirestormAnimation extends GameAnimation {
 
     private Animation<TextureRegion> initUp() {
         int[][] frameData = {
-            {0, -11, -8},
-            {1, -11, -8},
-            {2, -11, -8},
-            {3, -11, -8}
+            {0, -16, -15},
+            {1, -16, -15},
+            {2, -16, -15},
+            {3, -16, -15}
         };
 
         upOffsetX = new int[frameData.length];
