@@ -228,6 +228,8 @@ public class ImageLoader {
     /* Weapons */
     private Texture wand;
     private Texture boomerang;
+    private Texture calm;
+    private Texture calmPrice;
     private Texture dagger;
     private Texture[] firestorm;
     private Texture jadeRing;
@@ -510,6 +512,8 @@ public class ImageLoader {
         /* Weapons */
         wand = new Texture("export/overworld/h23/sprites/desc0/group0/sprite0.png");
         boomerang = new Texture("export/overworld/d24/sprites/desc2/group0/sprite0.png");
+        calm = new Texture("export/overworld/j22a/sprites/desc6/group0/sprite0.png");
+        calmPrice = new Texture("export/overworld/j22a/sprites/desc6/group1/sprite0.png");
         dagger = new Texture("export/overworld/j22a/sprites/desc5/group0/sprite0.png");
         firestorm = loadTextureArray("export/overworld/j22/sprites/desc2/group0", 3);
         jadeRing = new Texture("export/underworld/s108/sprites/desc1/group0/sprite0.png");
@@ -883,6 +887,8 @@ public class ImageLoader {
         /* Weapons */
         wand.dispose();
         boomerang.dispose();
+        calm.dispose();
+        calmPrice.dispose();
         dagger.dispose();
         for (Texture texture : firestorm) {
             if (texture != null) {
@@ -1024,11 +1030,12 @@ public class ImageLoader {
                 return getWand();
             case BOOMERANG:
                 return getBoomerang();
+            case CALM:
+                return getCalm();
             case DAGGER:
                 return getDagger();
             case BOW_AND_ARROW:
             case BROADSWORD:
-            case CALM:
             case FEATHER:
             case FIRESTORM:
                 return getFirestorm();
@@ -1201,6 +1208,14 @@ public class ImageLoader {
 
     public Texture getBoomerang() {
         return boomerang;
+    }
+
+    public Texture getCalm() {
+        return calm;
+    }
+
+    public Texture getCalmPrice() {
+        return calmPrice;
     }
 
     public Texture getDagger() {

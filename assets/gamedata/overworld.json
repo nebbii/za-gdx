@@ -928,6 +928,13 @@
           "trigger": "MANUAL_NPC",
           "x": 2131,
           "y": 7050
+        },
+        {
+          "type": "PickupCalm",
+          "x": 2158,
+          "y": 7101,
+          "purchasable": true,
+          "price": 100
         }
       ]
     },
