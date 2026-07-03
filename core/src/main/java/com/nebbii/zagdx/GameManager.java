@@ -58,8 +58,23 @@ public class GameManager {
                 setGameState(GameState.MOVE);
             }
 
+            if (getSaveManager().canDeathInAP()) {
+                world.getMapManager().getZelda().setHealth(-1);
+            }
+
             if (world.getMapManager().getZelda().getHealth() <= 0) {
                 Gdx.app.log(getClass().getSimpleName(), "Zelda has died! Initiate game over sequence");
+
+                if (world.getArchipelagoManager().isConnected()) {
+                    Gdx.app.log(getClass().getSimpleName(), "Setting death link switch to on");
+                    if (getSaveManager().canDeathInAP()) {
+                        getSaveManager().setDeathInAP(false);
+                    }
+                    else {
+                        getSaveManager().setDeathOutAP(true);
+                    }
+                }
+
                 initializeFadeGameover();
             }
             break;
