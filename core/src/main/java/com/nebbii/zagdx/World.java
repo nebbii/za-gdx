@@ -48,7 +48,7 @@ public class World {
 
     private BitmapFont font;
 
-    private ArchipelagoClient archipelagoClient;
+    private ArchipelagoManager archipelagoManager;
     private SettingsManager settingsManager;
     private ControlInput controlInput;
 
@@ -60,7 +60,7 @@ public class World {
 
         gameManager = new GameManager(this);
         mapManager = new MapManager(this, batch, camera);
-        saveManager = new SaveManager(this);
+        saveManager = new SaveManager();
         worldCamera = new WorldCamera(camera, mapManager);
 
         shapes = new ShapeRenderer();
@@ -85,12 +85,16 @@ public class World {
         Gdx.app.log(this.getClass().getSimpleName(), "loading this save! " + selectedFile.filename);
         saveManager.loadSave(selectedFile.filename);
 
-        this.archipelagoClient = archipelagoClient;
+        this.archipelagoManager = new ArchipelagoManager(archipelagoClient, gameManager, saveManager);
 
         updateWorldBorders();
     }
 
     public void logic() {
+        if (archipelagoManager.isConnected()) {
+            archipelagoManager.logic();
+        }
+
         switch(gameManager.getGameState()) {
         case PLAY:
         case PAUSE_MAP:
@@ -273,7 +277,7 @@ public class World {
         //debugLines.add("Equip: " + mapManager.getZelda().getCurrentItem().toString());
         //debugLines.add("State: " + mapManager.getZelda().getState());
         //debugLines.add("GameState: " + gameManager.getGameState());
-        if (archipelagoClient.isConnected()) {
+        if (archipelagoManager.isConnected()) {
             debugLines.add("AP connected");
         }
 
@@ -399,6 +403,10 @@ public class World {
         return settingsManager;
     }
 
+    public ArchipelagoManager getArchipelagoManager() {
+        return archipelagoManager;
+    }
+
     public ControlInput getControlInput() {
         return controlInput;
     }
@@ -461,7 +469,5 @@ public class World {
         batch.dispose();
         mapManager.dispose();
         images.dispose();
-
-        archipelagoClient.close();
     }
 }

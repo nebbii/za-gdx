@@ -369,28 +369,6 @@ public class MapManager {
         iterator.remove();
     }
 
-    public void dropSpecificPickup(String pickupName, float x, float y) {
-        Actor pickup;
-
-        switch (pickupName) {
-        case "PickupHeart":
-            pickup = new PickupHeart();
-            break;
-        case "PickupRubyBlue":
-            pickup = new PickupRuby(RubyType.BLUE);
-            break;
-        case "PickupRubyYellow":
-            pickup = new PickupRuby(RubyType.YELLOW);
-            break;
-        default:
-            throw new RuntimeException("Requested specific pickup does not exist (" + pickupName + ")");
-        }
-
-        pickup.setMap(this);
-        pickup.getCollisionBox().setPosition(x, y);
-        newActors.add(pickup);
-    }
-
     public void dropRandomPickup(float x, float y) {
         int roll = MathUtils.random(0, 3);
 
@@ -399,13 +377,13 @@ public class MapManager {
         Gdx.app.log(getClass().getSimpleName(), "dropRandomPickup: rolled " + roll);
         switch (roll) {
         case 0:
-            pickup = new PickupHeart();
+            pickup = new PickupHeart(true);
             break;
         case 1:
-            pickup = new PickupRuby(RubyType.BLUE);
+            pickup = new PickupRuby(RubyType.BLUE, true);
             break;
         case 2:
-            pickup = new PickupRuby(RubyType.YELLOW);
+            pickup = new PickupRuby(RubyType.YELLOW, true);
             break;
         case 3:
             return;
@@ -433,14 +411,20 @@ public class MapManager {
         zelda.setPosition(zelda.getSpawnX(), zelda.getSpawnY());
         addActor(zelda);
 
-        for (LocationJsonEntry location : data.locations) {
-            if (location.location == null) continue;
+        for (LocationJsonEntry locationEntry : data.locations) {
+            if (locationEntry.location == null) continue;
 
             int i = 0;
-            for (ActorJsonEntry entry : location.actors) {
+            for (ActorJsonEntry entry : locationEntry.actors) {
                 if (entry.type == null) continue;
+                String locationString = locationEntry.location + "_" + i;
 
-                addActor(createActorFromJsonEntry(entry, location.location + "_" + i));
+                // AP json override
+                if (world.getArchipelagoManager().isConnected()) {
+                    entry = world.getArchipelagoManager().overrideJsonEntry(entry, locationString);
+                }
+
+                addActor(createActorFromJsonEntry(entry, locationString));
                 i++;
             }
         }
@@ -473,7 +457,7 @@ public class MapManager {
             switch (entry.type) {
             case "PickupRuby":
                 RubyType rubyType = RubyType.valueOf(entry.rubyType);
-                actor = new PickupRuby(rubyType);
+                actor = new PickupRuby(rubyType, false);
                 break;
             default:
                 Class<?> newClass = Class.forName("com.nebbii.zagdx." + entry.type);

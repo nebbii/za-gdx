@@ -11,7 +11,6 @@ import com.badlogic.gdx.utils.JsonWriter;
 
 public class SaveManager {
     private static final String SAVE_FOLDER = "saves/";
-    private World world; // TODO: remove this here and from the constructor
 
     private final FileHandle saveFolder;
     private final Json json;
@@ -19,6 +18,10 @@ public class SaveManager {
 
     private SaveData currentSave;
     private FileHandle currentSaveFile;
+
+    private boolean syncAP = false;
+    private boolean deathInAP = false;
+    private boolean deathOutAP = false;
 
     public SaveManager() {
         saveFolder = Gdx.files.local(SAVE_FOLDER);
@@ -29,19 +32,6 @@ public class SaveManager {
 
         json = new Json();
         json.setOutputType(JsonWriter.OutputType.json);
-    }
-
-    public SaveManager(World world) {
-        saveFolder = Gdx.files.local(SAVE_FOLDER);
-
-        if (!saveFolder.exists()) {
-            saveFolder.mkdirs();
-        }
-
-        json = new Json();
-        json.setOutputType(JsonWriter.OutputType.json);
-
-        this.world = world;
     }
 
     public void createSave(String fileName) {
@@ -100,6 +90,8 @@ public class SaveManager {
             throw new RuntimeException("No save is currently loaded");
         }
 
+        setSyncAP(true);
+
         currentSaveFile.writeString(json.prettyPrint(currentSave), false);
     }
 
@@ -110,6 +102,8 @@ public class SaveManager {
         }
 
         syncInventoryFromGameManager(gameManager);
+
+        setSyncAP(true);
 
         currentSaveFile.writeString(json.prettyPrint(currentSave), false);
     }
@@ -148,6 +142,14 @@ public class SaveManager {
         currentSave.rubies = rubies;
     }
 
+    public void increaseRubies(int count) {
+        setRubies(getRubies() + count);
+    }
+
+    public void decreaseRubies(int count) {
+        setRubies(getRubies() - count);
+    }
+
     public void addTreasure(Treasure treasure) {
         currentSave.treasures.add(treasure);
     }
@@ -174,6 +176,23 @@ public class SaveManager {
 
     public ArrayList<SavedLocationEntry> getLocations() {
         return currentSave.locations;
+    }
+
+    public boolean hasArchipelagoCheck(long id) {
+        ensureArchipelagoChecks();
+
+        return currentSave.archipelagoChecks.contains(id);
+    }
+
+    public void addArchipelagoCheck(long id) {
+        ensureArchipelagoChecks();
+
+        if (hasArchipelagoCheck(id)) {
+            return;
+        }
+
+        currentSave.archipelagoChecks.add(id);
+        writeCurrentSave();
     }
 
     public SavedLocationEntry getLocationEntryById(String id) {
@@ -244,6 +263,12 @@ public class SaveManager {
         mapDataCache.clear();
     }
 
+    private void ensureArchipelagoChecks() {
+        if (currentSave.archipelagoChecks == null) {
+            currentSave.archipelagoChecks = new ArrayList<>();
+        }
+    }
+
     public String getClassNameByLocationEntry(String mapName, String locationEntryId) {
         if (mapName == null || locationEntryId == null) {
             throw new IllegalArgumentException("Blank argument(s): " + mapName + ", " + locationEntryId);
@@ -311,5 +336,29 @@ public class SaveManager {
 
     public void setCurrentSave(SaveData currentSave) {
         this.currentSave = currentSave;
+    }
+
+    public boolean canDeathInAP() {
+        return deathInAP;
+    }
+
+    public void setDeathInAP(boolean deathInAP) {
+        this.deathInAP = deathInAP;
+    }
+
+    public boolean canDeathOutAP() {
+        return deathOutAP;
+    }
+
+    public void setDeathOutAP(boolean deathOutAP) {
+        this.deathOutAP = deathOutAP;
+    }
+
+    public boolean canSyncAP() {
+        return syncAP;
+    }
+
+    public void setSyncAP(boolean syncAP) {
+        this.syncAP = syncAP;
     }
 }

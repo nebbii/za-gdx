@@ -10,5 +10,6 @@ public class SaveData {
     public ArrayList<Treasure> treasures = new ArrayList<>();
     public ArrayList<Weapon> weapons = new ArrayList<>();
     public ArrayList<SavedLocationEntry> locations = new ArrayList<>();
+    public ArrayList<Long> archipelagoChecks = new ArrayList<>();
     public String filename;
 }

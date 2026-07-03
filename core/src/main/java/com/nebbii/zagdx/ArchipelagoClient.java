@@ -23,10 +23,11 @@ public class ArchipelagoClient extends Client {
             config = json.fromJson(ArchipelagoConfig.class, configFile);
 
             try {
-                setGame("Donkey Kong 64");
+                setGame("Zelda's Adventure GDX");
                 setName(config.slotName);
                 setPassword(config.password);
                 setTags(new HashSet<>(config.tags == null ? new ArrayList<String>() : config.tags));
+                setItemsHandlingFlags(7);
 
                 connect(config.server);
             }

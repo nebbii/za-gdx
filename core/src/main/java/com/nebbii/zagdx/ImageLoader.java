@@ -238,6 +238,7 @@ public class ImageLoader {
     private Texture rubyBlue;
     private Texture rubyYellow;
     private Texture heart;
+    private Texture archipelagoColor;
 
     /* HUD */
     private Texture[] hudNumbers;
@@ -472,6 +473,7 @@ public class ImageLoader {
         hudHeartFull = new Texture("export/common/hudSprites/2.png");
 
         /* Treasures */
+        archipelagoColor = new Texture("archipelago/images/color-icon.png");
         bone = new Texture("export/overworld/k13a/sprites/desc2/group0/sprite0.png");
         candle = new Texture("export/overworld/f26/sprites/desc1/group0/sprite0.png");
         candlePrice = new Texture("export/overworld/f26/sprites/desc1/group1/sprite0.png");
@@ -480,8 +482,8 @@ public class ImageLoader {
         magicShieldPrice = new Texture("export/overworld/f26/sprites/desc3/group1/sprite0.png");
         pitcherEmpty = new Texture("export/overworld/j24/sprites/desc1/group0/sprite0.png");
         pitcherFull = new Texture("export/overworld/e20/sprites/desc0/group0/sprite0.png");
-        vialOfWind = new Texture("export/overworld/j24/sprites/desc2/group0/sprite0.png");
         redBoots = new Texture("export/underworld/s116/sprites/desc1/group0/sprite0.png");
+        vialOfWind = new Texture("export/overworld/j24/sprites/desc2/group0/sprite0.png");
 
         underworldMap1 = new Texture("export/underworld/s104/sprites/desc1/group0/sprite0.png");
         underworldMap2 = new Texture("export/underworld/s104/sprites/desc1/group0/sprite0.png"); // TODO: get correct map image
@@ -835,6 +837,7 @@ public class ImageLoader {
         rubyBlue.dispose();
         rubyYellow.dispose();
         heart.dispose();
+        archipelagoColor.dispose();
 
         /* Hud */
         for (Texture texture : hudNumbers) {
@@ -1217,6 +1220,10 @@ public class ImageLoader {
 
     public Texture getDagger() {
         return dagger;
+    }
+
+    public Texture getArchipelagoColor() {
+        return archipelagoColor;
     }
 
     public Texture getFirestorm() {
