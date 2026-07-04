@@ -18,6 +18,7 @@ public class SoundLoader {
     private Sound enemySardakRedLine0;
     private Sound enemySardakBlueLine0;
     private Sound enemySardakYellowLine0;
+    private Sound enemyLlortLine0;
     private Sound enemySardakRedLine2;
     private Sound enemySardakBlueLine2;
     private Sound enemySardakYellowLine2;
@@ -65,6 +66,9 @@ public class SoundLoader {
         enemySardakYellowLine0 = Gdx.audio.newSound(
             Gdx.files.internal("export/underworld/s120/voice/line0.wav")
         );
+        enemyLlortLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/underworld/s121/voice/line0.wav")
+        );
         enemySardakRedLine2 = Gdx.audio.newSound(
             Gdx.files.internal("export/underworld/s107/voice/line2.wav")
         );
@@ -91,6 +95,7 @@ public class SoundLoader {
         enemySardakRedLine0.dispose();
         enemySardakBlueLine0.dispose();
         enemySardakYellowLine0.dispose();
+        enemyLlortLine0.dispose();
         enemySardakRedLine2.dispose();
         enemySardakBlueLine2.dispose();
         enemySardakYellowLine2.dispose();
@@ -150,6 +155,10 @@ public class SoundLoader {
 
     public Sound getEnemySardakYellowLine0() {
         return enemySardakYellowLine0;
+    }
+
+    public Sound getEnemyLlortLine0() {
+        return enemyLlortLine0;
     }
 
     public Sound getEnemySardakRedLine2() {

@@ -1,6 +1,7 @@
 package com.nebbii.zagdx;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
@@ -42,6 +43,8 @@ public class EnemyLlort extends Enemy {
 
     private float currentStepElapsed;
     private boolean axesThrown;
+    private Sound voiceLine;
+    private boolean voiceLinePlayed;
 
     private final PathStep[] pathCoordinates = {
         new PathStep(-100f,  25f, 0.7f, false),
@@ -87,6 +90,8 @@ public class EnemyLlort extends Enemy {
 
         currentStepElapsed = 0f;
         axesThrown = false;
+        voiceLine = World.sounds.getEnemyLlortLine0();
+        voiceLinePlayed = false;
 
         this.animation = new EnemyLlortAnimation(this);
 
@@ -97,7 +102,13 @@ public class EnemyLlort extends Enemy {
     public void logic() {
         float delta = Gdx.graphics.getDeltaTime();
 
-        if (getState() != State.ACTIVE) return;
+        if (!isActive()) {
+            stopVoiceLine();
+            return;
+        }
+
+        playVoiceLine();
+
         if (health <= 0) onDeath();
 
         knockback = Math.max(0f, knockback - delta);
@@ -223,6 +234,23 @@ public class EnemyLlort extends Enemy {
         axesThrown = true;
     }
 
+    private void playVoiceLine() {
+        if (voiceLinePlayed) {
+            return;
+        }
+
+        voiceLine.play();
+        voiceLinePlayed = true;
+    }
+
+    private void stopVoiceLine() {
+        if (voiceLine == null) {
+            return;
+        }
+
+        voiceLine.stop();
+    }
+
     @Override
     public void onHit(int damage, float knockback) {
         if (this.knockback > 0) return;
@@ -233,6 +261,7 @@ public class EnemyLlort extends Enemy {
 
     @Override
     public void onDeath() {
+        stopVoiceLine();
         setState(State.DEAD);
         map.addNewActor(new SpriteExplosion(getCenterPointX(), getCenterPointY()));
         map.getSaveManager().addLocationEntry(locationEntry, "permadead");
