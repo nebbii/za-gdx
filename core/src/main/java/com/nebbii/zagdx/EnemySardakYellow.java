@@ -21,6 +21,7 @@ public class EnemySardakYellow extends EnemySardak {
         setDamage(50);
         setDefense(30);
         setBonusDamage(70);
+        setVoiceLine(World.sounds.getEnemySardakYellowLine0());
         timer = MathUtils.random(0f, 2f);
 
         this.animation = new EnemySardakYellowAnimation(this);
@@ -63,6 +64,12 @@ public class EnemySardakYellow extends EnemySardak {
         batch.draw(animation.playCurrentAnimation(), animation.getX(), animation.getY());
 
         if (knockback > 0) endDrawFlashOverlay(batch);
+    }
+
+    @Override
+    public void onDeath() {
+        super.onDeath();
+        World.sounds.getEnemySardakYellowLine2().play();
     }
 
     @Override

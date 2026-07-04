@@ -256,6 +256,10 @@ public class EnemyKeese extends Enemy {
         goalHold = 0f;
     }
 
+    public boolean isHoldingGoal() {
+		return goalHold > 0f;
+	}
+
     public float getGoalX() { return goalX; }
     public float getGoalY() { return goalY; }
 }

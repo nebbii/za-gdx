@@ -11,10 +11,21 @@ public class SoundLoader {
     private Sound npcEnidLine1;
     private Sound npcKrebbLine0;
     private Sound npcKrebbLine1;
+    private Sound npcExhaustedTravelerLine5;
+    private Sound npcBlueLadyLine11;
+    private Sound npcLotharLine8;
+    private Sound npcLotharLine9;
     private Sound npcGlebbLine0;
     private Sound npcGlebbLine2;
     private Sound npcOghamLine0;
     private Sound npcOghamLine2;
+    private Sound enemySardakRedLine0;
+    private Sound enemySardakBlueLine0;
+    private Sound enemySardakYellowLine0;
+    private Sound enemyLlortLine0;
+    private Sound enemySardakRedLine2;
+    private Sound enemySardakBlueLine2;
+    private Sound enemySardakYellowLine2;
 
     public SoundLoader() {
         npcTalkingChestLine0 = Gdx.audio.newSound(
@@ -38,6 +49,18 @@ public class SoundLoader {
         npcKrebbLine1 = Gdx.audio.newSound(
             Gdx.files.internal("export/overworld/j22a/voice/line1.wav")
         );
+        npcExhaustedTravelerLine5 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/j22a/voice/line5.wav")
+        );
+        npcBlueLadyLine11 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/j22a/voice/line11.wav")
+        );
+        npcLotharLine8 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/j22a/voice/line8.wav")
+        );
+        npcLotharLine9 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/j22a/voice/line9.wav")
+        );
         npcGlebbLine0 = Gdx.audio.newSound(
             Gdx.files.internal("export/overworld/j24/voice/line0.wav")
         );
@@ -50,6 +73,27 @@ public class SoundLoader {
         npcOghamLine2 = Gdx.audio.newSound(
             Gdx.files.internal("export/overworld/f26/voice/line2.wav")
         );
+        enemySardakRedLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/underworld/s107/voice/line0.wav")
+        );
+        enemySardakBlueLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/underworld/s112/voice/line0.wav")
+        );
+        enemySardakYellowLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/underworld/s120/voice/line0.wav")
+        );
+        enemyLlortLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/underworld/s121/voice/line0.wav")
+        );
+        enemySardakRedLine2 = Gdx.audio.newSound(
+            Gdx.files.internal("export/underworld/s107/voice/line2.wav")
+        );
+        enemySardakBlueLine2 = Gdx.audio.newSound(
+            Gdx.files.internal("export/underworld/s112/voice/line2.wav")
+        );
+        enemySardakYellowLine2 = Gdx.audio.newSound(
+            Gdx.files.internal("export/underworld/s120/voice/line2.wav")
+        );
     }
 
     public void dispose() {
@@ -60,10 +104,21 @@ public class SoundLoader {
         npcEnidLine1.dispose();
         npcKrebbLine0.dispose();
         npcKrebbLine1.dispose();
+        npcExhaustedTravelerLine5.dispose();
+        npcBlueLadyLine11.dispose();
+        npcLotharLine8.dispose();
+        npcLotharLine9.dispose();
         npcGlebbLine0.dispose();
         npcGlebbLine2.dispose();
         npcOghamLine0.dispose();
         npcOghamLine2.dispose();
+        enemySardakRedLine0.dispose();
+        enemySardakBlueLine0.dispose();
+        enemySardakYellowLine0.dispose();
+        enemyLlortLine0.dispose();
+        enemySardakRedLine2.dispose();
+        enemySardakBlueLine2.dispose();
+        enemySardakYellowLine2.dispose();
     }
 
     public Sound getNpcTalkingChestLine0() {
@@ -84,6 +139,22 @@ public class SoundLoader {
 
     public Sound getNpcKrebbLine1() {
       return npcKrebbLine1;
+    }
+
+    public Sound getNpcExhaustedTravelerLine5() {
+        return npcExhaustedTravelerLine5;
+    }
+
+    public Sound getNpcBlueLadyLine11() {
+        return npcBlueLadyLine11;
+    }
+
+    public Sound getNpcLotharLine8() {
+        return npcLotharLine8;
+    }
+
+    public Sound getNpcLotharLine9() {
+        return npcLotharLine9;
     }
 
     public Sound getNpcOghamLine0() {
@@ -108,6 +179,34 @@ public class SoundLoader {
 
     public Sound getNpcEnidLine1() {
         return npcEnidLine1;
+    }
+
+    public Sound getEnemySardakRedLine0() {
+        return enemySardakRedLine0;
+    }
+
+    public Sound getEnemySardakBlueLine0() {
+        return enemySardakBlueLine0;
+    }
+
+    public Sound getEnemySardakYellowLine0() {
+        return enemySardakYellowLine0;
+    }
+
+    public Sound getEnemyLlortLine0() {
+        return enemyLlortLine0;
+    }
+
+    public Sound getEnemySardakRedLine2() {
+        return enemySardakRedLine2;
+    }
+
+    public Sound getEnemySardakBlueLine2() {
+        return enemySardakBlueLine2;
+    }
+
+    public Sound getEnemySardakYellowLine2() {
+        return enemySardakYellowLine2;
     }
 
 }

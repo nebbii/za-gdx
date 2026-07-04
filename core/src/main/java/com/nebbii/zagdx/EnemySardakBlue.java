@@ -18,6 +18,7 @@ public class EnemySardakBlue extends EnemySardak {
         setDamage(50);
         setDefense(30);
         setBonusDamage(70);
+        setVoiceLine(World.sounds.getEnemySardakBlueLine0());
 
         this.animation = new EnemySardakBlueAnimation(this);
     }
@@ -34,6 +35,12 @@ public class EnemySardakBlue extends EnemySardak {
         batch.draw(animation.playCurrentAnimation(), animation.getX(), animation.getY());
 
         if (knockback > 0) endDrawFlashOverlay(batch);
+    }
+
+    @Override
+    public void onDeath() {
+        super.onDeath();
+        World.sounds.getEnemySardakBlueLine2().play();
     }
 
     @Override

@@ -18,6 +18,7 @@ public class EnemySardakRed extends EnemySardak {
         setDamage(50);
         setDefense(30);
         setBonusDamage(70);
+        setVoiceLine(World.sounds.getEnemySardakRedLine0());
 
         this.animation = new EnemySardakRedAnimation(this);
     }
@@ -34,6 +35,12 @@ public class EnemySardakRed extends EnemySardak {
         batch.draw(animation.playCurrentAnimation(), animation.getX(), animation.getY());
 
         if (knockback > 0) endDrawFlashOverlay(batch);
+    }
+
+    @Override
+    public void onDeath() {
+        super.onDeath();
+        World.sounds.getEnemySardakRedLine2().play();
     }
 
     @Override

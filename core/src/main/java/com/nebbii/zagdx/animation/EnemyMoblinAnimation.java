@@ -88,14 +88,14 @@ public class EnemyMoblinAnimation extends GameAnimation {
         Texture[] textures = World.images.getEnemyMoblinAnimation(EnemyMoblinAnimationGroup.WALKUP);
 
         int[][] frameData = {
-            {0, 0, -5},
-            {1, 0, 0},
-            {2, 0, 0},
-            {3, 0, 0},
-            {4, 0, 0},
-            {3, 0, 0},
-            {2, 0, 0},
-            {1, 0, 0}
+            {0, -1, 3-5},
+            {1, 0, 2+5},
+            {2, 0, 3+5},
+            {3, 0, 2+5},
+            {4, 0, 0+5},
+            {3, 0, 2+5},
+            {2, 0, 3+5},
+            {1, 0, 2+5}
         };
 
         TextureRegion[] frames = new TextureRegion[frameData.length];
@@ -117,14 +117,14 @@ public class EnemyMoblinAnimation extends GameAnimation {
         Texture[] textures = World.images.getEnemyMoblinAnimation(EnemyMoblinAnimationGroup.WALKRIGHT);
 
         int[][] frameData = {
-            {0, 0, 0-10}, // 67 65
-            {1, 0, 5-10}, // 75 60
-            {2, 0, 7-10}, // 79 58
-            {3, 0, 13-10}, // 91 51
-            {4, 0, 16-10}, // 95 48
-            {3, 0, 13-10}, // 91 51
-            {2, 0, 7-10}, // 79 58
-            {1, 0, 5-10}, // 75 60
+            {0, -1, 0-12}, // 67 65
+            {1, 0, 5-12}, // 75 60
+            {2, 0, 7-12}, // 79 58
+            {3, 0, 13-12}, // 91 51
+            {4, 0, 14-12}, // 95 48
+            {3, 0, 13-12}, // 91 51
+            {2, 0, 7-12}, // 79 58
+            {1, 0, 5-12}, // 75 60
         };
 
         TextureRegion[] frames = new TextureRegion[frameData.length];
@@ -146,14 +146,14 @@ public class EnemyMoblinAnimation extends GameAnimation {
         Texture[] textures = World.images.getEnemyMoblinAnimation(EnemyMoblinAnimationGroup.WALKDOWN);
 
         int[][] frameData = {
-            {0, 0, 0-4},
-            {1, 0, -2-4},
-            {2, 0, 1-4},
-            {3, 0, 11-4},
-            {4, 0, 10-4},
-            {3, 0, 11-4},
-            {2, 0, 1-4},
-            {1, 0, -2-4},
+            {0, 1, 0-6},
+            {1, 1, -2-6},
+            {2, 1, 1-6},
+            {3, 1, 11-6},
+            {4, 2, 9-6},
+            {3, 1, 11-6},
+            {2, 1, 1-6},
+            {1, 1, -2-6},
         };
 
         TextureRegion[] frames = new TextureRegion[frameData.length];
@@ -175,14 +175,14 @@ public class EnemyMoblinAnimation extends GameAnimation {
         Texture[] textures = World.images.getEnemyMoblinAnimation(EnemyMoblinAnimationGroup.WALKLEFT);
 
         int[][] frameData = {
-            {0, 0, 0},
-            {1, 0, -3},
-            {2, 0, -3},
-            {3, 0, -3},
-            {4, 0, -5},
-            {3, 0, -3},
-            {2, 0, -3},
-            {1, 0, -3},
+            {0, 0, 3},
+            {1, 0, 0},
+            {2, 0, 0},
+            {3, 0, 0},
+            {4, 0, -2},
+            {3, 0, 0},
+            {2, 0, 0},
+            {1, 0, 0},
         };
 
         TextureRegion[] frames = new TextureRegion[frameData.length];
@@ -203,10 +203,10 @@ public class EnemyMoblinAnimation extends GameAnimation {
     private float getAnimationSpeed() {
         switch(enemy.getEnemyState()) {
             case FIGHT:
-                return 0.15f;
+                return 0.08f;
             case SEARCH:
             default:
-                return 0.25f;
+                return 0.20f;
         }
     }
 

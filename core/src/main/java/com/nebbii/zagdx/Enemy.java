@@ -46,7 +46,7 @@ public class Enemy extends Rectangle implements Actor {
         setHeight(32);
         setState(State.IDLE);
         setType(actorType);
-        this.drawOrder = 0;
+        this.drawOrder = 1;
         this.solid = solid;
         this.damage = 0;
         this.defense = 0;
