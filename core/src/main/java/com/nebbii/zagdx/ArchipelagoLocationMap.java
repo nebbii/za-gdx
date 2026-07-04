@@ -38,6 +38,7 @@ public final class ArchipelagoLocationMap {
         map.put("h23_0", 4L);    // Overworld H23 Wand
         map.put("j22_1", 5L);    // Overworld J22 Firestorm
         map.put("j22a_4", 6L);   // Overworld J22a Dagger
+        map.put("j22a_5", 18L);   // Overworld J22a Calm
         map.put("j24_1", 7L);    // Overworld J24 Empty Pitcher
         map.put("j24_2", 8L);    // Overworld J24 Vial of Wind
 
