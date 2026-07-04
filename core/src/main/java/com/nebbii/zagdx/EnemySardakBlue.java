@@ -18,6 +18,7 @@ public class EnemySardakBlue extends EnemySardak {
         setDamage(50);
         setDefense(30);
         setBonusDamage(70);
+        setVoiceLine(World.sounds.getEnemySardakBlueLine0());
 
         this.animation = new EnemySardakBlueAnimation(this);
     }

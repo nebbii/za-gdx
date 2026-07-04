@@ -1,5 +1,6 @@
 package com.nebbii.zagdx;
 
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 // TODO: Set actual original game accurate values
@@ -12,12 +13,16 @@ public class EnemySardak extends Enemy {
     enemy.sardak.yellow:
         [health=280, damage=50, defense=30, weakness=JadeRing, bonusDamage=70]
     */
+    private Sound voiceLine;
+    private boolean voiceLinePlayed;
+
     public EnemySardak() {
         super(ActorType.ENEMY, true);
         setWidth(48);
         setHeight(40);
 
         this.enemyState = EnemyState.SEARCH;
+        this.voiceLinePlayed = false;
     }
 
     @Override
@@ -33,6 +38,13 @@ public class EnemySardak extends Enemy {
                 break;
             default:
         }
+
+        if (!isActive()) {
+            stopVoiceLine();
+            return;
+        }
+
+        playVoiceLine();
     }
 
     @Override
@@ -46,8 +58,30 @@ public class EnemySardak extends Enemy {
         */
     }
 
+    protected void setVoiceLine(Sound voiceLine) {
+        this.voiceLine = voiceLine;
+    }
+
+    private void playVoiceLine() {
+        if (voiceLinePlayed) {
+            return;
+        }
+
+        voiceLine.play();
+        voiceLinePlayed = true;
+    }
+
+    private void stopVoiceLine() {
+        if (voiceLine == null) {
+            return;
+        }
+
+        voiceLine.stop();
+    }
+
     @Override
     public void onDeath() {
+        stopVoiceLine();
         setState(State.DEAD);
         map.addNewActor(new SpriteExplosion(getCenterPointX(), getCenterPointY()));
         map.getSaveManager().addLocationEntry(locationEntry, "permadead");

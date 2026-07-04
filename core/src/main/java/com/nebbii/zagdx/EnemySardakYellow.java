@@ -21,6 +21,7 @@ public class EnemySardakYellow extends EnemySardak {
         setDamage(50);
         setDefense(30);
         setBonusDamage(70);
+        setVoiceLine(World.sounds.getEnemySardakYellowLine0());
         timer = MathUtils.random(0f, 2f);
 
         this.animation = new EnemySardakYellowAnimation(this);
