@@ -10,6 +10,7 @@ public class SpriteLlortGateTop extends Sprite {
         super(ActorType.FRIENDLY, false);
         setWidth(83);
         setHeight(32);
+        this.drawOrder = 0;
 
         this.animation = new SpriteLlortGateTopAnimation(this);
     }
