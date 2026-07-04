@@ -44,6 +44,9 @@ public final class ArchipelagoItemMap {
         map.put(13L, Treasure.VIAL_OF_WIND); // Vial of Wind
         map.put(14L, Weapon.WAND); // Wand
         map.put(15L, Treasure.RUBIES); // Yellow Ruby
+        map.put(16L, Treasure.CANDLE); // Candle
+        map.put(17L, Treasure.MAGIC_SHIELD); // Magic Shield
+        map.put(18L, Weapon.CALM); // Wand
 
         return Collections.unmodifiableMap(map);
     }
@@ -68,6 +71,7 @@ public final class ArchipelagoItemMap {
         map.put(15L, "PickupRuby");
         map.put(16L, "PickupCandle");
         map.put(17L, "PickupMagicShield");
+        map.put(18L, "PickupCalm");
 
         return Collections.unmodifiableMap(map);
     }
