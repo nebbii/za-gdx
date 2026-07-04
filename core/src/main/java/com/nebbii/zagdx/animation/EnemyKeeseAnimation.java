@@ -50,8 +50,11 @@ public class EnemyKeeseAnimation extends GameAnimation {
     }
 
     public TextureRegion playCurrentAnimation() {
-        if (!enemy.isHoldingGoal()) {
-            stateTime = Gdx.graphics.getDeltaTime();
+        if (enemy.isHoldingGoal()) {
+            stateTime = 0;
+        }
+        else {
+            stateTime += Gdx.graphics.getDeltaTime();
         }
 
         fly.setFrameDuration(getAnimationSpeed());
