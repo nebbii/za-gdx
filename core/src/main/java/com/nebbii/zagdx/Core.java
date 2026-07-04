@@ -24,6 +24,10 @@ public class Core extends Game {
 		return archipelagoClient;
 	}
 
+    public void setArchipelagoClient(ArchipelagoClient archipelagoClient) {
+        this.archipelagoClient = archipelagoClient;
+    }
+
     public SettingsManager getSettingsManager() {
         return settingsManager;
     }
