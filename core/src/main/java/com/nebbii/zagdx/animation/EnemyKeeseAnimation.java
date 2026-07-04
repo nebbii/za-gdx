@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.nebbii.zagdx.EnemyKeese;
 import com.nebbii.zagdx.ImageLoader.EnemyKeeseAnimationGroup;
 import com.nebbii.zagdx.World;
+import com.nebbii.zagdx.Enemy.EnemyState;
 
 public class EnemyKeeseAnimation extends GameAnimation {
     private EnemyKeese enemy;
@@ -49,7 +50,10 @@ public class EnemyKeeseAnimation extends GameAnimation {
     }
 
     public TextureRegion playCurrentAnimation() {
-        stateTime += Gdx.graphics.getDeltaTime();
+        if (!enemy.isHoldingGoal()) {
+            stateTime = Gdx.graphics.getDeltaTime();
+        }
+
         fly.setFrameDuration(getAnimationSpeed());
         currentFrameIndex = fly.getKeyFrameIndex(stateTime);
 
