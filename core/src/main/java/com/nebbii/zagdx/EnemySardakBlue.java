@@ -38,6 +38,12 @@ public class EnemySardakBlue extends EnemySardak {
     }
 
     @Override
+    public void onDeath() {
+        super.onDeath();
+        World.sounds.getEnemySardakBlueLine2().play();
+    }
+
+    @Override
     public Array<String> getWeaknesses() {
         return Array.with("ZeldaActionJadeRing");
     }
