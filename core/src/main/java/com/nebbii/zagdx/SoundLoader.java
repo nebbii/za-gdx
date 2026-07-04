@@ -11,6 +11,7 @@ public class SoundLoader {
     private Sound npcEnidLine1;
     private Sound npcKrebbLine0;
     private Sound npcKrebbLine1;
+    private Sound npcExhaustedTravelerLine5;
     private Sound npcLotharLine8;
     private Sound npcLotharLine9;
     private Sound npcGlebbLine0;
@@ -46,6 +47,9 @@ public class SoundLoader {
         );
         npcKrebbLine1 = Gdx.audio.newSound(
             Gdx.files.internal("export/overworld/j22a/voice/line1.wav")
+        );
+        npcExhaustedTravelerLine5 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/j22a/voice/line5.wav")
         );
         npcLotharLine8 = Gdx.audio.newSound(
             Gdx.files.internal("export/overworld/j22a/voice/line8.wav")
@@ -96,6 +100,7 @@ public class SoundLoader {
         npcEnidLine1.dispose();
         npcKrebbLine0.dispose();
         npcKrebbLine1.dispose();
+        npcExhaustedTravelerLine5.dispose();
         npcLotharLine8.dispose();
         npcLotharLine9.dispose();
         npcGlebbLine0.dispose();
@@ -129,6 +134,10 @@ public class SoundLoader {
 
     public Sound getNpcKrebbLine1() {
       return npcKrebbLine1;
+    }
+
+    public Sound getNpcExhaustedTravelerLine5() {
+        return npcExhaustedTravelerLine5;
     }
 
     public Sound getNpcLotharLine8() {
