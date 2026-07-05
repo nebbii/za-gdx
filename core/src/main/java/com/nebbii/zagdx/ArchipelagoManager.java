@@ -5,7 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
+import com.nebbii.zagdx.GameManager.GameState;
 
+import io.github.archipelagomw.APResult;
 import io.github.archipelagomw.events.ArchipelagoEventListener;
 import io.github.archipelagomw.events.LocationInfoEvent;
 import io.github.archipelagomw.events.ReceiveItemEvent;
@@ -30,7 +32,12 @@ public class ArchipelagoManager {
 
         if (this.archipelagoClient.isConnected()) {
             scoutedLocations = new HashMap<Long, NetworkItem>();
+            Gdx.app.log(this.getClass().getSimpleName(), "Start location scout");
+
             archipelagoClient.scoutLocations(locationIDs);
+
+            gameManager.storeCurrentGameState();
+            gameManager.setGameState(GameState.AP_SYNC);
         }
     }
 
@@ -42,7 +49,7 @@ public class ArchipelagoManager {
             for (SavedLocationEntry locationEntry : saveManager.getLocations()) {
                 long locationId = ArchipelagoLocationMap.getId(locationEntry.id);
                 archipelagoClient.checkLocation(locationId);
-                if (!locationEntry.action.equals("dead")) {
+                if (!locationEntry.action.endsWith("dead")) {
                     saveManager.addArchipelagoCheck(locationId);
                 }
             }
@@ -186,6 +193,8 @@ public class ArchipelagoManager {
 
             scoutedLocations.put(item.locationID, item);
         }
+
+        gameManager.restorePriorGameState();
     }
 
     @ArchipelagoEventListener

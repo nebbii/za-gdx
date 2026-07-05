@@ -91,10 +91,6 @@ public class World {
     }
 
     public void logic() {
-        if (archipelagoManager.isConnected()) {
-            archipelagoManager.logic();
-        }
-
         switch(gameManager.getGameState()) {
         case PLAY:
         case PAUSE_MAP:
@@ -107,9 +103,16 @@ public class World {
         case FADE_IN:
             mapManager.logic();
             gameManager.logic();
+
+            if (archipelagoManager.isConnected()) {
+                archipelagoManager.logic();
+            }
+
             worldCamera.logic();
             updateWorldBorders();
             menuPause.logic();
+            break;
+        case AP_SYNC:
             break;
         default:
             throw new IllegalStateException("World->draw(): Unhandled game state: " + gameManager.getGameState());
@@ -135,6 +138,8 @@ public class World {
             drawHud();
             drawFadeOverlay();
             drawDebugText();
+            break;
+        case AP_SYNC:
             break;
         default:
             throw new IllegalStateException("World->draw(): Unhandled game state: " + gameManager.getGameState());

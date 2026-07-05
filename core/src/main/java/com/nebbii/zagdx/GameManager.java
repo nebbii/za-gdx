@@ -25,7 +25,8 @@ public class GameManager {
         MOVE,
         FADE_IN,
         FADE_GAMEOVER,
-        FADE_WARP
+        FADE_WARP,
+        AP_SYNC
     }
 
     public enum FadeToggle {
@@ -34,6 +35,9 @@ public class GameManager {
     }
 
     private GameState gameState;
+    private GameState priorGameState;
+    private float apSyncTimer = 0;
+
     private FadeToggle fadeToggle;
 
     public GameManager(World world) {
@@ -105,6 +109,13 @@ public class GameManager {
         case MOVE:
             if (!world.getWorldCamera().isTransitioning()) {
                 unpauseGame();
+            }
+            break;
+        case AP_SYNC:
+            apSyncTimer += Gdx.graphics.getDeltaTime();
+
+            if (apSyncTimer > 30) {
+                world.getArchipelagoManager().getArchipelagoClient().disconnect();
             }
             break;
         default:
@@ -376,6 +387,23 @@ public class GameManager {
 
     public void setGameState(GameState gameState) {
         this.gameState = gameState;
+    }
+
+    public GameState getPriorGameState() {
+        return priorGameState;
+    }
+
+    public void setPriorGameState(GameState priorGameState) {
+        this.priorGameState = priorGameState;
+    }
+
+    public void storeCurrentGameState() {
+        this.priorGameState = this.gameState;
+    }
+
+    public void restorePriorGameState() {
+        this.gameState = this.priorGameState;
+        this.priorGameState = null;
     }
 
     public FadeToggle getFadeToggle() {

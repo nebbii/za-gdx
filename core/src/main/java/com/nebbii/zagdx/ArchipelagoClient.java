@@ -16,6 +16,10 @@ public class ArchipelagoClient extends Client {
     private ArchipelagoConfig config;
 
     public ArchipelagoClient() {
+        tryToConnect();
+    }
+
+    public void tryToConnect() {
         FileHandle configFile = Gdx.files.local(ArchipelagoConfigManager.CONFIG_PATH);
 
         if (configFile.exists()) {
@@ -33,6 +37,11 @@ public class ArchipelagoClient extends Client {
             }
             catch (URISyntaxException ex) {
                 throw new RuntimeException("Failed to connect to Archipelago server", ex);
+            }
+        }
+        else {
+            if (isConnected()) {
+                disconnect();
             }
         }
     }
