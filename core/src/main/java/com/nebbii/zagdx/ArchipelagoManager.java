@@ -66,6 +66,7 @@ public class ArchipelagoManager {
         int itemId = (int) item.itemID;
         Item receivedItem = ArchipelagoItemMap.getItem(itemId);
 
+
         if (!saveManager.hasArchipelagoCheck(item.locationID)) {
             Gdx.app.log(
                 this.getClass().getSimpleName(),
@@ -92,16 +93,24 @@ public class ArchipelagoManager {
 
             saveManager.addArchipelagoCheck(item.locationID);
         }
-        else {
-            /*
+        else if (item.locationID == -1) {
             Gdx.app.log(
                 this.getClass().getSimpleName(),
-                "Existing AP item"
+                "Location-less item"
                     + ", item=" + item.itemID
                     + ", location=" + item.locationID
                     + ", itemName=" + receivedItem.toString()
             );
-            */
+            if (receivedItem instanceof Treasure) {
+                if (!gameManager.hasItem(receivedItem)) {
+                    gameManager.addTreasure((Treasure) receivedItem, true);
+                }
+            }
+            else if (receivedItem instanceof Weapon) {
+                if (!gameManager.hasItem(receivedItem)) {
+                    gameManager.addWeapon((Weapon) receivedItem, true);
+                }
+            }
         }
     }
 
@@ -110,12 +119,30 @@ public class ArchipelagoManager {
         NetworkItem item = scoutedLocations.get(archipelagoId);
         String scoutedItem = "";
         if (item == null) { // Item not found in AP
+            Gdx.app.log(
+                this.getClass().getSimpleName(),
+                "Item not found in AP"
+                    + ", location=" + archipelagoId
+            );
             return entry;
         }
         else if (item.playerID != archipelagoClient.getSlot()) { // external item
+            Gdx.app.log(
+                this.getClass().getSimpleName(),
+                "Item from a different world!"
+                    + ", location=" + archipelagoId
+                    + ", player=" + item.playerID
+            );
             scoutedItem = "PickupArchipelago";
         }
         else {
+            Gdx.app.log(
+                this.getClass().getSimpleName(),
+                "Item for us!"
+                    + ", location=" + archipelagoId
+                    + ", itemid=" + item.itemID
+                    + ", item=" + item.itemName
+            );
             scoutedItem = ArchipelagoItemMap.getPickup(Math.toIntExact(item.itemID));
 
             // TODO: just make these separate items lol
