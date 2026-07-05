@@ -53,6 +53,8 @@ public class MainMenuScreen extends MenuScreen {
 
         saveManager = new SaveManager();
 
+        core.getArchipelagoClient().tryToConnect();
+
         reloadSaves();
         background = new Texture(Gdx.files.internal("dummy-main-menu.png"));
     }

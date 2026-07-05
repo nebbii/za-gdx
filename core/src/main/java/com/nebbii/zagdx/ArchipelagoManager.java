@@ -5,7 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
+import com.nebbii.zagdx.GameManager.GameState;
 
+import io.github.archipelagomw.APResult;
 import io.github.archipelagomw.events.ArchipelagoEventListener;
 import io.github.archipelagomw.events.LocationInfoEvent;
 import io.github.archipelagomw.events.ReceiveItemEvent;
@@ -30,7 +32,12 @@ public class ArchipelagoManager {
 
         if (this.archipelagoClient.isConnected()) {
             scoutedLocations = new HashMap<Long, NetworkItem>();
+            Gdx.app.log(this.getClass().getSimpleName(), "Start location scout");
+
             archipelagoClient.scoutLocations(locationIDs);
+
+            gameManager.storeCurrentGameState();
+            gameManager.setGameState(GameState.AP_SYNC);
         }
     }
 
@@ -42,7 +49,7 @@ public class ArchipelagoManager {
             for (SavedLocationEntry locationEntry : saveManager.getLocations()) {
                 long locationId = ArchipelagoLocationMap.getId(locationEntry.id);
                 archipelagoClient.checkLocation(locationId);
-                if (!locationEntry.action.equals("dead")) {
+                if (!locationEntry.action.endsWith("dead")) {
                     saveManager.addArchipelagoCheck(locationId);
                 }
             }
@@ -65,6 +72,7 @@ public class ArchipelagoManager {
     private void handleReceivedItem(NetworkItem item) {
         int itemId = (int) item.itemID;
         Item receivedItem = ArchipelagoItemMap.getItem(itemId);
+
 
         if (!saveManager.hasArchipelagoCheck(item.locationID)) {
             Gdx.app.log(
@@ -92,16 +100,24 @@ public class ArchipelagoManager {
 
             saveManager.addArchipelagoCheck(item.locationID);
         }
-        else {
-            /*
+        else if (item.locationID == -1) {
             Gdx.app.log(
                 this.getClass().getSimpleName(),
-                "Existing AP item"
+                "Location-less item"
                     + ", item=" + item.itemID
                     + ", location=" + item.locationID
                     + ", itemName=" + receivedItem.toString()
             );
-            */
+            if (receivedItem instanceof Treasure) {
+                if (!gameManager.hasItem(receivedItem)) {
+                    gameManager.addTreasure((Treasure) receivedItem, true);
+                }
+            }
+            else if (receivedItem instanceof Weapon) {
+                if (!gameManager.hasItem(receivedItem)) {
+                    gameManager.addWeapon((Weapon) receivedItem, true);
+                }
+            }
         }
     }
 
@@ -110,12 +126,30 @@ public class ArchipelagoManager {
         NetworkItem item = scoutedLocations.get(archipelagoId);
         String scoutedItem = "";
         if (item == null) { // Item not found in AP
+            Gdx.app.log(
+                this.getClass().getSimpleName(),
+                "Item not found in AP"
+                    + ", location=" + archipelagoId
+            );
             return entry;
         }
         else if (item.playerID != archipelagoClient.getSlot()) { // external item
+            Gdx.app.log(
+                this.getClass().getSimpleName(),
+                "Item from a different world!"
+                    + ", location=" + archipelagoId
+                    + ", player=" + item.playerID
+            );
             scoutedItem = "PickupArchipelago";
         }
         else {
+            Gdx.app.log(
+                this.getClass().getSimpleName(),
+                "Item for us!"
+                    + ", location=" + archipelagoId
+                    + ", itemid=" + item.itemID
+                    + ", item=" + item.itemName
+            );
             scoutedItem = ArchipelagoItemMap.getPickup(Math.toIntExact(item.itemID));
 
             // TODO: just make these separate items lol
@@ -159,6 +193,8 @@ public class ArchipelagoManager {
 
             scoutedLocations.put(item.locationID, item);
         }
+
+        gameManager.restorePriorGameState();
     }
 
     @ArchipelagoEventListener
