@@ -8,6 +8,7 @@ import com.badlogic.gdx.Gdx;
 import com.nebbii.zagdx.GameManager.GameState;
 
 import io.github.archipelagomw.APResult;
+import io.github.archipelagomw.ClientStatus;
 import io.github.archipelagomw.events.ArchipelagoEventListener;
 import io.github.archipelagomw.events.LocationInfoEvent;
 import io.github.archipelagomw.events.ReceiveItemEvent;
@@ -20,6 +21,8 @@ public class ArchipelagoManager {
     private SaveManager saveManager;
 
     private Map<Long, NetworkItem> scoutedLocations;
+
+    private boolean hasGoaled;
 
     public ArchipelagoManager(ArchipelagoClient client, GameManager gameManager, SaveManager saveManager) {
         this.archipelagoClient = client;
@@ -66,6 +69,14 @@ public class ArchipelagoManager {
             archipelagoClient.sendDeathlink(archipelagoClient.getAlias(), archipelagoClient.getAlias() + " ran out of hearts!");
 
             saveManager.setDeathOutAP(false);
+        }
+
+        if (hasGoaled) {
+            APResult<Void> result = archipelagoClient.setGameState(ClientStatus.CLIENT_GOAL);
+
+            if (result.getCode() == APResult.ResultCode.SUCCESS) {
+                setHasGoaled(false);
+            }
         }
     }
 
@@ -212,5 +223,13 @@ public class ArchipelagoManager {
 
     public void setArchipelagoClient(ArchipelagoClient archipelagoClient) {
         this.archipelagoClient = archipelagoClient;
+    }
+
+    public boolean isHasGoaled() {
+        return hasGoaled;
+    }
+
+    public void setHasGoaled(boolean hasGoaled) {
+        this.hasGoaled = hasGoaled;
     }
 }

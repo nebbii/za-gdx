@@ -348,6 +348,11 @@ public class GameManager {
             world.getSaveManager().addTreasure(treasure);
             world.getSaveManager().writeCurrentSave(this);
         }
+
+        // simple for now until we have more goals!
+        if (world.getArchipelagoManager().isConnected() && hasItem(Treasure.CELESTIAL_SIGN_1)) {
+            world.getArchipelagoManager().setHasGoaled(true);
+        }
     }
 
     public void removeTreasure(Treasure treasure, boolean save) {

@@ -22,6 +22,8 @@ public class MenuPause {
     private ArrayList<MenuPauseSlotTreasures> treasureTray;
     private ArrayList<MenuPauseSlotWeapons> weaponTray;
     private ArrayList<MenuPauseSlotEquip> equipTray;
+    private ArrayList<MenuPauseTrayButton> trayButtons;
+    private MenuPauseExitButton exitButton;
 
     private int treasureTrayIndex;
     private int weaponTrayIndex;
@@ -66,6 +68,7 @@ public class MenuPause {
         treasureTray = new ArrayList<MenuPauseSlotTreasures>();
         weaponTray = new ArrayList<MenuPauseSlotWeapons>();
         equipTray = new ArrayList<MenuPauseSlotEquip>();
+        trayButtons = new ArrayList<MenuPauseTrayButton>();
 
         treasureTrayIndex = 0;
         weaponTrayIndex = 0;
@@ -89,6 +92,50 @@ public class MenuPause {
                 gameManager
             ));
         }
+
+        trayButtons.add(new MenuPauseTrayButton(
+            treasureTrayX - treasureSlotWidth,
+            treasureTrayY,
+            treasureSlotWidth,
+            treasureTrayHeight,
+            MenuPauseTrayButton.TrayType.TREASURE,
+            MenuPauseTrayButton.TrayDirection.LEFT,
+            this
+        ));
+        trayButtons.add(new MenuPauseTrayButton(
+            treasureTrayX + treasureSlotWidth * treasureTray.size(),
+            treasureTrayY,
+            treasureSlotWidth,
+            treasureTrayHeight,
+            MenuPauseTrayButton.TrayType.TREASURE,
+            MenuPauseTrayButton.TrayDirection.RIGHT,
+            this
+        ));
+        trayButtons.add(new MenuPauseTrayButton(
+            weaponTrayX - weaponSlotWidth,
+            weaponTrayY,
+            weaponSlotWidth,
+            weaponTrayHeight,
+            MenuPauseTrayButton.TrayType.WEAPON,
+            MenuPauseTrayButton.TrayDirection.LEFT,
+            this
+        ));
+        trayButtons.add(new MenuPauseTrayButton(
+            weaponTrayX + weaponSlotWidth * weaponTray.size(),
+            weaponTrayY,
+            weaponSlotWidth,
+            weaponTrayHeight,
+            MenuPauseTrayButton.TrayType.WEAPON,
+            MenuPauseTrayButton.TrayDirection.RIGHT,
+            this
+        ));
+
+        exitButton = new MenuPauseExitButton(
+            treasureTrayX - 10 + treasureSlotWidth * treasureTray.size(),
+            treasureTrayY + 60,
+            treasureSlotWidth * 2,
+            treasureTrayHeight * 2
+        );
 
         // potential multiple slot functionality
         equipTray.add(new MenuPauseSlotEquip(
@@ -343,12 +390,14 @@ public class MenuPause {
 
     private ArrayList<MenuButton> getSelectableSlots() {
         ArrayList<MenuButton> slots = new ArrayList<MenuButton>(
-            6 + 6 + 1
+            6 + 6 + 1 + 4 + 1
         );
 
         slots.addAll(treasureTray);
         slots.addAll(weaponTray);
         slots.addAll(equipTray);
+        slots.addAll(trayButtons);
+        slots.add(exitButton);
 
         return slots;
     }
@@ -397,5 +446,53 @@ public class MenuPause {
 
     public ArrayList<MenuPauseSlotEquip> getEquipTray() {
         return equipTray;
+    }
+
+    public ArrayList<MenuPauseTrayButton> getTrayButtons() {
+        return trayButtons;
+    }
+
+    public MenuPauseExitButton getExitButton() {
+        return exitButton;
+    }
+
+    public int getTreasureTrayIndex() {
+        return treasureTrayIndex;
+    }
+
+    public void setTreasureTrayIndex(int treasureTrayIndex) {
+        this.treasureTrayIndex = treasureTrayIndex;
+    }
+
+    public void increaseTreasureTrayIndex() {
+        if (treasureTrayIndex < 50) {
+            treasureTrayIndex++;
+        }
+    }
+
+    public void decreaseTreasureTrayIndex() {
+        if (treasureTrayIndex > 0) {
+            treasureTrayIndex--;
+        }
+    }
+
+    public int getWeaponTrayIndex() {
+        return weaponTrayIndex;
+    }
+
+    public void setWeaponTrayIndex(int weaponTrayIndex) {
+        this.weaponTrayIndex = weaponTrayIndex;
+    }
+
+    public void increaseWeaponTrayIndex() {
+        if (weaponTrayIndex < 50) {
+            weaponTrayIndex++;
+        }
+    }
+
+    public void decreaseWeaponTrayIndex() {
+        if (weaponTrayIndex > 0) {
+            weaponTrayIndex--;
+        }
     }
 }
