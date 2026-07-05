@@ -23,6 +23,7 @@ public class MenuPause {
     private ArrayList<MenuPauseSlotWeapons> weaponTray;
     private ArrayList<MenuPauseSlotEquip> equipTray;
     private ArrayList<MenuPauseTrayButton> trayButtons;
+    private MenuPauseExitButton exitButton;
 
     private int treasureTrayIndex;
     private int weaponTrayIndex;
@@ -128,6 +129,13 @@ public class MenuPause {
             MenuPauseTrayButton.TrayDirection.RIGHT,
             this
         ));
+
+        exitButton = new MenuPauseExitButton(
+            treasureTrayX - 10 + treasureSlotWidth * treasureTray.size(),
+            treasureTrayY + 60,
+            treasureSlotWidth * 2,
+            treasureTrayHeight * 2
+        );
 
         // potential multiple slot functionality
         equipTray.add(new MenuPauseSlotEquip(
@@ -382,13 +390,14 @@ public class MenuPause {
 
     private ArrayList<MenuButton> getSelectableSlots() {
         ArrayList<MenuButton> slots = new ArrayList<MenuButton>(
-            6 + 6 + 1 + 4
+            6 + 6 + 1 + 4 + 1
         );
 
         slots.addAll(treasureTray);
         slots.addAll(weaponTray);
         slots.addAll(equipTray);
         slots.addAll(trayButtons);
+        slots.add(exitButton);
 
         return slots;
     }
@@ -441,6 +450,10 @@ public class MenuPause {
 
     public ArrayList<MenuPauseTrayButton> getTrayButtons() {
         return trayButtons;
+    }
+
+    public MenuPauseExitButton getExitButton() {
+        return exitButton;
     }
 
     public int getTreasureTrayIndex() {
