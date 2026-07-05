@@ -132,6 +132,7 @@ public class GameInput {
             allSlots.addAll(world.getMenuPause().getTreasureTray());
             allSlots.addAll(world.getMenuPause().getWeaponTray());
             allSlots.addAll(world.getMenuPause().getEquipTray());
+            allSlots.addAll(world.getMenuPause().getTrayButtons());
 
             for (MenuButton slot : allSlots) {
                 if (slot.contains(lastTouch.x, lastTouch.y)) {
