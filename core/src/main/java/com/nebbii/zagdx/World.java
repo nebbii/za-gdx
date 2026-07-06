@@ -273,17 +273,34 @@ public class World {
     private void drawDebugText() {
         ArrayList<String> debugLines = new ArrayList<>();
 
-        debugLines.add("FPS " + Gdx.graphics.getFramesPerSecond());
-        debugLines.add("X: " + mapManager.getZelda().getX());
-        debugLines.add("Y: " + mapManager.getZelda().getY());
-        //debugLines.add("rX: " + getRelativePositionX(mapManager.getZelda().getX()));
-        //debugLines.add("rY: " + getRelativePositionY(mapManager.getZelda().getY()));
-        debugLines.add("Cell: " + rowAndColumnToRealCell(worldCamera.getTargetCellColumn(), worldCamera.getTargetCellRow()));
-        //debugLines.add("Equip: " + mapManager.getZelda().getCurrentItem().toString());
-        //debugLines.add("State: " + mapManager.getZelda().getState());
-        //debugLines.add("GameState: " + gameManager.getGameState());
-        if (archipelagoManager.isConnected()) {
-            debugLines.add("AP connected");
+        switch(mapManager.getCurrentLayerToggle()) {
+        case MAIN:
+            debugLines.add("Cell: " + rowAndColumnToRealCell(worldCamera.getTargetCellColumn(), worldCamera.getTargetCellRow()));
+            if (archipelagoManager.isConnected()) {
+                debugLines.add("AP connected");
+            }
+            break;
+        case PAINT:
+        case COLLISION:
+        case OVERLAP:
+        case COLLISIONOVERLAP:
+        case OVERLAPPAINT:
+        case ALL:
+            debugLines.add("FPS " + Gdx.graphics.getFramesPerSecond());
+            debugLines.add("X: " + mapManager.getZelda().getX());
+            debugLines.add("Y: " + mapManager.getZelda().getY());
+            //debugLines.add("rX: " + getRelativePositionX(mapManager.getZelda().getX()));
+            //debugLines.add("rY: " + getRelativePositionY(mapManager.getZelda().getY()));
+            debugLines.add("Cell: " + rowAndColumnToRealCell(worldCamera.getTargetCellColumn(), worldCamera.getTargetCellRow()));
+            //debugLines.add("Equip: " + mapManager.getZelda().getCurrentItem().toString());
+            //debugLines.add("State: " + mapManager.getZelda().getState());
+            //debugLines.add("GameState: " + gameManager.getGameState());
+            if (archipelagoManager.isConnected()) {
+                debugLines.add("AP connected");
+            }
+            break;
+        default:
+            break;
         }
 
         batch.setProjectionMatrix(interfaceCamera.combined);
