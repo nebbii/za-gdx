@@ -182,7 +182,12 @@ public class World {
     private void drawHud() {
         batch.setProjectionMatrix(interfaceCamera.combined);
         batch.begin();
-        batch.draw(World.images.getRubyBlue(), 40f, WORLD_HEIGHT - 35f);
+        if (archipelagoManager.isConnected()) {
+            batch.draw(World.images.getRubyYellow(), 40f, WORLD_HEIGHT - 35f);
+        }
+        else {
+            batch.draw(World.images.getRubyBlue(), 40f, WORLD_HEIGHT - 35f);
+        }
 
         HudNumberRenderer.draw(
             batch,
@@ -273,23 +278,38 @@ public class World {
     private void drawDebugText() {
         ArrayList<String> debugLines = new ArrayList<>();
 
-        debugLines.add("FPS " + Gdx.graphics.getFramesPerSecond());
-        debugLines.add("X: " + mapManager.getZelda().getX());
-        debugLines.add("Y: " + mapManager.getZelda().getY());
-        //debugLines.add("rX: " + getRelativePositionX(mapManager.getZelda().getX()));
-        //debugLines.add("rY: " + getRelativePositionY(mapManager.getZelda().getY()));
-        debugLines.add("Cell: " + rowAndColumnToRealCell(worldCamera.getTargetCellColumn(), worldCamera.getTargetCellRow()));
-        //debugLines.add("Equip: " + mapManager.getZelda().getCurrentItem().toString());
-        //debugLines.add("State: " + mapManager.getZelda().getState());
-        //debugLines.add("GameState: " + gameManager.getGameState());
-        if (archipelagoManager.isConnected()) {
-            debugLines.add("AP connected");
+        float xAlign = 20f;
+
+        switch(mapManager.getCurrentLayerToggle()) {
+        case MAIN:
+            debugLines.add("Cell: " + rowAndColumnToRealCell(worldCamera.getTargetCellColumn(), worldCamera.getTargetCellRow()));
+            xAlign = WORLD_WIDTH - 80f;
+            break;
+        case PAINT:
+        case COLLISION:
+        case OVERLAP:
+        case COLLISIONOVERLAP:
+        case OVERLAPPAINT:
+        case ALL:
+            debugLines.add("FPS " + Gdx.graphics.getFramesPerSecond());
+            debugLines.add("X: " + mapManager.getZelda().getX());
+            debugLines.add("Y: " + mapManager.getZelda().getY());
+            //debugLines.add("rX: " + getRelativePositionX(mapManager.getZelda().getX()));
+            //debugLines.add("rY: " + getRelativePositionY(mapManager.getZelda().getY()));
+            debugLines.add("Cell: " + rowAndColumnToRealCell(worldCamera.getTargetCellColumn(), worldCamera.getTargetCellRow()));
+            //debugLines.add("Equip: " + mapManager.getZelda().getCurrentItem().toString());
+            //debugLines.add("State: " + mapManager.getZelda().getState());
+            //debugLines.add("GameState: " + gameManager.getGameState());
+            break;
+        default:
+            break;
         }
+
 
         batch.setProjectionMatrix(interfaceCamera.combined);
         batch.begin();
         for (int i = debugLines.size() - 1, line = 0; i >= 0; i--, line++) {
-            font.draw(batch, debugLines.get(i), 20f, 20f + line * 20f);
+            font.draw(batch, debugLines.get(i), xAlign, 20f + line * 20f);
         }
         batch.end();
     }
