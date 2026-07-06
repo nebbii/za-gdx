@@ -30,7 +30,7 @@ On windows:
   - `./gradlew.bat lwjgl3:run -Pchdman=/path/to/your/chdman.exe`
 - Note: After the initial setup, you can drop the chdman parameter!
 
-On Linux:
+On Linux/Mac:
 - Open a terminal window and execute the following command in the project folder:
   - `./gradlew lwjgl3:run`
 
@@ -49,7 +49,7 @@ Default controls:
 - Left Shift - Action
 - P - Open inventory
 - Mouse - Interact with inventory
-- Space - Toggle debug data visibility
+- F2 - Toggle debug views
 
 ### Archipelago
 This port has a built-in archipelago cliënt that can be configured from the settings menu! The game automatically connects on the main menu screen after creating a config file.
