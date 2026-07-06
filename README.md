@@ -42,11 +42,17 @@ Execute `./gradlew core:test --info --rerun-tasks`
 2. The executable can be found under lwjgl3/build/libs
 
 ### Controls
+Controls can be bound in the settings menu for keyboard and gamepads.
+
+Default controls:
 - Arrows - Move
 - Left Shift - Action
 - P - Open inventory
 - Mouse - Interact with inventory
 - Space - Toggle debug data visibility
+
+### Archipelago
+This port has a built-in archipelago cliënt that can be configured from the settings menu! The game automatically connects on the main menu screen after creating a config file.
 
 ### Contributing
 Pull requests are welcome! Please maintain [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) and [branch naming](https://conventional-branch.github.io/) if possible. Check out the [Issues page](https://github.com/nebbii/za-gdx/issues) for stuff to do.
