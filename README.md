@@ -65,3 +65,4 @@ Pull requests are welcome! Please maintain [conventional commits](https://www.co
 - buntata - [Asset ripping automation](https://github.com/potatonyan/ZA_AssetExtraction), mapping
 - Krista Corkos - Archipelago assets
 - Christopher Wilson - Archipelago assets
+- Spectremint - Archipelago assets
