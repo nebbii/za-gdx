@@ -475,7 +475,7 @@ public class ImageLoader {
         hudHeartFull = new Texture("export/common/hudSprites/2.png");
 
         /* Treasures */
-        archipelagoColor = new Texture("archipelago/images/color-icon.png");
+        archipelagoColor = new Texture("archipelago/images/zelda-ap-icon.png");
         bone = new Texture("export/overworld/k13a/sprites/desc2/group0/sprite0.png");
         candle = new Texture("export/overworld/f26/sprites/desc1/group0/sprite0.png");
         candlePrice = new Texture("export/overworld/f26/sprites/desc1/group1/sprite0.png");
