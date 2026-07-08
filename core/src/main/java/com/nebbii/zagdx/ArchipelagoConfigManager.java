@@ -67,6 +67,7 @@ public class ArchipelagoConfigManager {
 
         root.setChild("server", new JsonValue(nullToEmpty(config.server)));
         root.setChild("slotName", new JsonValue(nullToEmpty(config.slotName)));
+        root.setChild("password", new JsonValue(nullToEmpty(config.password)));
         root.setChild("tags", tagsToJson(config.tags));
 
         writeRoot(root);
