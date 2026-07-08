@@ -26,7 +26,8 @@ public class ArchipelagoConfigScreen extends MenuScreen {
     private enum EditFieldType {
         NONE,
         SERVER,
-        SLOT_NAME
+        SLOT_NAME,
+        PASSWORD
     }
 
     private BitmapFont font;
@@ -124,6 +125,10 @@ public class ArchipelagoConfigScreen extends MenuScreen {
 
         menuButtons.add(new MenuTextButton(() -> textFieldLabel(EditFieldType.SLOT_NAME), font, 128, 134, 210, 20, () -> {
             startEdit(EditFieldType.SLOT_NAME);
+        }));
+
+        menuButtons.add(new MenuTextButton(() -> textFieldLabel(EditFieldType.PASSWORD), font, 128, 100, 210, 20, () -> {
+            startEdit(EditFieldType.PASSWORD);
         }));
 
         for (int i = 0; i < TAG_OPTIONS.length; i++) {
@@ -331,6 +336,10 @@ public class ArchipelagoConfigScreen extends MenuScreen {
             return nullToEmpty(config.slotName);
         }
 
+        if (field == EditFieldType.PASSWORD) {
+            return nullToEmpty(config.password);
+        }
+
         return "";
     }
 
@@ -344,6 +353,9 @@ public class ArchipelagoConfigScreen extends MenuScreen {
         }
         else if (field == EditFieldType.SLOT_NAME) {
             config.slotName = value;
+        }
+        else if (field == EditFieldType.PASSWORD) {
+            config.password = value;
         }
     }
 
