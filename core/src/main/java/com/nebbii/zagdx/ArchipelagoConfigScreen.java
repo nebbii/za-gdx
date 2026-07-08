@@ -6,17 +6,24 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 
+// quick & dirty screen rushed for the initial AP release
 public class ArchipelagoConfigScreen extends MenuScreen {
-    private static final float LABEL_X = 42f;
-    private static final float FIELD_X = 128f;
-    private static final float FIELD_WIDTH = 210f;
-    private static final float FIELD_HEIGHT = 20f;
+
+    private static class TagOption {
+        final String tag;
+        final String label;
+
+        TagOption(String tag, String label) {
+            this.tag = tag;
+            this.label = label;
+        }
+    }
 
     private static final TagOption[] TAG_OPTIONS = {
-        new TagOption("DeathLink", "DeathLink")
+        new TagOption("DeathLink", "Deathlink")
     };
 
-    private enum EditField {
+    private enum EditFieldType {
         NONE,
         SERVER,
         SLOT_NAME
@@ -26,7 +33,7 @@ public class ArchipelagoConfigScreen extends MenuScreen {
     private GlyphLayout layout;
     private ArchipelagoConfigManager configManager;
     private ArchipelagoConfig config;
-    private EditField editField = EditField.NONE;
+    private EditFieldType editField = EditFieldType.NONE;
     private String editOriginalValue = "";
     private String status = "";
 
@@ -52,7 +59,7 @@ public class ArchipelagoConfigScreen extends MenuScreen {
 
     @Override
     public void logic() {
-        if (!isFading() && editField != EditField.NONE) {
+        if (!isFading() && editField != EditFieldType.NONE) {
             handleTextEdit();
         }
 
@@ -96,7 +103,7 @@ public class ArchipelagoConfigScreen extends MenuScreen {
     private void addDisabledButtons() {
         menuButtons.add(new MenuTextButton("Enable", font, 142, 112, 100, 24, () -> {
             config = configManager.enable();
-            editField = EditField.NONE;
+            editField = EditFieldType.NONE;
             status = "";
             rebuildButtons();
         }));
@@ -106,29 +113,29 @@ public class ArchipelagoConfigScreen extends MenuScreen {
         menuButtons.add(new MenuTextButton("Disable", font, 244, 12, 94, 20, () -> {
             configManager.disable();
             config = null;
-            editField = EditField.NONE;
+            editField = EditFieldType.NONE;
             status = "";
             rebuildButtons();
         }));
 
-        menuButtons.add(new MenuTextButton(() -> textFieldLabel(EditField.SERVER), font, FIELD_X, 164, FIELD_WIDTH, FIELD_HEIGHT, () -> {
-            startEdit(EditField.SERVER);
+        menuButtons.add(new MenuTextButton(() -> textFieldLabel(EditFieldType.SERVER), font, 128, 164, 210, 20, () -> {
+            startEdit(EditFieldType.SERVER);
         }));
 
-        menuButtons.add(new MenuTextButton(() -> textFieldLabel(EditField.SLOT_NAME), font, FIELD_X, 134, FIELD_WIDTH, FIELD_HEIGHT, () -> {
-            startEdit(EditField.SLOT_NAME);
+        menuButtons.add(new MenuTextButton(() -> textFieldLabel(EditFieldType.SLOT_NAME), font, 128, 134, 210, 20, () -> {
+            startEdit(EditFieldType.SLOT_NAME);
         }));
 
         for (int i = 0; i < TAG_OPTIONS.length; i++) {
             TagOption option = TAG_OPTIONS[i];
-            float y = 100 - i * 22;
+            float y = 65 - i * 22;
 
-            menuButtons.add(new MenuTextButton(() -> tagLabel(option), font, FIELD_X, y, 142, FIELD_HEIGHT, () -> {
+            menuButtons.add(new MenuTextButton(() -> tagLabel(option), font, 128, y, 142, 20, () -> {
                 toggleTag(option);
             }));
         }
 
-        menuButtons.add(new MenuTextButton("Save", font, 146, 52, 92, 24, () -> {
+        menuButtons.add(new MenuTextButton("Save", font, 146, 10, 92, 24, () -> {
             finishEdit();
             configManager.save(config);
             status = "Saved";
@@ -136,10 +143,10 @@ public class ArchipelagoConfigScreen extends MenuScreen {
     }
 
     private void drawEnabledLabels() {
-        font.draw(batch, "Enabled", 162, 202);
-        font.draw(batch, "Server", LABEL_X, 179);
-        font.draw(batch, "Slot", LABEL_X, 149);
-        font.draw(batch, "Tags", LABEL_X, 115);
+        font.draw(batch, "Server", 42, 179);
+        font.draw(batch, "Slot", 42, 149);
+        font.draw(batch, "Password", 42, 115);
+        font.draw(batch, "Tags", 42, 85);
     }
 
     private void drawStatus() {
@@ -148,17 +155,17 @@ public class ArchipelagoConfigScreen extends MenuScreen {
         }
 
         layout.setText(font, status);
-        font.draw(batch, status, 192 - layout.width / 2f, 35);
+        font.draw(batch, status, 162, 202);
     }
 
-    private void startEdit(EditField field) {
+    private void startEdit(EditFieldType field) {
         editField = field;
         editOriginalValue = fieldValue(field);
-        status = "Editing";
+        status = "";
     }
 
     private void finishEdit() {
-        editField = EditField.NONE;
+        editField = EditFieldType.NONE;
         editOriginalValue = "";
     }
 
@@ -297,7 +304,7 @@ public class ArchipelagoConfigScreen extends MenuScreen {
         }
     }
 
-    private String textFieldLabel(EditField field) {
+    private String textFieldLabel(EditFieldType field) {
         String value = fieldValue(field);
 
         if (editField == field) {
@@ -311,31 +318,31 @@ public class ArchipelagoConfigScreen extends MenuScreen {
         return value;
     }
 
-    private String fieldValue(EditField field) {
+    private String fieldValue(EditFieldType field) {
         if (config == null) {
             return "";
         }
 
-        if (field == EditField.SERVER) {
+        if (field == EditFieldType.SERVER) {
             return nullToEmpty(config.server);
         }
 
-        if (field == EditField.SLOT_NAME) {
+        if (field == EditFieldType.SLOT_NAME) {
             return nullToEmpty(config.slotName);
         }
 
         return "";
     }
 
-    private void setFieldValue(EditField field, String value) {
+    private void setFieldValue(EditFieldType field, String value) {
         if (config == null) {
             return;
         }
 
-        if (field == EditField.SERVER) {
+        if (field == EditFieldType.SERVER) {
             config.server = value;
         }
-        else if (field == EditField.SLOT_NAME) {
+        else if (field == EditFieldType.SLOT_NAME) {
             config.slotName = value;
         }
     }
@@ -351,15 +358,5 @@ public class ArchipelagoConfigScreen extends MenuScreen {
 
     private String nullToEmpty(String value) {
         return value == null ? "" : value;
-    }
-
-    private static class TagOption {
-        final String tag;
-        final String label;
-
-        TagOption(String tag, String label) {
-            this.tag = tag;
-            this.label = label;
-        }
     }
 }
