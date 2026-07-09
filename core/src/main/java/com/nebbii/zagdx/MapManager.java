@@ -568,6 +568,10 @@ public class MapManager {
         this.zelda = zelda;
     }
 
+    public World getWorld() {
+        return world;
+    }
+
     public void dispose() {
         loader.dispose();
     }

@@ -265,6 +265,7 @@ public class EnemyLlort extends Enemy {
         setState(State.DEAD);
         map.addNewActor(new SpriteExplosion(getCenterPointX(), getCenterPointY()));
         map.getSaveManager().addLocationEntry(locationEntry, "permadead");
+        map.getWorld().getGameManager().increaseRubies(250, true);
     }
 
     @Override
