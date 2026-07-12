@@ -98,6 +98,10 @@ public class ImageLoader {
         IDLE
     }
 
+    public enum NpcTalkingMushroomAnimationGroup {
+        IDLE
+    }
+
     public enum NpcOghamAnimationGroup {
         IDLE0,
         IDLE1,
@@ -175,6 +179,7 @@ public class ImageLoader {
     /* NPCs */
     private Texture[] npcGlebb;
     private EnumMap<NpcTalkingChestAnimationGroup, Texture[]> npcTalkingChest;
+    private EnumMap<NpcTalkingMushroomAnimationGroup, Texture[]> npcTalkingMushroom;
     private EnumMap<NpcOghamAnimationGroup, Texture[]> npcOgham;
     private EnumMap<NpcBeggarAnimationGroup, Texture[]> npcBeggar;
     private EnumMap<NpcEnidAnimationGroup, Texture[]> npcEnid;
@@ -393,6 +398,10 @@ public class ImageLoader {
         npcTalkingChest = new EnumMap<>(NpcTalkingChestAnimationGroup.class);
         npcTalkingChest.put(NpcTalkingChestAnimationGroup.IDLE,
             loadTextureArray("export/underworld/s108/sprites/desc0/group0", 4));
+
+        npcTalkingMushroom = new EnumMap<>(NpcTalkingMushroomAnimationGroup.class);
+        npcTalkingMushroom.put(NpcTalkingMushroomAnimationGroup.IDLE,
+            loadTextureArray("export/overworld/k20/sprites/desc0/group0", 5));
 
         npcOgham = new EnumMap<>(NpcOghamAnimationGroup.class);
         npcOgham.put(NpcOghamAnimationGroup.IDLE0,
@@ -703,6 +712,16 @@ public class ImageLoader {
         }
 
         for (Texture[] textures : npcTalkingChest.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcTalkingMushroom.values()) {
             if (textures == null) continue;
 
             for (Texture texture : textures) {
@@ -1164,6 +1183,10 @@ public class ImageLoader {
 
     public Texture[] getNpcTalkingChestAnimation(NpcTalkingChestAnimationGroup anim) {
         return npcTalkingChest.get(anim);
+    }
+
+    public Texture[] getNpcTalkingMushroomAnimation(NpcTalkingMushroomAnimationGroup anim) {
+        return npcTalkingMushroom.get(anim);
     }
 
     public Texture[] getNpcOghamAnimation(NpcOghamAnimationGroup anim) {

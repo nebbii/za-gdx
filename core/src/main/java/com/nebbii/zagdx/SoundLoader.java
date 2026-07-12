@@ -5,6 +5,7 @@ import com.badlogic.gdx.audio.Sound;
 
 public class SoundLoader {
     private Sound npcTalkingChestLine0;
+    private Sound npcTalkingMushroomLine0;
     private Sound npcBeggarLine0;
     private Sound npcBeggarLine2;
     private Sound npcEnidLine0;
@@ -30,6 +31,9 @@ public class SoundLoader {
     public SoundLoader() {
         npcTalkingChestLine0 = Gdx.audio.newSound(
             Gdx.files.internal("export/underworld/s108/voice/line0.wav")
+        );
+        npcTalkingMushroomLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/k20/voice/line0.wav")
         );
         npcBeggarLine0 = Gdx.audio.newSound(
             Gdx.files.internal("export/overworld/j22/voice/line0.wav")
@@ -98,6 +102,7 @@ public class SoundLoader {
 
     public void dispose() {
         npcTalkingChestLine0.dispose();
+        npcTalkingMushroomLine0.dispose();
         npcBeggarLine0.dispose();
         npcBeggarLine2.dispose();
         npcEnidLine0.dispose();
@@ -123,6 +128,10 @@ public class SoundLoader {
 
     public Sound getNpcTalkingChestLine0() {
         return npcTalkingChestLine0;
+    }
+
+    public Sound getNpcTalkingMushroomLine0() {
+        return npcTalkingMushroomLine0;
     }
 
     public Sound getNpcBeggarLine0() {
