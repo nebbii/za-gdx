@@ -9,47 +9,47 @@
 ** Region 1
 *** NPCs
 - [X] Glebb
-- [ ] Ogham Merchant
-- [ ] Enid
-- [ ] Beggar
-- [ ] Lothar
-- [ ] Blue Lady
-- [ ] Exhausted Traveler
-- [ ] Krebb
+- [X] Ogham Merchant
+- [X] Enid
+- [X] Beggar
+- [X] Lothar
+- [X] Blue Lady
+- [X] Exhausted Traveler
+- [X] Krebb
 *** Enemies:
 - [X] Goriya
-- [ ] Peahats
+- [X] Peahats
 - [X] Tumblebots
 - [X] Moblins
 - [X] Mobies
 - [X] Deelers
-- [ ] Leevers
+- [X] Leevers
 *** Items:
 - [X] Wand
 - [X] Boomerang
 - [X] Empty Pitcher
 - [X] Full Pitcher
 - [X] Vial of Wind
-- [ ] Candle
-- [ ] Magic Shield
-- [ ] Ladder
-- [ ] Firestorm
-- [ ] Calm
-- [ ] Dagger
+- [X] Candle
+- [X] Magic Shield
+- [X] Ladder
+- [X] Firestorm
+- [X] Calm
+- [X] Dagger
 *** Places
-- [ ] Moblin's head inn
+- [X] Moblin's head inn
 ** Shrine of Earth
 *** Enemies
-- [ ] Tektite
-- [ ] Keese
-- [ ] Sardak
-- [ ] Llort
+- [X] Tektite
+- [X] Keese
+- [X] Sardak
+- [X] Llort
 *** Items
-- [ ] Jade Ring
-- [ ] Red Boots
-- [ ] Underworld map
-- [ ] Compass
-- [ ] Celestial Sign
+- [X] Jade Ring
+- [X] Red Boots
+- [X] Underworld map
+- [X] Compass
+- [X] Celestial Sign
 ** Region 2
 *** NPCs
 - [ ] Talking toadstool

@@ -29,6 +29,18 @@ The updated `ImageLoader` should be edited in place when working directly in the
 
 Do not run Gradle compile, test, or launch commands as part of this actor import workflow unless the user explicitly asks for that validation. Limit default verification to file/diff sanity checks and obvious source inspection.
 
+## Scope policy
+
+Do not add or update actor placement in `assets/gamedata/*.json` as part of this actor import workflow. Actor insertion into gamedata is always handled manually outside this workflow, even when the new actor's map/location can be inferred from export paths or surrounding data.
+
+Do not spend workflow time checking gamedata solely to decide whether the new actor should be inserted there. Only inspect gamedata if it is directly relevant to implementing the actor class behavior requested by the user.
+
+## Voice and audio policy
+
+If the actor has voice or sound playback and the implementation needs a timer or line duration, do not inspect the audio file, byte length, WAV metadata, headers, sample rate, or frame count to derive the duration. Ask the user for the line length in seconds when it is missing.
+
+If the user supplies a voice line path but not a duration, still add the appropriate `SoundLoader` entry/getter when needed, but stop and ask before hardcoding any timing behavior that depends on the line duration.
+
 ## Required inputs
 
 Do not make assumptions if any of these are missing. Ask for the missing information instead.
@@ -40,6 +52,7 @@ Do not make assumptions if any of these are missing. Ask for the missing informa
 [ ] Sprite files, or enough sprite metadata to determine frame count and offsets
 [ ] File tree showing animation folder layout
 [ ] Actor-specific values required by the chosen superclass
+[ ] Voice line length in seconds, if voice/timed sound behavior needs a duration
 [ ] Whether placeholder stats/values are allowed when exact values are unknown
 ```
 
@@ -516,6 +529,7 @@ Missing group meaning for non-obvious multi-group layouts -> ask what each group
 Missing Enemy stats -> ask unless placeholders are explicitly allowed
 Missing NPC solidity/dimensions -> ask unless placeholders are explicitly allowed
 Missing Sprite solidity/dimensions -> infer from nearby Sprite subclasses and sprite frame dimensions when safe; otherwise ask
+Missing voice line length for timed voice/sound behavior -> ask for duration in seconds; do not calculate it from the audio file
 Missing weakness/loot/special behavior -> ask or mark TODO only when allowed
 ```
 
