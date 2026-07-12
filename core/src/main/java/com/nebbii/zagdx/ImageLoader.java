@@ -113,6 +113,10 @@ public class ImageLoader {
         IDLE1
     }
 
+    public enum NpcFarmerAnimationGroup {
+        IDLE
+    }
+
     public enum NpcEnidAnimationGroup {
         IDLE
     }
@@ -182,6 +186,7 @@ public class ImageLoader {
     private EnumMap<NpcTalkingMushroomAnimationGroup, Texture[]> npcTalkingMushroom;
     private EnumMap<NpcOghamAnimationGroup, Texture[]> npcOgham;
     private EnumMap<NpcBeggarAnimationGroup, Texture[]> npcBeggar;
+    private EnumMap<NpcFarmerAnimationGroup, Texture[]> npcFarmer;
     private EnumMap<NpcEnidAnimationGroup, Texture[]> npcEnid;
     private EnumMap<NpcExhaustedTravelerAnimationGroup, Texture[]> npcExhaustedTraveler;
     private EnumMap<NpcBlueLadyAnimationGroup, Texture[]> npcBlueLady;
@@ -416,6 +421,10 @@ public class ImageLoader {
             loadTextureArray("export/overworld/j22/sprites/desc0/group0", 5));
         npcBeggar.put(NpcBeggarAnimationGroup.IDLE1,
             loadTextureArray("export/overworld/j22/sprites/desc0/group1", 5));
+
+        npcFarmer = new EnumMap<>(NpcFarmerAnimationGroup.class);
+        npcFarmer.put(NpcFarmerAnimationGroup.IDLE,
+            loadTextureArray("export/overworld/l17/sprites/desc0/group1", 3));
 
         npcEnid = new EnumMap<>(NpcEnidAnimationGroup.class);
         npcEnid.put(NpcEnidAnimationGroup.IDLE,
@@ -742,6 +751,16 @@ public class ImageLoader {
         }
 
         for (Texture[] textures : npcBeggar.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcFarmer.values()) {
             if (textures == null) continue;
 
             for (Texture texture : textures) {
@@ -1195,6 +1214,10 @@ public class ImageLoader {
 
     public Texture[] getNpcBeggarAnimation(NpcBeggarAnimationGroup anim) {
         return npcBeggar.get(anim);
+    }
+
+    public Texture[] getNpcFarmerAnimation(NpcFarmerAnimationGroup anim) {
+        return npcFarmer.get(anim);
     }
 
     public Texture[] getNpcEnidAnimation(NpcEnidAnimationGroup anim) {
