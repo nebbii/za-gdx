@@ -66,3 +66,5 @@ Pull requests are welcome! Please maintain [conventional commits](https://www.co
 - Krista Corkos - Archipelago assets
 - Christopher Wilson - Archipelago assets
 - Spectremint - Archipelago assets
+
+...and of course [our lovely contributors](https://github.com/nebbii/za-gdx/graphs/contributors)!
