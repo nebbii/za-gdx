@@ -41,6 +41,7 @@ public class ArchipelagoManager {
 
             gameManager.storeCurrentGameState();
             gameManager.setGameState(GameState.AP_SYNC);
+            saveManager.setSyncAP(true);
         }
     }
 
