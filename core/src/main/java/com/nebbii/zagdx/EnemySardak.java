@@ -40,7 +40,7 @@ public class EnemySardak extends Enemy {
         }
 
         if (!isActive()) {
-            stopVoiceLine();
+            pauseVoiceLine();
             return;
         }
 
@@ -69,6 +69,14 @@ public class EnemySardak extends Enemy {
 
         voiceLine.play();
         voiceLinePlayed = true;
+    }
+
+    private void pauseVoiceLine() {
+        if (voiceLine == null) {
+            return;
+        }
+
+        voiceLine.pause();
     }
 
     private void stopVoiceLine() {
