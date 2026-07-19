@@ -247,8 +247,20 @@ public class WorldCollision {
             // Keep zelda within bounds while getting pushed
             if (actor instanceof Zelda) {
                 Zelda zelda = (Zelda) actor;
+                Rectangle actorBox = actor.getCollisionBox();
 
-                if (zelda.getHurtDuration() <= 0) continue;
+                if (leftBorder.overlaps(actorBox)
+                    || rightBorder.overlaps(actorBox)
+                    || bottomBorder.overlaps(actorBox)
+                    || topBorder.overlaps(actorBox)
+                ) {
+                    zelda.setAtEdgeOfScreen(true);
+                }
+                else {
+                    zelda.setAtEdgeOfScreen(false);
+                }
+
+                continue;
             }
             else if (!(actor instanceof Enemy)) {
                 continue;
