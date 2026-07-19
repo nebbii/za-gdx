@@ -15,6 +15,7 @@ public class Zelda extends Rectangle implements Actor {
     private String locationEntry;
 
     private boolean movedLastFrame;
+    private boolean atEdgeOfScreen;
     public ZeldaAnimation animation;
 
     private State state;
@@ -142,6 +143,8 @@ public class Zelda extends Rectangle implements Actor {
     }
 
     public void movePushback(float knockback) {
+        if (atEdgeOfScreen) return;
+
         switch(getHurtDirection()) {
             case LEFT:
                 setX(getX() - knockback);
@@ -592,5 +595,13 @@ public class Zelda extends Rectangle implements Actor {
     @Override
     public void setLocationEntry(String locationEntry) {
         this.locationEntry = locationEntry;
+    }
+
+    public boolean isAtEdgeOfScreen() {
+        return atEdgeOfScreen;
+    }
+
+    public void setAtEdgeOfScreen(boolean atEdgeOfScreen) {
+        this.atEdgeOfScreen = atEdgeOfScreen;
     }
 }
