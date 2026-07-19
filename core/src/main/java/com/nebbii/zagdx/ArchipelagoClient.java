@@ -16,7 +16,6 @@ public class ArchipelagoClient extends Client {
     private ArchipelagoConfig config;
 
     public ArchipelagoClient() {
-        tryToConnect();
     }
 
     public void tryToConnect() {
