@@ -26,7 +26,7 @@ public class NpcTalkingChest extends Npc {
     public void logic() {
         super.logic();
         if (!isActive()) {
-            sound.stop();
+            sound.pause();
             return;
         }
 
@@ -36,6 +36,7 @@ public class NpcTalkingChest extends Npc {
                 setNpcState(NpcState.TALKING);
                 break;
             case TALKING:
+                sound.resume();
                 timer += Gdx.graphics.getDeltaTime();
                 if (timer > 6f) {
                     for (Spawner spawner : map.findActiveActorsByType(Spawner.class)) {

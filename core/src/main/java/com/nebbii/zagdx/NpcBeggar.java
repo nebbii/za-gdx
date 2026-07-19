@@ -28,7 +28,7 @@ public class NpcBeggar extends Npc {
     public void logic() {
         super.logic();
         if (!isActive()) {
-            line0.stop();
+            line0.pause();
             line2.stop();
             return;
         }
@@ -39,6 +39,7 @@ public class NpcBeggar extends Npc {
                 setNpcState(NpcState.TALKING);
                 break;
             case TALKING:
+                line0.resume();
                 timer += Gdx.graphics.getDeltaTime();
                 if (timer > 13f) {
                     for (Spawner spawner : map.findAllActorsByType(Spawner.class)) {
