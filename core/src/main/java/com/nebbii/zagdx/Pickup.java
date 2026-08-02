@@ -55,7 +55,8 @@ public class Pickup extends Rectangle implements Actor {
     @Override
     public void draw(SpriteBatch batch) {
         if(isPending()) {
-            drawBounceAnim(batch);
+            //drawBounceAnim(batch);
+            drawFloatAnim(batch);
         }
         else {
             float drawX = getImageDrawX();
@@ -92,9 +93,22 @@ public class Pickup extends Rectangle implements Actor {
         float decay = (float) Math.exp(-4 * duration);
         float bounce = (float) Math.pow(Math.abs(Math.sin(8f * Math.PI * duration)), 1.5f) * decay;
         float bounceOffsetY = bounce * 10f;
-
+ 
         batch.draw(getImage(), getImageDrawX(), getImageDrawY() + bounceOffsetY, getWidth(), getHeight());
     }
+
+    public void drawFloatAnim(SpriteBatch batch) { // needs tweaked to line up with placement
+        float fallSpeed = 6f;
+        float floatOffsetY = (-fallSpeed * duration) + fallSpeed;
+
+        float swingSpeed = 14f;
+        float swingAmount = 12f;
+
+        float offsetX = (float) Math.sin(duration * swingSpeed) * swingAmount;
+
+        batch.draw(getImage(), getImageDrawX() + offsetX, getImageDrawY() + floatOffsetY, getWidth(), getHeight());
+    }
+
 
     protected float getImageDrawX() {
         return getX() + offsetX + baseOffsetX;
