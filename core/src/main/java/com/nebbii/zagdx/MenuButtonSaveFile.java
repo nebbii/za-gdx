@@ -13,7 +13,7 @@ public class MenuButtonSaveFile extends Rectangle implements MenuButton {
     private BitmapFont font;
     private boolean selected;
 
-    public MenuButtonSaveFile(MainMenuScreen mainMenuScreen, SaveData saveFile, boolean selected, float x, float y, int width, int height) {
+    public MenuButtonSaveFile(MainMenuScreen mainMenuScreen, SaveData saveFile, boolean selected,  float x, float y, int width, int height) {
         super(x, y, width, height);
 
         this.mainMenuScreen = mainMenuScreen;
@@ -22,25 +22,26 @@ public class MenuButtonSaveFile extends Rectangle implements MenuButton {
 
         this.font = new BitmapFont();
     }
+    public void draw(SpriteBatch batch){};
 
-    public void draw(SpriteBatch batch) {
+    public void draw(SpriteBatch batch, boolean beingDeleted) { 
         String name;
-
-        if (selected) {
-            name = "> " + saveFile.name;
-        }
-        else {
+        if (selected && beingDeleted) {
+            name = "<!> Are you sure?";
+        }else if (selected) {
+            name = ">" + saveFile.name;
+        } else {
             name = saveFile.name;
         }
-
         font.draw(batch, name, x, y + 15); // temporary (hopefully) until it's rendered
-    }
+   }
 
     @Override
     public void onTouch() {
         mainMenuScreen.setSelectedFile(saveFile);
         mainMenuScreen.reloadSaves();
         Gdx.app.log(this.getClass().getSimpleName(), "saveFile: " + saveFile.filename);
+        menuscreen.MenuButtonDeleteSave.
     }
 
     public boolean contains(float x, float y) {

@@ -87,12 +87,14 @@ public class MainMenuScreen extends MenuScreen {
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
         for (MenuButtonSaveFile button : menuButtonSaves) {
-            button.draw(batch);
+            button.draw(batch, menuButtonDeleteSave.isBeingDeleted());
+
         }
 
         if (archipelagoClient.isConnected()) {
             font.draw(batch, "AP connected", 10, 15);
         }
+
 
         batch.end();
 
