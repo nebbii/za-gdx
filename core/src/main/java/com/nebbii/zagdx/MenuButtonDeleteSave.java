@@ -14,29 +14,23 @@ public class MenuButtonDeleteSave extends Rectangle implements MenuButton {
 
     public MenuButtonDeleteSave(MainMenuScreen menuScreen, float x, float y, int width, int height) {
         super(x, y, width, height);
-
         this.menuScreen = menuScreen;
     }
-
 
     public void draw(SpriteBatch batch) {
 
     }
 
-
     @Override
     public void onTouch() {
         if (menuScreen.getSelectedFile() == null) return;
 
-
-       if (!beingDeleted){
+        if (!beingDeleted){
             beingDeleted = true;
-       } else {
-           deleteConfirm = true;
-       }
-
-
-        Gdx.app.log(this.getClass().getSimpleName(), "beingDeleted: " + beingDeleted);
+        }
+        else {
+            deleteConfirm = true;
+        }
 
         if (deleteConfirm) {
         menuScreen.getSaveManager().deleteSave(menuScreen.getSelectedFile().filename);
@@ -48,8 +42,13 @@ public class MenuButtonDeleteSave extends Rectangle implements MenuButton {
         }
     }
 
-    public boolean isBeingDeleted(){
+    public boolean isBeingDeleted() {
         return beingDeleted;
+    }
+
+    public void cancelDeletion() {
+        beingDeleted = false;
+        deleteConfirm = false;
     }
 
     public boolean contains(float x, float y) {

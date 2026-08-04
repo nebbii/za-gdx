@@ -74,10 +74,22 @@ public class MainMenuScreen extends MenuScreen {
             touchPos.set(Gdx.input.getX(), Gdx.input.getY());
             viewport.unproject(touchPos);
 
-            for (MenuButtonSaveFile button : menuButtonSaves) {
-                if (button.contains(touchPos.x, touchPos.y)) {
-                    button.onTouch();
+            boolean clickedDelete = false;
+
+            if (menuButtonDeleteSave.contains(touchPos.x, touchPos.y)) {
+                clickedDelete = true;
+            }
+
+            if(!clickedDelete) {
+                for (MenuButtonSaveFile button : menuButtonSaves) {
+                    if (button.contains(touchPos.x, touchPos.y)) {
+                        button.onTouch();
+                    }
                 }
+            }
+
+            if (menuButtonDeleteSave.isBeingDeleted() && !clickedDelete) {
+                menuButtonDeleteSave.cancelDeletion();
             }
         }
     }
@@ -94,7 +106,6 @@ public class MainMenuScreen extends MenuScreen {
         if (archipelagoClient.isConnected()) {
             font.draw(batch, "AP connected", 10, 15);
         }
-
 
         batch.end();
 

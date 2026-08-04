@@ -24,24 +24,24 @@ public class MenuButtonSaveFile extends Rectangle implements MenuButton {
     }
     public void draw(SpriteBatch batch){};
 
-    public void draw(SpriteBatch batch, boolean beingDeleted) { 
+    public void draw(SpriteBatch batch, boolean beingDeleted) {
         String name;
         if (selected && beingDeleted) {
             name = "<!> Are you sure?";
         }else if (selected) {
             name = ">" + saveFile.name;
-        } else {
+        }
+        else {
             name = saveFile.name;
         }
-        font.draw(batch, name, x, y + 15); // temporary (hopefully) until it's rendered
-   }
+        font.draw(batch, name, x, y + 15);
+    }
 
     @Override
     public void onTouch() {
         mainMenuScreen.setSelectedFile(saveFile);
         mainMenuScreen.reloadSaves();
         Gdx.app.log(this.getClass().getSimpleName(), "saveFile: " + saveFile.filename);
-        menuscreen.MenuButtonDeleteSave.
     }
 
     public boolean contains(float x, float y) {
