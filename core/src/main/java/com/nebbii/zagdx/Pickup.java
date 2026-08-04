@@ -55,7 +55,7 @@ public class Pickup extends Rectangle implements Actor {
     @Override
     public void draw(SpriteBatch batch) {
         if(isPending()) {
-            if (this.getImage() == World.images.getHeart()) {
+            if (this instanceof PickupHeart) {
                 drawFloatAnim(batch);
             }
             else {
