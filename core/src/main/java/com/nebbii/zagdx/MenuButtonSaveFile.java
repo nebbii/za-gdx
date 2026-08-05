@@ -13,7 +13,7 @@ public class MenuButtonSaveFile extends Rectangle implements MenuButton {
     private BitmapFont font;
     private boolean selected;
 
-    public MenuButtonSaveFile(MainMenuScreen mainMenuScreen, SaveData saveFile, boolean selected,  float x, float y, int width, int height) {
+    public MenuButtonSaveFile(MainMenuScreen mainMenuScreen, SaveData saveFile, boolean selected, float x, float y, int width, int height) {
         super(x, y, width, height);
 
         this.mainMenuScreen = mainMenuScreen;
@@ -28,8 +28,9 @@ public class MenuButtonSaveFile extends Rectangle implements MenuButton {
         String name;
         if (selected && beingDeleted) {
             name = "<!> Are you sure?";
-        }else if (selected) {
-            name = ">" + saveFile.name;
+        }
+        else if (selected) {
+            name = "> " + saveFile.name;
         }
         else {
             name = saveFile.name;

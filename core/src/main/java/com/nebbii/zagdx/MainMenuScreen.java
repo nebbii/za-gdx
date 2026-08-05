@@ -100,7 +100,6 @@ public class MainMenuScreen extends MenuScreen {
         batch.begin();
         for (MenuButtonSaveFile button : menuButtonSaves) {
             button.draw(batch, menuButtonDeleteSave.isBeingDeleted());
-
         }
 
         if (archipelagoClient.isConnected()) {
