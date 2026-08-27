@@ -74,23 +74,17 @@ public class MainMenuScreen extends MenuScreen {
             touchPos.set(Gdx.input.getX(), Gdx.input.getY());
             viewport.unproject(touchPos);
 
-            boolean clickedDelete = false;
-
-            if (menuButtonDeleteSave.contains(touchPos.x, touchPos.y)) {
-                clickedDelete = true;
-            }
-
-            if(!clickedDelete) {
-                for (MenuButtonSaveFile button : menuButtonSaves) {
-                    if (button.contains(touchPos.x, touchPos.y)) {
-                        button.onTouch();
-                    }
+            for (MenuButtonSaveFile button : menuButtonSaves) {
+                if (button.contains(touchPos.x, touchPos.y)) {
+                button.onTouch();
                 }
             }
 
-            if (menuButtonDeleteSave.isBeingDeleted() && !clickedDelete) {
+            if (menuButtonDeleteSave.isBeingDeleted() && !menuButtonDeleteSave.wasClicked()) {
                 menuButtonDeleteSave.cancelDeletion();
             }
+
+            menuButtonDeleteSave.resetClicked();
         }
     }
 

@@ -10,6 +10,7 @@ public class MenuButtonDeleteSave extends Rectangle implements MenuButton {
 
     private MainMenuScreen menuScreen;
     private boolean beingDeleted = false;
+    private boolean clicked = false;
 
     public MenuButtonDeleteSave(MainMenuScreen menuScreen, float x, float y, int width, int height) {
         super(x, y, width, height);
@@ -23,6 +24,8 @@ public class MenuButtonDeleteSave extends Rectangle implements MenuButton {
     @Override
     public void onTouch() {
         if (menuScreen.getSelectedFile() == null) return;
+
+        clicked = true;
 
         if (!beingDeleted) {
             beingDeleted = true;
@@ -42,6 +45,14 @@ public class MenuButtonDeleteSave extends Rectangle implements MenuButton {
 
     public void cancelDeletion() {
         beingDeleted = false;
+    }
+
+    public boolean wasClicked() {
+        return clicked;
+    }
+
+    public void resetClicked() {
+        clicked = false;
     }
 
     public boolean contains(float x, float y) {
