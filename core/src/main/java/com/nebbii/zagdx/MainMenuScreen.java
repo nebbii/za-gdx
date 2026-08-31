@@ -76,9 +76,15 @@ public class MainMenuScreen extends MenuScreen {
 
             for (MenuButtonSaveFile button : menuButtonSaves) {
                 if (button.contains(touchPos.x, touchPos.y)) {
-                    button.onTouch();
+                button.onTouch();
                 }
             }
+
+            if (menuButtonDeleteSave.isBeingDeleted() && !menuButtonDeleteSave.wasClicked()) {
+                menuButtonDeleteSave.cancelDeletion();
+            }
+
+            menuButtonDeleteSave.resetClicked();
         }
     }
 
@@ -87,7 +93,7 @@ public class MainMenuScreen extends MenuScreen {
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
         for (MenuButtonSaveFile button : menuButtonSaves) {
-            button.draw(batch);
+            button.draw(batch, menuButtonDeleteSave.isBeingDeleted());
         }
 
         if (archipelagoClient.isConnected()) {
