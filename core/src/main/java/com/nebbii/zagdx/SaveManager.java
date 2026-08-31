@@ -43,7 +43,7 @@ public class SaveManager {
             file = saveFolder.child(fileName + "_" + i + ".json");
         }
 
-         currentSave = new SaveData();
+        currentSave = new SaveData();
         currentSave.name = fileName;
 
         currentSaveFile = file;
