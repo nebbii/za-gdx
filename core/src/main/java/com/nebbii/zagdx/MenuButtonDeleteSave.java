@@ -29,14 +29,13 @@ public class MenuButtonDeleteSave extends Rectangle implements MenuButton {
 
         if (!beingDeleted) {
             beingDeleted = true;
+            return;
         }
-        else {
-            menuScreen.getSaveManager().deleteSave(menuScreen.getSelectedFile().filename);
-            menuScreen.setSelectedFile(null);
-            menuScreen.reloadSaves();
+        menuScreen.getSaveManager().deleteSave(menuScreen.getSelectedFile().filename);
+        menuScreen.setSelectedFile(null);
+        menuScreen.reloadSaves();
 
-            beingDeleted = false;
-        }
+        beingDeleted = false;
    }
 
     public boolean isBeingDeleted() {
