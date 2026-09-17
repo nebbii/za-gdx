@@ -454,6 +454,31 @@ public class ImageLoader {
         WALKLEFT
     }
 
+    public enum EnemyWallSpikeAnimationGroup {
+        IDLE
+    }
+
+    public enum EnemyWallmasterAnimationGroup {
+        IDLE,
+        ATTACK,
+        RETREAT
+    }
+
+    public enum EnemyWarbaneAnimationGroup {
+        WALK
+    }
+
+    public enum EnemyWizzrobeAnimationGroup {
+        WALKUP,
+        WALKRIGHT,
+        WALKDOWN,
+        WALKLEFT
+    }
+
+    public enum EnemyZolAnimationGroup {
+        WALK
+    }
+
     public enum NpcTalkingChestAnimationGroup {
         IDLE
     }
@@ -491,6 +516,59 @@ public class ImageLoader {
     public enum NpcKrebbAnimationGroup {
         IDLE0,
         IDLE1
+    }
+
+    public enum NpcArcheryMinigameOwnerAnimationGroup {
+        IDLE0,
+        IDLE1,
+        IDLE2
+    }
+
+    public enum NpcBitterbeckAnimationGroup {
+        IDLE0,
+        IDLE1
+    }
+
+    public enum NpcBlacksmithAnimationGroup {
+        IDLEUP,
+        IDLERIGHT,
+        IDLEDOWN,
+        IDLELEFT
+    }
+
+    public enum NpcDressyWomanAnimationGroup {
+        IDLE
+    }
+
+    public enum NpcEricAndIanAnimationGroup {
+        IDLE
+    }
+
+    public enum NpcFaustAnimationGroup {
+        IDLE0,
+        IDLE1
+    }
+
+    public enum NpcFriendlyGoblinAnimationGroup {
+        IDLE
+    }
+
+    public enum NpcGhostDogAnimationGroup {
+        IDLEUP,
+        IDLERIGHT,
+        IDLEDOWN,
+        IDLELEFT
+    }
+
+    public enum NpcGhostFarmerAnimationGroup {
+        IDLE
+    }
+
+    public enum NpcDenGoblinAnimationGroup {
+        IDLEUP,
+        IDLERIGHT,
+        IDLEDOWN,
+        IDLELEFT
     }
 
     public enum SpriteLlortLaserAnimationGroup {
@@ -591,6 +669,11 @@ public class ImageLoader {
     private EnumMap<EnemyVaporaAnimationGroup, Texture[]> enemyVapora;
     private EnumMap<EnemyVireAnimationGroup, Texture[]> enemyVire;
     private EnumMap<EnemyVoltaAnimationGroup, Texture[]> enemyVolta;
+    private EnumMap<EnemyWallSpikeAnimationGroup, Texture[]> enemyWallSpike;
+    private EnumMap<EnemyWallmasterAnimationGroup, Texture[]> enemyWallmaster;
+    private EnumMap<EnemyWarbaneAnimationGroup, Texture[]> enemyWarbane;
+    private EnumMap<EnemyWizzrobeAnimationGroup, Texture[]> enemyWizzrobe;
+    private EnumMap<EnemyZolAnimationGroup, Texture[]> enemyZol;
 
     /* NPCs */
     private Texture[] npcGlebb;
@@ -602,6 +685,16 @@ public class ImageLoader {
     private EnumMap<NpcBlueLadyAnimationGroup, Texture[]> npcBlueLady;
     private EnumMap<NpcLotharAnimationGroup, Texture[]> npcLothar;
     private EnumMap<NpcKrebbAnimationGroup, Texture[]> npcKrebb;
+    private EnumMap<NpcArcheryMinigameOwnerAnimationGroup, Texture[]> npcArcheryMinigameOwner;
+    private EnumMap<NpcBitterbeckAnimationGroup, Texture[]> npcBitterbeck;
+    private EnumMap<NpcBlacksmithAnimationGroup, Texture[]> npcBlacksmith;
+    private EnumMap<NpcDressyWomanAnimationGroup, Texture[]> npcDressyWoman;
+    private EnumMap<NpcEricAndIanAnimationGroup, Texture[]> npcEricAndIan;
+    private EnumMap<NpcFaustAnimationGroup, Texture[]> npcFaust;
+    private EnumMap<NpcFriendlyGoblinAnimationGroup, Texture[]> npcFriendlyGoblin;
+    private EnumMap<NpcGhostDogAnimationGroup, Texture[]> npcGhostDog;
+    private EnumMap<NpcGhostFarmerAnimationGroup, Texture[]> npcGhostFarmer;
+    private EnumMap<NpcDenGoblinAnimationGroup, Texture[]> npcDenGoblin;
 
     /* Map stuff */
     private Texture spriteLadder;
@@ -1309,6 +1402,48 @@ public class ImageLoader {
         enemyVolta.put(EnemyVoltaAnimationGroup.WALKLEFT,
             loadTextureArray("export/underworld/s316/sprites/desc0/group3", 4));
 
+        // NOTE: extractor reported 5 separate 1-frame groups (group0..group4); combined into a
+        // single 5-frame IDLE animation, one texture per group.
+        enemyWallSpike = new EnumMap<>(EnemyWallSpikeAnimationGroup.class);
+        Texture[] enemyWallSpikeIdle = new Texture[5];
+        enemyWallSpikeIdle[0] = new Texture("export/underworld/s502/sprites/desc0/group0/sprite0.png");
+        enemyWallSpikeIdle[1] = new Texture("export/underworld/s502/sprites/desc0/group1/sprite0.png");
+        enemyWallSpikeIdle[2] = new Texture("export/underworld/s502/sprites/desc0/group2/sprite0.png");
+        enemyWallSpikeIdle[3] = new Texture("export/underworld/s502/sprites/desc0/group3/sprite0.png");
+        enemyWallSpikeIdle[4] = new Texture("export/underworld/s502/sprites/desc0/group4/sprite0.png");
+        enemyWallSpike.put(EnemyWallSpikeAnimationGroup.IDLE, enemyWallSpikeIdle);
+
+        // TODO: extractor reported 3/1/1 frames for group0/1/2, but 3/3/2 sprite files exist on
+        // disk; using the real counts.
+        enemyWallmaster = new EnumMap<>(EnemyWallmasterAnimationGroup.class);
+        enemyWallmaster.put(EnemyWallmasterAnimationGroup.IDLE,
+            loadTextureArray("export/underworld/s222/sprites/desc0/group0", 3));
+        enemyWallmaster.put(EnemyWallmasterAnimationGroup.ATTACK,
+            loadTextureArray("export/underworld/s222/sprites/desc0/group1", 3));
+        enemyWallmaster.put(EnemyWallmasterAnimationGroup.RETREAT,
+            loadTextureArray("export/underworld/s222/sprites/desc0/group2", 2));
+
+        // TODO: extractor reported 8 frames, but only 5 sprite files exist on disk; using the real count
+        enemyWarbane = new EnumMap<>(EnemyWarbaneAnimationGroup.class);
+        enemyWarbane.put(EnemyWarbaneAnimationGroup.WALK,
+            loadTextureArray("export/underworld/gl7/sprites/desc0/group0", 5));
+
+        // TODO: extractor reported 8 frames per direction, but only 5 sprite files exist on disk; using the real counts
+        enemyWizzrobe = new EnumMap<>(EnemyWizzrobeAnimationGroup.class);
+        enemyWizzrobe.put(EnemyWizzrobeAnimationGroup.WALKUP,
+            loadTextureArray("export/underworld/s209/sprites/desc0/group0", 5));
+        enemyWizzrobe.put(EnemyWizzrobeAnimationGroup.WALKRIGHT,
+            loadTextureArray("export/underworld/s209/sprites/desc0/group1", 5));
+        enemyWizzrobe.put(EnemyWizzrobeAnimationGroup.WALKDOWN,
+            loadTextureArray("export/underworld/s209/sprites/desc0/group2", 5));
+        enemyWizzrobe.put(EnemyWizzrobeAnimationGroup.WALKLEFT,
+            loadTextureArray("export/underworld/s209/sprites/desc0/group3", 5));
+
+        // TODO: extractor reported 4 frames, but only 3 sprite files exist on disk; using the real count
+        enemyZol = new EnumMap<>(EnemyZolAnimationGroup.class);
+        enemyZol.put(EnemyZolAnimationGroup.WALK,
+            loadTextureArray("export/underworld/s503/sprites/desc0/group0", 3));
+
         /* NPCs */
         npcGlebb = loadTextureArray("export/overworld/j24/sprites/desc0/group0", 5);
 
@@ -1357,6 +1492,88 @@ public class ImageLoader {
             loadTextureArray("export/overworld/j22a/sprites/desc4/group0", 5));
         npcKrebb.put(NpcKrebbAnimationGroup.IDLE1,
             loadTextureArray("export/overworld/j22a/sprites/desc4/group1", 5));
+
+        // TODO: extractor reported 4 frames per group, but only 3 sprite files exist on disk per
+        // group; using the real counts.
+        npcArcheryMinigameOwner = new EnumMap<>(NpcArcheryMinigameOwnerAnimationGroup.class);
+        npcArcheryMinigameOwner.put(NpcArcheryMinigameOwnerAnimationGroup.IDLE0,
+            loadTextureArray("export/underworld/s606/sprites/desc0/group0", 3));
+        npcArcheryMinigameOwner.put(NpcArcheryMinigameOwnerAnimationGroup.IDLE1,
+            loadTextureArray("export/underworld/s606/sprites/desc0/group1", 3));
+        npcArcheryMinigameOwner.put(NpcArcheryMinigameOwnerAnimationGroup.IDLE2,
+            loadTextureArray("export/underworld/s606/sprites/desc0/group2", 3));
+
+        // TODO: extractor reported 4 frames per group, but only 3 sprite files exist on disk per
+        // group; using the real counts.
+        npcBitterbeck = new EnumMap<>(NpcBitterbeckAnimationGroup.class);
+        npcBitterbeck.put(NpcBitterbeckAnimationGroup.IDLE0,
+            loadTextureArray("export/overworld/y5/sprites/desc0/group0", 3));
+        npcBitterbeck.put(NpcBitterbeckAnimationGroup.IDLE1,
+            loadTextureArray("export/overworld/y5/sprites/desc0/group1", 3));
+
+        // TODO: extractor reported 8 frames per direction, but only 5 sprite files exist on disk
+        // per direction; using the real counts.
+        npcBlacksmith = new EnumMap<>(NpcBlacksmithAnimationGroup.class);
+        npcBlacksmith.put(NpcBlacksmithAnimationGroup.IDLEUP,
+            loadTextureArray("export/overworld/k14/sprites/desc3/group0", 5));
+        npcBlacksmith.put(NpcBlacksmithAnimationGroup.IDLERIGHT,
+            loadTextureArray("export/overworld/k14/sprites/desc3/group1", 5));
+        npcBlacksmith.put(NpcBlacksmithAnimationGroup.IDLEDOWN,
+            loadTextureArray("export/overworld/k14/sprites/desc3/group2", 5));
+        npcBlacksmith.put(NpcBlacksmithAnimationGroup.IDLELEFT,
+            loadTextureArray("export/overworld/k14/sprites/desc3/group3", 5));
+
+        // TODO: extractor reported 4 frames, but only 3 sprite files exist on disk; using the real count
+        npcDressyWoman = new EnumMap<>(NpcDressyWomanAnimationGroup.class);
+        npcDressyWoman.put(NpcDressyWomanAnimationGroup.IDLE,
+            loadTextureArray("export/overworld/l15/sprites/desc0/group0", 3));
+
+        // TODO: extractor reported 4 frames, but only 3 sprite files exist on disk; using the real count
+        npcEricAndIan = new EnumMap<>(NpcEricAndIanAnimationGroup.class);
+        npcEricAndIan.put(NpcEricAndIanAnimationGroup.IDLE,
+            loadTextureArray("export/overworld/l14/sprites/desc0/group0", 3));
+
+        // TODO: extractor reported 4 frames per group, but only 3 sprite files exist on disk per
+        // group; using the real counts.
+        npcFaust = new EnumMap<>(NpcFaustAnimationGroup.class);
+        npcFaust.put(NpcFaustAnimationGroup.IDLE0,
+            loadTextureArray("export/overworld/u18/sprites/desc0/group0", 3));
+        npcFaust.put(NpcFaustAnimationGroup.IDLE1,
+            loadTextureArray("export/overworld/u18/sprites/desc0/group1", 3));
+
+        // TODO: extractor reported 8 frames, but only 5 sprite files exist on disk; using the real count
+        npcFriendlyGoblin = new EnumMap<>(NpcFriendlyGoblinAnimationGroup.class);
+        npcFriendlyGoblin.put(NpcFriendlyGoblinAnimationGroup.IDLE,
+            loadTextureArray("export/overworld/h9/sprites/desc0/group0", 5));
+
+        // TODO: extractor reported 8 frames per direction, but only 5 sprite files exist on disk
+        // per direction; using the real counts.
+        npcGhostDog = new EnumMap<>(NpcGhostDogAnimationGroup.class);
+        npcGhostDog.put(NpcGhostDogAnimationGroup.IDLEUP,
+            loadTextureArray("export/overworld/s6/sprites/desc1/group0", 5));
+        npcGhostDog.put(NpcGhostDogAnimationGroup.IDLERIGHT,
+            loadTextureArray("export/overworld/s6/sprites/desc1/group1", 5));
+        npcGhostDog.put(NpcGhostDogAnimationGroup.IDLEDOWN,
+            loadTextureArray("export/overworld/s6/sprites/desc1/group2", 5));
+        npcGhostDog.put(NpcGhostDogAnimationGroup.IDLELEFT,
+            loadTextureArray("export/overworld/s6/sprites/desc1/group3", 5));
+
+        // TODO: extractor reported 4 frames, but only 3 sprite files exist on disk; using the real count
+        npcGhostFarmer = new EnumMap<>(NpcGhostFarmerAnimationGroup.class);
+        npcGhostFarmer.put(NpcGhostFarmerAnimationGroup.IDLE,
+            loadTextureArray("export/overworld/j17/sprites/desc0/group0", 3));
+
+        // TODO: extractor reported 8 frames per direction, but only 5 sprite files exist on disk
+        // per direction; using the real counts.
+        npcDenGoblin = new EnumMap<>(NpcDenGoblinAnimationGroup.class);
+        npcDenGoblin.put(NpcDenGoblinAnimationGroup.IDLEUP,
+            loadTextureArray("export/overworld/g9/sprites/desc0/group0", 5));
+        npcDenGoblin.put(NpcDenGoblinAnimationGroup.IDLERIGHT,
+            loadTextureArray("export/overworld/g9/sprites/desc0/group1", 5));
+        npcDenGoblin.put(NpcDenGoblinAnimationGroup.IDLEDOWN,
+            loadTextureArray("export/overworld/g9/sprites/desc0/group2", 5));
+        npcDenGoblin.put(NpcDenGoblinAnimationGroup.IDLELEFT,
+            loadTextureArray("export/overworld/g9/sprites/desc0/group3", 5));
 
         /* Map stuff */
         spriteLadder = new Texture("export/underworld/s102/sprites/desc0/group0/sprite0.png");
@@ -2220,6 +2437,56 @@ public class ImageLoader {
             }
         }
 
+        for (Texture[] textures : enemyWallSpike.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyWallmaster.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyWarbane.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyWizzrobe.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyZol.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
         for (Texture texture : npcGlebb) {
             texture.dispose();
         }
@@ -2295,6 +2562,106 @@ public class ImageLoader {
         }
 
         for (Texture[] textures : npcKrebb.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcArcheryMinigameOwner.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcBitterbeck.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcBlacksmith.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcDressyWoman.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcEricAndIan.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcFaust.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcFriendlyGoblin.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcGhostDog.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcGhostFarmer.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcDenGoblin.values()) {
             if (textures == null) continue;
 
             for (Texture texture : textures) {
@@ -2916,6 +3283,26 @@ public class ImageLoader {
         return enemyVolta.get(anim);
     }
 
+    public Texture[] getEnemyWallSpikeAnimation(EnemyWallSpikeAnimationGroup anim) {
+        return enemyWallSpike.get(anim);
+    }
+
+    public Texture[] getEnemyWallmasterAnimation(EnemyWallmasterAnimationGroup anim) {
+        return enemyWallmaster.get(anim);
+    }
+
+    public Texture[] getEnemyWarbaneAnimation(EnemyWarbaneAnimationGroup anim) {
+        return enemyWarbane.get(anim);
+    }
+
+    public Texture[] getEnemyWizzrobeAnimation(EnemyWizzrobeAnimationGroup anim) {
+        return enemyWizzrobe.get(anim);
+    }
+
+    public Texture[] getEnemyZolAnimation(EnemyZolAnimationGroup anim) {
+        return enemyZol.get(anim);
+    }
+
     public Texture getNone() {
         return none;
     }
@@ -2954,6 +3341,46 @@ public class ImageLoader {
 
     public Texture[] getNpcKrebbAnimation(NpcKrebbAnimationGroup anim) {
         return npcKrebb.get(anim);
+    }
+
+    public Texture[] getNpcArcheryMinigameOwnerAnimation(NpcArcheryMinigameOwnerAnimationGroup anim) {
+        return npcArcheryMinigameOwner.get(anim);
+    }
+
+    public Texture[] getNpcBitterbeckAnimation(NpcBitterbeckAnimationGroup anim) {
+        return npcBitterbeck.get(anim);
+    }
+
+    public Texture[] getNpcBlacksmithAnimation(NpcBlacksmithAnimationGroup anim) {
+        return npcBlacksmith.get(anim);
+    }
+
+    public Texture[] getNpcDressyWomanAnimation(NpcDressyWomanAnimationGroup anim) {
+        return npcDressyWoman.get(anim);
+    }
+
+    public Texture[] getNpcEricAndIanAnimation(NpcEricAndIanAnimationGroup anim) {
+        return npcEricAndIan.get(anim);
+    }
+
+    public Texture[] getNpcFaustAnimation(NpcFaustAnimationGroup anim) {
+        return npcFaust.get(anim);
+    }
+
+    public Texture[] getNpcFriendlyGoblinAnimation(NpcFriendlyGoblinAnimationGroup anim) {
+        return npcFriendlyGoblin.get(anim);
+    }
+
+    public Texture[] getNpcGhostDogAnimation(NpcGhostDogAnimationGroup anim) {
+        return npcGhostDog.get(anim);
+    }
+
+    public Texture[] getNpcGhostFarmerAnimation(NpcGhostFarmerAnimationGroup anim) {
+        return npcGhostFarmer.get(anim);
+    }
+
+    public Texture[] getNpcDenGoblinAnimation(NpcDenGoblinAnimationGroup anim) {
+        return npcDenGoblin.get(anim);
     }
 
     public Texture getRubyBlue() {

@@ -26,6 +26,13 @@ public class SoundLoader {
     private Sound enemySardakRedLine2;
     private Sound enemySardakBlueLine2;
     private Sound enemySardakYellowLine2;
+    private Sound npcArcheryMinigameOwnerLine0;
+    private Sound npcBitterbeckLine0;
+    private Sound npcBlacksmithLine0;
+    private Sound npcBlacksmithLine1;
+    private Sound npcDressyWomanLine1;
+    private Sound npcFriendlyGoblinLine0;
+    private Sound npcDenGoblinLine0;
 
     public SoundLoader() {
         npcTalkingChestLine0 = Gdx.audio.newSound(
@@ -94,6 +101,27 @@ public class SoundLoader {
         enemySardakYellowLine2 = Gdx.audio.newSound(
             Gdx.files.internal("export/underworld/s120/voice/line2.wav")
         );
+        npcArcheryMinigameOwnerLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/underworld/s606/voice/line0.wav")
+        );
+        npcBitterbeckLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/y5/voice/line0.wav")
+        );
+        npcBlacksmithLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/l13a/voice/line0.wav")
+        );
+        npcBlacksmithLine1 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/l13a/voice/line1.wav")
+        );
+        npcDressyWomanLine1 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/l15/voice/line1.wav")
+        );
+        npcFriendlyGoblinLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/h9/voice/line0.wav")
+        );
+        npcDenGoblinLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/g9/voice/line0.wav")
+        );
     }
 
     public void dispose() {
@@ -119,6 +147,13 @@ public class SoundLoader {
         enemySardakRedLine2.dispose();
         enemySardakBlueLine2.dispose();
         enemySardakYellowLine2.dispose();
+        npcArcheryMinigameOwnerLine0.dispose();
+        npcBitterbeckLine0.dispose();
+        npcBlacksmithLine0.dispose();
+        npcBlacksmithLine1.dispose();
+        npcDressyWomanLine1.dispose();
+        npcFriendlyGoblinLine0.dispose();
+        npcDenGoblinLine0.dispose();
     }
 
     public Sound getNpcTalkingChestLine0() {
@@ -207,6 +242,34 @@ public class SoundLoader {
 
     public Sound getEnemySardakYellowLine2() {
         return enemySardakYellowLine2;
+    }
+
+    public Sound getNpcArcheryMinigameOwnerLine0() {
+        return npcArcheryMinigameOwnerLine0;
+    }
+
+    public Sound getNpcBitterbeckLine0() {
+        return npcBitterbeckLine0;
+    }
+
+    public Sound getNpcBlacksmithLine0() {
+        return npcBlacksmithLine0;
+    }
+
+    public Sound getNpcBlacksmithLine1() {
+        return npcBlacksmithLine1;
+    }
+
+    public Sound getNpcDressyWomanLine1() {
+        return npcDressyWomanLine1;
+    }
+
+    public Sound getNpcFriendlyGoblinLine0() {
+        return npcFriendlyGoblinLine0;
+    }
+
+    public Sound getNpcDenGoblinLine0() {
+        return npcDenGoblinLine0;
     }
 
 }
