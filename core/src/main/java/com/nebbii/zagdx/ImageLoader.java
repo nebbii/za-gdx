@@ -94,6 +94,88 @@ public class ImageLoader {
         WALKLEFT
     }
 
+    public enum EnemyAgwandaAnimationGroup {
+        WALK
+    }
+
+    public enum EnemyAlligatorManAnimationGroup {
+        WALKUP,
+        WALKRIGHT,
+        WALKDOWN,
+        WALKLEFT
+    }
+
+    public enum EnemyArcherAnimationGroup {
+        WALKUP,
+        WALKRIGHT,
+        WALKDOWN,
+        WALKLEFT
+    }
+
+    public enum EnemyAvianaAnimationGroup {
+        WALK,
+        ATTACK
+    }
+
+    public enum EnemyAxeManAnimationGroup {
+        WALKUP,
+        WALKRIGHT,
+        WALKDOWN,
+        WALKLEFT
+    }
+
+    public enum EnemyBagoBagoAnimationGroup {
+        WALKUP,
+        WALKRIGHT,
+        WALKDOWN,
+        WALKLEFT
+    }
+
+    public enum EnemyBlobAnimationGroup {
+        WALK
+    }
+
+    public enum EnemyBollaAnimationGroup {
+        WALKUP,
+        WALKRIGHT,
+        WALKDOWN,
+        WALKLEFT
+    }
+
+    public enum EnemyCactusAnimationGroup {
+        IDLE
+    }
+
+    public enum EnemyCrockarockAnimationGroup {
+        WALKUP,
+        WALKRIGHT,
+        WALKDOWN,
+        WALKLEFT
+    }
+
+    public enum EnemyCrystalShardAnimationGroup {
+        IDLE
+    }
+
+    public enum EnemyDragonflyAnimationGroup {
+        WALKUP,
+        WALKRIGHT,
+        WALKDOWN,
+        WALKLEFT
+    }
+
+    public enum EnemyFloorSpikesAnimationGroup {
+        IDLE
+    }
+
+    public enum EnemyFloorSpikesBlueAnimationGroup {
+        IDLE
+    }
+
+    public enum EnemyFloorSpikesWhiteAnimationGroup {
+        IDLE
+    }
+
     public enum NpcTalkingChestAnimationGroup {
         IDLE
     }
@@ -171,6 +253,21 @@ public class ImageLoader {
     private EnumMap<EnemySardakRedAnimationGroup, Texture[]> enemySardakRed;
     private EnumMap<EnemySardakBlueAnimationGroup, Texture[]> enemySardakBlue;
     private EnumMap<EnemySardakYellowAnimationGroup, Texture[]> enemySardakYellow;
+    private EnumMap<EnemyAgwandaAnimationGroup, Texture[]> enemyAgwanda;
+    private EnumMap<EnemyAlligatorManAnimationGroup, Texture[]> enemyAlligatorMan;
+    private EnumMap<EnemyArcherAnimationGroup, Texture[]> enemyArcher;
+    private EnumMap<EnemyAvianaAnimationGroup, Texture[]> enemyAviana;
+    private EnumMap<EnemyAxeManAnimationGroup, Texture[]> enemyAxeMan;
+    private EnumMap<EnemyBagoBagoAnimationGroup, Texture[]> enemyBagoBago;
+    private EnumMap<EnemyBlobAnimationGroup, Texture[]> enemyBlob;
+    private EnumMap<EnemyBollaAnimationGroup, Texture[]> enemyBolla;
+    private EnumMap<EnemyCactusAnimationGroup, Texture[]> enemyCactus;
+    private EnumMap<EnemyCrockarockAnimationGroup, Texture[]> enemyCrockarock;
+    private EnumMap<EnemyCrystalShardAnimationGroup, Texture[]> enemyCrystalShard;
+    private EnumMap<EnemyDragonflyAnimationGroup, Texture[]> enemyDragonfly;
+    private EnumMap<EnemyFloorSpikesAnimationGroup, Texture[]> enemyFloorSpikes;
+    private EnumMap<EnemyFloorSpikesBlueAnimationGroup, Texture[]> enemyFloorSpikesBlue;
+    private EnumMap<EnemyFloorSpikesWhiteAnimationGroup, Texture[]> enemyFloorSpikesWhite;
 
     /* NPCs */
     private Texture[] npcGlebb;
@@ -386,6 +483,110 @@ public class ImageLoader {
             loadTextureArray("export/underworld/s120/sprites/desc0/group2", 5));
         enemySardakYellow.put(EnemySardakYellowAnimationGroup.WALKLEFT,
             loadTextureArray("export/underworld/s120/sprites/desc0/group3", 5));
+
+        enemyAgwanda = new EnumMap<>(EnemyAgwandaAnimationGroup.class);
+        enemyAgwanda.put(EnemyAgwandaAnimationGroup.WALK,
+            loadTextureArray("export/underworld/gl5/sprites/desc0/group0", 8));
+
+        enemyAlligatorMan = new EnumMap<>(EnemyAlligatorManAnimationGroup.class);
+        enemyAlligatorMan.put(EnemyAlligatorManAnimationGroup.WALKUP,
+            loadTextureArray("export/overworld/r20/sprites/desc0/group0", 5));
+        enemyAlligatorMan.put(EnemyAlligatorManAnimationGroup.WALKRIGHT,
+            loadTextureArray("export/overworld/r20/sprites/desc0/group1", 5));
+        enemyAlligatorMan.put(EnemyAlligatorManAnimationGroup.WALKDOWN,
+            loadTextureArray("export/overworld/r20/sprites/desc0/group2", 5));
+        enemyAlligatorMan.put(EnemyAlligatorManAnimationGroup.WALKLEFT,
+            loadTextureArray("export/overworld/r20/sprites/desc0/group3", 5));
+
+        enemyArcher = new EnumMap<>(EnemyArcherAnimationGroup.class);
+        enemyArcher.put(EnemyArcherAnimationGroup.WALKUP,
+            loadTextureArray("export/underworld/s722/sprites/desc0/group0", 5));
+        enemyArcher.put(EnemyArcherAnimationGroup.WALKRIGHT,
+            loadTextureArray("export/underworld/s722/sprites/desc0/group1", 5));
+        enemyArcher.put(EnemyArcherAnimationGroup.WALKDOWN,
+            loadTextureArray("export/underworld/s722/sprites/desc0/group2", 4));
+        enemyArcher.put(EnemyArcherAnimationGroup.WALKLEFT,
+            loadTextureArray("export/underworld/s722/sprites/desc0/group3", 5));
+
+        enemyAviana = new EnumMap<>(EnemyAvianaAnimationGroup.class);
+        enemyAviana.put(EnemyAvianaAnimationGroup.WALK,
+            loadTextureArray("export/underworld/gl3/sprites/desc0/group0", 5));
+        enemyAviana.put(EnemyAvianaAnimationGroup.ATTACK,
+            loadTextureArray("export/underworld/gl3/sprites/desc0/group1", 5));
+
+        enemyAxeMan = new EnumMap<>(EnemyAxeManAnimationGroup.class);
+        enemyAxeMan.put(EnemyAxeManAnimationGroup.WALKUP,
+            loadTextureArray("export/overworld/x14/sprites/desc0/group0", 5));
+        enemyAxeMan.put(EnemyAxeManAnimationGroup.WALKRIGHT,
+            loadTextureArray("export/overworld/x14/sprites/desc0/group1", 5));
+        enemyAxeMan.put(EnemyAxeManAnimationGroup.WALKDOWN,
+            loadTextureArray("export/overworld/x14/sprites/desc0/group2", 5));
+        enemyAxeMan.put(EnemyAxeManAnimationGroup.WALKLEFT,
+            loadTextureArray("export/overworld/x14/sprites/desc0/group3", 5));
+
+        enemyBagoBago = new EnumMap<>(EnemyBagoBagoAnimationGroup.class);
+        enemyBagoBago.put(EnemyBagoBagoAnimationGroup.WALKUP,
+            loadTextureArray("export/overworld/c8/sprites/desc2/group0", 3));
+        enemyBagoBago.put(EnemyBagoBagoAnimationGroup.WALKRIGHT,
+            loadTextureArray("export/overworld/c8/sprites/desc2/group1", 3));
+        enemyBagoBago.put(EnemyBagoBagoAnimationGroup.WALKDOWN,
+            loadTextureArray("export/overworld/c8/sprites/desc2/group2", 3));
+        enemyBagoBago.put(EnemyBagoBagoAnimationGroup.WALKLEFT,
+            loadTextureArray("export/overworld/c8/sprites/desc2/group3", 3));
+
+        enemyBlob = new EnumMap<>(EnemyBlobAnimationGroup.class);
+        enemyBlob.put(EnemyBlobAnimationGroup.WALK,
+            loadTextureArray("export/overworld/r17/sprites/desc2/group0", 7));
+
+        enemyBolla = new EnumMap<>(EnemyBollaAnimationGroup.class);
+        enemyBolla.put(EnemyBollaAnimationGroup.WALKUP,
+            loadTextureArray("export/underworld/s720/sprites/desc0/group0", 5));
+        enemyBolla.put(EnemyBollaAnimationGroup.WALKRIGHT,
+            loadTextureArray("export/underworld/s720/sprites/desc0/group1", 5));
+        enemyBolla.put(EnemyBollaAnimationGroup.WALKDOWN,
+            loadTextureArray("export/underworld/s720/sprites/desc0/group2", 5));
+        enemyBolla.put(EnemyBollaAnimationGroup.WALKLEFT,
+            loadTextureArray("export/underworld/s720/sprites/desc0/group3", 5));
+
+        enemyCactus = new EnumMap<>(EnemyCactusAnimationGroup.class);
+        enemyCactus.put(EnemyCactusAnimationGroup.IDLE,
+            loadTextureArray("export/overworld/v7/sprites/desc0/group0", 3));
+
+        enemyCrockarock = new EnumMap<>(EnemyCrockarockAnimationGroup.class);
+        enemyCrockarock.put(EnemyCrockarockAnimationGroup.WALKUP,
+            loadTextureArray("export/overworld/a7/sprites/desc0/group0", 3));
+        enemyCrockarock.put(EnemyCrockarockAnimationGroup.WALKRIGHT,
+            loadTextureArray("export/overworld/a7/sprites/desc0/group1", 3));
+        enemyCrockarock.put(EnemyCrockarockAnimationGroup.WALKDOWN,
+            loadTextureArray("export/overworld/a7/sprites/desc0/group2", 3));
+        enemyCrockarock.put(EnemyCrockarockAnimationGroup.WALKLEFT,
+            loadTextureArray("export/overworld/a7/sprites/desc0/group3", 3));
+
+        enemyCrystalShard = new EnumMap<>(EnemyCrystalShardAnimationGroup.class);
+        enemyCrystalShard.put(EnemyCrystalShardAnimationGroup.IDLE,
+            loadTextureArray("export/underworld/s305/sprites/desc1/group0", 4));
+
+        enemyDragonfly = new EnumMap<>(EnemyDragonflyAnimationGroup.class);
+        enemyDragonfly.put(EnemyDragonflyAnimationGroup.WALKUP,
+            loadTextureArray("export/underworld/gl4/sprites/desc1/group0", 3));
+        enemyDragonfly.put(EnemyDragonflyAnimationGroup.WALKRIGHT,
+            loadTextureArray("export/underworld/gl4/sprites/desc1/group1", 3));
+        enemyDragonfly.put(EnemyDragonflyAnimationGroup.WALKDOWN,
+            loadTextureArray("export/underworld/gl4/sprites/desc1/group2", 3));
+        enemyDragonfly.put(EnemyDragonflyAnimationGroup.WALKLEFT,
+            loadTextureArray("export/underworld/gl4/sprites/desc1/group3", 3));
+
+        enemyFloorSpikes = new EnumMap<>(EnemyFloorSpikesAnimationGroup.class);
+        enemyFloorSpikes.put(EnemyFloorSpikesAnimationGroup.IDLE,
+            loadTextureArray("export/overworld/l8/sprites/desc0/group0", 8));
+
+        enemyFloorSpikesBlue = new EnumMap<>(EnemyFloorSpikesBlueAnimationGroup.class);
+        enemyFloorSpikesBlue.put(EnemyFloorSpikesBlueAnimationGroup.IDLE,
+            loadTextureArray("export/underworld/s316/sprites/desc3/group0", 8));
+
+        enemyFloorSpikesWhite = new EnumMap<>(EnemyFloorSpikesWhiteAnimationGroup.class);
+        enemyFloorSpikesWhite.put(EnemyFloorSpikesWhiteAnimationGroup.IDLE,
+            loadTextureArray("export/underworld/s406/sprites/desc3/group0", 8));
 
         /* NPCs */
         npcGlebb = loadTextureArray("export/overworld/j24/sprites/desc0/group0", 5);
@@ -689,6 +890,156 @@ public class ImageLoader {
         }
 
         for (Texture[] textures : enemySardakYellow.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyAgwanda.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyAlligatorMan.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyArcher.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyAviana.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyAxeMan.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyBagoBago.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyBlob.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyBolla.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyCactus.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyCrockarock.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyCrystalShard.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyDragonfly.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyFloorSpikes.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyFloorSpikesBlue.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyFloorSpikesWhite.values()) {
             if (textures == null) continue;
 
             for (Texture texture : textures) {
@@ -1152,6 +1503,66 @@ public class ImageLoader {
 
     public Texture[] getEnemySardakYellowAnimation(EnemySardakYellowAnimationGroup anim) {
         return enemySardakYellow.get(anim);
+    }
+
+    public Texture[] getEnemyAgwandaAnimation(EnemyAgwandaAnimationGroup anim) {
+        return enemyAgwanda.get(anim);
+    }
+
+    public Texture[] getEnemyAlligatorManAnimation(EnemyAlligatorManAnimationGroup anim) {
+        return enemyAlligatorMan.get(anim);
+    }
+
+    public Texture[] getEnemyArcherAnimation(EnemyArcherAnimationGroup anim) {
+        return enemyArcher.get(anim);
+    }
+
+    public Texture[] getEnemyAvianaAnimation(EnemyAvianaAnimationGroup anim) {
+        return enemyAviana.get(anim);
+    }
+
+    public Texture[] getEnemyAxeManAnimation(EnemyAxeManAnimationGroup anim) {
+        return enemyAxeMan.get(anim);
+    }
+
+    public Texture[] getEnemyBagoBagoAnimation(EnemyBagoBagoAnimationGroup anim) {
+        return enemyBagoBago.get(anim);
+    }
+
+    public Texture[] getEnemyBlobAnimation(EnemyBlobAnimationGroup anim) {
+        return enemyBlob.get(anim);
+    }
+
+    public Texture[] getEnemyBollaAnimation(EnemyBollaAnimationGroup anim) {
+        return enemyBolla.get(anim);
+    }
+
+    public Texture[] getEnemyCactusAnimation(EnemyCactusAnimationGroup anim) {
+        return enemyCactus.get(anim);
+    }
+
+    public Texture[] getEnemyCrockarockAnimation(EnemyCrockarockAnimationGroup anim) {
+        return enemyCrockarock.get(anim);
+    }
+
+    public Texture[] getEnemyCrystalShardAnimation(EnemyCrystalShardAnimationGroup anim) {
+        return enemyCrystalShard.get(anim);
+    }
+
+    public Texture[] getEnemyDragonflyAnimation(EnemyDragonflyAnimationGroup anim) {
+        return enemyDragonfly.get(anim);
+    }
+
+    public Texture[] getEnemyFloorSpikesAnimation(EnemyFloorSpikesAnimationGroup anim) {
+        return enemyFloorSpikes.get(anim);
+    }
+
+    public Texture[] getEnemyFloorSpikesBlueAnimation(EnemyFloorSpikesBlueAnimationGroup anim) {
+        return enemyFloorSpikesBlue.get(anim);
+    }
+
+    public Texture[] getEnemyFloorSpikesWhiteAnimation(EnemyFloorSpikesWhiteAnimationGroup anim) {
+        return enemyFloorSpikesWhite.get(anim);
     }
 
     public Texture getNone() {
