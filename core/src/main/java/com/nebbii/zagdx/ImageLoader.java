@@ -357,6 +357,103 @@ public class ImageLoader {
         WALKLEFT
     }
 
+    public enum EnemySeaMonsterAnimationGroup {
+        WALKUP,
+        WALKRIGHT,
+        WALKDOWN,
+        WALKLEFT
+    }
+
+    public enum EnemySpearThrowerAnimationGroup {
+        WALKUP,
+        WALKRIGHT,
+        WALKDOWN,
+        WALKLEFT
+    }
+
+    public enum EnemySpikedBlockAnimationGroup {
+        IDLE
+    }
+
+    public enum EnemyStalfosAnimationGroup {
+        WALKUP,
+        WALKRIGHT,
+        WALKDOWN,
+        WALKLEFT
+    }
+
+    public enum EnemySwampZolaBlueAnimationGroup {
+        WALKUP,
+        WALKRIGHT,
+        WALKDOWN,
+        WALKLEFT
+    }
+
+    public enum EnemySwampZolaGreenAnimationGroup {
+        WALKUP,
+        WALKRIGHT,
+        WALKDOWN,
+        WALKLEFT
+    }
+
+    public enum EnemyTinyFishAnimationGroup {
+        WALKUP,
+        WALKRIGHT,
+        WALKDOWN,
+        WALKLEFT
+    }
+
+    public enum EnemyTornadoAnimationGroup {
+        IDLE
+    }
+
+    public enum EnemyTumbleHeadAnimationGroup {
+        WALKUP,
+        WALKRIGHT,
+        WALKDOWN,
+        WALKLEFT
+    }
+
+    public enum EnemyTumbleSkullAnimationGroup {
+        WALKUP,
+        WALKRIGHT,
+        WALKDOWN,
+        WALKLEFT
+    }
+
+    public enum EnemyTurtleAnimationGroup {
+        WALKUP,
+        WALKRIGHT,
+        WALKDOWN,
+        WALKLEFT
+    }
+
+    public enum EnemyUrsoreAnimationGroup {
+        WALKRIGHT,
+        IDLERIGHT,
+        ATTACK,
+        IDLELEFT,
+        WALKLEFT
+    }
+
+    public enum EnemyVaporaAnimationGroup {
+        WALK
+    }
+
+    public enum EnemyVireAnimationGroup {
+        WALKUP,
+        WALKRIGHT,
+        WALKDOWN,
+        WALKLEFT
+    }
+
+    public enum EnemyVoltaAnimationGroup {
+        WALKUP,
+        WALKRIGHT,
+        WALKDOWN,
+        WALKLEFT
+    }
+
     public enum NpcTalkingChestAnimationGroup {
         IDLE
     }
@@ -479,6 +576,21 @@ public class ImageLoader {
     private EnumMap<EnemyPurpleFishAnimationGroup, Texture[]> enemyPurpleFish;
     private EnumMap<EnemyRomravenAnimationGroup, Texture[]> enemyRomraven;
     private EnumMap<EnemyRopeAnimationGroup, Texture[]> enemyRope;
+    private EnumMap<EnemySeaMonsterAnimationGroup, Texture[]> enemySeaMonster;
+    private EnumMap<EnemySpearThrowerAnimationGroup, Texture[]> enemySpearThrower;
+    private EnumMap<EnemySpikedBlockAnimationGroup, Texture[]> enemySpikedBlock;
+    private EnumMap<EnemyStalfosAnimationGroup, Texture[]> enemyStalfos;
+    private EnumMap<EnemySwampZolaBlueAnimationGroup, Texture[]> enemySwampZolaBlue;
+    private EnumMap<EnemySwampZolaGreenAnimationGroup, Texture[]> enemySwampZolaGreen;
+    private EnumMap<EnemyTinyFishAnimationGroup, Texture[]> enemyTinyFish;
+    private EnumMap<EnemyTornadoAnimationGroup, Texture[]> enemyTornado;
+    private EnumMap<EnemyTumbleHeadAnimationGroup, Texture[]> enemyTumbleHead;
+    private EnumMap<EnemyTumbleSkullAnimationGroup, Texture[]> enemyTumbleSkull;
+    private EnumMap<EnemyTurtleAnimationGroup, Texture[]> enemyTurtle;
+    private EnumMap<EnemyUrsoreAnimationGroup, Texture[]> enemyUrsore;
+    private EnumMap<EnemyVaporaAnimationGroup, Texture[]> enemyVapora;
+    private EnumMap<EnemyVireAnimationGroup, Texture[]> enemyVire;
+    private EnumMap<EnemyVoltaAnimationGroup, Texture[]> enemyVolta;
 
     /* NPCs */
     private Texture[] npcGlebb;
@@ -1051,6 +1163,151 @@ public class ImageLoader {
             loadTextureArray("export/overworld/j15/sprites/desc0/group2", 4));
         enemyRope.put(EnemyRopeAnimationGroup.WALKLEFT,
             loadTextureArray("export/overworld/j15/sprites/desc0/group3", 6));
+
+        // TODO: extractor reported 10/8/10/8 frames for up/right/down/left, but 6/5/6/5 sprite files exist on disk; using the real counts
+        enemySeaMonster = new EnumMap<>(EnemySeaMonsterAnimationGroup.class);
+        enemySeaMonster.put(EnemySeaMonsterAnimationGroup.WALKUP,
+            loadTextureArray("export/overworld/o28/sprites/desc0/group0", 6));
+        enemySeaMonster.put(EnemySeaMonsterAnimationGroup.WALKRIGHT,
+            loadTextureArray("export/overworld/o28/sprites/desc0/group1", 5));
+        enemySeaMonster.put(EnemySeaMonsterAnimationGroup.WALKDOWN,
+            loadTextureArray("export/overworld/o28/sprites/desc0/group2", 6));
+        enemySeaMonster.put(EnemySeaMonsterAnimationGroup.WALKLEFT,
+            loadTextureArray("export/overworld/o28/sprites/desc0/group3", 5));
+
+        // TODO: extractor reported 8 frames per direction, but only 5 sprite files exist on disk; using the real counts
+        enemySpearThrower = new EnumMap<>(EnemySpearThrowerAnimationGroup.class);
+        enemySpearThrower.put(EnemySpearThrowerAnimationGroup.WALKUP,
+            loadTextureArray("export/underworld/s703/sprites/desc0/group0", 5));
+        enemySpearThrower.put(EnemySpearThrowerAnimationGroup.WALKRIGHT,
+            loadTextureArray("export/underworld/s703/sprites/desc0/group1", 5));
+        enemySpearThrower.put(EnemySpearThrowerAnimationGroup.WALKDOWN,
+            loadTextureArray("export/underworld/s703/sprites/desc0/group2", 5));
+        enemySpearThrower.put(EnemySpearThrowerAnimationGroup.WALKLEFT,
+            loadTextureArray("export/underworld/s703/sprites/desc0/group3", 5));
+
+        enemySpikedBlock = new EnumMap<>(EnemySpikedBlockAnimationGroup.class);
+        enemySpikedBlock.put(EnemySpikedBlockAnimationGroup.IDLE,
+            loadTextureArray("export/underworld/s403/sprites/desc0/group0", 1));
+
+        // TODO: extractor reported 8 frames per direction, but only 5 sprite files exist on disk; using the real counts
+        enemyStalfos = new EnumMap<>(EnemyStalfosAnimationGroup.class);
+        enemyStalfos.put(EnemyStalfosAnimationGroup.WALKUP,
+            loadTextureArray("export/underworld/s203/sprites/desc2/group0", 5));
+        enemyStalfos.put(EnemyStalfosAnimationGroup.WALKRIGHT,
+            loadTextureArray("export/underworld/s203/sprites/desc2/group1", 5));
+        enemyStalfos.put(EnemyStalfosAnimationGroup.WALKDOWN,
+            loadTextureArray("export/underworld/s203/sprites/desc2/group2", 5));
+        enemyStalfos.put(EnemyStalfosAnimationGroup.WALKLEFT,
+            loadTextureArray("export/underworld/s203/sprites/desc2/group3", 5));
+
+        // TODO: extractor reported 8 frames per direction, but only 5 sprite files exist on disk; using the real counts
+        enemySwampZolaBlue = new EnumMap<>(EnemySwampZolaBlueAnimationGroup.class);
+        enemySwampZolaBlue.put(EnemySwampZolaBlueAnimationGroup.WALKUP,
+            loadTextureArray("export/overworld/m26/sprites/desc0/group0", 5));
+        enemySwampZolaBlue.put(EnemySwampZolaBlueAnimationGroup.WALKRIGHT,
+            loadTextureArray("export/overworld/m26/sprites/desc0/group1", 5));
+        enemySwampZolaBlue.put(EnemySwampZolaBlueAnimationGroup.WALKDOWN,
+            loadTextureArray("export/overworld/m26/sprites/desc0/group2", 5));
+        enemySwampZolaBlue.put(EnemySwampZolaBlueAnimationGroup.WALKLEFT,
+            loadTextureArray("export/overworld/m26/sprites/desc0/group3", 5));
+
+        // TODO: extractor reported 8 frames per direction, but only 5 sprite files exist on disk; using the real counts
+        enemySwampZolaGreen = new EnumMap<>(EnemySwampZolaGreenAnimationGroup.class);
+        enemySwampZolaGreen.put(EnemySwampZolaGreenAnimationGroup.WALKUP,
+            loadTextureArray("export/overworld/j11/sprites/desc0/group0", 5));
+        enemySwampZolaGreen.put(EnemySwampZolaGreenAnimationGroup.WALKRIGHT,
+            loadTextureArray("export/overworld/j11/sprites/desc0/group1", 5));
+        enemySwampZolaGreen.put(EnemySwampZolaGreenAnimationGroup.WALKDOWN,
+            loadTextureArray("export/overworld/j11/sprites/desc0/group2", 5));
+        enemySwampZolaGreen.put(EnemySwampZolaGreenAnimationGroup.WALKLEFT,
+            loadTextureArray("export/overworld/j11/sprites/desc0/group3", 5));
+
+        // TODO: extractor reported 4 frames per direction, but only 3 sprite files exist on disk; using the real counts
+        enemyTinyFish = new EnumMap<>(EnemyTinyFishAnimationGroup.class);
+        enemyTinyFish.put(EnemyTinyFishAnimationGroup.WALKUP,
+            loadTextureArray("export/overworld/p14/sprites/desc1/group0", 3));
+        enemyTinyFish.put(EnemyTinyFishAnimationGroup.WALKRIGHT,
+            loadTextureArray("export/overworld/p14/sprites/desc1/group1", 3));
+        enemyTinyFish.put(EnemyTinyFishAnimationGroup.WALKDOWN,
+            loadTextureArray("export/overworld/p14/sprites/desc1/group2", 3));
+        enemyTinyFish.put(EnemyTinyFishAnimationGroup.WALKLEFT,
+            loadTextureArray("export/overworld/p14/sprites/desc1/group3", 3));
+
+        enemyTornado = new EnumMap<>(EnemyTornadoAnimationGroup.class);
+        enemyTornado.put(EnemyTornadoAnimationGroup.IDLE,
+            loadTextureArray("export/underworld/s302/sprites/desc0/group0", 3));
+
+        enemyTumbleHead = new EnumMap<>(EnemyTumbleHeadAnimationGroup.class);
+        enemyTumbleHead.put(EnemyTumbleHeadAnimationGroup.WALKUP,
+            loadTextureArray("export/overworld/r15/sprites/desc1/group0", 8));
+        enemyTumbleHead.put(EnemyTumbleHeadAnimationGroup.WALKRIGHT,
+            loadTextureArray("export/overworld/r15/sprites/desc1/group1", 8));
+        enemyTumbleHead.put(EnemyTumbleHeadAnimationGroup.WALKDOWN,
+            loadTextureArray("export/overworld/r15/sprites/desc1/group2", 8));
+        enemyTumbleHead.put(EnemyTumbleHeadAnimationGroup.WALKLEFT,
+            loadTextureArray("export/overworld/r15/sprites/desc1/group3", 8));
+
+        // TODO: extractor reported 6 frames per direction, but only 4 sprite files exist on disk; using the real counts
+        enemyTumbleSkull = new EnumMap<>(EnemyTumbleSkullAnimationGroup.class);
+        enemyTumbleSkull.put(EnemyTumbleSkullAnimationGroup.WALKUP,
+            loadTextureArray("export/underworld/s310/sprites/desc0/group0", 4));
+        enemyTumbleSkull.put(EnemyTumbleSkullAnimationGroup.WALKRIGHT,
+            loadTextureArray("export/underworld/s310/sprites/desc0/group1", 4));
+        enemyTumbleSkull.put(EnemyTumbleSkullAnimationGroup.WALKDOWN,
+            loadTextureArray("export/underworld/s310/sprites/desc0/group2", 4));
+        enemyTumbleSkull.put(EnemyTumbleSkullAnimationGroup.WALKLEFT,
+            loadTextureArray("export/underworld/s310/sprites/desc0/group3", 4));
+
+        // TODO: extractor reported 8 frames per direction, but only 5 sprite files exist on disk; using the real counts
+        enemyTurtle = new EnumMap<>(EnemyTurtleAnimationGroup.class);
+        enemyTurtle.put(EnemyTurtleAnimationGroup.WALKUP,
+            loadTextureArray("export/underworld/s519/sprites/desc0/group0", 5));
+        enemyTurtle.put(EnemyTurtleAnimationGroup.WALKRIGHT,
+            loadTextureArray("export/underworld/s519/sprites/desc0/group1", 5));
+        enemyTurtle.put(EnemyTurtleAnimationGroup.WALKDOWN,
+            loadTextureArray("export/underworld/s519/sprites/desc0/group2", 5));
+        enemyTurtle.put(EnemyTurtleAnimationGroup.WALKLEFT,
+            loadTextureArray("export/underworld/s519/sprites/desc0/group3", 5));
+
+        // TODO: extractor reported 8/2/4/2/8 frames for group0..group4, but only 5/2/3/2/5 sprite files exist on disk; using the real counts
+        enemyUrsore = new EnumMap<>(EnemyUrsoreAnimationGroup.class);
+        enemyUrsore.put(EnemyUrsoreAnimationGroup.WALKRIGHT,
+            loadTextureArray("export/underworld/s628/sprites/desc0/group0", 5));
+        enemyUrsore.put(EnemyUrsoreAnimationGroup.IDLERIGHT,
+            loadTextureArray("export/underworld/s628/sprites/desc0/group1", 2));
+        enemyUrsore.put(EnemyUrsoreAnimationGroup.ATTACK,
+            loadTextureArray("export/underworld/s628/sprites/desc0/group2", 3));
+        enemyUrsore.put(EnemyUrsoreAnimationGroup.IDLELEFT,
+            loadTextureArray("export/underworld/s628/sprites/desc0/group3", 2));
+        enemyUrsore.put(EnemyUrsoreAnimationGroup.WALKLEFT,
+            loadTextureArray("export/underworld/s628/sprites/desc0/group4", 5));
+
+        enemyVapora = new EnumMap<>(EnemyVaporaAnimationGroup.class);
+        enemyVapora.put(EnemyVaporaAnimationGroup.WALK,
+            loadTextureArray("export/underworld/s307/sprites/desc0/group0", 6));
+
+        // TODO: extractor reported 8 frames per direction, but only 5 sprite files exist on disk; using the real counts
+        enemyVire = new EnumMap<>(EnemyVireAnimationGroup.class);
+        enemyVire.put(EnemyVireAnimationGroup.WALKUP,
+            loadTextureArray("export/underworld/s204/sprites/desc0/group0", 5));
+        enemyVire.put(EnemyVireAnimationGroup.WALKRIGHT,
+            loadTextureArray("export/underworld/s204/sprites/desc0/group1", 5));
+        enemyVire.put(EnemyVireAnimationGroup.WALKDOWN,
+            loadTextureArray("export/underworld/s204/sprites/desc0/group2", 5));
+        enemyVire.put(EnemyVireAnimationGroup.WALKLEFT,
+            loadTextureArray("export/underworld/s204/sprites/desc0/group3", 5));
+
+        // TODO: extractor reported 8/8/8/7 frames for up/right/down/left, but 5/5/5/4 sprite files exist on disk; using the real counts
+        enemyVolta = new EnumMap<>(EnemyVoltaAnimationGroup.class);
+        enemyVolta.put(EnemyVoltaAnimationGroup.WALKUP,
+            loadTextureArray("export/underworld/s316/sprites/desc0/group0", 5));
+        enemyVolta.put(EnemyVoltaAnimationGroup.WALKRIGHT,
+            loadTextureArray("export/underworld/s316/sprites/desc0/group1", 5));
+        enemyVolta.put(EnemyVoltaAnimationGroup.WALKDOWN,
+            loadTextureArray("export/underworld/s316/sprites/desc0/group2", 5));
+        enemyVolta.put(EnemyVoltaAnimationGroup.WALKLEFT,
+            loadTextureArray("export/underworld/s316/sprites/desc0/group3", 4));
 
         /* NPCs */
         npcGlebb = loadTextureArray("export/overworld/j24/sprites/desc0/group0", 5);
@@ -1813,6 +2070,156 @@ public class ImageLoader {
             }
         }
 
+        for (Texture[] textures : enemySeaMonster.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemySpearThrower.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemySpikedBlock.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyStalfos.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemySwampZolaBlue.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemySwampZolaGreen.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyTinyFish.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyTornado.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyTumbleHead.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyTumbleSkull.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyTurtle.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyUrsore.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyVapora.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyVire.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : enemyVolta.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
         for (Texture texture : npcGlebb) {
             texture.dispose();
         }
@@ -2447,6 +2854,66 @@ public class ImageLoader {
 
     public Texture[] getEnemyRopeAnimation(EnemyRopeAnimationGroup anim) {
         return enemyRope.get(anim);
+    }
+
+    public Texture[] getEnemySeaMonsterAnimation(EnemySeaMonsterAnimationGroup anim) {
+        return enemySeaMonster.get(anim);
+    }
+
+    public Texture[] getEnemySpearThrowerAnimation(EnemySpearThrowerAnimationGroup anim) {
+        return enemySpearThrower.get(anim);
+    }
+
+    public Texture[] getEnemySpikedBlockAnimation(EnemySpikedBlockAnimationGroup anim) {
+        return enemySpikedBlock.get(anim);
+    }
+
+    public Texture[] getEnemyStalfosAnimation(EnemyStalfosAnimationGroup anim) {
+        return enemyStalfos.get(anim);
+    }
+
+    public Texture[] getEnemySwampZolaBlueAnimation(EnemySwampZolaBlueAnimationGroup anim) {
+        return enemySwampZolaBlue.get(anim);
+    }
+
+    public Texture[] getEnemySwampZolaGreenAnimation(EnemySwampZolaGreenAnimationGroup anim) {
+        return enemySwampZolaGreen.get(anim);
+    }
+
+    public Texture[] getEnemyTinyFishAnimation(EnemyTinyFishAnimationGroup anim) {
+        return enemyTinyFish.get(anim);
+    }
+
+    public Texture[] getEnemyTornadoAnimation(EnemyTornadoAnimationGroup anim) {
+        return enemyTornado.get(anim);
+    }
+
+    public Texture[] getEnemyTumbleHeadAnimation(EnemyTumbleHeadAnimationGroup anim) {
+        return enemyTumbleHead.get(anim);
+    }
+
+    public Texture[] getEnemyTumbleSkullAnimation(EnemyTumbleSkullAnimationGroup anim) {
+        return enemyTumbleSkull.get(anim);
+    }
+
+    public Texture[] getEnemyTurtleAnimation(EnemyTurtleAnimationGroup anim) {
+        return enemyTurtle.get(anim);
+    }
+
+    public Texture[] getEnemyUrsoreAnimation(EnemyUrsoreAnimationGroup anim) {
+        return enemyUrsore.get(anim);
+    }
+
+    public Texture[] getEnemyVaporaAnimation(EnemyVaporaAnimationGroup anim) {
+        return enemyVapora.get(anim);
+    }
+
+    public Texture[] getEnemyVireAnimation(EnemyVireAnimationGroup anim) {
+        return enemyVire.get(anim);
+    }
+
+    public Texture[] getEnemyVoltaAnimation(EnemyVoltaAnimationGroup anim) {
+        return enemyVolta.get(anim);
     }
 
     public Texture getNone() {
