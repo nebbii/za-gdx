@@ -33,6 +33,25 @@ public class SoundLoader {
     private Sound npcDressyWomanLine1;
     private Sound npcFriendlyGoblinLine0;
     private Sound npcDenGoblinLine0;
+    private Sound npcHoodedWomanLine0;
+    private Sound npcHoodedWomanLine1;
+    private Sound npcHoodedWomanLine2;
+    private Sound npcHouseKeeperLine0;
+    private Sound npcHouseKeeperLine1;
+    private Sound npcKronThePeglegLine1;
+    private Sound npcLivingFarmerLine0;
+    private Sound npcMadameKriggleLine0;
+    private Sound npcMadameKriggleLine1;
+    private Sound npcMadameKriggleLine2;
+    private Sound npcMadameKriggleLine3;
+    private Sound npcBeachcomberLine0;
+    private Sound npcBeachcomberLine1;
+    private Sound npcYelenaLine0;
+    private Sound npcYelenaLine1;
+    private Sound npcYelenaLine2;
+    private Sound npcYelenaLine3;
+    private Sound npcYelenaLine4;
+    private Sound npcGiantSwampRatLine0;
 
     public SoundLoader() {
         npcTalkingChestLine0 = Gdx.audio.newSound(
@@ -122,6 +141,63 @@ public class SoundLoader {
         npcDenGoblinLine0 = Gdx.audio.newSound(
             Gdx.files.internal("export/overworld/g9/voice/line0.wav")
         );
+        npcHoodedWomanLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/v16/voice/line0.wav")
+        );
+        npcHoodedWomanLine1 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/v16/voice/line1.wav")
+        );
+        npcHoodedWomanLine2 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/v16/voice/line2.wav")
+        );
+        npcHouseKeeperLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/w10/voice/line0.wav")
+        );
+        npcHouseKeeperLine1 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/w10/voice/line1.wav")
+        );
+        npcKronThePeglegLine1 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/p12/voice/line1.wav")
+        );
+        npcLivingFarmerLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/l17/voice/line0.wav")
+        );
+        npcMadameKriggleLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/k13b/voice/line0.wav")
+        );
+        npcMadameKriggleLine1 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/k13b/voice/line1.wav")
+        );
+        npcMadameKriggleLine2 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/k13b/voice/line2.wav")
+        );
+        npcMadameKriggleLine3 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/k13b/voice/line3.wav")
+        );
+        npcBeachcomberLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/t20/voice/line0.wav")
+        );
+        npcBeachcomberLine1 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/t20/voice/line1.wav")
+        );
+        npcYelenaLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/u16/voice/line0.wav")
+        );
+        npcYelenaLine1 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/u16/voice/line1.wav")
+        );
+        npcYelenaLine2 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/u16/voice/line2.wav")
+        );
+        npcYelenaLine3 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/u16/voice/line3.wav")
+        );
+        npcYelenaLine4 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/u16/voice/line4.wav")
+        );
+        npcGiantSwampRatLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/v14/voice/line0.wav")
+        );
     }
 
     public void dispose() {
@@ -154,6 +230,25 @@ public class SoundLoader {
         npcDressyWomanLine1.dispose();
         npcFriendlyGoblinLine0.dispose();
         npcDenGoblinLine0.dispose();
+        npcHoodedWomanLine0.dispose();
+        npcHoodedWomanLine1.dispose();
+        npcHoodedWomanLine2.dispose();
+        npcHouseKeeperLine0.dispose();
+        npcHouseKeeperLine1.dispose();
+        npcKronThePeglegLine1.dispose();
+        npcLivingFarmerLine0.dispose();
+        npcMadameKriggleLine0.dispose();
+        npcMadameKriggleLine1.dispose();
+        npcMadameKriggleLine2.dispose();
+        npcMadameKriggleLine3.dispose();
+        npcBeachcomberLine0.dispose();
+        npcBeachcomberLine1.dispose();
+        npcYelenaLine0.dispose();
+        npcYelenaLine1.dispose();
+        npcYelenaLine2.dispose();
+        npcYelenaLine3.dispose();
+        npcYelenaLine4.dispose();
+        npcGiantSwampRatLine0.dispose();
     }
 
     public Sound getNpcTalkingChestLine0() {
@@ -270,6 +365,82 @@ public class SoundLoader {
 
     public Sound getNpcDenGoblinLine0() {
         return npcDenGoblinLine0;
+    }
+
+    public Sound getNpcHoodedWomanLine0() {
+        return npcHoodedWomanLine0;
+    }
+
+    public Sound getNpcHoodedWomanLine1() {
+        return npcHoodedWomanLine1;
+    }
+
+    public Sound getNpcHoodedWomanLine2() {
+        return npcHoodedWomanLine2;
+    }
+
+    public Sound getNpcHouseKeeperLine0() {
+        return npcHouseKeeperLine0;
+    }
+
+    public Sound getNpcHouseKeeperLine1() {
+        return npcHouseKeeperLine1;
+    }
+
+    public Sound getNpcKronThePeglegLine1() {
+        return npcKronThePeglegLine1;
+    }
+
+    public Sound getNpcLivingFarmerLine0() {
+        return npcLivingFarmerLine0;
+    }
+
+    public Sound getNpcMadameKriggleLine0() {
+        return npcMadameKriggleLine0;
+    }
+
+    public Sound getNpcMadameKriggleLine1() {
+        return npcMadameKriggleLine1;
+    }
+
+    public Sound getNpcMadameKriggleLine2() {
+        return npcMadameKriggleLine2;
+    }
+
+    public Sound getNpcMadameKriggleLine3() {
+        return npcMadameKriggleLine3;
+    }
+
+    public Sound getNpcBeachcomberLine0() {
+        return npcBeachcomberLine0;
+    }
+
+    public Sound getNpcBeachcomberLine1() {
+        return npcBeachcomberLine1;
+    }
+
+    public Sound getNpcYelenaLine0() {
+        return npcYelenaLine0;
+    }
+
+    public Sound getNpcYelenaLine1() {
+        return npcYelenaLine1;
+    }
+
+    public Sound getNpcYelenaLine2() {
+        return npcYelenaLine2;
+    }
+
+    public Sound getNpcYelenaLine3() {
+        return npcYelenaLine3;
+    }
+
+    public Sound getNpcYelenaLine4() {
+        return npcYelenaLine4;
+    }
+
+    public Sound getNpcGiantSwampRatLine0() {
+        return npcGiantSwampRatLine0;
     }
 
 }
