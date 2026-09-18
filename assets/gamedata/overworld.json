@@ -55,8 +55,7 @@
     {
       "location": "d8",
       "__comment": "d8: Two Leevers.",
-      "actors": [
-      ]
+      "actors": []
     },
     {
       "location": "d24",
@@ -1089,27 +1088,152 @@
     {
       "location": "l9",
       "__comment": "l9: One invisible man.",
-      "actors": []
+      "actors": [
+        {
+          "type": "NpcWaiter",
+          "x": 4320,
+          "y": 5580,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcWaldensop",
+          "x": 4512,
+          "y": 5580,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcWimbich",
+          "x": 4320,
+          "y": 5700,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcYalzan",
+          "x": 4512,
+          "y": 5700,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "l10",
       "__comment": "l10: Two Molblins.",
-      "actors": []
+      "actors": [
+        {
+          "type": "NpcSailor2",
+          "x": 4320,
+          "y": 5340,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcShopkeeperDog",
+          "x": 4512,
+          "y": 5340,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcShurmak",
+          "x": 4320,
+          "y": 5460,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcSirramBew",
+          "x": 4512,
+          "y": 5460,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "l11",
       "__comment": "l11: One Octorok.",
-      "actors": []
+      "actors": [
+        {
+          "type": "NpcLounger",
+          "x": 4320,
+          "y": 5100,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcMadameKriggle",
+          "x": 4512,
+          "y": 5100,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcMerribal",
+          "x": 4320,
+          "y": 5220,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcMystic",
+          "x": 4512,
+          "y": 5220,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "l12",
       "__comment": "l12: Two Zolas throw spiked balls. Only one of them throws across the path.",
-      "actors": []
+      "actors": [
+        {
+          "type": "NpcFortuneTeller",
+          "x": 4320,
+          "y": 4860,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcFriendlyGoblin",
+          "x": 4512,
+          "y": 4860,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcGhostDog",
+          "x": 4320,
+          "y": 4980,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcGhostFarmer",
+          "x": 4512,
+          "y": 4980,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "l13",
       "__comment": "l13: Two villagers dressed in red walk along the stone path between the two houses after a while. Zelda can enter the blue shop.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyZol",
+          "x": 4320,
+          "y": 4620,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcArcheryMinigameOwner",
+          "x": 4512,
+          "y": 4620,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcBeachcomber",
+          "x": 4320,
+          "y": 4740,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcBitterbeck",
+          "x": 4512,
+          "y": 4740,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "l13a",
@@ -1119,7 +1243,32 @@
     {
       "location": "l14",
       "__comment": "l14: Musician Yvonne and the twins, Eric and Ian, stand in front of a house. If Zelda touches Yvonne, she gives Zelda a flute and a harp. The twins also speak with Zelda if she touches them. Zelda can now enter the house.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyStalfos",
+          "x": 4320,
+          "y": 4380,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemySwampZolaBlue",
+          "x": 4512,
+          "y": 4380,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemySwampZolaGreen",
+          "x": 4320,
+          "y": 4500,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyTinyFish",
+          "x": 4512,
+          "y": 4500,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "l14a",
@@ -1129,17 +1278,92 @@
     {
       "location": "l15",
       "__comment": "l15: Alice sits next to the corner of the house. Zelda can use the tree trunk to get across the water.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyLowder",
+          "x": 4320,
+          "y": 4140,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyMalmord",
+          "x": 4512,
+          "y": 4140,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyMaxus",
+          "x": 4320,
+          "y": 4260,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyMimicMole",
+          "x": 4512,
+          "y": 4260,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "l16",
       "__comment": "l16: Two blue Tektites.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyGiantSquid",
+          "x": 4320,
+          "y": 3900,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyGibdo",
+          "x": 4512,
+          "y": 3900,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyGolem",
+          "x": 4320,
+          "y": 4020,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyGreenBird",
+          "x": 4512,
+          "y": 4020,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "l17",
       "__comment": "l17: A farmer stands next to his barn and warns Zelda.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyAgwanda",
+          "x": 4320,
+          "y": 3660,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyAlligatorMan",
+          "x": 4512,
+          "y": 3660,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyAviana",
+          "x": 4320,
+          "y": 3780,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyAxeMan",
+          "x": 4512,
+          "y": 3780,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "l18",
@@ -1177,47 +1401,272 @@
     {
       "location": "m9",
       "__comment": "m9: One invisible man.",
-      "actors": []
+      "actors": [
+        {
+          "type": "NpcYelena",
+          "x": 4704,
+          "y": 5580,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcYellowStallOwner",
+          "x": 4896,
+          "y": 5580,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcYvonne",
+          "x": 4704,
+          "y": 5700,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcZeldaSliding",
+          "x": 4896,
+          "y": 5700,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "m10",
       "__comment": "m10: One Molblin and two Deelers.",
-      "actors": []
+      "actors": [
+        {
+          "type": "NpcSkaterDude",
+          "x": 4704,
+          "y": 5340,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcSleepingMan",
+          "x": 4896,
+          "y": 5340,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcSquireGrip",
+          "x": 4704,
+          "y": 5460,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcStallOwner2",
+          "x": 4896,
+          "y": 5460,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "m11",
       "__comment": "m11: Three Peahats throw peas.",
-      "actors": []
+      "actors": [
+        {
+          "type": "NpcNimonee",
+          "x": 4704,
+          "y": 5100,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcOldSailor",
+          "x": 4896,
+          "y": 5100,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcPickpocket",
+          "x": 4704,
+          "y": 5220,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcPurpleRaven",
+          "x": 4896,
+          "y": 5220,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "m12",
       "__comment": "m12: Two Molblins.",
-      "actors": []
+      "actors": [
+        {
+          "type": "NpcGiantSwampRat",
+          "x": 4704,
+          "y": 4860,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcGreatFairy",
+          "x": 4896,
+          "y": 4860,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcGreenKnightSpectator",
+          "x": 4704,
+          "y": 4980,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcGwynla",
+          "x": 4896,
+          "y": 4980,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "m13",
       "__comment": "m13: Two Deelers and one Octorok.",
-      "actors": []
+      "actors": [
+        {
+          "type": "NpcBlacksmith",
+          "x": 4704,
+          "y": 4620,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcBride",
+          "x": 4896,
+          "y": 4620,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcDebblinOfDurod",
+          "x": 4704,
+          "y": 4740,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcDeerHunter",
+          "x": 4896,
+          "y": 4740,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "m14",
       "__comment": "m14: One blue Tektite on the east side of the water.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyTornado",
+          "x": 4704,
+          "y": 4380,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyTumbleHead",
+          "x": 4896,
+          "y": 4380,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyTumbleSkull",
+          "x": 4704,
+          "y": 4500,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyTurtle",
+          "x": 4896,
+          "y": 4500,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "m15",
       "__comment": "m15: Three blue Tektites.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyMolluska",
+          "x": 4704,
+          "y": 4140,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyOctorok",
+          "x": 4896,
+          "y": 4140,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyPasquinade",
+          "x": 4704,
+          "y": 4260,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyPatra",
+          "x": 4896,
+          "y": 4260,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "m16",
       "__comment": "m16: Three Leevers.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyGuard",
+          "x": 4704,
+          "y": 3900,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyIronKnuckle",
+          "x": 4896,
+          "y": 3900,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyJack",
+          "x": 4704,
+          "y": 4020,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyJackaroo",
+          "x": 4896,
+          "y": 4020,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "m17",
       "__comment": "m17: Three Mobies.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyBagoBago",
+          "x": 4704,
+          "y": 3660,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyBlob",
+          "x": 4896,
+          "y": 3660,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyBolla",
+          "x": 4704,
+          "y": 3780,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyCactus",
+          "x": 4896,
+          "y": 3780,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "m18",
@@ -1265,12 +1714,62 @@
     {
       "location": "n10",
       "__comment": "n10: Three Peahats throw peas.",
-      "actors": []
+      "actors": [
+        {
+          "type": "NpcStrongman",
+          "x": 5088,
+          "y": 5340,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcTalkingMushroom",
+          "x": 5280,
+          "y": 5340,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcThabul",
+          "x": 5088,
+          "y": 5460,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcThirstyChild",
+          "x": 5280,
+          "y": 5460,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "n11",
       "__comment": "n11: Waldensop stands outside the White Steed Lodge with two horses. Zelda can enter the lodge. Have her go back outside, then back inside again, and Waldensop gives her a feather.",
-      "actors": []
+      "actors": [
+        {
+          "type": "NpcPurpleStallOwner",
+          "x": 5088,
+          "y": 5100,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcQuarryMiner",
+          "x": 5280,
+          "y": 5100,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcQuietFisherman",
+          "x": 5088,
+          "y": 5220,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcRandomCapeGuy",
+          "x": 5280,
+          "y": 5220,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "n11a",
@@ -1280,32 +1779,182 @@
     {
       "location": "n12",
       "__comment": "n12: Two Zolas hide behind a tree. One throws spiked balls along the tree trunk that Zelda can use to cross the stream.",
-      "actors": []
+      "actors": [
+        {
+          "type": "NpcHoodedWoman",
+          "x": 5088,
+          "y": 4860,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcHorse",
+          "x": 5280,
+          "y": 4860,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcHouseKeeper",
+          "x": 5088,
+          "y": 4980,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcKnave",
+          "x": 5280,
+          "y": 4980,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "n13",
       "__comment": "n13: One Deeler rushes past. Zelda can cross the stream on a tree trunk.",
-      "actors": []
+      "actors": [
+        {
+          "type": "NpcDenGoblin",
+          "x": 5088,
+          "y": 4620,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcDockhand",
+          "x": 5280,
+          "y": 4620,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcDressyWoman",
+          "x": 5088,
+          "y": 4740,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcEricAndIan",
+          "x": 5280,
+          "y": 4740,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "n14",
       "__comment": "n14: Three Tumblebots.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyUrsore",
+          "x": 5088,
+          "y": 4380,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyVapora",
+          "x": 5280,
+          "y": 4380,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyVire",
+          "x": 5088,
+          "y": 4500,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyVolta",
+          "x": 5280,
+          "y": 4500,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "n15",
       "__comment": "n15: Three Peahats throw peas.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyPolsVoice",
+          "x": 5088,
+          "y": 4140,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyPurpleBird",
+          "x": 5280,
+          "y": 4140,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyPurpleFish",
+          "x": 5088,
+          "y": 4260,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyRomraven",
+          "x": 5280,
+          "y": 4260,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "n16",
       "__comment": "n16: Two Mobies.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyKannis",
+          "x": 5088,
+          "y": 3900,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyKelpi",
+          "x": 5280,
+          "y": 3900,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyKnightBlue",
+          "x": 5088,
+          "y": 4020,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyKnightGreen",
+          "x": 5280,
+          "y": 4020,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "n17",
       "__comment": "n17: One Goriya throws boomerangs. A man dressed in red sleeps in the northwest corner.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyCrockarock",
+          "x": 5088,
+          "y": 3660,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyCrystalShard",
+          "x": 5280,
+          "y": 3660,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyDragonfly",
+          "x": 5088,
+          "y": 3780,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyFloorSpikes",
+          "x": 5280,
+          "y": 3780,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "n18",
@@ -1328,12 +1977,62 @@
     {
       "location": "o10",
       "__comment": "o10: One Dolomite throws stones.",
-      "actors": []
+      "actors": [
+        {
+          "type": "NpcToobar",
+          "x": 5472,
+          "y": 5340,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcTournamentSpectator",
+          "x": 5664,
+          "y": 5340,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcTownMerchant",
+          "x": 5472,
+          "y": 5460,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcTwinsFather",
+          "x": 5664,
+          "y": 5460,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "o11",
       "__comment": "o11: Zelda can enter the abandoned mine.",
-      "actors": []
+      "actors": [
+        {
+          "type": "NpcRebelLeft",
+          "x": 5472,
+          "y": 5100,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcRebelRight",
+          "x": 5664,
+          "y": 5100,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcRyco",
+          "x": 5472,
+          "y": 5220,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcSailor",
+          "x": 5664,
+          "y": 5220,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "o11a",
@@ -1343,32 +2042,182 @@
     {
       "location": "o12",
       "__comment": "o12: One Molblin and one Deeler.",
-      "actors": []
+      "actors": [
+        {
+          "type": "NpcKronThePegleg",
+          "x": 5472,
+          "y": 4860,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcLivingFarmer",
+          "x": 5664,
+          "y": 4860,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcLodgeOwner",
+          "x": 5472,
+          "y": 4980,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcLonlyn",
+          "x": 5664,
+          "y": 4980,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "o13",
       "__comment": "o13: Three Molluskas throw pearls.",
-      "actors": []
+      "actors": [
+        {
+          "type": "NpcEthera",
+          "x": 5472,
+          "y": 4620,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcFatShopkeeper",
+          "x": 5664,
+          "y": 4620,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcFaust",
+          "x": 5472,
+          "y": 4740,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "NpcForeignWoman",
+          "x": 5664,
+          "y": 4740,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "o14",
       "__comment": "o14: Three Bounders spit at Zelda, two in the stream and one south of it.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyWallSpike",
+          "x": 5472,
+          "y": 4380,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyWallmaster",
+          "x": 5664,
+          "y": 4380,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyWarbane",
+          "x": 5472,
+          "y": 4500,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyWizzrobe",
+          "x": 5664,
+          "y": 4500,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "o15",
       "__comment": "o15: Three Tumblebots.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyRope",
+          "x": 5472,
+          "y": 4140,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemySeaMonster",
+          "x": 5664,
+          "y": 4140,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemySpearThrower",
+          "x": 5472,
+          "y": 4260,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemySpikedBlock",
+          "x": 5664,
+          "y": 4260,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "o16",
       "__comment": "o16: Two Goriyas throw boomerangs.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyKnightRed",
+          "x": 5472,
+          "y": 3900,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyLanmola",
+          "x": 5664,
+          "y": 3900,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyLavaLizard",
+          "x": 5472,
+          "y": 4020,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyLoccasin",
+          "x": 5664,
+          "y": 4020,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "o17",
       "__comment": "o17: Three Lowders.",
-      "actors": []
+      "actors": [
+        {
+          "type": "EnemyFloorSpikesBlue",
+          "x": 5472,
+          "y": 3660,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyFloorSpikesWhite",
+          "x": 5664,
+          "y": 3660,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyGanon",
+          "x": 5472,
+          "y": 3780,
+          "__comment": "actor showroom grid"
+        },
+        {
+          "type": "EnemyGanonFairy",
+          "x": 5664,
+          "y": 3780,
+          "__comment": "actor showroom grid"
+        }
+      ]
     },
     {
       "location": "o22",
