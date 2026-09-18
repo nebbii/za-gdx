@@ -50,8 +50,12 @@ public class EnemyGuard extends Enemy {
         if (knockback > 0) endDrawFlashOverlay(batch);
     }
 
+    // TODO: CD-i Interactief guide states the Guard is killed with the Noise spell, not
+    // Wand (which is what cast.json's weakToSpell field reported). No ZeldaActionNoise
+    // class exists yet in this codebase, so returning empty until that spell is
+    // implemented, rather than shipping a confirmed-wrong weakness.
     @Override
     public Array<String> getWeaknesses() {
-        return Array.with("ZeldaActionWand");
+        return new Array<String>();
     }
 }

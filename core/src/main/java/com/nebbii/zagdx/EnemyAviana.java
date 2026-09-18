@@ -10,7 +10,12 @@ public class EnemyAviana extends Enemy {
 
     /*
     enemy.aviana:
-        [health=60, damage=60, defense=24, weakness=none (weakToSpell_raw=RingsOfFire, not mapped)]
+        [health=60, damage=60, defense=24. cast.json's weakToSpell field reported
+        RingsOfFire, but the CD-i Interactief guide explicitly states "Zelda must fight
+        Avianna, the guardian of this tomb, with the feather weapon" -- neither
+        ZeldaActionRingsOfFire nor a Feather-equivalent ZeldaAction class exists yet in
+        this codebase, so returning empty until the guide-confirmed Feather item is
+        implemented, rather than shipping the extractor's unconfirmed value.]
     */
     public EnemyAviana() {
         super(ActorType.ENEMY, false);

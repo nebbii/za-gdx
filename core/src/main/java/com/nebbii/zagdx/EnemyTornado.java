@@ -6,9 +6,10 @@ import com.nebbii.zagdx.animation.EnemyTornadoAnimation;
 
 /*
 enemy.tornado:
-    [health=280, damage=52, defense=32, bonusDamage=72, weakness reported as Feather by
-    extractor, but no ZeldaActionFeather class exists yet in the codebase; leaving
-    weaknesses empty until that spell is implemented]
+    [health=280, damage=52, defense=32, bonusDamage=72. cast.json's weakToSpell field
+    reported Feather, but the CD-i Interactief guide explicitly states "the three blue
+    Tornadoes can only be destroyed with the calm spell" -- using ZeldaActionCalm
+    (guide-confirmed) instead of the extractor value.]
     NOTE: treated as an immobile hazard like EnemyMalmord (non-solid, standard
     SEARCH/FIGHT movement retained since the codebase has no dedicated "stationary"
     enemy behavior yet).
@@ -57,6 +58,6 @@ public class EnemyTornado extends Enemy {
 
     @Override
     public Array<String> getWeaknesses() {
-        return new Array<String>();
+        return Array.with("ZeldaActionCalm");
     }
 }

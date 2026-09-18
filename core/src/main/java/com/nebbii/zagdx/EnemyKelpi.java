@@ -46,8 +46,12 @@ public class EnemyKelpi extends Enemy {
         if (knockback > 0) endDrawFlashOverlay(batch);
     }
 
+    // TODO: CD-i Interactief guide states Kelpi is killed with the Turquoise Ring, not
+    // Boomerang (which is what cast.json's weakToSpell field reported). No
+    // ZeldaActionTurquoiseRing class exists yet in this codebase, so returning empty
+    // until that item is implemented, rather than shipping a confirmed-wrong weakness.
     @Override
     public Array<String> getWeaknesses() {
-        return Array.with("ZeldaActionBoomerang");
+        return new Array<String>();
     }
 }

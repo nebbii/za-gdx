@@ -6,11 +6,11 @@ import com.nebbii.zagdx.animation.EnemyWizzrobeAnimation;
 
 /*
 enemy.wizzrobe:
-    [health=280, damage=45, defense=35, bonusDamage=70]
-    NOTE: weakToSpell_raw was "LeatherBook", which has no matching ZeldaAction* class in this
-    codebase; returning an empty weakness list until that item/action exists.
+    [health=280, damage=45, defense=35, bonusDamage=70. cast.json's weakToSpell field
+    reported LeatherBook, but the CD-i Interactief guide explicitly states Wizzrobes
+    "can only be killed with the dagger weapon" -- using ZeldaActionDagger
+    (guide-confirmed) instead of the extractor value.]
 */
-// TODO: verify weakness once a LeatherBook-equivalent ZeldaAction class exists
 public class EnemyWizzrobe extends Enemy {
     public EnemyWizzrobeAnimation animation;
 
@@ -54,6 +54,6 @@ public class EnemyWizzrobe extends Enemy {
 
     @Override
     public Array<String> getWeaknesses() {
-        return new Array<String>();
+        return Array.with("ZeldaActionDagger");
     }
 }
