@@ -8,6 +8,16 @@ import com.nebbii.zagdx.animation.EnemyKnightRedAnimation;
 public class EnemyKnightRed extends Enemy {
     public EnemyKnightRedAnimation animation;
 
+    /*
+    enemy.knight.red:
+        [cast.json's weakToSpell field reported JadeRing, but the CD-i Interactief guide
+        explicitly states the Red Knight "must use the jousting stick found in the
+        seventh region" -- JadeRing is actually the guide-confirmed weakness for the
+        unrelated Sardak enemies, suggesting the extractor's data got shuffled between
+        enemies. No ZeldaActionJoustingStick-equivalent class exists yet in this
+        codebase, so returning empty until that item is implemented, rather than
+        shipping the extractor's wrong value.]
+    */
     public EnemyKnightRed() {
         super(ActorType.ENEMY, true);
         setWidth(116);
@@ -48,6 +58,6 @@ public class EnemyKnightRed extends Enemy {
 
     @Override
     public Array<String> getWeaknesses() {
-        return Array.with("ZeldaActionJadeRing");
+        return new Array<String>();
     }
 }
