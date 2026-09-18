@@ -105,7 +105,7 @@ public class ImageLoader {
         WALKLEFT
     }
 
-    public enum EnemyArcherAnimationGroup {
+    public enum EnemyMaxusAnimationGroup {
         WALKUP,
         WALKRIGHT,
         WALKDOWN,
@@ -934,7 +934,7 @@ public class ImageLoader {
     private EnumMap<EnemySardakYellowAnimationGroup, Texture[]> enemySardakYellow;
     private EnumMap<EnemyAgwandaAnimationGroup, Texture[]> enemyAgwanda;
     private EnumMap<EnemyAlligatorManAnimationGroup, Texture[]> enemyAlligatorMan;
-    private EnumMap<EnemyArcherAnimationGroup, Texture[]> enemyArcher;
+    private EnumMap<EnemyMaxusAnimationGroup, Texture[]> enemyMaxus;
     private EnumMap<EnemyAvianaAnimationGroup, Texture[]> enemyAviana;
     private EnumMap<EnemyAxeManAnimationGroup, Texture[]> enemyAxeMan;
     private EnumMap<EnemyBagoBagoAnimationGroup, Texture[]> enemyBagoBago;
@@ -1298,14 +1298,14 @@ public class ImageLoader {
         enemyAlligatorMan.put(EnemyAlligatorManAnimationGroup.WALKLEFT,
             loadTextureArray("export/overworld/r20/sprites/desc0/group3", 5));
 
-        enemyArcher = new EnumMap<>(EnemyArcherAnimationGroup.class);
-        enemyArcher.put(EnemyArcherAnimationGroup.WALKUP,
+        enemyMaxus = new EnumMap<>(EnemyMaxusAnimationGroup.class);
+        enemyMaxus.put(EnemyMaxusAnimationGroup.WALKUP,
             loadTextureArray("export/underworld/s722/sprites/desc0/group0", 5));
-        enemyArcher.put(EnemyArcherAnimationGroup.WALKRIGHT,
+        enemyMaxus.put(EnemyMaxusAnimationGroup.WALKRIGHT,
             loadTextureArray("export/underworld/s722/sprites/desc0/group1", 5));
-        enemyArcher.put(EnemyArcherAnimationGroup.WALKDOWN,
+        enemyMaxus.put(EnemyMaxusAnimationGroup.WALKDOWN,
             loadTextureArray("export/underworld/s722/sprites/desc0/group2", 4));
-        enemyArcher.put(EnemyArcherAnimationGroup.WALKLEFT,
+        enemyMaxus.put(EnemyMaxusAnimationGroup.WALKLEFT,
             loadTextureArray("export/underworld/s722/sprites/desc0/group3", 5));
 
         enemyAviana = new EnumMap<>(EnemyAvianaAnimationGroup.class);
@@ -2714,7 +2714,7 @@ public class ImageLoader {
             }
         }
 
-        for (Texture[] textures : enemyArcher.values()) {
+        for (Texture[] textures : enemyMaxus.values()) {
             if (textures == null) continue;
 
             for (Texture texture : textures) {
@@ -4518,8 +4518,8 @@ public class ImageLoader {
         return enemyAlligatorMan.get(anim);
     }
 
-    public Texture[] getEnemyArcherAnimation(EnemyArcherAnimationGroup anim) {
-        return enemyArcher.get(anim);
+    public Texture[] getEnemyMaxusAnimation(EnemyMaxusAnimationGroup anim) {
+        return enemyMaxus.get(anim);
     }
 
     public Texture[] getEnemyAvianaAnimation(EnemyAvianaAnimationGroup anim) {

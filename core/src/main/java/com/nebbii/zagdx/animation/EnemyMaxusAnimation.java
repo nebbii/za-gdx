@@ -3,12 +3,12 @@ package com.nebbii.zagdx.animation;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.nebbii.zagdx.EnemyArcher;
-import com.nebbii.zagdx.ImageLoader.EnemyArcherAnimationGroup;
+import com.nebbii.zagdx.EnemyMaxus;
+import com.nebbii.zagdx.ImageLoader.EnemyMaxusAnimationGroup;
 import com.nebbii.zagdx.World;
 
-public class EnemyArcherAnimation extends GameAnimation {
-    private final EnemyArcher enemy;
+public class EnemyMaxusAnimation extends GameAnimation {
+    private final EnemyMaxus enemy;
 
     private Animation<TextureRegion> walkUp;
     private Animation<TextureRegion> walkRight;
@@ -24,7 +24,7 @@ public class EnemyArcherAnimation extends GameAnimation {
     private int[] walkLeftOffsetX;
     private int[] walkLeftOffsetY;
 
-    public EnemyArcherAnimation(EnemyArcher enemy) {
+    public EnemyMaxusAnimation(EnemyMaxus enemy) {
         super("walkDown");
         this.enemy = enemy;
 
@@ -65,7 +65,7 @@ public class EnemyArcherAnimation extends GameAnimation {
                 offsetsY = walkLeftOffsetY;
                 break;
             default:
-                throw new IllegalStateException("Unhandled EnemyArcher direction");
+                throw new IllegalStateException("Unhandled EnemyMaxus direction");
         }
 
         play();
@@ -84,7 +84,7 @@ public class EnemyArcherAnimation extends GameAnimation {
     }
 
     private Animation<TextureRegion> initWalkUp() {
-        Texture[] textures = World.images.getEnemyArcherAnimation(EnemyArcherAnimationGroup.WALKUP);
+        Texture[] textures = World.images.getEnemyMaxusAnimation(EnemyMaxusAnimationGroup.WALKUP);
 
         int[][] frameData = {
             {0, 0, 0},
@@ -113,7 +113,7 @@ public class EnemyArcherAnimation extends GameAnimation {
     }
 
     private Animation<TextureRegion> initWalkRight() {
-        Texture[] textures = World.images.getEnemyArcherAnimation(EnemyArcherAnimationGroup.WALKRIGHT);
+        Texture[] textures = World.images.getEnemyMaxusAnimation(EnemyMaxusAnimationGroup.WALKRIGHT);
 
         int[][] frameData = {
             {0, 0, 0},
@@ -143,7 +143,7 @@ public class EnemyArcherAnimation extends GameAnimation {
 
     // TODO: WALKDOWN group only has 4 sprite frames on disk (unlike the other three directions, which have 5)
     private Animation<TextureRegion> initWalkDown() {
-        Texture[] textures = World.images.getEnemyArcherAnimation(EnemyArcherAnimationGroup.WALKDOWN);
+        Texture[] textures = World.images.getEnemyMaxusAnimation(EnemyMaxusAnimationGroup.WALKDOWN);
 
         int[][] frameData = {
             {0, 0, 0},
@@ -170,7 +170,7 @@ public class EnemyArcherAnimation extends GameAnimation {
     }
 
     private Animation<TextureRegion> initWalkLeft() {
-        Texture[] textures = World.images.getEnemyArcherAnimation(EnemyArcherAnimationGroup.WALKLEFT);
+        Texture[] textures = World.images.getEnemyMaxusAnimation(EnemyMaxusAnimationGroup.WALKLEFT);
 
         int[][] frameData = {
             {0, 0, 0},
