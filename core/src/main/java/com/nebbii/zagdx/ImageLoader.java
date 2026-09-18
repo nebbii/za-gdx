@@ -738,6 +738,78 @@ public class ImageLoader {
         IDLE1
     }
 
+    public enum NpcSkaterDudeAnimationGroup {
+        IDLE
+    }
+
+    public enum NpcSleepingManAnimationGroup {
+        IDLE0,
+        IDLE1
+    }
+
+    public enum NpcStallOwner2AnimationGroup {
+        IDLE0,
+        IDLE1
+    }
+
+    public enum NpcTalkingMushroomAnimationGroup {
+        IDLE
+    }
+
+    public enum NpcThabulAnimationGroup {
+        IDLE0,
+        IDLE1
+    }
+
+    public enum NpcThirstyChildAnimationGroup {
+        IDLE0,
+        IDLE1,
+        IDLE2
+    }
+
+    public enum NpcToobarAnimationGroup {
+        IDLE0,
+        IDLE1
+    }
+
+    public enum NpcTownMerchantAnimationGroup {
+        IDLE
+    }
+
+    public enum NpcRycoAnimationGroup {
+        IDLE0,
+        IDLE1
+    }
+
+    public enum NpcDockhandAnimationGroup {
+        IDLE0,
+        IDLE1,
+        IDLE2
+    }
+
+    public enum NpcQuietFishermanAnimationGroup {
+        IDLE0,
+        IDLE1,
+        IDLE2
+    }
+
+    public enum NpcWaldensopAnimationGroup {
+        IDLE
+    }
+
+    public enum NpcForeignWomanAnimationGroup {
+        IDLE0,
+        IDLE1
+    }
+
+    public enum NpcMerribalAnimationGroup {
+        IDLE
+    }
+
+    public enum NpcSquireGripAnimationGroup {
+        IDLE
+    }
+
     public enum SpriteLlortLaserAnimationGroup {
         IDLE
     }
@@ -892,6 +964,21 @@ public class ImageLoader {
     private EnumMap<NpcShopkeeperDogAnimationGroup, Texture[]> npcShopkeeperDog;
     private EnumMap<NpcShurmakAnimationGroup, Texture[]> npcShurmak;
     private EnumMap<NpcSirramBewAnimationGroup, Texture[]> npcSirramBew;
+    private EnumMap<NpcSkaterDudeAnimationGroup, Texture[]> npcSkaterDude;
+    private EnumMap<NpcSleepingManAnimationGroup, Texture[]> npcSleepingMan;
+    private EnumMap<NpcStallOwner2AnimationGroup, Texture[]> npcStallOwner2;
+    private EnumMap<NpcTalkingMushroomAnimationGroup, Texture[]> npcTalkingMushroom;
+    private EnumMap<NpcThabulAnimationGroup, Texture[]> npcThabul;
+    private EnumMap<NpcThirstyChildAnimationGroup, Texture[]> npcThirstyChild;
+    private EnumMap<NpcToobarAnimationGroup, Texture[]> npcToobar;
+    private EnumMap<NpcTownMerchantAnimationGroup, Texture[]> npcTownMerchant;
+    private EnumMap<NpcRycoAnimationGroup, Texture[]> npcRyco;
+    private EnumMap<NpcDockhandAnimationGroup, Texture[]> npcDockhand;
+    private EnumMap<NpcQuietFishermanAnimationGroup, Texture[]> npcQuietFisherman;
+    private EnumMap<NpcWaldensopAnimationGroup, Texture[]> npcWaldensop;
+    private EnumMap<NpcForeignWomanAnimationGroup, Texture[]> npcForeignWoman;
+    private EnumMap<NpcMerribalAnimationGroup, Texture[]> npcMerribal;
+    private EnumMap<NpcSquireGripAnimationGroup, Texture[]> npcSquireGrip;
 
     /* Map stuff */
     private Texture spriteLadder;
@@ -2022,6 +2109,114 @@ public class ImageLoader {
             loadTextureArray("export/overworld/v16a/sprites/desc0/group0", 4));
         npcSirramBew.put(NpcSirramBewAnimationGroup.IDLE1,
             loadTextureArray("export/overworld/v16a/sprites/desc0/group1", 4));
+
+        npcSkaterDude = new EnumMap<>(NpcSkaterDudeAnimationGroup.class);
+        npcSkaterDude.put(NpcSkaterDudeAnimationGroup.IDLE,
+            loadTextureArray("export/overworld/g11/sprites/desc0/group0", 1));
+
+        npcSleepingMan = new EnumMap<>(NpcSleepingManAnimationGroup.class);
+        npcSleepingMan.put(NpcSleepingManAnimationGroup.IDLE0,
+            loadTextureArray("export/overworld/n17/sprites/desc0/group0", 5));
+        npcSleepingMan.put(NpcSleepingManAnimationGroup.IDLE1,
+            loadTextureArray("export/overworld/n17/sprites/desc0/group1", 5));
+
+        // TODO: extractor reported 4 frames per group, but only 3 sprite files exist on disk per
+        // group; using the real counts.
+        npcStallOwner2 = new EnumMap<>(NpcStallOwner2AnimationGroup.class);
+        npcStallOwner2.put(NpcStallOwner2AnimationGroup.IDLE0,
+            loadTextureArray("export/underworld/s603/sprites/desc1/group0", 3));
+        npcStallOwner2.put(NpcStallOwner2AnimationGroup.IDLE1,
+            loadTextureArray("export/underworld/s603/sprites/desc1/group1", 3));
+
+        // TODO: extractor reported 8 frames, but only 5 sprite files exist on disk; using the
+        // real count.
+        npcTalkingMushroom = new EnumMap<>(NpcTalkingMushroomAnimationGroup.class);
+        npcTalkingMushroom.put(NpcTalkingMushroomAnimationGroup.IDLE,
+            loadTextureArray("export/overworld/k20/sprites/desc0/group0", 5));
+
+        // TODO: extractor reported 4 frames per group, but only 3 sprite files exist on disk per
+        // group; using the real counts.
+        npcThabul = new EnumMap<>(NpcThabulAnimationGroup.class);
+        npcThabul.put(NpcThabulAnimationGroup.IDLE0,
+            loadTextureArray("export/overworld/v5/sprites/desc0/group0", 3));
+        npcThabul.put(NpcThabulAnimationGroup.IDLE1,
+            loadTextureArray("export/overworld/v5/sprites/desc0/group1", 3));
+
+        // TODO: extractor reported 4 frames per group, but only 3 sprite files exist on disk per
+        // group; using the real counts.
+        npcThirstyChild = new EnumMap<>(NpcThirstyChildAnimationGroup.class);
+        npcThirstyChild.put(NpcThirstyChildAnimationGroup.IDLE0,
+            loadTextureArray("export/underworld/s605/sprites/desc0/group0", 3));
+        npcThirstyChild.put(NpcThirstyChildAnimationGroup.IDLE1,
+            loadTextureArray("export/underworld/s605/sprites/desc0/group1", 3));
+        npcThirstyChild.put(NpcThirstyChildAnimationGroup.IDLE2,
+            loadTextureArray("export/underworld/s605/sprites/desc0/group2", 3));
+
+        // TODO: extractor reported 4 frames per group, but only 3 sprite files exist on disk per
+        // group; using the real counts.
+        npcToobar = new EnumMap<>(NpcToobarAnimationGroup.class);
+        npcToobar.put(NpcToobarAnimationGroup.IDLE0,
+            loadTextureArray("export/overworld/l27a/sprites/desc0/group0", 3));
+        npcToobar.put(NpcToobarAnimationGroup.IDLE1,
+            loadTextureArray("export/overworld/l27a/sprites/desc0/group1", 3));
+
+        // TODO: extractor reported 4 frames, but only 3 sprite files exist on disk; using the
+        // real count.
+        npcTownMerchant = new EnumMap<>(NpcTownMerchantAnimationGroup.class);
+        npcTownMerchant.put(NpcTownMerchantAnimationGroup.IDLE,
+            loadTextureArray("export/overworld/k14/sprites/desc0/group0", 3));
+
+        // TODO: extractor reported 4 frames per group, but only 3 sprite files exist on disk per
+        // group; using the real counts.
+        npcRyco = new EnumMap<>(NpcRycoAnimationGroup.class);
+        npcRyco.put(NpcRycoAnimationGroup.IDLE0,
+            loadTextureArray("export/overworld/e7/sprites/desc0/group0", 3));
+        npcRyco.put(NpcRycoAnimationGroup.IDLE1,
+            loadTextureArray("export/overworld/e7/sprites/desc0/group1", 3));
+
+        // TODO: extractor reported 4 frames per group, but only 3 sprite files exist on disk per
+        // group; using the real counts.
+        npcDockhand = new EnumMap<>(NpcDockhandAnimationGroup.class);
+        npcDockhand.put(NpcDockhandAnimationGroup.IDLE0,
+            loadTextureArray("export/overworld/l27/sprites/desc1/group0", 3));
+        npcDockhand.put(NpcDockhandAnimationGroup.IDLE1,
+            loadTextureArray("export/overworld/l27/sprites/desc1/group1", 3));
+        npcDockhand.put(NpcDockhandAnimationGroup.IDLE2,
+            loadTextureArray("export/overworld/l27/sprites/desc1/group2", 3));
+
+        // TODO: extractor reported 4 frames per group, but only 3 sprite files exist on disk per
+        // group; using the real counts.
+        npcQuietFisherman = new EnumMap<>(NpcQuietFishermanAnimationGroup.class);
+        npcQuietFisherman.put(NpcQuietFishermanAnimationGroup.IDLE0,
+            loadTextureArray("export/overworld/m27/sprites/desc0/group0", 3));
+        npcQuietFisherman.put(NpcQuietFishermanAnimationGroup.IDLE1,
+            loadTextureArray("export/overworld/m27/sprites/desc0/group1", 3));
+        npcQuietFisherman.put(NpcQuietFishermanAnimationGroup.IDLE2,
+            loadTextureArray("export/overworld/m27/sprites/desc0/group2", 3));
+
+        // TODO: extractor reported 4 frames, but only 3 sprite files exist on disk; using the
+        // real count.
+        npcWaldensop = new EnumMap<>(NpcWaldensopAnimationGroup.class);
+        npcWaldensop.put(NpcWaldensopAnimationGroup.IDLE,
+            loadTextureArray("export/overworld/n11/sprites/desc0/group0", 3));
+
+        // TODO: extractor reported 4 frames per group, but only 3 sprite files exist on disk per
+        // group; using the real counts.
+        npcForeignWoman = new EnumMap<>(NpcForeignWomanAnimationGroup.class);
+        npcForeignWoman.put(NpcForeignWomanAnimationGroup.IDLE0,
+            loadTextureArray("export/overworld/p20a/sprites/desc1/group0", 3));
+        npcForeignWoman.put(NpcForeignWomanAnimationGroup.IDLE1,
+            loadTextureArray("export/overworld/p20a/sprites/desc1/group1", 3));
+
+        // TODO: extractor reported 8 frames, but only 5 sprite files exist on disk; using the
+        // real count.
+        npcMerribal = new EnumMap<>(NpcMerribalAnimationGroup.class);
+        npcMerribal.put(NpcMerribalAnimationGroup.IDLE,
+            loadTextureArray("export/overworld/r10/sprites/desc0/group0", 5));
+
+        npcSquireGrip = new EnumMap<>(NpcSquireGripAnimationGroup.class);
+        npcSquireGrip.put(NpcSquireGripAnimationGroup.IDLE,
+            loadTextureArray("export/overworld/r10/sprites/desc1/group0", 2));
 
         /* Map stuff */
         spriteLadder = new Texture("export/underworld/s102/sprites/desc0/group0/sprite0.png");
@@ -3419,6 +3614,156 @@ public class ImageLoader {
             }
         }
 
+        for (Texture[] textures : npcSkaterDude.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcSleepingMan.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcStallOwner2.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcTalkingMushroom.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcThabul.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcThirstyChild.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcToobar.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcTownMerchant.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcRyco.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcDockhand.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcQuietFisherman.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcWaldensop.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcForeignWoman.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcMerribal.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcSquireGrip.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
         /* Map stuff */
         spriteLadder.dispose();
 
@@ -4249,6 +4594,66 @@ public class ImageLoader {
 
     public Texture[] getNpcSirramBewAnimation(NpcSirramBewAnimationGroup anim) {
         return npcSirramBew.get(anim);
+    }
+
+    public Texture[] getNpcSkaterDudeAnimation(NpcSkaterDudeAnimationGroup anim) {
+        return npcSkaterDude.get(anim);
+    }
+
+    public Texture[] getNpcSleepingManAnimation(NpcSleepingManAnimationGroup anim) {
+        return npcSleepingMan.get(anim);
+    }
+
+    public Texture[] getNpcStallOwner2Animation(NpcStallOwner2AnimationGroup anim) {
+        return npcStallOwner2.get(anim);
+    }
+
+    public Texture[] getNpcTalkingMushroomAnimation(NpcTalkingMushroomAnimationGroup anim) {
+        return npcTalkingMushroom.get(anim);
+    }
+
+    public Texture[] getNpcThabulAnimation(NpcThabulAnimationGroup anim) {
+        return npcThabul.get(anim);
+    }
+
+    public Texture[] getNpcThirstyChildAnimation(NpcThirstyChildAnimationGroup anim) {
+        return npcThirstyChild.get(anim);
+    }
+
+    public Texture[] getNpcToobarAnimation(NpcToobarAnimationGroup anim) {
+        return npcToobar.get(anim);
+    }
+
+    public Texture[] getNpcTownMerchantAnimation(NpcTownMerchantAnimationGroup anim) {
+        return npcTownMerchant.get(anim);
+    }
+
+    public Texture[] getNpcRycoAnimation(NpcRycoAnimationGroup anim) {
+        return npcRyco.get(anim);
+    }
+
+    public Texture[] getNpcDockhandAnimation(NpcDockhandAnimationGroup anim) {
+        return npcDockhand.get(anim);
+    }
+
+    public Texture[] getNpcQuietFishermanAnimation(NpcQuietFishermanAnimationGroup anim) {
+        return npcQuietFisherman.get(anim);
+    }
+
+    public Texture[] getNpcWaldensopAnimation(NpcWaldensopAnimationGroup anim) {
+        return npcWaldensop.get(anim);
+    }
+
+    public Texture[] getNpcForeignWomanAnimation(NpcForeignWomanAnimationGroup anim) {
+        return npcForeignWoman.get(anim);
+    }
+
+    public Texture[] getNpcMerribalAnimation(NpcMerribalAnimationGroup anim) {
+        return npcMerribal.get(anim);
+    }
+
+    public Texture[] getNpcSquireGripAnimation(NpcSquireGripAnimationGroup anim) {
+        return npcSquireGrip.get(anim);
     }
 
     public Texture getRubyBlue() {

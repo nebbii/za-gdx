@@ -66,6 +66,28 @@ public class SoundLoader {
     private Sound npcSirramBewLine1;
     private Sound npcSirramBewLine2;
     private Sound npcSirramBewLine3;
+    private Sound npcSleepingManLine0;
+    private Sound npcThirstyChildLine0;
+    private Sound npcThirstyChildLine1;
+    private Sound npcRycoLine0;
+    private Sound npcWaldensopLine0;
+    private Sound npcWaldensopLine1;
+    private Sound npcWaldensopLine2;
+    private Sound npcSkaterDudeLine0;
+    private Sound npcStallOwner2Line0;
+    private Sound npcTalkingMushroomLine0;
+    private Sound npcThabulLine0;
+    private Sound npcThabulLine1;
+    private Sound npcToobarLine0;
+    private Sound npcToobarLine1;
+    private Sound npcToobarLine2;
+    private Sound npcTownMerchantLine6;
+    private Sound npcTownMerchantLine7;
+    private Sound npcTownMerchantLine8;
+    private Sound npcForeignWomanLine5;
+    private Sound npcMerribalLine0;
+    private Sound npcSquireGripLine1;
+    private Sound npcSquireGripLine3;
 
     public SoundLoader() {
         npcTalkingChestLine0 = Gdx.audio.newSound(
@@ -254,6 +276,72 @@ public class SoundLoader {
         npcSirramBewLine3 = Gdx.audio.newSound(
             Gdx.files.internal("export/overworld/v16a/voice/line3.wav")
         );
+        npcSleepingManLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/n17/voice/line0.wav")
+        );
+        npcThirstyChildLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/underworld/s605/voice/line0.wav")
+        );
+        npcThirstyChildLine1 = Gdx.audio.newSound(
+            Gdx.files.internal("export/underworld/s605/voice/line1.wav")
+        );
+        npcRycoLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/e7/voice/line0.wav")
+        );
+        npcWaldensopLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/n11/voice/line0.wav")
+        );
+        npcWaldensopLine1 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/n11/voice/line1.wav")
+        );
+        npcWaldensopLine2 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/n11/voice/line2.wav")
+        );
+        npcSkaterDudeLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/g11/voice/line0.wav")
+        );
+        npcStallOwner2Line0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/underworld/s603/voice/line0.wav")
+        );
+        npcTalkingMushroomLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/k20/voice/line0.wav")
+        );
+        npcThabulLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/v5/voice/line0.wav")
+        );
+        npcThabulLine1 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/v5/voice/line1.wav")
+        );
+        npcToobarLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/l27a/voice/line0.wav")
+        );
+        npcToobarLine1 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/l27a/voice/line1.wav")
+        );
+        npcToobarLine2 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/l27a/voice/line2.wav")
+        );
+        npcTownMerchantLine6 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/k14/voice/line6.wav")
+        );
+        npcTownMerchantLine7 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/k14/voice/line7.wav")
+        );
+        npcTownMerchantLine8 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/k14/voice/line8.wav")
+        );
+        npcForeignWomanLine5 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/p20a/voice/line5.wav")
+        );
+        npcMerribalLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/r10/voice/line0.wav")
+        );
+        npcSquireGripLine1 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/r10/voice/line1.wav")
+        );
+        npcSquireGripLine3 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/r10/voice/line3.wav")
+        );
     }
 
     public void dispose() {
@@ -319,6 +407,28 @@ public class SoundLoader {
         npcSirramBewLine1.dispose();
         npcSirramBewLine2.dispose();
         npcSirramBewLine3.dispose();
+        npcSleepingManLine0.dispose();
+        npcThirstyChildLine0.dispose();
+        npcThirstyChildLine1.dispose();
+        npcRycoLine0.dispose();
+        npcWaldensopLine0.dispose();
+        npcWaldensopLine1.dispose();
+        npcWaldensopLine2.dispose();
+        npcSkaterDudeLine0.dispose();
+        npcStallOwner2Line0.dispose();
+        npcTalkingMushroomLine0.dispose();
+        npcThabulLine0.dispose();
+        npcThabulLine1.dispose();
+        npcToobarLine0.dispose();
+        npcToobarLine1.dispose();
+        npcToobarLine2.dispose();
+        npcTownMerchantLine6.dispose();
+        npcTownMerchantLine7.dispose();
+        npcTownMerchantLine8.dispose();
+        npcForeignWomanLine5.dispose();
+        npcMerribalLine0.dispose();
+        npcSquireGripLine1.dispose();
+        npcSquireGripLine3.dispose();
     }
 
     public Sound getNpcTalkingChestLine0() {
@@ -567,6 +677,94 @@ public class SoundLoader {
 
     public Sound getNpcSirramBewLine3() {
         return npcSirramBewLine3;
+    }
+
+    public Sound getNpcSleepingManLine0() {
+        return npcSleepingManLine0;
+    }
+
+    public Sound getNpcThirstyChildLine0() {
+        return npcThirstyChildLine0;
+    }
+
+    public Sound getNpcThirstyChildLine1() {
+        return npcThirstyChildLine1;
+    }
+
+    public Sound getNpcRycoLine0() {
+        return npcRycoLine0;
+    }
+
+    public Sound getNpcWaldensopLine0() {
+        return npcWaldensopLine0;
+    }
+
+    public Sound getNpcWaldensopLine1() {
+        return npcWaldensopLine1;
+    }
+
+    public Sound getNpcWaldensopLine2() {
+        return npcWaldensopLine2;
+    }
+
+    public Sound getNpcSkaterDudeLine0() {
+        return npcSkaterDudeLine0;
+    }
+
+    public Sound getNpcStallOwner2Line0() {
+        return npcStallOwner2Line0;
+    }
+
+    public Sound getNpcTalkingMushroomLine0() {
+        return npcTalkingMushroomLine0;
+    }
+
+    public Sound getNpcThabulLine0() {
+        return npcThabulLine0;
+    }
+
+    public Sound getNpcThabulLine1() {
+        return npcThabulLine1;
+    }
+
+    public Sound getNpcToobarLine0() {
+        return npcToobarLine0;
+    }
+
+    public Sound getNpcToobarLine1() {
+        return npcToobarLine1;
+    }
+
+    public Sound getNpcToobarLine2() {
+        return npcToobarLine2;
+    }
+
+    public Sound getNpcTownMerchantLine6() {
+        return npcTownMerchantLine6;
+    }
+
+    public Sound getNpcTownMerchantLine7() {
+        return npcTownMerchantLine7;
+    }
+
+    public Sound getNpcTownMerchantLine8() {
+        return npcTownMerchantLine8;
+    }
+
+    public Sound getNpcForeignWomanLine5() {
+        return npcForeignWomanLine5;
+    }
+
+    public Sound getNpcMerribalLine0() {
+        return npcMerribalLine0;
+    }
+
+    public Sound getNpcSquireGripLine1() {
+        return npcSquireGripLine1;
+    }
+
+    public Sound getNpcSquireGripLine3() {
+        return npcSquireGripLine3;
     }
 
 }
