@@ -50,8 +50,7 @@ public class EnemyMalmordAnimation extends GameAnimation {
         Texture[] textures = World.images.getEnemyMalmordAnimation(EnemyMalmordAnimationGroup.IDLE);
 
         int[][] frameData = {
-            {0, 0, 0},
-            {1, 0, 0}
+            {0, 0, 0}
         };
 
         TextureRegion[] frames = new TextureRegion[frameData.length];

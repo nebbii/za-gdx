@@ -88,8 +88,7 @@ public class EnemyLowderAnimation extends GameAnimation {
         Texture[] textures = World.images.getEnemyLowderAnimation(EnemyLowderAnimationGroup.WALKUP);
 
         int[][] frameData = {
-            {0, 0, 0},
-            {1, 0, 0}
+            {0, 0, 0}
         };
 
         TextureRegion[] frames = new TextureRegion[frameData.length];
@@ -110,8 +109,7 @@ public class EnemyLowderAnimation extends GameAnimation {
         Texture[] textures = World.images.getEnemyLowderAnimation(EnemyLowderAnimationGroup.WALKRIGHT);
 
         int[][] frameData = {
-            {0, 0, 0},
-            {1, 0, 0}
+            {0, 0, 0}
         };
 
         TextureRegion[] frames = new TextureRegion[frameData.length];
@@ -132,8 +130,7 @@ public class EnemyLowderAnimation extends GameAnimation {
         Texture[] textures = World.images.getEnemyLowderAnimation(EnemyLowderAnimationGroup.WALKDOWN);
 
         int[][] frameData = {
-            {0, 0, 0},
-            {1, 0, 0}
+            {0, 0, 0}
         };
 
         TextureRegion[] frames = new TextureRegion[frameData.length];
@@ -154,8 +151,7 @@ public class EnemyLowderAnimation extends GameAnimation {
         Texture[] textures = World.images.getEnemyLowderAnimation(EnemyLowderAnimationGroup.WALKLEFT);
 
         int[][] frameData = {
-            {0, 0, 0},
-            {1, 0, 0}
+            {0, 0, 0}
         };
 
         TextureRegion[] frames = new TextureRegion[frameData.length];

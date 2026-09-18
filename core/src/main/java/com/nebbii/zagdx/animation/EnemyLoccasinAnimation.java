@@ -90,7 +90,6 @@ public class EnemyLoccasinAnimation extends GameAnimation {
         int[][] frameData = {
             {0, 0, 0},
             {1, 0, 0},
-            {2, 0, 0},
             {1, 0, 0}
         };
 
@@ -114,7 +113,6 @@ public class EnemyLoccasinAnimation extends GameAnimation {
         int[][] frameData = {
             {0, 0, 0},
             {1, 0, 0},
-            {2, 0, 0},
             {1, 0, 0}
         };
 
@@ -138,7 +136,6 @@ public class EnemyLoccasinAnimation extends GameAnimation {
         int[][] frameData = {
             {0, 0, 0},
             {1, 0, 0},
-            {2, 0, 0},
             {1, 0, 0}
         };
 
@@ -162,7 +159,6 @@ public class EnemyLoccasinAnimation extends GameAnimation {
         int[][] frameData = {
             {0, 0, 0},
             {1, 0, 0},
-            {2, 0, 0},
             {1, 0, 0}
         };
 
