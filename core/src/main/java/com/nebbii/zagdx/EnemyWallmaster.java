@@ -11,6 +11,10 @@ enemy.wallmaster:
     setGroup(2) sequence resembling appear/grab/retreat rather than 4-way walking).
     Left as a suspiciously low/zero value case similar to EnemyMalmord; using sane
     placeholder combat stats below - verify against the original game before trusting them.
+    TODO: the CD-i Interactief guide's List of Foes states Wallmaster is Immortal
+    (Weakness: None) -- it should never die, and instead grabs Zelda and sends her back
+    to the Shrine's first room. There is no isImmortal mechanic in the Enemy base class
+    yet, so 9999 health is a stopgap until one is added.
 */
 // TODO: Set actual original game accurate values
 public class EnemyWallmaster extends Enemy {
@@ -20,7 +24,7 @@ public class EnemyWallmaster extends Enemy {
         super(ActorType.ENEMY, false);
         setWidth(108);
         setHeight(72);
-        setHealth(40);
+        setHealth(9999);
         setDamage(30);
         setDefense(10);
 
@@ -55,6 +59,6 @@ public class EnemyWallmaster extends Enemy {
 
     @Override
     public Array<String> getWeaknesses() {
-        return Array.with("ZeldaActionWand");
+        return new Array<String>();
     }
 }

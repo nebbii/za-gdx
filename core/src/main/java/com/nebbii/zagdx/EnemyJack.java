@@ -5,6 +5,10 @@ import com.badlogic.gdx.utils.Array;
 import com.nebbii.zagdx.animation.EnemyJackAnimation;
 
 // TODO: Set actual original game accurate values
+// TODO: the CD-i Interactief guide's List of Foes states Jack is Immortal (Weakness:
+// None) -- it should never die. There is no isImmortal mechanic in the Enemy base
+// class yet, so 9999 health is a stopgap until one is added; replace this with a real
+// immortality flag rather than trusting this number.
 public class EnemyJack extends Enemy {
     public EnemyJackAnimation animation;
 
@@ -12,7 +16,7 @@ public class EnemyJack extends Enemy {
         super(ActorType.ENEMY, true);
         setWidth(40);
         setHeight(40);
-        setHealth(99);
+        setHealth(9999);
         setDamage(48);
         setDefense(99);
 
@@ -47,6 +51,6 @@ public class EnemyJack extends Enemy {
 
     @Override
     public Array<String> getWeaknesses() {
-        return Array.with("ZeldaActionWand");
+        return new Array<String>();
     }
 }

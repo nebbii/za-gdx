@@ -10,14 +10,18 @@ public class EnemyCrystalShard extends Enemy {
 
     /*
     enemy.crystalShard:
-        [health=40 (extractor reported 0, no matching descIndex in cast.json; fallback to a sane value for a small hazard), damage=54, defense=0, weakness=Wand]
+        [damage=54, defense=0]
+        TODO: the CD-i Interactief guide's List of Foes states Crystal Shard (paired
+        with a Shrine of Fire "Fireball" hazard not yet imported) is Immortal
+        (Weakness: None) -- it should never die, spawning continuously from the room's
+        walls. There is no isImmortal mechanic in the Enemy base class yet, so 9999
+        health is a stopgap until one is added.
     */
     public EnemyCrystalShard() {
         super(ActorType.ENEMY, false);
         setWidth(32);
         setHeight(32);
-        // TODO: verify health, extractor value looked wrong (maxHealth was 0) and cast.json had no matching descIndex 1 entry; using a placeholder consistent with other small hazards
-        setHealth(40);
+        setHealth(9999);
         setDamage(54);
         setDefense(0);
 
@@ -52,6 +56,6 @@ public class EnemyCrystalShard extends Enemy {
 
     @Override
     public Array<String> getWeaknesses() {
-        return Array.with("ZeldaActionWand");
+        return new Array<String>();
     }
 }

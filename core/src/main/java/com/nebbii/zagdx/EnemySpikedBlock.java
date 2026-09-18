@@ -6,10 +6,13 @@ import com.nebbii.zagdx.animation.EnemySpikedBlockAnimation;
 
 /*
 enemy.spikedBlock:
-    [health=99, damage=58, defense=99, weakness=Wand]
+    [damage=58, defense=99]
     NOTE: single static sprite frame; treated as an immobile hazard like EnemyMalmord
     (non-solid, standard SEARCH/FIGHT movement retained since the codebase has no
     dedicated "stationary" enemy behavior yet).
+    TODO: the CD-i Interactief guide's List of Foes states Spike Block is Immortal
+    (Weakness: None) -- it should never die. There is no isImmortal mechanic in the
+    Enemy base class yet, so 9999 health is a stopgap until one is added.
 */
 // TODO: Set actual original game accurate values
 public class EnemySpikedBlock extends Enemy {
@@ -19,7 +22,7 @@ public class EnemySpikedBlock extends Enemy {
         super(ActorType.ENEMY, false);
         setWidth(32);
         setHeight(32);
-        setHealth(99);
+        setHealth(9999);
         setDamage(58);
         setDefense(99);
 
@@ -54,6 +57,6 @@ public class EnemySpikedBlock extends Enemy {
 
     @Override
     public Array<String> getWeaknesses() {
-        return Array.with("ZeldaActionWand");
+        return new Array<String>();
     }
 }
