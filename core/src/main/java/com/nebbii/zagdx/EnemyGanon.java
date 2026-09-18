@@ -50,8 +50,11 @@ public class EnemyGanon extends Enemy {
         if (knockback > 0) endDrawFlashOverlay(batch);
     }
 
+    // The CD-i Interactief guide's List of Foes states Gannon's weakness is "All"
+    // (no single weapon should get a bonus-damage boost); cast.json's weakToSpell
+    // reported Wand, which was wrong to ship as a specific weakness.
     @Override
     public Array<String> getWeaknesses() {
-        return Array.with("ZeldaActionWand");
+        return new Array<String>();
     }
 }

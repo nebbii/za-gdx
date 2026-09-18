@@ -10,7 +10,10 @@ public class EnemyKnightBlue extends Enemy {
 
     /*
     enemy.knight.blue:
-        [weakness reported as Hourglass by extractor, but no ZeldaActionHourglass class exists yet in the codebase; leaving weaknesses empty until that spell is implemented]
+        [cast.json's weakToSpell field reported Hourglass, but the CD-i Interactief
+        guide's List of Foes states the Blue Knight's weakness is the Broadsword (same
+        as the Green Knight). No ZeldaActionBroadsword-equivalent class exists yet in
+        this codebase, so returning empty until that item is implemented.]
     */
     public EnemyKnightBlue() {
         super(ActorType.ENEMY, true);

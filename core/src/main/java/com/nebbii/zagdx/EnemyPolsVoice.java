@@ -5,14 +5,15 @@ import com.badlogic.gdx.utils.Array;
 import com.nebbii.zagdx.animation.EnemyPolsVoiceAnimation;
 
 // TODO: Set actual original game accurate values
-// TODO: extractor reports weakness "OpalAmulet" for this actor, but no matching
-// ZeldaAction* class exists in this codebase yet - returning no weaknesses until one is added
 public class EnemyPolsVoice extends Enemy {
     public EnemyPolsVoiceAnimation animation;
 
     /*
     enemy.polsVoice:
-        [health=280, damage=51, defense=31, bonusDamage=70, weakness=OpalAmulet (unmapped)]
+        [health=280, damage=51, defense=31, bonusDamage=70. cast.json's weakToSpell field
+        reported OpalAmulet, but the CD-i Interactief guide's List of Foes states Pols
+        Voice's weakness is the Noise spell. No matching ZeldaAction* class exists yet
+        for either, so returning empty until Noise is implemented.]
     */
     public EnemyPolsVoice() {
         super(ActorType.ENEMY, true);
