@@ -1520,126 +1520,126 @@ public class ImageLoader {
 
         enemyLanmola = new EnumMap<>(EnemyLanmolaAnimationGroup.class);
         enemyLanmola.put(EnemyLanmolaAnimationGroup.WALKUP,
-            loadTextureArray("export/overworld/aa16/sprites/desc0/group0", 4));
+            loadTextureArray("export/overworld/aa16/sprites/desc0/group0", 3));
         enemyLanmola.put(EnemyLanmolaAnimationGroup.WALKRIGHT,
-            loadTextureArray("export/overworld/aa16/sprites/desc0/group1", 4));
+            loadTextureArray("export/overworld/aa16/sprites/desc0/group1", 3));
         enemyLanmola.put(EnemyLanmolaAnimationGroup.WALKDOWN,
-            loadTextureArray("export/overworld/aa16/sprites/desc0/group2", 4));
+            loadTextureArray("export/overworld/aa16/sprites/desc0/group2", 3));
         enemyLanmola.put(EnemyLanmolaAnimationGroup.WALKLEFT,
-            loadTextureArray("export/overworld/aa16/sprites/desc0/group3", 4));
+            loadTextureArray("export/overworld/aa16/sprites/desc0/group3", 3));
 
         // TODO: extractor reported 8 frames per direction, but only 6 sprite files exist on disk; using the real counts
         enemyLavaLizard = new EnumMap<>(EnemyLavaLizardAnimationGroup.class);
         enemyLavaLizard.put(EnemyLavaLizardAnimationGroup.WALKUP,
-            loadTextureArray("export/underworld/s705/sprites/desc0/group0", 6));
+            loadTextureArray("export/underworld/s705/sprites/desc0/group0", 5));
         enemyLavaLizard.put(EnemyLavaLizardAnimationGroup.WALKRIGHT,
-            loadTextureArray("export/underworld/s705/sprites/desc0/group1", 6));
+            loadTextureArray("export/underworld/s705/sprites/desc0/group1", 5));
         enemyLavaLizard.put(EnemyLavaLizardAnimationGroup.WALKDOWN,
-            loadTextureArray("export/underworld/s705/sprites/desc0/group2", 6));
+            loadTextureArray("export/underworld/s705/sprites/desc0/group2", 5));
         enemyLavaLizard.put(EnemyLavaLizardAnimationGroup.WALKLEFT,
-            loadTextureArray("export/underworld/s705/sprites/desc0/group3", 6));
+            loadTextureArray("export/underworld/s705/sprites/desc0/group3", 5));
 
         // TODO: extractor reported 2 frames per direction, but 3 sprite files exist on disk; using the real counts
         enemyLoccasin = new EnumMap<>(EnemyLoccasinAnimationGroup.class);
         enemyLoccasin.put(EnemyLoccasinAnimationGroup.WALKUP,
-            loadTextureArray("export/underworld/s304/sprites/desc0/group0", 3));
+            loadTextureArray("export/underworld/s304/sprites/desc0/group0", 2));
         enemyLoccasin.put(EnemyLoccasinAnimationGroup.WALKRIGHT,
-            loadTextureArray("export/underworld/s304/sprites/desc0/group1", 3));
+            loadTextureArray("export/underworld/s304/sprites/desc0/group1", 2));
         enemyLoccasin.put(EnemyLoccasinAnimationGroup.WALKDOWN,
-            loadTextureArray("export/underworld/s304/sprites/desc0/group2", 3));
+            loadTextureArray("export/underworld/s304/sprites/desc0/group2", 2));
         enemyLoccasin.put(EnemyLoccasinAnimationGroup.WALKLEFT,
-            loadTextureArray("export/underworld/s304/sprites/desc0/group3", 3));
+            loadTextureArray("export/underworld/s304/sprites/desc0/group3", 2));
 
         // TODO: extractor reported 1 frame per direction, but 2 sprite files exist on disk; using the real counts
         enemyLowder = new EnumMap<>(EnemyLowderAnimationGroup.class);
         enemyLowder.put(EnemyLowderAnimationGroup.WALKUP,
-            loadTextureArray("export/overworld/ac17/sprites/desc0/group0", 2));
+            loadTextureArray("export/overworld/ac17/sprites/desc0/group0", 1));
         enemyLowder.put(EnemyLowderAnimationGroup.WALKRIGHT,
-            loadTextureArray("export/overworld/ac17/sprites/desc0/group1", 2));
+            loadTextureArray("export/overworld/ac17/sprites/desc0/group1", 1));
         enemyLowder.put(EnemyLowderAnimationGroup.WALKDOWN,
-            loadTextureArray("export/overworld/ac17/sprites/desc0/group2", 2));
+            loadTextureArray("export/overworld/ac17/sprites/desc0/group2", 1));
         enemyLowder.put(EnemyLowderAnimationGroup.WALKLEFT,
-            loadTextureArray("export/overworld/ac17/sprites/desc0/group3", 2));
+            loadTextureArray("export/overworld/ac17/sprites/desc0/group3", 1));
 
         // TODO: extractor reported 1 frame, but 2 sprite files exist on disk; using the real count
         enemyMalmord = new EnumMap<>(EnemyMalmordAnimationGroup.class);
         enemyMalmord.put(EnemyMalmordAnimationGroup.IDLE,
-            loadTextureArray("export/underworld/gl4/sprites/desc0/group0", 2));
+            loadTextureArray("export/underworld/gl4/sprites/desc0/group0", 1));
 
         // TODO: extractor reported 4 frames, but 5 sprite files exist on disk; using the real count
         enemyMimicMole = new EnumMap<>(EnemyMimicMoleAnimationGroup.class);
         enemyMimicMole.put(EnemyMimicMoleAnimationGroup.WALK,
-            loadTextureArray("export/overworld/l9/sprites/desc0/group0", 5));
+            loadTextureArray("export/overworld/l9/sprites/desc0/group0", 4));
 
         enemyMolluska = new EnumMap<>(EnemyMolluskaAnimationGroup.class);
         enemyMolluska.put(EnemyMolluskaAnimationGroup.WALK,
-            loadTextureArray("export/overworld/o13/sprites/desc0/group0", 4));
+            loadTextureArray("export/overworld/o13/sprites/desc0/group0", 3));
 
         // TODO: extractor reported 8 frames, but 6 sprite files exist on disk; using the real count
         enemyOctorok = new EnumMap<>(EnemyOctorokAnimationGroup.class);
         enemyOctorok.put(EnemyOctorokAnimationGroup.WALK,
-            loadTextureArray("export/overworld/l11/sprites/desc0/group0", 6));
+            loadTextureArray("export/overworld/l11/sprites/desc0/group0", 5));
 
         // TODO: extractor reported 1/6/6 frames for group0/1/2, but 2/7/7 sprite files exist on disk; using the real counts
         enemyPasquinade = new EnumMap<>(EnemyPasquinadeAnimationGroup.class);
         enemyPasquinade.put(EnemyPasquinadeAnimationGroup.IDLE,
-            loadTextureArray("export/underworld/gl2/sprites/desc0/group0", 2));
+            loadTextureArray("export/underworld/gl2/sprites/desc0/group0", 1));
         enemyPasquinade.put(EnemyPasquinadeAnimationGroup.WALK,
-            loadTextureArray("export/underworld/gl2/sprites/desc0/group1", 7));
+            loadTextureArray("export/underworld/gl2/sprites/desc0/group1", 6));
         enemyPasquinade.put(EnemyPasquinadeAnimationGroup.ATTACK,
-            loadTextureArray("export/underworld/gl2/sprites/desc0/group2", 7));
+            loadTextureArray("export/underworld/gl2/sprites/desc0/group2", 6));
 
         // TODO: extractor reported 8 frames, but 6 sprite files exist on disk; using the real count
         enemyPatra = new EnumMap<>(EnemyPatraAnimationGroup.class);
         enemyPatra.put(EnemyPatraAnimationGroup.WALK,
-            loadTextureArray("export/overworld/s214/sprites/desc0/group0", 6));
+            loadTextureArray("export/overworld/s214/sprites/desc0/group0", 5));
 
         enemyPolsVoice = new EnumMap<>(EnemyPolsVoiceAnimationGroup.class);
         enemyPolsVoice.put(EnemyPolsVoiceAnimationGroup.WALK,
-            loadTextureArray("export/underworld/s207/sprites/desc0/group0", 4));
+            loadTextureArray("export/underworld/s207/sprites/desc0/group0", 3));
 
         enemyPurpleBird = new EnumMap<>(EnemyPurpleBirdAnimationGroup.class);
         enemyPurpleBird.put(EnemyPurpleBirdAnimationGroup.WALKUP,
-            loadTextureArray("export/overworld/w5/sprites/desc2/group0", 4));
+            loadTextureArray("export/overworld/w5/sprites/desc2/group0", 3));
         enemyPurpleBird.put(EnemyPurpleBirdAnimationGroup.WALKRIGHT,
-            loadTextureArray("export/overworld/w5/sprites/desc2/group1", 4));
+            loadTextureArray("export/overworld/w5/sprites/desc2/group1", 3));
         enemyPurpleBird.put(EnemyPurpleBirdAnimationGroup.WALKDOWN,
-            loadTextureArray("export/overworld/w5/sprites/desc2/group2", 4));
+            loadTextureArray("export/overworld/w5/sprites/desc2/group2", 3));
         enemyPurpleBird.put(EnemyPurpleBirdAnimationGroup.WALKLEFT,
-            loadTextureArray("export/overworld/w5/sprites/desc2/group3", 4));
+            loadTextureArray("export/overworld/w5/sprites/desc2/group3", 3));
 
         // TODO: extractor reported 8 frames per direction, but only 6 sprite files exist on disk; using the real counts
         enemyPurpleFish = new EnumMap<>(EnemyPurpleFishAnimationGroup.class);
         enemyPurpleFish.put(EnemyPurpleFishAnimationGroup.WALKUP,
-            loadTextureArray("export/underworld/s522/sprites/desc0/group0", 6));
+            loadTextureArray("export/underworld/s522/sprites/desc0/group0", 5));
         enemyPurpleFish.put(EnemyPurpleFishAnimationGroup.WALKRIGHT,
-            loadTextureArray("export/underworld/s522/sprites/desc0/group1", 6));
+            loadTextureArray("export/underworld/s522/sprites/desc0/group1", 5));
         enemyPurpleFish.put(EnemyPurpleFishAnimationGroup.WALKDOWN,
-            loadTextureArray("export/underworld/s522/sprites/desc0/group2", 6));
+            loadTextureArray("export/underworld/s522/sprites/desc0/group2", 5));
         enemyPurpleFish.put(EnemyPurpleFishAnimationGroup.WALKLEFT,
-            loadTextureArray("export/underworld/s522/sprites/desc0/group3", 6));
+            loadTextureArray("export/underworld/s522/sprites/desc0/group3", 5));
 
         // TODO: extractor reported 8 frames per direction, but only 6 sprite files exist on disk; using the real counts
         enemyRomraven = new EnumMap<>(EnemyRomravenAnimationGroup.class);
         enemyRomraven.put(EnemyRomravenAnimationGroup.WALKUP,
-            loadTextureArray("export/underworld/s418/sprites/desc0/group0", 6));
+            loadTextureArray("export/underworld/s418/sprites/desc0/group0", 5));
         enemyRomraven.put(EnemyRomravenAnimationGroup.WALKRIGHT,
-            loadTextureArray("export/underworld/s418/sprites/desc0/group1", 6));
+            loadTextureArray("export/underworld/s418/sprites/desc0/group1", 5));
         enemyRomraven.put(EnemyRomravenAnimationGroup.WALKDOWN,
-            loadTextureArray("export/underworld/s418/sprites/desc0/group2", 6));
+            loadTextureArray("export/underworld/s418/sprites/desc0/group2", 5));
         enemyRomraven.put(EnemyRomravenAnimationGroup.WALKLEFT,
-            loadTextureArray("export/underworld/s418/sprites/desc0/group3", 6));
+            loadTextureArray("export/underworld/s418/sprites/desc0/group3", 5));
 
         // TODO: extractor reported 5/5/4/5 frames for up/right/down/left, but 6/6/4/6 sprite files exist on disk; using the real counts
         enemyRope = new EnumMap<>(EnemyRopeAnimationGroup.class);
         enemyRope.put(EnemyRopeAnimationGroup.WALKUP,
-            loadTextureArray("export/overworld/j15/sprites/desc0/group0", 6));
+            loadTextureArray("export/overworld/j15/sprites/desc0/group0", 5));
         enemyRope.put(EnemyRopeAnimationGroup.WALKRIGHT,
-            loadTextureArray("export/overworld/j15/sprites/desc0/group1", 6));
+            loadTextureArray("export/overworld/j15/sprites/desc0/group1", 5));
         enemyRope.put(EnemyRopeAnimationGroup.WALKDOWN,
-            loadTextureArray("export/overworld/j15/sprites/desc0/group2", 4));
+            loadTextureArray("export/overworld/j15/sprites/desc0/group2", 3));
         enemyRope.put(EnemyRopeAnimationGroup.WALKLEFT,
-            loadTextureArray("export/overworld/j15/sprites/desc0/group3", 6));
+            loadTextureArray("export/overworld/j15/sprites/desc0/group3", 5));
 
         // TODO: extractor reported 10/8/10/8 frames for up/right/down/left, but 6/5/6/5 sprite files exist on disk; using the real counts
         enemySeaMonster = new EnumMap<>(EnemySeaMonsterAnimationGroup.class);
@@ -2092,123 +2092,123 @@ public class ImageLoader {
         // direction; using the real counts.
         npcMystic = new EnumMap<>(NpcMysticAnimationGroup.class);
         npcMystic.put(NpcMysticAnimationGroup.IDLEUP,
-            loadTextureArray("export/overworld/v11/sprites/desc0/group0", 6));
+            loadTextureArray("export/overworld/v11/sprites/desc0/group0", 5));
         npcMystic.put(NpcMysticAnimationGroup.IDLERIGHT,
-            loadTextureArray("export/overworld/v11/sprites/desc0/group1", 6));
+            loadTextureArray("export/overworld/v11/sprites/desc0/group1", 5));
         npcMystic.put(NpcMysticAnimationGroup.IDLEDOWN,
-            loadTextureArray("export/overworld/v11/sprites/desc0/group2", 6));
+            loadTextureArray("export/overworld/v11/sprites/desc0/group2", 5));
         npcMystic.put(NpcMysticAnimationGroup.IDLELEFT,
-            loadTextureArray("export/overworld/v11/sprites/desc0/group3", 6));
+            loadTextureArray("export/overworld/v11/sprites/desc0/group3", 5));
 
         // TODO: extractor reported 4/4/3 frames per group, but 4/4/4 sprite files exist on disk;
         // using the real counts.
         npcOldSailor = new EnumMap<>(NpcOldSailorAnimationGroup.class);
         npcOldSailor.put(NpcOldSailorAnimationGroup.IDLE0,
-            loadTextureArray("export/overworld/p20a/sprites/desc0/group0", 4));
+            loadTextureArray("export/overworld/p20a/sprites/desc0/group0", 3));
         npcOldSailor.put(NpcOldSailorAnimationGroup.IDLE1,
-            loadTextureArray("export/overworld/p20a/sprites/desc0/group1", 4));
+            loadTextureArray("export/overworld/p20a/sprites/desc0/group1", 3));
         npcOldSailor.put(NpcOldSailorAnimationGroup.IDLE2,
-            loadTextureArray("export/overworld/p20a/sprites/desc0/group2", 4));
+            loadTextureArray("export/overworld/p20a/sprites/desc0/group2", 3));
 
         npcPickpocket = new EnumMap<>(NpcPickpocketAnimationGroup.class);
         npcPickpocket.put(NpcPickpocketAnimationGroup.IDLE0,
-            loadTextureArray("export/overworld/l27a/sprites/desc1/group0", 4));
+            loadTextureArray("export/overworld/l27a/sprites/desc1/group0", 3));
         npcPickpocket.put(NpcPickpocketAnimationGroup.IDLE1,
-            loadTextureArray("export/overworld/l27a/sprites/desc1/group1", 4));
+            loadTextureArray("export/overworld/l27a/sprites/desc1/group1", 3));
         npcPickpocket.put(NpcPickpocketAnimationGroup.IDLE2,
-            loadTextureArray("export/overworld/l27a/sprites/desc1/group2", 4));
+            loadTextureArray("export/overworld/l27a/sprites/desc1/group2", 3));
 
         npcPurpleStallOwner = new EnumMap<>(NpcPurpleStallOwnerAnimationGroup.class);
         npcPurpleStallOwner.put(NpcPurpleStallOwnerAnimationGroup.IDLE0,
-            loadTextureArray("export/underworld/s609/sprites/desc0/group0", 4));
+            loadTextureArray("export/underworld/s609/sprites/desc0/group0", 3));
         npcPurpleStallOwner.put(NpcPurpleStallOwnerAnimationGroup.IDLE1,
-            loadTextureArray("export/underworld/s609/sprites/desc0/group1", 4));
+            loadTextureArray("export/underworld/s609/sprites/desc0/group1", 3));
 
         npcQuarryMiner = new EnumMap<>(NpcQuarryMinerAnimationGroup.class);
         npcQuarryMiner.put(NpcQuarryMinerAnimationGroup.IDLE0,
-            loadTextureArray("export/overworld/aa15/sprites/desc0/group0", 4));
+            loadTextureArray("export/overworld/aa15/sprites/desc0/group0", 3));
         npcQuarryMiner.put(NpcQuarryMinerAnimationGroup.IDLE1,
-            loadTextureArray("export/overworld/aa15/sprites/desc0/group1", 4));
+            loadTextureArray("export/overworld/aa15/sprites/desc0/group1", 3));
 
         // TODO: extractor reported 8 frames per direction, but only 6 sprite files exist on disk
         // per direction; using the real counts.
         npcRandomCapeGuy = new EnumMap<>(NpcRandomCapeGuyAnimationGroup.class);
         npcRandomCapeGuy.put(NpcRandomCapeGuyAnimationGroup.IDLEUP,
-            loadTextureArray("export/overworld/l13/sprites/desc0/group0", 6));
+            loadTextureArray("export/overworld/l13/sprites/desc0/group0", 5));
         npcRandomCapeGuy.put(NpcRandomCapeGuyAnimationGroup.IDLERIGHT,
-            loadTextureArray("export/overworld/l13/sprites/desc0/group1", 6));
+            loadTextureArray("export/overworld/l13/sprites/desc0/group1", 5));
         npcRandomCapeGuy.put(NpcRandomCapeGuyAnimationGroup.IDLEDOWN,
-            loadTextureArray("export/overworld/l13/sprites/desc0/group2", 6));
+            loadTextureArray("export/overworld/l13/sprites/desc0/group2", 5));
         npcRandomCapeGuy.put(NpcRandomCapeGuyAnimationGroup.IDLELEFT,
-            loadTextureArray("export/overworld/l13/sprites/desc0/group3", 6));
+            loadTextureArray("export/overworld/l13/sprites/desc0/group3", 5));
 
         npcRebelRight = new EnumMap<>(NpcRebelRightAnimationGroup.class);
         npcRebelRight.put(NpcRebelRightAnimationGroup.IDLE0,
-            loadTextureArray("export/overworld/z13/sprites/desc0/group0", 4));
+            loadTextureArray("export/overworld/z13/sprites/desc0/group0", 3));
         npcRebelRight.put(NpcRebelRightAnimationGroup.IDLE1,
-            loadTextureArray("export/overworld/z13/sprites/desc0/group1", 4));
+            loadTextureArray("export/overworld/z13/sprites/desc0/group1", 3));
 
         npcRebelLeft = new EnumMap<>(NpcRebelLeftAnimationGroup.class);
         npcRebelLeft.put(NpcRebelLeftAnimationGroup.IDLE0,
-            loadTextureArray("export/overworld/z13/sprites/desc1/group0", 4));
+            loadTextureArray("export/overworld/z13/sprites/desc1/group0", 3));
         npcRebelLeft.put(NpcRebelLeftAnimationGroup.IDLE1,
-            loadTextureArray("export/overworld/z13/sprites/desc1/group1", 4));
+            loadTextureArray("export/overworld/z13/sprites/desc1/group1", 3));
 
         // TODO: extractor reported 4/4/3 frames per group, but 4/4/4 sprite files exist on disk;
         // using the real counts.
         npcSailor = new EnumMap<>(NpcSailorAnimationGroup.class);
         npcSailor.put(NpcSailorAnimationGroup.IDLE0,
-            loadTextureArray("export/overworld/l27/sprites/desc0/group0", 4));
+            loadTextureArray("export/overworld/l27/sprites/desc0/group0", 3));
         npcSailor.put(NpcSailorAnimationGroup.IDLE1,
-            loadTextureArray("export/overworld/l27/sprites/desc0/group1", 4));
+            loadTextureArray("export/overworld/l27/sprites/desc0/group1", 3));
         npcSailor.put(NpcSailorAnimationGroup.IDLE2,
-            loadTextureArray("export/overworld/l27/sprites/desc0/group2", 4));
+            loadTextureArray("export/overworld/l27/sprites/desc0/group2", 3));
 
         npcSailor2 = new EnumMap<>(NpcSailor2AnimationGroup.class);
         npcSailor2.put(NpcSailor2AnimationGroup.IDLE0,
-            loadTextureArray("export/overworld/l28/sprites/desc1/group0", 4));
+            loadTextureArray("export/overworld/l28/sprites/desc1/group0", 3));
         npcSailor2.put(NpcSailor2AnimationGroup.IDLE1,
-            loadTextureArray("export/overworld/l28/sprites/desc1/group1", 4));
+            loadTextureArray("export/overworld/l28/sprites/desc1/group1", 3));
         npcSailor2.put(NpcSailor2AnimationGroup.IDLE2,
-            loadTextureArray("export/overworld/l28/sprites/desc1/group2", 4));
+            loadTextureArray("export/overworld/l28/sprites/desc1/group2", 3));
 
         npcKnave = new EnumMap<>(NpcKnaveAnimationGroup.class);
         npcKnave.put(NpcKnaveAnimationGroup.IDLE,
-            loadTextureArray("export/overworld/k13a/sprites/desc0/group0", 4));
+            loadTextureArray("export/overworld/k13a/sprites/desc0/group0", 3));
 
         npcFatShopkeeper = new EnumMap<>(NpcFatShopkeeperAnimationGroup.class);
         npcFatShopkeeper.put(NpcFatShopkeeperAnimationGroup.IDLE0,
-            loadTextureArray("export/overworld/k13a/sprites/desc1/group0", 4));
+            loadTextureArray("export/overworld/k13a/sprites/desc1/group0", 3));
         npcFatShopkeeper.put(NpcFatShopkeeperAnimationGroup.IDLE1,
-            loadTextureArray("export/overworld/k13a/sprites/desc1/group1", 4));
+            loadTextureArray("export/overworld/k13a/sprites/desc1/group1", 3));
         npcFatShopkeeper.put(NpcFatShopkeeperAnimationGroup.IDLE2,
-            loadTextureArray("export/overworld/k13a/sprites/desc1/group2", 4));
+            loadTextureArray("export/overworld/k13a/sprites/desc1/group2", 3));
 
         // TODO: extractor reported 8 frames per direction, but only 6 sprite files exist on disk
         // per direction; using the real counts.
         npcShopkeeperDog = new EnumMap<>(NpcShopkeeperDogAnimationGroup.class);
         npcShopkeeperDog.put(NpcShopkeeperDogAnimationGroup.IDLEUP,
-            loadTextureArray("export/overworld/k13/sprites/desc1/group0", 6));
+            loadTextureArray("export/overworld/k13/sprites/desc1/group0", 5));
         npcShopkeeperDog.put(NpcShopkeeperDogAnimationGroup.IDLERIGHT,
-            loadTextureArray("export/overworld/k13/sprites/desc1/group1", 6));
+            loadTextureArray("export/overworld/k13/sprites/desc1/group1", 5));
         npcShopkeeperDog.put(NpcShopkeeperDogAnimationGroup.IDLEDOWN,
-            loadTextureArray("export/overworld/k13/sprites/desc1/group2", 6));
+            loadTextureArray("export/overworld/k13/sprites/desc1/group2", 5));
         npcShopkeeperDog.put(NpcShopkeeperDogAnimationGroup.IDLELEFT,
-            loadTextureArray("export/overworld/k13/sprites/desc1/group3", 6));
+            loadTextureArray("export/overworld/k13/sprites/desc1/group3", 5));
 
         // TODO: extractor reported 14 frames per group, but only 9 sprite files exist on disk per
         // group; using the real counts.
         npcShurmak = new EnumMap<>(NpcShurmakAnimationGroup.class);
         npcShurmak.put(NpcShurmakAnimationGroup.IDLE0,
-            loadTextureArray("export/overworld/p15/sprites/desc0/group0", 9));
+            loadTextureArray("export/overworld/p15/sprites/desc0/group0", 8));
         npcShurmak.put(NpcShurmakAnimationGroup.IDLE1,
-            loadTextureArray("export/overworld/p15/sprites/desc0/group1", 9));
+            loadTextureArray("export/overworld/p15/sprites/desc0/group1", 8));
 
         npcSirramBew = new EnumMap<>(NpcSirramBewAnimationGroup.class);
         npcSirramBew.put(NpcSirramBewAnimationGroup.IDLE0,
-            loadTextureArray("export/overworld/v16a/sprites/desc0/group0", 4));
+            loadTextureArray("export/overworld/v16a/sprites/desc0/group0", 3));
         npcSirramBew.put(NpcSirramBewAnimationGroup.IDLE1,
-            loadTextureArray("export/overworld/v16a/sprites/desc0/group1", 4));
+            loadTextureArray("export/overworld/v16a/sprites/desc0/group1", 3));
 
         npcSkaterDude = new EnumMap<>(NpcSkaterDudeAnimationGroup.class);
         npcSkaterDude.put(NpcSkaterDudeAnimationGroup.IDLE,
@@ -2322,115 +2322,115 @@ public class ImageLoader {
         // group; using the real counts.
         npcPurpleRaven = new EnumMap<>(NpcPurpleRavenAnimationGroup.class);
         npcPurpleRaven.put(NpcPurpleRavenAnimationGroup.IDLE0,
-            loadTextureArray("export/overworld/s301/sprites/desc0/group0", 6));
+            loadTextureArray("export/overworld/s301/sprites/desc0/group0", 5));
         npcPurpleRaven.put(NpcPurpleRavenAnimationGroup.IDLE1,
-            loadTextureArray("export/overworld/s301/sprites/desc0/group1", 6));
+            loadTextureArray("export/overworld/s301/sprites/desc0/group1", 5));
 
         npcBride = new EnumMap<>(NpcBrideAnimationGroup.class);
         npcBride.put(NpcBrideAnimationGroup.IDLE0,
-            loadTextureArray("export/overworld/s601/sprites/desc0/group0", 4));
+            loadTextureArray("export/overworld/s601/sprites/desc0/group0", 3));
         npcBride.put(NpcBrideAnimationGroup.IDLE1,
-            loadTextureArray("export/overworld/s601/sprites/desc0/group1", 4));
+            loadTextureArray("export/overworld/s601/sprites/desc0/group1", 3));
 
         npcNimonee = new EnumMap<>(NpcNimoneeAnimationGroup.class);
         npcNimonee.put(NpcNimoneeAnimationGroup.IDLE,
-            loadTextureArray("export/overworld/z1/sprites/desc0/group0", 4));
+            loadTextureArray("export/overworld/z1/sprites/desc0/group0", 3));
 
         // TODO: extractor reported 5 frames per group, but 6 sprite files exist on disk per
         // group; using the real counts.
         npcStrongman = new EnumMap<>(NpcStrongmanAnimationGroup.class);
         npcStrongman.put(NpcStrongmanAnimationGroup.IDLEUP,
-            loadTextureArray("export/underworld/s603/sprites/desc0/group0", 6));
+            loadTextureArray("export/underworld/s603/sprites/desc0/group0", 5));
         npcStrongman.put(NpcStrongmanAnimationGroup.IDLERIGHT,
-            loadTextureArray("export/underworld/s603/sprites/desc0/group1", 6));
+            loadTextureArray("export/underworld/s603/sprites/desc0/group1", 5));
         npcStrongman.put(NpcStrongmanAnimationGroup.IDLEDOWN,
-            loadTextureArray("export/underworld/s603/sprites/desc0/group2", 6));
+            loadTextureArray("export/underworld/s603/sprites/desc0/group2", 5));
         npcStrongman.put(NpcStrongmanAnimationGroup.IDLELEFT,
-            loadTextureArray("export/underworld/s603/sprites/desc0/group3", 6));
+            loadTextureArray("export/underworld/s603/sprites/desc0/group3", 5));
 
         npcFortuneTeller = new EnumMap<>(NpcFortuneTellerAnimationGroup.class);
         npcFortuneTeller.put(NpcFortuneTellerAnimationGroup.IDLE,
-            loadTextureArray("export/underworld/s603/sprites/desc2/group0", 4));
+            loadTextureArray("export/underworld/s603/sprites/desc2/group0", 3));
 
         npcTournamentSpectator = new EnumMap<>(NpcTournamentSpectatorAnimationGroup.class);
         npcTournamentSpectator.put(NpcTournamentSpectatorAnimationGroup.IDLE0,
-            loadTextureArray("export/underworld/s611/sprites/desc0/group0", 4));
+            loadTextureArray("export/underworld/s611/sprites/desc0/group0", 3));
         npcTournamentSpectator.put(NpcTournamentSpectatorAnimationGroup.IDLE1,
-            loadTextureArray("export/underworld/s611/sprites/desc0/group1", 4));
+            loadTextureArray("export/underworld/s611/sprites/desc0/group1", 3));
 
         npcTwinsFather = new EnumMap<>(NpcTwinsFatherAnimationGroup.class);
         npcTwinsFather.put(NpcTwinsFatherAnimationGroup.IDLE,
-            loadTextureArray("export/overworld/l14a/sprites/desc0/group0", 4));
+            loadTextureArray("export/overworld/l14a/sprites/desc0/group0", 3));
 
         npcWaiter = new EnumMap<>(NpcWaiterAnimationGroup.class);
         npcWaiter.put(NpcWaiterAnimationGroup.IDLEUP,
-            loadTextureArray("export/overworld/n11a/sprites/desc1/group0", 4));
+            loadTextureArray("export/overworld/n11a/sprites/desc1/group0", 3));
         npcWaiter.put(NpcWaiterAnimationGroup.IDLERIGHT,
-            loadTextureArray("export/overworld/n11a/sprites/desc1/group1", 4));
+            loadTextureArray("export/overworld/n11a/sprites/desc1/group1", 3));
         npcWaiter.put(NpcWaiterAnimationGroup.IDLEDOWN,
-            loadTextureArray("export/overworld/n11a/sprites/desc1/group2", 4));
+            loadTextureArray("export/overworld/n11a/sprites/desc1/group2", 3));
         npcWaiter.put(NpcWaiterAnimationGroup.IDLELEFT,
-            loadTextureArray("export/overworld/n11a/sprites/desc1/group3", 4));
+            loadTextureArray("export/overworld/n11a/sprites/desc1/group3", 3));
 
         npcDeerHunter = new EnumMap<>(NpcDeerHunterAnimationGroup.class);
         npcDeerHunter.put(NpcDeerHunterAnimationGroup.IDLE0,
-            loadTextureArray("export/overworld/n11a/sprites/desc0/group0", 4));
+            loadTextureArray("export/overworld/n11a/sprites/desc0/group0", 3));
         npcDeerHunter.put(NpcDeerHunterAnimationGroup.IDLE1,
-            loadTextureArray("export/overworld/n11a/sprites/desc0/group1", 4));
+            loadTextureArray("export/overworld/n11a/sprites/desc0/group1", 3));
         npcDeerHunter.put(NpcDeerHunterAnimationGroup.IDLE2,
-            loadTextureArray("export/overworld/n11a/sprites/desc0/group2", 4));
+            loadTextureArray("export/overworld/n11a/sprites/desc0/group2", 3));
 
         npcDebblinOfDurod = new EnumMap<>(NpcDebblinOfDurodAnimationGroup.class);
         npcDebblinOfDurod.put(NpcDebblinOfDurodAnimationGroup.IDLE0,
-            loadTextureArray("export/overworld/n11a/sprites/desc2/group0", 4));
+            loadTextureArray("export/overworld/n11a/sprites/desc2/group0", 3));
         npcDebblinOfDurod.put(NpcDebblinOfDurodAnimationGroup.IDLE1,
-            loadTextureArray("export/overworld/n11a/sprites/desc2/group1", 4));
+            loadTextureArray("export/overworld/n11a/sprites/desc2/group1", 3));
         npcDebblinOfDurod.put(NpcDebblinOfDurodAnimationGroup.IDLE2,
-            loadTextureArray("export/overworld/n11a/sprites/desc2/group2", 4));
+            loadTextureArray("export/overworld/n11a/sprites/desc2/group2", 3));
 
         npcLodgeOwner = new EnumMap<>(NpcLodgeOwnerAnimationGroup.class);
         npcLodgeOwner.put(NpcLodgeOwnerAnimationGroup.IDLE0,
-            loadTextureArray("export/overworld/n11a/sprites/desc3/group0", 4));
+            loadTextureArray("export/overworld/n11a/sprites/desc3/group0", 3));
         npcLodgeOwner.put(NpcLodgeOwnerAnimationGroup.IDLE1,
-            loadTextureArray("export/overworld/n11a/sprites/desc3/group1", 4));
+            loadTextureArray("export/overworld/n11a/sprites/desc3/group1", 3));
         npcLodgeOwner.put(NpcLodgeOwnerAnimationGroup.IDLE2,
-            loadTextureArray("export/overworld/n11a/sprites/desc3/group2", 4));
+            loadTextureArray("export/overworld/n11a/sprites/desc3/group2", 3));
 
         // TODO: extractor reported 8 frames per group, but only 6 sprite files exist on disk per
         // group; using the real counts.
         npcWimbich = new EnumMap<>(NpcWimbichAnimationGroup.class);
         npcWimbich.put(NpcWimbichAnimationGroup.IDLEUP,
-            loadTextureArray("export/overworld/l13/sprites/desc1/group0", 6));
+            loadTextureArray("export/overworld/l13/sprites/desc1/group0", 5));
         npcWimbich.put(NpcWimbichAnimationGroup.IDLERIGHT,
-            loadTextureArray("export/overworld/l13/sprites/desc1/group1", 6));
+            loadTextureArray("export/overworld/l13/sprites/desc1/group1", 5));
         npcWimbich.put(NpcWimbichAnimationGroup.IDLEDOWN,
-            loadTextureArray("export/overworld/l13/sprites/desc1/group2", 6));
+            loadTextureArray("export/overworld/l13/sprites/desc1/group2", 5));
         npcWimbich.put(NpcWimbichAnimationGroup.IDLELEFT,
-            loadTextureArray("export/overworld/l13/sprites/desc1/group3", 6));
+            loadTextureArray("export/overworld/l13/sprites/desc1/group3", 5));
 
         npcYalzan = new EnumMap<>(NpcYalzanAnimationGroup.class);
         npcYalzan.put(NpcYalzanAnimationGroup.IDLE0,
-            loadTextureArray("export/overworld/q15/sprites/desc0/group0", 5));
+            loadTextureArray("export/overworld/q15/sprites/desc0/group0", 4));
         npcYalzan.put(NpcYalzanAnimationGroup.IDLE1,
-            loadTextureArray("export/overworld/q15/sprites/desc0/group1", 4));
+            loadTextureArray("export/overworld/q15/sprites/desc0/group1", 3));
 
         npcYellowStallOwner = new EnumMap<>(NpcYellowStallOwnerAnimationGroup.class);
         npcYellowStallOwner.put(NpcYellowStallOwnerAnimationGroup.IDLE0,
-            loadTextureArray("export/underworld/s618/sprites/desc0/group0", 4));
+            loadTextureArray("export/underworld/s618/sprites/desc0/group0", 3));
         npcYellowStallOwner.put(NpcYellowStallOwnerAnimationGroup.IDLE1,
-            loadTextureArray("export/underworld/s618/sprites/desc0/group1", 4));
+            loadTextureArray("export/underworld/s618/sprites/desc0/group1", 3));
 
         // TODO: extractor reported 8 frames, but only 6 sprite files exist on disk; using the
         // real count.
         npcYvonne = new EnumMap<>(NpcYvonneAnimationGroup.class);
         npcYvonne.put(NpcYvonneAnimationGroup.IDLE,
-            loadTextureArray("export/overworld/l14/sprites/desc1/group0", 6));
+            loadTextureArray("export/overworld/l14/sprites/desc1/group0", 5));
 
         // TODO: extractor reported 3 frames, but 4 sprite files exist on disk; using the real
         // count.
         npcZeldaSliding = new EnumMap<>(NpcZeldaSlidingAnimationGroup.class);
         npcZeldaSliding.put(NpcZeldaSlidingAnimationGroup.IDLE,
-            loadTextureArray("export/underworld/s202/sprites/desc0/group0", 4));
+            loadTextureArray("export/underworld/s202/sprites/desc0/group0", 3));
 
         /* Map stuff */
         spriteLadder = new Texture("export/underworld/s102/sprites/desc0/group0/sprite0.png");
