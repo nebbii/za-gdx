@@ -88,6 +88,21 @@ public class SoundLoader {
     private Sound npcMerribalLine0;
     private Sound npcSquireGripLine1;
     private Sound npcSquireGripLine3;
+    private Sound npcBrideLine0;
+    private Sound npcBrideLine1;
+    private Sound npcNimoneeLine1;
+    private Sound npcFortuneTellerLine3;
+    private Sound npcTournamentSpectatorLine0;
+    private Sound npcTournamentSpectatorLine1;
+    private Sound npcTwinsFatherLine0;
+    private Sound npcTwinsFatherLine1;
+    private Sound npcTwinsFatherLine2;
+    private Sound npcWaiterLine1;
+    private Sound npcDeerHunterLine1;
+    private Sound npcYalzanLine0;
+    private Sound npcYellowStallOwnerLine0;
+    private Sound npcYvonneLine3;
+    private Sound npcYvonneLine4;
 
     public SoundLoader() {
         npcTalkingChestLine0 = Gdx.audio.newSound(
@@ -342,6 +357,51 @@ public class SoundLoader {
         npcSquireGripLine3 = Gdx.audio.newSound(
             Gdx.files.internal("export/overworld/r10/voice/line3.wav")
         );
+        npcBrideLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/s601/voice/line0.wav")
+        );
+        npcBrideLine1 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/s601/voice/line1.wav")
+        );
+        npcNimoneeLine1 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/z1/voice/line1.wav")
+        );
+        npcFortuneTellerLine3 = Gdx.audio.newSound(
+            Gdx.files.internal("export/underworld/s603/voice/line3.wav")
+        );
+        npcTournamentSpectatorLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/underworld/s611/voice/line0.wav")
+        );
+        npcTournamentSpectatorLine1 = Gdx.audio.newSound(
+            Gdx.files.internal("export/underworld/s611/voice/line1.wav")
+        );
+        npcTwinsFatherLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/l14a/voice/line0.wav")
+        );
+        npcTwinsFatherLine1 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/l14a/voice/line1.wav")
+        );
+        npcTwinsFatherLine2 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/l14a/voice/line2.wav")
+        );
+        npcWaiterLine1 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/n11a/voice/line1.wav")
+        );
+        npcDeerHunterLine1 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/n11a/voice/line1.wav")
+        );
+        npcYalzanLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/q15/voice/line0.wav")
+        );
+        npcYellowStallOwnerLine0 = Gdx.audio.newSound(
+            Gdx.files.internal("export/underworld/s618/voice/line0.wav")
+        );
+        npcYvonneLine3 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/l14/voice/line3.wav")
+        );
+        npcYvonneLine4 = Gdx.audio.newSound(
+            Gdx.files.internal("export/overworld/l14/voice/line4.wav")
+        );
     }
 
     public void dispose() {
@@ -429,6 +489,21 @@ public class SoundLoader {
         npcMerribalLine0.dispose();
         npcSquireGripLine1.dispose();
         npcSquireGripLine3.dispose();
+        npcBrideLine0.dispose();
+        npcBrideLine1.dispose();
+        npcNimoneeLine1.dispose();
+        npcFortuneTellerLine3.dispose();
+        npcTournamentSpectatorLine0.dispose();
+        npcTournamentSpectatorLine1.dispose();
+        npcTwinsFatherLine0.dispose();
+        npcTwinsFatherLine1.dispose();
+        npcTwinsFatherLine2.dispose();
+        npcWaiterLine1.dispose();
+        npcDeerHunterLine1.dispose();
+        npcYalzanLine0.dispose();
+        npcYellowStallOwnerLine0.dispose();
+        npcYvonneLine3.dispose();
+        npcYvonneLine4.dispose();
     }
 
     public Sound getNpcTalkingChestLine0() {
@@ -765,6 +840,66 @@ public class SoundLoader {
 
     public Sound getNpcSquireGripLine3() {
         return npcSquireGripLine3;
+    }
+
+    public Sound getNpcBrideLine0() {
+        return npcBrideLine0;
+    }
+
+    public Sound getNpcBrideLine1() {
+        return npcBrideLine1;
+    }
+
+    public Sound getNpcNimoneeLine1() {
+        return npcNimoneeLine1;
+    }
+
+    public Sound getNpcFortuneTellerLine3() {
+        return npcFortuneTellerLine3;
+    }
+
+    public Sound getNpcTournamentSpectatorLine0() {
+        return npcTournamentSpectatorLine0;
+    }
+
+    public Sound getNpcTournamentSpectatorLine1() {
+        return npcTournamentSpectatorLine1;
+    }
+
+    public Sound getNpcTwinsFatherLine0() {
+        return npcTwinsFatherLine0;
+    }
+
+    public Sound getNpcTwinsFatherLine1() {
+        return npcTwinsFatherLine1;
+    }
+
+    public Sound getNpcTwinsFatherLine2() {
+        return npcTwinsFatherLine2;
+    }
+
+    public Sound getNpcWaiterLine1() {
+        return npcWaiterLine1;
+    }
+
+    public Sound getNpcDeerHunterLine1() {
+        return npcDeerHunterLine1;
+    }
+
+    public Sound getNpcYalzanLine0() {
+        return npcYalzanLine0;
+    }
+
+    public Sound getNpcYellowStallOwnerLine0() {
+        return npcYellowStallOwnerLine0;
+    }
+
+    public Sound getNpcYvonneLine3() {
+        return npcYvonneLine3;
+    }
+
+    public Sound getNpcYvonneLine4() {
+        return npcYvonneLine4;
     }
 
 }

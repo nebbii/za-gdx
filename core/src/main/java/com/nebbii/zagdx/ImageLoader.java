@@ -810,6 +810,90 @@ public class ImageLoader {
         IDLE
     }
 
+    public enum NpcPurpleRavenAnimationGroup {
+        IDLE0,
+        IDLE1
+    }
+
+    public enum NpcBrideAnimationGroup {
+        IDLE0,
+        IDLE1
+    }
+
+    public enum NpcNimoneeAnimationGroup {
+        IDLE
+    }
+
+    public enum NpcStrongmanAnimationGroup {
+        IDLEUP,
+        IDLERIGHT,
+        IDLEDOWN,
+        IDLELEFT
+    }
+
+    public enum NpcFortuneTellerAnimationGroup {
+        IDLE
+    }
+
+    public enum NpcTournamentSpectatorAnimationGroup {
+        IDLE0,
+        IDLE1
+    }
+
+    public enum NpcTwinsFatherAnimationGroup {
+        IDLE
+    }
+
+    public enum NpcWaiterAnimationGroup {
+        IDLEUP,
+        IDLERIGHT,
+        IDLEDOWN,
+        IDLELEFT
+    }
+
+    public enum NpcDeerHunterAnimationGroup {
+        IDLE0,
+        IDLE1,
+        IDLE2
+    }
+
+    public enum NpcDebblinOfDurodAnimationGroup {
+        IDLE0,
+        IDLE1,
+        IDLE2
+    }
+
+    public enum NpcLodgeOwnerAnimationGroup {
+        IDLE0,
+        IDLE1,
+        IDLE2
+    }
+
+    public enum NpcWimbichAnimationGroup {
+        IDLEUP,
+        IDLERIGHT,
+        IDLEDOWN,
+        IDLELEFT
+    }
+
+    public enum NpcYalzanAnimationGroup {
+        IDLE0,
+        IDLE1
+    }
+
+    public enum NpcYellowStallOwnerAnimationGroup {
+        IDLE0,
+        IDLE1
+    }
+
+    public enum NpcYvonneAnimationGroup {
+        IDLE
+    }
+
+    public enum NpcZeldaSlidingAnimationGroup {
+        IDLE
+    }
+
     public enum SpriteLlortLaserAnimationGroup {
         IDLE
     }
@@ -979,6 +1063,22 @@ public class ImageLoader {
     private EnumMap<NpcForeignWomanAnimationGroup, Texture[]> npcForeignWoman;
     private EnumMap<NpcMerribalAnimationGroup, Texture[]> npcMerribal;
     private EnumMap<NpcSquireGripAnimationGroup, Texture[]> npcSquireGrip;
+    private EnumMap<NpcPurpleRavenAnimationGroup, Texture[]> npcPurpleRaven;
+    private EnumMap<NpcBrideAnimationGroup, Texture[]> npcBride;
+    private EnumMap<NpcNimoneeAnimationGroup, Texture[]> npcNimonee;
+    private EnumMap<NpcStrongmanAnimationGroup, Texture[]> npcStrongman;
+    private EnumMap<NpcFortuneTellerAnimationGroup, Texture[]> npcFortuneTeller;
+    private EnumMap<NpcTournamentSpectatorAnimationGroup, Texture[]> npcTournamentSpectator;
+    private EnumMap<NpcTwinsFatherAnimationGroup, Texture[]> npcTwinsFather;
+    private EnumMap<NpcWaiterAnimationGroup, Texture[]> npcWaiter;
+    private EnumMap<NpcDeerHunterAnimationGroup, Texture[]> npcDeerHunter;
+    private EnumMap<NpcDebblinOfDurodAnimationGroup, Texture[]> npcDebblinOfDurod;
+    private EnumMap<NpcLodgeOwnerAnimationGroup, Texture[]> npcLodgeOwner;
+    private EnumMap<NpcWimbichAnimationGroup, Texture[]> npcWimbich;
+    private EnumMap<NpcYalzanAnimationGroup, Texture[]> npcYalzan;
+    private EnumMap<NpcYellowStallOwnerAnimationGroup, Texture[]> npcYellowStallOwner;
+    private EnumMap<NpcYvonneAnimationGroup, Texture[]> npcYvonne;
+    private EnumMap<NpcZeldaSlidingAnimationGroup, Texture[]> npcZeldaSliding;
 
     /* Map stuff */
     private Texture spriteLadder;
@@ -2217,6 +2317,120 @@ public class ImageLoader {
         npcSquireGrip = new EnumMap<>(NpcSquireGripAnimationGroup.class);
         npcSquireGrip.put(NpcSquireGripAnimationGroup.IDLE,
             loadTextureArray("export/overworld/r10/sprites/desc1/group0", 2));
+
+        // TODO: extractor reported 8 frames per group, but only 6 sprite files exist on disk per
+        // group; using the real counts.
+        npcPurpleRaven = new EnumMap<>(NpcPurpleRavenAnimationGroup.class);
+        npcPurpleRaven.put(NpcPurpleRavenAnimationGroup.IDLE0,
+            loadTextureArray("export/overworld/s301/sprites/desc0/group0", 6));
+        npcPurpleRaven.put(NpcPurpleRavenAnimationGroup.IDLE1,
+            loadTextureArray("export/overworld/s301/sprites/desc0/group1", 6));
+
+        npcBride = new EnumMap<>(NpcBrideAnimationGroup.class);
+        npcBride.put(NpcBrideAnimationGroup.IDLE0,
+            loadTextureArray("export/overworld/s601/sprites/desc0/group0", 4));
+        npcBride.put(NpcBrideAnimationGroup.IDLE1,
+            loadTextureArray("export/overworld/s601/sprites/desc0/group1", 4));
+
+        npcNimonee = new EnumMap<>(NpcNimoneeAnimationGroup.class);
+        npcNimonee.put(NpcNimoneeAnimationGroup.IDLE,
+            loadTextureArray("export/overworld/z1/sprites/desc0/group0", 4));
+
+        // TODO: extractor reported 5 frames per group, but 6 sprite files exist on disk per
+        // group; using the real counts.
+        npcStrongman = new EnumMap<>(NpcStrongmanAnimationGroup.class);
+        npcStrongman.put(NpcStrongmanAnimationGroup.IDLEUP,
+            loadTextureArray("export/underworld/s603/sprites/desc0/group0", 6));
+        npcStrongman.put(NpcStrongmanAnimationGroup.IDLERIGHT,
+            loadTextureArray("export/underworld/s603/sprites/desc0/group1", 6));
+        npcStrongman.put(NpcStrongmanAnimationGroup.IDLEDOWN,
+            loadTextureArray("export/underworld/s603/sprites/desc0/group2", 6));
+        npcStrongman.put(NpcStrongmanAnimationGroup.IDLELEFT,
+            loadTextureArray("export/underworld/s603/sprites/desc0/group3", 6));
+
+        npcFortuneTeller = new EnumMap<>(NpcFortuneTellerAnimationGroup.class);
+        npcFortuneTeller.put(NpcFortuneTellerAnimationGroup.IDLE,
+            loadTextureArray("export/underworld/s603/sprites/desc2/group0", 4));
+
+        npcTournamentSpectator = new EnumMap<>(NpcTournamentSpectatorAnimationGroup.class);
+        npcTournamentSpectator.put(NpcTournamentSpectatorAnimationGroup.IDLE0,
+            loadTextureArray("export/underworld/s611/sprites/desc0/group0", 4));
+        npcTournamentSpectator.put(NpcTournamentSpectatorAnimationGroup.IDLE1,
+            loadTextureArray("export/underworld/s611/sprites/desc0/group1", 4));
+
+        npcTwinsFather = new EnumMap<>(NpcTwinsFatherAnimationGroup.class);
+        npcTwinsFather.put(NpcTwinsFatherAnimationGroup.IDLE,
+            loadTextureArray("export/overworld/l14a/sprites/desc0/group0", 4));
+
+        npcWaiter = new EnumMap<>(NpcWaiterAnimationGroup.class);
+        npcWaiter.put(NpcWaiterAnimationGroup.IDLEUP,
+            loadTextureArray("export/overworld/n11a/sprites/desc1/group0", 4));
+        npcWaiter.put(NpcWaiterAnimationGroup.IDLERIGHT,
+            loadTextureArray("export/overworld/n11a/sprites/desc1/group1", 4));
+        npcWaiter.put(NpcWaiterAnimationGroup.IDLEDOWN,
+            loadTextureArray("export/overworld/n11a/sprites/desc1/group2", 4));
+        npcWaiter.put(NpcWaiterAnimationGroup.IDLELEFT,
+            loadTextureArray("export/overworld/n11a/sprites/desc1/group3", 4));
+
+        npcDeerHunter = new EnumMap<>(NpcDeerHunterAnimationGroup.class);
+        npcDeerHunter.put(NpcDeerHunterAnimationGroup.IDLE0,
+            loadTextureArray("export/overworld/n11a/sprites/desc0/group0", 4));
+        npcDeerHunter.put(NpcDeerHunterAnimationGroup.IDLE1,
+            loadTextureArray("export/overworld/n11a/sprites/desc0/group1", 4));
+        npcDeerHunter.put(NpcDeerHunterAnimationGroup.IDLE2,
+            loadTextureArray("export/overworld/n11a/sprites/desc0/group2", 4));
+
+        npcDebblinOfDurod = new EnumMap<>(NpcDebblinOfDurodAnimationGroup.class);
+        npcDebblinOfDurod.put(NpcDebblinOfDurodAnimationGroup.IDLE0,
+            loadTextureArray("export/overworld/n11a/sprites/desc2/group0", 4));
+        npcDebblinOfDurod.put(NpcDebblinOfDurodAnimationGroup.IDLE1,
+            loadTextureArray("export/overworld/n11a/sprites/desc2/group1", 4));
+        npcDebblinOfDurod.put(NpcDebblinOfDurodAnimationGroup.IDLE2,
+            loadTextureArray("export/overworld/n11a/sprites/desc2/group2", 4));
+
+        npcLodgeOwner = new EnumMap<>(NpcLodgeOwnerAnimationGroup.class);
+        npcLodgeOwner.put(NpcLodgeOwnerAnimationGroup.IDLE0,
+            loadTextureArray("export/overworld/n11a/sprites/desc3/group0", 4));
+        npcLodgeOwner.put(NpcLodgeOwnerAnimationGroup.IDLE1,
+            loadTextureArray("export/overworld/n11a/sprites/desc3/group1", 4));
+        npcLodgeOwner.put(NpcLodgeOwnerAnimationGroup.IDLE2,
+            loadTextureArray("export/overworld/n11a/sprites/desc3/group2", 4));
+
+        // TODO: extractor reported 8 frames per group, but only 6 sprite files exist on disk per
+        // group; using the real counts.
+        npcWimbich = new EnumMap<>(NpcWimbichAnimationGroup.class);
+        npcWimbich.put(NpcWimbichAnimationGroup.IDLEUP,
+            loadTextureArray("export/overworld/l13/sprites/desc1/group0", 6));
+        npcWimbich.put(NpcWimbichAnimationGroup.IDLERIGHT,
+            loadTextureArray("export/overworld/l13/sprites/desc1/group1", 6));
+        npcWimbich.put(NpcWimbichAnimationGroup.IDLEDOWN,
+            loadTextureArray("export/overworld/l13/sprites/desc1/group2", 6));
+        npcWimbich.put(NpcWimbichAnimationGroup.IDLELEFT,
+            loadTextureArray("export/overworld/l13/sprites/desc1/group3", 6));
+
+        npcYalzan = new EnumMap<>(NpcYalzanAnimationGroup.class);
+        npcYalzan.put(NpcYalzanAnimationGroup.IDLE0,
+            loadTextureArray("export/overworld/q15/sprites/desc0/group0", 5));
+        npcYalzan.put(NpcYalzanAnimationGroup.IDLE1,
+            loadTextureArray("export/overworld/q15/sprites/desc0/group1", 4));
+
+        npcYellowStallOwner = new EnumMap<>(NpcYellowStallOwnerAnimationGroup.class);
+        npcYellowStallOwner.put(NpcYellowStallOwnerAnimationGroup.IDLE0,
+            loadTextureArray("export/underworld/s618/sprites/desc0/group0", 4));
+        npcYellowStallOwner.put(NpcYellowStallOwnerAnimationGroup.IDLE1,
+            loadTextureArray("export/underworld/s618/sprites/desc0/group1", 4));
+
+        // TODO: extractor reported 8 frames, but only 6 sprite files exist on disk; using the
+        // real count.
+        npcYvonne = new EnumMap<>(NpcYvonneAnimationGroup.class);
+        npcYvonne.put(NpcYvonneAnimationGroup.IDLE,
+            loadTextureArray("export/overworld/l14/sprites/desc1/group0", 6));
+
+        // TODO: extractor reported 3 frames, but 4 sprite files exist on disk; using the real
+        // count.
+        npcZeldaSliding = new EnumMap<>(NpcZeldaSlidingAnimationGroup.class);
+        npcZeldaSliding.put(NpcZeldaSlidingAnimationGroup.IDLE,
+            loadTextureArray("export/underworld/s202/sprites/desc0/group0", 4));
 
         /* Map stuff */
         spriteLadder = new Texture("export/underworld/s102/sprites/desc0/group0/sprite0.png");
@@ -3764,6 +3978,166 @@ public class ImageLoader {
             }
         }
 
+        for (Texture[] textures : npcPurpleRaven.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcBride.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcNimonee.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcStrongman.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcFortuneTeller.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcTournamentSpectator.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcTwinsFather.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcWaiter.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcDeerHunter.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcDebblinOfDurod.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcLodgeOwner.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcWimbich.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcYalzan.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcYellowStallOwner.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcYvonne.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
+        for (Texture[] textures : npcZeldaSliding.values()) {
+            if (textures == null) continue;
+
+            for (Texture texture : textures) {
+                if (texture != null) {
+                    texture.dispose();
+                }
+            }
+        }
+
         /* Map stuff */
         spriteLadder.dispose();
 
@@ -4654,6 +5028,70 @@ public class ImageLoader {
 
     public Texture[] getNpcSquireGripAnimation(NpcSquireGripAnimationGroup anim) {
         return npcSquireGrip.get(anim);
+    }
+
+    public Texture[] getNpcPurpleRavenAnimation(NpcPurpleRavenAnimationGroup anim) {
+        return npcPurpleRaven.get(anim);
+    }
+
+    public Texture[] getNpcBrideAnimation(NpcBrideAnimationGroup anim) {
+        return npcBride.get(anim);
+    }
+
+    public Texture[] getNpcNimoneeAnimation(NpcNimoneeAnimationGroup anim) {
+        return npcNimonee.get(anim);
+    }
+
+    public Texture[] getNpcStrongmanAnimation(NpcStrongmanAnimationGroup anim) {
+        return npcStrongman.get(anim);
+    }
+
+    public Texture[] getNpcFortuneTellerAnimation(NpcFortuneTellerAnimationGroup anim) {
+        return npcFortuneTeller.get(anim);
+    }
+
+    public Texture[] getNpcTournamentSpectatorAnimation(NpcTournamentSpectatorAnimationGroup anim) {
+        return npcTournamentSpectator.get(anim);
+    }
+
+    public Texture[] getNpcTwinsFatherAnimation(NpcTwinsFatherAnimationGroup anim) {
+        return npcTwinsFather.get(anim);
+    }
+
+    public Texture[] getNpcWaiterAnimation(NpcWaiterAnimationGroup anim) {
+        return npcWaiter.get(anim);
+    }
+
+    public Texture[] getNpcDeerHunterAnimation(NpcDeerHunterAnimationGroup anim) {
+        return npcDeerHunter.get(anim);
+    }
+
+    public Texture[] getNpcDebblinOfDurodAnimation(NpcDebblinOfDurodAnimationGroup anim) {
+        return npcDebblinOfDurod.get(anim);
+    }
+
+    public Texture[] getNpcLodgeOwnerAnimation(NpcLodgeOwnerAnimationGroup anim) {
+        return npcLodgeOwner.get(anim);
+    }
+
+    public Texture[] getNpcWimbichAnimation(NpcWimbichAnimationGroup anim) {
+        return npcWimbich.get(anim);
+    }
+
+    public Texture[] getNpcYalzanAnimation(NpcYalzanAnimationGroup anim) {
+        return npcYalzan.get(anim);
+    }
+
+    public Texture[] getNpcYellowStallOwnerAnimation(NpcYellowStallOwnerAnimationGroup anim) {
+        return npcYellowStallOwner.get(anim);
+    }
+
+    public Texture[] getNpcYvonneAnimation(NpcYvonneAnimationGroup anim) {
+        return npcYvonne.get(anim);
+    }
+
+    public Texture[] getNpcZeldaSlidingAnimation(NpcZeldaSlidingAnimationGroup anim) {
+        return npcZeldaSliding.get(anim);
     }
 
     public Texture getRubyBlue() {
