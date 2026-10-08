@@ -1,0 +1,219 @@
+package com.nebbii.zagdx.animation;
+
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.nebbii.zagdx.EnemyAxeMan;
+import com.nebbii.zagdx.ImageLoader.EnemyAxeManAnimationGroup;
+import com.nebbii.zagdx.World;
+
+public class EnemyAxeManAnimation extends GameAnimation {
+    private final EnemyAxeMan enemy;
+
+    private Animation<TextureRegion> walkUp;
+    private Animation<TextureRegion> walkRight;
+    private Animation<TextureRegion> walkDown;
+    private Animation<TextureRegion> walkLeft;
+
+    private int[] walkUpOffsetX;
+    private int[] walkUpOffsetY;
+    private int[] walkRightOffsetX;
+    private int[] walkRightOffsetY;
+    private int[] walkDownOffsetX;
+    private int[] walkDownOffsetY;
+    private int[] walkLeftOffsetX;
+    private int[] walkLeftOffsetY;
+
+    public EnemyAxeManAnimation(EnemyAxeMan enemy) {
+        super("walkDown");
+        this.enemy = enemy;
+
+        baseOffsetX = 0;
+        baseOffsetY = 0;
+        offsetX = 0;
+        offsetY = 0;
+
+        walkUp = initWalkUp();
+        walkRight = initWalkRight();
+        walkDown = initWalkDown();
+        walkLeft = initWalkLeft();
+    }
+
+    public TextureRegion playCurrentAnimation() {
+        int[] offsetsX;
+        int[] offsetsY;
+
+        switch (enemy.getDirection()) {
+            case UP:
+                animation = walkUp;
+                offsetsX = walkUpOffsetX;
+                offsetsY = walkUpOffsetY;
+                break;
+            case RIGHT:
+                animation = walkRight;
+                offsetsX = walkRightOffsetX;
+                offsetsY = walkRightOffsetY;
+                break;
+            case DOWN:
+                animation = walkDown;
+                offsetsX = walkDownOffsetX;
+                offsetsY = walkDownOffsetY;
+                break;
+            case LEFT:
+                animation = walkLeft;
+                offsetsX = walkLeftOffsetX;
+                offsetsY = walkLeftOffsetY;
+                break;
+            default:
+                throw new IllegalStateException("Unhandled EnemyAxeMan direction");
+        }
+
+        play();
+
+        TextureRegion frame = animation.getKeyFrame(stateTime, true);
+
+        float wrappedTime = stateTime % animation.getAnimationDuration();
+        int frameIndex = animation.getKeyFrameIndex(wrappedTime);
+
+        animation.setFrameDuration(getAnimationSpeed());
+
+        offsetX = offsetsX[frameIndex];
+        offsetY = offsetsY[frameIndex];
+
+        return frame;
+    }
+
+    private Animation<TextureRegion> initWalkUp() {
+        Texture[] textures = World.images.getEnemyAxeManAnimation(EnemyAxeManAnimationGroup.WALKUP);
+
+        int[][] frameData = {
+            {0, 0, 0},
+            {1, 0, 0},
+            {2, 0, 0},
+            {3, 0, 0},
+            {4, 0, 0},
+            {3, 0, 0},
+            {2, 0, 0},
+            {1, 0, 0}
+        };
+
+        TextureRegion[] frames = new TextureRegion[frameData.length];
+        walkUpOffsetX = new int[frameData.length];
+        walkUpOffsetY = new int[frameData.length];
+
+        for (int i = 0; i < frameData.length; i++) {
+            frames[i] = new TextureRegion(textures[frameData[i][0]]);
+            walkUpOffsetX[i] = frameData[i][1];
+            walkUpOffsetY[i] = frameData[i][2];
+        }
+
+        Animation<TextureRegion> anim = new Animation<>(0.12f, frames);
+        anim.setPlayMode(Animation.PlayMode.LOOP);
+        return anim;
+    }
+
+    private Animation<TextureRegion> initWalkRight() {
+        Texture[] textures = World.images.getEnemyAxeManAnimation(EnemyAxeManAnimationGroup.WALKRIGHT);
+
+        int[][] frameData = {
+            {0, 0, 0},
+            {1, 0, 0},
+            {2, 0, 0},
+            {3, 0, 0},
+            {4, 0, 0},
+            {3, 0, 0},
+            {2, 0, 0},
+            {1, 0, 0}
+        };
+
+        TextureRegion[] frames = new TextureRegion[frameData.length];
+        walkRightOffsetX = new int[frameData.length];
+        walkRightOffsetY = new int[frameData.length];
+
+        for (int i = 0; i < frameData.length; i++) {
+            frames[i] = new TextureRegion(textures[frameData[i][0]]);
+            walkRightOffsetX[i] = frameData[i][1];
+            walkRightOffsetY[i] = frameData[i][2];
+        }
+
+        Animation<TextureRegion> anim = new Animation<>(0.12f, frames);
+        anim.setPlayMode(Animation.PlayMode.LOOP);
+        return anim;
+    }
+
+    private Animation<TextureRegion> initWalkDown() {
+        Texture[] textures = World.images.getEnemyAxeManAnimation(EnemyAxeManAnimationGroup.WALKDOWN);
+
+        int[][] frameData = {
+            {0, 0, 0},
+            {1, 0, 0},
+            {2, 0, 0},
+            {3, 0, 0},
+            {4, 0, 0},
+            {3, 0, 0},
+            {2, 0, 0},
+            {1, 0, 0}
+        };
+
+        TextureRegion[] frames = new TextureRegion[frameData.length];
+        walkDownOffsetX = new int[frameData.length];
+        walkDownOffsetY = new int[frameData.length];
+
+        for (int i = 0; i < frameData.length; i++) {
+            frames[i] = new TextureRegion(textures[frameData[i][0]]);
+            walkDownOffsetX[i] = frameData[i][1];
+            walkDownOffsetY[i] = frameData[i][2];
+        }
+
+        Animation<TextureRegion> anim = new Animation<>(0.12f, frames);
+        anim.setPlayMode(Animation.PlayMode.LOOP);
+        return anim;
+    }
+
+    private Animation<TextureRegion> initWalkLeft() {
+        Texture[] textures = World.images.getEnemyAxeManAnimation(EnemyAxeManAnimationGroup.WALKLEFT);
+
+        int[][] frameData = {
+            {0, 0, 0},
+            {1, 0, 0},
+            {2, 0, 0},
+            {3, 0, 0},
+            {4, 0, 0},
+            {3, 0, 0},
+            {2, 0, 0},
+            {1, 0, 0}
+        };
+
+        TextureRegion[] frames = new TextureRegion[frameData.length];
+        walkLeftOffsetX = new int[frameData.length];
+        walkLeftOffsetY = new int[frameData.length];
+
+        for (int i = 0; i < frameData.length; i++) {
+            frames[i] = new TextureRegion(textures[frameData[i][0]]);
+            walkLeftOffsetX[i] = frameData[i][1];
+            walkLeftOffsetY[i] = frameData[i][2];
+        }
+
+        Animation<TextureRegion> anim = new Animation<>(0.12f, frames);
+        anim.setPlayMode(Animation.PlayMode.LOOP);
+        return anim;
+    }
+
+    private float getAnimationSpeed() {
+        switch(enemy.getEnemyState()) {
+            case FIGHT:
+                return 0.07f;
+            case SEARCH:
+            default:
+                return 0.12f;
+        }
+    }
+
+    public float getX() {
+        return enemy.getX() - enemy.getWidth() / 2f + offsetX + baseOffsetX;
+    }
+
+    public float getY() {
+        return enemy.getY() - enemy.getHeight() / 2f + offsetY + baseOffsetY;
+    }
+}
