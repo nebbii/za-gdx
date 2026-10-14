@@ -23,17 +23,20 @@ public class MenuButtonSaveFile extends Rectangle implements MenuButton {
         this.font = new BitmapFont();
     }
 
-    public void draw(SpriteBatch batch) {
-        String name;
+    public void draw(SpriteBatch batch){};
 
-        if (selected) {
+    public void draw(SpriteBatch batch, boolean beingDeleted) {
+        String name;
+        if (selected && beingDeleted) {
+            name = "<!> Are you sure?";
+        }
+        else if (selected) {
             name = "> " + saveFile.name;
         }
         else {
             name = saveFile.name;
         }
-
-        font.draw(batch, name, x, y + 15); // temporary (hopefully) until it's rendered
+        font.draw(batch, name, x, y + 15);
     }
 
     @Override
