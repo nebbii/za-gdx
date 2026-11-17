@@ -2,6 +2,8 @@
 
 A port of ZA (originally for the CD-i) written in Java with [libGDX](https://libgdx.com/).
 
+Heads up regarding LLM usage: This code is mostly written by hand, however I (nebbii) have used LLMs to solve polygon collision issues, and I also have created skills for importing assets into the project.
+
 ## Setup
 ### Requirements
 #### ...for running the game/building an executable
